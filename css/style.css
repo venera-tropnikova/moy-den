@@ -1,0 +1,838 @@
+/* =========================================================
+   Мой день — Главный экран
+   Стиль: дорогой минимализм, современная типографика
+   Основан на design-preview v2
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Цвета */
+  --bg:          #F9F6F2;
+  --card:        #FFFFFF;
+  --hero-bg:     #ECE6DD;
+  --accent:      #5E7A6E;
+  --accent-soft: #EBF2EE;
+  --warm:        #C09870;
+  --ink:         #191512;
+  --ink-mid:     #7A706A;
+  --ink-faint:   #BDB7B0;
+  --divider:     #EDE8E3;
+  --bday-bg:     #F9F0EB;
+  --history-bg:  #F5F1EC;
+  --shadow:      0 2px 20px rgba(25, 21, 18, 0.07);
+  --shadow-xs:   0 1px 8px  rgba(25, 21, 18, 0.05);
+
+  /* Типографика */
+  --serif: Georgia, "Times New Roman", serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Скругления */
+  --r-lg: 20px;
+  --r-md: 16px;
+  --r-sm: 12px;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button { font-family: inherit; cursor: pointer; }
+input  { font-family: inherit; }
+
+/* ─── Обёртка ────────────────────────────────────────── */
+
+.screen {
+  width: min(100%, 430px);
+  margin-inline: auto;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  padding-bottom: 72px;
+  position: relative;
+}
+
+/* ─── Строка состояния ───────────────────────────────── */
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px 0;
+  background: var(--hero-bg);
+}
+
+.statusbar__time {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-mid);
+}
+
+.statusbar__icons {
+  display: flex;
+  gap: 4px;
+  font-size: 0.6rem;
+  color: var(--ink-mid);
+}
+
+/* ─── HERO ───────────────────────────────────────────── */
+
+.hero {
+  background: var(--hero-bg);
+  padding: 20px 24px 28px;
+}
+
+.hero__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+/* Главный текст шапки: приветствие */
+.hero__greeting {
+  font-family: var(--serif);
+  font-size: clamp(1.57rem, 6.8vw, 1.96rem);
+  font-weight: 400;
+  line-height: 1.1;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 4px;
+  white-space: pre-line;
+}
+
+/* Текущее время — второй по важности элемент */
+.hero__live-time {
+  font-size: 1rem;
+  font-weight: 300;
+  color: var(--ink-mid);
+  letter-spacing: 0.04em;
+  margin-bottom: 12px;
+}
+
+/* Имя пользователя — второстепенное */
+.hero__name-secondary {
+  font-size: 0.88rem;
+  font-weight: 400;
+  color: var(--ink-mid);
+  margin-bottom: 2px;
+}
+
+.hero__spark {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 0.7rem;
+  color: var(--warm);
+  vertical-align: super;
+  margin-left: 3px;
+}
+
+.hero__date {
+  font-size: 1.03rem;
+  color: var(--ink-mid);
+  letter-spacing: 0.01em;
+}
+
+.hero__bell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  color: var(--ink-mid);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* ─── ПОГОДА ─────────────────────────────────────────── */
+
+.weather {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-xs);
+}
+
+.weather__icon { color: var(--warm); display: flex; align-items: center; }
+
+.weather__temp {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.weather__city { font-size: 0.72rem; color: var(--ink-mid); line-height: 1.3; }
+
+.weather__cond { font-size: 0.8rem; color: var(--ink-mid); line-height: 1.4; }
+
+.weather__tip {
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  line-height: 1.45;
+  text-align: right;
+}
+
+/* ─── SCROLL AREA ────────────────────────────────────── */
+
+.scroll-area {
+  padding: 20px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+/* ─── КАРТОЧКИ ───────────────────────────────────────── */
+
+.card {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+.card__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+
+.badge {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* ─── ЗАДАЧИ (JS-элементы) ───────────────────────────── */
+
+.tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Отступ между активным списком и toggle-кнопкой */
+.tasks:not(:empty) { margin-bottom: 4px; }
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.task:last-child { border-bottom: none; }
+
+/* Нативный чекбокс — скрыт, стилизован вручную */
+.task__checkbox {
+  -webkit-appearance: none;
+  appearance: none;
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink-faint);
+  background: transparent;
+  cursor: pointer;
+  transition: background 0.15s, border-color 0.15s;
+}
+
+.task__checkbox:checked {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12l5 5L20 7' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 66%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.task__label {
+  flex: 1;
+  font-size: 0.97rem;
+  color: var(--ink);
+  line-height: 1.4;
+  cursor: pointer;
+}
+
+.task--done .task__label {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-faint);
+}
+
+.task__delete {
+  background: none;
+  border: none;
+  padding: 0 2px;
+  font-size: 1.25rem;
+  line-height: 1;
+  color: var(--ink-faint);
+  cursor: pointer;
+  transition: color 0.15s;
+  flex-shrink: 0;
+}
+
+.task__delete:hover { color: var(--ink); }
+
+/* Пустое состояние (JS: li.task.task--done без дочерних элементов) */
+.task.task--done:not(:has(.task__checkbox)) {
+  justify-content: flex-start;
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  border-bottom: none;
+  padding: 10px 0 2px;
+}
+
+/* Анимация исчезновения при выполнении */
+@keyframes taskLeave {
+  to {
+    opacity: 0;
+    transform: translateX(14px);
+  }
+}
+
+.task--leaving {
+  animation: taskLeave 0.4s ease forwards;
+  pointer-events: none;
+}
+
+/* Список выполненных (появляется при раскрытии) */
+.tasks--completed {
+  margin-top: 4px;
+  border-top: 1px solid var(--divider);
+  padding-top: 4px;
+}
+
+/* ─── КНОПКА ПОКАЗА ВЫПОЛНЕННЫХ ──────────────────────── */
+
+.completed-toggle {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  margin-top: 12px;
+  background: none;
+  border: none;
+  font-size: 0.82rem;
+  font-weight: 500;
+  color: var(--ink-mid);
+  cursor: pointer;
+  padding: 0;
+  transition: color 0.15s;
+}
+
+.completed-toggle:hover { color: var(--accent); }
+
+/* ─── ПОЛЕ ДОБАВЛЕНИЯ ЗАДАЧИ ─────────────────────────── */
+
+.add-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+}
+
+.task-input {
+  flex: 1;
+  padding: 11px 14px;
+  border: 1.5px solid var(--divider);
+  border-radius: 100px;
+  background: var(--bg);
+  font-size: 0.9rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color 0.15s;
+  min-width: 0;
+}
+
+.task-input::placeholder { color: var(--ink-faint); }
+
+.task-input:focus { border-color: var(--accent); }
+
+.add-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.add-btn:hover  { opacity: 0.82; }
+.add-btn:active { opacity: 0.7; transform: scale(0.96); }
+
+/* ─── ДВА СТОЛБЦА ────────────────────────────────────── */
+
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.duo .card { padding: 18px 16px; }
+
+/* ─── ДЕНЬ РОЖДЕНИЯ ──────────────────────────────────── */
+
+.card--birthday {
+  background: var(--bday-bg);
+}
+
+/* Строка: имя + кнопка */
+.bday__row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.bday__person-name {
+  font-family: var(--serif);
+  font-size: 1rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+.bday__person-when {
+  font-size: 0.72rem;
+  color: var(--ink-faint);
+  margin-top: 2px;
+}
+
+.bday__open-btn {
+  flex-shrink: 0;
+  padding: 7px 12px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-size: 0.75rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: opacity 0.15s;
+  white-space: nowrap;
+}
+
+.bday__open-btn:hover  { opacity: 0.8; }
+.bday__open-btn:active { opacity: 0.65; }
+
+/* ─── МЫСЛЬ ДНЯ ──────────────────────────────────────── */
+
+.card--mood {
+  background: var(--card);
+  position: relative;
+  overflow: hidden;
+}
+
+.mood__q {
+  font-family: var(--serif);
+  font-size: 4.5rem;
+  line-height: 0.8;
+  color: var(--ink-faint);
+  opacity: 0.5;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.mood__text {
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+}
+
+.mood__line {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--ink-faint);
+  border-radius: 2px;
+  margin-top: 12px;
+}
+
+/* ─── СОБЫТИЯ ДНЯ (JS-элементы renderCalendar) ───────── */
+
+#calendar-content:empty::before {
+  content: "Сегодня нет добавленных событий.";
+  display: block;
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  padding: 4px 0;
+}
+
+.calendar__item {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 14px;
+  position: relative;
+}
+
+/* Вертикальная линия между элементами */
+.calendar__item:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  left: 5px;
+  top: 14px;
+  bottom: 0;
+  width: 1px;
+  background: var(--divider);
+}
+
+/* Точка-маркер */
+.calendar__item::before {
+  content: "";
+  flex-shrink: 0;
+  width: 11px;
+  height: 11px;
+  border-radius: 50%;
+  border: 2px solid var(--ink-faint);
+  background: var(--card);
+  margin-top: 4px;
+  position: relative;
+  z-index: 1;
+}
+
+.calendar__item:first-child::before {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.calendar__label {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 2px;
+}
+
+.calendar__text {
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+.calendar__empty {
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  line-height: 1.55;
+  padding: 4px 0;
+}
+
+/* ─── ИСТОРИЧЕСКИЙ МОМЕНТ ────────────────────────────── */
+
+.card--history {
+  background: var(--history-bg);
+  padding: 16px 18px;
+}
+
+.hist__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+.hist__date {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.hist__year {
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+}
+
+.hist__text {
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* ─── УЛЫБКА ─────────────────────────────────────────── */
+
+.smile__text {
+  font-size: 0.93rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  white-space: pre-line;
+}
+
+/* ─── ТЕКСТОВЫЕ КНОПКИ-ССЫЛКИ ────────────────────────── */
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--accent);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.link-btn:hover { opacity: 0.72; }
+
+.hist__more {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.85rem;
+}
+
+/* ─── МОДАЛЬНОЕ ОКНО ПОЗДРАВЛЕНИЯ ────────────────────── */
+
+.bday-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 200;
+  display: flex;
+  align-items: flex-end;
+  justify-content: center;
+}
+
+.bday-modal[hidden] { display: none; }
+
+.bday-modal__backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(25, 21, 18, 0.45);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.bday-modal__card {
+  position: relative;
+  z-index: 1;
+  width: min(100%, 430px);
+  background: var(--card);
+  border-radius: 28px 28px 0 0;
+  padding: 32px 28px 40px;
+  text-align: center;
+}
+
+.bday-modal__close {
+  position: absolute;
+  top: 16px;
+  right: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 32px;
+  height: 32px;
+  background: var(--bg);
+  border: none;
+  border-radius: 50%;
+  color: var(--ink-mid);
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.bday-modal__close:hover { background: var(--divider); }
+
+.bday-modal__art {
+  font-size: 3rem;
+  line-height: 1;
+  margin-bottom: 20px;
+}
+
+.bday-modal__title {
+  font-family: var(--serif);
+  font-size: 1.7rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.25;
+  letter-spacing: -0.01em;
+  margin-bottom: 16px;
+}
+
+.bday-modal__text {
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+  margin-bottom: 28px;
+}
+
+.bday-modal__actions {
+  display: flex;
+  gap: 10px;
+}
+
+.bday-modal__btn {
+  flex: 1;
+  padding: 13px 10px;
+  border: 1.5px solid var(--divider);
+  border-radius: 100px;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: var(--ink);
+  cursor: pointer;
+  transition: background 0.15s, color 0.15s;
+}
+
+.bday-modal__btn:hover { background: var(--ink); color: #fff; border-color: var(--ink); }
+
+.bday-modal__btn--share {
+  background: var(--ink);
+  color: #fff;
+  border-color: var(--ink);
+}
+
+.bday-modal__btn--share:hover { opacity: 0.82; }
+
+/* ─── НИЖНЯЯ НАВИГАЦИЯ ───────────────────────────────── */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 430px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--divider);
+  padding: 10px 8px max(12px, env(safe-area-inset-bottom));
+  z-index: 100;
+}
+
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  color: var(--ink-mid);
+  text-decoration: none;
+  padding: 4px 10px;
+  transition: color 0.15s;
+  cursor: pointer;
+}
+
+/* Активная вкладка: тёмный цвет + точка-индикатор */
+.nav-btn--active {
+  color: var(--ink);
+}
+
+.nav-btn--active .nav-btn__lbl::after {
+  content: "";
+  display: block;
+  width: 4px;
+  height: 4px;
+  background: var(--ink);
+  border-radius: 50%;
+  margin: 3px auto 0;
+}
+
+.nav-btn:hover:not(.nav-btn--fab) { color: var(--ink); }
+
+.nav-btn__icon { display: block; }
+
+.nav-btn__lbl {
+  font-size: 0.76rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+}
+
+.nav-btn--fab {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  padding: 0;
+  box-shadow: 0 6px 20px rgba(94, 122, 110, 0.38);
+  margin-top: -12px;
+  flex-shrink: 0;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.nav-btn--fab:hover  { background: #4d6860; transform: scale(1.05); }
+.nav-btn--fab:active { transform: scale(0.97); }
+
+/* ─── АДАПТИВ ─────────────────────────────────────────── */
+
+@media (max-width: 390px) {
+  .hero { padding: 16px 20px 24px; }
+  .scroll-area { padding-inline: 14px; }
+  .hero__greeting { font-size: 1.65rem; }
+  .duo .card { padding: 16px 14px; }
+}
+
+/* Имитация телефонного обрамления на широком экране */
+@media (min-width: 480px) {
+  body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px 0 40px;
+    background: #E8E3DD;
+  }
+
+  .screen {
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0, 0, 0, 0.18);
+  }
+
+  .bottom-nav {
+    border-radius: 0 0 44px 44px;
+  }
+}

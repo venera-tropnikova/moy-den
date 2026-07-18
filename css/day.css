@@ -1,0 +1,137 @@
+/* =========================================================
+   Мой день — выбранный день
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:          #F9F6F2;
+  --card:        #FFFFFF;
+  --hero-bg:     #ECE6DD;
+  --accent:      #5E7A6E;
+  --ink:         #191512;
+  --ink-mid:     #7A706A;
+  --ink-faint:   #BDB7B0;
+  --divider:     #EDE8E3;
+  --shadow:      0 2px 20px rgba(25, 21, 18, 0.07);
+  --shadow-xs:   0 1px 8px rgba(25, 21, 18, 0.05);
+
+  --serif: Georgia, "Times New Roman", serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --r-lg: 20px;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.screen {
+  width: min(100%, 430px);
+  margin-inline: auto;
+  min-height: 100dvh;
+  background: var(--bg);
+}
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px 0;
+  background: var(--hero-bg);
+}
+
+.statusbar__time {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-mid);
+}
+
+.statusbar__icons {
+  display: flex;
+  gap: 4px;
+  font-size: 0.6rem;
+  color: var(--ink-mid);
+}
+
+.day-screen {
+  padding-bottom: 28px;
+}
+
+.day-hero {
+  background: var(--hero-bg);
+  padding: 24px 24px 30px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-bottom: 26px;
+  padding: 0 14px 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  box-shadow: var(--shadow-xs);
+  color: var(--ink-mid);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+.day-hero__weekday {
+  margin-bottom: 8px;
+  color: var(--ink-mid);
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.day-hero__title {
+  font-family: var(--serif);
+  font-size: clamp(2.2rem, 10vw, 3rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.day-section {
+  margin: 14px 16px 0;
+  padding: 20px;
+  border-radius: var(--r-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.day-section__title {
+  margin-bottom: 12px;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.day-section__empty {
+  color: var(--ink-faint);
+  font-size: 0.92rem;
+  line-height: 1.5;
+}

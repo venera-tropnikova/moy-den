@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>День — Мой день</title>
+  <link rel="stylesheet" href="css/day.css">
+</head>
+<body>
+
+  <div class="screen">
+
+    <div class="statusbar" aria-hidden="true">
+      <span class="statusbar__icons">
+        <span>▪</span><span>▪</span><span>▪</span>
+      </span>
+      <span class="statusbar__time" id="statusbar-time">09:41</span>
+    </div>
+
+    <main class="day-screen" aria-labelledby="day-title">
+
+      <header class="day-hero">
+        <a class="back-btn" href="calendar.html" aria-label="Вернуться в календарь">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+               stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="12 4 6 10 12 16"/>
+          </svg>
+          <span>Назад</span>
+        </a>
+
+        <p class="day-hero__weekday" id="day-weekday">—</p>
+        <h1 class="day-hero__title" id="day-title">—</h1>
+      </header>
+
+      <section class="day-section" aria-labelledby="events-title">
+        <h2 class="day-section__title" id="events-title">События</h2>
+        <p class="day-section__empty">Пока ничего нет</p>
+      </section>
+
+      <section class="day-section" aria-labelledby="tasks-title">
+        <h2 class="day-section__title" id="tasks-title">Задачи</h2>
+        <p class="day-section__empty">Пока ничего нет</p>
+      </section>
+
+      <section class="day-section" aria-labelledby="birthdays-title">
+        <h2 class="day-section__title" id="birthdays-title">Дни рождения</h2>
+        <p class="day-section__empty">Пока ничего нет</p>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="js/day.js"></script>
+</body>
+</html>
