@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "my-day-date-tasks-v1";
+  var tasksStorage = null;
 
   var WEEKDAYS = [
     "Воскресенье", "Понедельник", "Вторник", "Среда",
@@ -57,27 +57,6 @@
     "Не каждый день должен быть выдающимся. Иногда достаточно, чтобы он был вашим."
   ];
 
-  function loadTasksByDate() {
-    try {
-      var saved = localStorage.getItem(STORAGE_KEY);
-      if (!saved) return {};
-
-      var parsed = JSON.parse(saved);
-      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
-    } catch (error) {
-      console.warn("Не удалось загрузить задачи:", error);
-      return {};
-    }
-  }
-
-  function saveTasksByDate(tasksByDate) {
-    try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksByDate));
-    } catch (error) {
-      console.warn("Не удалось сохранить задачи:", error);
-    }
-  }
-
   function getGreeting(hour) {
     if (hour >= 5 && hour < 12) return "Доброе утро,\nВенера!";
     if (hour >= 12 && hour < 18) return "Добрый день,\nВенера!";
@@ -98,23 +77,12 @@
     return month + "-" + day;
   }
 
-  function getTaskDateKey(date) {
-    var year = date.getFullYear();
-    var month = String(date.getMonth() + 1).padStart(2, "0");
-    var day = String(date.getDate()).padStart(2, "0");
-    return year + "-" + month + "-" + day;
-  }
-
   function getTodayTasks() {
-    var tasksByDate = loadTasksByDate();
-    var tasks = tasksByDate[getTaskDateKey(new Date())];
-    return Array.isArray(tasks) ? tasks : [];
+    return tasksStorage.getTasksForDate(tasksStorage.getDateKey(new Date()));
   }
 
   function saveTasksForToday(tasks) {
-    var tasksByDate = loadTasksByDate();
-    tasksByDate[getTaskDateKey(new Date())] = tasks;
-    saveTasksByDate(tasksByDate);
+    tasksStorage.saveTasksForDate(tasksStorage.getDateKey(new Date()), tasks);
   }
 
   function getThoughtForToday(date) {
@@ -255,14 +223,7 @@
       return;
     }
 
-    var todayTasks = getTodayTasks();
-    todayTasks.push({
-      id: Date.now(),
-      text: text,
-      done: false
-    });
-
-    saveTasksForToday(todayTasks);
+    tasksStorage.addTaskForDate(tasksStorage.getDateKey(new Date()), text);
     input.value = "";
     renderTasks();
     input.focus();
@@ -392,6 +353,30 @@
     }
   }
 
+  function loadTasksStorage(callback) {
+    if (window.MyDayTasksStorage) {
+      tasksStorage = window.MyDayTasksStorage;
+      callback();
+      return;
+    }
+
+    var script = document.querySelector("script[data-my-day-tasks-storage]");
+    if (!script) {
+      script = document.createElement("script");
+      script.src = "js/tasks-storage.js";
+      script.dataset.myDayTasksStorage = "true";
+    }
+
+    script.addEventListener("load", function () {
+      tasksStorage = window.MyDayTasksStorage;
+      callback();
+    });
+
+    if (!script.parentNode) {
+      document.head.appendChild(script);
+    }
+  }
+
   function init() {
     initHeader();
     renderTasks();
@@ -400,9 +385,13 @@
     initModal();
   }
 
+  function initWhenStorageReady() {
+    loadTasksStorage(init);
+  }
+
   if (document.readyState === "loading") {
-    document.addEventListener("DOMContentLoaded", init);
+    document.addEventListener("DOMContentLoaded", initWhenStorageReady);
   } else {
-    init();
+    initWhenStorageReady();
   }
 })();
