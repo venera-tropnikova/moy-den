@@ -39,8 +39,28 @@
       </section>
 
       <section class="day-section" aria-labelledby="tasks-title">
-        <h2 class="day-section__title" id="tasks-title">Задачи</h2>
-        <p class="day-section__empty">Пока ничего нет</p>
+        <div class="day-section__head">
+          <h2 class="day-section__title" id="tasks-title">Задачи</h2>
+          <button class="day-add-btn" type="button" id="show-task-form">+ Добавить задачу</button>
+        </div>
+
+        <p class="day-section__empty" id="tasks-empty">Пока ничего нет</p>
+        <ul class="day-tasks" id="day-tasks-list" role="list"></ul>
+
+        <form class="day-task-form" id="day-task-form" hidden>
+          <input
+            class="day-task-input"
+            id="day-task-input"
+            type="text"
+            placeholder="Новая задача"
+            maxlength="200"
+            autocomplete="off"
+          >
+          <div class="day-task-form__actions">
+            <button class="day-task-form__btn day-task-form__btn--primary" type="submit">Сохранить</button>
+            <button class="day-task-form__btn" type="button" id="cancel-task-form">Отмена</button>
+          </div>
+        </form>
       </section>
 
       <section class="day-section" aria-labelledby="birthdays-title">
