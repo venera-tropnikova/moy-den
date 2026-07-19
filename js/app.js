@@ -160,15 +160,47 @@
     container.appendChild(renderCalendarEntry("Факт дня", entry.fact));
   }
 
-  function createTaskElement(task) {
+  function createTaskElement(task, isCompletedList) {
     var li = document.createElement("li");
-    li.className = "task";
+    li.className = "task" + (task.done ? " task--done" : "");
     li.dataset.id = String(task.id);
 
-    var label = document.createElement("span");
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "task__checkbox";
+    checkbox.id = (isCompletedList ? "completed-task-" : "task-") + task.id;
+    checkbox.checked = Boolean(task.done);
+    checkbox.setAttribute("aria-label", task.text);
+
+    var label = document.createElement("label");
     label.className = "task__label";
+    label.htmlFor = checkbox.id;
     label.textContent = task.text;
 
+    checkbox.addEventListener("change", function () {
+      var todayTasks = getTodayTasks();
+      var currentTask = todayTasks.find(function (item) {
+        return item.id === task.id;
+      });
+
+      if (!currentTask) return;
+
+      if (!currentTask.done && checkbox.checked) {
+        li.classList.add("task--leaving");
+        window.setTimeout(function () {
+          currentTask.done = true;
+          saveTasksForToday(todayTasks);
+          renderTasks();
+        }, 420);
+        return;
+      }
+
+      currentTask.done = checkbox.checked;
+      saveTasksForToday(todayTasks);
+      renderTasks();
+    });
+
+    li.appendChild(checkbox);
     li.appendChild(label);
     return li;
   }
@@ -185,16 +217,26 @@
     completedList.innerHTML = "";
 
     var todayTasks = getTodayTasks();
-
-    todayTasks.forEach(function (task) {
-      activeList.appendChild(createTaskElement(task));
+    var activeTasks = todayTasks.filter(function (task) {
+      return !task.done;
+    });
+    var completedTasks = todayTasks.filter(function (task) {
+      return task.done;
     });
 
-    completedCount.textContent = "0";
-    completedToggle.hidden = true;
+    activeTasks.forEach(function (task) {
+      activeList.appendChild(createTaskElement(task, false));
+    });
+
+    completedTasks.forEach(function (task) {
+      completedList.appendChild(createTaskElement(task, true));
+    });
+
+    completedCount.textContent = String(completedTasks.length);
+    completedToggle.hidden = false;
     completedList.hidden = true;
 
-    if (todayTasks.length === 0) {
+    if (activeTasks.length === 0) {
       var empty = document.createElement("li");
       empty.className = "task task--done";
       empty.textContent = "На сегодня всё выполнено. Можно немного выдохнуть.";
@@ -261,12 +303,20 @@
   function initButtons() {
     var addBtn = document.getElementById("add-task-btn");
     var taskInput = document.getElementById("task-input");
+    var completedToggle = document.getElementById("completed-toggle");
+    var completedList = document.getElementById("completed-tasks-list");
 
     if (addBtn) addBtn.addEventListener("click", addTask);
 
     if (taskInput) {
       taskInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") addTask();
+      });
+    }
+
+    if (completedToggle && completedList) {
+      completedToggle.addEventListener("click", function () {
+        completedList.hidden = !completedList.hidden;
       });
     }
 

@@ -75,12 +75,33 @@
 
   function getTasksForSelectedDate() {
     var tasks = tasksByDate[selectedDateKey];
-    return Array.isArray(tasks) ? tasks : [];
+    if (!Array.isArray(tasks)) return [];
+
+    return tasks.map(function (task) {
+      return {
+        id: task.id,
+        text: task.text,
+        done: Boolean(task.done)
+      };
+    });
   }
 
   function saveTasksForSelectedDate(tasks) {
     tasksByDate[selectedDateKey] = tasks;
     saveTasksByDate(tasksByDate);
+  }
+
+  function updateTaskText(taskId, text) {
+    var tasks = getTasksForSelectedDate();
+    var currentTask = tasks.find(function (task) {
+      return String(task.id) === String(taskId);
+    });
+
+    if (!currentTask) return false;
+
+    currentTask.text = text;
+    saveTasksForSelectedDate(tasks);
+    return true;
   }
 
   function renderSelectedDate() {
@@ -107,9 +128,49 @@
 
     tasks.forEach(function (task) {
       var item = document.createElement("li");
-      item.className = "day-task";
-      item.textContent = task.text;
+      item.className = "day-task" + (task.done ? " day-task--done" : "");
+
+      var text = document.createElement("span");
+      text.className = "day-task__text";
+      text.textContent = task.text;
+      text.addEventListener("click", function () {
+        startTaskEdit(item, task);
+      });
+
+      item.appendChild(text);
       list.appendChild(item);
+    });
+  }
+
+  function startTaskEdit(item, task) {
+    var input = document.createElement("input");
+    input.className = "day-task-edit";
+    input.type = "text";
+    input.value = task.text;
+    input.maxLength = 200;
+
+    item.innerHTML = "";
+    item.appendChild(input);
+    input.focus();
+    input.select();
+
+    input.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        renderTasks();
+        return;
+      }
+
+      if (event.key !== "Enter") return;
+
+      var nextText = input.value.trim();
+      if (!nextText) {
+        input.focus();
+        return;
+      }
+
+      if (updateTaskText(task.id, nextText)) {
+        renderTasks();
+      }
     });
   }
 
@@ -149,7 +210,8 @@
       var tasks = getTasksForSelectedDate();
       tasks.push({
         id: Date.now(),
-        text: text
+        text: text,
+        done: false
       });
 
       saveTasksForSelectedDate(tasks);

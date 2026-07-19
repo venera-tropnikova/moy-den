@@ -177,6 +177,27 @@ button {
   line-height: 1.45;
 }
 
+.day-task__text {
+  display: block;
+  cursor: text;
+}
+
+.day-task--done {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-faint);
+}
+
+.day-task-edit {
+  width: 100%;
+  border: none;
+  background: transparent;
+  color: var(--ink);
+  font-size: 0.94rem;
+  line-height: 1.45;
+  outline: none;
+}
+
 .day-task-form {
   margin-top: 14px;
 }
