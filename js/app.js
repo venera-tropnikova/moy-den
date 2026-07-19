@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var STORAGE_KEY = "my-day-tasks-v1";
+  var STORAGE_KEY = "my-day-date-tasks-v1";
 
   var WEEKDAYS = [
     "Воскресенье", "Понедельник", "Вторник", "Среда",
@@ -11,12 +11,6 @@
   var MONTHS = [
     "января", "февраля", "марта", "апреля", "мая", "июня",
     "июля", "августа", "сентября", "октября", "ноября", "декабря"
-  ];
-
-  var DEFAULT_TASKS = [
-    { id: 1, text: "Посмотреть урок Cursor", done: false },
-    { id: 2, text: "Купить продукты", done: false },
-    { id: 3, text: "Позвонить маме", done: true }
   ];
 
   var CALENDAR_BY_DATE = {
@@ -63,24 +57,22 @@
     "Не каждый день должен быть выдающимся. Иногда достаточно, чтобы он был вашим."
   ];
 
-  var tasks = loadTasks();
-
-  function loadTasks() {
+  function loadTasksByDate() {
     try {
       var saved = localStorage.getItem(STORAGE_KEY);
-      if (!saved) return DEFAULT_TASKS.slice();
+      if (!saved) return {};
 
       var parsed = JSON.parse(saved);
-      return Array.isArray(parsed) ? parsed : DEFAULT_TASKS.slice();
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
     } catch (error) {
       console.warn("Не удалось загрузить задачи:", error);
-      return DEFAULT_TASKS.slice();
+      return {};
     }
   }
 
-  function saveTasks() {
+  function saveTasksByDate(tasksByDate) {
     try {
-      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasks));
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(tasksByDate));
     } catch (error) {
       console.warn("Не удалось сохранить задачи:", error);
     }
@@ -104,6 +96,25 @@
     var month = String(date.getMonth() + 1).padStart(2, "0");
     var day = String(date.getDate()).padStart(2, "0");
     return month + "-" + day;
+  }
+
+  function getTaskDateKey(date) {
+    var year = date.getFullYear();
+    var month = String(date.getMonth() + 1).padStart(2, "0");
+    var day = String(date.getDate()).padStart(2, "0");
+    return year + "-" + month + "-" + day;
+  }
+
+  function getTodayTasks() {
+    var tasksByDate = loadTasksByDate();
+    var tasks = tasksByDate[getTaskDateKey(new Date())];
+    return Array.isArray(tasks) ? tasks : [];
+  }
+
+  function saveTasksForToday(tasks) {
+    var tasksByDate = loadTasksByDate();
+    tasksByDate[getTaskDateKey(new Date())] = tasks;
+    saveTasksByDate(tasksByDate);
   }
 
   function getThoughtForToday(date) {
@@ -149,56 +160,16 @@
     container.appendChild(renderCalendarEntry("Факт дня", entry.fact));
   }
 
-  function createTaskElement(task, isCompletedList) {
+  function createTaskElement(task) {
     var li = document.createElement("li");
-    li.className = "task" + (task.done ? " task--done" : "");
+    li.className = "task";
     li.dataset.id = String(task.id);
 
-    var checkbox = document.createElement("input");
-    checkbox.type = "checkbox";
-    checkbox.className = "task__checkbox";
-    checkbox.id = (isCompletedList ? "completed-task-" : "task-") + task.id;
-    checkbox.checked = task.done;
-    checkbox.setAttribute("aria-label", task.text);
-
-    var label = document.createElement("label");
+    var label = document.createElement("span");
     label.className = "task__label";
-    label.htmlFor = checkbox.id;
     label.textContent = task.text;
 
-    var deleteButton = document.createElement("button");
-    deleteButton.type = "button";
-    deleteButton.className = "task__delete";
-    deleteButton.setAttribute("aria-label", "Удалить задачу: " + task.text);
-    deleteButton.textContent = "×";
-
-    checkbox.addEventListener("change", function () {
-      if (!task.done && checkbox.checked) {
-        li.classList.add("task--leaving");
-        window.setTimeout(function () {
-          task.done = true;
-          saveTasks();
-          renderTasks();
-        }, 420);
-        return;
-      }
-
-      task.done = checkbox.checked;
-      saveTasks();
-      renderTasks();
-    });
-
-    deleteButton.addEventListener("click", function () {
-      tasks = tasks.filter(function (item) {
-        return item.id !== task.id;
-      });
-      saveTasks();
-      renderTasks();
-    });
-
-    li.appendChild(checkbox);
     li.appendChild(label);
-    li.appendChild(deleteButton);
     return li;
   }
 
@@ -213,25 +184,17 @@
     activeList.innerHTML = "";
     completedList.innerHTML = "";
 
-    var activeTasks = tasks.filter(function (task) {
-      return !task.done;
+    var todayTasks = getTodayTasks();
+
+    todayTasks.forEach(function (task) {
+      activeList.appendChild(createTaskElement(task));
     });
 
-    var completedTasks = tasks.filter(function (task) {
-      return task.done;
-    });
+    completedCount.textContent = "0";
+    completedToggle.hidden = true;
+    completedList.hidden = true;
 
-    activeTasks.forEach(function (task) {
-      activeList.appendChild(createTaskElement(task, false));
-    });
-
-    completedTasks.forEach(function (task) {
-      completedList.appendChild(createTaskElement(task, true));
-    });
-
-    completedCount.textContent = String(completedTasks.length);
-
-    if (activeTasks.length === 0) {
+    if (todayTasks.length === 0) {
       var empty = document.createElement("li");
       empty.className = "task task--done";
       empty.textContent = "На сегодня всё выполнено. Можно немного выдохнуть.";
@@ -250,14 +213,14 @@
       return;
     }
 
-    tasks.push({
+    var todayTasks = getTodayTasks();
+    todayTasks.push({
       id: Date.now(),
-      text: text,
-      done: false
+      text: text
     });
 
+    saveTasksForToday(todayTasks);
     input.value = "";
-    saveTasks();
     renderTasks();
     input.focus();
   }
@@ -298,20 +261,12 @@
   function initButtons() {
     var addBtn = document.getElementById("add-task-btn");
     var taskInput = document.getElementById("task-input");
-    var completedToggle = document.getElementById("completed-toggle");
-    var completedList = document.getElementById("completed-tasks-list");
 
     if (addBtn) addBtn.addEventListener("click", addTask);
 
     if (taskInput) {
       taskInput.addEventListener("keydown", function (event) {
         if (event.key === "Enter") addTask();
-      });
-    }
-
-    if (completedToggle && completedList) {
-      completedToggle.addEventListener("click", function () {
-        completedList.hidden = !completedList.hidden;
       });
     }
 

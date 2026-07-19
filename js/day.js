@@ -13,6 +13,8 @@
 
   var STORAGE_KEY = "my-day-date-tasks-v1";
   var selectedDate = parseSelectedDate();
+  var selectedDateKey = getDateKey(selectedDate);
+  var tasksByDate = loadTasksByDate();
 
   function formatTime(date) {
     var h = String(date.getHours()).padStart(2, "0");
@@ -72,14 +74,12 @@
   }
 
   function getTasksForSelectedDate() {
-    var tasksByDate = loadTasksByDate();
-    var tasks = tasksByDate[getDateKey(selectedDate)];
+    var tasks = tasksByDate[selectedDateKey];
     return Array.isArray(tasks) ? tasks : [];
   }
 
   function saveTasksForSelectedDate(tasks) {
-    var tasksByDate = loadTasksByDate();
-    tasksByDate[getDateKey(selectedDate)] = tasks;
+    tasksByDate[selectedDateKey] = tasks;
     saveTasksByDate(tasksByDate);
   }
 
