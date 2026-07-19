@@ -139,7 +139,28 @@ a {
 
 .month-controls {
   display: flex;
+  align-items: center;
   gap: 8px;
+}
+
+.today-btn {
+  height: 36px;
+  padding: 0 12px;
+  border: none;
+  border-radius: 100px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink-mid);
+  font-size: 0.78rem;
+  font-weight: 500;
+  letter-spacing: 0.01em;
+  box-shadow: var(--shadow-xs);
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.today-btn:active {
+  background: var(--accent-soft);
+  color: var(--accent);
 }
 
 .calendar-card {
@@ -169,6 +190,7 @@ a {
 }
 
 .day {
+  position: relative;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -191,6 +213,26 @@ a {
   background: var(--accent);
   color: #FFFFFF;
   box-shadow: 0 8px 18px rgba(94, 122, 110, 0.22);
+}
+
+.day--birthday {
+  border-color: rgba(192, 152, 112, 0.45);
+}
+
+.day--birthday::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  bottom: 7px;
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--warm);
+  transform: translateX(-50%);
+}
+
+.day--today.day--birthday::after {
+  background: #FFFFFF;
 }
 
 .day--empty {

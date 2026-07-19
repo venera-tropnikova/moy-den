@@ -1,6 +1,8 @@
 (function () {
   "use strict";
 
+  var USER_SETTINGS_KEY = "my-day-user-settings-v1";
+
   var MONTHS = [
     "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
@@ -8,6 +10,30 @@
 
   var today = new Date();
   var visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+
+  function getPersonalBirthdayParts() {
+    try {
+      var saved = localStorage.getItem(USER_SETTINGS_KEY);
+      if (!saved) return null;
+
+      var parsed = JSON.parse(saved);
+      var birthDate = parsed && typeof parsed.birthDate === "string" ? parsed.birthDate : "";
+      var match = birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
+      if (!match) return null;
+
+      return {
+        month: Number(match[1]) - 1,
+        day: Number(match[2])
+      };
+    } catch (error) {
+      console.warn("Не удалось загрузить дату рождения:", error);
+      return null;
+    }
+  }
+
+  function isPersonalBirthday(birthday, month, day) {
+    return Boolean(birthday && birthday.month === month && birthday.day === day);
+  }
 
   function formatTime(date) {
     var h = String(date.getHours()).padStart(2, "0");
@@ -42,7 +68,7 @@
     return year + "-" + padDatePart(month + 1) + "-" + padDatePart(day);
   }
 
-  function createDayButton(year, month, day) {
+  function createDayButton(year, month, day, birthday) {
     var button = document.createElement("button");
     var date = new Date(year, month, day);
     var weekday = date.getDay();
@@ -64,6 +90,14 @@
       button.setAttribute("aria-current", "date");
     }
 
+    if (isPersonalBirthday(birthday, month, day)) {
+      button.classList.add("day--birthday");
+      button.setAttribute(
+        "aria-label",
+        day + " " + MONTHS[month].toLowerCase() + ", день рождения"
+      );
+    }
+
     return button;
   }
 
@@ -77,6 +111,7 @@
     var firstDay = new Date(year, month, 1);
     var daysInMonth = new Date(year, month + 1, 0).getDate();
     var leadingEmptyDays = getMondayBasedOffset(firstDay);
+    var birthday = getPersonalBirthdayParts();
 
     title.textContent = MONTHS[month] + " " + year;
     grid.innerHTML = "";
@@ -86,13 +121,20 @@
     }
 
     for (var day = 1; day <= daysInMonth; day += 1) {
-      grid.appendChild(createDayButton(year, month, day));
+      grid.appendChild(createDayButton(year, month, day, birthday));
     }
+  }
+
+  function goToToday() {
+    today = new Date();
+    visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    renderCalendar();
   }
 
   function initMonthControls() {
     var prev = document.getElementById("prev-month");
     var next = document.getElementById("next-month");
+    var todayBtn = document.getElementById("today-btn");
 
     if (prev) {
       prev.addEventListener("click", function () {
@@ -106,6 +148,10 @@
         visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 1);
         renderCalendar();
       });
+    }
+
+    if (todayBtn) {
+      todayBtn.addEventListener("click", goToToday);
     }
   }
 
