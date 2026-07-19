@@ -42,7 +42,7 @@
   };
 
   var CALENDAR_EMPTY_TEXT =
-    "Сегодня нет добавленных событий. Позже здесь появятся праздники и памятные даты.";
+    "Сегодня нет праздников и памятных дат. Позже здесь появятся важные даты этого дня.";
 
   var JOKE =
     "— Почему вы опоздали?\n— Поздно вышел заранее.";
@@ -258,7 +258,8 @@
     var todayTasks = getTodayTasks();
     todayTasks.push({
       id: Date.now(),
-      text: text
+      text: text,
+      done: false
     });
 
     saveTasksForToday(todayTasks);
