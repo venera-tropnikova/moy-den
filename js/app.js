@@ -3,6 +3,7 @@
 
   var tasksStorage = null;
   var USER_SETTINGS_KEY = "my-day-user-settings-v1";
+  var BIRTHDAYS_KEY = "my-day-birthdays-v1";
   var DEFAULT_CITY = "Екатеринбург";
 
   var WEEKDAYS = [
@@ -102,6 +103,25 @@
       Number(match[1]) === today.getMonth() + 1 &&
       Number(match[2]) === today.getDate()
     );
+  }
+
+  function loadBirthdays() {
+    try {
+      var saved = localStorage.getItem(BIRTHDAYS_KEY);
+      if (!saved) return [];
+
+      var parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.warn("Не удалось загрузить поздравления:", error);
+      return [];
+    }
+  }
+
+  function getTodaysBirthdays(today) {
+    return loadBirthdays().filter(function (birthday) {
+      return birthday && isTodayBirthday(birthday.birthDate, today);
+    });
   }
 
   function formatDate(date) {
@@ -300,39 +320,39 @@
     var now = new Date();
 
     renderCalendar();
-    renderPersonalBirthday(now);
+    renderCongratulations(now);
     if (smileEl) smileEl.textContent = JOKE;
     if (moodEl) moodEl.textContent = getThoughtForToday(now);
   }
 
-  function renderPersonalBirthday(today) {
-    var settings = loadUserSettings();
+  function renderCongratulations(today) {
     var card = document.getElementById("birthday-card");
     var name = document.getElementById("birthday-name");
     var when = document.getElementById("birthday-when");
     var greetBtn = document.getElementById("greet-btn");
     var modalTitle = document.getElementById("bday-modal-title-text");
     var modalText = document.getElementById("bday-modal-text");
+    var todaysBirthdays = getTodaysBirthdays(today);
 
     if (!card) return;
 
     card.hidden = false;
 
-    if (!isTodayBirthday(settings.birthDate, today)) {
-      if (name) name.textContent = "Сегодня нет дней рождения";
+    if (!todaysBirthdays.length) {
+      if (name) name.textContent = "Сегодня нет поводов для поздравлений";
       if (when) when.textContent = "";
       if (greetBtn) greetBtn.hidden = true;
       return;
     }
 
-    var userName = typeof settings.name === "string" && settings.name.trim()
-      ? settings.name.trim()
-      : "Венера";
+    var personName = typeof todaysBirthdays[0].name === "string" && todaysBirthdays[0].name.trim()
+      ? todaysBirthdays[0].name.trim()
+      : "—";
 
-    if (name) name.textContent = userName;
+    if (name) name.textContent = personName;
     if (when) when.textContent = "сегодня";
     if (greetBtn) greetBtn.hidden = false;
-    if (modalTitle) modalTitle.innerHTML = "С днём рождения,<br>" + userName + "!";
+    if (modalTitle) modalTitle.innerHTML = "С днём рождения,<br>" + personName + "!";
     if (modalText) {
       modalText.textContent =
         "Желаю здоровья, душевного тепла, радостных событий и как можно больше поводов улыбаться!";

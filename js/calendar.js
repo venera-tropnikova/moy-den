@@ -2,6 +2,7 @@
   "use strict";
 
   var USER_SETTINGS_KEY = "my-day-user-settings-v1";
+  var BIRTHDAYS_KEY = "my-day-birthdays-v1";
 
   var MONTHS = [
     "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
@@ -33,6 +34,34 @@
 
   function isPersonalBirthday(birthday, month, day) {
     return Boolean(birthday && birthday.month === month && birthday.day === day);
+  }
+
+  function getCongratulationDayKeys() {
+    var keys = {};
+
+    try {
+      var saved = localStorage.getItem(BIRTHDAYS_KEY);
+      if (!saved) return keys;
+
+      var parsed = JSON.parse(saved);
+      if (!Array.isArray(parsed)) return keys;
+
+      parsed.forEach(function (item) {
+        var birthDate = item && typeof item.birthDate === "string" ? item.birthDate : "";
+        var match = birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
+        if (!match) return;
+
+        keys[Number(match[1]) - 1 + "-" + Number(match[2])] = true;
+      });
+    } catch (error) {
+      console.warn("Не удалось загрузить поздравления:", error);
+    }
+
+    return keys;
+  }
+
+  function hasCongratulation(keys, month, day) {
+    return Boolean(keys[month + "-" + day]);
   }
 
   function formatTime(date) {
@@ -68,10 +97,12 @@
     return year + "-" + padDatePart(month + 1) + "-" + padDatePart(day);
   }
 
-  function createDayButton(year, month, day, birthday) {
+  function createDayButton(year, month, day, birthday, congratulationDays) {
     var button = document.createElement("button");
     var date = new Date(year, month, day);
     var weekday = date.getDay();
+    var personalBirthday = isPersonalBirthday(birthday, month, day);
+    var congratulation = hasCongratulation(congratulationDays, month, day);
 
     button.className = "day";
     button.type = "button";
@@ -90,11 +121,12 @@
       button.setAttribute("aria-current", "date");
     }
 
-    if (isPersonalBirthday(birthday, month, day)) {
+    if (personalBirthday || congratulation) {
       button.classList.add("day--birthday");
       button.setAttribute(
         "aria-label",
-        day + " " + MONTHS[month].toLowerCase() + ", день рождения"
+        day + " " + MONTHS[month].toLowerCase() +
+          (personalBirthday ? ", день рождения" : ", поздравление")
       );
     }
 
@@ -112,6 +144,7 @@
     var daysInMonth = new Date(year, month + 1, 0).getDate();
     var leadingEmptyDays = getMondayBasedOffset(firstDay);
     var birthday = getPersonalBirthdayParts();
+    var congratulationDays = getCongratulationDayKeys();
 
     title.textContent = MONTHS[month] + " " + year;
     grid.innerHTML = "";
@@ -121,7 +154,7 @@
     }
 
     for (var day = 1; day <= daysInMonth; day += 1) {
-      grid.appendChild(createDayButton(year, month, day, birthday));
+      grid.appendChild(createDayButton(year, month, day, birthday, congratulationDays));
     }
   }
 

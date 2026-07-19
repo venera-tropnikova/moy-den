@@ -11,6 +11,8 @@
     "июля", "августа", "сентября", "октября", "ноября", "декабря"
   ];
 
+  var BIRTHDAYS_KEY = "my-day-birthdays-v1";
+
   var selectedDate = parseSelectedDate();
   var selectedDateKey = "";
   var tasksStorage = null;
@@ -63,6 +65,66 @@
     if (weekday) {
       weekday.textContent = WEEKDAYS[selectedDate.getDay()];
     }
+  }
+
+  function loadBirthdays() {
+    try {
+      var saved = localStorage.getItem(BIRTHDAYS_KEY);
+      if (!saved) return [];
+
+      var parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.warn("Не удалось загрузить поздравления:", error);
+      return [];
+    }
+  }
+
+  function isBirthdayOnSelectedDate(birthDate) {
+    var match = typeof birthDate === "string" && birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
+    if (!match) return false;
+
+    return (
+      Number(match[1]) === selectedDate.getMonth() + 1 &&
+      Number(match[2]) === selectedDate.getDate()
+    );
+  }
+
+  function renderCongratulations() {
+    var empty = document.getElementById("birthdays-empty");
+    var list = document.getElementById("birthdays-list");
+    if (!empty || !list) return;
+
+    var matches = loadBirthdays().filter(function (birthday) {
+      return birthday && isBirthdayOnSelectedDate(birthday.birthDate);
+    });
+
+    list.innerHTML = "";
+    empty.hidden = matches.length > 0;
+
+    matches.forEach(function (birthday) {
+      var item = document.createElement("li");
+      item.className = "day-task";
+
+      var name = document.createElement("span");
+      name.className = "day-task__text";
+      name.style.cursor = "default";
+      name.textContent = typeof birthday.name === "string" && birthday.name.trim()
+        ? birthday.name.trim()
+        : "—";
+
+      var kind = document.createElement("span");
+      kind.className = "day-task__text";
+      kind.style.cursor = "default";
+      kind.style.marginTop = "2px";
+      kind.style.fontSize = "0.8rem";
+      kind.style.color = "var(--ink-mid)";
+      kind.textContent = "День рождения";
+
+      item.appendChild(name);
+      item.appendChild(kind);
+      list.appendChild(item);
+    });
   }
 
   function renderTasks() {
@@ -200,6 +262,7 @@
 
   function init() {
     renderSelectedDate();
+    renderCongratulations();
     renderTasks();
     initTaskForm();
     initStatusbarTime();

@@ -11,8 +11,24 @@
     return window.MyDayBirthdaysStorage;
   }
 
+  var MONTHS_GENITIVE = [
+    "января", "февраля", "марта", "апреля", "мая", "июня",
+    "июля", "августа", "сентября", "октября", "ноября", "декабря"
+  ];
+
   function getDisplayValue(value) {
     return value ? value : "—";
+  }
+
+  function formatBirthdayDate(birthDate) {
+    var match = typeof birthDate === "string" && birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
+    if (!match) return "—";
+
+    var day = Number(match[2]);
+    var monthIndex = Number(match[1]) - 1;
+    if (!day || monthIndex < 0 || monthIndex > 11) return "—";
+
+    return day + " " + MONTHS_GENITIVE[monthIndex];
   }
 
   function renderBirthdays() {
@@ -37,7 +53,7 @@
 
       var meta = document.createElement("p");
       meta.className = "birthday-item__meta";
-      meta.textContent = getDisplayValue(birthday.relation) + " · " + getDisplayValue(birthday.birthDate);
+      meta.textContent = formatBirthdayDate(birthday.birthDate);
 
       var deleteButton = document.createElement("button");
       deleteButton.className = "birthday-delete-btn";
