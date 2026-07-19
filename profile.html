@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Профиль — Мой день</title>
+  <link rel="stylesheet" href="css/profile.css">
+</head>
+<body>
+
+  <div class="screen">
+
+    <div class="statusbar" aria-hidden="true">
+      <span class="statusbar__icons">
+        <span>▪</span><span>▪</span><span>▪</span>
+      </span>
+      <span class="statusbar__time" id="statusbar-time">09:41</span>
+    </div>
+
+    <main class="profile-screen" aria-labelledby="profile-title">
+
+      <header class="profile-hero">
+        <a class="back-btn" href="index.html" aria-label="Вернуться на главную">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+               stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="12 4 6 10 12 16"/>
+          </svg>
+          <span>Назад</span>
+        </a>
+
+        <p class="profile-hero__eyebrow">Профиль</p>
+        <h1 class="profile-hero__title" id="profile-title">Личные данные</h1>
+      </header>
+
+      <section class="profile-section" aria-labelledby="profile-form-title">
+        <h2 class="profile-section__title" id="profile-form-title">О себе</h2>
+
+        <form class="profile-form" id="profile-form">
+          <label class="profile-field" for="profile-name">
+            <span class="profile-field__label">Имя</span>
+            <input
+              class="profile-input"
+              id="profile-name"
+              name="name"
+              type="text"
+              maxlength="80"
+              autocomplete="name"
+              placeholder="Например, Венера"
+            >
+          </label>
+
+          <label class="profile-field" for="profile-city">
+            <span class="profile-field__label">Город проживания</span>
+            <input
+              class="profile-input"
+              id="profile-city"
+              name="city"
+              type="text"
+              maxlength="120"
+              autocomplete="address-level2"
+              placeholder="Например, Екатеринбург"
+            >
+          </label>
+
+          <label class="profile-field" for="profile-birth-date">
+            <span class="profile-field__label">Дата рождения</span>
+            <input
+              class="profile-input"
+              id="profile-birth-date"
+              name="birthDate"
+              type="date"
+            >
+          </label>
+
+          <label class="profile-field" for="profile-gender">
+            <span class="profile-field__label">Пол</span>
+            <select class="profile-input" id="profile-gender" name="gender">
+              <option value="">Не выбрано</option>
+              <option value="female">Женский</option>
+              <option value="male">Мужской</option>
+            </select>
+          </label>
+
+          <button class="profile-save-btn" type="submit">Сохранить</button>
+          <p class="profile-form__status" id="profile-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="profile-section" aria-labelledby="profile-summary-title">
+        <h2 class="profile-section__title" id="profile-summary-title">Сохранено</h2>
+        <dl class="profile-summary">
+          <div class="profile-summary__row">
+            <dt>Имя</dt>
+            <dd id="summary-name">—</dd>
+          </div>
+          <div class="profile-summary__row">
+            <dt>Город</dt>
+            <dd id="summary-city">—</dd>
+          </div>
+          <div class="profile-summary__row">
+            <dt>Дата рождения</dt>
+            <dd id="summary-birth-date">—</dd>
+          </div>
+          <div class="profile-summary__row">
+            <dt>Пол</dt>
+            <dd id="summary-gender">—</dd>
+          </div>
+        </dl>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Дни рождения — Мой день</title>
+  <link rel="stylesheet" href="css/birthdays.css">
+</head>
+<body>
+
+  <div class="screen">
+
+    <div class="statusbar" aria-hidden="true">
+      <span class="statusbar__icons">
+        <span>▪</span><span>▪</span><span>▪</span>
+      </span>
+      <span class="statusbar__time" id="statusbar-time">09:41</span>
+    </div>
+
+    <main class="birthdays-screen" aria-labelledby="birthdays-title">
+
+      <header class="birthdays-hero">
+        <a class="back-btn" href="profile.html" aria-label="Вернуться в профиль">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+               stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="12 4 6 10 12 16"/>
+          </svg>
+          <span>Назад</span>
+        </a>
+
+        <p class="birthdays-hero__eyebrow">Дни рождения</p>
+        <h1 class="birthdays-hero__title" id="birthdays-title">Важные люди</h1>
+      </header>
+
+      <section class="birthdays-section" aria-labelledby="birthdays-form-title">
+        <h2 class="birthdays-section__title" id="birthdays-form-title">Добавить</h2>
+
+        <form class="birthday-form" id="birthday-form">
+          <label class="birthday-field" for="birthday-name">
+            <span class="birthday-field__label">Имя</span>
+            <input
+              class="birthday-input"
+              id="birthday-name"
+              name="name"
+              type="text"
+              maxlength="80"
+              autocomplete="off"
+              placeholder="Например, Мама"
+            >
+          </label>
+
+          <label class="birthday-field" for="birthday-relation">
+            <span class="birthday-field__label">Кто это</span>
+            <input
+              class="birthday-input"
+              id="birthday-relation"
+              name="relation"
+              type="text"
+              maxlength="80"
+              autocomplete="off"
+              placeholder="Например, подруга"
+            >
+          </label>
+
+          <label class="birthday-field" for="birthday-date">
+            <span class="birthday-field__label">Дата рождения</span>
+            <input
+              class="birthday-input"
+              id="birthday-date"
+              name="birthDate"
+              type="date"
+            >
+          </label>
+
+          <button class="birthday-save-btn" type="submit">Сохранить</button>
+          <p class="birthday-form__status" id="birthday-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+      <section class="birthdays-section" aria-labelledby="birthdays-list-title">
+        <h2 class="birthdays-section__title" id="birthdays-list-title">Список</h2>
+        <p class="birthdays-empty" id="birthdays-empty">Пока никого нет</p>
+        <ul class="birthdays-list" id="birthdays-list" role="list"></ul>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="js/birthdays-storage.js"></script>
+  <script src="js/birthdays.js"></script>
+</body>
+</html>

@@ -2,6 +2,8 @@
   "use strict";
 
   var tasksStorage = null;
+  var USER_SETTINGS_KEY = "my-day-user-settings-v1";
+  var DEFAULT_CITY = "Екатеринбург";
 
   var WEEKDAYS = [
     "Воскресенье", "Понедельник", "Вторник", "Среда",
@@ -42,7 +44,7 @@
   };
 
   var CALENDAR_EMPTY_TEXT =
-    "Сегодня нет праздников и памятных дат. Позже здесь появятся важные даты этого дня.";
+    "Сегодня важных дат нет.";
 
   var JOKE =
     "— Почему вы опоздали?\n— Поздно вышел заранее.";
@@ -57,11 +59,49 @@
     "Не каждый день должен быть выдающимся. Иногда достаточно, чтобы он был вашим."
   ];
 
+  function loadUserSettings() {
+    try {
+      var saved = localStorage.getItem(USER_SETTINGS_KEY);
+      if (!saved) return {};
+
+      var parsed = JSON.parse(saved);
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+    } catch (error) {
+      console.warn("Не удалось загрузить профиль:", error);
+      return {};
+    }
+  }
+
+  function getProfileName() {
+    var settings = loadUserSettings();
+    return typeof settings.name === "string" && settings.name.trim()
+      ? settings.name.trim()
+      : "Венера";
+  }
+
   function getGreeting(hour) {
-    if (hour >= 5 && hour < 12) return "Доброе утро,\nВенера!";
-    if (hour >= 12 && hour < 18) return "Добрый день,\nВенера!";
-    if (hour >= 18 && hour < 23) return "Добрый вечер,\nВенера!";
-    return "Доброй ночи,\nВенера!";
+    var name = getProfileName();
+    if (hour >= 5 && hour < 12) return "Доброе утро,\n" + name + "!";
+    if (hour >= 12 && hour < 18) return "Добрый день,\n" + name + "!";
+    if (hour >= 18 && hour < 23) return "Добрый вечер,\n" + name + "!";
+    return "Доброй ночи,\n" + name + "!";
+  }
+
+  function getProfileCity() {
+    var settings = loadUserSettings();
+    return typeof settings.city === "string" && settings.city.trim()
+      ? settings.city.trim()
+      : DEFAULT_CITY;
+  }
+
+  function isTodayBirthday(birthDate, today) {
+    var match = typeof birthDate === "string" && birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
+    if (!match) return false;
+
+    return (
+      Number(match[1]) === today.getMonth() + 1 &&
+      Number(match[2]) === today.getDate()
+    );
   }
 
   function formatDate(date) {
@@ -239,10 +279,12 @@
     var now = new Date();
     var greetingEl = document.getElementById("greeting");
     var dateEl     = document.getElementById("date");
+    var cityEl     = document.getElementById("weather-city");
     var statusTimeEl = document.getElementById("statusbar-time");
 
     if (greetingEl) greetingEl.textContent = getGreeting(now.getHours());
     if (dateEl)     dateEl.textContent     = formatDate(now);
+    if (cityEl)     cityEl.textContent     = getProfileCity();
     if (statusTimeEl) statusTimeEl.textContent = formatTime(now);
 
     window.setInterval(function () {
@@ -258,8 +300,43 @@
     var now = new Date();
 
     renderCalendar();
+    renderPersonalBirthday(now);
     if (smileEl) smileEl.textContent = JOKE;
     if (moodEl) moodEl.textContent = getThoughtForToday(now);
+  }
+
+  function renderPersonalBirthday(today) {
+    var settings = loadUserSettings();
+    var card = document.getElementById("birthday-card");
+    var name = document.getElementById("birthday-name");
+    var when = document.getElementById("birthday-when");
+    var greetBtn = document.getElementById("greet-btn");
+    var modalTitle = document.getElementById("bday-modal-title-text");
+    var modalText = document.getElementById("bday-modal-text");
+
+    if (!card) return;
+
+    card.hidden = false;
+
+    if (!isTodayBirthday(settings.birthDate, today)) {
+      if (name) name.textContent = "Сегодня нет дней рождения";
+      if (when) when.textContent = "";
+      if (greetBtn) greetBtn.hidden = true;
+      return;
+    }
+
+    var userName = typeof settings.name === "string" && settings.name.trim()
+      ? settings.name.trim()
+      : "Венера";
+
+    if (name) name.textContent = userName;
+    if (when) when.textContent = "сегодня";
+    if (greetBtn) greetBtn.hidden = false;
+    if (modalTitle) modalTitle.innerHTML = "С днём рождения,<br>" + userName + "!";
+    if (modalText) {
+      modalText.textContent =
+        "Желаю здоровья, душевного тепла, радостных событий и как можно больше поводов улыбаться!";
+    }
   }
 
   function initButtons() {
@@ -295,10 +372,12 @@
 
     if (!overlay) return;
 
-    var fullText =
-      "Венера, с днём рождения! 🎂\n\n" +
-      "Желаю здоровья, душевного тепла, радостных событий " +
-      "и как можно больше поводов улыбаться!";
+    function getGreetingText() {
+      var title = document.getElementById("bday-modal-title-text");
+      var text = document.getElementById("bday-modal-text");
+      return (title ? title.textContent : "С днём рождения!") + "\n\n" +
+        (text ? text.textContent : "");
+    }
 
     function openModal() {
       overlay.hidden = false;
@@ -322,7 +401,7 @@
       copyBtn.addEventListener("click", function () {
         var original = copyBtn.textContent;
         try {
-          navigator.clipboard.writeText(fullText).then(function () {
+          navigator.clipboard.writeText(getGreetingText()).then(function () {
             copyBtn.textContent = "Скопировано!";
             window.setTimeout(function () { copyBtn.textContent = original; }, 2000);
           });
@@ -336,11 +415,11 @@
     if (shareBtn) {
       shareBtn.addEventListener("click", function () {
         if (navigator.share) {
-          navigator.share({ text: fullText });
+          navigator.share({ text: getGreetingText() });
         } else {
           var original = shareBtn.textContent;
           try {
-            navigator.clipboard.writeText(fullText).then(function () {
+            navigator.clipboard.writeText(getGreetingText()).then(function () {
               shareBtn.textContent = "Скопировано!";
               window.setTimeout(function () { shareBtn.textContent = original; }, 2000);
             });
