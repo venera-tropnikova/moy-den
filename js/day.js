@@ -13,6 +13,16 @@
 
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
   var USER_SETTINGS_KEY = "my-day-user-settings-v1";
+  var IMPORTANT_DATES_KEY = "my-day-important-dates-v1";
+
+  var CATEGORY_LABELS = {
+    "семья": "Семья",
+    "работа": "Работа",
+    "личное": "Личное",
+    "учёба": "Учёба",
+    "путешествия": "Путешествия",
+    "другое": "Другое"
+  };
 
   var selectedDate = parseSelectedDate();
   var selectedDateKey = "";
@@ -81,6 +91,19 @@
     }
   }
 
+  function loadImportantDates() {
+    try {
+      var saved = localStorage.getItem(IMPORTANT_DATES_KEY);
+      if (!saved) return [];
+
+      var parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.warn("Не удалось загрузить важные даты:", error);
+      return [];
+    }
+  }
+
   function loadUserSettings() {
     try {
       var saved = localStorage.getItem(USER_SETTINGS_KEY);
@@ -115,6 +138,36 @@
       parts.month === selectedDate.getMonth() + 1 &&
       parts.day === selectedDate.getDate()
     );
+  }
+
+  function getSelectedDateKey() {
+    var year = selectedDate.getFullYear();
+    var month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    var day = String(selectedDate.getDate()).padStart(2, "0");
+    return year + "-" + month + "-" + day;
+  }
+
+  function isImportantDateOnSelectedDate(item) {
+    if (!item || typeof item.date !== "string") return false;
+
+    var parts = parseBirthDateParts(item.date);
+    if (!parts) return false;
+
+    if (item.yearly) {
+      return (
+        parts.month === selectedDate.getMonth() + 1 &&
+        parts.day === selectedDate.getDate()
+      );
+    }
+
+    return item.date.trim() === getSelectedDateKey();
+  }
+
+  function formatCategoryLabel(category) {
+    if (typeof category !== "string") return "";
+    var value = category.trim();
+    if (!value) return "";
+    return CATEGORY_LABELS[value] || value;
   }
 
   function getTurningAge(birthDate, onDate) {
@@ -189,6 +242,41 @@
     }
 
     list.appendChild(item);
+  }
+
+  function renderEvents() {
+    var empty = document.getElementById("events-empty");
+    var list = document.getElementById("events-list");
+    if (!empty || !list) return;
+
+    var matches = loadImportantDates().filter(function (item) {
+      return isImportantDateOnSelectedDate(item);
+    });
+
+    list.innerHTML = "";
+    empty.hidden = matches.length > 0;
+
+    matches.forEach(function (item) {
+      var titleText = typeof item.title === "string" && item.title.trim()
+        ? item.title.trim()
+        : "—";
+      var categoryLabel = formatCategoryLabel(item.category);
+
+      var row = document.createElement("li");
+      row.className = "day-task";
+
+      var title = document.createElement("span");
+      title.className = "day-task__text";
+      title.style.cursor = "default";
+      title.textContent = titleText;
+      row.appendChild(title);
+
+      if (categoryLabel) {
+        appendMetaLine(row, categoryLabel);
+      }
+
+      list.appendChild(row);
+    });
   }
 
   function renderPersonalBirthday() {
@@ -393,6 +481,7 @@
 
   function initDayContent() {
     renderSelectedDate();
+    renderEvents();
     renderPersonalBirthday();
     renderCongratulations();
     initStatusbarTime();

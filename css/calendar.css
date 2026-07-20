@@ -215,11 +215,7 @@ a {
   box-shadow: 0 8px 18px rgba(94, 122, 110, 0.22);
 }
 
-.day--birthday {
-  border-color: rgba(192, 152, 112, 0.45);
-}
-
-.day--birthday::after {
+.day--info::after {
   content: "";
   position: absolute;
   left: 50%;
@@ -227,12 +223,12 @@ a {
   width: 5px;
   height: 5px;
   border-radius: 50%;
-  background: var(--warm);
+  background: var(--ink-faint);
   transform: translateX(-50%);
 }
 
-.day--today.day--birthday::after {
-  background: #FFFFFF;
+.day--today.day--info::after {
+  background: rgba(255, 255, 255, 0.9);
 }
 
 .day--empty {

@@ -3,6 +3,7 @@
 
   var USER_SETTINGS_KEY = "my-day-user-settings-v1";
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
+  var IMPORTANT_DATES_KEY = "my-day-important-dates-v1";
 
   var MONTHS = [
     "Январь", "Февраль", "Март", "Апрель", "Май", "Июнь",
@@ -60,8 +61,52 @@
     return keys;
   }
 
+  function getImportantDateMarkers() {
+    var markers = {
+      yearly: {},
+      once: {}
+    };
+
+    try {
+      var saved = localStorage.getItem(IMPORTANT_DATES_KEY);
+      if (!saved) return markers;
+
+      var parsed = JSON.parse(saved);
+      if (!Array.isArray(parsed)) return markers;
+
+      parsed.forEach(function (item) {
+        if (!item || typeof item.date !== "string") return;
+
+        var match = item.date.trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+        if (!match) return;
+
+        var month = Number(match[2]) - 1;
+        var day = Number(match[3]);
+
+        if (item.yearly) {
+          markers.yearly[month + "-" + day] = true;
+          return;
+        }
+
+        markers.once[item.date.trim()] = true;
+      });
+    } catch (error) {
+      console.warn("Не удалось загрузить важные даты:", error);
+    }
+
+    return markers;
+  }
+
   function hasCongratulation(keys, month, day) {
     return Boolean(keys[month + "-" + day]);
+  }
+
+  function hasImportantDate(markers, year, month, day) {
+    if (!markers) return false;
+
+    if (markers.yearly[month + "-" + day]) return true;
+
+    return Boolean(markers.once[getDateParam(year, month, day)]);
   }
 
   function formatTime(date) {
@@ -97,12 +142,14 @@
     return year + "-" + padDatePart(month + 1) + "-" + padDatePart(day);
   }
 
-  function createDayButton(year, month, day, birthday, congratulationDays) {
+  function createDayButton(year, month, day, markers) {
     var button = document.createElement("button");
     var date = new Date(year, month, day);
     var weekday = date.getDay();
-    var personalBirthday = isPersonalBirthday(birthday, month, day);
-    var congratulation = hasCongratulation(congratulationDays, month, day);
+    var personalBirthday = isPersonalBirthday(markers.birthday, month, day);
+    var congratulation = hasCongratulation(markers.congratulationDays, month, day);
+    var importantDate = hasImportantDate(markers.importantDates, year, month, day);
+    var hasInfo = personalBirthday || congratulation || importantDate;
 
     button.className = "day";
     button.type = "button";
@@ -121,13 +168,8 @@
       button.setAttribute("aria-current", "date");
     }
 
-    if (personalBirthday || congratulation) {
-      button.classList.add("day--birthday");
-      button.setAttribute(
-        "aria-label",
-        day + " " + MONTHS[month].toLowerCase() +
-          (personalBirthday ? ", день рождения" : ", поздравление")
-      );
+    if (hasInfo) {
+      button.classList.add("day--info");
     }
 
     return button;
@@ -143,8 +185,11 @@
     var firstDay = new Date(year, month, 1);
     var daysInMonth = new Date(year, month + 1, 0).getDate();
     var leadingEmptyDays = getMondayBasedOffset(firstDay);
-    var birthday = getPersonalBirthdayParts();
-    var congratulationDays = getCongratulationDayKeys();
+    var markers = {
+      birthday: getPersonalBirthdayParts(),
+      congratulationDays: getCongratulationDayKeys(),
+      importantDates: getImportantDateMarkers()
+    };
 
     title.textContent = MONTHS[month] + " " + year;
     grid.innerHTML = "";
@@ -154,7 +199,7 @@
     }
 
     for (var day = 1; day <= daysInMonth; day += 1) {
-      grid.appendChild(createDayButton(year, month, day, birthday, congratulationDays));
+      grid.appendChild(createDayButton(year, month, day, markers));
     }
   }
 
