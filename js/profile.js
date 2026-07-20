@@ -54,26 +54,25 @@
     }
   }
 
-  function getGenderLabel(value) {
-    if (value === "female") return "Женский";
-    if (value === "male") return "Мужской";
-    return "—";
-  }
+  var statusTimer = null;
 
-  function getDisplayValue(value) {
-    return value ? value : "—";
-  }
+  function showStatus(message) {
+    var status = document.getElementById("profile-status");
+    if (!status) return;
 
-  function renderSummary(settings) {
-    var name = document.getElementById("summary-name");
-    var city = document.getElementById("summary-city");
-    var birthDate = document.getElementById("summary-birth-date");
-    var gender = document.getElementById("summary-gender");
+    status.textContent = message;
 
-    if (name) name.textContent = getDisplayValue(settings.name);
-    if (city) city.textContent = getDisplayValue(settings.city);
-    if (birthDate) birthDate.textContent = getDisplayValue(settings.birthDate);
-    if (gender) gender.textContent = getGenderLabel(settings.gender);
+    if (statusTimer) {
+      window.clearTimeout(statusTimer);
+      statusTimer = null;
+    }
+
+    if (!message) return;
+
+    statusTimer = window.setTimeout(function () {
+      status.textContent = "";
+      statusTimer = null;
+    }, 2500);
   }
 
   function fillForm(settings) {
@@ -104,7 +103,6 @@
 
   function initForm() {
     var form = document.getElementById("profile-form");
-    var status = document.getElementById("profile-status");
     if (!form) return;
 
     form.addEventListener("submit", function (event) {
@@ -112,10 +110,9 @@
 
       var settings = readForm();
       if (saveSettings(settings)) {
-        renderSummary(settings);
-        if (status) status.textContent = "Данные сохранены.";
-      } else if (status) {
-        status.textContent = "Не удалось сохранить данные.";
+        showStatus("Данные сохранены");
+      } else {
+        showStatus("Не удалось сохранить данные");
       }
     });
   }
@@ -134,7 +131,6 @@
   function init() {
     var settings = loadSettings();
     fillForm(settings);
-    renderSummary(settings);
     initForm();
     initStatusbarTime();
   }

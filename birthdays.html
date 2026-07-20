@@ -33,7 +33,16 @@
         <h1 class="birthdays-hero__title" id="birthdays-title">Поздравления</h1>
       </header>
 
-      <section class="birthdays-section" aria-labelledby="birthdays-form-title">
+      <section class="birthdays-section" id="birthdays-list-section" aria-labelledby="birthdays-list-title">
+        <h2 class="birthdays-section__title" id="birthdays-list-title">Список</h2>
+        <p class="birthdays-empty" id="birthdays-empty">Пока никого нет</p>
+        <ul class="birthdays-list" id="birthdays-list" role="list"></ul>
+        <button class="birthday-save-btn" type="button" id="show-birthday-form">
+          + Добавить человека
+        </button>
+      </section>
+
+      <section class="birthdays-section" id="birthday-form-section" aria-labelledby="birthdays-form-title" hidden>
         <h2 class="birthdays-section__title" id="birthdays-form-title">Добавить</h2>
 
         <form class="birthday-form" id="birthday-form">
@@ -63,25 +72,64 @@
             >
           </label>
 
-          <label class="birthday-field" for="birthday-date">
-            <span class="birthday-field__label">Дата рождения</span>
+          <div class="birthday-field">
+            <span class="birthday-field__label" id="birthday-day-label">День рождения</span>
+            <div class="birthday-date-row">
+              <label class="birthday-date-row__item" for="birthday-day">
+                <span class="birthday-field__hint">День</span>
+                <input
+                  class="birthday-input"
+                  id="birthday-day"
+                  name="birthDay"
+                  type="number"
+                  min="1"
+                  max="31"
+                  inputmode="numeric"
+                  aria-labelledby="birthday-day-label"
+                  placeholder="12"
+                >
+              </label>
+              <label class="birthday-date-row__item" for="birthday-month">
+                <span class="birthday-field__hint">Месяц</span>
+                <select class="birthday-input" id="birthday-month" name="birthMonth" aria-labelledby="birthday-day-label">
+                  <option value="">Месяц</option>
+                  <option value="1">Январь</option>
+                  <option value="2">Февраль</option>
+                  <option value="3">Март</option>
+                  <option value="4">Апрель</option>
+                  <option value="5">Май</option>
+                  <option value="6">Июнь</option>
+                  <option value="7">Июль</option>
+                  <option value="8">Август</option>
+                  <option value="9">Сентябрь</option>
+                  <option value="10">Октябрь</option>
+                  <option value="11">Ноябрь</option>
+                  <option value="12">Декабрь</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <label class="birthday-field" for="birthday-year">
+            <span class="birthday-field__label">Год рождения</span>
             <input
               class="birthday-input"
-              id="birthday-date"
-              name="birthDate"
-              type="date"
+              id="birthday-year"
+              name="birthYear"
+              type="number"
+              min="1900"
+              max="2100"
+              inputmode="numeric"
+              placeholder="Необязательно"
             >
           </label>
 
-          <button class="birthday-save-btn" type="submit">Сохранить</button>
+          <div class="birthday-form__actions">
+            <button class="birthday-save-btn" type="submit">Сохранить</button>
+            <button class="birthday-cancel-btn" type="button" id="birthday-cancel-btn">Отмена</button>
+          </div>
           <p class="birthday-form__status" id="birthday-status" aria-live="polite"></p>
         </form>
-      </section>
-
-      <section class="birthdays-section" aria-labelledby="birthdays-list-title">
-        <h2 class="birthdays-section__title" id="birthdays-list-title">Список</h2>
-        <p class="birthdays-empty" id="birthdays-empty">Пока никого нет</p>
-        <ul class="birthdays-list" id="birthdays-list" role="list"></ul>
       </section>
 
     </main>

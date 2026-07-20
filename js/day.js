@@ -12,6 +12,7 @@
   ];
 
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
+  var USER_SETTINGS_KEY = "my-day-user-settings-v1";
 
   var selectedDate = parseSelectedDate();
   var selectedDateKey = "";
@@ -80,14 +81,155 @@
     }
   }
 
+  function loadUserSettings() {
+    try {
+      var saved = localStorage.getItem(USER_SETTINGS_KEY);
+      if (!saved) return {};
+
+      var parsed = JSON.parse(saved);
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+    } catch (error) {
+      console.warn("Не удалось загрузить профиль:", error);
+      return {};
+    }
+  }
+
+  function parseBirthDateParts(birthDate) {
+    if (typeof birthDate !== "string") return null;
+
+    var match = birthDate.trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!match) return null;
+
+    return {
+      year: Number(match[1]),
+      month: Number(match[2]),
+      day: Number(match[3])
+    };
+  }
+
   function isBirthdayOnSelectedDate(birthDate) {
-    var match = typeof birthDate === "string" && birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
-    if (!match) return false;
+    var parts = parseBirthDateParts(birthDate);
+    if (!parts) return false;
 
     return (
-      Number(match[1]) === selectedDate.getMonth() + 1 &&
-      Number(match[2]) === selectedDate.getDate()
+      parts.month === selectedDate.getMonth() + 1 &&
+      parts.day === selectedDate.getDate()
     );
+  }
+
+  function getTurningAge(birthDate, onDate) {
+    var parts = parseBirthDateParts(birthDate);
+    if (!parts || parts.year < 1000) return null;
+
+    var age = onDate.getFullYear() - parts.year;
+    if (age < 0 || age > 150) return null;
+    return age;
+  }
+
+  function formatAge(age) {
+    var mod10 = age % 10;
+    var mod100 = age % 100;
+    var word = "лет";
+
+    if (mod100 < 11 || mod100 > 14) {
+      if (mod10 === 1) word = "год";
+      else if (mod10 >= 2 && mod10 <= 4) word = "года";
+    }
+
+    return age + " " + word;
+  }
+
+  function getDateValue(date) {
+    return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
+  }
+
+  function formatTurningAgeLine(age) {
+    if (age === null) return null;
+
+    var selectedValue = getDateValue(selectedDate);
+    var todayValue = getDateValue(new Date());
+    var verb = "Исполняется";
+
+    if (selectedValue < todayValue) verb = "Исполнилось";
+    else if (selectedValue > todayValue) verb = "Исполнится";
+
+    return verb + " " + formatAge(age);
+  }
+
+  function appendMetaLine(item, text) {
+    var line = document.createElement("span");
+    line.className = "day-task__text";
+    line.style.cursor = "default";
+    line.style.marginTop = "2px";
+    line.style.fontSize = "0.8rem";
+    line.style.color = "var(--ink-mid)";
+    line.textContent = text;
+    item.appendChild(line);
+  }
+
+  function appendCongratulationsItem(list, options) {
+    var item = document.createElement("li");
+    item.className = "day-task";
+
+    var name = document.createElement("span");
+    name.className = "day-task__text";
+    name.style.cursor = "default";
+    name.textContent = "🎂 " + options.name;
+
+    item.appendChild(name);
+
+    if (options.relation) {
+      appendMetaLine(item, options.relation);
+    }
+
+    appendMetaLine(item, "День рождения");
+
+    if (options.turningAgeLine) {
+      appendMetaLine(item, options.turningAgeLine);
+    }
+
+    list.appendChild(item);
+  }
+
+  function renderPersonalBirthday() {
+    var section = document.getElementById("personal-birthday-section");
+    var list = document.getElementById("personal-birthday-list");
+    if (!section || !list) return;
+
+    var settings = loadUserSettings();
+    var birthDate = typeof settings.birthDate === "string" ? settings.birthDate : "";
+    var personalMatch = isBirthdayOnSelectedDate(birthDate);
+
+    list.innerHTML = "";
+
+    if (!personalMatch) {
+      section.hidden = true;
+      section.setAttribute("hidden", "");
+      return;
+    }
+
+    section.hidden = false;
+    section.removeAttribute("hidden");
+
+    var userName = typeof settings.name === "string" && settings.name.trim()
+      ? settings.name.trim()
+      : "Венера";
+    var turningAgeLine = formatTurningAgeLine(getTurningAge(birthDate, selectedDate));
+
+    var item = document.createElement("li");
+    item.className = "day-task";
+
+    var name = document.createElement("span");
+    name.className = "day-task__text";
+    name.style.cursor = "default";
+    name.textContent = "🎂 " + userName;
+    item.appendChild(name);
+
+    if (turningAgeLine) {
+      appendMetaLine(item, turningAgeLine);
+    }
+
+    list.appendChild(item);
   }
 
   function renderCongratulations() {
@@ -103,27 +245,16 @@
     empty.hidden = matches.length > 0;
 
     matches.forEach(function (birthday) {
-      var item = document.createElement("li");
-      item.className = "day-task";
-
-      var name = document.createElement("span");
-      name.className = "day-task__text";
-      name.style.cursor = "default";
-      name.textContent = typeof birthday.name === "string" && birthday.name.trim()
+      var personName = typeof birthday.name === "string" && birthday.name.trim()
         ? birthday.name.trim()
         : "—";
+      var relation = typeof birthday.relation === "string" ? birthday.relation.trim() : "";
 
-      var kind = document.createElement("span");
-      kind.className = "day-task__text";
-      kind.style.cursor = "default";
-      kind.style.marginTop = "2px";
-      kind.style.fontSize = "0.8rem";
-      kind.style.color = "var(--ink-mid)";
-      kind.textContent = "День рождения";
-
-      item.appendChild(name);
-      item.appendChild(kind);
-      list.appendChild(item);
+      appendCongratulationsItem(list, {
+        name: personName,
+        relation: relation,
+        turningAgeLine: formatTurningAgeLine(getTurningAge(birthday.birthDate, selectedDate))
+      });
     });
   }
 
@@ -260,16 +391,21 @@
     }
   }
 
-  function init() {
+  function initDayContent() {
     renderSelectedDate();
+    renderPersonalBirthday();
     renderCongratulations();
-    renderTasks();
-    initTaskForm();
     initStatusbarTime();
   }
 
+  function initTasksUI() {
+    renderTasks();
+    initTaskForm();
+  }
+
   function initWhenStorageReady() {
-    loadTasksStorage(init);
+    initDayContent();
+    loadTasksStorage(initTasksUI);
   }
 
   if (document.readyState === "loading") {

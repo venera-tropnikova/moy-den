@@ -157,6 +157,25 @@ button {
   font-weight: 600;
 }
 
+.birthday-field__hint {
+  color: var(--ink-faint);
+  font-size: 0.74rem;
+  font-weight: 500;
+}
+
+.birthday-date-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  gap: 10px;
+}
+
+.birthday-date-row__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
 .birthday-input {
   width: 100%;
   min-height: 44px;
@@ -169,19 +188,41 @@ button {
   outline: none;
 }
 
+.birthday-save-btn#show-birthday-form {
+  width: 100%;
+  margin-top: 14px;
+}
+
 .birthday-input:focus {
   border-color: var(--accent);
 }
 
-.birthday-save-btn {
-  min-height: 44px;
+.birthday-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
   margin-top: 2px;
-  border: 1px solid var(--accent);
+}
+
+.birthday-save-btn,
+.birthday-cancel-btn {
+  min-height: 44px;
   border-radius: 999px;
-  background: var(--accent);
-  color: #fff;
   font-size: 0.9rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.birthday-save-btn {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.birthday-cancel-btn {
+  border: 1px solid var(--divider);
+  background: #fff;
+  color: var(--ink-mid);
 }
 
 .birthday-form__status,
@@ -204,7 +245,7 @@ button {
 
 .birthday-item {
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-between;
   gap: 16px;
   padding-bottom: 12px;
@@ -229,11 +270,24 @@ button {
   line-height: 1.4;
 }
 
-.birthday-delete-btn {
+.birthday-item__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
   flex-shrink: 0;
+}
+
+.birthday-edit-btn,
+.birthday-delete-btn {
   border: none;
   background: none;
   color: var(--ink-faint);
   font-size: 0.84rem;
   font-weight: 600;
+  cursor: pointer;
+}
+
+.birthday-edit-btn {
+  color: var(--accent);
 }
