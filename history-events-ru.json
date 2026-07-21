@@ -1,0 +1,73 @@
+{
+  "meta": {
+    "locale": "ru-RU",
+    "countryFocus": "RU",
+    "version": 2,
+    "calendar": "gregorian"
+  },
+  "eventsByDate": {
+    "04-12": [
+      {
+        "id": "ru-1961-gagarin-vostok1",
+        "dateKey": "04-12",
+        "year": 1961,
+        "title": "Первый полёт человека в космос",
+        "summary": "Юрий Гагарин на корабле «Восток-1» стал первым человеком, вышедшим на орбиту Земли. Полёт длился 108 минут.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "locale": "ru-RU",
+        "priority": 100,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA Science",
+            "url": "https://science.nasa.gov/resource/yuri-gagarin-first-human-in-space/"
+          }
+        ]
+      }
+    ],
+    "10-04": [
+      {
+        "id": "ru-1957-sputnik1",
+        "dateKey": "10-04",
+        "year": 1957,
+        "title": "Запуск первого искусственного спутника Земли",
+        "summary": "Советский «Спутник-1» успешно выведен на орбиту Земли — первый искусственный спутник в истории.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "locale": "ru-RU",
+        "priority": 100,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA",
+            "url": "https://www.nasa.gov/image-article/sputnik-1/"
+          }
+        ]
+      }
+    ],
+    "07-20": [
+      {
+        "id": "world-1969-apollo11-moon-landing",
+        "dateKey": "07-20",
+        "year": 1969,
+        "title": "Первая высадка людей на Луну",
+        "summary": "Экипаж «Аполлон-11» впервые высадился на Луну: Нил Армстронг ступил на лунную поверхность.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "locale": "ru-RU",
+        "priority": 100,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA",
+            "url": "https://www.nasa.gov/history/apollo-11-mission-overview/"
+          }
+        ]
+      }
+    ]
+  }
+}

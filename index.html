@@ -84,14 +84,14 @@
         <button class="link-btn hist__more" type="button">Важные даты этого дня →</button>
       </section>
 
-      <!-- Историческая справка — статическая карточка дизайна -->
+      <!-- Историческая справка (JS заполняет из history-events-ru.json) -->
       <section class="card card--history" aria-labelledby="hist-lbl">
         <p class="eyebrow" id="hist-lbl">Историческая справка</p>
-        <div class="hist__head">
-          <span class="hist__date">18 июля</span>
-          <span class="hist__year">1969 — «Аполлон-11» достиг Луны</span>
+        <div class="hist__head" id="hist-head">
+          <span class="hist__date" id="hist-date"></span>
+          <span class="hist__year" id="hist-year"></span>
         </div>
-        <p class="hist__text">Нил Армстронг впервые ступил на лунную поверхность.</p>
+        <p class="hist__text" id="hist-text"></p>
         <button class="link-btn hist__more" type="button">События этого дня →</button>
       </section>
 
@@ -257,6 +257,7 @@
   <script src="js/orthodox-easter.js"></script>
   <script src="js/holidays-ru.js"></script>
   <script src="js/important-dates-storage.js"></script>
+  <script src="js/history.js"></script>
   <script src="js/app.js?v=date-preview-2"></script>
 </body>
 </html>
