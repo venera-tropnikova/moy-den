@@ -194,6 +194,65 @@
     return day + " " + MONTHS_GENITIVE[month];
   }
 
+  function formatMonthDayRange(startDay, endDay, month) {
+    if (startDay === endDay) {
+      return formatMonthDay(startDay, month);
+    }
+
+    return startDay + "–" + endDay + " " + MONTHS_GENITIVE[month];
+  }
+
+  function formatDateSpan(startDay, startMonth, endDay, endMonth) {
+    if (startMonth === endMonth) {
+      return formatMonthDayRange(startDay, endDay, startMonth);
+    }
+
+    return formatMonthDay(startDay, startMonth) + " – " + formatMonthDay(endDay, endMonth);
+  }
+
+  function eventIntersectsMonth(event, year, month) {
+    if (!event) return false;
+
+    if (event.isRange && typeof event.endDay === "number") {
+      var start = new Date(event.year, event.month, event.day);
+      var end = new Date(
+        typeof event.endYear === "number" ? event.endYear : event.year,
+        event.endMonth,
+        event.endDay
+      );
+      var monthStart = new Date(year, month, 1);
+      var monthEnd = new Date(year, month + 1, 0);
+      return start <= monthEnd && end >= monthStart;
+    }
+
+    return event.month === month;
+  }
+
+  function getEventSortDay(event, year, month) {
+    if (!event.isRange || typeof event.endDay !== "number") {
+      return event.day;
+    }
+
+    if (event.month === month) {
+      return event.day;
+    }
+
+    return 1;
+  }
+
+  function getEventIdentity(event) {
+    return [
+      event.title || "",
+      event.subtitle || "",
+      event.type || "",
+      event.icon || ""
+    ].join("\0");
+  }
+
+  function eventsAreIdentical(a, b) {
+    return Boolean(a && b && getEventIdentity(a) === getEventIdentity(b));
+  }
+
   var RELATION_GENITIVE = {
     мама: "мамы",
     папа: "папы",
@@ -383,11 +442,13 @@
 
   function collectCalendarEvents(year, month) {
     var calendarEvents = getCalendarEventsForYear(year).filter(function (event) {
-      return event && event.month === month;
+      return eventIntersectsMonth(event, year, month);
     });
 
     calendarEvents.sort(function (a, b) {
-      if (a.day !== b.day) return a.day - b.day;
+      var dayA = getEventSortDay(a, year, month);
+      var dayB = getEventSortDay(b, year, month);
+      if (dayA !== dayB) return dayA - dayB;
       if (a.type < b.type) return -1;
       if (a.type > b.type) return 1;
       if (a.title < b.title) return -1;
@@ -398,13 +459,8 @@
     return calendarEvents;
   }
 
-  function formatCalendarEventText(event, month) {
+  function formatEventTitle(event) {
     var parts = [];
-    var eventMonth = typeof event.month === "number" ? event.month : month;
-
-    if (typeof event.day === "number") {
-      parts.push(formatMonthDay(event.day, eventMonth));
-    }
 
     if (event.title) {
       parts.push(String(event.title).trim());
@@ -415,6 +471,97 @@
     }
 
     return parts.filter(Boolean).join(" · ");
+  }
+
+  function groupEventsByDay(events) {
+    var groups = [];
+    var indexByDay = {};
+    var i;
+
+    for (i = 0; i < events.length; i += 1) {
+      var event = events[i];
+
+      if (event.isRange && typeof event.endDay === "number") {
+        groups.push({
+          day: event.day,
+          startDay: event.day,
+          endDay: event.endDay,
+          month: event.month,
+          startMonth: event.month,
+          endMonth: event.endMonth,
+          isRange: true,
+          dateKey: event.dateKey || event.date,
+          events: [event]
+        });
+        continue;
+      }
+
+      var day = event.day;
+      var group = indexByDay[day];
+
+      if (!group) {
+        group = {
+          day: day,
+          month: typeof event.month === "number" ? event.month : null,
+          dateKey: event.dateKey || event.date,
+          events: []
+        };
+        indexByDay[day] = group;
+        groups.push(group);
+      }
+
+      group.events.push(event);
+    }
+
+    return groups;
+  }
+
+  function mergeConsecutiveIdenticalDayGroups(dayGroups) {
+    var merged = [];
+    var i;
+
+    for (i = 0; i < dayGroups.length; i += 1) {
+      var current = dayGroups[i];
+      var prev = merged.length ? merged[merged.length - 1] : null;
+
+      if (current.isRange) {
+        merged.push({
+          startDay: current.startDay,
+          endDay: current.endDay,
+          day: current.day,
+          month: current.month,
+          startMonth: current.startMonth,
+          endMonth: current.endMonth,
+          isRange: true,
+          dateKey: current.dateKey,
+          events: current.events.slice()
+        });
+        continue;
+      }
+
+      if (
+        prev &&
+        !prev.isRange &&
+        prev.events.length === 1 &&
+        current.events.length === 1 &&
+        eventsAreIdentical(prev.events[0], current.events[0]) &&
+        current.day === prev.endDay + 1
+      ) {
+        prev.endDay = current.day;
+        continue;
+      }
+
+      merged.push({
+        startDay: current.day,
+        endDay: current.day,
+        day: current.day,
+        month: current.month,
+        dateKey: current.dateKey,
+        events: current.events.slice()
+      });
+    }
+
+    return merged;
   }
 
   function setMonthEventsVisibility(section, visible) {
@@ -432,48 +579,21 @@
     section.style.display = "none";
   }
 
-  function renderPersonalMonthEvent(event, year, month) {
-    var item = document.createElement("li");
+  function getEventListIcon(event, isPersonal) {
+    if (isPersonal && event.icon) {
+      return event.icon;
+    }
 
-    var button = document.createElement("button");
-    button.className = "month-events__item";
-    button.type = "button";
-    button.addEventListener("click", function () {
-      window.location.href =
-        "day.html?date=" + event.dateKey +
-        "&cal=" + getCalParam(year, month);
-    });
-
-    var dateLine = document.createElement("span");
-    dateLine.className = "month-events__date";
-
-    var icon = document.createElement("span");
-    icon.className = "month-events__icon";
-    icon.setAttribute("aria-hidden", "true");
-    icon.textContent = event.icon;
-
-    var dateText = document.createElement("span");
-    dateText.textContent = formatMonthDay(event.day, month);
-
-    var name = document.createElement("span");
-    name.className = "month-events__name";
-    name.textContent = event.title;
-
-    dateLine.appendChild(icon);
-    dateLine.appendChild(dateText);
-    button.appendChild(dateLine);
-    button.appendChild(name);
-    item.appendChild(button);
-
-    return item;
+    return "";
   }
 
-  function renderCalendarEvent(event, year, month) {
+  function renderMonthEventRow(event, year, month, isPersonal) {
     var item = document.createElement("li");
-    var dateKey = event.date || getDateParam(year, month, event.day);
+    var dateKey = event.dateKey || event.date || getDateParam(year, month, event.day);
+    var listIcon = getEventListIcon(event, isPersonal);
 
     var button = document.createElement("button");
-    button.className = "month-events__item month-events__item--calendar";
+    button.className = "month-events__item" + (isPersonal ? "" : " month-events__item--calendar");
     button.type = "button";
     button.addEventListener("click", function () {
       window.location.href =
@@ -484,15 +604,56 @@
     var line = document.createElement("span");
     line.className = "month-events__line";
 
+    if (listIcon) {
+      var icon = document.createElement("span");
+      icon.className = "month-events__icon";
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = listIcon;
+      line.appendChild(icon);
+    }
+
     var text = document.createElement("span");
     text.className = "month-events__text";
-    text.textContent = formatCalendarEventText(event, month);
-
+    text.textContent = formatEventTitle(event);
     line.appendChild(text);
+
     button.appendChild(line);
     item.appendChild(button);
 
     return item;
+  }
+
+  function renderMonthDayBlock(dayGroup, year, month, isPersonal) {
+    var block = document.createElement("li");
+    block.className = "month-events__day";
+
+    var eventMonth = typeof dayGroup.month === "number" ? dayGroup.month : month;
+    var startDay = typeof dayGroup.startDay === "number" ? dayGroup.startDay : dayGroup.day;
+    var endDay = typeof dayGroup.endDay === "number" ? dayGroup.endDay : dayGroup.day;
+    var startMonth =
+      typeof dayGroup.startMonth === "number" ? dayGroup.startMonth : eventMonth;
+    var endMonth =
+      typeof dayGroup.endMonth === "number" ? dayGroup.endMonth : eventMonth;
+
+    var dateLabel = document.createElement("p");
+    dateLabel.className = "month-events__day-date";
+    dateLabel.textContent = formatDateSpan(startDay, startMonth, endDay, endMonth);
+
+    var list = document.createElement("ul");
+    list.className = "month-events__day-list";
+    list.setAttribute("role", "list");
+
+    var i;
+    for (i = 0; i < dayGroup.events.length; i += 1) {
+      list.appendChild(
+        renderMonthEventRow(dayGroup.events[i], year, month, isPersonal)
+      );
+    }
+
+    block.appendChild(dateLabel);
+    block.appendChild(list);
+
+    return block;
   }
 
   function createMonthEventsGroup(title) {
@@ -516,6 +677,17 @@
     };
   }
 
+  function fillMonthEventsGroup(groupList, events, year, month, isPersonal) {
+    var dayGroups = mergeConsecutiveIdenticalDayGroups(groupEventsByDay(events));
+    var i;
+
+    for (i = 0; i < dayGroups.length; i += 1) {
+      groupList.appendChild(
+        renderMonthDayBlock(dayGroups[i], year, month, isPersonal)
+      );
+    }
+  }
+
   function renderMonthEvents(year, month) {
     var section = document.getElementById("month-events");
     var body = document.getElementById("month-events-body");
@@ -523,7 +695,6 @@
 
     var personalEvents = collectPersonalMonthEvents(year, month);
     var calendarEvents = collectCalendarEvents(year, month);
-    var i;
 
     body.innerHTML = "";
 
@@ -537,22 +708,14 @@
     if (personalEvents.length) {
       var personalGroup = createMonthEventsGroup("Важные даты");
       personalGroup.root.classList.add("month-events__group--personal");
-      for (i = 0; i < personalEvents.length; i += 1) {
-        personalGroup.list.appendChild(
-          renderPersonalMonthEvent(personalEvents[i], year, month)
-        );
-      }
+      fillMonthEventsGroup(personalGroup.list, personalEvents, year, month, true);
       body.appendChild(personalGroup.root);
     }
 
     if (calendarEvents.length) {
       var calendarGroup = createMonthEventsGroup("Праздники и события");
       calendarGroup.root.classList.add("month-events__group--calendar");
-      for (i = 0; i < calendarEvents.length; i += 1) {
-        calendarGroup.list.appendChild(
-          renderCalendarEvent(calendarEvents[i], year, month)
-        );
-      }
+      fillMonthEventsGroup(calendarGroup.list, calendarEvents, year, month, false);
       body.appendChild(calendarGroup.root);
     }
   }
@@ -567,6 +730,24 @@
       if (!event || typeof event.month !== "number" || typeof event.day !== "number") {
         continue;
       }
+
+      if (event.isRange && typeof event.endDay === "number") {
+        var cursor = new Date(event.year, event.month, event.day);
+        var end = new Date(
+          typeof event.endYear === "number" ? event.endYear : event.year,
+          event.endMonth,
+          event.endDay
+        );
+
+        while (cursor <= end) {
+          if (cursor.getFullYear() === year) {
+            markers[cursor.getMonth() + "-" + cursor.getDate()] = true;
+          }
+          cursor.setDate(cursor.getDate() + 1);
+        }
+        continue;
+      }
+
       markers[event.month + "-" + event.day] = true;
     }
 
@@ -585,7 +766,9 @@
     var congratulation = hasCongratulation(markers.congratulationDays, month, day);
     var importantDate = hasImportantDate(markers.importantDates, year, month, day);
     var calendarEvent = hasCalendarEvent(markers.calendarEvents, month, day);
-    var hasInfo = personalBirthday || congratulation || importantDate || calendarEvent;
+    var hasPersonal = personalBirthday || congratulation || importantDate;
+    var hasCalendar = calendarEvent;
+    var hasInfo = hasPersonal || hasCalendar;
 
     button.className = "day";
     button.type = "button";
@@ -608,6 +791,14 @@
 
     if (hasInfo) {
       button.classList.add("day--info");
+    }
+
+    if (hasPersonal) {
+      button.classList.add("day--info-personal");
+    }
+
+    if (hasCalendar) {
+      button.classList.add("day--info-calendar");
     }
 
     return button;

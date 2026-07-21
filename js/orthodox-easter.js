@@ -54,7 +54,7 @@
 
   /**
    * Вербное воскресенье — за 7 дней до Пасхи.
-   * Первый день Масленицы — понедельник масленичной недели (за 55 дней до Пасхи).
+   * Масленичная неделя — с понедельника (Пасха − 55) по Прощёное воскресенье (Пасха − 49).
    */
   function getOrthodoxMovableDates(year) {
     var easter = getOrthodoxEasterDate(year);
@@ -62,15 +62,20 @@
 
     var palmSunday = shiftEasterDate(easter, -7);
     var maslenitsaStart = shiftEasterDate(easter, -55);
+    var maslenitsaEnd = shiftEasterDate(easter, -49);
 
     return [
       {
-        key: "maslenitsa-start",
-        title: "Первый день Масленицы",
+        key: "maslenitsa-week",
+        title: "Масленичная неделя",
         type: "religious-date",
+        isRange: true,
         year: maslenitsaStart.year,
         month: maslenitsaStart.month,
-        day: maslenitsaStart.day
+        day: maslenitsaStart.day,
+        endYear: maslenitsaEnd.year,
+        endMonth: maslenitsaEnd.month,
+        endDay: maslenitsaEnd.day
       },
       {
         key: "palm-sunday",

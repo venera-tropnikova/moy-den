@@ -49,12 +49,14 @@
   ];
 
   var RELIGIOUS_DESCRIPTIONS = {
+    "maslenitsa-week": "Масленичная неделя перед Великим постом. В народной традиции это время встреч, угощений и блинов. Даты меняются каждый год и зависят от православной Пасхи.",
     "maslenitsa-start": "Начало масленичной недели перед Великим постом.",
     "palm-sunday": "Православный праздник Входа Господня в Иерусалим."
   };
 
   var FIXED_EVENTS_BY_DAY = {};
   var MOVABLE_EVENTS_BY_TITLE = {};
+  var MOVABLE_EVENTS_BY_KEY = {};
 
   function loadJsonFile(url) {
     try {
@@ -91,8 +93,16 @@
 
     for (i = 0; i < events.length; i += 1) {
       var item = events[i];
-      if (!item || !item.title) continue;
-      MOVABLE_EVENTS_BY_TITLE[item.title] = item;
+      if (!item) continue;
+      if (item.title) {
+        MOVABLE_EVENTS_BY_TITLE[item.title] = item;
+      }
+      if (item.id) {
+        MOVABLE_EVENTS_BY_KEY[item.id] = item;
+      }
+      if (item.key) {
+        MOVABLE_EVENTS_BY_KEY[item.key] = item;
+      }
     }
   }
 
@@ -141,6 +151,10 @@
         entry.description = jsonItem.description;
       }
 
+      if (jsonItem && typeof jsonItem.listIcon === "string" && jsonItem.listIcon.trim()) {
+        entry.listIcon = jsonItem.listIcon.trim();
+      }
+
       return entry;
     });
   }
@@ -169,7 +183,11 @@
 
     return movable
       .map(function (item) {
-        var jsonItem = MOVABLE_EVENTS_BY_TITLE[item.title] || null;
+        var jsonItem =
+          MOVABLE_EVENTS_BY_TITLE[item.title] ||
+          MOVABLE_EVENTS_BY_KEY[item.key] ||
+          MOVABLE_EVENTS_BY_KEY["ru-" + item.key] ||
+          null;
         var description = "";
 
         if (jsonItem && jsonItem.description) {
@@ -178,7 +196,7 @@
           description = RELIGIOUS_DESCRIPTIONS[item.key];
         }
 
-        return {
+        var entry = {
           year: item.year,
           date: buildDateKey(item.year, item.month + 1, item.day),
           title: item.title,
@@ -190,10 +208,34 @@
           day: item.day,
           key: item.key
         };
+
+        if (item.isRange) {
+          entry.isRange = true;
+          entry.endYear = item.endYear;
+          entry.endMonth = item.endMonth;
+          entry.endDay = item.endDay;
+        }
+
+        if (jsonItem && typeof jsonItem.listIcon === "string" && jsonItem.listIcon.trim()) {
+          entry.listIcon = jsonItem.listIcon.trim();
+        }
+
+        return entry;
       })
       .filter(function (item) {
-        return item.year === Number(year);
+        return item.year === Number(year) || item.endYear === Number(year);
       });
+  }
+
+  function dateInEventRange(event, year, month, day) {
+    if (!event || !event.isRange) {
+      return event && event.date === buildDateKey(year, month + 1, day);
+    }
+
+    var start = new Date(event.year, event.month, event.day);
+    var end = new Date(event.endYear, event.endMonth, event.endDay);
+    var current = new Date(year, month, day);
+    return current >= start && current <= end;
   }
 
   function getCalendarEvents(year) {
@@ -205,9 +247,8 @@
   }
 
   function getCalendarEventsOnDate(year, month, day) {
-    var dateKey = buildDateKey(year, month + 1, day);
     return getCalendarEvents(year).filter(function (item) {
-      return item.date === dateKey;
+      return dateInEventRange(item, year, month, day);
     });
   }
 
