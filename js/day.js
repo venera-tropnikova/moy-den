@@ -147,6 +147,26 @@
     return year + "-" + month + "-" + day;
   }
 
+  function getCalendarMonthParam() {
+    var params = new URLSearchParams(window.location.search);
+    var cal = params.get("cal");
+    if (cal && /^\d{4}-\d{2}$/.test(cal)) return cal;
+
+    var year = selectedDate.getFullYear();
+    var month = String(selectedDate.getMonth() + 1).padStart(2, "0");
+    return year + "-" + month;
+  }
+
+  function getCalendarHref() {
+    return "calendar.html?cal=" + encodeURIComponent(getCalendarMonthParam());
+  }
+
+  function initBackLink() {
+    var back = document.querySelector(".back-btn");
+    if (!back) return;
+    back.setAttribute("href", getCalendarHref());
+  }
+
   function isImportantDateOnSelectedDate(item) {
     if (!item || typeof item.date !== "string") return false;
 
@@ -220,41 +240,79 @@
     item.appendChild(line);
   }
 
+  function setSectionVisibility(section, visible) {
+    if (!section) return;
+
+    if (visible) {
+      section.hidden = false;
+      section.removeAttribute("hidden");
+      return;
+    }
+
+    section.hidden = true;
+    section.setAttribute("hidden", "");
+  }
+
   function appendCongratulationsItem(list, options) {
     var item = document.createElement("li");
     item.className = "day-task";
+
+    var body = document.createElement("div");
+    body.className = "day-task__body";
 
     var name = document.createElement("span");
     name.className = "day-task__text";
     name.style.cursor = "default";
     name.textContent = "🎂 " + options.name;
 
-    item.appendChild(name);
+    body.appendChild(name);
 
     if (options.relation) {
-      appendMetaLine(item, options.relation);
+      appendMetaLine(body, options.relation);
     }
 
-    appendMetaLine(item, "День рождения");
+    appendMetaLine(body, "День рождения");
 
     if (options.turningAgeLine) {
-      appendMetaLine(item, options.turningAgeLine);
+      appendMetaLine(body, options.turningAgeLine);
+    }
+
+    item.appendChild(body);
+
+    if (options.id !== undefined && options.id !== null) {
+      var actions = document.createElement("div");
+      actions.className = "day-task__actions";
+
+      var returnUrl =
+        "day.html?date=" + encodeURIComponent(getSelectedDateKey()) +
+        "&cal=" + encodeURIComponent(getCalendarMonthParam());
+      var editHref =
+        "birthdays.html?edit=" + encodeURIComponent(String(options.id)) +
+        "&return=" + encodeURIComponent(returnUrl);
+
+      var editLink = document.createElement("a");
+      editLink.className = "day-congrats-edit";
+      editLink.href = editHref;
+      editLink.textContent = "Изменить";
+
+      actions.appendChild(editLink);
+      item.appendChild(actions);
     }
 
     list.appendChild(item);
   }
 
   function renderEvents() {
-    var empty = document.getElementById("events-empty");
+    var section = document.getElementById("events-section");
     var list = document.getElementById("events-list");
-    if (!empty || !list) return;
+    if (!list) return;
 
     var matches = loadImportantDates().filter(function (item) {
       return isImportantDateOnSelectedDate(item);
     });
 
     list.innerHTML = "";
-    empty.hidden = matches.length > 0;
+    setSectionVisibility(section, matches.length > 0);
 
     matches.forEach(function (item) {
       var titleText = typeof item.title === "string" && item.title.trim()
@@ -265,16 +323,20 @@
       var row = document.createElement("li");
       row.className = "day-task";
 
+      var body = document.createElement("div");
+      body.className = "day-task__body";
+
       var title = document.createElement("span");
       title.className = "day-task__text";
       title.style.cursor = "default";
       title.textContent = titleText;
-      row.appendChild(title);
+      body.appendChild(title);
 
       if (categoryLabel) {
-        appendMetaLine(row, categoryLabel);
+        appendMetaLine(body, categoryLabel);
       }
 
+      row.appendChild(body);
       list.appendChild(row);
     });
   }
@@ -291,13 +353,11 @@
     list.innerHTML = "";
 
     if (!personalMatch) {
-      section.hidden = true;
-      section.setAttribute("hidden", "");
+      setSectionVisibility(section, false);
       return;
     }
 
-    section.hidden = false;
-    section.removeAttribute("hidden");
+    setSectionVisibility(section, true);
 
     var userName = typeof settings.name === "string" && settings.name.trim()
       ? settings.name.trim()
@@ -307,30 +367,34 @@
     var item = document.createElement("li");
     item.className = "day-task";
 
+    var body = document.createElement("div");
+    body.className = "day-task__body";
+
     var name = document.createElement("span");
     name.className = "day-task__text";
     name.style.cursor = "default";
     name.textContent = "🎂 " + userName;
-    item.appendChild(name);
+    body.appendChild(name);
 
     if (turningAgeLine) {
-      appendMetaLine(item, turningAgeLine);
+      appendMetaLine(body, turningAgeLine);
     }
 
+    item.appendChild(body);
     list.appendChild(item);
   }
 
   function renderCongratulations() {
-    var empty = document.getElementById("birthdays-empty");
+    var section = document.getElementById("birthdays-section");
     var list = document.getElementById("birthdays-list");
-    if (!empty || !list) return;
+    if (!list) return;
 
     var matches = loadBirthdays().filter(function (birthday) {
       return birthday && isBirthdayOnSelectedDate(birthday.birthDate);
     });
 
     list.innerHTML = "";
-    empty.hidden = matches.length > 0;
+    setSectionVisibility(section, matches.length > 0);
 
     matches.forEach(function (birthday) {
       var personName = typeof birthday.name === "string" && birthday.name.trim()
@@ -339,6 +403,7 @@
       var relation = typeof birthday.relation === "string" ? birthday.relation.trim() : "";
 
       appendCongratulationsItem(list, {
+        id: birthday.id,
         name: personName,
         relation: relation,
         turningAgeLine: formatTurningAgeLine(getTurningAge(birthday.birthDate, selectedDate))
@@ -347,17 +412,20 @@
   }
 
   function renderTasks() {
-    var empty = document.getElementById("tasks-empty");
+    var section = document.getElementById("tasks-section");
     var list = document.getElementById("day-tasks-list");
-    if (!empty || !list) return;
+    if (!list) return;
 
     var tasks = getTasksForSelectedDate();
     list.innerHTML = "";
-    empty.hidden = tasks.length > 0;
+    setSectionVisibility(section, tasks.length > 0);
 
     tasks.forEach(function (task) {
       var item = document.createElement("li");
       item.className = "day-task" + (task.done ? " day-task--done" : "");
+
+      var body = document.createElement("div");
+      body.className = "day-task__body";
 
       var text = document.createElement("span");
       text.className = "day-task__text";
@@ -366,7 +434,8 @@
         startTaskEdit(item, task);
       });
 
-      item.appendChild(text);
+      body.appendChild(text);
+      item.appendChild(body);
       list.appendChild(item);
     });
   }
@@ -481,6 +550,7 @@
 
   function initDayContent() {
     renderSelectedDate();
+    initBackLink();
     renderEvents();
     renderPersonalBirthday();
     renderCongratulations();

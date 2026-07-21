@@ -4,6 +4,8 @@
   var UNKNOWN_YEAR = 0;
   var editingId = null;
 
+  var returnTo = null;
+
   function formatTime(date) {
     var h = String(date.getHours()).padStart(2, "0");
     var m = String(date.getMinutes()).padStart(2, "0");
@@ -166,6 +168,21 @@
     showListView();
   }
 
+  function leaveToReturn() {
+    if (returnTo) {
+      window.location.href = returnTo;
+      return true;
+    }
+    return false;
+  }
+
+  function initReturnNavigation() {
+    var back = document.querySelector(".back-btn");
+    if (back && returnTo) {
+      back.setAttribute("href", returnTo);
+    }
+  }
+
   function openEditForm(birthday) {
     var els = getFormElements();
     var parts = parseBirthDateParts(birthday.birthDate);
@@ -291,7 +308,10 @@
     }
 
     if (els.cancelButton) {
-      els.cancelButton.addEventListener("click", closeBirthdayForm);
+      els.cancelButton.addEventListener("click", function () {
+        if (leaveToReturn()) return;
+        closeBirthdayForm();
+      });
     }
 
     els.form.addEventListener("submit", function (event) {
@@ -334,6 +354,8 @@
         storage.addBirthday(payload);
       }
 
+      if (leaveToReturn()) return;
+
       closeBirthdayForm();
       renderBirthdays();
     });
@@ -350,10 +372,32 @@
     }, 60000);
   }
 
+  function openEditFromQuery() {
+    var storage = getStorage();
+    var params = new URLSearchParams(window.location.search);
+    returnTo = params.get("return");
+
+    initReturnNavigation();
+
+    if (!storage) return;
+
+    var editId = params.get("edit");
+    if (!editId) return;
+
+    var birthday = storage.loadBirthdays().find(function (item) {
+      return String(item.id) === String(editId);
+    });
+
+    if (!birthday) return;
+
+    openEditForm(birthday);
+  }
+
   function init() {
     renderBirthdays();
     initForm();
     initStatusbarTime();
+    openEditFromQuery();
   }
 
   if (document.readyState === "loading") {

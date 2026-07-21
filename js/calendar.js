@@ -10,8 +10,55 @@
     "Июль", "Август", "Сентябрь", "Октябрь", "Ноябрь", "Декабрь"
   ];
 
+  var MONTHS_GENITIVE = [
+    "января", "февраля", "марта", "апреля", "мая", "июня",
+    "июля", "августа", "сентября", "октября", "ноября", "декабря"
+  ];
+
   var today = new Date();
-  var visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+  var visibleMonth = parseVisibleMonthFromQuery() || new Date(today.getFullYear(), today.getMonth(), 1);
+
+  function parseVisibleMonthFromQuery() {
+    var params = new URLSearchParams(window.location.search);
+    var cal = params.get("cal");
+    var match = cal && cal.match(/^(\d{4})-(\d{2})$/);
+    if (!match) return null;
+
+    var year = Number(match[1]);
+    var month = Number(match[2]) - 1;
+    if (!year || month < 0 || month > 11) return null;
+
+    return new Date(year, month, 1);
+  }
+
+  function getCalParam(year, month) {
+    return year + "-" + padDatePart(month + 1);
+  }
+
+  function syncCalendarQuery() {
+    if (!window.history || !window.history.replaceState) return;
+
+    var cal = getCalParam(visibleMonth.getFullYear(), visibleMonth.getMonth());
+    window.history.replaceState({}, "", "calendar.html?cal=" + cal);
+  }
+
+  function parseDateParts(dateValue) {
+    if (typeof dateValue !== "string") return null;
+    var match = dateValue.trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!match) return null;
+
+    var month = Number(match[2]);
+    var day = Number(match[3]);
+    if (!month || month < 1 || month > 12 || !day || day < 1 || day > 31) {
+      return null;
+    }
+
+    return {
+      year: Number(match[1]),
+      month: month - 1,
+      day: day
+    };
+  }
 
   function getPersonalBirthdayParts() {
     try {
@@ -20,12 +67,12 @@
 
       var parsed = JSON.parse(saved);
       var birthDate = parsed && typeof parsed.birthDate === "string" ? parsed.birthDate : "";
-      var match = birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
-      if (!match) return null;
+      var parts = parseDateParts(birthDate);
+      if (!parts) return null;
 
       return {
-        month: Number(match[1]) - 1,
-        day: Number(match[2])
+        month: parts.month,
+        day: parts.day
       };
     } catch (error) {
       console.warn("Не удалось загрузить дату рождения:", error);
@@ -37,26 +84,40 @@
     return Boolean(birthday && birthday.month === month && birthday.day === day);
   }
 
+  function loadBirthdays() {
+    try {
+      var saved = localStorage.getItem(BIRTHDAYS_KEY);
+      if (!saved) return [];
+
+      var parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.warn("Не удалось загрузить поздравления:", error);
+      return [];
+    }
+  }
+
+  function loadImportantDates() {
+    try {
+      var saved = localStorage.getItem(IMPORTANT_DATES_KEY);
+      if (!saved) return [];
+
+      var parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.warn("Не удалось загрузить важные даты:", error);
+      return [];
+    }
+  }
+
   function getCongratulationDayKeys() {
     var keys = {};
 
-    try {
-      var saved = localStorage.getItem(BIRTHDAYS_KEY);
-      if (!saved) return keys;
-
-      var parsed = JSON.parse(saved);
-      if (!Array.isArray(parsed)) return keys;
-
-      parsed.forEach(function (item) {
-        var birthDate = item && typeof item.birthDate === "string" ? item.birthDate : "";
-        var match = birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
-        if (!match) return;
-
-        keys[Number(match[1]) - 1 + "-" + Number(match[2])] = true;
-      });
-    } catch (error) {
-      console.warn("Не удалось загрузить поздравления:", error);
-    }
+    loadBirthdays().forEach(function (item) {
+      var parts = parseDateParts(item && item.birthDate);
+      if (!parts) return;
+      keys[parts.month + "-" + parts.day] = true;
+    });
 
     return keys;
   }
@@ -67,32 +128,19 @@
       once: {}
     };
 
-    try {
-      var saved = localStorage.getItem(IMPORTANT_DATES_KEY);
-      if (!saved) return markers;
+    loadImportantDates().forEach(function (item) {
+      if (!item || typeof item.date !== "string") return;
 
-      var parsed = JSON.parse(saved);
-      if (!Array.isArray(parsed)) return markers;
+      var parts = parseDateParts(item.date);
+      if (!parts) return;
 
-      parsed.forEach(function (item) {
-        if (!item || typeof item.date !== "string") return;
+      if (item.yearly) {
+        markers.yearly[parts.month + "-" + parts.day] = true;
+        return;
+      }
 
-        var match = item.date.trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
-        if (!match) return;
-
-        var month = Number(match[2]) - 1;
-        var day = Number(match[3]);
-
-        if (item.yearly) {
-          markers.yearly[month + "-" + day] = true;
-          return;
-        }
-
-        markers.once[item.date.trim()] = true;
-      });
-    } catch (error) {
-      console.warn("Не удалось загрузить важные даты:", error);
-    }
+      markers.once[item.date.trim()] = true;
+    });
 
     return markers;
   }
@@ -142,6 +190,251 @@
     return year + "-" + padDatePart(month + 1) + "-" + padDatePart(day);
   }
 
+  function formatMonthDay(day, month) {
+    return day + " " + MONTHS_GENITIVE[month];
+  }
+
+  var RELATION_GENITIVE = {
+    мама: "мамы",
+    папа: "папы",
+    дочь: "дочери",
+    сын: "сына",
+    сестра: "сестры",
+    брат: "брата",
+    бабушка: "бабушки",
+    дедушка: "дедушки",
+    тётя: "тёти",
+    тетя: "тети",
+    дядя: "дяди",
+    муж: "мужа",
+    жена: "жены",
+    коллега: "коллеги",
+    друг: "друга",
+    подруга: "подруги",
+    мать: "матери",
+    отец: "отца",
+    сыночек: "сыночка",
+    дочка: "дочки"
+  };
+
+  function declineKnownRelation(word) {
+    if (!word) return null;
+    var key = word.trim().toLowerCase();
+    return RELATION_GENITIVE[key] || null;
+  }
+
+  function declineNamePartConfident(part) {
+    if (!part) return null;
+
+    // Фамилии на -ова/-ева/-ёва/-ина/-ына
+    if (/[оеёОЕЁ]ва$/.test(part)) return part.slice(0, -1) + "ой";
+    if (/[иыИЫ]на$/.test(part)) return part.slice(0, -1) + "ой";
+
+    // Женские имена на -а / -я
+    if (/а$/.test(part)) {
+      if (/[гкх]а$/i.test(part)) return part.slice(0, -1) + "и";
+      return part.slice(0, -1) + "ы";
+    }
+
+    if (/я$/.test(part)) return part.slice(0, -1) + "и";
+
+    // Мужские имена на согласную: Денис → Дениса
+    if (/[бвгджзклмнпрстфхцчшщ]$/i.test(part) && !/[АЕЁИОУЫЭЮЯаеёиоуыэюя]$/.test(part)) {
+      return part + "а";
+    }
+
+    return null;
+  }
+
+  function declinePersonNameConfident(fullName) {
+    var parts = fullName.trim().split(/\s+/).filter(Boolean);
+    if (!parts.length) return null;
+
+    var declined = [];
+    for (var i = 0; i < parts.length; i += 1) {
+      var next = declineNamePartConfident(parts[i]);
+      if (!next) return null;
+      declined.push(next);
+    }
+
+    return declined.join(" ");
+  }
+
+  function formatCongratulationTitle(item) {
+    var name = typeof item.name === "string" ? item.name.trim() : "";
+    var relation = typeof item.relation === "string" ? item.relation.trim() : "";
+    var relationGen = declineKnownRelation(relation);
+    var nameAsRelation = declineKnownRelation(name);
+    var nameGen = name ? declinePersonNameConfident(name) : null;
+
+    // мама / дочь как единственное поле имени
+    if (!relation && nameAsRelation) {
+      return "День рождения " + nameAsRelation;
+    }
+
+    // дочь + Александра, коллега + Татьяна Нефедова
+    if (relationGen && nameGen) {
+      return "День рождения " + relationGen + " " + nameGen;
+    }
+
+    if (relationGen && !name) {
+      return "День рождения " + relationGen;
+    }
+
+    // Не искажаем неизвестные формы — безопасный формат
+    if (name && relation) {
+      return "День рождения: " + name + " · " + relation;
+    }
+
+    if (name) {
+      return "День рождения: " + name;
+    }
+
+    if (relation) {
+      return "День рождения: " + relation;
+    }
+
+    return "День рождения";
+  }
+
+  function isYearlyImportantDate(item) {
+    if (!item) return false;
+    if (item.yearly === true || item.yearly === "true" || item.yearly === 1) {
+      return true;
+    }
+
+    var parts = parseDateParts(item.date);
+    return Boolean(parts && parts.year < 1000);
+  }
+
+  function collectMonthEvents(year, month) {
+    var events = [];
+    var birthday = getPersonalBirthdayParts();
+    var birthdays = loadBirthdays();
+    var importantDates = loadImportantDates();
+    var i;
+
+    if (birthday && birthday.month === month) {
+      events.push({
+        day: birthday.day,
+        icon: "🎂",
+        title: "Мой день рождения",
+        dateKey: getDateParam(year, month, birthday.day),
+        order: 0
+      });
+    }
+
+    for (i = 0; i < birthdays.length; i += 1) {
+      var congrats = birthdays[i];
+      var congratsParts = parseDateParts(congrats && congrats.birthDate);
+      if (!congratsParts || congratsParts.month !== month) continue;
+
+      events.push({
+        day: congratsParts.day,
+        icon: "🎉",
+        title: formatCongratulationTitle(congrats),
+        dateKey: getDateParam(year, month, congratsParts.day),
+        order: 1
+      });
+    }
+
+    for (i = 0; i < importantDates.length; i += 1) {
+      var important = importantDates[i];
+      var importantParts = parseDateParts(important && important.date);
+      if (!importantParts || importantParts.month !== month) continue;
+
+      if (!isYearlyImportantDate(important) && importantParts.year !== year) {
+        continue;
+      }
+
+      events.push({
+        day: importantParts.day,
+        icon: "💍",
+        title: typeof important.title === "string" && important.title.trim()
+          ? important.title.trim()
+          : "—",
+        dateKey: getDateParam(year, month, importantParts.day),
+        order: 2
+      });
+    }
+
+    events.sort(function (a, b) {
+      if (a.day !== b.day) return a.day - b.day;
+      if (a.order !== b.order) return a.order - b.order;
+      if (a.title < b.title) return -1;
+      if (a.title > b.title) return 1;
+      return 0;
+    });
+
+    return events;
+  }
+
+  function setMonthEventsVisibility(section, visible) {
+    if (!section) return;
+
+    if (visible) {
+      section.hidden = false;
+      section.removeAttribute("hidden");
+      section.style.display = "block";
+      return;
+    }
+
+    section.hidden = true;
+    section.setAttribute("hidden", "");
+    section.style.display = "none";
+  }
+
+  function renderMonthEvents(year, month) {
+    var section = document.getElementById("month-events");
+    var list = document.getElementById("month-events-list");
+    if (!section || !list) return;
+
+    var events = collectMonthEvents(year, month);
+    list.innerHTML = "";
+
+    if (!events.length) {
+      setMonthEventsVisibility(section, false);
+      return;
+    }
+
+    setMonthEventsVisibility(section, true);
+
+    events.forEach(function (event) {
+      var item = document.createElement("li");
+
+      var button = document.createElement("button");
+      button.className = "month-events__item";
+      button.type = "button";
+      button.addEventListener("click", function () {
+        window.location.href =
+          "day.html?date=" + event.dateKey +
+          "&cal=" + getCalParam(year, month);
+      });
+
+      var dateLine = document.createElement("span");
+      dateLine.className = "month-events__date";
+
+      var icon = document.createElement("span");
+      icon.className = "month-events__icon";
+      icon.setAttribute("aria-hidden", "true");
+      icon.textContent = event.icon;
+
+      var dateText = document.createElement("span");
+      dateText.textContent = formatMonthDay(event.day, month);
+
+      var name = document.createElement("span");
+      name.className = "month-events__name";
+      name.textContent = event.title;
+
+      dateLine.appendChild(icon);
+      dateLine.appendChild(dateText);
+      button.appendChild(dateLine);
+      button.appendChild(name);
+      item.appendChild(button);
+      list.appendChild(item);
+    });
+  }
+
   function createDayButton(year, month, day, markers) {
     var button = document.createElement("button");
     var date = new Date(year, month, day);
@@ -156,7 +449,9 @@
     button.textContent = String(day);
     button.setAttribute("aria-label", day + " " + MONTHS[month].toLowerCase());
     button.addEventListener("click", function () {
-      window.location.href = "day.html?date=" + getDateParam(year, month, day);
+      window.location.href =
+        "day.html?date=" + getDateParam(year, month, day) +
+        "&cal=" + getCalParam(year, month);
     });
 
     if (weekday === 0 || weekday === 6) {
@@ -201,6 +496,9 @@
     for (var day = 1; day <= daysInMonth; day += 1) {
       grid.appendChild(createDayButton(year, month, day, markers));
     }
+
+    renderMonthEvents(year, month);
+    syncCalendarQuery();
   }
 
   function goToToday() {

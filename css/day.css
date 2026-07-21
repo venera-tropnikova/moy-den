@@ -169,6 +169,10 @@ button {
 }
 
 .day-task {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
   padding: 12px 14px;
   border: 1px solid var(--divider);
   border-radius: 14px;
@@ -177,9 +181,47 @@ button {
   line-height: 1.45;
 }
 
+.day-task__body {
+  min-width: 0;
+  flex: 1;
+}
+
 .day-task__text {
   display: block;
   cursor: text;
+}
+
+.day-task__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+  padding-top: 1px;
+}
+
+a.day-congrats-edit {
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  appearance: none;
+  -webkit-appearance: none;
+  color: var(--accent);
+  font-size: 0.94rem;
+  font-weight: 500;
+  font-family: inherit;
+  line-height: 1.35;
+  text-decoration: none;
+  box-shadow: none;
+  cursor: pointer;
+}
+
+a.day-congrats-edit:hover,
+a.day-congrats-edit:focus-visible {
+  color: var(--ink);
+  outline: none;
+  text-decoration: none;
 }
 
 .day-task--done {
