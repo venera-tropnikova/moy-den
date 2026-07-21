@@ -307,7 +307,19 @@
     return Boolean(parts && parts.year < 1000);
   }
 
-  function collectMonthEvents(year, month) {
+  function getCalendarEventsForYear(year) {
+    if (window.MyDayHolidays && typeof window.MyDayHolidays.getCalendarEvents === "function") {
+      return window.MyDayHolidays.getCalendarEvents(year) || [];
+    }
+
+    if (window.MyDayHolidaysRU && typeof window.MyDayHolidaysRU.getCalendarEvents === "function") {
+      return window.MyDayHolidaysRU.getCalendarEvents(year) || [];
+    }
+
+    return [];
+  }
+
+  function collectPersonalMonthEvents(year, month) {
     var events = [];
     var birthday = getPersonalBirthdayParts();
     var birthdays = loadBirthdays();
@@ -369,6 +381,47 @@
     return events;
   }
 
+  function collectCalendarEvents(year, month) {
+    var calendarEvents = getCalendarEventsForYear(year).filter(function (event) {
+      return event && event.month === month;
+    });
+
+    calendarEvents.sort(function (a, b) {
+      if (a.day !== b.day) return a.day - b.day;
+      if (a.type < b.type) return -1;
+      if (a.type > b.type) return 1;
+      if (a.title < b.title) return -1;
+      if (a.title > b.title) return 1;
+      return 0;
+    });
+
+    return calendarEvents;
+  }
+
+  function getCalendarEventIcon(type) {
+    if (type === "official-holiday") return "🇷🇺";
+    return "•";
+  }
+
+  function formatCalendarEventText(event, month) {
+    var parts = [];
+
+    // Церковные даты — только название, без календарной даты в подписи.
+    if (event.type !== "religious-date" && typeof event.day === "number") {
+      parts.push(formatMonthDay(event.day, month));
+    }
+
+    if (event.title) {
+      parts.push(String(event.title).replace(/\bRU\b/g, "").trim());
+    }
+
+    if (event.subtitle) {
+      parts.push(String(event.subtitle).replace(/\bRU\b/g, "").trim());
+    }
+
+    return parts.filter(Boolean).join(" · ");
+  }
+
   function setMonthEventsVisibility(section, visible) {
     if (!section) return;
 
@@ -384,55 +437,123 @@
     section.style.display = "none";
   }
 
+  function renderPersonalMonthEvent(event, year, month) {
+    var item = document.createElement("li");
+
+    var button = document.createElement("button");
+    button.className = "month-events__item";
+    button.type = "button";
+    button.addEventListener("click", function () {
+      window.location.href =
+        "day.html?date=" + event.dateKey +
+        "&cal=" + getCalParam(year, month);
+    });
+
+    var dateLine = document.createElement("span");
+    dateLine.className = "month-events__date";
+
+    var icon = document.createElement("span");
+    icon.className = "month-events__icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = event.icon;
+
+    var dateText = document.createElement("span");
+    dateText.textContent = formatMonthDay(event.day, month);
+
+    var name = document.createElement("span");
+    name.className = "month-events__name";
+    name.textContent = event.title;
+
+    dateLine.appendChild(icon);
+    dateLine.appendChild(dateText);
+    button.appendChild(dateLine);
+    button.appendChild(name);
+    item.appendChild(button);
+
+    return item;
+  }
+
+  function renderCalendarEvent(event, year, month) {
+    var item = document.createElement("li");
+    var dateKey = event.date || getDateParam(year, month, event.day);
+
+    var button = document.createElement("button");
+    button.className = "month-events__item month-events__item--calendar";
+    button.type = "button";
+    button.addEventListener("click", function () {
+      window.location.href =
+        "day.html?date=" + dateKey +
+        "&cal=" + getCalParam(year, month);
+    });
+
+    var line = document.createElement("span");
+    line.className = "month-events__line";
+
+    var icon = document.createElement("span");
+    icon.className = "month-events__icon";
+    icon.setAttribute("aria-hidden", "true");
+    icon.textContent = getCalendarEventIcon(event.type);
+
+    var text = document.createElement("span");
+    text.className = "month-events__text";
+    text.textContent = formatCalendarEventText(event, month);
+
+    line.appendChild(icon);
+    line.appendChild(text);
+    button.appendChild(line);
+    item.appendChild(button);
+
+    return item;
+  }
+
   function renderMonthEvents(year, month) {
     var section = document.getElementById("month-events");
     var list = document.getElementById("month-events-list");
     if (!section || !list) return;
 
-    var events = collectMonthEvents(year, month);
+    var personalEvents = collectPersonalMonthEvents(year, month);
+
+    // Единый массив всех календарных дат перед выводом.
+    var calendarEvents = collectCalendarEvents(year, month);
+    var i;
+
     list.innerHTML = "";
 
-    if (!events.length) {
+    if (!personalEvents.length && !calendarEvents.length) {
       setMonthEventsVisibility(section, false);
       return;
     }
 
     setMonthEventsVisibility(section, true);
 
-    events.forEach(function (event) {
-      var item = document.createElement("li");
+    for (i = 0; i < personalEvents.length; i += 1) {
+      list.appendChild(renderPersonalMonthEvent(personalEvents[i], year, month));
+    }
 
-      var button = document.createElement("button");
-      button.className = "month-events__item";
-      button.type = "button";
-      button.addEventListener("click", function () {
-        window.location.href =
-          "day.html?date=" + event.dateKey +
-          "&cal=" + getCalParam(year, month);
-      });
+    // Один цикл и один renderer для всех типов calendarEvents.
+    for (i = 0; i < calendarEvents.length; i += 1) {
+      list.appendChild(renderCalendarEvent(calendarEvents[i], year, month));
+    }
+  }
 
-      var dateLine = document.createElement("span");
-      dateLine.className = "month-events__date";
+  function getCalendarEventMarkers(year) {
+    var markers = {};
+    var events = getCalendarEventsForYear(year);
+    var i;
 
-      var icon = document.createElement("span");
-      icon.className = "month-events__icon";
-      icon.setAttribute("aria-hidden", "true");
-      icon.textContent = event.icon;
+    for (i = 0; i < events.length; i += 1) {
+      var event = events[i];
+      if (!event || typeof event.month !== "number" || typeof event.day !== "number") {
+        continue;
+      }
+      markers[event.month + "-" + event.day] = true;
+    }
 
-      var dateText = document.createElement("span");
-      dateText.textContent = formatMonthDay(event.day, month);
+    return markers;
+  }
 
-      var name = document.createElement("span");
-      name.className = "month-events__name";
-      name.textContent = event.title;
-
-      dateLine.appendChild(icon);
-      dateLine.appendChild(dateText);
-      button.appendChild(dateLine);
-      button.appendChild(name);
-      item.appendChild(button);
-      list.appendChild(item);
-    });
+  function hasCalendarEvent(markers, month, day) {
+    return Boolean(markers && markers[month + "-" + day]);
   }
 
   function createDayButton(year, month, day, markers) {
@@ -442,7 +563,8 @@
     var personalBirthday = isPersonalBirthday(markers.birthday, month, day);
     var congratulation = hasCongratulation(markers.congratulationDays, month, day);
     var importantDate = hasImportantDate(markers.importantDates, year, month, day);
-    var hasInfo = personalBirthday || congratulation || importantDate;
+    var calendarEvent = hasCalendarEvent(markers.calendarEvents, month, day);
+    var hasInfo = personalBirthday || congratulation || importantDate || calendarEvent;
 
     button.className = "day";
     button.type = "button";
@@ -483,7 +605,8 @@
     var markers = {
       birthday: getPersonalBirthdayParts(),
       congratulationDays: getCongratulationDayKeys(),
-      importantDates: getImportantDateMarkers()
+      importantDates: getImportantDateMarkers(),
+      calendarEvents: getCalendarEventMarkers(year)
     };
 
     title.textContent = MONTHS[month] + " " + year;

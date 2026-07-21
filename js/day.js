@@ -302,6 +302,71 @@
     list.appendChild(item);
   }
 
+  function getCalendarEventsForSelectedDate() {
+    if (!window.MyDayHolidays || typeof window.MyDayHolidays.getCalendarEventsOnDate !== "function") {
+      return [];
+    }
+
+    return window.MyDayHolidays.getCalendarEventsOnDate(
+      selectedDate.getFullYear(),
+      selectedDate.getMonth(),
+      selectedDate.getDate()
+    ) || [];
+  }
+
+  function createCalendarEventCard(event) {
+    var card = document.createElement("article");
+    card.className = "day-calendar-event";
+
+    var name = document.createElement("h3");
+    name.className = "day-calendar-event__title";
+    name.textContent = event.title || "—";
+    card.appendChild(name);
+
+    if (event.subtitle) {
+      var subtitle = document.createElement("p");
+      subtitle.className = "day-calendar-event__subtitle";
+      subtitle.textContent = event.subtitle;
+      card.appendChild(subtitle);
+    }
+
+    if (event.typeLabel) {
+      var type = document.createElement("p");
+      type.className = "day-calendar-event__type";
+      type.textContent = event.typeLabel;
+      card.appendChild(type);
+    }
+
+    if (event.description) {
+      var description = document.createElement("p");
+      description.className = "day-calendar-event__description";
+      description.textContent = event.description;
+      card.appendChild(description);
+    }
+
+    return card;
+  }
+
+  function renderCalendarDayEvents() {
+    var section = document.getElementById("calendar-events-section");
+    var list = document.getElementById("calendar-events-list");
+    if (!section || !list) return;
+
+    var events = getCalendarEventsForSelectedDate();
+    list.innerHTML = "";
+
+    if (!events.length) {
+      setSectionVisibility(section, false);
+      return;
+    }
+
+    setSectionVisibility(section, true);
+
+    events.forEach(function (event) {
+      list.appendChild(createCalendarEventCard(event));
+    });
+  }
+
   function renderEvents() {
     var section = document.getElementById("events-section");
     var list = document.getElementById("events-list");
@@ -551,6 +616,7 @@
   function initDayContent() {
     renderSelectedDate();
     initBackLink();
+    renderCalendarDayEvents();
     renderEvents();
     renderPersonalBirthday();
     renderCongratulations();

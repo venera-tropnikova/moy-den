@@ -33,6 +33,11 @@
         <h1 class="day-hero__title" id="day-title">—</h1>
       </header>
 
+      <section class="day-section day-section--calendar-events" id="calendar-events-section" hidden aria-labelledby="calendar-events-title">
+        <h2 class="day-section__title" id="calendar-events-title">Событие дня</h2>
+        <div class="day-calendar-events" id="calendar-events-list"></div>
+      </section>
+
       <section class="day-section" id="events-section" aria-labelledby="events-title">
         <h2 class="day-section__title" id="events-title">События</h2>
         <ul class="day-tasks" id="events-list" role="list"></ul>
@@ -76,6 +81,8 @@
 
   </div>
 
+  <script src="js/orthodox-easter.js"></script>
+  <script src="js/holidays-ru.js"></script>
   <script src="js/day.js"></script>
 </body>
 </html>
