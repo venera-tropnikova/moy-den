@@ -318,6 +318,13 @@
     var card = document.createElement("article");
     card.className = "day-calendar-event";
 
+    if (event.typeLabel) {
+      var type = document.createElement("p");
+      type.className = "day-calendar-event__type";
+      type.textContent = event.typeLabel;
+      card.appendChild(type);
+    }
+
     var name = document.createElement("h3");
     name.className = "day-calendar-event__title";
     name.textContent = event.title || "—";
@@ -328,13 +335,6 @@
       subtitle.className = "day-calendar-event__subtitle";
       subtitle.textContent = event.subtitle;
       card.appendChild(subtitle);
-    }
-
-    if (event.typeLabel) {
-      var type = document.createElement("p");
-      type.className = "day-calendar-event__type";
-      type.textContent = event.typeLabel;
-      card.appendChild(type);
     }
 
     if (event.description) {

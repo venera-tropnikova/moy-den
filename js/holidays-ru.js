@@ -53,6 +53,52 @@
     "palm-sunday": "Православный праздник Входа Господня в Иерусалим."
   };
 
+  var FIXED_EVENTS_BY_DAY = {};
+  var MOVABLE_EVENTS_BY_TITLE = {};
+
+  function loadJsonFile(url) {
+    try {
+      var request = new XMLHttpRequest();
+      request.open("GET", url, false);
+      request.send(null);
+
+      if (request.status >= 200 && request.status < 300 && request.responseText) {
+        return JSON.parse(request.responseText);
+      }
+    } catch (error) {
+      console.warn("Не удалось загрузить календарные данные:", url, error);
+    }
+
+    return null;
+  }
+
+  function indexFixedEventsFromJson() {
+    var data = loadJsonFile("calendar-events-ru.json");
+    var events = data && Array.isArray(data.events) ? data.events : [];
+    var i;
+
+    for (i = 0; i < events.length; i += 1) {
+      var item = events[i];
+      if (!item || !item.month || !item.day) continue;
+      FIXED_EVENTS_BY_DAY[item.month + "-" + item.day] = item;
+    }
+  }
+
+  function indexMovableEventsFromJson() {
+    var data = loadJsonFile("calendar-events-ru-movable.json");
+    var events = data && Array.isArray(data.events) ? data.events : [];
+    var i;
+
+    for (i = 0; i < events.length; i += 1) {
+      var item = events[i];
+      if (!item || !item.title) continue;
+      MOVABLE_EVENTS_BY_TITLE[item.title] = item;
+    }
+  }
+
+  indexFixedEventsFromJson();
+  indexMovableEventsFromJson();
+
   function pad(value) {
     return value < 10 ? "0" + value : String(value);
   }
@@ -75,12 +121,13 @@
     if (!numericYear) return [];
 
     return list.map(function (item) {
+      var jsonItem = FIXED_EVENTS_BY_DAY[item.month + "-" + item.day] || null;
       var entry = {
         year: numericYear,
         date: buildDateKey(numericYear, item.month, item.day),
         title: item.title,
         type: type,
-        typeLabel: getTypeLabel(type),
+        typeLabel: (jsonItem && jsonItem.label) || getTypeLabel(type),
         icon: getListIcon(type),
         month: item.month - 1,
         day: item.day
@@ -88,6 +135,10 @@
 
       if (item.subtitle) {
         entry.subtitle = item.subtitle;
+      }
+
+      if (jsonItem && jsonItem.description) {
+        entry.description = jsonItem.description;
       }
 
       return entry;
@@ -118,13 +169,22 @@
 
     return movable
       .map(function (item) {
+        var jsonItem = MOVABLE_EVENTS_BY_TITLE[item.title] || null;
+        var description = "";
+
+        if (jsonItem && jsonItem.description) {
+          description = jsonItem.description;
+        } else if (RELIGIOUS_DESCRIPTIONS[item.key]) {
+          description = RELIGIOUS_DESCRIPTIONS[item.key];
+        }
+
         return {
           year: item.year,
           date: buildDateKey(item.year, item.month + 1, item.day),
           title: item.title,
           type: "religious-date",
-          typeLabel: getTypeLabel("religious-date"),
-          description: RELIGIOUS_DESCRIPTIONS[item.key] || "",
+          typeLabel: (jsonItem && jsonItem.label) || getTypeLabel("religious-date"),
+          description: description,
           icon: getListIcon("religious-date"),
           month: item.month,
           day: item.day,

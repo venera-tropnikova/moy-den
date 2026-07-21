@@ -170,6 +170,7 @@ button {
 }
 
 .day-calendar-event__title {
+  margin-top: 6px;
   color: var(--ink);
   font-size: 0.98rem;
   font-weight: 600;
@@ -185,7 +186,7 @@ button {
 }
 
 .day-calendar-event__type {
-  margin-top: 6px;
+  margin-top: 0;
   color: var(--accent);
   font-size: 0.78rem;
   font-weight: 600;
