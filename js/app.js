@@ -4,6 +4,7 @@
   var tasksStorage = null;
   var USER_SETTINGS_KEY = "my-day-user-settings-v1";
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
+  var IMPORTANT_DATES_KEY = "my-day-important-dates-v1";
   var DEFAULT_CITY = "Екатеринбург";
 
   var WEEKDAYS = [
@@ -16,36 +17,16 @@
     "июля", "августа", "сентября", "октября", "ноября", "декабря"
   ];
 
-  var CALENDAR_BY_DATE = {
-    "01-01": {
-      holiday: "[Демо] Новый год",
-      history: "[Демо] Здесь будет проверенное историческое событие этого дня.",
-      fact: "[Демо] Здесь будет короткий факт, связанный с 1 января."
-    },
-    "03-08": {
-      holiday: "[Демо] Международный женский день",
-      history: "[Демо] Здесь будет проверенное историческое событие этого дня.",
-      fact: "[Демо] Здесь будет короткий факт, связанный с 8 марта."
-    },
-    "07-17": {
-      holiday: "[Демо] Памятная дата проекта «Мой день»",
-      history: "[Демо] Здесь будет проверенное историческое событие этого дня.",
-      fact: "[Демо] Здесь будет короткий факт, связанный с 17 июля."
-    },
-    "07-18": {
-      holiday: "[Демо] День спокойного утра",
-      history: "[Демо] Здесь будет проверенное историческое событие этого дня.",
-      fact: "[Демо] Здесь будет короткий факт, связанный с 18 июля."
-    },
-    "12-31": {
-      holiday: "[Демо] Канун Нового года",
-      history: "[Демо] Здесь будет проверенное историческое событие этого дня.",
-      fact: "[Демо] Здесь будет короткий факт, связанный с 31 декабря."
-    }
+  var IMPORTANT_DATE_CATEGORY_LABELS = {
+    "семья": "Семья",
+    "работа": "Работа",
+    "личное": "Личное",
+    "учёба": "Учёба",
+    "путешествия": "Путешествия",
+    "другое": "Другое"
   };
 
-  var CALENDAR_EMPTY_TEXT =
-    "Сегодня важных дат нет.";
+  var CALENDAR_EMPTY_TEXT = "Сегодня важных дат нет.";
 
   var JOKE =
     "— Почему вы опоздали?\n— Поздно вышел заранее.";
@@ -131,12 +112,6 @@
     return weekday + ", " + day + " " + month;
   }
 
-  function getDateKey(date) {
-    var month = String(date.getMonth() + 1).padStart(2, "0");
-    var day = String(date.getDate()).padStart(2, "0");
-    return month + "-" + day;
-  }
-
   function getTodayTasks() {
     return tasksStorage.getTasksForDate(tasksStorage.getDateKey(new Date()));
   }
@@ -151,9 +126,118 @@
     return DAILY_THOUGHTS[dayOfYear % DAILY_THOUGHTS.length];
   }
 
+  function formatFullDateKey(date) {
+    var year = date.getFullYear();
+    var month = String(date.getMonth() + 1).padStart(2, "0");
+    var day = String(date.getDate()).padStart(2, "0");
+    return year + "-" + month + "-" + day;
+  }
+
+  function parseDateParts(value) {
+    if (typeof value !== "string") return null;
+
+    var match = value.trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!match) return null;
+
+    return {
+      year: Number(match[1]),
+      month: Number(match[2]),
+      day: Number(match[3])
+    };
+  }
+
+  function formatImportantDateCategory(category) {
+    if (typeof category !== "string") return "Важная дата";
+    var value = category.trim();
+    if (!value) return "Важная дата";
+    return IMPORTANT_DATE_CATEGORY_LABELS[value] || value;
+  }
+
+  function loadImportantDates() {
+    if (
+      window.MyDayImportantDatesStorage &&
+      typeof window.MyDayImportantDatesStorage.loadImportantDates === "function"
+    ) {
+      return window.MyDayImportantDatesStorage.loadImportantDates() || [];
+    }
+
+    try {
+      var saved = localStorage.getItem(IMPORTANT_DATES_KEY);
+      if (!saved) return [];
+
+      var parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.warn("Не удалось загрузить важные даты:", error);
+      return [];
+    }
+  }
+
+  function isImportantDateToday(item, today) {
+    if (!item || typeof item.date !== "string") return false;
+
+    var parts = parseDateParts(item.date);
+    if (!parts) return false;
+
+    if (item.yearly) {
+      return (
+        parts.month === today.getMonth() + 1 &&
+        parts.day === today.getDate()
+      );
+    }
+
+    return item.date.trim() === formatFullDateKey(today);
+  }
+
+  function getCalendarEventsForToday(today) {
+    if (!window.MyDayHolidays || typeof window.MyDayHolidays.getCalendarEventsOnDate !== "function") {
+      return [];
+    }
+
+    return window.MyDayHolidays.getCalendarEventsOnDate(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    ) || [];
+  }
+
+  function getTodayCalendarEntries(today) {
+    var entries = [];
+
+    loadImportantDates().forEach(function (item) {
+      if (!isImportantDateToday(item, today)) return;
+
+      var title = typeof item.title === "string" && item.title.trim()
+        ? item.title.trim()
+        : "—";
+
+      entries.push({
+        label: formatImportantDateCategory(item.category),
+        text: title
+      });
+    });
+
+    getCalendarEventsForToday(today).forEach(function (event) {
+      if (!event) return;
+
+      var title = typeof event.title === "string" && event.title.trim()
+        ? event.title.trim()
+        : "—";
+
+      entries.push({
+        label: event.typeLabel || "Календарная дата",
+        text: title
+      });
+    });
+
+    return entries;
+  }
+
   function renderCalendarEntry(label, text) {
     var item = document.createElement("div");
     item.className = "calendar__item";
+
+    var body = document.createElement("div");
 
     var itemLabel = document.createElement("p");
     itemLabel.className = "calendar__label";
@@ -163,19 +247,87 @@
     itemText.className = "calendar__text";
     itemText.textContent = text;
 
-    item.appendChild(itemLabel);
-    item.appendChild(itemText);
+    body.appendChild(itemLabel);
+    body.appendChild(itemText);
+    item.appendChild(body);
     return item;
+  }
+
+  // Временный тестовый режим: index.html?date=YYYY-MM-DD
+  // влияет только на блок «Праздники и даты».
+  function getQueryParam(name) {
+    var search = "";
+    try {
+      search = String(window.location.search || "");
+    } catch (error) {
+      search = "";
+    }
+
+    if (!search) {
+      try {
+        var href = String(window.location.href || "");
+        var qIndex = href.indexOf("?");
+        if (qIndex !== -1) {
+          var hashIndex = href.indexOf("#", qIndex);
+          search = hashIndex === -1 ? href.slice(qIndex) : href.slice(qIndex, hashIndex);
+        }
+      } catch (error2) {
+        search = "";
+      }
+    }
+
+    if (!search) return null;
+    if (search.charAt(0) === "?") search = search.slice(1);
+
+    var pairs = search.split("&");
+    for (var i = 0; i < pairs.length; i += 1) {
+      if (!pairs[i]) continue;
+      var parts = pairs[i].split("=");
+      var key = parts[0] ? decodeURIComponent(parts[0]).trim() : "";
+      if (key !== name) continue;
+      return parts[1] ? decodeURIComponent(parts[1].replace(/\+/g, " ")).trim() : "";
+    }
+
+    return null;
+  }
+
+  function getCalendarPreviewDate() {
+    var raw = getQueryParam("date");
+    if (!raw) return new Date();
+
+    var match = String(raw).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return new Date();
+
+    var year = Number(match[1]);
+    var month = Number(match[2]);
+    var day = Number(match[3]);
+    var preview = new Date(year, month - 1, day);
+
+    if (
+      preview.getFullYear() !== year ||
+      preview.getMonth() !== month - 1 ||
+      preview.getDate() !== day
+    ) {
+      return new Date();
+    }
+
+    return preview;
   }
 
   function renderCalendar() {
     var container = document.getElementById("calendar-content");
     if (!container) return;
 
+    var previewDate = getCalendarPreviewDate();
     container.innerHTML = "";
-    var entry = CALENDAR_BY_DATE[getDateKey(new Date())];
+    container.setAttribute(
+      "data-calendar-date",
+      formatFullDateKey(previewDate)
+    );
 
-    if (!entry) {
+    var entries = getTodayCalendarEntries(previewDate);
+
+    if (!entries.length) {
       var empty = document.createElement("p");
       empty.className = "calendar__empty";
       empty.textContent = CALENDAR_EMPTY_TEXT;
@@ -183,9 +335,9 @@
       return;
     }
 
-    container.appendChild(renderCalendarEntry("Праздник", entry.holiday));
-    container.appendChild(renderCalendarEntry("В этот день", entry.history));
-    container.appendChild(renderCalendarEntry("Факт дня", entry.fact));
+    entries.forEach(function (entry) {
+      container.appendChild(renderCalendarEntry(entry.label, entry.text));
+    });
   }
 
   function createTaskElement(task, isCompletedList) {
