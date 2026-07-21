@@ -398,25 +398,20 @@
     return calendarEvents;
   }
 
-  function getCalendarEventIcon(type) {
-    if (type === "official-holiday") return "🇷🇺";
-    return "•";
-  }
-
   function formatCalendarEventText(event, month) {
     var parts = [];
+    var eventMonth = typeof event.month === "number" ? event.month : month;
 
-    // Церковные даты — только название, без календарной даты в подписи.
-    if (event.type !== "religious-date" && typeof event.day === "number") {
-      parts.push(formatMonthDay(event.day, month));
+    if (typeof event.day === "number") {
+      parts.push(formatMonthDay(event.day, eventMonth));
     }
 
     if (event.title) {
-      parts.push(String(event.title).replace(/\bRU\b/g, "").trim());
+      parts.push(String(event.title).trim());
     }
 
     if (event.subtitle) {
-      parts.push(String(event.subtitle).replace(/\bRU\b/g, "").trim());
+      parts.push(String(event.subtitle).trim());
     }
 
     return parts.filter(Boolean).join(" · ");
@@ -489,16 +484,10 @@
     var line = document.createElement("span");
     line.className = "month-events__line";
 
-    var icon = document.createElement("span");
-    icon.className = "month-events__icon";
-    icon.setAttribute("aria-hidden", "true");
-    icon.textContent = getCalendarEventIcon(event.type);
-
     var text = document.createElement("span");
     text.className = "month-events__text";
     text.textContent = formatCalendarEventText(event, month);
 
-    line.appendChild(icon);
     line.appendChild(text);
     button.appendChild(line);
     item.appendChild(button);
@@ -506,18 +495,37 @@
     return item;
   }
 
+  function createMonthEventsGroup(title) {
+    var group = document.createElement("div");
+    group.className = "month-events__group";
+
+    var heading = document.createElement("h3");
+    heading.className = "month-events__group-title";
+    heading.textContent = title;
+
+    var list = document.createElement("ul");
+    list.className = "month-events__list";
+    list.setAttribute("role", "list");
+
+    group.appendChild(heading);
+    group.appendChild(list);
+
+    return {
+      root: group,
+      list: list
+    };
+  }
+
   function renderMonthEvents(year, month) {
     var section = document.getElementById("month-events");
-    var list = document.getElementById("month-events-list");
-    if (!section || !list) return;
+    var body = document.getElementById("month-events-body");
+    if (!section || !body) return;
 
     var personalEvents = collectPersonalMonthEvents(year, month);
-
-    // Единый массив всех календарных дат перед выводом.
     var calendarEvents = collectCalendarEvents(year, month);
     var i;
 
-    list.innerHTML = "";
+    body.innerHTML = "";
 
     if (!personalEvents.length && !calendarEvents.length) {
       setMonthEventsVisibility(section, false);
@@ -526,13 +534,26 @@
 
     setMonthEventsVisibility(section, true);
 
-    for (i = 0; i < personalEvents.length; i += 1) {
-      list.appendChild(renderPersonalMonthEvent(personalEvents[i], year, month));
+    if (personalEvents.length) {
+      var personalGroup = createMonthEventsGroup("Важные даты");
+      personalGroup.root.classList.add("month-events__group--personal");
+      for (i = 0; i < personalEvents.length; i += 1) {
+        personalGroup.list.appendChild(
+          renderPersonalMonthEvent(personalEvents[i], year, month)
+        );
+      }
+      body.appendChild(personalGroup.root);
     }
 
-    // Один цикл и один renderer для всех типов calendarEvents.
-    for (i = 0; i < calendarEvents.length; i += 1) {
-      list.appendChild(renderCalendarEvent(calendarEvents[i], year, month));
+    if (calendarEvents.length) {
+      var calendarGroup = createMonthEventsGroup("Праздники и события");
+      calendarGroup.root.classList.add("month-events__group--calendar");
+      for (i = 0; i < calendarEvents.length; i += 1) {
+        calendarGroup.list.appendChild(
+          renderCalendarEvent(calendarEvents[i], year, month)
+        );
+      }
+      body.appendChild(calendarGroup.root);
     }
   }
 
