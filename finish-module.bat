@@ -132,11 +132,13 @@ echo.
 echo ========================================
 echo.
 pause
+cls
 endlocal
 exit /b 0
 
 :end_fail
 echo.
 pause
+cls
 endlocal
 exit /b 1
