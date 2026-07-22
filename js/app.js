@@ -30,16 +30,6 @@
   var JOKE =
     "— Почему вы опоздали?\n— Поздно вышел заранее.";
 
-  var DAILY_THOUGHTS = [
-    "Сегодня не обязательно успеть всё. Достаточно сделать главное.",
-    "Спокойный шаг тоже ведёт вперёд.",
-    "Хороший день начинается не с идеального плана, а с первого осмысленного действия.",
-    "Иногда лучший способ двигаться быстрее — перестать торопиться.",
-    "Пусть сегодня будет место не только делам, но и вниманию к себе.",
-    "Маленькое завершённое дело ценнее десяти начатых.",
-    "Не каждый день должен быть выдающимся. Иногда достаточно, чтобы он был вашим."
-  ];
-
   function loadUserSettings() {
     try {
       var saved = localStorage.getItem(USER_SETTINGS_KEY);
@@ -110,12 +100,6 @@
 
   function saveTasksForToday(tasks) {
     tasksStorage.saveTasksForDate(tasksStorage.getDateKey(new Date()), tasks);
-  }
-
-  function getThoughtForToday(date) {
-    var start = new Date(date.getFullYear(), 0, 0);
-    var dayOfYear = Math.floor((date - start) / 86400000);
-    return DAILY_THOUGHTS[dayOfYear % DAILY_THOUGHTS.length];
   }
 
   function formatFullDateKey(date) {
@@ -458,13 +442,11 @@
 
   function initContent() {
     var smileEl = document.getElementById("smile-text");
-    var moodEl = document.getElementById("mood-text");
     var now = new Date();
 
     renderCalendar();
     renderCongratulations(now);
     if (smileEl) smileEl.textContent = JOKE;
-    if (moodEl) moodEl.textContent = getThoughtForToday(now);
   }
 
   function renderCongratulations(today) {

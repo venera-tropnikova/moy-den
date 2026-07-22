@@ -125,7 +125,7 @@
         </div>
       </section>
 
-      <!-- Два столбца: день рождения + мысль дня -->
+      <!-- Два столбца: день рождения + открытие дня -->
       <div class="duo">
 
         <div class="card card--birthday" id="birthday-card" role="note" aria-label="Поздравления">
@@ -141,12 +141,31 @@
           </div>
         </div>
 
-        <div class="card card--mood" aria-label="Мысль дня">
-          <p class="eyebrow">Мысль дня</p>
-          <p class="mood__q" aria-hidden="true">"</p>
-          <!-- JS заполняет: moodEl.textContent = getThoughtForToday() -->
-          <p class="mood__text" id="mood-text"></p>
-          <span class="mood__line" aria-hidden="true"></span>
+        <div
+          class="card card--discovery"
+          id="discovery-card"
+          role="button"
+          tabindex="0"
+          aria-expanded="false"
+          aria-controls="discovery-answer"
+          aria-label="Открытие дня"
+        >
+          <p class="eyebrow">Открытие дня</p>
+          <img
+            class="discovery__image"
+            id="discovery-image"
+            alt=""
+            width="320"
+            height="145"
+            decoding="async"
+          >
+          <p class="discovery__question" id="discovery-question"></p>
+          <div class="discovery__answer" id="discovery-answer" hidden>
+            <p class="discovery__title" id="discovery-title"></p>
+            <p class="discovery__place" id="discovery-place"></p>
+            <ul class="discovery__traits" id="discovery-traits"></ul>
+            <p class="discovery__fact" id="discovery-fact"></p>
+          </div>
         </div>
 
       </div>
@@ -246,6 +265,7 @@
   <script src="js/important-dates-storage.js"></script>
   <script src="js/history.js"></script>
   <script src="js/weather.js"></script>
+  <script src="js/discovery-of-the-day.js"></script>
   <script src="js/app.js?v=date-preview-2"></script>
 </body>
 </html>
