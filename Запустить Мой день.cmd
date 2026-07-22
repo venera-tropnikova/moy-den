@@ -1,4 +1,4 @@
-@echo off
+﻿@echo off
 chcp 65001 >nul
 set "PROJECT_DIR=D:\Cursor Проект Мой день"
 set "APP_URL=http://127.0.0.1:8000/index.html"

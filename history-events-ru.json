@@ -19,10 +19,58 @@
         "locale": "ru-RU",
         "priority": 100,
         "status": "verified",
+        "image": "assets/history/gagarin-vostok.jpg",
+        "imageAlt": "Корабль «Восток» на фоне Земли",
         "sources": [
           {
             "title": "NASA Science",
             "url": "https://science.nasa.gov/resource/yuri-gagarin-first-human-in-space/"
+          }
+        ]
+      }
+    ],
+    "07-20": [
+      {
+        "id": "world-1969-apollo11-moon-landing",
+        "dateKey": "07-20",
+        "year": 1969,
+        "title": "Первая высадка людей на Луну",
+        "summary": "Экипаж «Аполлон-11» впервые высадился на Луну: Нил Армстронг ступил на лунную поверхность.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "locale": "ru-RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "image": "assets/history/apollo-11.jpg",
+        "imageAlt": "Астронавт на поверхности Луны у лунного модуля",
+        "sources": [
+          {
+            "title": "NASA",
+            "url": "https://www.nasa.gov/history/apollo-11-mission-overview/"
+          }
+        ]
+      },
+      {
+        "id": "world-1976-viking1-landing",
+        "dateKey": "07-20",
+        "year": 1976,
+        "title": "Viking 1 на Марсе",
+        "summary": "Аппарат Viking 1 совершил мягкую посадку на Марс и начал передавать первые снимки поверхности.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "locale": "ru-RU",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "image": "",
+        "imageAlt": "",
+        "sources": [
+          {
+            "title": "NASA",
+            "url": "https://www.nasa.gov/mission/viking-1/"
           }
         ]
       }
@@ -40,6 +88,8 @@
         "locale": "ru-RU",
         "priority": 100,
         "status": "verified",
+        "image": "assets/history/sputnik-1.jpg",
+        "imageAlt": "Спутник-1 над ночным горизонтом Земли",
         "sources": [
           {
             "title": "NASA",
@@ -48,23 +98,70 @@
         ]
       }
     ],
-    "07-20": [
+    "07-23": [
       {
-        "id": "world-1969-apollo11-moon-landing",
-        "dateKey": "07-20",
-        "year": 1969,
-        "title": "Первая высадка людей на Луну",
-        "summary": "Экипаж «Аполлон-11» впервые высадился на Луну: Нил Армстронг ступил на лунную поверхность.",
+        "id": "world-1962-telstar-broadcast",
+        "year": 1962,
+        "title": "Первая прямая телепередача через Атлантику",
+        "summary": "Спутник Telstar впервые передал живое телевизионное изображение между Америкой и Европой. Мир впервые увидел друг друга в прямом эфире через космос.",
         "body": "",
-        "category": "space",
+        "category": "technology",
         "region": "WORLD",
-        "locale": "ru-RU",
         "priority": 100,
+        "interest": 9,
         "status": "verified",
+        "image": "assets/history/telstar-1962.jpg",
+        "imageAlt": "Спутник связи на орбите над Землёй",
         "sources": [
           {
             "title": "NASA",
-            "url": "https://www.nasa.gov/history/apollo-11-mission-overview/"
+            "url": "https://www.nasa.gov/image-article/telstar/"
+          }
+        ]
+      },
+      {
+        "id": "world-1995-hale-bopp-discovery",
+        "year": 1995,
+        "title": "Комета Хейла — Боппа",
+        "summary": "Алан Хейл и Томас Бопп независимо заметили новую комету. Позже она стала одной из самых ярких и знаменитых комет XX века.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "image": "assets/history/hale-bopp.jpg",
+        "imageAlt": "Комета с длинным хвостом на ночном небе",
+        "sources": [
+          {
+            "title": "NASA Science — C/1995 O1 (Hale-Bopp)",
+            "shortTitle": "NASA Science",
+            "url": "https://science.nasa.gov/solar-system/comets/c-1995-o1-hale-bopp/"
+          }
+        ]
+      },
+      {
+        "id": "ru-1874-lodygin-lamp",
+        "year": 1874,
+        "title": "Лампа Лодыгина",
+        "summary": "Александр Лодыгин получил привилегию № 1619 на способ электрического освещения лампой накаливания. Это стало важным шагом к привычному электрическому свету в домах.",
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "image": "assets/history/lodygin-lamp.jpg",
+        "imageAlt": "Ранняя лампа накаливания в стеклянной колбе",
+        "sources": [
+          {
+            "title": "Музей Мосэнерго",
+            "url": "https://www.mosenergo-museum.ru/Museum/News/22977/"
+          },
+          {
+            "title": "История.РФ — лампа Лодыгина",
+            "shortTitle": "История.РФ",
+            "url": "https://history.ru/read/articles/da-budiet-sviet-lampochka-lodyghina"
           }
         ]
       }

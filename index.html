@@ -74,15 +74,43 @@
       <!-- История + Открытие дня -->
       <div class="duo">
 
-        <section class="card card--history" aria-labelledby="hist-lbl">
+        <div
+          class="card card--history"
+          id="history-card"
+          role="button"
+          tabindex="0"
+          aria-expanded="false"
+          aria-controls="hist-answer"
+          aria-label="Историческая справка"
+        >
           <p class="eyebrow" id="hist-lbl">Историческая справка</p>
-          <div class="hist__head" id="hist-head">
-            <span class="hist__date" id="hist-date"></span>
-            <span class="hist__year" id="hist-year"></span>
+          <p class="hist__date" id="hist-date"></p>
+          <img
+            class="hist__image"
+            id="hist-image"
+            alt=""
+            width="320"
+            height="145"
+            decoding="async"
+          >
+          <p class="hist__question" id="hist-question"></p>
+          <div class="hist__answer" id="hist-answer" hidden>
+            <div class="hist__main" id="hist-main">
+              <p class="hist__text" id="hist-text"></p>
+              <p class="hist__source-row" id="hist-source-row" hidden>
+                <span class="hist__source-label">Источник:</span>
+                <a
+                  class="link-btn hist__source"
+                  id="hist-more"
+                  href="#"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                ></a>
+              </p>
+            </div>
+            <ul class="hist__extras" id="hist-extras" hidden></ul>
           </div>
-          <p class="hist__text" id="hist-text"></p>
-          <button class="link-btn hist__more" type="button">События этого дня →</button>
-        </section>
+        </div>
 
         <div
           class="card card--discovery"
