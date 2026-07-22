@@ -62,10 +62,10 @@
 
   function getGreeting(hour) {
     var name = getProfileName();
-    if (hour >= 5 && hour < 12) return "Доброе утро,\n" + name + "!";
-    if (hour >= 12 && hour < 18) return "Добрый день,\n" + name + "!";
-    if (hour >= 18 && hour < 23) return "Добрый вечер,\n" + name + "!";
-    return "Доброй ночи,\n" + name + "!";
+    if (hour >= 5 && hour < 12) return "Доброе утро, " + name;
+    if (hour >= 12 && hour < 18) return "Добрый день, " + name;
+    if (hour >= 18 && hour < 23) return "Добрый вечер, " + name;
+    return "Доброй ночи, " + name;
   }
 
   function isTodayBirthday(birthDate, today) {
@@ -98,10 +98,10 @@
   }
 
   function formatDate(date) {
-    var weekday = WEEKDAYS[date.getDay()];
+    var weekday = WEEKDAYS[date.getDay()].toLowerCase();
     var day = date.getDate();
     var month = MONTHS[date.getMonth()];
-    return weekday + ", " + day + " " + month;
+    return "Сегодня " + day + " " + month + ", " + weekday;
   }
 
   function getTodayTasks() {

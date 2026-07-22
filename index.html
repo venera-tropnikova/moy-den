@@ -38,36 +38,23 @@
 
       <div class="hero__top">
         <div class="hero__text">
-          <h1 class="hero__greeting" id="greeting">Доброй ночи,
-Венера!</h1>
+          <h1 class="hero__greeting" id="greeting">Доброй ночи, Венера</h1>
           <p class="hero__date" id="date">загрузка…</p>
         </div>
       </div>
 
       <!-- Погода — карточка (данные заполняет js/weather.js) -->
       <div class="weather" aria-label="Погода">
-        <div class="weather__icon" aria-hidden="true">
-          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
-               stroke="currentColor" stroke-width="1.5"
-               stroke-linecap="round" stroke-linejoin="round">
-            <circle cx="12" cy="12" r="4"/>
-            <line x1="12" y1="2"  x2="12" y2="4"/>
-            <line x1="12" y1="20" x2="12" y2="22"/>
-            <line x1="4.22" y1="4.22"   x2="5.64"  y2="5.64"/>
-            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
-            <line x1="2"  y1="12" x2="4"  y2="12"/>
-            <line x1="20" y1="12" x2="22" y2="12"/>
-            <line x1="4.22"  y1="19.78" x2="5.64"  y2="18.36"/>
-            <line x1="18.36" y1="5.64"  x2="19.78" y2="4.22"/>
-          </svg>
+        <div class="weather__now">
+          <p class="weather__city" id="weather-city">📍</p>
+          <p class="weather__temp-line">
+            <span class="weather__icon" id="weather-icon" aria-hidden="true">☀</span>
+            <span class="weather__temp" id="weather-temp">+21°</span>
+          </p>
+          <p class="weather__cond" id="weather-cond">Сейчас ясно</p>
         </div>
-        <div class="weather__main">
-          <p class="weather__city" id="weather-city">Екатеринбург</p>
-          <p class="weather__temp" id="weather-temp">+21°</p>
-          <p class="weather__cond" id="weather-cond">Ясно</p>
-          <p class="weather__cond" id="weather-detail">Без осадков</p>
-        </div>
-        <p class="weather__tip" id="weather-tip">Сегодня можно<br>без зонта</p>
+        <p class="weather__tip" id="weather-tip"></p>
+        <div class="weather__forecast" id="weather-forecast" aria-label="Прогноз на 5 дней"></div>
       </div>
 
     </header>

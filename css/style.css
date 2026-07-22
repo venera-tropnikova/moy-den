@@ -163,17 +163,43 @@ input  { font-family: inherit; }
 /* ─── ПОГОДА ─────────────────────────────────────────── */
 
 .weather {
-  display: grid;
-  grid-template-columns: auto 1fr auto;
-  align-items: center;
-  gap: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
   background: rgba(255, 255, 255, 0.82);
   border-radius: var(--r-md);
   padding: 16px 18px;
   box-shadow: var(--shadow-xs);
 }
 
-.weather__icon { color: var(--warm); display: flex; align-items: center; }
+.weather__now {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 4px;
+}
+
+.weather__city {
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  line-height: 1.3;
+}
+
+.weather__temp-line {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 2px;
+}
+
+.weather__icon {
+  color: var(--warm);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 1.45rem;
+  line-height: 1;
+}
 
 .weather__temp {
   font-family: var(--serif);
@@ -184,15 +210,59 @@ input  { font-family: inherit; }
   letter-spacing: -0.01em;
 }
 
-.weather__city { font-size: 0.72rem; color: var(--ink-mid); line-height: 1.3; }
-
-.weather__cond { font-size: 0.8rem; color: var(--ink-mid); line-height: 1.4; }
+.weather__cond {
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+  line-height: 1.4;
+}
 
 .weather__tip {
-  font-size: 0.78rem;
+  font-size: 0.8rem;
   color: var(--ink-mid);
   line-height: 1.45;
-  text-align: right;
+}
+
+.weather__tip:empty {
+  display: none;
+}
+
+.weather__forecast {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(0, 1fr));
+  gap: 6px;
+  padding-top: 10px;
+  border-top: 1px solid var(--divider);
+}
+
+.weather__forecast:empty {
+  display: none;
+}
+
+.weather__day {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2px;
+  min-width: 0;
+  text-align: center;
+}
+
+.weather__day-name {
+  font-size: 0.68rem;
+  color: var(--ink-mid);
+  line-height: 1.2;
+}
+
+.weather__day-icon {
+  font-size: 0.95rem;
+  line-height: 1.2;
+}
+
+.weather__day-temp {
+  font-size: 0.72rem;
+  color: var(--ink);
+  line-height: 1.2;
+  white-space: nowrap;
 }
 
 /* ─── SCROLL AREA ────────────────────────────────────── */
