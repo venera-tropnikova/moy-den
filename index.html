@@ -71,16 +71,111 @@
         <button class="link-btn hist__more" type="button">Важные даты этого дня →</button>
       </section>
 
-      <!-- Историческая справка (JS заполняет из history-events-ru.json) -->
-      <section class="card card--history" aria-labelledby="hist-lbl">
-        <p class="eyebrow" id="hist-lbl">Историческая справка</p>
-        <div class="hist__head" id="hist-head">
-          <span class="hist__date" id="hist-date"></span>
-          <span class="hist__year" id="hist-year"></span>
+      <!-- История + Открытие дня -->
+      <div class="duo">
+
+        <section class="card card--history" aria-labelledby="hist-lbl">
+          <p class="eyebrow" id="hist-lbl">Историческая справка</p>
+          <div class="hist__head" id="hist-head">
+            <span class="hist__date" id="hist-date"></span>
+            <span class="hist__year" id="hist-year"></span>
+          </div>
+          <p class="hist__text" id="hist-text"></p>
+          <button class="link-btn hist__more" type="button">События этого дня →</button>
+        </section>
+
+        <div
+          class="card card--discovery"
+          id="discovery-card"
+          role="button"
+          tabindex="0"
+          aria-expanded="false"
+          aria-controls="discovery-answer"
+          aria-label="Открытие дня"
+        >
+          <p class="eyebrow">Открытие дня</p>
+          <img
+            class="discovery__image"
+            id="discovery-image"
+            alt=""
+            width="320"
+            height="145"
+            decoding="async"
+          >
+          <p class="discovery__question" id="discovery-question"></p>
+          <div class="discovery__answer" id="discovery-answer" hidden>
+            <p class="discovery__title" id="discovery-title"></p>
+            <p class="discovery__place" id="discovery-place"></p>
+            <ul class="discovery__traits" id="discovery-traits"></ul>
+            <p class="discovery__fact" id="discovery-fact"></p>
+          </div>
         </div>
-        <p class="hist__text" id="hist-text"></p>
-        <button class="link-btn hist__more" type="button">События этого дня →</button>
-      </section>
+
+      </div>
+
+      <!-- Поздравления + Анекдот дня -->
+      <div class="duo">
+
+        <div class="card card--birthday" id="birthday-card" role="note" aria-label="Поздравления">
+          <p class="eyebrow">Поздравления</p>
+          <div class="bday__row" id="bday-row">
+            <div class="bday__info">
+              <p class="bday__person-name" id="birthday-name"></p>
+              <p class="bday__person-when" id="birthday-when"></p>
+            </div>
+            <button class="bday__open-btn" type="button" id="greet-btn" aria-label="Открыть поздравление">
+              Открыть
+            </button>
+          </div>
+          <div class="bday__empty" id="bday-empty" hidden>
+            <div class="bday__empty-art" aria-hidden="true">
+              <img
+                class="bday__empty-image"
+                id="bday-empty-image"
+                src="assets/congratulations/calm-window-light.jpg"
+                alt=""
+                width="320"
+                height="180"
+                decoding="async"
+              >
+            </div>
+            <div class="bday__empty-copy">
+              <p class="bday__empty-text">Сегодня нет поводов<br>для поздравлений.</p>
+              <p class="bday__empty-hint">Пожелаем кому-нибудь<br>доброго дня?</p>
+            </div>
+          </div>
+          <div class="bday__wish" id="bday-wish" hidden>
+            <p class="bday__wish-title">Доброго дня!</p>
+            <label class="visually-hidden" for="bday-wish-input">Текст пожелания</label>
+            <textarea
+              class="bday__wish-input"
+              id="bday-wish-input"
+              rows="3"
+            >Пусть сегодняшний день принесёт хотя бы одну приятную неожиданность.</textarea>
+            <div class="bday__wish-links">
+              <button class="bday__share-link" type="button" id="bday-empty-copy-btn">
+                📋 Копировать
+              </button>
+              <button class="bday__share-link" type="button" id="bday-empty-share-btn" aria-expanded="false" aria-controls="bday-share-menu">
+                📤 Поделиться
+              </button>
+            </div>
+            <div class="bday__share-menu" id="bday-share-menu" hidden role="menu" aria-label="Поделиться">
+              <button class="bday__share-option" type="button" role="menuitem" data-share="telegram">Telegram</button>
+              <button class="bday__share-option" type="button" role="menuitem" data-share="whatsapp">WhatsApp</button>
+              <button class="bday__share-option" type="button" role="menuitem" data-share="native">MAX / Другие приложения</button>
+              <button class="bday__share-option" type="button" role="menuitem" data-share="copy">Копировать текст</button>
+            </div>
+            <p class="bday__wish-status" id="bday-wish-status" aria-live="polite"></p>
+          </div>
+        </div>
+
+        <section class="card card--smile" aria-labelledby="smile-lbl">
+          <p class="eyebrow" id="smile-lbl">Анекдот дня</p>
+          <p class="smile__text" id="smile-text"></p>
+        </section>
+
+      </div>
 
       <!-- Задачи -->
       <section class="card" aria-labelledby="tasks-lbl">
@@ -123,57 +218,6 @@
             </svg>
           </button>
         </div>
-      </section>
-
-      <!-- Два столбца: день рождения + открытие дня -->
-      <div class="duo">
-
-        <div class="card card--birthday" id="birthday-card" role="note" aria-label="Поздравления">
-          <p class="eyebrow">Поздравления</p>
-          <div class="bday__row">
-            <div class="bday__info">
-              <p class="bday__person-name" id="birthday-name"></p>
-              <p class="bday__person-when" id="birthday-when"></p>
-            </div>
-            <button class="bday__open-btn" type="button" id="greet-btn" aria-label="Открыть поздравление">
-              Открыть
-            </button>
-          </div>
-        </div>
-
-        <div
-          class="card card--discovery"
-          id="discovery-card"
-          role="button"
-          tabindex="0"
-          aria-expanded="false"
-          aria-controls="discovery-answer"
-          aria-label="Открытие дня"
-        >
-          <p class="eyebrow">Открытие дня</p>
-          <img
-            class="discovery__image"
-            id="discovery-image"
-            alt=""
-            width="320"
-            height="145"
-            decoding="async"
-          >
-          <p class="discovery__question" id="discovery-question"></p>
-          <div class="discovery__answer" id="discovery-answer" hidden>
-            <p class="discovery__title" id="discovery-title"></p>
-            <p class="discovery__place" id="discovery-place"></p>
-            <ul class="discovery__traits" id="discovery-traits"></ul>
-            <p class="discovery__fact" id="discovery-fact"></p>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- Анекдот дня (JS заполняет: smileEl.textContent = JOKE) -->
-      <section class="card card--smile" aria-labelledby="smile-lbl">
-        <p class="eyebrow" id="smile-lbl">Анекдот дня</p>
-        <p class="smile__text" id="smile-text"></p>
       </section>
 
     </main>
@@ -266,6 +310,6 @@
   <script src="js/history.js"></script>
   <script src="js/weather.js"></script>
   <script src="js/discovery-of-the-day.js"></script>
-  <script src="js/app.js?v=date-preview-2"></script>
+  <script src="js/app.js?v=task-menu-1"></script>
 </body>
 </html>

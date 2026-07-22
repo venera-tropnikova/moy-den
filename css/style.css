@@ -53,6 +53,18 @@ html {
 button { font-family: inherit; cursor: pointer; }
 input  { font-family: inherit; }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
 /* ─── Обёртка ────────────────────────────────────────── */
 
 .screen {
@@ -288,23 +300,27 @@ input  { font-family: inherit; }
   align-items: baseline;
   justify-content: space-between;
   gap: 12px;
-  margin-bottom: 16px;
+  margin-bottom: 10px;
 }
 
 .card__title {
-  font-size: 1.05rem;
-  font-weight: 600;
+  font-size: 0.62rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
   color: var(--ink);
   line-height: 1.2;
+  white-space: nowrap;
 }
 
 .eyebrow {
-  font-size: 0.68rem;
+  font-size: 0.62rem;
   font-weight: 700;
-  letter-spacing: 0.16em;
+  letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: var(--ink-faint);
-  margin-bottom: 8px;
+  color: var(--ink);
+  margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 .badge {
@@ -330,6 +346,7 @@ input  { font-family: inherit; }
   gap: 12px;
   padding: 11px 0;
   border-bottom: 1px solid var(--divider);
+  position: relative;
 }
 
 .task:last-child { border-bottom: none; }
@@ -359,16 +376,133 @@ input  { font-family: inherit; }
 
 .task__label {
   flex: 1;
+  min-width: 0;
   font-size: 0.97rem;
   color: var(--ink);
   line-height: 1.4;
-  cursor: pointer;
+  cursor: text;
 }
 
 .task--done .task__label {
   color: var(--ink-faint);
   text-decoration: line-through;
   text-decoration-color: var(--ink-faint);
+}
+
+.task__edit {
+  flex: 1;
+  min-width: 0;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  border: none;
+  background: transparent;
+  font-family: inherit;
+  font-size: 0.97rem;
+  line-height: 1.4;
+  color: var(--ink);
+  box-sizing: border-box;
+  outline: none;
+}
+
+.task--done .task__edit {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-faint);
+}
+
+.task__menu {
+  position: relative;
+  flex-shrink: 0;
+  margin-left: auto;
+}
+
+.task__menu-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 28px;
+  height: 28px;
+  padding: 0;
+  border: none;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--ink-faint);
+  font-size: 1.1rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  cursor: pointer;
+  opacity: 0.55;
+  transition: opacity 0.15s, background 0.15s, color 0.15s;
+}
+
+.task__menu-btn:hover,
+.task__menu.is-open .task__menu-btn,
+.task__menu-btn:focus-visible {
+  opacity: 1;
+  color: var(--ink-mid);
+  background: rgba(25, 21, 18, 0.04);
+}
+
+.task--editing .task__menu {
+  display: none;
+}
+
+.task__menu-dropdown {
+  position: absolute;
+  top: calc(100% + 4px);
+  right: 0;
+  z-index: 5;
+  min-width: 168px;
+  max-width: min(220px, 70vw);
+  padding: 6px;
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 8px 28px rgba(25, 21, 18, 0.12), 0 2px 8px rgba(25, 21, 18, 0.06);
+}
+
+.task__menu-dropdown[hidden] {
+  display: none;
+}
+
+.task__menu-option {
+  display: block;
+  width: 100%;
+  padding: 9px 10px;
+  border: none;
+  border-radius: 9px;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.task__menu-option + .task__menu-option {
+  margin-top: 1px;
+}
+
+.task__menu-option:hover {
+  background: #F7F2ED;
+}
+
+.task__menu-option--danger {
+  color: #9A4A3A;
+}
+
+.task__date-input {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+  border: 0;
+  padding: 0;
+  margin: 0;
 }
 
 .task__delete {
@@ -485,12 +619,51 @@ input  { font-family: inherit; }
   gap: 12px;
 }
 
-.duo .card { padding: 18px 16px; }
+.duo .card {
+  padding: 18px 16px;
+  height: 210px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.duo .card > .eyebrow {
+  flex-shrink: 0;
+  color: var(--ink);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
 
 /* ─── ДЕНЬ РОЖДЕНИЯ ──────────────────────────────────── */
 
 .card--birthday {
   background: var(--bday-bg);
+  height: 210px;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+  position: relative;
+}
+
+.card--birthday > .eyebrow {
+  color: var(--ink);
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
+  margin-bottom: 6px;
+  white-space: nowrap;
+}
+
+.card--birthday-empty {
+  cursor: pointer;
+}
+
+.card--birthday-empty:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* Строка: имя + кнопка */
@@ -534,6 +707,213 @@ input  { font-family: inherit; }
 .bday__open-btn:hover  { opacity: 0.8; }
 .bday__open-btn:active { opacity: 0.65; }
 
+.bday__empty {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  justify-content: flex-start;
+  text-align: center;
+  gap: 6px;
+  padding: 2px 0 0;
+}
+
+.bday__empty[hidden],
+.bday__wish[hidden],
+.bday__row[hidden],
+.bday__share-menu[hidden] {
+  display: none;
+}
+
+.bday__empty-art {
+  flex: 0 0 78px;
+  height: 78px;
+  overflow: hidden;
+  border-radius: var(--r-sm);
+  background: #EFE6DF;
+}
+
+.bday__empty-image {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+.bday__empty-copy {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 6px;
+  padding: 0 2px 2px;
+}
+
+.bday__empty-text {
+  font-family: var(--serif);
+  font-size: 0.84rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.3;
+}
+
+.bday__empty-hint {
+  font-size: 0.7rem;
+  color: var(--ink-mid);
+  line-height: 1.35;
+}
+
+.bday__wish {
+  flex: 1 1 auto;
+  min-height: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 0;
+  position: relative;
+}
+
+.bday__wish-title {
+  flex-shrink: 0;
+  font-family: var(--serif);
+  font-size: 0.92rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.25;
+}
+
+.bday__wish-input {
+  flex: 1 1 auto;
+  min-height: 0;
+  width: 100%;
+  resize: none;
+  border: none;
+  border-radius: var(--r-sm);
+  background: rgba(255, 255, 255, 0.45);
+  padding: 6px 8px;
+  font-family: var(--sans);
+  font-size: 0.74rem;
+  line-height: 1.35;
+  color: var(--ink);
+  cursor: text;
+}
+
+.bday__wish-input:focus {
+  outline: none;
+  background: rgba(255, 255, 255, 0.7);
+}
+
+.bday__share-link {
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  color: var(--ink-mid);
+  font-size: 0.68rem;
+  font-weight: 500;
+  letter-spacing: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: color 0.15s, opacity 0.15s;
+}
+
+.bday__wish-links {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  flex-wrap: nowrap;
+  gap: 10px;
+  min-width: 0;
+}
+
+.bday__share-link:hover {
+  color: var(--ink);
+}
+
+.bday__share-link:active {
+  opacity: 0.75;
+}
+
+.bday__share-menu {
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 6px;
+  background: #fff;
+  border: none;
+  border-radius: 15px;
+  box-shadow: 0 8px 28px rgba(25, 21, 18, 0.12), 0 2px 8px rgba(25, 21, 18, 0.06);
+  font-family: var(--sans);
+}
+
+.bday__share-option {
+  width: 100%;
+  padding: 10px 12px;
+  border: none;
+  border-radius: 10px;
+  background: transparent;
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.78rem;
+  font-weight: 500;
+  text-align: left;
+  cursor: pointer;
+  transition: background 0.15s;
+}
+
+.bday__share-option + .bday__share-option {
+  border-top: 1px solid var(--divider);
+  border-radius: 0;
+  margin-top: 0;
+}
+
+.bday__share-option:first-child {
+  border-radius: 10px 10px 0 0;
+}
+
+.bday__share-option:last-child {
+  border-radius: 0 0 10px 10px;
+}
+
+.bday__share-option:only-child {
+  border-radius: 10px;
+}
+
+.bday__share-option:hover {
+  background: #F7F2ED;
+}
+
+.bday__wish-status {
+  position: absolute;
+  left: 6px;
+  right: 6px;
+  bottom: 28px;
+  margin: 0;
+  padding: 5px 8px;
+  border-radius: 8px;
+  background: rgba(25, 21, 18, 0.88);
+  color: #fff;
+  font-size: 0.68rem;
+  line-height: 1.3;
+  text-align: center;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.15s;
+}
+
+.bday__wish-status.is-visible {
+  opacity: 1;
+}
+
 /* ─── ОТКРЫТИЕ ДНЯ ───────────────────────────────────── */
 
 .card--discovery {
@@ -559,9 +939,10 @@ input  { font-family: inherit; }
 
 .card--discovery > .eyebrow {
   color: var(--ink);
-  font-size: 0.72rem;
-  letter-spacing: 0.14em;
+  font-size: 0.62rem;
+  letter-spacing: 0.08em;
   margin-bottom: 6px;
+  white-space: nowrap;
 }
 
 .discovery__image {
@@ -715,44 +1096,64 @@ input  { font-family: inherit; }
 
 .card--history {
   background: var(--history-bg);
-  padding: 16px 18px;
 }
 
 .hist__head {
   display: flex;
   align-items: baseline;
-  gap: 10px;
-  margin-bottom: 8px;
+  flex-wrap: wrap;
+  gap: 6px 10px;
+  margin-bottom: 6px;
+  flex-shrink: 0;
 }
 
 .hist__date {
   font-family: var(--serif);
-  font-size: 1.45rem;
+  font-size: 1.05rem;
   font-weight: 400;
-  line-height: 1;
+  line-height: 1.1;
   color: var(--ink);
   letter-spacing: -0.02em;
 }
 
 .hist__year {
-  font-size: 0.8rem;
+  font-size: 0.72rem;
   color: var(--ink-mid);
 }
 
 .hist__text {
-  font-size: 0.82rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  font-size: 0.78rem;
   color: var(--ink-mid);
-  line-height: 1.5;
-  margin-bottom: 10px;
+  line-height: 1.4;
+  margin-bottom: 6px;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 5;
+}
+
+.card--history .hist__more {
+  flex-shrink: 0;
+  margin-top: auto;
+  font-size: 0.72rem;
 }
 
 /* ─── УЛЫБКА ─────────────────────────────────────────── */
 
+.card--smile {
+  background: var(--card);
+}
+
 .smile__text {
-  font-size: 0.93rem;
+  flex: 1 1 auto;
+  min-height: 0;
+  font-size: 0.78rem;
   color: var(--ink-mid);
-  line-height: 1.65;
+  line-height: 1.45;
   white-space: pre-line;
+  overflow: hidden;
 }
 
 /* ─── ТЕКСТОВЫЕ КНОПКИ-ССЫЛКИ ────────────────────────── */

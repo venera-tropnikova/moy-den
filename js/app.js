@@ -102,6 +102,102 @@
     tasksStorage.saveTasksForDate(tasksStorage.getDateKey(new Date()), tasks);
   }
 
+  function getTomorrowDateKey() {
+    var tomorrow = new Date();
+    tomorrow.setHours(12, 0, 0, 0);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tasksStorage.getDateKey(tomorrow);
+  }
+
+  function closeAllTaskMenus(exceptMenu) {
+    var menus = document.querySelectorAll(".task__menu.is-open");
+    for (var i = 0; i < menus.length; i += 1) {
+      if (exceptMenu && menus[i] === exceptMenu) continue;
+      menus[i].classList.remove("is-open");
+      var btn = menus[i].querySelector(".task__menu-btn");
+      var panel = menus[i].querySelector(".task__menu-dropdown");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+      if (panel) panel.hidden = true;
+    }
+  }
+
+  function removeTaskFromToday(taskId) {
+    var todayKey = tasksStorage.getDateKey(new Date());
+    var todayTasks = tasksStorage.getTasksForDate(todayKey);
+    var removed = null;
+    var remaining = [];
+
+    for (var i = 0; i < todayTasks.length; i += 1) {
+      if (String(todayTasks[i].id) === String(taskId)) {
+        removed = todayTasks[i];
+      } else {
+        remaining.push(todayTasks[i]);
+      }
+    }
+
+    if (!removed) return null;
+
+    tasksStorage.saveTasksForDate(todayKey, remaining);
+    return removed;
+  }
+
+  function moveTaskToDate(taskId, targetDateKey) {
+    var todayKey = tasksStorage.getDateKey(new Date());
+    if (!targetDateKey || targetDateKey === todayKey) return false;
+
+    var removed = removeTaskFromToday(taskId);
+    if (!removed) return false;
+
+    var targetTasks = tasksStorage.getTasksForDate(targetDateKey);
+    targetTasks.push({
+      id: removed.id,
+      text: removed.text,
+      done: false
+    });
+    tasksStorage.saveTasksForDate(targetDateKey, targetTasks);
+    return true;
+  }
+
+  function deleteTaskFromToday(taskId) {
+    return Boolean(removeTaskFromToday(taskId));
+  }
+
+  function pickDateForTask(taskId) {
+    var todayKey = tasksStorage.getDateKey(new Date());
+    var input = document.createElement("input");
+    input.type = "date";
+    input.className = "task__date-input";
+    input.setAttribute("aria-label", "Выбрать дату");
+    document.body.appendChild(input);
+
+    function cleanup() {
+      if (input.parentNode) input.parentNode.removeChild(input);
+    }
+
+    input.addEventListener("change", function () {
+      var value = input.value;
+      cleanup();
+      if (!value || value === todayKey) return;
+      if (moveTaskToDate(taskId, value)) {
+        renderTasks();
+      }
+    });
+
+    input.addEventListener("blur", function () {
+      window.setTimeout(cleanup, 200);
+    });
+
+    if (typeof input.showPicker === "function") {
+      try {
+        input.showPicker();
+        return;
+      } catch (err) {}
+    }
+
+    input.focus();
+    input.click();
+  }
+
   function formatFullDateKey(date) {
     var year = date.getFullYear();
     var month = String(date.getMonth() + 1).padStart(2, "0");
@@ -328,15 +424,130 @@
     checkbox.checked = Boolean(task.done);
     checkbox.setAttribute("aria-label", task.text);
 
-    var label = document.createElement("label");
+    // span без for — клик по тексту не связан с checkbox
+    var label = document.createElement("span");
     label.className = "task__label";
-    label.htmlFor = checkbox.id;
     label.textContent = task.text;
+    label.setAttribute("role", "button");
+    label.setAttribute("tabindex", "0");
+    label.setAttribute("aria-label", "Редактировать задачу");
+
+    function startEditing() {
+      if (li.classList.contains("task--editing")) return;
+
+      var originalText = label.textContent || "";
+      var input = document.createElement("input");
+      var finishing = false;
+      var canCommitOnBlur = false;
+
+      input.type = "text";
+      input.className = "task__edit";
+      input.value = originalText;
+      input.setAttribute("aria-label", "Текст задачи");
+      input.maxLength = 200;
+
+      li.classList.add("task--editing");
+      label.replaceWith(input);
+
+      function restoreLabel(text) {
+        label.textContent = text;
+        checkbox.setAttribute("aria-label", text);
+        if (input.parentNode) input.replaceWith(label);
+        li.classList.remove("task--editing");
+      }
+
+      function commitEdit(shouldSave) {
+        if (finishing) return;
+        finishing = true;
+
+        var nextText = shouldSave ? input.value.trim() : originalText;
+        if (shouldSave && !nextText) {
+          nextText = originalText;
+        }
+
+        if (shouldSave && nextText !== originalText) {
+          var todayTasks = getTodayTasks();
+          var currentTask = todayTasks.find(function (item) {
+            return String(item.id) === String(task.id);
+          });
+
+          if (currentTask) {
+            currentTask.text = nextText;
+            saveTasksForToday(todayTasks);
+          }
+        }
+
+        restoreLabel(nextText);
+      }
+
+      input.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          event.stopPropagation();
+          commitEdit(true);
+          return;
+        }
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          event.stopPropagation();
+          commitEdit(false);
+        }
+      });
+
+      // Нельзя слушать blur до конца жеста открытия:
+      // тот же click, что открыл редактирование, иначе сразу снимет focus.
+      input.addEventListener("blur", function () {
+        if (!canCommitOnBlur) return;
+        commitEdit(true);
+      });
+
+      input.focus();
+      if (typeof input.setSelectionRange === "function") {
+        try {
+          input.setSelectionRange(input.value.length, input.value.length);
+        } catch (err) {}
+      }
+
+      // Включить blur-сохранение только после завершения текущего click/pointer жеста.
+      queueMicrotask(function () {
+        canCommitOnBlur = true;
+      });
+    }
+
+    // preventDefault на pointerdown удерживает focus и не даёт
+    // браузеру «дожать» click так, чтобы новый input сразу потерял фокус.
+    label.addEventListener("pointerdown", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+
+    label.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      startEditing();
+    });
+
+    label.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        event.stopPropagation();
+        startEditing();
+      }
+    });
+
+    checkbox.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
 
     checkbox.addEventListener("change", function () {
       var todayTasks = getTodayTasks();
       var currentTask = todayTasks.find(function (item) {
-        return item.id === task.id;
+        return String(item.id) === String(task.id);
       });
 
       if (!currentTask) return;
@@ -358,6 +569,90 @@
 
     li.appendChild(checkbox);
     li.appendChild(label);
+
+    if (!isCompletedList && !task.done) {
+      var menu = document.createElement("div");
+      menu.className = "task__menu";
+
+      var menuBtn = document.createElement("button");
+      menuBtn.type = "button";
+      menuBtn.className = "task__menu-btn";
+      menuBtn.setAttribute("aria-label", "Действия с задачей");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-haspopup", "true");
+      menuBtn.textContent = "⋯";
+
+      var dropdown = document.createElement("div");
+      dropdown.className = "task__menu-dropdown";
+      dropdown.hidden = true;
+      dropdown.setAttribute("role", "menu");
+
+      function addMenuOption(labelText, action) {
+        var option = document.createElement("button");
+        option.type = "button";
+        option.className = "task__menu-option";
+        if (action === "delete") {
+          option.className += " task__menu-option--danger";
+        }
+        option.setAttribute("role", "menuitem");
+        option.dataset.action = action;
+        option.textContent = labelText;
+        dropdown.appendChild(option);
+      }
+
+      addMenuOption("Перенести на завтра", "tomorrow");
+      addMenuOption("Выбрать дату", "date");
+      addMenuOption("Удалить", "delete");
+
+      function setMenuOpen(open) {
+        if (open) closeAllTaskMenus(menu);
+        menu.classList.toggle("is-open", open);
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        dropdown.hidden = !open;
+      }
+
+      menuBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setMenuOpen(dropdown.hidden);
+      });
+
+      dropdown.addEventListener("click", function (event) {
+        event.stopPropagation();
+        var option = event.target && event.target.closest
+          ? event.target.closest("[data-action]")
+          : null;
+        if (!option) return;
+
+        var action = option.getAttribute("data-action");
+        setMenuOpen(false);
+
+        if (action === "tomorrow") {
+          if (moveTaskToDate(task.id, getTomorrowDateKey())) {
+            renderTasks();
+          }
+          return;
+        }
+
+        if (action === "date") {
+          pickDateForTask(task.id);
+          return;
+        }
+
+        if (action === "delete") {
+          if (window.confirm("Удалить задачу?")) {
+            if (deleteTaskFromToday(task.id)) {
+              renderTasks();
+            }
+          }
+        }
+      });
+
+      menu.appendChild(menuBtn);
+      menu.appendChild(dropdown);
+      li.appendChild(menu);
+    }
+
     return li;
   }
 
@@ -449,6 +744,50 @@
     if (smileEl) smileEl.textContent = JOKE;
   }
 
+  function setBirthdayWishOpen(card, emptyEl, wishEl, open) {
+    if (!card) return;
+
+    card.classList.toggle("card--birthday-wish-open", open);
+    card.setAttribute("aria-expanded", open ? "true" : "false");
+
+    if (emptyEl) emptyEl.hidden = open;
+    if (wishEl) wishEl.hidden = !open;
+
+    if (!open) {
+      var shareMenu = document.getElementById("bday-share-menu");
+      var shareBtn = document.getElementById("bday-empty-share-btn");
+      if (shareMenu) shareMenu.hidden = true;
+      if (shareBtn) shareBtn.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  function setBirthdayEmptyMode(card, isEmpty) {
+    var row = document.getElementById("bday-row");
+    var emptyEl = document.getElementById("bday-empty");
+    var wishEl = document.getElementById("bday-wish");
+
+    if (!card) return;
+
+    if (isEmpty) {
+      if (row) row.hidden = true;
+      card.classList.add("card--birthday-empty");
+      card.setAttribute("role", "button");
+      card.tabIndex = 0;
+      card.setAttribute("aria-controls", "bday-wish");
+      setBirthdayWishOpen(card, emptyEl, wishEl, false);
+      return;
+    }
+
+    if (row) row.hidden = false;
+    if (emptyEl) emptyEl.hidden = true;
+    if (wishEl) wishEl.hidden = true;
+    card.classList.remove("card--birthday-empty", "card--birthday-wish-open");
+    card.setAttribute("role", "note");
+    card.removeAttribute("tabindex");
+    card.removeAttribute("aria-expanded");
+    card.removeAttribute("aria-controls");
+  }
+
   function renderCongratulations(today) {
     var card = document.getElementById("birthday-card");
     var name = document.getElementById("birthday-name");
@@ -456,18 +795,33 @@
     var greetBtn = document.getElementById("greet-btn");
     var modalTitle = document.getElementById("bday-modal-title-text");
     var modalText = document.getElementById("bday-modal-text");
+    var emptyImage = document.getElementById("bday-empty-image");
     var todaysBirthdays = getTodaysBirthdays(today);
+    var ritualImages = [
+      "assets/congratulations/calm-window-light.jpg",
+      "assets/congratulations/calm-morning-walk.jpg",
+      "assets/congratulations/calm-sea-silhouette.jpg",
+      "assets/congratulations/calm-sunbeams.jpg"
+    ];
 
     if (!card) return;
 
     card.hidden = false;
 
+    if (emptyImage) {
+      var dayIndex = Math.floor(
+        Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000
+      );
+      emptyImage.src = ritualImages[Math.abs(dayIndex) % ritualImages.length];
+    }
+
     if (!todaysBirthdays.length) {
-      if (name) name.textContent = "Сегодня нет поводов для поздравлений";
-      if (when) when.textContent = "";
+      setBirthdayEmptyMode(card, true);
       if (greetBtn) greetBtn.hidden = true;
       return;
     }
+
+    setBirthdayEmptyMode(card, false);
 
     var personName = typeof todaysBirthdays[0].name === "string" && todaysBirthdays[0].name.trim()
       ? todaysBirthdays[0].name.trim()
@@ -480,6 +834,202 @@
     if (modalText) {
       modalText.textContent =
         "Желаю здоровья, душевного тепла, радостных событий и как можно больше поводов улыбаться!";
+    }
+  }
+
+  function initBirthdayEmptyCard() {
+    var card = document.getElementById("birthday-card");
+    var emptyEl = document.getElementById("bday-empty");
+    var wishEl = document.getElementById("bday-wish");
+    var wishInput = document.getElementById("bday-wish-input");
+    var copyBtn = document.getElementById("bday-empty-copy-btn");
+    var shareBtn = document.getElementById("bday-empty-share-btn");
+    var shareMenu = document.getElementById("bday-share-menu");
+    var statusEl = document.getElementById("bday-wish-status");
+    var statusTimer = null;
+    var DEFAULT_WISH =
+      "Пусть сегодняшний день принесёт хотя бы одну приятную неожиданность.";
+
+    if (!card || !emptyEl || !wishEl) return;
+
+    function getWishText() {
+      var title = "Доброго дня!";
+      var body = wishInput && typeof wishInput.value === "string"
+        ? wishInput.value.trim()
+        : DEFAULT_WISH;
+      return body ? title + "\n\n" + body : title;
+    }
+
+    function showStatus(message) {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      statusEl.classList.add("is-visible");
+      if (statusTimer) window.clearTimeout(statusTimer);
+      statusTimer = window.setTimeout(function () {
+        statusEl.classList.remove("is-visible");
+        statusEl.textContent = "";
+      }, 2200);
+    }
+
+    function copyText(text, successMessage) {
+      var message = successMessage || "Скопировано";
+
+      function fallbackCopy() {
+        var area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.left = "-9999px";
+        document.body.appendChild(area);
+        area.select();
+        try {
+          document.execCommand("copy");
+          showStatus(message);
+        } catch (err) {
+          showStatus("Не удалось скопировать");
+        }
+        document.body.removeChild(area);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          showStatus(message);
+        }).catch(function () {
+          fallbackCopy();
+        });
+        return;
+      }
+
+      fallbackCopy();
+    }
+
+    function setShareMenuOpen(open) {
+      if (shareMenu) shareMenu.hidden = !open;
+      if (shareBtn) shareBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function closeWish() {
+      setShareMenuOpen(false);
+      setBirthdayWishOpen(card, emptyEl, wishEl, false);
+    }
+
+    function openWish() {
+      if (wishInput && !wishInput.value.trim()) {
+        wishInput.value = DEFAULT_WISH;
+      }
+      setShareMenuOpen(false);
+      setBirthdayWishOpen(card, emptyEl, wishEl, true);
+    }
+
+    function toggleWish() {
+      if (!card.classList.contains("card--birthday-empty")) return;
+      var isOpen = card.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeWish();
+      } else {
+        openWish();
+      }
+    }
+
+    function isInteractiveTarget(target) {
+      if (!target || !target.closest) return false;
+      return Boolean(
+        target.closest(".bday__wish-input") ||
+        target.closest(".bday__wish-links") ||
+        target.closest(".bday__share-menu") ||
+        target.closest(".bday__wish-status")
+      );
+    }
+
+    function shareViaTelegram(text) {
+      var url = "https://t.me/share/url?text=" + encodeURIComponent(text);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function shareViaWhatsApp(text) {
+      var url = "https://wa.me/?text=" + encodeURIComponent(text);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function shareViaNative(text) {
+      if (navigator.share) {
+        navigator.share({ text: text }).catch(function () {});
+        return;
+      }
+
+      copyText(
+        text,
+        "Текст скопирован — вставьте его в MAX или другой мессенджер"
+      );
+    }
+
+    card.addEventListener("click", function (event) {
+      if (!card.classList.contains("card--birthday-empty")) return;
+      if (isInteractiveTarget(event.target)) return;
+      toggleWish();
+    });
+
+    card.addEventListener("keydown", function (event) {
+      if (!card.classList.contains("card--birthday-empty")) return;
+
+      if (event.key === "Escape" && card.getAttribute("aria-expanded") === "true") {
+        event.preventDefault();
+        if (shareMenu && !shareMenu.hidden) {
+          setShareMenuOpen(false);
+          return;
+        }
+        closeWish();
+        return;
+      }
+
+      if (isInteractiveTarget(event.target)) return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleWish();
+      }
+    });
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        var original = copyBtn.textContent;
+        copyText(getWishText(), "Скопировано");
+        copyBtn.textContent = "Скопировано";
+        window.setTimeout(function () {
+          copyBtn.textContent = original;
+        }, 2000);
+      });
+    }
+
+    if (shareBtn && shareMenu) {
+      shareBtn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        setShareMenuOpen(shareMenu.hidden);
+      });
+
+      shareMenu.addEventListener("click", function (event) {
+        event.stopPropagation();
+        var option = event.target && event.target.closest
+          ? event.target.closest("[data-share]")
+          : null;
+        if (!option) return;
+
+        var type = option.getAttribute("data-share");
+        var text = getWishText();
+
+        if (type === "telegram") {
+          shareViaTelegram(text);
+        } else if (type === "whatsapp") {
+          shareViaWhatsApp(text);
+        } else if (type === "native") {
+          shareViaNative(text);
+        } else if (type === "copy") {
+          copyText(text, "Скопировано");
+        }
+
+        setShareMenuOpen(false);
+      });
     }
   }
 
@@ -503,6 +1053,18 @@
       });
     }
 
+    document.addEventListener("click", function (event) {
+      if (event.target && event.target.closest && event.target.closest(".task__menu")) {
+        return;
+      }
+      closeAllTaskMenus();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeAllTaskMenus();
+      }
+    });
   }
 
   function initModal() {
@@ -605,6 +1167,7 @@
     renderTasks();
     initContent();
     initButtons();
+    initBirthdayEmptyCard();
     initModal();
   }
 
