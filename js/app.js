@@ -5,7 +5,6 @@
   var USER_SETTINGS_KEY = "my-day-user-settings-v1";
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
   var IMPORTANT_DATES_KEY = "my-day-important-dates-v1";
-  var DEFAULT_CITY = "Екатеринбург";
 
   var WEEKDAYS = [
     "Воскресенье", "Понедельник", "Вторник", "Среда",
@@ -67,13 +66,6 @@
     if (hour >= 12 && hour < 18) return "Добрый день,\n" + name + "!";
     if (hour >= 18 && hour < 23) return "Добрый вечер,\n" + name + "!";
     return "Доброй ночи,\n" + name + "!";
-  }
-
-  function getProfileCity() {
-    var settings = loadUserSettings();
-    return typeof settings.city === "string" && settings.city.trim()
-      ? settings.city.trim()
-      : DEFAULT_CITY;
   }
 
   function isTodayBirthday(birthDate, today) {
@@ -451,12 +443,10 @@
     var now = new Date();
     var greetingEl = document.getElementById("greeting");
     var dateEl     = document.getElementById("date");
-    var cityEl     = document.getElementById("weather-city");
     var statusTimeEl = document.getElementById("statusbar-time");
 
     if (greetingEl) greetingEl.textContent = getGreeting(now.getHours());
     if (dateEl)     dateEl.textContent     = formatDate(now);
-    if (cityEl)     cityEl.textContent     = getProfileCity();
     if (statusTimeEl) statusTimeEl.textContent = formatTime(now);
 
     window.setInterval(function () {

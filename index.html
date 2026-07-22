@@ -44,7 +44,7 @@
         </div>
       </div>
 
-      <!-- Погода — статическая карточка -->
+      <!-- Погода — карточка (данные заполняет js/weather.js) -->
       <div class="weather" aria-label="Погода">
         <div class="weather__icon" aria-hidden="true">
           <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
@@ -63,11 +63,11 @@
         </div>
         <div class="weather__main">
           <p class="weather__city" id="weather-city">Екатеринбург</p>
-          <p class="weather__temp">+21°</p>
-          <p class="weather__cond">Ясно</p>
-          <p class="weather__cond">Без осадков</p>
+          <p class="weather__temp" id="weather-temp">+21°</p>
+          <p class="weather__cond" id="weather-cond">Ясно</p>
+          <p class="weather__cond" id="weather-detail">Без осадков</p>
         </div>
-        <p class="weather__tip">Сегодня можно<br>без зонта</p>
+        <p class="weather__tip" id="weather-tip">Сегодня можно<br>без зонта</p>
       </div>
 
     </header>
@@ -258,6 +258,7 @@
   <script src="js/holidays-ru.js"></script>
   <script src="js/important-dates-storage.js"></script>
   <script src="js/history.js"></script>
+  <script src="js/weather.js"></script>
   <script src="js/app.js?v=date-preview-2"></script>
 </body>
 </html>
