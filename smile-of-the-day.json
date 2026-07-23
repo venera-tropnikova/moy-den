@@ -4,31 +4,31 @@
       "id": "smile-01",
       "image": "assets/smile/demo-01.svg",
       "imageAlt": "Кот устроился на клавиатуре",
-      "caption": "Главный редактор уже на месте."
+      "caption": "Главный редактор на месте."
     },
     {
       "id": "smile-02",
       "image": "assets/smile/demo-02.svg",
       "imageAlt": "Чашка кофе опрокинулась",
-      "caption": "План был идеальный. До первой чашки."
+      "caption": "План идеален. До кофе."
     },
     {
       "id": "smile-03",
       "image": "assets/smile/demo-03.svg",
       "imageAlt": "Телефон почти без сети",
-      "caption": "Wi‑Fi: 1%. Оптимизм: 100%."
+      "caption": "Wi‑Fi 1%. Оптимизм 100%."
     },
     {
       "id": "smile-04",
       "image": "assets/smile/demo-04.svg",
       "imageAlt": "Будильник и подушка",
-      "caption": "5:59. Ещё минутка — и сразу встану."
+      "caption": "5:59. Ещё минутка…"
     },
     {
       "id": "smile-05",
       "image": "assets/smile/demo-05.svg",
       "imageAlt": "Растение полили кофе",
-      "caption": "Цветок тоже решил взбодриться."
+      "caption": "Цветок тоже взбодрился."
     }
   ]
 }

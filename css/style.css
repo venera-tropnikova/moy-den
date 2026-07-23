@@ -1464,10 +1464,19 @@ input  { font-family: inherit; }
 
 /* ─── УЛЫБКА ДНЯ ─────────────────────────────────────── */
 
-.card--smile {
+.duo .card.card--smile {
+  padding: 10px 10px 8px;
   background: var(--card);
+}
+
+.card--smile {
   position: relative;
   overflow: hidden;
+}
+
+.card--smile > .eyebrow {
+  color: var(--ink);
+  margin-bottom: 4px;
 }
 
 .smile__image {
@@ -1475,11 +1484,12 @@ input  { font-family: inherit; }
   width: 100%;
   flex: 1 1 auto;
   min-height: 0;
-  height: 120px;
+  height: 158px;
+  max-height: 158px;
   object-fit: cover;
   border-radius: var(--r-sm);
-  margin-bottom: 6px;
-  background: var(--divider);
+  margin-bottom: 4px;
+  background: var(--hero-bg);
 }
 
 .smile__image[hidden] {
@@ -1488,16 +1498,14 @@ input  { font-family: inherit; }
 
 .smile__caption {
   flex: 0 0 auto;
-  margin: 0 0 6px;
-  font-size: 0.78rem;
+  margin: 0 0 4px;
+  font-size: 0.74rem;
   font-weight: 500;
   color: var(--ink);
-  line-height: 1.3;
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-line-clamp: 2;
-  line-clamp: 2;
+  line-height: 1.25;
+  white-space: nowrap;
   overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 .smile__nav {
