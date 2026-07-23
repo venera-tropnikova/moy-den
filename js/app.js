@@ -27,9 +27,6 @@
 
   var CALENDAR_EMPTY_TEXT = "Сегодня важных дат нет.";
 
-  var JOKE =
-    "— Почему вы опоздали?\n— Поздно вышел заранее.";
-
   function loadUserSettings() {
     try {
       var saved = localStorage.getItem(USER_SETTINGS_KEY);
@@ -736,12 +733,10 @@
   }
 
   function initContent() {
-    var smileEl = document.getElementById("smile-text");
     var now = new Date();
 
     renderCalendar();
     renderCongratulations(now);
-    if (smileEl) smileEl.textContent = JOKE;
   }
 
   function setBirthdayWishOpen(card, emptyEl, wishEl, open) {

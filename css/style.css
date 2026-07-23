@@ -1462,20 +1462,92 @@ input  { font-family: inherit; }
   display: none !important;
 }
 
-/* ─── УЛЫБКА ─────────────────────────────────────────── */
+/* ─── УЛЫБКА ДНЯ ─────────────────────────────────────── */
 
 .card--smile {
   background: var(--card);
+  position: relative;
+  overflow: hidden;
 }
 
-.smile__text {
+.smile__image {
+  display: block;
+  width: 100%;
   flex: 1 1 auto;
   min-height: 0;
+  height: 120px;
+  object-fit: cover;
+  border-radius: var(--r-sm);
+  margin-bottom: 6px;
+  background: var(--divider);
+}
+
+.smile__image[hidden] {
+  display: none;
+}
+
+.smile__caption {
+  flex: 0 0 auto;
+  margin: 0 0 6px;
   font-size: 0.78rem;
-  color: var(--ink-mid);
-  line-height: 1.45;
-  white-space: pre-line;
+  font-weight: 500;
+  color: var(--ink);
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
   overflow: hidden;
+}
+
+.smile__nav {
+  flex: 0 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin-top: auto;
+}
+
+.smile__nav-btn {
+  flex: 0 0 auto;
+  min-width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink-mid);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.smile__nav-btn:disabled {
+  opacity: 0.35;
+  cursor: default;
+}
+
+.smile__nav-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.smile__count {
+  flex: 0 0 auto;
+  font-size: 0.66rem;
+  line-height: 1.2;
+  color: var(--ink-mid);
+  white-space: nowrap;
+}
+
+.smile__count[hidden] {
+  display: none;
+}
+
+.card--smile:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
 }
 
 /* ─── ТЕКСТОВЫЕ КНОПКИ-ССЫЛКИ ────────────────────────── */

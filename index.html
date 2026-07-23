@@ -169,7 +169,7 @@
 
       </div>
 
-      <!-- Поздравления + Анекдот дня -->
+      <!-- Поздравления + Улыбка дня -->
       <div class="duo">
 
         <div class="card card--birthday" id="birthday-card" role="note" aria-label="Поздравления">
@@ -226,9 +226,39 @@
           </div>
         </div>
 
-        <section class="card card--smile" aria-labelledby="smile-lbl">
-          <p class="eyebrow" id="smile-lbl">Анекдот дня</p>
-          <p class="smile__text" id="smile-text"></p>
+        <section
+          class="card card--smile"
+          id="smile-card"
+          role="region"
+          tabindex="0"
+          aria-labelledby="smile-lbl"
+          aria-label="Улыбка дня"
+        >
+          <p class="eyebrow" id="smile-lbl">Улыбка дня</p>
+          <img
+            class="smile__image"
+            id="smile-image"
+            alt=""
+            width="320"
+            height="120"
+            decoding="async"
+          >
+          <p class="smile__caption" id="smile-caption"></p>
+          <div class="smile__nav" id="smile-nav">
+            <button
+              type="button"
+              class="smile__nav-btn"
+              id="smile-prev"
+              aria-label="Назад"
+            >←</button>
+            <span class="smile__count" id="smile-count" aria-live="polite"></span>
+            <button
+              type="button"
+              class="smile__nav-btn"
+              id="smile-next"
+              aria-label="Вперёд"
+            >→</button>
+          </div>
         </section>
 
       </div>
@@ -366,6 +396,7 @@
   <script src="js/history.js"></script>
   <script src="js/weather.js"></script>
   <script src="js/discovery-of-the-day.js"></script>
+  <script src="js/smile-of-the-day.js"></script>
   <script src="js/app.js?v=task-menu-1"></script>
 </body>
 </html>

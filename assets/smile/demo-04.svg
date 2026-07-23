@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img">
+  <defs>
+    <linearGradient id="g4" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#241a28"/>
+      <stop offset="100%" stop-color="#4a3554"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#g4)"/>
+  <ellipse cx="320" cy="250" rx="150" ry="55" fill="#d9c7b0"/>
+  <ellipse cx="320" cy="235" rx="120" ry="38" fill="#efe4d6"/>
+  <circle cx="220" cy="140" r="58" fill="#f2ebe3"/>
+  <circle cx="220" cy="140" r="46" fill="#2c2230"/>
+  <circle cx="220" cy="140" r="6" fill="#f2ebe3"/>
+  <line x1="220" y1="140" x2="220" y2="108" stroke="#f2ebe3" stroke-width="5" stroke-linecap="round"/>
+  <line x1="220" y1="140" x2="248" y2="152" stroke="#f0c36a" stroke-width="5" stroke-linecap="round"/>
+  <path d="M175 95 L190 70" stroke="#f0c36a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M220 85 L220 58" stroke="#f0c36a" stroke-width="4" stroke-linecap="round"/>
+  <path d="M265 95 L280 70" stroke="#f0c36a" stroke-width="4" stroke-linecap="round"/>
+  <text x="360" y="150" fill="#efe4d6" font-family="Georgia, serif" font-size="42">5:59</text>
+  <text x="360" y="190" fill="#cbb8d8" font-family="Georgia, serif" font-size="18" opacity="0.85">5IQ <8=CB:0&</text>
+</svg>
