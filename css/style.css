@@ -1098,7 +1098,7 @@ input  { font-family: inherit; }
   background: var(--history-bg);
   position: relative;
   overflow: hidden;
-  cursor: pointer;
+  cursor: default;
   text-align: left;
   border: none;
   width: 100%;
@@ -1116,48 +1116,53 @@ input  { font-family: inherit; }
 }
 
 .card--history > .eyebrow {
-  color: var(--ink);
-  font-size: 0.62rem;
-  letter-spacing: 0.08em;
-  margin-bottom: 6px;
-  white-space: nowrap;
-}
-
-.hist__date {
-  display: none;
+  letter-spacing: 0.04em;
   flex: 0 0 auto;
-  font-family: var(--serif);
-  font-size: 0.92rem;
-  font-weight: 400;
-  line-height: 1.15;
-  color: var(--ink);
-  letter-spacing: -0.02em;
-  margin-bottom: 6px;
 }
 
 .hist__image {
-  display: block;
+  display: none;
   width: 100%;
   flex: 1 1 auto;
   min-height: 0;
-  height: 145px;
   object-fit: cover;
   border-radius: var(--r-sm);
-  margin-bottom: 8px;
+  margin-bottom: 6px;
   background: var(--divider);
 }
 
 .hist__image[hidden] {
+  display: none !important;
+}
+
+.card--history-image .hist__image {
+  display: block;
+  height: auto;
+  max-height: 128px;
+}
+
+.hist__cover-row {
+  flex: 0 0 auto;
   display: none;
+  margin-bottom: 2px;
+}
+
+.card--history-image .hist__cover-row {
+  display: block;
+}
+
+.hist__cover-row[hidden] {
+  display: none !important;
 }
 
 .hist__question {
-  flex: 0 0 auto;
-  font-size: 0.9rem;
-  font-weight: 500;
+  margin: 0;
+  font-family: var(--serif);
+  font-size: 0.88rem;
+  font-weight: 400;
   color: var(--ink);
-  line-height: 1.3;
-  white-space: pre-line;
+  line-height: 1.25;
+  letter-spacing: -0.01em;
 }
 
 .card--history-empty {
@@ -1166,8 +1171,8 @@ input  { font-family: inherit; }
 }
 
 .card--history-empty .hist__image,
-.card--history-empty .hist__date,
-.card--history-empty .hist__answer {
+.card--history-empty .hist__answer,
+.card--history-empty .hist__chrome {
   display: none !important;
   height: 0 !important;
   margin: 0 !important;
@@ -1176,6 +1181,10 @@ input  { font-family: inherit; }
   background: none !important;
   flex: 0 0 auto !important;
   min-height: 0 !important;
+}
+
+.card--history-empty .hist__cover-row {
+  display: block !important;
 }
 
 .card--history-empty > .eyebrow {
@@ -1191,115 +1200,266 @@ input  { font-family: inherit; }
   font-weight: 400;
   line-height: 1.35;
   color: var(--ink-mid);
+  white-space: pre-line;
 }
 
 .hist__answer {
   display: none;
-  flex: 1 1 auto;
+  flex: 1 1 0;
   min-height: 0;
   flex-direction: column;
+  gap: 3px;
+  overflow: hidden;
+  padding-bottom: 2px;
 }
 
-.card--history-open > .eyebrow {
-  margin-bottom: 4px;
+.duo .card.card--history-text {
+  padding-top: 17px;
 }
 
-.card--history-open .hist__date {
-  display: block;
-  margin-bottom: 2px;
+.card--history-text .hist__answer {
+  display: flex;
+  gap: 0;
 }
 
-.card--history-open .hist__image {
-  flex: 0 0 auto;
-  height: 46px;
-  margin-bottom: 3px;
+.card--history-text .hist__image,
+.card--history-text .hist__cover-row {
+  display: none !important;
 }
 
-.card--history-open.card--history-multi .hist__image {
-  height: 0;
-  margin-bottom: 0;
-  border-radius: 0;
-}
-
-.card--history-open .hist__question {
+.card--history-text > .eyebrow {
   display: none;
 }
 
-.card--history-open .hist__answer {
-  display: flex;
-  flex: 0 0 auto;
-  min-height: 0;
-  overflow: visible;
-  gap: 2px;
+.card--history-text .hist__head {
+  margin-bottom: 7px;
 }
 
-.hist__main {
+.card--history-text .hist__year {
+  margin: 0 0 13px;
+  color: #5a534e;
+  font-weight: 600;
+}
+
+.card--history-text .hist__text {
+  margin: 0 0 8px;
+}
+
+.card--history-text .hist__fact {
+  margin: 0 0 14px;
+}
+
+.card--history-text .hist__chrome {
+  padding-top: 0;
+  gap: 3px;
+}
+
+.hist__head {
   display: flex;
-  flex-direction: column;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 8px;
   flex: 0 0 auto;
-  min-height: auto;
-  gap: 2px;
+  margin-bottom: 2px;
+}
+
+.hist__title {
+  margin: 0;
+  flex: 1 1 auto;
+  min-width: 0;
+  font-family: var(--serif);
+  font-size: 0.95rem;
+  font-weight: 400;
+  color: var(--ink);
+  line-height: 1.22;
+  letter-spacing: -0.01em;
+}
+
+.hist__year {
+  margin: 0 0 2px;
+  flex: 0 0 auto;
+  font-family: var(--sans);
+  font-size: 0.68rem;
+  font-weight: 500;
+  line-height: 1.2;
+  color: var(--ink-mid);
+  letter-spacing: 0.02em;
+}
+
+.hist__year[hidden] {
+  display: none;
+}
+
+.hist__nav-count {
+  flex: 0 0 auto;
+  font-size: 0.66rem;
+  line-height: 1.2;
+  color: var(--ink-mid);
+  white-space: nowrap;
+}
+
+.hist__nav-count[hidden] {
+  display: none;
 }
 
 .hist__text {
+  margin: 0;
   flex: 0 0 auto;
-  min-height: auto;
-  font-size: 0.74rem;
+  font-size: 0.7rem;
   color: var(--ink-mid);
   line-height: 1.35;
-  margin: 0;
-  overflow: visible;
 }
 
-.card--history-open .hist__text {
-  font-size: 0.68rem;
-  line-height: 1.28;
-}
-
-.hist__source-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: 0.25em;
-  margin: 0;
+.hist__fact {
+  margin: 2px 0 0;
   flex: 0 0 auto;
-  font-size: 0.68rem;
+  font-size: 0.66rem;
+  color: var(--ink);
+  line-height: 1.3;
+  opacity: 0.88;
+}
+
+.hist__fact[hidden] {
+  display: none;
+}
+
+.hist__source {
+  margin: 2px 0 0;
+  flex: 0 0 auto;
+  font-size: 0.62rem;
   line-height: 1.25;
   color: var(--ink-mid);
 }
 
-.hist__source-label {
-  flex: 0 0 auto;
-}
-
-.card--history .hist__source {
-  flex: 0 1 auto;
-  margin: 0;
-  font-size: 0.68rem;
-  text-decoration: none;
-  white-space: nowrap;
-}
-
-.hist__extras {
-  list-style: none;
-  margin: 0;
-  padding: 2px 0 0;
-  border-top: 1px solid var(--divider);
-  flex: 0 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 1px;
-}
-
-.hist__extras[hidden] {
+.hist__source[hidden] {
   display: none;
 }
 
-.hist__extra {
-  margin: 0;
-  font-size: 0.6rem;
+.hist__source-link {
+  color: var(--ink-mid);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(122, 112, 106, 0.4);
+}
+
+.hist__source-link:hover {
+  color: var(--ink);
+}
+
+.hist__chrome {
+  margin-top: auto;
+  flex: 0 0 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+  gap: 2px;
+  padding-top: 4px;
+  min-height: 24px;
+  min-width: 0;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.hist__chrome-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 6px;
+  width: 100%;
+  min-width: 0;
+}
+
+.hist__chrome-count {
+  flex: 1 1 auto;
+  text-align: center;
+  font-size: 0.66rem;
   line-height: 1.2;
   color: var(--ink-mid);
+  white-space: nowrap;
+}
+
+.hist__chrome-count[hidden] {
+  display: none;
+}
+
+.card--history-text .hist__chrome-count {
+  display: none !important;
+}
+
+.card--history-image .hist__chrome {
+  flex-direction: row;
+  align-items: center;
+}
+
+.card--history-image .hist__chrome-nav {
+  flex: 1 1 auto;
+}
+
+.hist__nav-btn {
+  flex: 0 0 auto;
+  min-width: 22px;
+  height: 22px;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+  background: transparent;
+  color: var(--ink-mid);
+  font-size: 0.95rem;
+  line-height: 1;
+  cursor: pointer;
+}
+
+.hist__nav-btn:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.card--history .hist__more {
+  margin: 0;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: 5px;
+  width: 100%;
+  max-width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+  font-size: 0.66rem;
+  line-height: 1.3;
+  text-align: center;
+  letter-spacing: 0.01em;
+}
+
+.card--history .hist__more-label {
+  flex: 0 0 auto;
+  color: var(--ink-mid);
+  font-weight: 400;
+}
+
+.card--history .hist__more-link {
+  flex: 0 1 auto;
+  min-width: 0;
+  max-width: 100%;
+  color: var(--ink-mid);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  text-decoration-color: rgba(122, 112, 106, 0.4);
+  overflow-wrap: break-word;
+  word-break: normal;
+  white-space: normal;
+}
+
+.card--history .hist__more-link:hover {
+  color: var(--ink);
+}
+
+.card--history-image .hist__more {
+  display: none !important;
+}
+
+.card--history .hist__more[hidden] {
+  display: none !important;
 }
 
 /* ─── УЛЫБКА ─────────────────────────────────────────── */

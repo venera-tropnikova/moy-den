@@ -5,11 +5,30 @@
   var EMPTY_TEXT = "скоро появится.";
   var ERROR_TEXT = "Не удалось загрузить историческую справку.";
   var MAX_EVENTS = 3;
-
-  var MONTHS = [
-    "января", "февраля", "марта", "апреля", "мая", "июня",
-    "июля", "августа", "сентября", "октября", "ноября", "декабря"
+  var MODE_IMAGE = "image";
+  var MODE_TEXT = "text";
+  var MONTH_GENITIVE = [
+    "января",
+    "февраля",
+    "марта",
+    "апреля",
+    "мая",
+    "июня",
+    "июля",
+    "августа",
+    "сентября",
+    "октября",
+    "ноября",
+    "декабря"
   ];
+
+  var state = {
+    date: null,
+    events: [],
+    index: 0,
+    mode: MODE_IMAGE,
+    bound: false
+  };
 
   function getQueryParam(name) {
     var search = "";
@@ -47,7 +66,6 @@
     return null;
   }
 
-  // Временный тестовый режим: index.html?date=YYYY-MM-DD
   function getHistoryDate() {
     var raw = getQueryParam("date");
     if (!raw) return new Date();
@@ -75,20 +93,6 @@
     var month = String(date.getMonth() + 1).padStart(2, "0");
     var day = String(date.getDate()).padStart(2, "0");
     return month + "-" + day;
-  }
-
-  function formatDayMonth(date) {
-    return date.getDate() + " " + MONTHS[date.getMonth()];
-  }
-
-  function formatDateLabel(date, event) {
-    var dayMonth = formatDayMonth(date);
-    var year = typeof event.year === "number" && isFinite(event.year) ? String(event.year) : "";
-    return year ? dayMonth + " · " + year : dayMonth;
-  }
-
-  function formatQuestion(date) {
-    return "Что произошло\n" + formatDayMonth(date) + "?";
   }
 
   function loadHistoryData() {
@@ -141,15 +145,37 @@
     return null;
   }
 
-  function getSourceLabel(source) {
-    if (!source) return "";
+  function getSourceDisplayName(source) {
+    if (!source || typeof source !== "object") return "";
 
-    var shortTitle =
-      typeof source.shortTitle === "string" ? source.shortTitle.trim() : "";
+    var name = typeof source.name === "string" ? source.name.trim() : "";
+    if (name) return name;
+
+    var shortTitle = typeof source.shortTitle === "string" ? source.shortTitle.trim() : "";
+    if (shortTitle) return shortTitle;
+
     var title = typeof source.title === "string" ? source.title.trim() : "";
-    var label = shortTitle || title;
+    return title;
+  }
 
-    return label ? label + " ↗" : "";
+  function formatChromeSourceLabel(sourceName) {
+    var name = typeof sourceName === "string" ? sourceName.trim() : "";
+    return name ? "↗ " + name : "";
+  }
+
+  function formatDayYearLabel(date, year) {
+    if (!(date instanceof Date) || isNaN(date.getTime())) return "";
+    if (typeof year !== "number" || !isFinite(year)) return "";
+
+    var monthName = MONTH_GENITIVE[date.getMonth()];
+    if (!monthName) return String(year);
+
+    return date.getDate() + " " + monthName + " · " + year;
+  }
+
+  function openSourceUrl(url) {
+    if (!url || url === "#") return;
+    window.open(url, "_blank", "noopener,noreferrer");
   }
 
   function isValidVerifiedEvent(event, dateKey) {
@@ -201,20 +227,27 @@
     return verified.slice(0, MAX_EVENTS);
   }
 
-  function setExpanded(card, answerEl, expanded) {
-    if (!card) return;
-
-    card.setAttribute("aria-expanded", expanded ? "true" : "false");
-    card.classList.toggle("card--history-open", expanded);
-
-    if (answerEl) {
-      answerEl.hidden = !expanded;
-    }
-  }
-
-  function toggleExpanded(card, answerEl) {
-    var isOpen = card.getAttribute("aria-expanded") === "true";
-    setExpanded(card, answerEl, !isOpen);
+  function getEls() {
+    return {
+      card: document.getElementById("history-card"),
+      imageEl: document.getElementById("hist-image"),
+      coverRowEl: document.getElementById("hist-cover-row"),
+      questionEl: document.getElementById("hist-question"),
+      yearEl: document.getElementById("hist-year"),
+      answerEl: document.getElementById("hist-answer"),
+      titleEl: document.getElementById("hist-title"),
+      textEl: document.getElementById("hist-text"),
+      factEl: document.getElementById("hist-fact"),
+      sourceEl: document.getElementById("hist-source"),
+      sourceLinkEl: document.getElementById("hist-source-link"),
+      chromeEl: document.getElementById("hist-chrome"),
+      chromeCountEl: document.getElementById("hist-chrome-count"),
+      moreEl: document.getElementById("hist-more"),
+      moreLinkEl: document.getElementById("hist-more-link"),
+      navCountEl: document.getElementById("hist-nav-count"),
+      prevBtn: document.getElementById("hist-prev"),
+      nextBtn: document.getElementById("hist-next")
+    };
   }
 
   function setImage(imageEl, image, imageAlt) {
@@ -233,161 +266,318 @@
     imageEl.hidden = true;
   }
 
-  function clearExtras(extrasEl) {
-    if (!extrasEl) return;
-    extrasEl.innerHTML = "";
-    extrasEl.hidden = true;
+  function flatStepCount() {
+    return state.events.length * 2;
   }
 
-  function showMessage(card, questionEl, imageEl, dateEl, answerEl, moreEl, message) {
-    if (questionEl) questionEl.textContent = message;
-    if (dateEl) dateEl.textContent = "";
+  function getFlatIndex() {
+    return state.index * 2 + (state.mode === MODE_TEXT ? 1 : 0);
+  }
 
-    var textEl = document.getElementById("hist-text");
-    if (textEl) textEl.textContent = "";
+  function setFromFlatIndex(flat) {
+    var total = flatStepCount();
+    if (total < 1) return;
+    flat = ((flat % total) + total) % total;
+    state.index = Math.floor(flat / 2);
+    state.mode = flat % 2 === 0 ? MODE_IMAGE : MODE_TEXT;
+  }
 
-    var sourceRow = document.getElementById("hist-source-row");
-    if (sourceRow) sourceRow.hidden = true;
+  function goCover() {
+    state.index = 0;
+    state.mode = MODE_IMAGE;
+  }
 
-    if (answerEl) answerEl.hidden = true;
+  function shiftStep(delta) {
+    if (!state.events.length) return;
+    setFromFlatIndex(getFlatIndex() + delta);
+    renderView(getEls());
+  }
 
-    if (moreEl) {
-      moreEl.hidden = true;
-      moreEl.textContent = "";
-      moreEl.removeAttribute("href");
+  function clearEventContent(els) {
+    if (els.yearEl) {
+      els.yearEl.textContent = "";
+      els.yearEl.setAttribute("hidden", "");
+    }
+    if (els.titleEl) els.titleEl.textContent = "";
+    if (els.textEl) els.textEl.textContent = "";
+
+    if (els.factEl) {
+      els.factEl.textContent = "";
+      els.factEl.setAttribute("hidden", "");
     }
 
-    clearExtras(document.getElementById("hist-extras"));
-    setImage(imageEl, "", "");
+    if (els.sourceEl) els.sourceEl.setAttribute("hidden", "");
+    if (els.sourceLinkEl) {
+      els.sourceLinkEl.textContent = "";
+      els.sourceLinkEl.removeAttribute("href");
+    }
 
-    if (card) {
-      setExpanded(card, answerEl, false);
-      card.classList.remove("card--history-multi");
-      card.classList.add("card--history-empty");
-      card.setAttribute("aria-disabled", "true");
-      card.tabIndex = -1;
+    if (els.moreEl) {
+      els.moreEl.setAttribute("hidden", "");
+    }
+    if (els.moreLinkEl) {
+      els.moreLinkEl.textContent = "";
+      els.moreLinkEl.removeAttribute("href");
+    }
+
+    if (els.navCountEl) {
+      els.navCountEl.setAttribute("hidden", "");
+      els.navCountEl.textContent = "";
+    }
+
+    if (els.chromeCountEl) {
+      els.chromeCountEl.setAttribute("hidden", "");
+      els.chromeCountEl.textContent = "";
     }
   }
 
-  function fillOpenContent(date, events) {
-    var main = events[0];
-    var dateEl = document.getElementById("hist-date");
-    var textEl = document.getElementById("hist-text");
-    var moreEl = document.getElementById("hist-more");
-    var sourceRow = document.getElementById("hist-source-row");
-    var extrasEl = document.getElementById("hist-extras");
-    var card = document.getElementById("history-card");
+  function showMessage(els, message) {
+    if (els.questionEl) els.questionEl.textContent = message;
+    if (els.coverRowEl) els.coverRowEl.removeAttribute("hidden");
+    if (els.answerEl) els.answerEl.hidden = true;
 
-    if (dateEl) dateEl.textContent = formatDateLabel(date, main);
+    clearEventContent(els);
+    setImage(els.imageEl, "", "");
 
-    if (textEl) {
-      textEl.textContent =
-        typeof main.summary === "string" && main.summary.trim()
-          ? main.summary.trim()
+    if (els.card) {
+      els.card.classList.remove(
+        "card--history-image",
+        "card--history-text",
+        "card--history-cover",
+        "card--history-multi"
+      );
+      els.card.classList.add("card--history-empty");
+      els.card.setAttribute("aria-disabled", "true");
+      els.card.tabIndex = -1;
+    }
+
+    state.events = [];
+    state.index = 0;
+    state.mode = MODE_IMAGE;
+  }
+
+  function fillEventFields(els, event) {
+    if (els.titleEl) {
+      els.titleEl.textContent =
+        typeof event.title === "string" && event.title.trim()
+          ? event.title.trim()
+          : "";
+    }
+
+    if (els.yearEl) {
+      var yearLabel =
+        typeof event.year === "number" && isFinite(event.year)
+          ? formatDayYearLabel(state.date, event.year)
+          : "";
+      els.yearEl.textContent = yearLabel;
+      if (yearLabel) els.yearEl.removeAttribute("hidden");
+      else els.yearEl.setAttribute("hidden", "");
+    }
+
+    if (els.textEl) {
+      els.textEl.textContent =
+        typeof event.summary === "string" && event.summary.trim()
+          ? event.summary.trim()
           : EMPTY_TEXT;
     }
 
-    var source = getFirstSource(main.sources);
-    var label = getSourceLabel(source);
-    var url = source && typeof source.url === "string" ? source.url.trim() : "";
-
-    if (moreEl && sourceRow) {
-      if (url && label) {
-        sourceRow.hidden = false;
-        moreEl.hidden = false;
-        moreEl.href = url;
-        moreEl.textContent = label;
+    var fact = typeof event.fact === "string" ? event.fact.trim() : "";
+    if (els.factEl) {
+      if (fact) {
+        els.factEl.removeAttribute("hidden");
+        els.factEl.textContent = fact;
       } else {
-        sourceRow.hidden = true;
-        moreEl.hidden = true;
-        moreEl.textContent = "";
-        moreEl.removeAttribute("href");
+        els.factEl.setAttribute("hidden", "");
+        els.factEl.textContent = "";
       }
     }
 
-    if (card) {
-      card.classList.toggle("card--history-multi", events.length > 1);
+    var source = getFirstSource(event.sources);
+    var url = source && typeof source.url === "string" ? source.url.trim() : "";
+    var sourceName = getSourceDisplayName(source);
+
+    if (els.sourceEl) els.sourceEl.setAttribute("hidden", "");
+    if (els.sourceLinkEl) {
+      els.sourceLinkEl.textContent = "";
+      els.sourceLinkEl.removeAttribute("href");
     }
 
-    if (!extrasEl) return;
-
-    clearExtras(extrasEl);
-
-    if (events.length < 2) return;
-
-    for (var i = 1; i < events.length; i += 1) {
-      var item = events[i];
-      var title = typeof item.title === "string" ? item.title.trim() : "";
-      var year =
-        typeof item.year === "number" && isFinite(item.year) ? String(item.year) : "";
-      if (!title || !year) continue;
-
-      var li = document.createElement("li");
-      li.className = "hist__extra";
-      li.textContent = year + " · " + title;
-      extrasEl.appendChild(li);
-    }
-
-    if (extrasEl.childNodes.length) {
-      extrasEl.hidden = false;
+    if (els.moreEl && els.moreLinkEl) {
+      if (url && sourceName) {
+        els.moreEl.removeAttribute("hidden");
+        els.moreLinkEl.href = url;
+        els.moreLinkEl.textContent = formatChromeSourceLabel(sourceName);
+      } else {
+        els.moreEl.setAttribute("hidden", "");
+        els.moreLinkEl.textContent = "";
+        els.moreLinkEl.removeAttribute("href");
+      }
     }
   }
 
-  function bindInteractions(card, answerEl, moreEl) {
-    if (!card || !answerEl) return;
+  function updateCounter(els, total) {
+    var label = state.index + 1 + " / " + total;
+    var multi = total > 1;
 
-    function isSourceLinkTarget(target) {
-      return Boolean(target && target.closest && target.closest("#hist-more"));
+    if (els.navCountEl) {
+      if (multi && state.mode === MODE_TEXT) {
+        els.navCountEl.removeAttribute("hidden");
+        els.navCountEl.textContent = label;
+      } else {
+        els.navCountEl.setAttribute("hidden", "");
+        els.navCountEl.textContent = "";
+      }
     }
 
-    card.addEventListener("click", function (event) {
-      if (card.getAttribute("aria-disabled") === "true") return;
-      if (isSourceLinkTarget(event.target)) return;
-      toggleExpanded(card, answerEl);
+    if (els.chromeCountEl) {
+      if (multi && state.mode === MODE_IMAGE) {
+        els.chromeCountEl.removeAttribute("hidden");
+        els.chromeCountEl.textContent = label;
+      } else {
+        els.chromeCountEl.setAttribute("hidden", "");
+        els.chromeCountEl.textContent = "";
+      }
+    }
+  }
+
+  function renderView(els) {
+    if (!els.card || !state.events.length || !state.date) return;
+
+    var event = state.events[state.index];
+    if (!event) return;
+
+    var total = state.events.length;
+    var imageMode = state.mode === MODE_IMAGE;
+    var title =
+      typeof event.title === "string" && event.title.trim()
+        ? event.title.trim()
+        : "";
+
+    var image = typeof event.image === "string" ? event.image.trim() : "";
+    var imageAlt = typeof event.imageAlt === "string" ? event.imageAlt.trim() : "";
+    setImage(els.imageEl, image, imageAlt);
+
+    fillEventFields(els, event);
+    updateCounter(els, total);
+
+    if (els.questionEl) {
+      els.questionEl.textContent = imageMode ? title : "";
+    }
+
+    if (els.coverRowEl) {
+      if (imageMode && title) els.coverRowEl.removeAttribute("hidden");
+      else els.coverRowEl.setAttribute("hidden", "");
+    }
+
+    if (els.answerEl) {
+      els.answerEl.hidden = imageMode;
+    }
+
+    els.card.classList.remove("card--history-empty", "card--history-cover");
+    els.card.classList.toggle("card--history-image", imageMode);
+    els.card.classList.toggle("card--history-text", !imageMode);
+    els.card.classList.toggle("card--history-multi", total > 1);
+    els.card.removeAttribute("aria-disabled");
+    els.card.tabIndex = 0;
+  }
+
+  function eventElement(target) {
+    if (!target) return null;
+    if (target.nodeType === 3) return target.parentElement;
+    return target;
+  }
+
+  function isInteractiveTarget(target) {
+    var el = eventElement(target);
+    if (!el || !el.closest) return false;
+    return Boolean(el.closest("#hist-chrome, #hist-source, #hist-source-link"));
+  }
+
+  function bindInteractions(els) {
+    if (!els.card || state.bound) return;
+    state.bound = true;
+
+    els.card.addEventListener("click", function (event) {
+      if (els.card.getAttribute("aria-disabled") === "true") return;
+      if (isInteractiveTarget(event.target)) return;
+      shiftStep(1);
     });
 
-    card.addEventListener("keydown", function (event) {
-      if (card.getAttribute("aria-disabled") === "true") return;
-      if (isSourceLinkTarget(event.target)) return;
+    els.card.addEventListener("keydown", function (event) {
+      if (els.card.getAttribute("aria-disabled") === "true") return;
+      if (isInteractiveTarget(event.target)) return;
 
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        toggleExpanded(card, answerEl);
+        shiftStep(1);
         return;
       }
 
-      if (event.key === "Escape" && card.getAttribute("aria-expanded") === "true") {
+      if (event.key === "ArrowRight") {
         event.preventDefault();
-        setExpanded(card, answerEl, false);
+        shiftStep(1);
+        return;
+      }
+
+      if (event.key === "ArrowLeft") {
+        event.preventDefault();
+        shiftStep(-1);
+        return;
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        goCover();
+        renderView(els);
       }
     });
 
-    if (moreEl) {
-      moreEl.addEventListener("click", function (event) {
+    if (els.chromeEl) {
+      els.chromeEl.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+    }
+
+    if (els.sourceLinkEl) {
+      els.sourceLinkEl.addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
+        openSourceUrl(els.sourceLinkEl.getAttribute("href"));
+      });
+    }
 
-        var href = moreEl.getAttribute("href");
-        if (!href || href === "#") return;
+    if (els.moreLinkEl) {
+      els.moreLinkEl.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        openSourceUrl(els.moreLinkEl.getAttribute("href"));
+      });
+    }
 
-        window.open(href, "_blank", "noopener,noreferrer");
+    if (els.prevBtn) {
+      els.prevBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        shiftStep(-1);
+      });
+    }
+
+    if (els.nextBtn) {
+      els.nextBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        shiftStep(1);
       });
     }
   }
 
   function renderHistory() {
-    var card = document.getElementById("history-card");
-    var imageEl = document.getElementById("hist-image");
-    var questionEl = document.getElementById("hist-question");
-    var dateEl = document.getElementById("hist-date");
-    var answerEl = document.getElementById("hist-answer");
-    var moreEl = document.getElementById("hist-more");
-
-    if (!card || !questionEl) return;
+    var els = getEls();
+    if (!els.card || !els.questionEl) return;
 
     var loaded = loadHistoryData();
     if (loaded.status !== "ok" || !loaded.data) {
-      showMessage(card, questionEl, imageEl, dateEl, answerEl, moreEl, ERROR_TEXT);
+      showMessage(els, ERROR_TEXT);
       return;
     }
 
@@ -395,22 +585,15 @@
     var events = getVerifiedEventsForDate(loaded.data, selectedDate);
 
     if (!events.length) {
-      showMessage(card, questionEl, imageEl, dateEl, answerEl, moreEl, EMPTY_TEXT);
+      showMessage(els, EMPTY_TEXT);
       return;
     }
 
-    var main = events[0];
-    var image = typeof main.image === "string" ? main.image.trim() : "";
-    var imageAlt = typeof main.imageAlt === "string" ? main.imageAlt.trim() : "";
-
-    questionEl.textContent = formatQuestion(selectedDate);
-    setImage(imageEl, image, imageAlt);
-    fillOpenContent(selectedDate, events);
-    setExpanded(card, answerEl, false);
-    card.classList.remove("card--history-empty");
-    card.removeAttribute("aria-disabled");
-    card.tabIndex = 0;
-    bindInteractions(card, answerEl, moreEl);
+    state.date = selectedDate;
+    state.events = events;
+    goCover();
+    renderView(els);
+    bindInteractions(els);
   }
 
   function init() {

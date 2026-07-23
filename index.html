@@ -77,14 +77,11 @@
         <div
           class="card card--history"
           id="history-card"
-          role="button"
+          role="region"
           tabindex="0"
-          aria-expanded="false"
-          aria-controls="hist-answer"
           aria-label="Историческая справка"
         >
           <p class="eyebrow" id="hist-lbl">Историческая справка</p>
-          <p class="hist__date" id="hist-date"></p>
           <img
             class="hist__image"
             id="hist-image"
@@ -93,22 +90,53 @@
             height="145"
             decoding="async"
           >
-          <p class="hist__question" id="hist-question"></p>
+          <div class="hist__cover-row" id="hist-cover-row" hidden>
+            <p class="hist__question" id="hist-question"></p>
+          </div>
           <div class="hist__answer" id="hist-answer" hidden>
-            <div class="hist__main" id="hist-main">
-              <p class="hist__text" id="hist-text"></p>
-              <p class="hist__source-row" id="hist-source-row" hidden>
-                <span class="hist__source-label">Источник:</span>
-                <a
-                  class="link-btn hist__source"
-                  id="hist-more"
-                  href="#"
-                  target="_blank"
-                  rel="noopener noreferrer"
-                ></a>
-              </p>
+            <div class="hist__head" id="hist-head">
+              <p class="hist__title" id="hist-title"></p>
+              <span class="hist__nav-count" id="hist-nav-count" hidden aria-live="polite"></span>
             </div>
-            <ul class="hist__extras" id="hist-extras" hidden></ul>
+            <p class="hist__year" id="hist-year" hidden></p>
+            <p class="hist__text" id="hist-text"></p>
+            <p class="hist__fact" id="hist-fact" hidden></p>
+            <p class="hist__source" id="hist-source" hidden>
+              <a
+                class="hist__source-link"
+                id="hist-source-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></a>
+            </p>
+          </div>
+          <div class="hist__chrome" id="hist-chrome">
+            <div class="hist__chrome-nav" id="hist-chrome-nav">
+              <button
+                type="button"
+                class="hist__nav-btn"
+                id="hist-prev"
+                aria-label="Назад"
+              >←</button>
+              <span class="hist__chrome-count" id="hist-chrome-count" hidden aria-live="polite"></span>
+              <button
+                type="button"
+                class="hist__nav-btn"
+                id="hist-next"
+                aria-label="Вперёд"
+              >→</button>
+            </div>
+            <span class="hist__more" id="hist-more" hidden>
+              <span class="hist__more-label">Источник</span>
+              <a
+                class="hist__more-link"
+                id="hist-more-link"
+                href="#"
+                target="_blank"
+                rel="noopener noreferrer"
+              ></a>
+            </span>
           </div>
         </div>
 
