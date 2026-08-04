@@ -34,8 +34,8 @@
       {
         "id": "world-1969-apollo11-moon-landing",
         "year": 1969,
-        "title": "Человек на Луне",
-        "summary": "Люди впервые ступили на Луну.",
+        "title": "Первый шаг человека на Луне",
+        "summary": "Нил Армстронг и Базз Олдрин вышли на Луну.",
         "fact": "",
         "body": "",
         "category": "space",
@@ -765,8 +765,8 @@
       {
         "id": "world-1981-mtv-launch",
         "year": 1981,
-        "title": "Телевидение включает рок",
-        "summary": "В эфир вышел MTV. Первым клипом стал «Video Killed the Radio Star» группы The Buggles.",
+        "title": "В эфир вышел телеканал MTV",
+        "summary": "Первым клипом стал Video Killed the Radio Star.",
         "fact": "💡 Канал сначала показывали лишь в части Нью-Джерси.",
         "body": "",
         "category": "culture",
@@ -951,15 +951,17 @@
       {
         "id": "world-2007-phoenix-mars-launch",
         "year": 2007,
-        "title": "К полярному Марсу",
-        "summary": "NASA отправила Phoenix искать лёд на Марсе.",
-        "fact": "💡 Миссия подтвердила наличие водяного льда.",
+        "title": "NASA отправила Phoenix к Марсу",
+        "summary": "Аппарат Phoenix полетел искать лёд у полюса Марса.",
+        "fact": "💡 Он подтвердил наличие льда.",
         "body": "",
         "category": "science",
         "region": "WORLD",
         "priority": 100,
         "interest": 9,
         "status": "verified",
+        "image": "assets/history/phoenix-mars-launch-2007.jpg",
+        "imageAlt": "Старт ракеты Delta II с аппаратом Phoenix к Марсу",
         "sources": [
           {
             "title": "NASA — Phoenix Mars Lander launches",
