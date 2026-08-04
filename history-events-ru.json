@@ -765,9 +765,9 @@
       {
         "id": "world-1981-mtv-launch",
         "year": 1981,
-        "title": "В эфир вышел телеканал MTV",
+        "title": "В эфир вышел MTV",
         "summary": "Первым клипом стал Video Killed the Radio Star.",
-        "fact": "💡 Канал сначала показывали лишь в части Нью-Джерси.",
+        "fact": "💡 Сначала канал видели лишь в части Нью-Джерси.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -776,9 +776,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "History.com — MTV launches",
-            "url": "https://www.history.com/this-day-in-history/august-1/mtv-launches",
-            "name": "HISTORY"
+            "title": "Britannica — MTV",
+            "url": "https://www.britannica.com/topic/MTV",
+            "name": "Britannica"
           }
         ]
       },
@@ -786,8 +786,8 @@
         "id": "world-1971-genesis-rock",
         "year": 1971,
         "title": "Кусок древней Луны",
-        "summary": "Экипаж Apollo 15 нашёл анортозит, который прозвали Genesis Rock. Учёные надеялись заглянуть в раннюю кору Луны.",
-        "fact": "💡 Возраст образца оценили примерно в 4 миллиарда лет.",
+        "summary": "Apollo 15 нашёл анортозит — «камень Бытия».",
+        "fact": "💡 Возраст оценили примерно в 4 миллиарда лет.",
         "body": "",
         "category": "space",
         "region": "WORLD",
@@ -806,8 +806,8 @@
         "id": "world-1996-game-of-thrones-book",
         "year": 1996,
         "title": "Начинается Вестерос",
-        "summary": "Вышла первая книга цикла Джорджа Р. Р. Мартина «Песнь Льда и Пламени». Позже история стала мировым сериалом.",
-        "fact": "💡 Сначала книга не была мгновенным бестселлером — успех рос постепенно.",
+        "summary": "Вышла первая книга «Песни Льда и Пламени».",
+        "fact": "💡 Успех рос постепенно, не сразу.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -816,9 +816,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "History.com — Game of Thrones debuts",
-            "url": "https://www.history.com/this-day-in-history/august-1",
-            "name": "HISTORY"
+            "title": "Britannica — A Song of Ice and Fire",
+            "url": "https://www.britannica.com/topic/A-Song-of-Ice-and-Fire",
+            "name": "Britannica"
           }
         ]
       }
@@ -828,7 +828,7 @@
         "id": "world-1776-declaration-signed",
         "year": 1776,
         "title": "Подписи на пергаменте",
-        "summary": "Делегаты Конгресса начали подписывать официальный пергаментный текст Декларации независимости. Приняли её 4 июля — а «автографы» пошли позже.",
+        "summary": "Делегаты начали подписывать пергамент Декларации.",
         "fact": "💡 Джон Хэнкок расписался первым — и особенно крупно.",
         "body": "",
         "category": "culture",
@@ -838,17 +838,19 @@
         "status": "verified",
         "sources": [
           {
-            "title": "U.S. National Archives — Declaration of Independence",
+            "title": "National Archives — Declaration of Independence",
             "url": "https://www.archives.gov/milestone-documents/declaration-of-independence",
             "name": "National Archives"
           }
-        ]
+        ],
+        "image": "assets/history/declaration-independence.jpg",
+        "imageAlt": "Пергаментный текст Декларации независимости США"
       },
       {
         "id": "ru-2007-arktika-mir-dive",
         "year": 2007,
         "title": "Флаг под Северным полюсом",
-        "summary": "Российские батискафы «Мир» впервые с экипажем достигли дна Ледовитого океана в точке Северного полюса. На грунт опустили титановый флаг.",
+        "summary": "Батискафы «Мир» достигли дна в точке полюса.",
         "fact": "💡 Глубина у «Мир-1» — около 4261 метра.",
         "body": "",
         "category": "science",
@@ -858,9 +860,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "CNN — Russia plants flag on Arctic floor",
-            "url": "https://www.cnn.com/2007/WORLD/europe/08/02/arctic.sub.reut/index.html",
-            "name": "CNN"
+            "title": "NASA Earth Observatory — Russia plants flag at North Pole",
+            "url": "https://earthobservatory.nasa.gov/images/7964/russia-plants-flag-at-north-pole",
+            "name": "NASA Earth Observatory"
           }
         ]
       },
@@ -868,8 +870,8 @@
         "id": "world-1932-positron-discovered",
         "year": 1932,
         "title": "Найден позитрон",
-        "summary": "Карл Андерсон на фото из камеры Вильсона увидел след частицы — лёгкой, как электрон, но с плюсом. Так впервые поймали антиматерию.",
-        "fact": "💡 За открытие он получил Нобелевскую премию по физике в 1936 году.",
+        "summary": "Андерсон поймал след антиматерии в камере Вильсона.",
+        "fact": "💡 Нобелевскую премию он получил в 1936 году.",
         "body": "",
         "category": "science",
         "region": "WORLD",
@@ -878,9 +880,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Physics Today — Positron discovered",
-            "url": "https://physicstoday.aip.org/news/positron-discovered",
-            "name": "Physics Today"
+            "title": "Nobel Prize — Carl Anderson facts",
+            "url": "https://www.nobelprize.org/prizes/physics/1936/anderson/facts/",
+            "name": "Nobel Prize"
           }
         ]
       }
@@ -890,8 +892,8 @@
         "id": "world-1492-columbus-sails",
         "year": 1492,
         "title": "Три корабля на запад",
-        "summary": "Из испанского Палоса вышли «Санта-Мария», «Пинта» и «Нинья». Колумб искал западный путь в Азию — а открыл для Европы Новый Свет.",
-        "fact": "💡 Землю увидели только 12 октября.",
+        "summary": "Из Палоса вышли «Санта-Мария», «Пинта» и «Нинья».",
+        "fact": "💡 Колумб искал путь в Азию; землю увидели 12 октября.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -900,9 +902,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "History.com — Columbus sets sail",
-            "url": "https://www.history.com/this-day-in-history/august-3/columbus-sets-sail",
-            "name": "HISTORY"
+            "title": "Library of Congress — Columbus sets sail",
+            "url": "https://www.loc.gov/item/today-in-history/august-03/",
+            "name": "Library of Congress"
           }
         ]
       },
@@ -910,8 +912,8 @@
         "id": "world-1958-nautilus-north-pole",
         "year": 1958,
         "title": "Подлёдный полюс",
-        "summary": "Атомная подлодка USS Nautilus впервые прошла под географическим Северным полюсом. Ядерный двигатель позволил идти подо льдом без всплытия.",
-        "fact": "💡 Командир объявил экипажу: «For the world, our country, and the Navy — the North Pole.»",
+        "summary": "USS Nautilus впервые прошла под Северным полюсом.",
+        "fact": "💡 Атомный двигатель позволил идти подо льдом без всплытия.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -920,9 +922,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "History.com — Nautilus travels under North Pole",
-            "url": "https://www.history.com/this-day-in-history/august-3/nautilus-travels-under-north-pole",
-            "name": "HISTORY"
+            "title": "U.S. Navy — Nautilus and the North Pole",
+            "url": "https://www.history.navy.mil/browse-by-topic/exploration-and-innovation/nautilus-and-arctic.html",
+            "name": "U.S. Navy"
           }
         ]
       },
@@ -930,8 +932,8 @@
         "id": "world-1914-germany-france-war",
         "year": 1914,
         "title": "Война на два фронта",
-        "summary": "Через два дня после войны с Россией Германия объявила войну Франции. Европейский конфликт окончательно расползся.",
-        "fact": "💡 На следующий день Германия вторглась в нейтральную Бельгию — и в войну вступила Британия.",
+        "summary": "Германия объявила войну Франции — конфликт расползся.",
+        "fact": "💡 На следующий день Германия вторглась в Бельгию.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -940,9 +942,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "History.com — Germany declares war on France",
-            "url": "https://www.history.com/this-day-in-history/august-3/germany-and-france-declare-war-on-each-other",
-            "name": "HISTORY"
+            "title": "Imperial War Museums — Outbreak of the First World War",
+            "url": "https://www.iwm.org.uk/history/how-the-world-went-to-war-in-1914",
+            "name": "IWM"
           }
         ]
       }
@@ -974,8 +976,8 @@
         "id": "world-1790-revenue-cutter-service",
         "year": 1790,
         "title": "Рождение береговой охраны",
-        "summary": "Конгресс США заказал десять катеров против контрабанды.",
-        "fact": "💡 До появления флота они были всей морской силой страны.",
+        "summary": "Конгресс заказал десять катеров против контрабанды.",
+        "fact": "💡 До флота они были всей морской силой страны.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -994,7 +996,7 @@
         "id": "world-1958-billboard-hot-100",
         "year": 1958,
         "title": "Первый Hot 100",
-        "summary": "Billboard впервые собрал песни США в один хит-парад.",
+        "summary": "Billboard собрал песни США в один хит-парад.",
         "fact": "💡 Первым №1 стал Ricky Nelson — «Poor Little Fool».",
         "body": "",
         "category": "culture",
@@ -1047,7 +1049,6 @@
         "sources": [
           {
             "title": "NPS Handbook — Statue of Liberty",
-            "shortTitle": "NPS Handbook",
             "url": "https://www.npshistory.com/handbooks/historical/11/hh11g.htm",
             "name": "NPS"
           }
@@ -1067,7 +1068,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Smithsonian — The History of the Traffic Light",
+            "title": "Smithsonian — History of the Traffic Light",
             "url": "https://www.smithsonianmag.com/innovation/history-traffic-signal-180968734/",
             "name": "Smithsonian"
           }
@@ -1079,8 +1080,8 @@
         "id": "ru-1961-titov-vostok2",
         "year": 1961,
         "title": "Сутки на орбите",
-        "summary": "Герман Титов на «Востоке-2» провёл в космосе больше суток и сделал 17 витков вокруг Земли. Он стал вторым человеком на орбите — и первым, кто спал в невесомости.",
-        "fact": "💡 В полёте Титову было 25 лет — долго он оставался самым молодым космонавтом.",
+        "summary": "Герман Титов на «Востоке-2» провёл в космосе больше суток.",
+        "fact": "💡 Ему было 25 лет — самый молодой космонавт.",
         "body": "",
         "category": "space",
         "region": "RU",
@@ -1098,9 +1099,9 @@
       {
         "id": "world-1926-ederle-english-channel",
         "year": 1926,
-        "title": "Женщина через Ла-Манш",
-        "summary": "Двадцатилетняя Гертруда Эдерле первой из женщин переплыла Ла-Манш. Она шла от Франции к Англии 14 часов 31 минуту — и побила мужской рекорд почти на два часа.",
-        "fact": "💡 В Нью-Йорке её встречал парад, как героя — толпа была огромной.",
+        "title": "Через Ла-Манш",
+        "summary": "Гертруда Эдерле первой из женщин переплыла Ла-Манш.",
+        "fact": "💡 Она побила мужской рекорд почти на два часа.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1109,9 +1110,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "HISTORY — Gertrude Ederle swims the Channel",
-            "url": "https://www.history.com/this-day-in-history/august-6/gertrude-ederle-becomes-first-woman-to-swim-english-channel",
-            "name": "HISTORY"
+            "title": "International Swimming Hall of Fame — Gertrude Ederle",
+            "url": "https://ishof.org/gertrude-ederle/",
+            "name": "ISHOF"
           }
         ]
       },
@@ -1119,8 +1120,8 @@
         "id": "world-1962-jamaica-independence",
         "year": 1962,
         "title": "Ямайка независима",
-        "summary": "После трёх веков британского правления Ямайка стала независимым государством в Содружестве. В Кингстоне подняли новый флаг — зелёный, золотой и чёрный.",
-        "fact": "💡 Первым премьер-министром стал Александр Бустаманте.",
+        "summary": "Ямайка стала независимым государством в Содружестве.",
+        "fact": "💡 Первым премьером стал Александр Бустаманте.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1129,9 +1130,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Jamaica",
-            "url": "https://www.britannica.com/place/Jamaica",
-            "name": "Britannica"
+            "title": "JIS — Independence",
+            "url": "https://jis.gov.jm/information/jamaican-history/",
+            "name": "JIS"
           }
         ]
       }
@@ -1140,9 +1141,9 @@
       {
         "id": "world-1947-kontiki-lands",
         "year": 1947,
-        "title": "Плот добрался до Полинезии",
-        "summary": "Плот «Кон-Тики» Тура Хейердала после 101 дня в океане достиг атолла Рароиа. Экспедиция показала: древние мореходы Южной Америки могли доплыть до Полинезии на простых плотах.",
-        "fact": "💡 Фильм о плавании получил «Оскар» как лучший документальный.",
+        "title": "Плот до Полинезии",
+        "summary": "Плот «Кон-Тики» доплыл из Перу до атолла Рароиа.",
+        "fact": "💡 Хейердал доказывал: Тихий океан можно пересечь на плоту.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1151,9 +1152,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "HISTORY — Kon-Tiki completes voyage",
-            "url": "https://www.history.com/this-day-in-history/august-7/wood-raft-makes-4300-mile-voyage",
-            "name": "HISTORY"
+            "title": "Kon-Tiki Museum",
+            "url": "https://www.kon-tiki.no/",
+            "name": "Kon-Tiki Museum"
           }
         ]
       },
@@ -1161,8 +1162,8 @@
         "id": "ru-1803-krusenstern-departs",
         "year": 1803,
         "title": "Первое кругосветное",
-        "summary": "Из Кронштадта вышли шлюпы «Надежда» и «Нева» под началом Ивана Крузенштерна. Так началось первое русское кругосветное плавание — с наукой, картами и дипломатией.",
-        "fact": "💡 Путешествие длилось три года и закончилось в 1806-м.",
+        "summary": "Из Кронштадта вышли «Надежда» и «Нева».",
+        "fact": "💡 Это было первое русское кругосветное плавание.",
         "body": "",
         "category": "culture",
         "region": "RU",
@@ -1171,29 +1172,33 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Presidential Library — First Russian circumnavigation",
-            "url": "https://www.prlib.ru/en/history/619361",
-            "name": "Presidential Library"
+            "title": "Президентская библиотека — первое русское кругосветное",
+            "url": "https://www.prlib.ru/history/619441",
+            "name": "Прлиб",
+            "shortTitle": "Прлиб"
           }
         ]
       },
       {
-        "id": "world-1974-petit-twin-towers",
-        "year": 1974,
-        "title": "Прогулка между башнями",
-        "summary": "Француз Филипп Пети тайно натянул трос между башнями Всемирного торгового центра в Нью-Йорке и прошёл по нему. Сорок пять минут над городом — без страховки и разрешения.",
-        "fact": "💡 За «преступление» его приговорили… к бесплатному выступлению для детей.",
+        "id": "world-1959-explorer6-launch",
+        "year": 1959,
+        "title": "Земля с орбиты",
+        "summary": "Explorer 6 впервые снял Землю из космоса.",
+        "fact": "💡 Кадр был грубым, но это был первый взгляд с орбиты.",
         "body": "",
-        "category": "culture",
+        "category": "space",
         "region": "WORLD",
         "priority": 70,
         "interest": 9,
         "status": "verified",
+        "image": "assets/history/explorer6-1959.jpg",
+        "imageAlt": "Старт ракеты Thor-Able со спутником Explorer 6",
         "sources": [
           {
-            "title": "HISTORY — Philippe Petit walks between Twin Towers",
-            "url": "https://www.history.com/this-day-in-history/august-7/philippe-petit-walks-tightrope-between-twin-towers",
-            "name": "HISTORY"
+            "title": "NASA NSSDC — Explorer 6",
+            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1959-004A",
+            "name": "NASA NSSDC",
+            "shortTitle": "NASA NSSDC"
           }
         ]
       }
@@ -1203,8 +1208,8 @@
         "id": "world-1969-abbey-road-cover",
         "year": 1969,
         "title": "Зебра Abbey Road",
-        "summary": "The Beatles десять минут ходили по пешеходному переходу у студии EMI. Фотограф Иэн Макмиллан сделал шесть кадров — один из них стал обложкой альбома Abbey Road.",
-        "fact": "💡 На обложку взяли пятый кадр: все четверо шли в ногу.",
+        "summary": "The Beatles десять минут ходили по зебре у EMI.",
+        "fact": "💡 На обложку взяли пятый кадр: все шли в ногу.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1223,8 +1228,8 @@
         "id": "world-1786-mont-blanc-ascent",
         "year": 1786,
         "title": "Вершина Европы",
-        "summary": "Врач Мишель-Габриэль Паккар и проводник Жак Бальма впервые взошли на Монблан. Так родился альпинизм как спортивное и научное приключение.",
-        "fact": "💡 У них не было верёвки в современном смысле — только длинные шесты.",
+        "summary": "Паккар и Бальма впервые взошли на Монблан.",
+        "fact": "💡 Вместо верёвки у них были длинные шесты.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1233,7 +1238,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Royal Society — The first ascent of Mont Blanc",
+            "title": "Royal Society — First ascent of Mont Blanc",
             "url": "https://royalsocietypublishing.org/doi/10.1098/rsnr.1955.0011",
             "name": "Royal Society"
           }
@@ -1243,8 +1248,8 @@
         "id": "world-2008-beijing-olympics-opening",
         "year": 2008,
         "title": "Олимпиада в Пекине",
-        "summary": "В Пекине открылись летние Олимпийские игры. Церемония на «Птичьем гнезде» стала одним из самых зрелищных стартов Игр XXI века.",
-        "fact": "💡 Дата 08.08.08 выбрана намеренно: восьмёрка в Китае — к удаче.",
+        "summary": "В Пекине открылись летние Олимпийские игры.",
+        "fact": "💡 Дату 08.08.08 выбрали намеренно: восьмёрка — к удаче.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1265,8 +1270,8 @@
         "id": "world-1965-singapore-independence",
         "year": 1965,
         "title": "Сингапур самостоятельно",
-        "summary": "Сингапур вышел из Федерации Малайзии и стал независимой республикой. Маленький порт-город начал путь к одной из самых успешных экономик Азии.",
-        "fact": "💡 Премьер Ли Куан Ю позже назвал этот день и болью, и началом нового государства.",
+        "summary": "Сингапур вышел из Малайзии и стал республикой.",
+        "fact": "💡 Ли Куан Ю назвал этот день и болью, и началом.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1275,9 +1280,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Singapore",
-            "url": "https://www.britannica.com/place/Singapore",
-            "name": "Britannica"
+            "title": "NLB Infopedia — Singapore separates from Malaysia",
+            "url": "https://eresources.nlb.gov.sg/infopedia/articles/SIP_2014-07-07_111825.html",
+            "name": "NLB Singapore"
           }
         ]
       },
@@ -1285,8 +1290,8 @@
         "id": "world-1854-walden-published",
         "year": 1854,
         "title": "Вышел «Уолден»",
-        "summary": "Генри Дэвид Торо опубликовал «Уолден, или Жизнь в лесу» — книгу о двух годах у пруда, простоте и внимании к природе. Она стала классикой американской мысли.",
-        "fact": "💡 Дом у пруда Торо построил сам — примерно за 28 долларов.",
+        "summary": "Торо опубликовал книгу о жизни у пруда.",
+        "fact": "💡 Дом у пруда он построил сам — примерно за 28 долларов.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1305,8 +1310,8 @@
         "id": "world-1930-betty-boop-debut",
         "year": 1930,
         "title": "Появилась Бетти Буп",
-        "summary": "В мультфильме Dizzy Dishes студии Max Fleischer впервые появилась Бетти Буп. Скоро она стала одной из самых узнаваемых героинь анимации.",
-        "fact": "💡 Сначала у персонажа были собачьи ушки — человеческий облик пришёл позже.",
+        "summary": "В Dizzy Dishes впервые появилась Бетти Буп.",
+        "fact": "💡 Сначала у персонажа были собачьи ушки.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1327,8 +1332,8 @@
         "id": "world-1846-smithsonian-founded",
         "year": 1846,
         "title": "Рождение Смитсоновского",
-        "summary": "Президент США подписал акт о создании Смитсоновского института — «для приращения и распространения знаний». Так начался крупнейший музейно-научный комплекс страны.",
-        "fact": "💡 Деньги завещал британский учёный Джеймс Смитсон, ни разу не бывавший в Америке.",
+        "summary": "Подписали акт о создании Смитсоновского института.",
+        "fact": "💡 Деньги завещал британец Джеймс Смитсон.",
         "body": "",
         "category": "science",
         "region": "WORLD",
@@ -1341,14 +1346,16 @@
             "url": "https://www.si.edu/about/history",
             "name": "Smithsonian"
           }
-        ]
+        ],
+        "image": "assets/history/smithsonian-castle.jpg",
+        "imageAlt": "Здание Smithsonian Castle в Вашингтоне"
       },
       {
         "id": "world-1793-louvre-museum-opens",
         "year": 1793,
         "title": "Лувр для всех",
-        "summary": "Бывший королевский дворец в Париже открылся как публичный музей. Картины и скульптуры, прежде доступные двору, стали видеть обычные горожане.",
-        "fact": "💡 В первый год музей работал всего три дня в декаду.",
+        "summary": "Бывший дворец в Париже открылся как публичный музей.",
+        "fact": "💡 В первый год музей работал три дня в декаду.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1367,8 +1374,8 @@
         "id": "world-1675-greenwich-observatory",
         "year": 1675,
         "title": "Обсерватория в Гринвиче",
-        "summary": "Карл II заложил фундамент Королевской обсерватории в Гринвиче. Задача была практической: точнее определять долготу в море и сделать навигацию безопаснее.",
-        "fact": "💡 Позже через Гринвич провели нулевой меридиан — «точку ноль» для времени и карт.",
+        "summary": "Карл II заложил Королевскую обсерваторию в Гринвиче.",
+        "fact": "💡 Позже через Гринвич провели нулевой меридиан.",
         "body": "",
         "category": "science",
         "region": "WORLD",
@@ -1377,7 +1384,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Royal Museums Greenwich — History of the Observatory",
+            "title": "Royal Museums Greenwich — Observatory history",
             "url": "https://www.rmg.co.uk/stories/topics/history-royal-observatory",
             "name": "Royal Museums Greenwich"
           }
@@ -1389,8 +1396,8 @@
         "id": "ru-1962-vostok3-nikolayev",
         "year": 1962,
         "title": "Групповой полёт начался",
-        "summary": "Андриян Николаев на «Востоке-3» начал первый в истории групповой космический полёт. На следующий день к нему на орбите присоединился Павел Попович на «Востоке-4».",
-        "fact": "💡 Корабли сближались примерно до 6,5 км — их было видно друг другу.",
+        "summary": "Николаев на «Востоке-3» начал первый групповой полёт.",
+        "fact": "💡 Назавтра к нему присоединился Попович на «Востоке-4».",
         "body": "",
         "category": "space",
         "region": "RU",
@@ -1409,8 +1416,8 @@
         "id": "world-1973-hiphop-kool-herc",
         "year": 1973,
         "title": "Вечеринка, с которой начался хип-хоп",
-        "summary": "В Бронксе DJ Kool Herc устроил вечеринку в актовом зале дома на Sedgwick Avenue. Он удлинял танцевальные «брейки» пластинок — и заложил основу хип-хопа.",
-        "fact": "💡 Адрес 1520 Sedgwick Avenue позже назвали «местом рождения хип-хопа».",
+        "summary": "DJ Kool Herc устроил вечеринку в Бронксе.",
+        "fact": "💡 Адрес 1520 Sedgwick Avenue позже назвали местом рождения хип-хопа.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1429,8 +1436,8 @@
         "id": "world-1929-babe-ruth-500th-hr",
         "year": 1929,
         "title": "500-й хоум-ран Рута",
-        "summary": "Бейсболист Бэйб Рут выбил 500-й хоум-ран в карьере — первым в истории Главной лиги. Для Америки это был спортивный рубеж масштаба рекорда.",
-        "fact": "💡 Всего за карьеру Рут отправил 714 хоум-ранов — рекорд держался 39 лет.",
+        "summary": "Бэйб Рут первым выбил 500 хоум-ранов в MLB.",
+        "fact": "💡 Всего у него 714 — рекорд держался 39 лет.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1439,7 +1446,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "National Baseball Hall of Fame — Babe Ruth",
+            "title": "Baseball Hall of Fame — Babe Ruth",
             "url": "https://baseballhall.org/hall-of-famers/ruth-babe",
             "name": "Baseball Hall of Fame"
           }
@@ -1451,7 +1458,7 @@
         "id": "world-1981-ibm-pc",
         "year": 1981,
         "title": "Появился IBM PC",
-        "summary": "IBM представила персональный компьютер IBM 5150. Открытая архитектура и совместимость сделали «PC» стандартом, от которого отталкивалась целая индустрия.",
+        "summary": "IBM представила персональный компьютер 5150.",
         "fact": "💡 Базовая модель с 16 КБ памяти стоила 1565 долларов.",
         "body": "",
         "category": "technology",
@@ -1465,14 +1472,16 @@
             "url": "https://www.computerhistory.org/revolution/personal-computers/17/301",
             "name": "Computer History Museum"
           }
-        ]
+        ],
+        "image": "assets/history/ibm-5150.jpg",
+        "imageAlt": "Персональный компьютер IBM 5150 с монитором и клавиатурой"
       },
       {
         "id": "world-1851-singer-sewing-machine",
         "year": 1851,
         "title": "Патент на швейную машинку",
-        "summary": "Айзек Зингер получил патент на усовершенствованную швейную машину. Надёжный механизм и удобная педаль помогли машинке войти в дома и мастерские по всему миру.",
-        "fact": "💡 Компания Singer первой сделала ставку на кредит для покупателей.",
+        "summary": "Зингер получил патент на удобную швейную машину.",
+        "fact": "💡 Компания первой сделала ставку на кредит покупателям.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -1481,7 +1490,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Smithsonian — Singer Sewing Machine",
+            "title": "Smithsonian — Sewing Machines",
             "url": "https://americanhistory.si.edu/collections/object-groups/sewing-machines",
             "name": "Smithsonian"
           }
@@ -1491,8 +1500,8 @@
         "id": "world-1865-lister-antiseptic",
         "year": 1865,
         "title": "Первая антисептика",
-        "summary": "Хирург Джозеф Листер впервые применил антисептическую повязку с карболовой кислотой при открытом переломе. Идея была простой: убить микробы — и спасти конечность.",
-        "fact": "💡 Мальчик Джеймс Гринлис выжил — и это изменило хирургию.",
+        "summary": "Листер применил карболовую повязку при переломе.",
+        "fact": "💡 Мальчик Джеймс Гринлис выжил — и хирургия изменилась.",
         "body": "",
         "category": "science",
         "region": "WORLD",
@@ -1513,8 +1522,8 @@
         "id": "world-1942-bambi-us-premiere",
         "year": 1942,
         "title": "Премьера «Бэмби»",
-        "summary": "В США вышел мультфильм Disney «Бэмби» — история оленёнка, дружбы и леса. Картина стала классикой анимации и одним из самых нежных фильмов студии.",
-        "fact": "💡 Мировая премьера прошла в Лондоне пятью днями раньше — 9 августа.",
+        "summary": "В США вышел мультфильм Disney «Бэмби».",
+        "fact": "💡 Мировая премьера прошла в Лондоне 9 августа.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1523,9 +1532,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Bambi",
-            "url": "https://www.britannica.com/topic/Bambi-film-by-Hand",
-            "name": "Britannica"
+            "title": "AFI Catalog — Bambi",
+            "url": "https://catalog.afi.com/Film/2708-BAMBI",
+            "name": "AFI"
           }
         ]
       },
@@ -1533,8 +1542,8 @@
         "id": "world-1918-opha-may-johnson-marine",
         "year": 1918,
         "title": "Первая женщина в морской пехоте",
-        "summary": "Офа Мэй Джонсон стала первой женщиной, официально зачисленной в Корпус морской пехоты США. Она открыла дорогу женщинам на службу в тыловых ролях военного времени.",
-        "fact": "💡 Вслед за ней за годы войны в корпус вступили сотни женщин.",
+        "summary": "Офа Мэй Джонсон первой вступила в US Marine Corps.",
+        "fact": "💡 За годы войны за ней последовали сотни женщин.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1553,8 +1562,8 @@
         "id": "world-1889-coin-telephone-patent",
         "year": 1889,
         "title": "Телефон за монетку",
-        "summary": "Уильям Грей получил патент на телефон-автомат с оплатой монетой. Идея родилась из личной нужды: позвонить врачу, когда под рукой не было сдачи.",
-        "fact": "💡 Первые аппараты ставили в магазинах и на вокзалах — связь стала уличной.",
+        "summary": "Уильям Грей запатентовал телефон-автомат.",
+        "fact": "💡 Первые аппараты ставили в магазинах и на вокзалах.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -1563,7 +1572,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Connecticut History — William Gray and the pay phone",
+            "title": "Connecticut History — William Gray",
             "url": "https://connecticuthistory.org/william-gray-and-the-pay-telephone/",
             "name": "Connecticut History"
           }
@@ -1575,8 +1584,8 @@
         "id": "world-1935-social-security-act",
         "year": 1935,
         "title": "Закон о соцзащите",
-        "summary": "Президент Рузвельт подписал Social Security Act — закон о пенсиях и пособиях по безработице. В разгар Великой депрессии страна получила страховку на старость.",
-        "fact": "💡 Сначала пенсии выплачивали только с 1940 года — система только разгонялась.",
+        "summary": "Рузвельт подписал Social Security Act.",
+        "fact": "💡 Пенсии начали выплачивать только с 1940 года.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1595,8 +1604,8 @@
         "id": "world-1947-pakistan-independence",
         "year": 1947,
         "title": "Рождение Пакистана",
-        "summary": "Пакистан стал независимым государством, отделившись от Британской Индии. Новый флаг подняли в полночь — страна начинала свой путь на карте мира.",
-        "fact": "💡 На следующий день, 15 августа, независимость провозгласила Индия.",
+        "summary": "Пакистан стал независимым государством.",
+        "fact": "💡 На следующий день независимость провозгласила Индия.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1605,9 +1614,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Pakistan",
-            "url": "https://www.britannica.com/place/Pakistan",
-            "name": "Britannica"
+            "title": "UK National Archives — Partition of India",
+            "url": "https://www.nationalarchives.gov.uk/education/resources/the-road-to-partition/",
+            "name": "UK National Archives"
           }
         ]
       },
@@ -1615,8 +1624,8 @@
         "id": "world-1248-cologne-cathedral-begun",
         "year": 1248,
         "title": "Закладка Кёльнского собора",
-        "summary": "В Кёльне заложили фундамент готического собора — одного из самых амбициозных храмов Европы. Стройка растянется на столетия и станет символом города.",
-        "fact": "💡 Закончить собор по средневековому плану удалось только в 1880 году.",
+        "summary": "В Кёльне заложили фундамент готического собора.",
+        "fact": "💡 Закончить храм по средневековому плану удалось в 1880 году.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1637,8 +1646,8 @@
         "id": "world-1914-panama-canal-opens",
         "year": 1914,
         "title": "Открылся Панамский канал",
-        "summary": "Через Панамский перешеек прошёл пароход Ancon — канал между Атлантикой и Тихим океаном открыли для судоходства. Путь между океанами сократился на недели.",
-        "fact": "💡 Строители переместили около 240 миллионов кубометров грунта.",
+        "summary": "Пароход Ancon прошёл новый канал между океанами.",
+        "fact": "💡 Строители переместили около 240 млн кубометров грунта.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -1647,9 +1656,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Panama Canal",
-            "url": "https://www.britannica.com/topic/Panama-Canal",
-            "name": "Britannica"
+            "title": "Panama Canal Authority — History",
+            "url": "https://pancanal.com/en/history-of-the-panama-canal/",
+            "name": "Panama Canal Authority"
           }
         ]
       },
@@ -1657,8 +1666,8 @@
         "id": "world-1939-wizard-of-oz-premiere",
         "year": 1939,
         "title": "Премьера «Волшебника страны Оз»",
-        "summary": "В США вышел фильм «Волшебник страны Оз» с Джуди Гарленд. Дорога из жёлтого кирпича и изумрудный город стали частью мировой киносказки.",
-        "fact": "💡 Переход из чёрно-белого Канзаса в цветную Оз зрители 1939 года видели впервые.",
+        "summary": "В США вышел фильм с Джуди Гарленд.",
+        "fact": "💡 Переход из чёрно-белого Канзаса в цветную Оз поразил зал.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1667,7 +1676,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Library of Congress — The Wizard of Oz",
+            "title": "Library of Congress — Wizard of Oz",
             "url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/wizard_of_oz.pdf",
             "name": "Library of Congress"
           }
@@ -1677,8 +1686,8 @@
         "id": "world-1969-woodstock-opens",
         "year": 1969,
         "title": "Начался Woodstock",
-        "summary": "На ферме в штате Нью-Йорк открылся фестиваль Woodstock — три дня музыки и мира. Приехали сотни тысяч людей, а сцена вошла в легенду поколения.",
-        "fact": "💡 Хендрикс закрыл фестиваль утром в понедельник — зал уже почти опустел.",
+        "summary": "На ферме в Нью-Йорке открылся фестиваль Woodstock.",
+        "fact": "💡 Хендрикс закрыл его утром в понедельник.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1687,7 +1696,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Woodstock",
+            "title": "Britannica — Woodstock",
             "url": "https://www.britannica.com/event/Woodstock",
             "name": "Britannica"
           }
@@ -1699,8 +1708,8 @@
         "id": "world-1858-atlantic-cable-messages",
         "year": 1858,
         "title": "Кабель через Атлантику",
-        "summary": "По первому трансатлантическому телеграфному кабелю пошли рабочие сообщения между Европой и Америкой. Океан перестал быть стеной для новостей.",
-        "fact": "💡 Первый кабель проработал недолго — но доказал: связь через океан возможна.",
+        "summary": "По трансатлантическому кабелю пошли рабочие сообщения.",
+        "fact": "💡 Первый кабель проработал недолго — но доказал идею.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -1713,14 +1722,16 @@
             "url": "https://ethw.org/Atlantic_Cable",
             "name": "IEEE"
           }
-        ]
+        ],
+        "image": "assets/history/atlantic-cable-1858.jpg",
+        "imageAlt": "Корабль Agamemnon прокладывает атлантический кабель, 1858"
       },
       {
         "id": "world-1896-klondike-gold",
         "year": 1896,
         "title": "Золото Клондайка",
-        "summary": "У ручья Бонанза в Юконе нашли богатую золотую россыпь. Новость разлетелась — и началась знаменитая клондайкская золотая лихорадка.",
-        "fact": "💡 Многие добирались месяцами, а состояние успевали сделать немногие.",
+        "summary": "У ручья Бонанза нашли богатую золотую россыпь.",
+        "fact": "💡 Новость разлетелась — и началась золотая лихорадка.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1729,9 +1740,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Klondike gold rush",
-            "url": "https://www.britannica.com/event/Klondike-gold-rush",
-            "name": "Britannica"
+            "title": "NPS — Klondike Gold Rush",
+            "url": "https://www.nps.gov/klgo/learn/historyculture/index.htm",
+            "name": "NPS"
           }
         ]
       },
@@ -1739,8 +1750,8 @@
         "id": "world-1954-sports-illustrated",
         "year": 1954,
         "title": "Первый Sports Illustrated",
-        "summary": "Вышел первый номер журнала Sports Illustrated. Спорт получил глянцевую витрину — с репортажами, фото и героями сезона.",
-        "fact": "💡 На обложке первого номера был бейсболист Eddie Mathews.",
+        "summary": "Вышел первый номер Sports Illustrated.",
+        "fact": "💡 На обложке был бейсболист Eddie Mathews.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1749,7 +1760,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Sports Illustrated — SI history",
+            "title": "Sports Illustrated — First issue",
             "url": "https://www.si.com/college/2014/08/16/sports-illustrated-first-issue-60th-anniversary",
             "name": "Sports Illustrated"
           }
@@ -1761,8 +1772,8 @@
         "id": "world-1807-fulton-clermont",
         "year": 1807,
         "title": "Пароход «Клермонт»",
-        "summary": "Пароход Роберта Фултона «Клермонт» впервые пошёл по Гудзону из Нью-Йорка в Олбани. Паровая сила доказала: реки можно освоить без паруса и вёсел.",
-        "fact": "💡 Путь занял около 32 часов — для того времени это был прорыв.",
+        "summary": "Пароход Фултона пошёл по Гудзону до Олбани.",
+        "fact": "💡 Путь занял около 32 часов — для того времени прорыв.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -1771,9 +1782,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Clermont",
-            "url": "https://www.britannica.com/topic/Clermont-steamboat",
-            "name": "Britannica"
+            "title": "Smithsonian — Robert Fulton and the Steamboat",
+            "url": "https://americanhistory.si.edu/collections/object-groups/steamboat",
+            "name": "Smithsonian"
           }
         ]
       },
@@ -1781,8 +1792,8 @@
         "id": "world-1945-indonesia-independence",
         "year": 1945,
         "title": "Независимость Индонезии",
-        "summary": "Сукарно и Хатта провозгласили независимость Индонезии. После веков колониального правления архипелаг заявил о праве на собственное государство.",
-        "fact": "💡 День до сих пор отмечают как главный национальный праздник страны.",
+        "summary": "Сукарно и Хатта провозгласили независимость.",
+        "fact": "💡 День до сих пор главный национальный праздник страны.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1791,8 +1802,8 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Indonesia",
-            "url": "https://www.britannica.com/place/Indonesia",
+            "title": "Britannica — Proclamation of Indonesian Independence",
+            "url": "https://www.britannica.com/event/Proclamation-of-Indonesian-Independence",
             "name": "Britannica"
           }
         ]
@@ -1801,8 +1812,8 @@
         "id": "world-1978-double-eagle-ii",
         "year": 1978,
         "title": "Шар через Атлантику",
-        "summary": "Воздушный шар Double Eagle II впервые успешно пересёк Атлантику с людьми на борту. Трое американцев долетели из США до Франции.",
-        "fact": "💡 Полёт длился больше пяти суток — и закончился мягкой посадкой в пшенице.",
+        "summary": "Double Eagle II впервые пересёк Атлантику с людьми.",
+        "fact": "💡 Полёт длился больше пяти суток.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1823,8 +1834,8 @@
         "id": "world-1920-19th-amendment",
         "year": 1920,
         "title": "Женщины получили голос",
-        "summary": "Теннесси стал 36-м штатом, ратифицировавшим 19-ю поправку. Женщины в США получили конституционное право голоса.",
-        "fact": "💡 Решающий голос отдал молодой депутат по просьбе матери — в письме она просила «be a good boy».",
+        "summary": "Теннесси ратифицировал 19-ю поправку — хватило штатов.",
+        "fact": "💡 Решающий голос отдал депутат по просьбе матери.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1843,7 +1854,7 @@
         "id": "world-1868-helium-discovered",
         "year": 1868,
         "title": "Гелий нашли на Солнце",
-        "summary": "По солнечному спектру астрономы заметили неизвестную линию. Так открыли гелий — сначала на Солнце, и лишь потом на Земле.",
+        "summary": "По спектру Солнца заметили неизвестную линию — гелий.",
         "fact": "💡 Название от греческого helios — «Солнце».",
         "body": "",
         "category": "science",
@@ -1853,7 +1864,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "American Physical Society — Discovery of Helium",
+            "title": "APS — Discovery of Helium",
             "url": "https://www.aps.org/publications/apsnews/201808/history.cfm",
             "name": "APS"
           }
@@ -1863,8 +1874,8 @@
         "id": "world-1587-virginia-dare",
         "year": 1587,
         "title": "Первый ребёнок колонии",
-        "summary": "На острове Роанок родилась Вирджиния Дэр — первый ребёнок английских поселенцев в Америке. Её имя стало символом ранней колониальной истории.",
-        "fact": "💡 Судьба «потерянной колонии» Роанок до сих пор не разгадана до конца.",
+        "summary": "На Роаноке родилась Вирджиния Дэр.",
+        "fact": "💡 Судьба «потерянной колонии» до сих пор неясна.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1873,9 +1884,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Virginia Dare",
-            "url": "https://www.britannica.com/biography/Virginia-Dare",
-            "name": "Britannica"
+            "title": "NPS — Virginia Dare",
+            "url": "https://www.nps.gov/fora/learn/historyculture/virginia-dare.htm",
+            "name": "NPS"
           }
         ]
       }
@@ -1885,8 +1896,8 @@
         "id": "ru-1960-belka-strelka",
         "year": 1960,
         "title": "Белка и Стрелка",
-        "summary": "Собаки Белка и Стрелка отправились на орбиту и через сутки благополучно вернулись. Это был первый «туда-обратно» полёт живых существ вокруг Земли.",
-        "fact": "💡 Позже щенок Стрелки Пушинка стал подарком семье президента Кеннеди.",
+        "summary": "Собаки вернулись с орбиты живыми через сутки.",
+        "fact": "💡 Щенок Стрелки Пушинка позже попал к семье Кеннеди.",
         "body": "",
         "category": "space",
         "region": "RU",
@@ -1895,7 +1906,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "NASA StarChild — Belka and Strelka",
+            "title": "NASA — Animals in Space (Belka and Strelka)",
             "url": "https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question49.html",
             "name": "NASA"
           }
@@ -1905,8 +1916,8 @@
         "id": "ru-1839-pulkovo-observatory",
         "year": 1839,
         "title": "Открыта Пулковская обсерватория",
-        "summary": "Под Петербургом торжественно открыли Главную астрономическую обсерваторию. Пулково быстро назвали «астрономической столицей мира».",
-        "fact": "💡 Первым директором стал Василий Струве — инициатор строительства.",
+        "summary": "Под Петербургом открыли Главную обсерваторию.",
+        "fact": "💡 Первым директором стал Василий Струве.",
         "body": "",
         "category": "science",
         "region": "RU",
@@ -1915,7 +1926,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Presidential Library — Pulkovo Observatory opened",
+            "title": "Presidential Library — Pulkovo Observatory",
             "url": "https://www.prlib.ru/en/history/619472",
             "name": "Presidential Library"
           }
@@ -1925,8 +1936,8 @@
         "id": "world-1839-daguerreotype",
         "year": 1839,
         "title": "Миру показали фотографию",
-        "summary": "Во Франции публично объявили изобретение дагерротипа. Люди впервые получили способ «ловить» точное изображение на пластине.",
-        "fact": "💡 Уже к 1850 году только в Нью-Йорке работали десятки дагерротипных студий.",
+        "summary": "Во Франции объявили изобретение дагерротипа.",
+        "fact": "💡 К 1850 году в Нью-Йорке работали десятки студий.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -1935,7 +1946,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Library of Congress — The Daguerreotype Medium",
+            "title": "Library of Congress — Daguerreotype",
             "url": "https://www.loc.gov/collections/daguerreotypes/articles-and-essays/the-daguerreotype-medium",
             "name": "Library of Congress"
           }
@@ -1947,8 +1958,8 @@
         "id": "world-1977-voyager2-launch",
         "year": 1977,
         "title": "Старт Voyager 2",
-        "summary": "NASA запустила Voyager 2 к внешним планетам. Аппарат позже первым и пока единственным посетил Уран и Нептун.",
-        "fact": "💡 Близнец Voyager 1 стартовал позже, но до Юпитера добрался раньше.",
+        "summary": "NASA запустила Voyager 2 к внешним планетам.",
+        "fact": "💡 Позже он первым посетил Уран и Нептун.",
         "body": "",
         "category": "space",
         "region": "WORLD",
@@ -1961,13 +1972,15 @@
             "url": "https://www.jpl.nasa.gov/news/45-years-ago-voyager-2-begins-its-epic-journey-to-the-outer-planets-and-beyond/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/voyager2-launch.jpg",
+        "imageAlt": "Старт ракеты Titan IIIE с аппаратом Voyager 2"
       },
       {
         "id": "ru-1882-tchaikovsky-1812",
         "year": 1882,
         "title": "Премьера «1812 года»",
-        "summary": "В Москве впервые исполнили увертюру Чайковского «1812 год». Пушки, колокола и торжественная музыка сделали её одним из самых узнаваемых сочинений композитора.",
+        "summary": "В Москве впервые исполнили увертюру Чайковского.",
         "fact": "💡 Пьесу написали к открытию Храма Христа Спасителя.",
         "body": "",
         "category": "culture",
@@ -1977,7 +1990,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — The Year 1812",
+            "title": "Britannica — The Year 1812",
             "url": "https://www.britannica.com/topic/The-Year-1812",
             "name": "Britannica"
           }
@@ -1987,8 +2000,8 @@
         "id": "world-1741-bering-alaska",
         "year": 1741,
         "title": "Беринг увидел Аляску",
-        "summary": "Экспедиция Витуса Беринга достигла берегов Аляски. Европа и Россия получили первое достоверное морское касание с северо-западом Америки.",
-        "fact": "💡 В честь мореплавателя назвали пролив между Азией и Америкой.",
+        "summary": "Экспедиция Беринга достигла берегов Аляски.",
+        "fact": "💡 В его честь назвали пролив между Азией и Америкой.",
         "body": "",
         "category": "culture",
         "region": "RU",
@@ -1997,9 +2010,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Vitus Bering",
-            "url": "https://www.britannica.com/biography/Vitus-Bering",
-            "name": "Britannica"
+            "title": "NOAA — Vitus Bering",
+            "url": "https://oceanexplorer.noaa.gov/explorations/02arctic/background/history/history.html",
+            "name": "NOAA"
           }
         ]
       }
@@ -2009,8 +2022,8 @@
         "id": "world-1959-hawaii-statehood",
         "year": 1959,
         "title": "Гавайи — 50-й штат",
-        "summary": "Гавайи официально стали пятидесятым штатом США. К звёздному флагу добавили ещё одну звезду.",
-        "fact": "💡 Референдум о статусе штата гавайцы поддержали подавляющим большинством.",
+        "summary": "Гавайи официально стали пятидесятым штатом США.",
+        "fact": "💡 Референдум поддержали подавляющим большинством.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2019,9 +2032,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Hawaii",
-            "url": "https://www.britannica.com/place/Hawaii-state",
-            "name": "Britannica"
+            "title": "NARA — Hawaii Statehood",
+            "url": "https://www.archives.gov/legislative/features/hawaii",
+            "name": "National Archives"
           }
         ]
       },
@@ -2029,8 +2042,8 @@
         "id": "world-1911-mona-lisa-stolen",
         "year": 1911,
         "title": "Украли «Мону Лизу»",
-        "summary": "Из Лувра исчезла «Мона Лиза». Бывший сотрудник музея вынес картину под одеждой — и на два года мир гадал, куда делся шедевр.",
-        "fact": "💡 Украденная улыбка сделала картину ещё знаменитее, чем прежде.",
+        "summary": "Из Лувра исчезла «Мона Лиза» — вынес бывший сотрудник.",
+        "fact": "💡 Украденная улыбка сделала картину ещё знаменитее.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2049,8 +2062,8 @@
         "id": "world-1858-lincoln-douglas-debate",
         "year": 1858,
         "title": "Дебаты Линкольна",
-        "summary": "В Иллинойсе начались знаменитые дебаты Линкольна и Дугласа. Спор о рабстве и Союзе сделал Линкольна национальной фигурой.",
-        "fact": "💡 Всего прошло семь встреч — их стенограммы читала вся страна.",
+        "summary": "Начались дебаты Линкольна и Дугласа в Иллинойсе.",
+        "fact": "💡 Всего семь встреч — стенограммы читала вся страна.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2071,8 +2084,8 @@
         "id": "world-1864-geneva-convention",
         "year": 1864,
         "title": "Первая Женевская конвенция",
-        "summary": "В Женеве подписали первую конвенцию о защите раненых на войне. Так заложили основу современного международного гуманитарного права и Красного Креста.",
-        "fact": "💡 Идею продвигал Анри Дюнан — после ужасов битвы при Сольферино.",
+        "summary": "В Женеве подписали защиту раненых на войне.",
+        "fact": "💡 Идею продвигал Анри Дюнан после Сольферино.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2081,8 +2094,8 @@
         "status": "verified",
         "sources": [
           {
-            "title": "ICRC — First Geneva Convention",
-            "url": "https://www.icrc.org/en/document/geneva-conventions-1949-additional-protocols",
+            "title": "ICRC — Original 1864 Geneva Convention",
+            "url": "https://ihl-databases.icrc.org/en/ihl-treaties/gc-1864",
             "name": "ICRC"
           }
         ]
@@ -2091,8 +2104,8 @@
         "id": "world-1902-cadillac-founded",
         "year": 1902,
         "title": "Основан Cadillac",
-        "summary": "В Детройте основали компанию Cadillac. Марка быстро стала символом точности инженерии и американского автомобильного престижа.",
-        "fact": "💡 Название взяли в честь основателя Детройта Антуана де ла Мота Кадиллака.",
+        "summary": "В Детройте основали компанию Cadillac.",
+        "fact": "💡 Название — в честь основателя города Кадиллака.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -2101,7 +2114,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Cadillac",
+            "title": "Britannica — Cadillac",
             "url": "https://www.britannica.com/topic/Cadillac-automobile",
             "name": "Britannica"
           }
@@ -2111,8 +2124,8 @@
         "id": "world-1851-americas-cup",
         "year": 1851,
         "title": "Первый Кубок Америки",
-        "summary": "Яхта America выиграла гонку вокруг острова Уайт. Трофей позже назвали Кубком Америки — старейшим международным спортивным призом.",
-        "fact": "💡 Кубок не возвращали Великобритании 132 года — до 1983-го.",
+        "summary": "Яхта America выиграла гонку вокруг острова Уайт.",
+        "fact": "💡 Кубок не возвращали 132 года — до 1983-го.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2121,7 +2134,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — America’s Cup",
+            "title": "Britannica — America’s Cup",
             "url": "https://www.britannica.com/sports/Americas-Cup",
             "name": "Britannica"
           }
@@ -2133,8 +2146,8 @@
         "id": "world-1966-lunar-orbiter-earthrise",
         "year": 1966,
         "title": "Земля с лунной орбиты",
-        "summary": "Lunar Orbiter 1 сделал первый снимок Земли с окрестностей Луны. Планета взошла над лунным горизонтом — за два года до знаменитого «Earthrise» Apollo 8.",
-        "fact": "💡 Кадр получился почти случайно: камеру развернули из-за сбоя плёнки.",
+        "summary": "Lunar Orbiter 1 впервые снял Землю над Луной.",
+        "fact": "💡 Кадр получили почти случайно — из-за сбоя планки.",
         "body": "",
         "category": "space",
         "region": "WORLD",
@@ -2153,8 +2166,8 @@
         "id": "world-1913-little-mermaid",
         "year": 1913,
         "title": "Русалочка в Копенгагене",
-        "summary": "В порту Копенгагена открыли статую Русалочки по сказке Андерсена. Маленькая бронзовая фигура стала символом Дании.",
-        "fact": "💡 Статую заказал пивовар Карл Якобсен после балета по сказке.",
+        "summary": "В порту открыли статую Русалочки по сказке Андерсена.",
+        "fact": "💡 Статую заказал пивовар Карл Якобсен.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2163,7 +2176,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Visit Copenhagen — The Little Mermaid",
+            "title": "Visit Copenhagen — Little Mermaid",
             "url": "https://www.visitcopenhagen.com/copenhagen/planning/little-mermaid-gdk426250",
             "name": "Visit Copenhagen"
           }
@@ -2173,7 +2186,7 @@
         "id": "world-1904-tire-chain-patent",
         "year": 1904,
         "title": "Патент на цепи для колёс",
-        "summary": "Гарри Д. Уид получил патент на цепи противоскольжения для автомобильных колёс. Зимняя дорога стала чуть безопаснее.",
+        "summary": "Гарри Уид запатентовал цепи противоскольжения.",
         "fact": "💡 Идею подсказала цепь на лошадиных подковах.",
         "body": "",
         "category": "technology",
@@ -2183,7 +2196,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "USPTO context via Smithsonian — tire chains",
+            "title": "Smithsonian — Tire chain patent",
             "url": "https://www.si.edu/object/patent-model-tire-chain:nmah_1303126",
             "name": "Smithsonian"
           }
@@ -2195,8 +2208,8 @@
         "id": "world-2006-pluto-dwarf-planet",
         "year": 2006,
         "title": "Плутон стал карликовой",
-        "summary": "Международный астрономический союз переопределил понятие планеты. Плутон получил статус карликовой планеты — и школьные учебники пришлось переписать.",
-        "fact": "💡 Решение приняли в Праге после долгих споров астрономов.",
+        "summary": "МАС переопределил понятие планеты — Плутон исключили.",
+        "fact": "💡 Решение приняли в Праге после долгих споров.",
         "body": "",
         "category": "science",
         "region": "WORLD",
@@ -2205,7 +2218,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "IAU — Resolution B5 Pluto",
+            "title": "IAU — Pluto resolution",
             "url": "https://www.iau.org/news/pressreleases/detail/iau0603/",
             "name": "IAU"
           }
@@ -2215,8 +2228,8 @@
         "id": "world-1932-earhart-coast-to-coast",
         "year": 1932,
         "title": "Эрхарт через континент",
-        "summary": "Амелия Эрхарт первой из женщин совершила беспосадочный перелёт через США с востока на запад. Она доказала: дальние маршруты — не только мужская история.",
-        "fact": "💡 Через год она повторит рекорд уже в обе стороны с новыми отметками.",
+        "summary": "Амелия Эрхарт первой из женщин пересекла США без посадки.",
+        "fact": "💡 Через год она повторила рекорд в обе стороны.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2235,8 +2248,8 @@
         "id": "world-1891-edison-motion-picture-camera",
         "year": 1891,
         "title": "Патент на кинокамеру",
-        "summary": "Томас Эдисон получил патент на кинетографическую камеру для записи движущегося изображения. Так формализовали один из ключей к рождению кино.",
-        "fact": "💡 Вместе с кинетоскопом это открыло путь к первым «движущимся картинкам».",
+        "summary": "Эдисон получил патент на кинетографическую камеру.",
+        "fact": "💡 Вместе с кинетоскопом это открыло путь к кино.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -2257,8 +2270,8 @@
         "id": "world-1989-voyager2-neptune",
         "year": 1989,
         "title": "Voyager у Нептуна",
-        "summary": "Voyager 2 прошёл у Нептуна ближе всех аппаратов в истории. Человечество впервые увидело восьмую планету и её спутники крупным планом.",
-        "fact": "💡 С тех пор ни один зонд к Нептуну больше не летал.",
+        "summary": "Voyager 2 прошёл у Нептуна ближе всех аппаратов.",
+        "fact": "💡 С тех пор зонд к Нептуну больше не летал.",
         "body": "",
         "category": "space",
         "region": "WORLD",
@@ -2277,8 +2290,8 @@
         "id": "world-1916-national-park-service",
         "year": 1916,
         "title": "Служба нацпарков США",
-        "summary": "Конгресс создал National Park Service — единую службу для охраны национальных парков. Йеллоустоун и другие заповедники получили общего хранителя.",
-        "fact": "💡 Девиз службы: сохранять природу «для удовольствия будущих поколений».",
+        "summary": "Конгресс создал National Park Service.",
+        "fact": "💡 Девиз: сохранить природу для будущих поколений.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2287,7 +2300,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "National Park Service — History",
+            "title": "NPS — About us history",
             "url": "https://www.nps.gov/aboutus/history.htm",
             "name": "NPS"
           }
@@ -2297,8 +2310,8 @@
         "id": "world-1609-galileo-telescope",
         "year": 1609,
         "title": "Галилей показал телескоп",
-        "summary": "В Венеции Галилей продемонстрировал свой усовершенствованный телескоп. Вскоре он направит его на небо — и изменит астрономию.",
-        "fact": "💡 Уже через месяцы он увидит луны Юпитера и горы на Луне.",
+        "summary": "В Венеции Галилей показал усовершенствованный телескоп.",
+        "fact": "💡 Уже через месяцы он направит его на небо.",
         "body": "",
         "category": "science",
         "region": "WORLD",
@@ -2307,7 +2320,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Galileo",
+            "title": "Britannica — Galileo",
             "url": "https://www.britannica.com/biography/Galileo-Galilei",
             "name": "Britannica"
           }
@@ -2319,8 +2332,8 @@
         "id": "world-1768-cook-endeavour",
         "year": 1768,
         "title": "«Индевор» выходит в море",
-        "summary": "Джеймс Кук на барке Endeavour отплыл из Плимута. Впереди — наблюдение Венеры, карты Тихого океана и встреча Европы с восточным берегом Австралии.",
-        "fact": "💡 Официально цель была научной: проследить прохождение Венеры по диску Солнца.",
+        "summary": "Джеймс Кук на Endeavour отплыл из Плимута.",
+        "fact": "💡 Официально цель была научной: проследить Венеру.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2339,7 +2352,7 @@
         "id": "world-1939-first-televised-baseball",
         "year": 1939,
         "title": "Бейсбол в прямом эфире",
-        "summary": "Впервые бейсбольный матч Главной лиги показали по телевидению. Камеры NBC снимали игру на стадионе Ebbets Field в Бруклине.",
+        "summary": "Впервые матч MLB показали по телевидению.",
         "fact": "💡 У экранов тогда сидели единицы — телевизоров почти не было.",
         "body": "",
         "category": "culture",
@@ -2359,8 +2372,8 @@
         "id": "world-1920-19th-certified",
         "year": 1920,
         "title": "Поправку закрепили официально",
-        "summary": "Госсекретарь США заверил ратификацию 19-й поправки. Право женщин голосовать вступило в силу на всей территории страны.",
-        "fact": "💡 Позже 26 августа стали отмечать как День равенства женщин.",
+        "summary": "Госсекретарь США завершил ратификацию 19-й поправки.",
+        "fact": "💡 После 26 августа стали отмечать День равенства женщин.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2381,8 +2394,8 @@
         "id": "world-1928-kellogg-briand",
         "year": 1928,
         "title": "Пакт против войны",
-        "summary": "В Париже подписали пакт Бриана—Келлогга: государства объявили отказ от войны как орудия политики. Идея была смелой — даже если механизм оказался слабым.",
-        "fact": "💡 За работу над пактом Фрэнк Келлогг получил Нобелевскую премию мира.",
+        "summary": "В Париже подписали пакт Бриана—Келлогга.",
+        "fact": "💡 За работу над пактом Келлогг получил Нобелевскую премию мира.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2401,8 +2414,8 @@
         "id": "world-1859-drake-oil-well",
         "year": 1859,
         "title": "Первая нефтяная скважина",
-        "summary": "Эдвин Дрейк в Пенсильвании получил нефть из пробурённой скважины. Так началась современная нефтяная промышленность.",
-        "fact": "💡 Глубина скважины была всего около 21 метра.",
+        "summary": "Эдвин Дрейк получил нефть из пробуренной скважины.",
+        "fact": "💡 Глубина была всего около 21 метра.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -2411,9 +2424,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Edwin Drake",
-            "url": "https://www.britannica.com/biography/Edwin-Drake",
-            "name": "Britannica"
+            "title": "American Oil & Gas Historical Society — Drake Well",
+            "url": "https://aoghs.org/petroleum-pioneers/american-oil-history/",
+            "name": "AOGHS"
           }
         ]
       },
@@ -2421,8 +2434,8 @@
         "id": "world-1783-charles-hydrogen-balloon",
         "year": 1783,
         "title": "Водородный шар в небо",
-        "summary": "В Париже подняли один из первых водородных воздушных шаров конструкции Жака Шарля. Легче воздуха — уже не мечта, а инженерия.",
-        "fact": "💡 Через два месяца Шарль сам полетит на таком шаре с пассажиром.",
+        "summary": "В Париже подняли один из первых водородных шаров.",
+        "fact": "💡 Через два месяца Шарль сам полетит на таком шаре.",
         "body": "",
         "category": "science",
         "region": "WORLD",
@@ -2431,7 +2444,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Jacques Charles",
+            "title": "Britannica — Jacques Charles",
             "url": "https://www.britannica.com/biography/Jacques-Charles",
             "name": "Britannica"
           }
@@ -2443,8 +2456,8 @@
         "id": "world-1963-march-on-washington",
         "year": 1963,
         "title": "«У меня есть мечта»",
-        "summary": "У Мемориала Линкольна Мартин Лютер Кинг произнёс речь «I Have a Dream». Около 250 тысяч человек пришли на Марш за работу и свободу.",
-        "fact": "💡 Знаменитую концовку он во многом импровизировал под крик Махалии Джексон.",
+        "summary": "Мартин Лютер Кинг произнёс речь у Мемориала Линкольна.",
+        "fact": "💡 Около 250 тысяч человек пришли на Марш за работу и свободу.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2457,14 +2470,16 @@
             "url": "https://kinginstitute.stanford.edu/march-washington-jobs-and-freedom",
             "name": "Stanford"
           }
-        ]
+        ],
+        "image": "assets/history/mlk-march-washington.jpg",
+        "imageAlt": "Мартин Лютер Кинг выступает на Марше в Вашингтоне, 1963"
       },
       {
         "id": "world-1749-goethe-born",
         "year": 1749,
         "title": "Родился Гёте",
-        "summary": "В Франкфурте родился Иоганн Вольфганг фон Гёте — поэт, драматург и мыслитель. Его «Фауст» станет одной из вершин мировой литературы.",
-        "fact": "💡 Гёте интересовался и наукой: писал о цвете, ботанике и анатомии.",
+        "summary": "В Франкфурте родился Иоганн Вольфганг фон Гёте.",
+        "fact": "💡 Его «Фауст» станет одной из вершин мировой литературы.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2473,7 +2488,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Johann Wolfgang von Goethe",
+            "title": "Britannica — Goethe",
             "url": "https://www.britannica.com/biography/Johann-Wolfgang-von-Goethe",
             "name": "Britannica"
           }
@@ -2483,8 +2498,8 @@
         "id": "world-1850-lohengrin-premiere",
         "year": 1850,
         "title": "Премьера «Лоэнгрина»",
-        "summary": "В Веймаре впервые показали оперу Вагнера «Лоэнгрин». Дирижировал Ференц Лист — друг композитора.",
-        "fact": "💡 Хор свадебный из оперы потом запел весь мир — часто не зная автора.",
+        "summary": "В Веймаре впервые показали оперу Вагнера «Лоэнгрин».",
+        "fact": "💡 Хор свадебный из оперы потом запел весь мир.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2493,7 +2508,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Lohengrin",
+            "title": "Britannica — Lohengrin",
             "url": "https://www.britannica.com/topic/Lohengrin-opera-by-Wagner",
             "name": "Britannica"
           }
@@ -2505,8 +2520,8 @@
         "id": "world-1831-faraday-induction",
         "year": 1831,
         "title": "Закон электромагнитной индукции",
-        "summary": "Майкл Фарадей открыл электромагнитную индукцию: движущийся магнит рождает ток. Так легла основа генераторов и всей электроэнергетики.",
-        "fact": "💡 Свой дневник он вёл аккуратно — дата эксперимента зафиксирована точно.",
+        "summary": "Фарадей открыл: движущийся магнит рождает ток.",
+        "fact": "💡 Свой дневник он вёл аккуратно — дата опыта точна.",
         "body": "",
         "category": "science",
         "region": "WORLD",
@@ -2515,7 +2530,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Royal Institution — Faraday and induction",
+            "title": "Royal Institution — Michael Faraday",
             "url": "https://www.rigb.org/explore-science/explore/collection/michael-faraday",
             "name": "Royal Institution"
           }
@@ -2525,8 +2540,8 @@
         "id": "world-1958-michael-jackson-born",
         "year": 1958,
         "title": "Родился Майкл Джексон",
-        "summary": "В городе Гэри родился Майкл Джексон. Из детской группы Jackson 5 он вырос в одного из самых влиятельных артистов XX века.",
-        "fact": "💡 Альбом Thriller до сих пор называют самым продаваемым в истории.",
+        "summary": "В городе Гэри родился Майкл Джексон.",
+        "fact": "💡 Альбом Thriller до сих пор называют самым продаваемым.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2545,7 +2560,7 @@
         "id": "world-1833-factory-act",
         "year": 1833,
         "title": "Закон о фабриках",
-        "summary": "В Британии приняли Factory Act — ограничили труд детей на текстильных фабриках. Промышленная эпоха сделала шаг к защите детства.",
+        "summary": "В Британии ограничили труд детей на текстильных фабриках.",
         "fact": "💡 Детям младше девяти лет работать на фабриках запретили.",
         "body": "",
         "category": "culture",
@@ -2555,7 +2570,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "UK Parliament — The 1833 Factory Act",
+            "title": "UK Parliament — Factory Act",
             "url": "https://www.parliament.uk/about/living-heritage/transformingsociety/livinglearning/19thcentury/overview/factoryact/",
             "name": "UK Parliament"
           }
@@ -2567,8 +2582,8 @@
         "id": "world-1963-moscow-washington-hotline",
         "year": 1963,
         "title": "«Горячая линия» Москва—Вашингтон",
-        "summary": "СССР и США договорились о прямой линии связи между Кремлём и Белым домом. После Карибского кризиса канал нужен был, чтобы говорить без задержек.",
-        "fact": "💡 Сначала это был не телефон, а телетайп — надёжнее голоса.",
+        "summary": "СССР и США договорились о прямой линии связи.",
+        "fact": "💡 Сначала это был не телефон, а телетайп.",
         "body": "",
         "category": "culture",
         "region": "RU",
@@ -2577,7 +2592,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "U.S. Department of State — Hotline",
+            "title": "U.S. State Department — Hotline",
             "url": "https://history.state.gov/milestones/1961-1968/hotline",
             "name": "U.S. State Department"
           }
@@ -2587,8 +2602,8 @@
         "id": "world-1835-melbourne-founded",
         "year": 1835,
         "title": "Основан Мельбурн",
-        "summary": "На берегу реки Ярра заложили поселение, которое стало Мельбурном. Город быстро вырос в один из центров Австралии.",
-        "fact": "💡 Название дали в честь британского премьера лорда Мельбурна.",
+        "summary": "На берегу Ярры заложили поселение — будущий Мельбурн.",
+        "fact": "💡 Название дали в честь премьера лорда Мельбурна.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2597,9 +2612,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Melbourne",
-            "url": "https://www.britannica.com/place/Melbourne",
-            "name": "Britannica"
+            "title": "Encyclopedia of Melbourne — Foundation",
+            "url": "https://www.emelbourne.net.au/biogs/EM00532b.htm",
+            "name": "eMelbourne"
           }
         ]
       },
@@ -2607,8 +2622,8 @@
         "id": "world-1797-mary-shelley-born",
         "year": 1797,
         "title": "Родилась Мэри Шелли",
-        "summary": "Родилась Мэри Шелли — автор «Франкенштейна». Её роман открыл новую главу фантастики и споров о науке и ответственности.",
-        "fact": "💡 Идею истории она придумала на спор у озера Женева в дождливое лето.",
+        "summary": "Родилась автор «Франкенштейна» Мэри Шелли.",
+        "fact": "💡 Идею романа она придумала на спор у Женевского озера.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2617,7 +2632,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Mary Wollstonecraft Shelley",
+            "title": "Britannica — Mary Shelley",
             "url": "https://www.britannica.com/biography/Mary-Wollstonecraft-Shelley",
             "name": "Britannica"
           }
@@ -2629,7 +2644,7 @@
         "id": "world-1980-gdansk-agreement",
         "year": 1980,
         "title": "Гданьские соглашения",
-        "summary": "В Гданьске подписали соглашения с бастующими рабочими. Легализовали независимый профсоюз «Солидарность» — и Польша изменилась.",
+        "summary": "В Гданьске легализовали профсоюз «Солидарность».",
         "fact": "💡 Переговоры шли на верфи, где начиналась забастовка.",
         "body": "",
         "category": "culture",
@@ -2639,9 +2654,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Solidarity",
-            "url": "https://www.britannica.com/topic/Solidarity",
-            "name": "Britannica"
+            "title": "European Solidarity Centre — August Agreements",
+            "url": "https://ecs.gda.pl/en/",
+            "name": "European Solidarity Centre"
           }
         ]
       },
@@ -2649,8 +2664,8 @@
         "id": "world-1962-trinidad-independence",
         "year": 1962,
         "title": "Независимость Тринидада",
-        "summary": "Тринидад и Тобаго стали независимым государством в Содружестве. Карибская страна получила собственный флаг и правительство.",
-        "fact": "💡 Первым премьером стал Эрик Уильямс — историк и политик.",
+        "summary": "Тринидад и Тобаго стали независимым государством.",
+        "fact": "💡 Первым премьером стал историк Эрик Уильямс.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -2659,9 +2674,9 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Trinidad and Tobago",
-            "url": "https://www.britannica.com/place/Trinidad-and-Tobago",
-            "name": "Britannica"
+            "title": "UK National Archives — Trinidad and Tobago independence",
+            "url": "https://www.nationalarchives.gov.uk/cabinetpapers/themes/decolonisation-of-the-empire.htm",
+            "name": "UK National Archives"
           }
         ]
       },
@@ -2669,8 +2684,8 @@
         "id": "world-1897-edison-kinetoscope-patent",
         "year": 1897,
         "title": "Кинетоскоп Эдисона",
-        "summary": "Эдисон получил патент США на кинетоскоп — аппарат для индивидуального просмотра «живых картинок». Кино пока смотрели по одному, заглядывая в глазок.",
-        "fact": "💡 Публичные кинетоскопные салоны уже работали в Нью-Йорке с 1894 года.",
+        "summary": "Эдисон получил патент США на кинетоскоп.",
+        "fact": "💡 Кино пока смотрели по одному, заглядывая в глазок.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -2679,7 +2694,7 @@
         "status": "verified",
         "sources": [
           {
-            "title": "Library of Congress — History of Edison Motion Pictures",
+            "title": "Library of Congress — Edison motion pictures",
             "url": "https://www.loc.gov/collections/edison-company-motion-pictures-and-sound-recordings/articles-and-essays/history-of-edison-motion-pictures/",
             "name": "Library of Congress"
           }
