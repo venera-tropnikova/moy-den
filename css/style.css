@@ -1137,14 +1137,16 @@ input  { font-family: inherit; }
 
 .card--history-image .hist__image {
   display: block;
+  flex: 1 1 auto;
+  min-height: 0;
   height: auto;
-  max-height: 128px;
 }
 
 .hist__cover-row {
-  flex: 0 0 auto;
+  flex: 0 1 auto;
   display: none;
   margin-bottom: 2px;
+  min-height: 0;
 }
 
 .card--history-image .hist__cover-row {
@@ -1163,6 +1165,13 @@ input  { font-family: inherit; }
   color: var(--ink);
   line-height: 1.25;
   letter-spacing: -0.01em;
+}
+
+.card--history-image .hist__question {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
 }
 
 .card--history-empty {
@@ -1290,18 +1299,6 @@ input  { font-family: inherit; }
   display: none;
 }
 
-.hist__nav-count {
-  flex: 0 0 auto;
-  font-size: 0.66rem;
-  line-height: 1.2;
-  color: var(--ink-mid);
-  white-space: nowrap;
-}
-
-.hist__nav-count[hidden] {
-  display: none;
-}
-
 .hist__text {
   margin: 0;
   flex: 0 0 auto;
@@ -1323,29 +1320,6 @@ input  { font-family: inherit; }
   display: none;
 }
 
-.hist__source {
-  margin: 2px 0 0;
-  flex: 0 0 auto;
-  font-size: 0.62rem;
-  line-height: 1.25;
-  color: var(--ink-mid);
-}
-
-.hist__source[hidden] {
-  display: none;
-}
-
-.hist__source-link {
-  color: var(--ink-mid);
-  text-decoration: underline;
-  text-underline-offset: 2px;
-  text-decoration-color: rgba(122, 112, 106, 0.4);
-}
-
-.hist__source-link:hover {
-  color: var(--ink);
-}
-
 .hist__chrome {
   margin-top: auto;
   flex: 0 0 auto;
@@ -1358,60 +1332,6 @@ input  { font-family: inherit; }
   min-width: 0;
   width: 100%;
   box-sizing: border-box;
-}
-
-.hist__chrome-nav {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 6px;
-  width: 100%;
-  min-width: 0;
-}
-
-.hist__chrome-count {
-  flex: 1 1 auto;
-  text-align: center;
-  font-size: 0.66rem;
-  line-height: 1.2;
-  color: var(--ink-mid);
-  white-space: nowrap;
-}
-
-.hist__chrome-count[hidden] {
-  display: none;
-}
-
-.card--history-text .hist__chrome-count {
-  display: none !important;
-}
-
-.card--history-image .hist__chrome {
-  flex-direction: row;
-  align-items: center;
-}
-
-.card--history-image .hist__chrome-nav {
-  flex: 1 1 auto;
-}
-
-.hist__nav-btn {
-  flex: 0 0 auto;
-  min-width: 22px;
-  height: 22px;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  color: var(--ink-mid);
-  font-size: 0.95rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.hist__nav-btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
 }
 
 .card--history .hist__more {

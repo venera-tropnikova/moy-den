@@ -4,7 +4,7 @@
   var DATA_URL = "history-events-ru.json";
   var EMPTY_TEXT = "скоро появится.";
   var ERROR_TEXT = "Не удалось загрузить историческую справку.";
-  var MAX_EVENTS = 3;
+  var MAX_EVENTS = 1;
   var MODE_IMAGE = "image";
   var MODE_TEXT = "text";
   var MONTH_GENITIVE = [
@@ -25,7 +25,6 @@
   var state = {
     date: null,
     events: [],
-    index: 0,
     mode: MODE_IMAGE,
     bound: false
   };
@@ -238,15 +237,9 @@
       titleEl: document.getElementById("hist-title"),
       textEl: document.getElementById("hist-text"),
       factEl: document.getElementById("hist-fact"),
-      sourceEl: document.getElementById("hist-source"),
-      sourceLinkEl: document.getElementById("hist-source-link"),
       chromeEl: document.getElementById("hist-chrome"),
-      chromeCountEl: document.getElementById("hist-chrome-count"),
       moreEl: document.getElementById("hist-more"),
-      moreLinkEl: document.getElementById("hist-more-link"),
-      navCountEl: document.getElementById("hist-nav-count"),
-      prevBtn: document.getElementById("hist-prev"),
-      nextBtn: document.getElementById("hist-next")
+      moreLinkEl: document.getElementById("hist-more-link")
     };
   }
 
@@ -266,30 +259,13 @@
     imageEl.hidden = true;
   }
 
-  function flatStepCount() {
-    return state.events.length * 2;
-  }
-
-  function getFlatIndex() {
-    return state.index * 2 + (state.mode === MODE_TEXT ? 1 : 0);
-  }
-
-  function setFromFlatIndex(flat) {
-    var total = flatStepCount();
-    if (total < 1) return;
-    flat = ((flat % total) + total) % total;
-    state.index = Math.floor(flat / 2);
-    state.mode = flat % 2 === 0 ? MODE_IMAGE : MODE_TEXT;
-  }
-
   function goCover() {
-    state.index = 0;
     state.mode = MODE_IMAGE;
   }
 
-  function shiftStep(delta) {
+  function togglePhotoText() {
     if (!state.events.length) return;
-    setFromFlatIndex(getFlatIndex() + delta);
+    state.mode = state.mode === MODE_IMAGE ? MODE_TEXT : MODE_IMAGE;
     renderView(getEls());
   }
 
@@ -306,28 +282,12 @@
       els.factEl.setAttribute("hidden", "");
     }
 
-    if (els.sourceEl) els.sourceEl.setAttribute("hidden", "");
-    if (els.sourceLinkEl) {
-      els.sourceLinkEl.textContent = "";
-      els.sourceLinkEl.removeAttribute("href");
-    }
-
     if (els.moreEl) {
       els.moreEl.setAttribute("hidden", "");
     }
     if (els.moreLinkEl) {
       els.moreLinkEl.textContent = "";
       els.moreLinkEl.removeAttribute("href");
-    }
-
-    if (els.navCountEl) {
-      els.navCountEl.setAttribute("hidden", "");
-      els.navCountEl.textContent = "";
-    }
-
-    if (els.chromeCountEl) {
-      els.chromeCountEl.setAttribute("hidden", "");
-      els.chromeCountEl.textContent = "";
     }
   }
 
@@ -340,19 +300,13 @@
     setImage(els.imageEl, "", "");
 
     if (els.card) {
-      els.card.classList.remove(
-        "card--history-image",
-        "card--history-text",
-        "card--history-cover",
-        "card--history-multi"
-      );
+      els.card.classList.remove("card--history-image", "card--history-text");
       els.card.classList.add("card--history-empty");
       els.card.setAttribute("aria-disabled", "true");
       els.card.tabIndex = -1;
     }
 
     state.events = [];
-    state.index = 0;
     state.mode = MODE_IMAGE;
   }
 
@@ -396,12 +350,6 @@
     var url = source && typeof source.url === "string" ? source.url.trim() : "";
     var sourceName = getSourceDisplayName(source);
 
-    if (els.sourceEl) els.sourceEl.setAttribute("hidden", "");
-    if (els.sourceLinkEl) {
-      els.sourceLinkEl.textContent = "";
-      els.sourceLinkEl.removeAttribute("href");
-    }
-
     if (els.moreEl && els.moreLinkEl) {
       if (url && sourceName) {
         els.moreEl.removeAttribute("hidden");
@@ -415,38 +363,12 @@
     }
   }
 
-  function updateCounter(els, total) {
-    var label = state.index + 1 + " / " + total;
-    var multi = total > 1;
-
-    if (els.navCountEl) {
-      if (multi && state.mode === MODE_TEXT) {
-        els.navCountEl.removeAttribute("hidden");
-        els.navCountEl.textContent = label;
-      } else {
-        els.navCountEl.setAttribute("hidden", "");
-        els.navCountEl.textContent = "";
-      }
-    }
-
-    if (els.chromeCountEl) {
-      if (multi && state.mode === MODE_IMAGE) {
-        els.chromeCountEl.removeAttribute("hidden");
-        els.chromeCountEl.textContent = label;
-      } else {
-        els.chromeCountEl.setAttribute("hidden", "");
-        els.chromeCountEl.textContent = "";
-      }
-    }
-  }
-
   function renderView(els) {
     if (!els.card || !state.events.length || !state.date) return;
 
-    var event = state.events[state.index];
+    var event = state.events[0];
     if (!event) return;
 
-    var total = state.events.length;
     var imageMode = state.mode === MODE_IMAGE;
     var title =
       typeof event.title === "string" && event.title.trim()
@@ -458,7 +380,6 @@
     setImage(els.imageEl, image, imageAlt);
 
     fillEventFields(els, event);
-    updateCounter(els, total);
 
     if (els.questionEl) {
       els.questionEl.textContent = imageMode ? title : "";
@@ -473,10 +394,13 @@
       els.answerEl.hidden = imageMode;
     }
 
-    els.card.classList.remove("card--history-empty", "card--history-cover");
+    if (imageMode && els.moreEl) {
+      els.moreEl.setAttribute("hidden", "");
+    }
+
+    els.card.classList.remove("card--history-empty");
     els.card.classList.toggle("card--history-image", imageMode);
     els.card.classList.toggle("card--history-text", !imageMode);
-    els.card.classList.toggle("card--history-multi", total > 1);
     els.card.removeAttribute("aria-disabled");
     els.card.tabIndex = 0;
   }
@@ -490,7 +414,7 @@
   function isInteractiveTarget(target) {
     var el = eventElement(target);
     if (!el || !el.closest) return false;
-    return Boolean(el.closest("#hist-chrome, #hist-source, #hist-source-link"));
+    return Boolean(el.closest("#hist-chrome"));
   }
 
   function bindInteractions(els) {
@@ -500,7 +424,7 @@
     els.card.addEventListener("click", function (event) {
       if (els.card.getAttribute("aria-disabled") === "true") return;
       if (isInteractiveTarget(event.target)) return;
-      shiftStep(1);
+      togglePhotoText();
     });
 
     els.card.addEventListener("keydown", function (event) {
@@ -509,19 +433,7 @@
 
       if (event.key === "Enter" || event.key === " ") {
         event.preventDefault();
-        shiftStep(1);
-        return;
-      }
-
-      if (event.key === "ArrowRight") {
-        event.preventDefault();
-        shiftStep(1);
-        return;
-      }
-
-      if (event.key === "ArrowLeft") {
-        event.preventDefault();
-        shiftStep(-1);
+        togglePhotoText();
         return;
       }
 
@@ -538,35 +450,11 @@
       });
     }
 
-    if (els.sourceLinkEl) {
-      els.sourceLinkEl.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        openSourceUrl(els.sourceLinkEl.getAttribute("href"));
-      });
-    }
-
     if (els.moreLinkEl) {
       els.moreLinkEl.addEventListener("click", function (event) {
         event.preventDefault();
         event.stopPropagation();
         openSourceUrl(els.moreLinkEl.getAttribute("href"));
-      });
-    }
-
-    if (els.prevBtn) {
-      els.prevBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        shiftStep(-1);
-      });
-    }
-
-    if (els.nextBtn) {
-      els.nextBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        shiftStep(1);
       });
     }
   }
