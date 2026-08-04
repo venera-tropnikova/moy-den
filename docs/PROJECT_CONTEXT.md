@@ -55,7 +55,7 @@
 
 | Модуль | Суть |
 |--------|------|
-| History | `history-events-ru.json` + `js/history.js` |
+| History | `history-events-ru.json` + `js/history.js`; одно показываемое событие дня; остальное — редакционная подборка в данных (Решение №009) |
 | Discovery | `discovery-of-the-day.json` + `js/discovery-of-the-day.js` |
 | Weather | `js/weather.js` (mock) |
 | Holidays / calendar events | `calendar-events-ru.json`, `calendar-events-ru-movable.json`, `js/holidays-ru.js`, `js/orthodox-easter.js` |
@@ -85,7 +85,7 @@
 ## Текущий статус проекта
 
 - PWA-оболочка и главный экран работают локально (через `python -m http.server` / `Запустить Мой день.cmd`).
-- History Core: карточка с closed/open/empty; база событий пока точечная, нет годового покрытия.
+- History Core: UI заморожен (closed = изображение + название; open = дата + название + summary + fact при наличии + источник); пользователю одно событие дня (Решение №009); в JSON допустима редакционная подборка до трёх; контентное покрытие года ещё неполное.
 - Документы в `docs/` — актуальная рабочая документация.
 - Корневые документы (`PROJECT_PASSPORT.md`, `PROJECT_RULES.md`, `DESIGN_PHILOSOPHY.md`, `ROADMAP.md`) пока исходные ориентиры.
 
