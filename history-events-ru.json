@@ -115,66 +115,138 @@
         ]
       }
     ],
-    "10-04": [
+    "07-21": [
       {
+        "id": "world-1969-apollo11-lunar-ascent",
+        "year": 1969,
+        "title": "Взлёт с Луны",
+        "summary": "Eagle стартовал с поверхности Луны и состыковался с Columbia.",
+        "fact": "💡 На Луне остались посадочная ступень и флаг.",
         "body": "",
         "category": "space",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 100,
         "interest": 10,
         "status": "verified",
-        "id": "ru-1957-sputnik1",
-        "year": 1957,
-        "title": "Первый спутник Земли",
-        "summary": "СССР вывел на орбиту «Спутник-1» — первый искусственный спутник.",
-        "fact": "💡 Сигнал «бип-бип» ловили радиолюбители по миру.",
+        "image": "assets/history/apollo11-lm-ascent-1969.jpg",
+        "imageAlt": "Взлётная ступень Eagle в лунной орбите, вид с Columbia",
         "sources": [
           {
-            "title": "NASA — Sputnik 1",
-            "url": "https://www.nasa.gov/image-article/sputnik-1/",
+            "title": "NASA — Apollo 11 Mission Overview",
+            "url": "https://www.nasa.gov/history/apollo-11-mission-overview/",
             "name": "NASA"
-          }
-        ],
-        "image": "assets/history/sputnik-1.jpg",
-        "imageAlt": "Спутник-1 над ночным горизонтом Земли"
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1853-crimean-war-declared",
-        "year": 1853,
-        "title": "Османская империя объявила войну",
-        "summary": "Османская империя объявила войну России.",
-        "fact": "💡 Конфликт перерос в Крымскую войну.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Crimean War",
-            "url": "https://www.britannica.com/event/Crimean-War",
-            "name": "Britannica"
           }
         ]
       },
       {
+        "id": "world-1961-liberty-bell-7",
+        "year": 1961,
+        "title": "Второй американец в космосе",
+        "summary": "Гас Гриссом на Liberty Bell 7 совершил суборбитальный полёт.",
+        "fact": "💡 После посадки люк открылся раньше времени — капсула затонула.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "image": "assets/history/liberty-bell-7-grissom-1961.jpg",
+        "imageAlt": "Гас Гриссом садится в капсулу Liberty Bell 7, 21 июля 1961",
+        "sources": [
+          {
+            "title": "NASA — Mercury-Redstone 4: Liberty Bell 7",
+            "url": "https://www.nasa.gov/mission/mercury-redstone-4-liberty-bell-7/",
+            "name": "NASA"
+          }
+        ]
+      },
+      {
+        "id": "world-1899-hemingway-born",
+        "year": 1899,
+        "title": "Родился Хемингуэй",
+        "summary": "В Ок-Парке родился Эрнест Хемингуэй — будущий автор «Старика и моря».",
+        "fact": "💡 Нобелевскую премию по литературе он получил в 1954 году.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "image": "assets/history/hemingway-1923.jpg",
+        "imageAlt": "Эрнест Хемингуэй, паспортное фото 1923 года",
+        "sources": [
+          {
+            "title": "HISTORY — Ernest Hemingway is born",
+            "url": "https://www.history.com/this-day-in-history/july-21/ernest-hemingway-is-born",
+            "name": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "07-22": [
+      {
+        "id": "world-1933-wiley-post-solo",
+        "year": 1933,
+        "title": "Вокруг света в одиночку",
+        "summary": "Уайли Пост на Winnie Mae завершил первый одиночный кругосветный перелёт.",
+        "fact": "💡 Путь занял 7 дней 18 часов 49 минут.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "image": "assets/history/winnie-mae-1933.jpg",
+        "imageAlt": "Самолёт Winnie Mae Уайли Поста во время кругосветного перелёта 1933",
+        "sources": [
+          {
+            "title": "HISTORY — Wiley Post flies solo around the world",
+            "url": "https://www.history.com/this-day-in-history/july-22/wiley-post-flies-solo-around-the-world",
+            "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "ru-1951-dezik-tsygan",
+        "year": 1951,
+        "title": "Первые собаки в космосе",
+        "summary": "Дезик и Цыган совершили суборбитальный полёт и вернулись живыми.",
+        "fact": "💡 Это были первые собаки, побывавшие в космосе и выжившие.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "image": "assets/history/dezik-tsygan-1951.jpg",
+        "imageAlt": "Схема запуска собак Дезик и Цыган, 22 июля 1951",
+        "sources": [
+          {
+            "title": "Wikipedia — Soviet space dogs (Dezik and Tsygan)",
+            "url": "https://en.wikipedia.org/wiki/Soviet_space_dogs",
+            "name": "Wikipedia"
+          }
+        ]
+      },
+      {
+        "id": "world-1962-mariner1-destroyed",
+        "year": 1962,
+        "title": "Mariner 1 уничтожили",
+        "summary": "Зонд к Венере ушёл с курса минуты после старта — ракету взорвали.",
+        "fact": "💡 Через месяц Mariner 2 всё же долетел до Венеры.",
         "body": "",
         "category": "space",
         "region": "WORLD",
         "priority": 70,
         "interest": 8,
         "status": "verified",
-        "id": "world-2004-spaceshipone-xprize",
-        "year": 2004,
-        "title": "SpaceShipOne выиграл X Prize",
-        "summary": "SpaceShipOne во второй раз достиг космоса и взял X Prize.",
-        "fact": "💡 Между зачётными полётами прошло меньше двух недель.",
+        "image": "assets/history/mariner1-atlas-1962.jpg",
+        "imageAlt": "Старт Atlas-Agena с зондом Mariner 1, 22 июля 1962",
         "sources": [
           {
-            "title": "Smithsonian NASM — SpaceShipOne",
-            "url": "https://airandspace.si.edu/collection-objects/spaceshipone/nasm_A20050459000",
-            "name": "Smithsonian NASM"
+            "title": "NASA — Mariner 1",
+            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=MARIN1",
+            "name": "NASA NSSDC"
           }
         ]
       }
@@ -193,11 +265,11 @@
         "interest": 9,
         "status": "verified",
         "image": "assets/history/telstar-1962.jpg",
-        "imageAlt": "Спутник связи на орбите над Землёй",
+        "imageAlt": "Кадр первой трансатлантической ТВ-трансляции через Telstar, 1962",
         "sources": [
           {
-            "title": "NASA",
-            "url": "https://www.nasa.gov/image-article/telstar/",
+            "title": "NASA — Telstar Opened Era of Global Satellite Television",
+            "url": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/",
             "name": "NASA"
           }
         ]
@@ -260,7 +332,7 @@
         "year": 1969,
         "title": "Возвращение с Луны",
         "summary": "Apollo 11 приводнился в Тихом океане.",
-        "fact": "",
+        "fact": "💡 Капсулу подняли на авианосец USS Hornet в 13 милях.",
         "body": "",
         "image": "assets/history/apollo11-splashdown-1969.jpg",
         "imageAlt": "Приводнение Apollo 11 в Тихом океане, 1969",
@@ -405,7 +477,9 @@
             "url": "https://www.history.com/this-day-in-history/july-26",
             "name": "HISTORY"
           }
-        ]
+        ],
+        "image": "assets/history/ada-signing-1990.jpg",
+        "imageAlt": "Джордж Буш подписывает ADA на лужайке Белого дома, 26 июля 1990"
       },
       {
         "id": "world-1948-truman-eo-9981",
@@ -489,7 +563,9 @@
             "url": "https://www.history.com/this-day-in-history/july-27/first-jet-makes-test-flight",
             "name": "HISTORY"
           }
-        ]
+        ],
+        "image": "assets/history/de-havilland-comet-1949.jpg",
+        "imageAlt": "Прототип de Havilland Comet — первый реактивный пассажирский лайнер"
       },
       {
         "id": "world-1866-atlantic-cable",
@@ -661,7 +737,9 @@
             "url": "https://www.fifa.com/en/tournaments/mens/worldcup/articles/world-cup-champions-1930-1978-uruguay-italy-germany-brazil-england-argentina",
             "name": "FIFA"
           }
-        ]
+        ],
+        "image": "assets/history/uruguay-world-cup-1930.jpg",
+        "imageAlt": "Сборная Уругвая — чемпион первого Кубка мира, 1930"
       },
       {
         "id": "world-2020-perseverance-launch",
@@ -780,7 +858,7 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 100,
+        "priority": 70,
         "interest": 9,
         "status": "verified",
         "sources": [
@@ -800,8 +878,8 @@
         "body": "",
         "category": "space",
         "region": "WORLD",
-        "priority": 80,
-        "interest": 9,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
         "sources": [
           {
@@ -1036,7 +1114,7 @@
         "body": "",
         "category": "science",
         "region": "RU",
-        "priority": 100,
+        "priority": 70,
         "interest": 9,
         "status": "verified",
         "sources": [
@@ -1076,15 +1154,15 @@
         "body": "",
         "category": "science",
         "region": "WORLD",
-        "priority": 75,
-        "interest": 8,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
         "image": "assets/history/neil-armstrong-1969.jpg",
         "imageAlt": "Нил Армстронг, портрет NASA перед Apollo 11",
         "sources": [
           {
-            "title": "NASA — Neil Armstrong biography",
-            "url": "https://www.nasa.gov/nasa-history/neil-armstrong/",
+            "title": "NASA — Neil A. Armstrong",
+            "url": "https://www.nasa.gov/people/neil-a-armstrong/",
             "name": "NASA"
           }
         ]
@@ -1173,7 +1251,9 @@
             "url": "https://www.kon-tiki.no/",
             "name": "Kon-Tiki Museum"
           }
-        ]
+        ],
+        "image": "assets/history/kontiki-1947.jpg",
+        "imageAlt": "Плот «Кон-Тики» во время экспедиции 1947 года"
       },
       {
         "id": "ru-1803-krusenstern-departs",
@@ -1222,11 +1302,11 @@
     ],
     "08-08": [
       {
-        "id": "world-1969-abbey-road-cover",
-        "year": 1969,
-        "title": "Зебра Abbey Road",
-        "summary": "The Beatles десять минут ходили по зебре у EMI.",
-        "fact": "💡 На обложку взяли пятый кадр: все шли в ногу.",
+        "id": "world-1974-nixon-resignation",
+        "year": 1974,
+        "title": "Никсон объявил об отставке",
+        "summary": "Вечером по ТВ сказал, что уходит с поста президента США.",
+        "fact": "💡 В полдень 9 августа присягу принял Джеральд Форд.",
         "body": "",
         "category": "culture",
         "region": "WORLD",
@@ -1235,11 +1315,13 @@
         "status": "verified",
         "sources": [
           {
-            "title": "The Beatles Bible — Abbey Road cover shoot",
-            "url": "https://www.beatlesbible.com/1969/08/08/the-abbey-road-cover-photography-session/",
-            "name": "The Beatles Bible"
+            "title": "Miller Center — Address Announcing Decision To Resign (8 Aug 1974)",
+            "url": "https://millercenter.org/the-presidency/presidential-speeches/august-8-1974-address-nation-announcing-decision-resign-office",
+            "name": "Miller Center"
           }
-        ]
+        ],
+        "image": "assets/history/nixon-resignation-1974.jpg",
+        "imageAlt": "Ричард Никсон перед телеобращением об отставке, 8 августа 1974"
       },
       {
         "id": "world-1786-mont-blanc-ascent",
@@ -1303,7 +1385,9 @@
             "url": "https://eresources.nlb.gov.sg/infopedia/articles/SIP_2014-07-07_111825.html",
             "name": "NLB Singapore"
           }
-        ]
+        ],
+        "image": "assets/history/lee-kuan-yew.jpg",
+        "imageAlt": "Ли Куан Ю, первый премьер независимой Республики Сингапур"
       },
       {
         "id": "world-1854-walden-published",
@@ -1943,7 +2027,9 @@
             "url": "https://starchild.gsfc.nasa.gov/docs/StarChild/questions/question49.html",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/belka-strelka-museum.jpg",
+        "imageAlt": "Белка — одна из собак, вернувшихся с орбиты в августе 1960"
       },
       {
         "id": "ru-1839-pulkovo-observatory",
@@ -2633,7 +2719,7 @@
         "id": "world-1963-moscow-washington-hotline",
         "year": 1963,
         "title": "«Горячая линия» Москва—Вашингтон",
-        "summary": "СССР и США договорились о прямой линии связи.",
+        "summary": "Прямую линию связи Москва—Вашингтон ввели в эксплуатацию.",
         "fact": "💡 Сначала это был не телефон, а телетайп.",
         "body": "",
         "category": "culture",
@@ -2643,11 +2729,13 @@
         "status": "verified",
         "sources": [
           {
-            "title": "U.S. State Department — Hotline",
-            "url": "https://history.state.gov/milestones/1961-1968/hotline",
-            "name": "U.S. State Department"
+            "title": "The New York Times — Hot Line Opened (DoD, 30 Aug 1963)",
+            "url": "https://archive.nytimes.com/www.nytimes.com/learning/general/onthisday/big/0830.html",
+            "name": "The New York Times"
           }
-        ]
+        ],
+        "image": "assets/history/moscow-washington-hotline.jpg",
+        "imageAlt": "Терминал «горячей линии» Москва—Вашингтон в Белом доме"
       },
       {
         "id": "world-1835-melbourne-founded",
@@ -2711,7 +2799,9 @@
             "url": "https://ecs.gda.pl/en/",
             "name": "European Solidarity Centre"
           }
-        ]
+        ],
+        "image": "assets/history/gdansk-solidarity-1980.jpg",
+        "imageAlt": "Ворота Гданьской верфи во время забастовки 1980 года, Лех Валенса"
       },
       {
         "id": "world-1962-trinidad-independence",
@@ -4866,6 +4956,70 @@
             "url": "https://www.britannica.com/place/Iraq/Independence",
             "name": "Encyclopaedia Britannica",
             "shortTitle": "Britannica — Iraq"
+          }
+        ]
+      }
+    ],
+    "10-04": [
+      {
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "id": "ru-1957-sputnik1",
+        "year": 1957,
+        "title": "Первый спутник Земли",
+        "summary": "СССР вывел на орбиту «Спутник-1» — первый искусственный спутник.",
+        "fact": "💡 Сигнал «бип-бип» ловили радиолюбители по миру.",
+        "sources": [
+          {
+            "title": "NASA — Sputnik 1",
+            "url": "https://www.nasa.gov/image-article/sputnik-1/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/sputnik-1.jpg",
+        "imageAlt": "Спутник-1 над ночным горизонтом Земли"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "id": "ru-1853-crimean-war-declared",
+        "year": 1853,
+        "title": "Османская империя объявила войну",
+        "summary": "Османская империя объявила войну России.",
+        "fact": "💡 Конфликт перерос в Крымскую войну.",
+        "sources": [
+          {
+            "title": "Encyclopaedia Britannica — Crimean War",
+            "url": "https://www.britannica.com/event/Crimean-War",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "id": "world-2004-spaceshipone-xprize",
+        "year": 2004,
+        "title": "SpaceShipOne выиграл X Prize",
+        "summary": "SpaceShipOne во второй раз достиг космоса и взял X Prize.",
+        "fact": "💡 Между зачётными полётами прошло меньше двух недель.",
+        "sources": [
+          {
+            "title": "Smithsonian NASM — SpaceShipOne",
+            "url": "https://airandspace.si.edu/collection-objects/spaceshipone/nasm_A20050459000",
+            "name": "Smithsonian NASM"
           }
         ]
       }
