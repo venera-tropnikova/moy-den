@@ -72,8 +72,6 @@
         "priority": 80,
         "interest": 9,
         "status": "verified",
-        "image": "assets/history/romashkova-1952.jpg",
-        "imageAlt": "Спортсменка СССР в момент метания диска",
         "sources": [
           {
             "title": "Olympedia — Discus Throw, Women, 20 July 1952",
@@ -101,8 +99,6 @@
         "priority": 70,
         "interest": 8,
         "status": "verified",
-        "image": "assets/history/pyreolophore-1807.jpg",
-        "imageAlt": "Старинный мотор в музее — ранний двигатель для лодки",
         "sources": [
           {
             "title": "Maison Nicéphore Niépce — The Pyréolophore",
@@ -345,7 +341,9 @@
             "url": "https://airandspace.si.edu/stories/editorial/bleriots-cross-channel-flight",
             "name": "Smithsonian"
           }
-        ]
+        ],
+        "image": "assets/history/bleriot-channel-1909.jpg",
+        "imageAlt": "Луи Блерио в Blériot XI перед перелётом через Ла-Манш"
       },
       {
         "id": "world-1978-louise-brown-ivf",
@@ -427,7 +425,9 @@
             "url": "https://www.upi.com/Top_News/2025/07/26/On-This-Day-Truman-orders-desegregation-of-military/2981753503383/",
             "name": "UPI"
           }
-        ]
+        ],
+        "image": "assets/history/truman-portrait.jpg",
+        "imageAlt": "Президент Гарри Трумэн"
       },
       {
         "id": "world-1847-liberia-independence",
@@ -509,7 +509,9 @@
             "url": "https://ethw.org/Milestones:Landing_of_the_Transatlantic_Cable,_1866",
             "name": "IEEE"
           }
-        ]
+        ],
+        "image": "assets/history/great-eastern-1866.jpg",
+        "imageAlt": "Пароход Great Eastern в Heart’s Content после укладки кабеля"
       }
     ],
     "07-28": [
@@ -531,7 +533,9 @@
             "url": "https://www.britannica.com/place/Peru/Achievement-of-independence",
             "name": "Britannica"
           }
-        ]
+        ],
+        "image": "assets/history/peru-independence-1821.jpg",
+        "imageAlt": "Провозглашение независимости Перу"
       },
       {
         "id": "world-1928-amsterdam-olympics",
@@ -593,7 +597,9 @@
             "url": "https://www.nasa.gov/history/65-years-ago-the-national-aeronautics-and-space-act-of-1958-creates-nasa/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/eisenhower-portrait.jpg",
+        "imageAlt": "Президент Дуайт Эйзенхауэр"
       },
       {
         "id": "ru-1963-tu134-first-flight",
@@ -675,7 +681,9 @@
             "url": "https://www.nasa.gov/news-release/nasa-ula-launch-mars-2020-perseverance-rover-mission-to-red-planet/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/perseverance-launch-2020.jpg",
+        "imageAlt": "Старт ракеты Atlas V с марсоходом Perseverance 30 июля 2020 года"
       },
       {
         "id": "world-1999-blair-witch-release",
@@ -717,7 +725,9 @@
             "url": "https://www.nasa.gov/history/60-years-ago-ranger-7-photographs-the-moon/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/ranger7-moon-1964.jpg",
+        "imageAlt": "Первый снимок Луны американским аппаратом Ranger 7"
       },
       {
         "id": "world-1965-jk-rowling-born",
@@ -799,7 +809,9 @@
             "url": "https://science.nasa.gov/solar-system/moon/genesis-rock/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/genesis-rock-apollo15.jpg",
+        "imageAlt": "Лунный образец «камень Бытия» миссии Apollo 15"
       },
       {
         "id": "world-1996-game-of-thrones-book",
@@ -925,7 +937,9 @@
             "url": "https://www.history.navy.mil/browse-by-topic/exploration-and-innovation/nautilus-and-arctic.html",
             "name": "U.S. Navy"
           }
-        ]
+        ],
+        "image": "assets/history/uss-nautilus-1965.jpg",
+        "imageAlt": "Атомная подводная лодка USS Nautilus в море"
       },
       {
         "id": "world-1914-germany-france-war",
@@ -1093,7 +1107,9 @@
             "url": "https://www.nasa.gov/history/60-years-ago-vostok-2-germans-titovs-day-long-flight/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/gherman-titov-1962.jpg",
+        "imageAlt": "Космонавт Герман Титов"
       },
       {
         "id": "world-1926-ederle-english-channel",
@@ -1241,7 +1257,9 @@
             "url": "https://royalsocietypublishing.org/doi/10.1098/rsnr.1955.0011",
             "name": "Royal Society"
           }
-        ]
+        ],
+        "image": "assets/history/mont-blanc.jpg",
+        "imageAlt": "Вершина Монблана"
       },
       {
         "id": "world-2008-beijing-olympics-opening",
@@ -1303,7 +1321,9 @@
             "url": "https://www.loc.gov/item/05000659/",
             "name": "Library of Congress"
           }
-        ]
+        ],
+        "image": "assets/history/thoreau-portrait.jpg",
+        "imageAlt": "Генри Дэвид Торо"
       },
       {
         "id": "world-1930-betty-boop-debut",
@@ -1409,7 +1429,9 @@
             "url": "https://www.nasa.gov/history/60-years-ago-vostok-3-and-4-the-first-group-spaceflight/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/nikolayev-vostok3.jpg",
+        "imageAlt": "Космонавт Андриян Николаев"
       },
       {
         "id": "world-1973-hiphop-kool-herc",
@@ -1555,7 +1577,9 @@
             "url": "https://www.marines.mil/News/News-Display/Article/1506098/first-woman-marine-opha-may-johnson/",
             "name": "U.S. Marine Corps"
           }
-        ]
+        ],
+        "image": "assets/history/opha-may-johnson.jpg",
+        "imageAlt": "Офа Мэй Джонсон — первая женщина Корпуса морской пехоты США"
       },
       {
         "id": "world-1889-coin-telephone-patent",
@@ -1597,7 +1621,9 @@
             "url": "https://www.ssa.gov/history/35act.html",
             "name": "SSA"
           }
-        ]
+        ],
+        "image": "assets/history/fdr-social-security-1935.jpg",
+        "imageAlt": "Рузвельт подписывает закон о социальном обеспечении"
       },
       {
         "id": "world-1947-pakistan-independence",
@@ -1659,7 +1685,9 @@
             "url": "https://pancanal.com/en/history-of-the-panama-canal/",
             "name": "Panama Canal Authority"
           }
-        ]
+        ],
+        "image": "assets/history/panama-canal-1913.jpg",
+        "imageAlt": "Строительство Панамского канала"
       },
       {
         "id": "world-1939-wizard-of-oz-premiere",
@@ -1785,7 +1813,9 @@
             "url": "https://americanhistory.si.edu/collections/object-groups/steamboat",
             "name": "Smithsonian"
           }
-        ]
+        ],
+        "image": "assets/history/fulton-clermont.jpg",
+        "imageAlt": "Пароход Роберта Фултона «Клермонт»"
       },
       {
         "id": "world-1945-indonesia-independence",
@@ -1847,7 +1877,9 @@
             "url": "https://www.archives.gov/milestone-documents/19th-amendment",
             "name": "National Archives"
           }
-        ]
+        ],
+        "image": "assets/history/19th-amendment.jpg",
+        "imageAlt": "Текст 19-й поправки к Конституции США"
       },
       {
         "id": "world-1868-helium-discovered",
@@ -1949,7 +1981,9 @@
             "url": "https://www.loc.gov/collections/daguerreotypes/articles-and-essays/the-daguerreotype-medium",
             "name": "Library of Congress"
           }
-        ]
+        ],
+        "image": "assets/history/daguerre-boulevard.jpg",
+        "imageAlt": "Дагерротип «Бульвар дю Тампль»"
       }
     ],
     "08-20": [
@@ -2055,7 +2089,9 @@
             "url": "https://www.louvre.fr/en/explore/the-palace/from-the-mona-lisa-to-the-wedding-feast-at-cana",
             "name": "Louvre"
           }
-        ]
+        ],
+        "image": "assets/history/mona-lisa.jpg",
+        "imageAlt": "Картина Леонардо да Винчи «Мона Лиза»"
       },
       {
         "id": "world-1858-lincoln-douglas-debate",
@@ -2097,7 +2133,9 @@
             "url": "https://ihl-databases.icrc.org/en/ihl-treaties/gc-1864",
             "name": "ICRC"
           }
-        ]
+        ],
+        "image": "assets/history/geneva-convention-1864.jpg",
+        "imageAlt": "Оригинал первой Женевской конвенции 1864 года"
       },
       {
         "id": "world-1902-cadillac-founded",
@@ -2159,7 +2197,9 @@
             "url": "https://www.nasa.gov/mission/lunar-orbiter-1/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/lunar-orbiter1-earthrise.jpg",
+        "imageAlt": "Земля над Луной — снимок Lunar Orbiter 1"
       },
       {
         "id": "world-1913-little-mermaid",
@@ -2221,7 +2261,9 @@
             "url": "https://www.iau.org/news/pressreleases/detail/iau0603/",
             "name": "IAU"
           }
-        ]
+        ],
+        "image": "assets/history/pluto-new-horizons.jpg",
+        "imageAlt": "Плутон в натуральных цветах — снимок New Horizons"
       },
       {
         "id": "world-1932-earhart-coast-to-coast",
@@ -2283,7 +2325,9 @@
             "url": "https://www.nasa.gov/solar-system/30-years-ago-voyager-2s-historic-neptune-flyby/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/voyager2-neptune-1989.jpg",
+        "imageAlt": "Нептун крупным планом — снимок Voyager 2"
       },
       {
         "id": "world-1916-national-park-service",
@@ -2345,7 +2389,9 @@
             "url": "https://www.rmg.co.uk/stories/topics/captain-cooks-endeavour-voyage",
             "name": "Royal Museums Greenwich"
           }
-        ]
+        ],
+        "image": "assets/history/cook-endeavour.jpg",
+        "imageAlt": "Корабль Endeavour у берегов Новой Голландии"
       },
       {
         "id": "world-1939-first-televised-baseball",
@@ -2447,7 +2493,9 @@
             "url": "https://www.britannica.com/biography/Jacques-Charles",
             "name": "Britannica"
           }
-        ]
+        ],
+        "image": "assets/history/charles-balloon-1783.jpg",
+        "imageAlt": "Водородный шар Жака Шарля"
       }
     ],
     "08-28": [
@@ -2533,7 +2581,9 @@
             "url": "https://www.rigb.org/explore-science/explore/collection/michael-faraday",
             "name": "Royal Institution"
           }
-        ]
+        ],
+        "image": "assets/history/faraday-portrait.jpg",
+        "imageAlt": "Портрет Майкла Фарадея"
       },
       {
         "id": "world-1958-michael-jackson-born",
@@ -2635,7 +2685,9 @@
             "url": "https://www.britannica.com/biography/Mary-Wollstonecraft-Shelley",
             "name": "Britannica"
           }
-        ]
+        ],
+        "image": "assets/history/mary-shelley.jpg",
+        "imageAlt": "Портрет Мэри Шелли"
       }
     ],
     "08-31": [
@@ -2697,7 +2749,9 @@
             "url": "https://www.loc.gov/collections/edison-company-motion-pictures-and-sound-recordings/articles-and-essays/history-of-edison-motion-pictures/",
             "name": "Library of Congress"
           }
-        ]
+        ],
+        "image": "assets/history/edison-kinetoscope.jpg",
+        "imageAlt": "Кинетоскоп Томаса Эдисона"
       }
     ],
     "09-01": [
@@ -2951,7 +3005,9 @@
             "url": "https://americanhistory.si.edu/collections/object/nmah_1301856",
             "name": "Smithsonian"
           }
-        ]
+        ],
+        "image": "assets/history/kodak-camera.jpg",
+        "imageAlt": "Штаб-квартира Eastman Kodak около 1900 года"
       }
     ],
     "09-05": [
@@ -3185,7 +3241,9 @@
             "url": "https://www.accademia.org/explore/michelangelo-david/",
             "name": "Accademia.org"
           }
-        ]
+        ],
+        "image": "assets/history/michelangelo-david.jpg",
+        "imageAlt": "Статуя «Давид» Микеланджело"
       },
       {
         "body": "",
@@ -3503,7 +3561,9 @@
             "url": "https://airandspace.si.edu/collection-objects/santos-dumont-no-14-bis/nasm_A19730283000",
             "name": "Smithsonian NASM"
           }
-        ]
+        ],
+        "image": "assets/history/santos-dumont-14bis.jpg",
+        "imageAlt": "Самолёт Сантос-Дюмона 14-bis"
       },
       {
         "body": "",
@@ -4033,7 +4093,9 @@
             "url": "https://www.britannica.com/event/French-Revolution/The-First-French-Republic",
             "name": "Encyclopaedia Britannica"
           }
-        ]
+        ],
+        "image": "assets/history/french-republic-1792.jpg",
+        "imageAlt": "Провозглашение республики во Франции 21 сентября 1792"
       }
     ],
     "09-22": [
@@ -4203,7 +4265,9 @@
             "url": "https://www.nps.gov/deto/learn/historyculture/index.htm",
             "name": "NPS"
           }
-        ]
+        ],
+        "image": "assets/history/devils-tower.jpg",
+        "imageAlt": "Скала Девилс-Тауэр в Вайоминге"
       },
       {
         "body": "",
@@ -4329,7 +4393,9 @@
             "url": "https://www.jfklibrary.org/learn/about-jfk/jfk-in-history/campaign-of-1960",
             "name": "JFK Library"
           }
-        ]
+        ],
+        "image": "assets/history/kennedy-nixon-debate-1960.jpg",
+        "imageAlt": "Первые теледебаты Кеннеди и Никсона"
       },
       {
         "body": "",
@@ -4826,26 +4892,6 @@
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
-        "status": "verified",
-        "id": "ru-1994-teachers-day-russia",
-        "year": 1994,
-        "title": "День учителя в России",
-        "summary": "Россия закрепила День учителя на 5 октября.",
-        "fact": "💡 Раньше его отмечали в первое воскресенье октября.",
-        "sources": [
-          {
-            "title": "UNESCO — World Teachers’ Day",
-            "url": "https://www.unesco.org/en/days/teachers",
-            "name": "UNESCO"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
         "region": "WORLD",
         "priority": 100,
         "interest": 9,
@@ -4860,6 +4906,29 @@
             "title": "The Beatles — Love Me Do",
             "url": "https://www.thebeatles.com/love-me-do",
             "name": "The Beatles"
+          }
+        ]
+      },
+      {
+        "id": "world-1910-portugal-republic",
+        "year": 1910,
+        "title": "Португалия стала республикой",
+        "summary": "В Лиссабоне провозгласили Португальскую республику.",
+        "fact": "💡 Король Мануэл II отправился в изгнание.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 8,
+        "status": "verified",
+        "image": "assets/history/portugal-republic-1910.jpg",
+        "imageAlt": "Революция 5 октября 1910 года в Португалии",
+        "sources": [
+          {
+            "title": "Britannica — Portugal: The First Republic",
+            "shortTitle": "Britannica",
+            "url": "https://www.britannica.com/place/Portugal/The-First-Republic-1910-26",
+            "name": "Britannica"
           }
         ]
       }
@@ -7362,7 +7431,9 @@
             "url": "https://www.britannica.com/topic/Oblomov",
             "name": "Encyclopaedia Britannica"
           }
-        ]
+        ],
+        "image": "assets/history/goncharov-portrait.jpg",
+        "imageAlt": "Портрет Ивана Гончарова"
       }
     ],
     "11-14": [
@@ -7984,7 +8055,9 @@
             "url": "https://science.nasa.gov/mission/hubble/overview/edwin-hubble/",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/andromeda-galaxy.jpg",
+        "imageAlt": "Галактика Андромеды"
       },
       {
         "body": "",
@@ -10094,7 +10167,9 @@
             "url": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/crossing-of-the-delaware",
             "name": "Mount Vernon"
           }
-        ]
+        ],
+        "image": "assets/history/washington-crossing-delaware.jpg",
+        "imageAlt": "Картина «Вашингтон переправляется через Делавэр»"
       },
       {
         "body": "",
