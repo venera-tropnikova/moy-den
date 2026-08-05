@@ -8460,59 +8460,61 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 90,
-        "interest": 9,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
         "id": "world-1955-rosa-parks",
         "year": 1955,
         "title": "Роза Паркс не уступила место",
-        "summary": "В Монтгомери Роза Паркс отказалась уступить место в автобусе. Начался бойкот, изменивший движение за гражданские права.",
-        "fact": "💡 Бойкот автобусов продлился больше года.",
+        "summary": "В Монтгомери Роза Паркс отказалась уступить место в автобусе.",
+        "fact": "💡 Арест запустил бойкот городских автобусов.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Rosa Parks",
-            "url": "https://www.britannica.com/biography/Rosa-Parks",
-            "name": "Britannica"
+            "title": "National Archives — Rosa Parks arrest",
+            "url": "https://www.archives.gov/education/lessons/rosa-parks",
+            "name": "National Archives"
           }
-        ]
+        ],
+        "image": "assets/history/rosa-parks-1955.jpg",
+        "imageAlt": "Роза Паркс, около 1955 года"
       },
       {
         "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
+        "category": "science",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
         "status": "verified",
-        "id": "ru-1825-decembrists-eve-dec",
-        "year": 1825,
-        "title": "Канун восстания декабристов",
-        "summary": "В начале декабря 1825 года в гвардии зрели планы выступления. Через две недели грянет восстание на Сенатской площади.",
-        "fact": "💡 Восстание произошло 14 декабря.",
+        "id": "world-1959-antarctic-treaty",
+        "year": 1959,
+        "title": "Договор об Антарктике",
+        "summary": "Двенадцать стран закрепили Антарктиду за миром и наукой.",
+        "fact": "💡 Подписали в Вашингтоне.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Decembrist",
-            "url": "https://www.britannica.com/topic/Decembrist",
-            "name": "Britannica"
+            "title": "Antarctic Treaty Secretariat",
+            "url": "https://www.ats.aq/",
+            "name": "ATS"
           }
         ]
       },
       {
         "body": "",
         "category": "technology",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
         "status": "verified",
-        "id": "ru-1895-popov-radio-dec",
-        "year": 1895,
-        "title": "Радио Попова",
-        "summary": "Александр Попов развивал приборы для приёма электромагнитных волн. Русская наука стояла у истоков радиосвязи.",
-        "fact": "💡 В России День радио отмечают 7 мая.",
+        "id": "world-1913-ford-assembly-line",
+        "year": 1913,
+        "title": "Конвейер Ford",
+        "summary": "На заводе Ford запустили движущийся сборочный конвейер.",
+        "fact": "💡 Сборка Model T стала заметно быстрее.",
         "sources": [
           {
-            "title": "Presidential Library — Alexander Popov",
-            "url": "https://www.prlib.ru/en/history/1866978",
-            "name": "Presidential Library"
+            "title": "Britannica — assembly line",
+            "url": "https://www.britannica.com/technology/assembly-line",
+            "name": "Britannica"
           }
         ]
       }
@@ -8528,53 +8530,55 @@
         "id": "world-1942-chicago-pile",
         "year": 1942,
         "title": "Первая цепная реакция",
-        "summary": "Под трибунами стадиона в Чикаго заработала Chicago Pile-1 — первая управляемая ядерная цепная реакция. Атомный век начался в лаборатории.",
-        "fact": "💡 Руководил экспериментом Энрико Ферми.",
+        "summary": "В Чикаго заработала первая управляемая ядерная реакция.",
+        "fact": "💡 Экспериментом руководил Энрико Ферми.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Chicago Pile No. 1",
-            "url": "https://www.britannica.com/topic/Chicago-Pile-No-1",
-            "name": "Britannica"
+            "title": "US DOE — Chicago Pile-1",
+            "url": "https://www.energy.gov/management/december-2-1942-first-self-sustaining-nuclear-chain-reaction",
+            "name": "US DOE"
+          }
+        ],
+        "image": "assets/history/chicago-pile-1.jpg",
+        "imageAlt": "Масштабная модель реактора Chicago Pile-1"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1804-napoleon-crowned",
+        "year": 1804,
+        "title": "Наполеон стал императором",
+        "summary": "В Нотр-Дам Наполеон короновался императором французов.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "Château de Versailles — Coronation of Napoleon",
+            "url": "https://en.chateauversailles.fr/discover/history/key-dates/coronation-napoleon-i",
+            "name": "Versailles"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1859-oblomov-pub",
-        "year": 1859,
-        "title": "Вышел «Обломов»",
-        "summary": "Иван Гончаров опубликовал роман «Обломов». Русская проза получила имя для особого состояния души.",
-        "fact": "💡 Слово «обломовщина» вошло в язык.",
+        "id": "world-1823-monroe-doctrine",
+        "year": 1823,
+        "title": "Доктрина Монро",
+        "summary": "США заявили: Европе не вмешиваться в дела Америки.",
+        "fact": "💡 Принцип огласили в послании Конгрессу.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Ivan Goncharov",
-            "url": "https://www.britannica.com/biography/Ivan-Aleksandrovich-Goncharov",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "technology",
-        "region": "RU",
-        "priority": 90,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1876-yablochkov-candle-dec",
-        "year": 1876,
-        "title": "Свеча Яблочкова",
-        "summary": "Павел Яблочков запатентовал дуговую лампу. Улицы Европы впервые массово осветил русский изобретатель.",
-        "fact": "💡 Париж называли городом света ещё и благодаря ей.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — arc lamp",
-            "url": "https://www.britannica.com/technology/arc-lamp",
-            "name": "Britannica"
+            "title": "National Archives — Monroe Doctrine",
+            "url": "https://www.archives.gov/milestone-documents/monroe-doctrine",
+            "name": "National Archives"
           }
         ]
       }
@@ -8590,53 +8594,55 @@
         "id": "world-1967-first-heart-transplant",
         "year": 1967,
         "title": "Первая пересадка сердца",
-        "summary": "В Кейптауне Кристиан Барнард провёл первую успешную пересадку человеческого сердца. Хирургия шагнула через прежний предел.",
+        "summary": "В Кейптауне Барнард пересадил человеческое сердце.",
         "fact": "💡 Операция длилась несколько часов.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Christiaan Barnard",
-            "url": "https://www.britannica.com/biography/Christiaan-Barnard",
-            "name": "Britannica"
+            "title": "UCT — Christiaan Barnard and the first heart transplant",
+            "url": "https://www.uct.ac.za/main/explore-uct/history/first-heart-transplant",
+            "name": "University of Cape Town"
+          }
+        ],
+        "image": "assets/history/christiaan-barnard.jpg",
+        "imageAlt": "Кристиан Барнард"
+      },
+      {
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1973-pioneer10-jupiter",
+        "year": 1973,
+        "title": "Pioneer 10 у Юпитера",
+        "summary": "Зонд Pioneer 10 впервые прошёл у Юпитера и прислал снимки.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "NASA — Pioneer 10",
+            "url": "https://www.nasa.gov/mission_pages/pioneer/index.html",
+            "name": "NASA"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
         "status": "verified",
-        "id": "ru-1820-pushkin-ruslan",
-        "year": 1820,
-        "title": "«Руслан и Людмила»",
-        "summary": "Александр Пушкин опубликовал поэму «Руслан и Людмила». Русская поэзия получила яркую сказочную эпопею.",
-        "fact": "💡 Позже по поэме напишут оперу Глинки.",
+        "id": "world-1818-illinois-statehood",
+        "year": 1818,
+        "title": "Иллинойс стал штатом",
+        "summary": "Иллинойс вошёл в состав США как двадцать первый штат.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Aleksandr Pushkin",
-            "url": "https://www.britannica.com/biography/Aleksandr-Sergeyevich-Pushkin",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 90,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1904-pavlov-nobel-dec",
-        "year": 1904,
-        "title": "Нобель Павлову",
-        "summary": "Иван Павлов получил Нобелевскую премию по физиологии и медицине. Русская наука была отмечена за исследования пищеварения.",
-        "fact": "💡 Это первый Нобель русскому учёному.",
-        "sources": [
-          {
-            "title": "Nobel Prize — Ivan Pavlov",
-            "url": "https://www.nobelprize.org/prizes/medicine/1904/pavlov/facts/",
-            "name": "Nobel Prize"
+            "title": "Library of Congress — Illinois statehood",
+            "url": "https://www.loc.gov/item/today-in-history/december-03/",
+            "name": "Library of Congress"
           }
         ]
       }
@@ -8646,59 +8652,61 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 70,
-        "interest": 7,
+        "priority": 100,
+        "interest": 9,
         "status": "verified",
-        "id": "world-1918-wilson-fourteen-points-echo",
-        "year": 1918,
-        "title": "После «14 пунктов»",
-        "summary": "Мир обсуждал принципы послевоенного устройства, предложенные Вудро Вильсоном. Дипломатия искала язык нового века.",
-        "fact": "💡 «14 пунктов» огласили в январе 1918 года.",
+        "id": "world-1783-washington-farewell",
+        "year": 1783,
+        "title": "Прощание Вашингтона",
+        "summary": "Вашингтон попрощался с офицерами в таверне Fraunces.",
+        "fact": "💡 Вскоре он сложит полномочия командующего.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Fourteen Points",
-            "url": "https://www.britannica.com/event/Fourteen-Points",
-            "name": "Britannica"
+            "title": "Mount Vernon — Farewell to Officers",
+            "url": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/farewell-address-to-the-officers",
+            "name": "Mount Vernon"
+          }
+        ],
+        "image": "assets/history/washington-farewell-officers.jpg",
+        "imageAlt": "Прощание Вашингтона с офицерами"
+      },
+      {
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1965-gemini7-launch",
+        "year": 1965,
+        "title": "Старт Gemini 7",
+        "summary": "Gemini 7 ушла в двухнедельный орбитальный полёт.",
+        "fact": "💡 Позже сблизится с Gemini 6A.",
+        "sources": [
+          {
+            "title": "NASA — Gemini 7",
+            "url": "https://www.nasa.gov/mission_pages/gemini/missions/gemini7.html",
+            "name": "NASA"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 90,
-        "interest": 9,
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
         "status": "verified",
-        "id": "ru-1877-anna-karenina",
-        "year": 1877,
-        "title": "«Анна Каренина»",
-        "summary": "Лев Толстой публикует роман «Анна Каренина». Русская проза получила один из главных романов о любви, долге и обществе.",
-        "fact": "💡 Сначала роман шёл частями в журнале.",
+        "id": "world-1791-the-observer",
+        "year": 1791,
+        "title": "Вышел The Observer",
+        "summary": "В Лондоне вышел первый номер The Observer.",
+        "fact": "💡 Это старейшая воскресная газета.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Anna Karenina",
-            "url": "https://www.britannica.com/topic/Anna-Karenina-novel",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1839-pulkovo",
-        "year": 1839,
-        "title": "Пулковская обсерватория",
-        "summary": "Близ Петербурга открыли Главную (Пулковскую) обсерваторию. Россия получила «астрономическую столицу».",
-        "fact": "💡 Обсерваторию торжественно открыли в 1839 году.",
-        "sources": [
-          {
-            "title": "Presidential Library — Pulkovo Observatory",
-            "url": "https://www.prlib.ru/en/history/619472",
-            "name": "Presidential Library"
+            "title": "The Guardian — History of The Observer",
+            "url": "https://www.theguardian.com/gnm-archive/2002/jun/06/1",
+            "name": "Guardian / Observer archive"
           }
         ]
       }
@@ -8708,18 +8716,40 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 80,
-        "interest": 8,
+        "priority": 100,
+        "interest": 9,
         "status": "verified",
         "id": "world-1933-prohibition-end",
         "year": 1933,
-        "title": "Конец «сухого закона»",
-        "summary": "В США отменили сухой закон. Страна закрыла эпоху запрета на алкоголь поправкой к Конституции.",
-        "fact": "💡 Ратификацию 21-й поправки завершили 5 декабря.",
+        "title": "Конец сухого закона",
+        "summary": "В США отменили сухой закон 21-й поправкой.",
+        "fact": "💡 Ратификацию закрыли в этот день.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Prohibition",
+            "title": "Britannica — Prohibition",
             "url": "https://www.britannica.com/event/Prohibition-United-States-history-1920-1933",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/prohibition-ends-1933.jpg",
+        "imageAlt": "Прокламация Рузвельта об отмене сухого закона, 5 декабря 1933"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "ru-1941-moscow-counteroffensive",
+        "year": 1941,
+        "title": "Контрнаступление под Москвой",
+        "summary": "Советские войска ударили под Москвой.",
+        "fact": "💡 Контрнаступление началось 5 декабря.",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Moscow",
+            "url": "https://www.britannica.com/event/Battle-of-Moscow",
             "name": "Britannica"
           }
         ]
@@ -8727,40 +8757,20 @@
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1863-what-is-to-be-done",
-        "year": 1863,
-        "title": "«Что делать?»",
-        "summary": "Николай Чернышевский опубликовал роман «Что делать?». Книга стала манифестом поколения разночинцев.",
-        "fact": "💡 Роман написан в Петропавловской крепости.",
+        "id": "world-1791-mozart-died",
+        "year": 1791,
+        "title": "Умер Моцарт",
+        "summary": "В Вене умер Вольфганг Амадей Моцарт.",
+        "fact": "💡 Ему было всего 35 лет.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Nikolay Chernyshevsky",
-            "url": "https://www.britannica.com/biography/Nikolay-Gavrilovich-Chernyshevsky",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1755-lomonosov-grammar",
-        "year": 1755,
-        "title": "Грамматика Ломоносова",
-        "summary": "Михаил Ломоносов издал «Российскую грамматику». Наука о русском языке получила системный фундамент.",
-        "fact": "💡 Книга вышла в 1755 году.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Mikhail Lomonosov",
-            "url": "https://www.britannica.com/biography/Mikhail-Lomonosov",
-            "name": "Britannica"
+            "title": "Mozarthaus Vienna — Mozart biography",
+            "url": "https://www.mozarthausvienna.at/en/Wolfgang-Amadeus-Mozart",
+            "name": "Mozarthaus Vienna"
           }
         ]
       }
@@ -8770,59 +8780,61 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 80,
-        "interest": 8,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
         "id": "world-1917-finland-independence",
         "year": 1917,
         "title": "Независимость Финляндии",
-        "summary": "Финляндия провозгласила независимость. На карте Европы появилось новое северное государство.",
-        "fact": "💡 День независимости Финляндии — 6 декабря.",
+        "summary": "Финляндия провозгласила независимость от России.",
+        "fact": "💡 День независимости отмечают ежегодно.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Finland",
-            "url": "https://www.britannica.com/place/Finland",
-            "name": "Britannica"
+            "title": "Finnish Government — Independence Day",
+            "url": "https://valtioneuvosto.fi/en/finland/independence-day",
+            "name": "Finnish Government"
+          }
+        ],
+        "image": "assets/history/finland-independence-1917.jpg",
+        "imageAlt": "Декларация независимости Финляндии, 1917"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1865-13th-amendment-ratified",
+        "year": 1865,
+        "title": "Ратифицирована 13-я поправка",
+        "summary": "Штаты ратифицировали поправку об отмене рабства.",
+        "fact": "💡 Решающий голос дала Джорджия.",
+        "sources": [
+          {
+            "title": "National Archives — 13th Amendment",
+            "url": "https://www.archives.gov/milestone-documents/13th-amendment",
+            "name": "National Archives"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
         "status": "verified",
-        "id": "ru-1917-finland-recognition-path",
-        "year": 1917,
-        "title": "Россия и Финляндия",
-        "summary": "После революции 1917 года решился вопрос о статусе Финляндии. Северная граница империи стала границей двух государств.",
-        "fact": "💡 Советская Россия вскоре признала независимость.",
+        "id": "world-1492-columbus-hispaniola",
+        "year": 1492,
+        "title": "Колумб у Эспаньолы",
+        "summary": "Экспедиция Колумба достигла острова Эспаньола.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Finland",
-            "url": "https://www.britannica.com/place/Finland",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1829-lobachevsky",
-        "year": 1829,
-        "title": "Геометрия Лобачевского",
-        "summary": "Николай Лобачевский развил неевклидову геометрию. Математика получила новый взгляд на пространство.",
-        "fact": "💡 Идеи сначала встретили с недоверием.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Nikolay Lobachevsky",
-            "url": "https://www.britannica.com/biography/Nikolay-Ivanovich-Lobachevsky",
-            "name": "Britannica"
+            "title": "Library of Congress — Columbus arrives in the New World",
+            "url": "https://www.loc.gov/item/today-in-history/december-06/",
+            "name": "Library of Congress"
           }
         ]
       }
@@ -8830,61 +8842,63 @@
     "12-07": [
       {
         "body": "",
-        "category": "science",
+        "category": "space",
         "region": "WORLD",
         "priority": 100,
-        "interest": 9,
+        "interest": 10,
         "status": "verified",
-        "id": "world-1972-apollo17-moonwalk",
+        "id": "world-1972-apollo17-launch",
         "year": 1972,
-        "title": "Последние шаги на Луне",
-        "summary": "Экипаж Apollo 17 работал на Луне — это была последняя пилотируемая высадка XX века. Эра «Аполлонов» подходила к финалу.",
-        "fact": "💡 Астронавты провели на поверхности рекордное время.",
+        "title": "Ночной старт Apollo 17",
+        "summary": "Ночью стартовал Apollo 17 — последний пилотируемый полёт к Луне.",
+        "fact": "💡 Единственный ночной старт Saturn V.",
         "sources": [
           {
             "title": "NASA — Apollo 17",
             "url": "https://www.nasa.gov/mission_pages/apollo/missions/apollo17.html",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/apollo17-night-launch.jpg",
+        "imageAlt": "Ночной старт Apollo 17"
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "region": "WORLD",
+        "priority": 95,
+        "interest": 10,
         "status": "verified",
-        "id": "ru-1941-moscow-battle-echo",
+        "id": "world-1941-pearl-harbor",
         "year": 1941,
-        "title": "Битва за Москву",
-        "summary": "В декабре 1941 года советские войска перешли в контрнаступление под Москвой. Столица устояла.",
-        "fact": "💡 Контрнаступление началось 5–6 декабря.",
+        "title": "Пёрл-Харбор",
+        "summary": "Япония атаковала базу США в Пёрл-Харборе.",
+        "fact": "💡 Назавтра США объявят войну Японии.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Battle of Moscow",
-            "url": "https://www.britannica.com/event/Battle-of-Moscow",
-            "name": "Britannica"
+            "title": "National Archives — Pearl Harbor",
+            "url": "https://www.archives.gov/education/lessons/day-of-infamy",
+            "name": "National Archives"
           }
         ]
       },
       {
         "body": "",
-        "category": "technology",
-        "region": "RU",
-        "priority": 90,
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1897-popov-fleet",
-        "year": 1897,
-        "title": "Радио на русском флоте",
-        "summary": "Александр Попов проводил опыты радиосвязи на кораблях. Флот осваивал беспроволочный телеграф.",
-        "fact": "💡 Дальность связи росла от опыта к опыту.",
+        "id": "world-1787-delaware-first-state",
+        "year": 1787,
+        "title": "Делавэр — первый штат",
+        "summary": "Делавэр первым ратифицировал Конституцию США.",
+        "fact": "💡 Отсюда прозвище First State.",
         "sources": [
           {
-            "title": "Presidential Library — Alexander Popov",
-            "url": "https://www.prlib.ru/en/history/1866978",
-            "name": "Presidential Library"
+            "title": "National Archives — Constitution",
+            "url": "https://www.archives.gov/founding-docs/constitution",
+            "name": "National Archives"
           }
         ]
       }
@@ -8894,59 +8908,61 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 70,
-        "interest": 7,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
-        "id": "world-1941-us-enters-war-avoid",
-        "year": 1886,
-        "title": "Американская Федерация труда",
-        "summary": "В США оформилось крупное объединение профсоюзов. Рабочее движение получило постоянную организационную силу.",
-        "fact": "💡 AFL стала одной из главных организаций труда.",
+        "id": "world-1941-us-declares-war-japan",
+        "year": 1941,
+        "title": "США объявили войну Японии",
+        "summary": "После Пёрл-Харбора Конгресс объявил войну Японии.",
+        "fact": "💡 Рузвельт назвал 7 декабря «днём позора».",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — American Federation of Labor",
-            "url": "https://www.britannica.com/topic/American-Federation-of-Labor-Congress-of-Industrial-Organizations",
-            "name": "Britannica"
+            "title": "National Archives — Day of Infamy speech",
+            "url": "https://www.archives.gov/education/lessons/day-of-infamy",
+            "name": "National Archives"
+          }
+        ],
+        "image": "assets/history/fdr-declare-war-1941.jpg",
+        "imageAlt": "Рузвельт подписывает объявление войны Японии"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1980-john-lennon-killed",
+        "year": 1980,
+        "title": "Убит Джон Леннон",
+        "summary": "В Нью-Йорке убит музыкант The Beatles Джон Леннон.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "Library of Congress — John Lennon",
+            "url": "https://www.loc.gov/item/today-in-history/december-08/",
+            "name": "Library of Congress"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 90,
-        "interest": 9,
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
         "status": "verified",
-        "id": "ru-1880-dostoevsky-brothers",
-        "year": 1880,
-        "title": "«Братья Карамазовы»",
-        "summary": "Фёдор Достоевский завершил роман «Братья Карамазовы». Русская проза получила одну из вершин мировой литературы.",
-        "fact": "💡 Это последний роман писателя.",
+        "id": "world-1993-nafta-signed",
+        "year": 1993,
+        "title": "Закон о NAFTA",
+        "summary": "Клинтон подписал закон о реализации NAFTA в США.",
+        "fact": "💡 Сам договор три страны подписали в 1992 году.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — The Brothers Karamazov",
-            "url": "https://www.britannica.com/topic/The-Brothers-Karamazov",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1869-periodic-law",
-        "year": 1869,
-        "title": "Периодический закон",
-        "summary": "Дмитрий Менделеев сформулировал периодический закон. Химия получила таблицу, по которой учат до сих пор.",
-        "fact": "💡 Закон он изложил весной 1869 года.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Dmitri Mendeleev",
-            "url": "https://www.britannica.com/biography/Dmitri-Mendeleev",
-            "name": "Britannica"
+            "title": "American Presidency Project — NAFTA Implementation Act signing",
+            "url": "https://www.presidency.ucsb.edu/documents/remarks-signing-the-north-american-free-trade-agreement-implementation-act",
+            "name": "American Presidency Project"
           }
         ]
       }
@@ -8956,59 +8972,61 @@
         "body": "",
         "category": "technology",
         "region": "WORLD",
-        "priority": 90,
-        "interest": 9,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
-        "id": "world-1968-douglass-c-5a",
+        "id": "world-1968-mother-of-all-demos",
         "year": 1968,
-        "title": "Мышь компьютерная в массы",
-        "summary": "В конце 1960-х идея компьютерной мыши выходила из лабораторий в демонстрации. Интерфейс будущего показывал себя руками.",
-        "fact": "💡 Демонстрацию Дуга Энгельбарта называют «матерью всех демо».",
+        "title": "Мать всех демонстраций",
+        "summary": "Энгельбарт показал мышь, окна и гипертекст вживую.",
+        "fact": "💡 Показ прошёл в Сан-Франциско.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — computer mouse",
-            "url": "https://www.britannica.com/technology/computer-mouse",
-            "name": "Britannica"
+            "title": "Doug Engelbart Institute — The Demo",
+            "url": "https://www.dougengelbart.org/content/view/209/",
+            "name": "Engelbart Institute"
+          }
+        ],
+        "image": "assets/history/engelbart-mouse.jpg",
+        "imageAlt": "Дуглас Энгельбарт с прототипом компьютерной мыши"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "id": "world-1990-walesa-elected",
+        "year": 1990,
+        "title": "Валенсу избрали президентом",
+        "summary": "Лех Валенса победил на президентских выборах в Польше.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "Nobel Prize — Lech Wałęsa biographic",
+            "url": "https://www.nobelprize.org/prizes/peace/1983/walesa/biographical/",
+            "name": "Nobel Prize"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 70,
         "interest": 7,
         "status": "verified",
-        "id": "ru-1825-nicholas-i",
-        "year": 1825,
-        "title": "Николай I на престоле",
-        "summary": "В декабре 1825 года на престол взошёл Николай I. Россия вступила в новую царскую эпоху.",
-        "fact": "💡 Воцарение совпало с восстанием декабристов.",
+        "id": "world-1961-tanganyika-independence",
+        "year": 1961,
+        "title": "Независимость Танганьики",
+        "summary": "Танганьика провозгласила независимость.",
+        "fact": "💡 Позже она войдёт в Танзанию.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Nicholas I",
-            "url": "https://www.britannica.com/biography/Nicholas-I-tsar-of-Russia",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1908-mechnikov-nobel",
-        "year": 1908,
-        "title": "Нобель Мечникову",
-        "summary": "Илья Мечников получил Нобелевскую премию по физиологии и медицине за исследования иммунитета.",
-        "fact": "💡 Премию он разделил с Паулем Эрлихом.",
-        "sources": [
-          {
-            "title": "Nobel Prize — Ilya Mechnikov",
-            "url": "https://www.nobelprize.org/prizes/medicine/1908/mechnikov/facts/",
-            "name": "Nobel Prize"
+            "title": "UN — Tanganyika admission / independence context",
+            "url": "https://www.un.org/en/about-us/member-states/united-republic-of-tanzania",
+            "name": "United Nations"
           }
         ]
       }
@@ -9024,53 +9042,55 @@
         "id": "world-1901-first-nobel-prizes",
         "year": 1901,
         "title": "Первые Нобелевские премии",
-        "summary": "Впервые вручили Нобелевские премии. Наука, литература и мир получили новую высшую планку признания.",
-        "fact": "💡 Церемонии приурочены ко дню смерти Альфреда Нобеля.",
+        "summary": "Впервые вручили Нобелевские премии по завещанию Нобеля.",
+        "fact": "💡 Церемонии приурочены ко дню его смерти.",
         "sources": [
           {
-            "title": "Nobel Prize — Nobel Prize facts",
+            "title": "Nobel Prize — Facts",
             "url": "https://www.nobelprize.org/prizes/facts/nobel-prize-facts/",
             "name": "Nobel Prize"
           }
-        ]
+        ],
+        "image": "assets/history/alfred-nobel.jpg",
+        "imageAlt": "Альфред Нобель"
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
         "status": "verified",
-        "id": "ru-1936-constitution-ussr",
-        "year": 1936,
-        "title": "Конституция 1936 года",
-        "summary": "В СССР приняли новую Конституцию. Документ провозглашал широкие права — и стал символом эпохи.",
-        "fact": "💡 Её часто называют «сталинской Конституцией».",
+        "id": "world-1948-udhr-adopted",
+        "year": 1948,
+        "title": "Декларация прав человека",
+        "summary": "ООН приняла Всеобщую декларацию прав человека.",
+        "fact": "💡 Документ утвердили в Париже.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Constitution of the Union of Soviet Socialist Republics",
-            "url": "https://www.britannica.com/topic/Constitution-of-the-Union-of-Soviet-Socialist-Republics",
-            "name": "Britannica"
+            "title": "United Nations — UDHR",
+            "url": "https://www.un.org/en/about-us/universal-declaration-of-human-rights",
+            "name": "United Nations"
           }
         ]
       },
       {
         "body": "",
-        "category": "culture",
+        "category": "science",
         "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "priority": 85,
+        "interest": 9,
         "status": "verified",
-        "id": "ru-1898-mxat",
-        "year": 1898,
-        "title": "Основан МХТ",
-        "summary": "В Москве основали Художественно-общедоступный театр — будущий МХТ. Русская сцена получила новую школу правды.",
-        "fact": "💡 Во главе встали Станиславский и Немирович-Данченко.",
+        "id": "ru-1908-mechnikov-nobel",
+        "year": 1908,
+        "title": "Нобель Мечникову",
+        "summary": "Мечников получил Нобель за исследования иммунитета.",
+        "fact": "💡 Премию он разделил с Эрлихом.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Moscow Art Theatre",
-            "url": "https://www.britannica.com/topic/Moscow-Art-Theatre",
-            "name": "Britannica"
+            "title": "Nobel Prize — Mechnikov 1908",
+            "url": "https://www.nobelprize.org/prizes/medicine/1908/mechnikov/facts/",
+            "name": "Nobel Prize"
           }
         ]
       }
@@ -9080,59 +9100,61 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 70,
-        "interest": 8,
+        "priority": 100,
+        "interest": 9,
         "status": "verified",
         "id": "world-1936-edward-abdication",
         "year": 1936,
         "title": "Отречение Эдуарда VIII",
-        "summary": "Король Эдуард VIII отрёкся от престола. Британская монархия пережила один из самых громких кризисов XX века.",
-        "fact": "💡 Причиной стала любовь к Уоллис Симпсон.",
+        "summary": "Эдуард VIII отрёкся от престола ради брака.",
+        "fact": "💡 Причиной стала Уоллис Симпсон.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Edward VIII",
-            "url": "https://www.britannica.com/biography/Edward-VIII",
-            "name": "Britannica"
+            "title": "UK Parliament — Abdication of Edward VIII",
+            "url": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/relationships/overview/edwardviii/",
+            "name": "UK Parliament"
+          }
+        ],
+        "image": "assets/history/edward-viii-abdication.jpg",
+        "imageAlt": "Документ об отречении Эдуарда VIII"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "ru-1918-solzhenitsyn-born",
+        "year": 1918,
+        "title": "Родился Солженицын",
+        "summary": "Родился Александр Солженицын — будущий летописец эпохи.",
+        "fact": "💡 Позже он опишет ГУЛАГ.",
+        "sources": [
+          {
+            "title": "Nobel Prize — Aleksandr Solzhenitsyn facts",
+            "url": "https://www.nobelprize.org/prizes/literature/1970/solzhenitsyn/facts/",
+            "name": "Nobel Prize"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1918-solzhenitsyn-born",
-        "year": 1918,
-        "title": "Родился Солженицын",
-        "summary": "Родился Александр Солженицын. Русская литература XX века получила будущего летописца эпохи.",
-        "fact": "💡 Позже он получит Нобелевскую премию.",
+        "id": "world-1941-germany-italy-war-us",
+        "year": 1941,
+        "title": "Война Германии и Италии с США",
+        "summary": "Германия и Италия объявили войну США.",
+        "fact": "💡 Вашингтон ответил тем же днём.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Aleksandr Solzhenitsyn",
-            "url": "https://www.britannica.com/biography/Aleksandr-Isayevich-Solzhenitsyn",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "technology",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1874-lodygin-lamp-dec",
-        "year": 1874,
-        "title": "Лампа Лодыгина",
-        "summary": "Александр Лодыгин развивал лампу накаливания. Электрический свет имел и российский корень.",
-        "fact": "💡 Его патенты шли в одном ряду с мировыми.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — lightbulb",
-            "url": "https://www.britannica.com/technology/incandescent-lamp",
-            "name": "Britannica"
+            "title": "National WWII Museum — December 11 1941",
+            "url": "https://www.nationalww2museum.org/war/articles/pearl-harbor-aftermath-germany-declares-war",
+            "name": "National WWII Museum"
           }
         ]
       }
@@ -9148,53 +9170,55 @@
         "id": "world-1901-marconi-atlantic",
         "year": 1901,
         "title": "Радио через Атлантику",
-        "summary": "Гульельмо Маркони принял беспроволочный сигнал через Атлантический океан. Мир убедился: радио не знает берегов.",
-        "fact": "💡 Сигнал буквы «S» приняли в Ньюфаундленде.",
+        "summary": "Маркони принял радиосигнал через Атлантику.",
+        "fact": "💡 В Ньюфаундленде приняли букву «S».",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Guglielmo Marconi",
-            "url": "https://www.britannica.com/biography/Guglielmo-Marconi",
-            "name": "Britannica"
+            "title": "IEEE Milestone — Marconi’s first transatlantic radio signal",
+            "url": "https://ethw.org/Milestones:First_Transatlantic_Radio_Signal,_1901",
+            "name": "IEEE / ETHW"
           }
-        ]
+        ],
+        "image": "assets/history/marconi-transatlantic.jpg",
+        "imageAlt": "Гульельмо Маркони"
       },
       {
         "body": "",
         "category": "culture",
         "region": "RU",
-        "priority": 90,
-        "interest": 8,
+        "priority": 95,
+        "interest": 9,
         "status": "verified",
         "id": "ru-1993-constitution-rf",
         "year": 1993,
         "title": "Конституция России",
-        "summary": "Приняли Конституцию Российской Федерации. Страна закрепила основы нового государственного устройства.",
-        "fact": "💡 День Конституции отмечают 12 декабря.",
+        "summary": "На референдуме приняли Конституцию Российской Федерации.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Russia",
-            "url": "https://www.britannica.com/place/Russia",
-            "name": "Britannica"
+            "title": "Конституция РФ — официальный текст",
+            "url": "http://pravo.gov.ru/proxy/ips/?docbody=&nd=102027595",
+            "name": "pravo.gov.ru"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1762-catherine-era",
-        "year": 1762,
-        "title": "Екатерина II у власти",
-        "summary": "Екатерина II начала долгое правление. Россия вступила в эпоху реформ, культуры и имперского роста.",
-        "fact": "💡 Её век назовут екатерининским.",
+        "id": "world-1963-kenya-independence",
+        "year": 1963,
+        "title": "Независимость Кении",
+        "summary": "Кения провозгласила независимость от Великобритании.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Catherine the Great",
-            "url": "https://www.britannica.com/biography/Catherine-the-Great",
-            "name": "Britannica"
+            "title": "UK National Archives — Kenya independence",
+            "url": "https://www.nationalarchives.gov.uk/explore-the-collection/explore-by-topic/empire-and-commonwealth/kenya/",
+            "name": "UK National Archives"
           }
         ]
       }
@@ -9202,60 +9226,62 @@
     "12-13": [
       {
         "body": "",
-        "category": "science",
+        "category": "culture",
         "region": "WORLD",
-        "priority": 90,
+        "priority": 100,
         "interest": 9,
         "status": "verified",
-        "id": "world-1642-newton-born-os",
-        "year": 1642,
-        "title": "Родился Ньютон",
-        "summary": "По старому стилю в конце декабря родился Исаак Ньютон. Наука получила автора законов движения и всемирного тяготения.",
-        "fact": "💡 По новому стилю день рождения — 4 января 1643.",
+        "id": "world-1577-drake-sets-sail",
+        "year": 1577,
+        "title": "Дрейк вышел в кругосветку",
+        "summary": "Фрэнсис Дрейк отправился в кругосветное плавание.",
+        "fact": "💡 Корабли вышли из Плимута.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Isaac Newton",
-            "url": "https://www.britannica.com/biography/Isaac-Newton",
-            "name": "Britannica"
+            "title": "Royal Museums Greenwich — Francis Drake",
+            "url": "https://www.rmg.co.uk/stories/topics/sir-francis-drake",
+            "name": "RMG"
+          }
+        ],
+        "image": "assets/history/francis-drake.jpg",
+        "imageAlt": "Портрет Фрэнсиса Дрейка"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "id": "world-2003-saddam-captured",
+        "year": 2003,
+        "title": "Взят Саддам Хусейн",
+        "summary": "Саддама Хусейна задержали близ Тикрита.",
+        "fact": "💡 Операцию назвали Red Dawn.",
+        "sources": [
+          {
+            "title": "US Army — Capture of Saddam Hussein",
+            "url": "https://www.army.mil/article/259720/this_week_in_army_history_the_capture_of_saddam_hussein",
+            "name": "US Army"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
+        "region": "WORLD",
+        "priority": 70,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1928-sholokhov-quiet-don",
-        "year": 1928,
-        "title": "Начало «Тихого Дона»",
-        "summary": "Михаил Шолохов публикует первые книги «Тихого Дона». Эпопея станет одной из главных русских саг XX века.",
-        "fact": "💡 Полностью роман сложится за годы работы.",
+        "id": "world-1545-council-of-trent-opens",
+        "year": 1545,
+        "title": "Открылся Тридентский собор",
+        "summary": "В Тренто открылся собор католической реформы.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Mikhail Sholokhov",
-            "url": "https://www.britannica.com/biography/Mikhail-Aleksandrovich-Sholokhov",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1852-hermitage-public-dec",
-        "year": 1852,
-        "title": "Эрмитаж для публики",
-        "summary": "Императорский Эрмитаж всё шире открывался как музей. Сокровища двора становились достоянием зрителей.",
-        "fact": "💡 Начало коллекции положила Екатерина II.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Hermitage",
-            "url": "https://www.britannica.com/topic/Hermitage-museum-Saint-Petersburg-Russia",
+            "title": "Britannica — Council of Trent",
+            "url": "https://www.britannica.com/event/Council-of-Trent",
             "name": "Britannica"
           }
         ]
@@ -9272,33 +9298,35 @@
         "id": "world-1911-amundsen-south-pole",
         "year": 1911,
         "title": "Амундсен на Южном полюсе",
-        "summary": "Руаль Амундсен со своим отрядом достиг Южного полюса. Антарктида впервые приняла людей у самой южной точки Земли.",
-        "fact": "💡 Норвежский флаг водрузили 14 декабря 1911 года.",
+        "summary": "Отряд Амундсена первым достиг Южного полюса.",
+        "fact": "💡 Норвежский флаг водрузили в этот день.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Roald Amundsen",
-            "url": "https://www.britannica.com/biography/Roald-Amundsen",
-            "name": "Britannica"
+            "title": "Fram Museum — Amundsen reaches the South Pole",
+            "url": "https://frammuseum.no/polar-history/expeditions/the-south-pole-expedition-1910-1912/",
+            "name": "Fram Museum"
           }
-        ]
+        ],
+        "image": "assets/history/amundsen-south-pole.jpg",
+        "imageAlt": "Палатка Амундсена на Южном полюсе"
       },
       {
         "body": "",
         "category": "culture",
         "region": "RU",
-        "priority": 90,
+        "priority": 95,
         "interest": 9,
         "status": "verified",
         "id": "ru-1825-decembrist-revolt",
         "year": 1825,
         "title": "Восстание декабристов",
-        "summary": "На Сенатской площади в Петербурге вышли декабристы. Россия увидела первое организованное выступление офицеров за перемены.",
+        "summary": "На Сенатской площади вышли декабристы.",
         "fact": "💡 Восстание подавили в тот же день.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Decembrist",
-            "url": "https://www.britannica.com/topic/Decembrist",
-            "name": "Britannica"
+            "title": "Presidential Library — Decembrist uprising",
+            "url": "https://www.prlib.ru/en/history/619555",
+            "name": "Presidential Library"
           }
         ]
       },
@@ -9312,13 +9340,13 @@
         "id": "ru-1989-sakharov-died",
         "year": 1989,
         "title": "Умер Андрей Сахаров",
-        "summary": "Умер Андрей Сахаров — физик и правозащитник. Страна потеряла одного из нравственных ориентиров эпохи.",
-        "fact": "💡 Он получил Нобелевскую премию мира в 1975 году.",
+        "summary": "Умер Андрей Сахаров — физик и правозащитник.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Andrey Sakharov",
-            "url": "https://www.britannica.com/biography/Andrey-Sakharov",
-            "name": "Britannica"
+            "title": "Nobel Prize — Andrei Sakharov facts",
+            "url": "https://www.nobelprize.org/prizes/peace/1975/sakharov/facts/",
+            "name": "Nobel Prize"
           }
         ]
       }
@@ -9328,13 +9356,13 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 80,
-        "interest": 8,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
         "id": "world-1791-bill-of-rights",
         "year": 1791,
         "title": "Билль о правах",
-        "summary": "Вступили в силу первые десять поправок к Конституции США — Билль о правах. Свободы получили письменную защиту.",
+        "summary": "Вступили в силу первые десять поправок США.",
         "fact": "💡 Среди них — свобода слова и печати.",
         "sources": [
           {
@@ -9342,45 +9370,47 @@
             "url": "https://www.archives.gov/founding-docs/bill-of-rights",
             "name": "National Archives"
           }
-        ]
+        ],
+        "image": "assets/history/us-bill-of-rights.jpg",
+        "imageAlt": "Билль о правах США"
       },
       {
         "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 9,
+        "category": "space",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
         "status": "verified",
-        "id": "ru-1866-crime-punishment",
-        "year": 1866,
-        "title": "«Преступление и наказание»",
-        "summary": "Фёдор Достоевский публикует роман «Преступление и наказание». Русская проза получает один из главных психологических текстов мира.",
-        "fact": "💡 Сначала роман шёл частями в журнале.",
+        "id": "world-1965-gemini6a-launch",
+        "year": 1965,
+        "title": "Старт Gemini 6A",
+        "summary": "Gemini 6A стартовала на первое сближение с Gemini 7.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Crime and Punishment",
-            "url": "https://www.britannica.com/topic/Crime-and-Punishment-novel",
-            "name": "Britannica"
+            "title": "NASA — Gemini 6A",
+            "url": "https://www.nasa.gov/mission_pages/gemini/missions/gemini6.html",
+            "name": "NASA"
           }
         ]
       },
       {
         "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1839-pulkovo-science",
-        "year": 1839,
-        "title": "Астрономия Пулково",
-        "summary": "Пулковская обсерватория стала центром точных измерений неба. Русская астрономия вышла на мировой уровень.",
-        "fact": "💡 Её называли астрономической столицей мира.",
+        "id": "world-1939-gone-with-the-wind-premiere",
+        "year": 1939,
+        "title": "Премьера «Унесённых ветром»",
+        "summary": "В Атланте прошла премьера фильма «Унесённые ветром».",
+        "fact": "",
         "sources": [
           {
-            "title": "Presidential Library — Pulkovo Observatory",
-            "url": "https://www.prlib.ru/en/history/619472",
-            "name": "Presidential Library"
+            "title": "Library of Congress — Gone with the Wind",
+            "url": "https://www.loc.gov/static/managed-content/uploads/sites/29/2018/06/gone-with-the-wind.pdf",
+            "name": "Library of Congress"
           }
         ]
       }
@@ -9390,18 +9420,40 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 80,
-        "interest": 8,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
         "id": "world-1773-boston-tea-party",
         "year": 1773,
         "title": "Бостонское чаепитие",
-        "summary": "В Бостоне колонисты выбросили чай в гавань. Протест стал одним из прологов войны за независимость США.",
+        "summary": "Колонисты выбросили чай в бостонскую гавань.",
         "fact": "💡 Чай принадлежал Ост-Индской компании.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Boston Tea Party",
+            "title": "Britannica — Boston Tea Party",
             "url": "https://www.britannica.com/event/Boston-Tea-Party",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/boston-tea-party.jpg",
+        "imageAlt": "Бостонское чаепитие"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1944-battle-of-the-bulge-begins",
+        "year": 1944,
+        "title": "Начало Арденнской операции",
+        "summary": "Германия начала наступление в Арденнах.",
+        "fact": "💡 Это был последний крупный удар на западе.",
+        "sources": [
+          {
+            "title": "Britannica — Battle of the Bulge",
+            "url": "https://www.britannica.com/event/Battle-of-the-Bulge",
             "name": "Britannica"
           }
         ]
@@ -9409,40 +9461,20 @@
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1862-fathers-sons",
-        "year": 1862,
-        "title": "«Отцы и дети»",
-        "summary": "Иван Тургенев опубликовал роман «Отцы и дети». Слово «нигилист» вошло в широкий оборот.",
-        "fact": "💡 Главный герой — Базаров.",
+        "id": "world-1991-kazakhstan-independence",
+        "year": 1991,
+        "title": "Независимость Казахстана",
+        "summary": "Казахстан провозгласил государственную независимость.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Fathers and Sons",
-            "url": "https://www.britannica.com/topic/Fathers-and-Sons",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "technology",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1895-popov-thunderstorm-dec",
-        "year": 1895,
-        "title": "Грозоотметчик Попова",
-        "summary": "Александр Попов создал прибор, отмечавший грозовые разряды. Это был важный шаг к практическому радио.",
-        "fact": "💡 Демонстрация прошла весной 1895 года.",
-        "sources": [
-          {
-            "title": "Presidential Library — Alexander Popov",
-            "url": "https://www.prlib.ru/en/history/1866978",
-            "name": "Presidential Library"
+            "title": "Official site — Independence Day of Kazakhstan",
+            "url": "https://www.gov.kz/memleket/entities/mfa/press/article/details/607?lang=en",
+            "name": "gov.kz"
           }
         ]
       }
@@ -9458,53 +9490,55 @@
         "id": "world-1903-wright-flyer",
         "year": 1903,
         "title": "Первый полёт Wright Flyer",
-        "summary": "У Китти-Хок братья Райт совершили первый управляемый полёт аппарата тяжелее воздуха. Началась эра авиации.",
-        "fact": "💡 Первый полёт длился 12 секунд и 120 футов.",
+        "summary": "У Китти-Хок братья Райт впервые взлетели.",
+        "fact": "💡 Полёт длился 12 секунд.",
         "sources": [
           {
-            "title": "NASA — Wright brothers at Kitty Hawk",
-            "url": "https://www.nasa.gov/history/115-years-ago-wright-brothers-make-history-at-kitty-hawk/",
+            "title": "NASA — Wright brothers first flight",
+            "url": "https://www.nasa.gov/history/115-years-ago-wright-brothers-make-historic-first-flight/",
             "name": "NASA"
+          }
+        ],
+        "image": "assets/history/wright-flyer-1903.jpg",
+        "imageAlt": "Первый полёт Wright Flyer, 17 декабря 1903"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "id": "world-1777-france-recognizes-us",
+        "year": 1777,
+        "title": "Верженн признал США",
+        "summary": "Министр Верженн признал Соединённые Штаты независимой державой.",
+        "fact": "💡 Формальные договоры подпишут 6 февраля 1778-го.",
+        "sources": [
+          {
+            "title": "HISTORY — France formally recognizes the United States",
+            "url": "https://www.history.com/this-day-in-history/december-17/france-formally-recognizes-the-united-states",
+            "name": "HISTORY"
           }
         ]
       },
       {
         "body": "",
         "category": "technology",
-        "region": "RU",
-        "priority": 90,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1903-sikorsky-era",
-        "year": 1913,
-        "title": "«Русский витязь» Сикорского",
-        "summary": "Игорь Сикорский создал многомоторный «Русский витязь». Русская авиация заявила о себе гигантским самолётом.",
-        "fact": "💡 Позже появится знаменитый «Илья Муромец».",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Igor Sikorsky",
-            "url": "https://www.britannica.com/biography/Igor-Sikorsky",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
+        "region": "WORLD",
+        "priority": 75,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1833-onegin",
-        "year": 1833,
-        "title": "«Евгений Онегин» полностью",
-        "summary": "Александр Пушкин завершил издание романа в стихах «Евгений Онегин». Русская литература получила «энциклопедию русской жизни».",
-        "fact": "💡 Полное отдельное издание вышло в 1833 году.",
+        "id": "world-1935-dc3-first-flight",
+        "year": 1935,
+        "title": "Первый полёт DC-3",
+        "summary": "Совершил первый полёт Douglas DC-3.",
+        "fact": "💡 Самолёт стал символом авиации.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Eugene Onegin",
-            "url": "https://www.britannica.com/topic/Eugene-Onegin-novel-by-Pushkin",
-            "name": "Britannica"
+            "title": "Smithsonian — Douglas DC-3",
+            "url": "https://airandspace.si.edu/collection-objects/douglas-dc-3",
+            "name": "Smithsonian"
           }
         ]
       }
@@ -9520,53 +9554,55 @@
         "id": "ru-1892-nutcracker-premiere",
         "year": 1892,
         "title": "Премьера «Щелкунчика»",
-        "summary": "В Петербурге прошла премьера балета «Щелкунчик» Чайковского. Русская сцена подарила миру рождественскую классику.",
-        "fact": "💡 Премьера состоялась 18 декабря 1892 года.",
+        "summary": "В Петербурге показали «Щелкунчик» Чайковского.",
+        "fact": "💡 Премьера прошла в Мариинском театре.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — The Nutcracker",
-            "url": "https://www.britannica.com/topic/The-Nutcracker",
-            "name": "Britannica"
+            "title": "Mariinsky Theatre — The Nutcracker",
+            "url": "https://www.mariinsky.ru/en/playbill/playbill/repertoire/ballet/nutcracker/",
+            "name": "Mariinsky"
           }
-        ]
+        ],
+        "image": "assets/history/tchaikovsky-portrait.jpg",
+        "imageAlt": "Пётр Чайковский"
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
         "status": "verified",
-        "id": "ru-1880-1812-overture",
-        "year": 1880,
-        "title": "Увертюра «1812 год»",
-        "summary": "Пётр Чайковский написал торжественную увертюру «1812 год». Русская музыка получила один из самых узнаваемых оркестровых праздников.",
-        "fact": "💡 В финале звучат колокола и пушечные выстрелы.",
+        "id": "world-1865-13th-amendment-certified",
+        "year": 1865,
+        "title": "Провозглашена 13-я поправка",
+        "summary": "Госсекретарь Сьюард провозгласил отмену рабства в США.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — The Year 1812",
-            "url": "https://www.britannica.com/topic/The-Year-1812",
-            "name": "Britannica"
+            "title": "National Archives — 13th Amendment",
+            "url": "https://www.archives.gov/milestone-documents/13th-amendment",
+            "name": "National Archives"
           }
         ]
       },
       {
         "body": "",
-        "category": "technology",
+        "category": "space",
         "region": "WORLD",
-        "priority": 90,
+        "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "world-1865-thirteenth-amendment-echo",
-        "year": 1903,
-        "title": "Радио и вакуумные лампы",
-        "summary": "В начале XX века вакуумные лампы ускорили развитие радио и электроники. Слабые сигналы научились усиливать.",
-        "fact": "💡 Это открыло путь к радиовещанию.",
+        "id": "world-1958-score-satellite",
+        "year": 1958,
+        "title": "Спутник SCORE",
+        "summary": "США вывели один из первых спутников связи.",
+        "fact": "💡 Аппарат передал голос Эйзенхауэра.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — electron tube",
-            "url": "https://www.britannica.com/technology/electron-tube",
-            "name": "Britannica"
+            "title": "NASA — SCORE",
+            "url": "https://www.nasa.gov/history/60-years-ago-project-score/",
+            "name": "NASA"
           }
         ]
       }
@@ -9576,59 +9612,61 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 90,
-        "interest": 9,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
         "id": "world-1843-christmas-carol",
         "year": 1843,
         "title": "Вышла «Рождественская песнь»",
-        "summary": "Чарльз Диккенс опубликовал повесть «Рождественская песнь». Рождество получило один из самых тёплых литературных мифов.",
-        "fact": "💡 Скрудж стал нарицательным именем скряги.",
+        "summary": "Диккенс опубликовал «Рождественскую песнь».",
+        "fact": "💡 Скрудж стал нарицательным скрягой.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — A Christmas Carol",
-            "url": "https://www.britannica.com/topic/A-Christmas-Carol-novel",
-            "name": "Britannica"
+            "title": "British Library — A Christmas Carol",
+            "url": "https://www.bl.uk/collection-items/charles-dickenss-a-christmas-carol-1843",
+            "name": "British Library"
+          }
+        ],
+        "image": "assets/history/christmas-carol-1843.jpg",
+        "imageAlt": "Титульный лист «Рождественской песни», 1843"
+      },
+      {
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1972-apollo17-splashdown",
+        "year": 1972,
+        "title": "Возвращение Apollo 17",
+        "summary": "Apollo 17 приводнился — эра высадок на Луну закончилась.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "NASA — Apollo 17",
+            "url": "https://www.nasa.gov/mission_pages/apollo/missions/apollo17.html",
+            "name": "NASA"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
         "status": "verified",
-        "id": "ru-1905-october-manifesto-echo",
-        "year": 1905,
-        "title": "После Манифеста 1905-го",
-        "summary": "Россия жила последствиями Октябрьского манифеста. Страна училась говорить на языке свобод и Думы.",
-        "fact": "💡 Манифест издали 17/30 октября 1905 года.",
+        "id": "world-1777-valley-forge",
+        "year": 1777,
+        "title": "Лагерь Valley Forge",
+        "summary": "Армия Вашингтона вошла в зимний лагерь Valley Forge.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — October Manifesto",
-            "url": "https://www.britannica.com/event/October-Manifesto",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1755-moscow-university-dec",
-        "year": 1755,
-        "title": "Московский университет",
-        "summary": "По инициативе Ломоносова открыли Московский университет. Россия получила главный центр высшего образования.",
-        "fact": "💡 Университет основали 25 января 1755 года.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Moscow State University",
-            "url": "https://www.britannica.com/topic/Moscow-State-University",
-            "name": "Britannica"
+            "title": "National Park Service — Valley Forge",
+            "url": "https://www.nps.gov/vafo/learn/historyculture/index.htm",
+            "name": "NPS"
           }
         ]
       }
@@ -9639,58 +9677,60 @@
         "category": "technology",
         "region": "WORLD",
         "priority": 100,
-        "interest": 9,
+        "interest": 10,
         "status": "verified",
         "id": "world-1951-first-nuclear-power",
         "year": 1951,
         "title": "Атом дал ток",
-        "summary": "В Айдахо экспериментальный реактор EBR-I впервые выработал электричество. Мирный атом зажёг лампочки.",
-        "fact": "💡 Свет загорелся 20 декабря 1951 года.",
+        "summary": "Реактор EBR-I впервые выработал электричество.",
+        "fact": "💡 Зажглись несколько лампочек.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — nuclear power",
-            "url": "https://www.britannica.com/technology/nuclear-power",
-            "name": "Britannica"
+            "title": "US Department of Energy — EBR-I",
+            "url": "https://www.energy.gov/management/december-20-1951-first-nuclear-reactor-produce-electricity",
+            "name": "US DOE"
           }
-        ]
+        ],
+        "image": "assets/history/ebr-1-reactor.jpg",
+        "imageAlt": "Реактор EBR-I"
       },
       {
         "body": "",
-        "category": "technology",
-        "region": "RU",
-        "priority": 90,
-        "interest": 9,
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
         "status": "verified",
-        "id": "ru-1954-obninsk",
-        "year": 1954,
-        "title": "Обнинская АЭС",
-        "summary": "В Обнинске заработала первая в мире атомная электростанция. Мирный атом стал промышленной реальностью.",
-        "fact": "💡 Станцию пустили 27 июня 1954 года.",
+        "id": "world-1803-louisiana-transfer",
+        "year": 1803,
+        "title": "Передача Луизианы",
+        "summary": "Луизиану формально передали от Франции Соединённым Штатам.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — nuclear power",
-            "url": "https://www.britannica.com/technology/nuclear-power",
-            "name": "Britannica"
+            "title": "National Archives — Louisiana Purchase",
+            "url": "https://www.archives.gov/milestone-documents/louisiana-purchase-treaty",
+            "name": "National Archives"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1836-revizor",
-        "year": 1836,
-        "title": "Премьера «Ревизора»",
-        "summary": "В Петербурге состоялась премьера комедии Гоголя «Ревизор». Чиновничий мир увидел себя в зеркале сцены.",
-        "fact": "💡 Премьера прошла весной 1836 года.",
+        "id": "world-1860-south-carolina-secedes",
+        "year": 1860,
+        "title": "Южная Каролина вышла из Союза",
+        "summary": "Южная Каролина первой объявила об отделении от США.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — The Government Inspector",
-            "url": "https://www.britannica.com/topic/The-Government-Inspector",
-            "name": "Britannica"
+            "title": "Library of Congress — South Carolina secession",
+            "url": "https://www.loc.gov/item/today-in-history/december-20/",
+            "name": "Library of Congress"
           }
         ]
       }
@@ -9698,61 +9738,63 @@
     "12-21": [
       {
         "body": "",
-        "category": "science",
+        "category": "space",
         "region": "WORLD",
         "priority": 100,
         "interest": 10,
         "status": "verified",
-        "id": "world-1968-apollo8-earthrise",
+        "id": "world-1968-apollo8-launch",
         "year": 1968,
-        "title": "Apollo 8 у Луны",
-        "summary": "Экипаж Apollo 8 облетел Луну и увидел восход Земли. Человечество впервые взглянуло на дом со стороны другого мира.",
-        "fact": "💡 Знаменитый снимок Earthrise сделали на этом полёте.",
+        "title": "Старт Apollo 8",
+        "summary": "Apollo 8 стартовал — первый пилотируемый полёт к Луне.",
+        "fact": "",
         "sources": [
           {
             "title": "NASA — Apollo 8",
             "url": "https://www.nasa.gov/mission_pages/apollo/missions/apollo8.html",
             "name": "NASA"
           }
-        ]
+        ],
+        "image": "assets/history/apollo8-launch.jpg",
+        "imageAlt": "Старт Apollo 8"
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
         "status": "verified",
-        "id": "ru-1937-pushkin-museum-echo",
-        "year": 1837,
-        "title": "Память о Пушкине",
-        "summary": "После гибели Пушкина в 1837 году Россия начала собирать его наследие. Поэт стал национальным мифом.",
-        "fact": "💡 Дуэль состоялась в январе 1837 года.",
+        "id": "world-1620-plymouth-landing",
+        "year": 1620,
+        "title": "«Мейфлауэр» у Плимута",
+        "summary": "Паломники с «Мейфлауэра» высадились у берегов Плимута.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Aleksandr Pushkin",
-            "url": "https://www.britannica.com/biography/Aleksandr-Sergeyevich-Pushkin",
-            "name": "Britannica"
+            "title": "Library of Congress — Mayflower and Plymouth",
+            "url": "https://www.loc.gov/item/today-in-history/december-21/",
+            "name": "Library of Congress"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
         "status": "verified",
-        "id": "ru-1898-seagull-mxat",
-        "year": 1898,
-        "title": "«Чайка» во МХТ",
-        "summary": "Во МХТ поставили «Чайку» Чехова. Провал на Александринской сцене сменился триумфом новой театральной школы.",
-        "fact": "💡 Чехов стал главным автором театра.",
+        "id": "world-1913-first-crossword",
+        "year": 1913,
+        "title": "Первый кроссворд",
+        "summary": "В газете New York World напечатали первый кроссворд.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — The Seagull",
-            "url": "https://www.britannica.com/topic/The-Seagull",
-            "name": "Britannica"
+            "title": "Library of Congress — crossword",
+            "url": "https://www.loc.gov/item/today-in-history/december-21/",
+            "name": "Library of Congress"
           }
         ]
       }
@@ -9760,61 +9802,63 @@
     "12-22": [
       {
         "body": "",
-        "category": "science",
+        "category": "culture",
         "region": "WORLD",
         "priority": 100,
-        "interest": 9,
+        "interest": 10,
         "status": "verified",
-        "id": "world-1887-michelson-morley",
-        "year": 1887,
-        "title": "Опыт Майкельсона — Морли",
-        "summary": "Опыт Майкельсона — Морли не обнаружил «эфирного ветра». Физика получила один из ключей к теории относительности.",
-        "fact": "💡 Результат удивил научный мир.",
+        "id": "world-1808-beethoven-fifth-premiere",
+        "year": 1808,
+        "title": "Премьера Пятой Бетховена",
+        "summary": "В Вене впервые прозвучала Пятая симфония Бетховена.",
+        "fact": "💡 В тот вечер звучала и Шестая.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Michelson-Morley experiment",
-            "url": "https://www.britannica.com/science/Michelson-Morley-experiment",
-            "name": "Britannica"
+            "title": "Library of Congress — Beethoven Symphony No. 5",
+            "url": "https://www.loc.gov/item/ihas.200155633/",
+            "name": "Library of Congress"
           }
-        ]
+        ],
+        "image": "assets/history/beethoven-portrait.jpg",
+        "imageAlt": "Людвиг ван Бетховен"
       },
       {
         "body": "",
         "category": "culture",
         "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "priority": 90,
+        "interest": 9,
         "status": "verified",
         "id": "ru-1849-dostoevsky-scaffold",
         "year": 1849,
-        "title": "Помилование Достоевского",
-        "summary": "Фёдора Достоевского и товарищей по кружку Петрашевского помиловали у эшафота. Писатель ушёл на каторгу — и вернулся другим человеком.",
-        "fact": "💡 Инсценировку казни он запомнил навсегда.",
+        "title": "Достоевский на эшафоте",
+        "summary": "Достоевскому заменили казнь каторгой в последний миг.",
+        "fact": "💡 Инсценировку устроили на Семёновском плацу.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Fyodor Dostoyevsky",
-            "url": "https://www.britannica.com/biography/Fyodor-Dostoyevsky",
-            "name": "Britannica"
+            "title": "Presidential Library — Dostoevsky mock execution",
+            "url": "https://www.prlib.ru/en/history/619609",
+            "name": "Presidential Library"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1926-shostakovich-1",
-        "year": 1926,
-        "title": "Первая Шостаковича",
-        "summary": "Дмитрий Шостакович представил Первую симфонию. Молодой композитор сразу заявил о себе миру.",
-        "fact": "💡 Премьера прошла в Ленинграде.",
+        "id": "world-1944-nuts-bastogne",
+        "year": 1944,
+        "title": "Ответ «Nuts!» в Бастони",
+        "summary": "Генерал МакОлифф ответил «Nuts!» на требование сдачи.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Dmitry Shostakovich",
-            "url": "https://www.britannica.com/biography/Dmitry-Shostakovich",
-            "name": "Britannica"
+            "title": "National WWII Museum — Nuts!",
+            "url": "https://www.nationalww2museum.org/war/articles/battle-bulge-bastogne-nuts",
+            "name": "National WWII Museum"
           }
         ]
       }
@@ -9830,53 +9874,55 @@
         "id": "world-1947-transistor",
         "year": 1947,
         "title": "Изобрели транзистор",
-        "summary": "В Bell Labs продемонстрировали транзистор. Электроника получила крошечный ключ к компьютерам и связи будущего.",
-        "fact": "💡 За работу позже дадут Нобелевскую премию.",
+        "summary": "В Bell Labs показали работу первого транзистора.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — transistor",
-            "url": "https://www.britannica.com/technology/transistor",
-            "name": "Britannica"
+            "title": "APS — Invention of the transistor",
+            "url": "https://www.aps.org/apsnews/2000/11/november-1947-invention-transistor",
+            "name": "APS"
+          }
+        ],
+        "image": "assets/history/first-transistor.jpg",
+        "imageAlt": "Реплика первого транзистора Bell Labs"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "id": "world-1913-federal-reserve-act",
+        "year": 1913,
+        "title": "Федеральный резерв США",
+        "summary": "Вильсон подписал закон о создании Федерального резерва.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "Federal Reserve History — Federal Reserve Act",
+            "url": "https://www.federalreservehistory.org/essays/federal-reserve-act-signed",
+            "name": "Federal Reserve History"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
         "status": "verified",
-        "id": "ru-1821-dostoevsky-ns-echo",
-        "year": 1821,
-        "title": "Родился Достоевский",
-        "summary": "В Москве родился Фёдор Достоевский. Русская литература получила будущего классика психологического романа.",
-        "fact": "💡 По новому стилю день рождения — 11 ноября.",
+        "id": "world-1888-van-gogh-ear",
+        "year": 1888,
+        "title": "Ван Гог ранил себе ухо",
+        "summary": "В Арле ван Гог после ссоры с Гогеном ранил себе ухо.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Fyodor Dostoyevsky",
-            "url": "https://www.britannica.com/biography/Fyodor-Dostoyevsky",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1913-malevich-black-square-echo",
-        "year": 1915,
-        "title": "«Чёрный квадрат»",
-        "summary": "Казимир Малевич показал «Чёрный квадрат». Русский авангард заявил о себе предельно простой и дерзкой формой.",
-        "fact": "💡 Картину впервые выставили в 1915 году.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Kazimir Malevich",
-            "url": "https://www.britannica.com/biography/Kazimir-Malevich",
-            "name": "Britannica"
+            "title": "Van Gogh Museum — ear incident",
+            "url": "https://www.vangoghmuseum.nl/en/art-and-stories/stories/5-things-you-need-to-know-about-van-goghs-ear",
+            "name": "Van Gogh Museum"
           }
         ]
       }
@@ -9884,61 +9930,63 @@
     "12-24": [
       {
         "body": "",
-        "category": "culture",
-        "region": "WORLD",
-        "priority": 90,
-        "interest": 9,
-        "status": "verified",
-        "id": "world-1818-silent-night",
-        "year": 1818,
-        "title": "Впервые спели «Тихую ночь»",
-        "summary": "В австрийской деревенской церкви впервые исполнили «Тихую ночь». Рождественская песня обошла весь мир.",
-        "fact": "💡 Текст написал Йозеф Мор, музыку — Франц Грубер.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Silent Night",
-            "url": "https://www.britannica.com/topic/Silent-Night",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
-        "status": "verified",
-        "id": "ru-1825-decembrists-aftermath",
-        "year": 1825,
-        "title": "После 14 декабря",
-        "summary": "После восстания декабристов в Петербурге начались следствия и ссылки. Россия вошла в николаевскую эпоху жёсткого порядка.",
-        "fact": "💡 Пятерых руководителей казнят в июле 1826 года.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Decembrist",
-            "url": "https://www.britannica.com/topic/Decembrist",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
+        "category": "space",
         "region": "RU",
         "priority": 100,
-        "interest": 9,
+        "interest": 10,
         "status": "verified",
         "id": "ru-1966-luna13-landing",
         "year": 1966,
         "title": "«Луна-13» на Луне",
-        "summary": "Советская станция «Луна-13» совершила мягкую посадку на Луну. Автоматы продолжили исследование грунта.",
-        "fact": "💡 Посадку датируют 24 декабря 1966 года.",
+        "summary": "«Луна-13» совершила мягкую посадку и прислала панорамы.",
+        "fact": "",
         "sources": [
           {
-            "title": "NASA — Luna 13",
+            "title": "NASA NSSDCA — Luna 13",
             "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1966-116A",
+            "name": "NASA NSSDCA"
+          }
+        ],
+        "image": "assets/history/luna13.jpg",
+        "imageAlt": "Станция «Луна-13»"
+      },
+      {
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1968-apollo8-earthrise",
+        "year": 1968,
+        "title": "Снимок Earthrise",
+        "summary": "Apollo 8 снял восход Земли с лунной орбиты.",
+        "fact": "💡 Кадр стал одним из главных фото века.",
+        "sources": [
+          {
+            "title": "NASA — Earthrise",
+            "url": "https://www.nasa.gov/image-article/earthrise-apollo-8/",
             "name": "NASA"
+          }
+        ]
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "id": "world-1818-silent-night",
+        "year": 1818,
+        "title": "Впервые спели «Тихую ночь»",
+        "summary": "В Оберндорфе впервые исполнили гимн Silent Night.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "Silent Night Association — History",
+            "url": "https://www.stillenacht.com/en/silent-night/history/",
+            "name": "Stille Nacht Association"
           }
         ]
       }
@@ -9946,61 +9994,63 @@
     "12-25": [
       {
         "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "id": "world-1991-gorbachev-resigns",
+        "year": 1991,
+        "title": "Горбачёв ушёл в отставку",
+        "summary": "Горбачёв объявил об отставке с поста президента СССР.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "Library of Congress — Gorbachev resigns",
+            "url": "https://www.loc.gov/item/today-in-history/december-25/",
+            "name": "Library of Congress"
+          }
+        ],
+        "image": "assets/history/gorbachev-1991.jpg",
+        "imageAlt": "Михаил Горбачёв"
+      },
+      {
+        "body": "",
         "category": "science",
         "region": "WORLD",
         "priority": 90,
-        "interest": 8,
+        "interest": 9,
         "status": "verified",
-        "id": "world-1642-newton-christmas",
+        "id": "world-1642-newton-born-os",
         "year": 1642,
-        "title": "Рождество и Ньютон",
-        "summary": "По старому стилю на Рождество родился Исаак Ньютон. День стал удобным напоминанием о законах природы.",
-        "fact": "💡 По григорианскому календарю это 4 января.",
+        "title": "Родился Ньютон",
+        "summary": "По юлианскому календарю родился Исаак Ньютон.",
+        "fact": "💡 По новому стилю это 4 января 1643-го.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Isaac Newton",
-            "url": "https://www.britannica.com/biography/Isaac-Newton",
-            "name": "Britannica"
+            "title": "Cambridge University Library — Isaac Newton",
+            "url": "https://www.lib.cam.ac.uk/collections/departments/manuscripts-university-archives/significant-archival-collections/isaac",
+            "name": "Cambridge University Library"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
-        "status": "verified",
-        "id": "ru-1818-turgenev-echo",
-        "year": 1818,
-        "title": "Родился Тургенев",
-        "summary": "Родился Иван Тургенев — будущий автор «Отцов и детей». Русская проза получила европейски известного романиста.",
-        "fact": "💡 По новому стилю день рождения — 9 ноября.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Ivan Turgenev",
-            "url": "https://www.britannica.com/biography/Ivan-Turgenev",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1917-cheka-avoid",
-        "year": 1825,
-        "title": "«Горе от ума» в списках",
-        "summary": "Комедия Грибоедова «Горе от ума» расходилась в списках. Русская сцена получила текст, который цитируют до сих пор.",
-        "fact": "💡 Полная постановка долго оставалась под запретом.",
+        "id": "world-1914-christmas-truce",
+        "year": 1914,
+        "title": "Рождественское перемирие",
+        "summary": "На фронте солдаты стихийно прекратили огонь.",
+        "fact": "💡 Перемирие связывают с Рождеством 1914-го.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Aleksandr Griboyedov",
-            "url": "https://www.britannica.com/biography/Aleksandr-Sergeyevich-Griboyedov",
-            "name": "Britannica"
+            "title": "Imperial War Museums — Christmas Truce",
+            "url": "https://www.iwm.org.uk/history/the-real-story-of-the-christmas-truce",
+            "name": "IWM"
           }
         ]
       }
@@ -10010,59 +10060,59 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 90,
-        "interest": 9,
+        "priority": 100,
+        "interest": 10,
         "status": "verified",
         "id": "world-1991-ussr-dissolved",
         "year": 1991,
         "title": "СССР прекратил существование",
-        "summary": "Верховный Совет СССР принял декларацию о прекращении существования Союза. Эпоха сверхдержавы завершилась.",
-        "fact": "💡 Над Кремлём подняли российский триколор.",
+        "summary": "Верховный Совет формально прекратил существование Союза.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Union of Soviet Socialist Republics",
-            "url": "https://www.britannica.com/place/Soviet-Union",
-            "name": "Britannica"
+            "title": "Library of Congress — Dissolution of the USSR",
+            "url": "https://www.loc.gov/item/today-in-history/december-26/",
+            "name": "Library of Congress"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
         "status": "verified",
-        "id": "ru-1991-new-year-threshold",
-        "year": 1991,
-        "title": "Порог нового года",
-        "summary": "Страна встречала Новый год уже в новых государственных контурах. Декабрь 1991-го стал границей эпох.",
-        "fact": "💡 Политическая карта Европы изменилась за несколько недель.",
+        "id": "world-1776-washington-delaware",
+        "year": 1776,
+        "title": "Вашингтон пересёк Делавэр",
+        "summary": "Вашингтон повёл войска через Делавэр к Трентону.",
+        "fact": "💡 Переправу начали ночью.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Russia",
-            "url": "https://www.britannica.com/place/Russia",
-            "name": "Britannica"
+            "title": "Mount Vernon — Crossing the Delaware",
+            "url": "https://www.mountvernon.org/library/digitalhistory/digital-encyclopedia/article/crossing-of-the-delaware",
+            "name": "Mount Vernon"
           }
         ]
       },
       {
         "body": "",
-        "category": "technology",
-        "region": "RU",
-        "priority": 100,
-        "interest": 8,
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
         "status": "verified",
-        "id": "ru-1895-popov-dec26",
-        "year": 1895,
-        "title": "Шаг к радио",
-        "summary": "Работы Александра Попова по электромагнитным волнам открывали путь к радио. Русская изобретательская школа шла в ногу с миром.",
-        "fact": "💡 Практическая радиосвязь появится в конце 1890-х.",
+        "id": "world-1966-kwanzaa-first",
+        "year": 1966,
+        "title": "Впервые отметили Кванзу",
+        "summary": "В США впервые отпраздновали праздник Кванза.",
+        "fact": "",
         "sources": [
           {
-            "title": "Presidential Library — Alexander Popov",
-            "url": "https://www.prlib.ru/en/history/1866978",
-            "name": "Presidential Library"
+            "title": "Smithsonian NMAAHC — Kwanzaa",
+            "url": "https://nmaahc.si.edu/explore/stories/kwanzaa",
+            "name": "Smithsonian NMAAHC"
           }
         ]
       }
@@ -10078,53 +10128,55 @@
         "id": "world-1831-darwin-beagle",
         "year": 1831,
         "title": "«Бигль» вышел в плавание",
-        "summary": "Чарльз Дарвин отправился в плавание на «Бигле». Экспедиция станет школой, из которой вырастет теория эволюции.",
-        "fact": "💡 Корабль вышел из Плимута 27 декабря 1831 года.",
+        "summary": "Корабль «Бигль» с Дарвином вышел из Девонпорта.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Charles Darwin",
-            "url": "https://www.britannica.com/biography/Charles-Darwin",
-            "name": "Britannica"
+            "title": "Darwin Correspondence Project — Beagle voyage",
+            "url": "https://www.darwinproject.ac.uk/commentary/life-science/voyage-beagle",
+            "name": "Darwin Project"
+          }
+        ],
+        "image": "assets/history/hms-beagle-martens.jpg",
+        "imageAlt": "HMS Beagle — акварель Конрада Мартенса"
+      },
+      {
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "id": "world-1968-apollo8-splashdown",
+        "year": 1968,
+        "title": "Возвращение Apollo 8",
+        "summary": "Apollo 8 успешно приводнился после облёта Луны.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "NASA — Apollo 8",
+            "url": "https://www.nasa.gov/mission_pages/apollo/missions/apollo8.html",
+            "name": "NASA"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
         "status": "verified",
-        "id": "ru-1825-pushkin-boris",
-        "year": 1825,
-        "title": "«Борис Годунов»",
-        "summary": "Александр Пушкин завершил трагедию «Борис Годунов». Русская драма получила историческую хронику шекспировского размаха.",
-        "fact": "💡 Полностью трагедию напечатают позже.",
+        "id": "world-1932-radio-city-opens",
+        "year": 1932,
+        "title": "Открыли Radio City",
+        "summary": "В Нью-Йорке торжественно открыли Radio City Music Hall.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Boris Godunov",
-            "url": "https://www.britannica.com/topic/Boris-Godunov-play-by-Pushkin",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1904-chekhov-cherry",
-        "year": 1904,
-        "title": "«Вишнёвый сад»",
-        "summary": "В МХТ поставили «Вишнёвый сад» Чехова. Русский театр получил прощальную пьесу о смене эпох.",
-        "fact": "💡 Премьера прошла в январе 1904 года.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — The Cherry Orchard",
-            "url": "https://www.britannica.com/topic/The-Cherry-Orchard",
-            "name": "Britannica"
+            "title": "Library of Congress — Radio City Music Hall",
+            "url": "https://www.loc.gov/item/today-in-history/december-27/",
+            "name": "Library of Congress"
           }
         ]
       }
@@ -10140,53 +10192,55 @@
         "id": "world-1895-lumiere-cinema",
         "year": 1895,
         "title": "Первый киносеанс",
-        "summary": "Братья Люмьер показали публике фильмы в парижском «Гран-кафе». Родилось кино как массовое зрелище.",
-        "fact": "💡 Сеанс прошёл 28 декабря 1895 года.",
+        "summary": "Братья Люмьер показали публике движущиеся картины.",
+        "fact": "💡 Платный сеанс прошёл в Париже.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Lumière brothers",
-            "url": "https://www.britannica.com/biography/Lumiere-brothers",
-            "name": "Britannica"
+            "title": "Institut Lumière — First public screening",
+            "url": "https://www.institut-lumiere.org/english/lumiere-brothers.html",
+            "name": "Institut Lumière"
+          }
+        ],
+        "image": "assets/history/lumiere-cinema.jpg",
+        "imageAlt": "Братья Люмьер"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "id": "world-1846-iowa-statehood",
+        "year": 1846,
+        "title": "Айова стала штатом",
+        "summary": "Айову приняли в состав США как 29-й штат.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "Library of Congress — Iowa statehood",
+            "url": "https://www.loc.gov/item/today-in-history/december-28/",
+            "name": "Library of Congress"
           }
         ]
       },
       {
         "body": "",
-        "category": "culture",
-        "region": "RU",
+        "category": "science",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1925-eisenstein-strike",
-        "year": 1925,
-        "title": "Фильм «Стачка»",
-        "summary": "Сергей Эйзенштейн выпустил фильм «Стачка». Советский монтажный кинематограф заявил о себе громко.",
-        "fact": "💡 В том же году выйдет «Броненосец „Потёмкин“».",
+        "id": "world-1973-endangered-species-act",
+        "year": 1973,
+        "title": "Закон о редких видах",
+        "summary": "В США приняли закон о защите исчезающих видов животных.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Sergey Eisenstein",
-            "url": "https://www.britannica.com/biography/Sergey-Eisenstein",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1873-repin-volga",
-        "year": 1873,
-        "title": "«Бурлаки на Волге»",
-        "summary": "Илья Репин создал картину «Бурлаки на Волге». Русская живопись получила один из самых сильных социальных образов.",
-        "fact": "💡 Работа писалась несколько лет.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Ilya Repin",
-            "url": "https://www.britannica.com/biography/Ilya-Yefimovich-Repin",
-            "name": "Britannica"
+            "title": "US Fish & Wildlife Service — ESA",
+            "url": "https://www.fws.gov/law/endangered-species-act",
+            "name": "US FWS"
           }
         ]
       }
@@ -10196,59 +10250,61 @@
         "body": "",
         "category": "culture",
         "region": "WORLD",
-        "priority": 70,
-        "interest": 7,
+        "priority": 100,
+        "interest": 9,
         "status": "verified",
         "id": "world-1845-texas-statehood",
         "year": 1845,
         "title": "Техас стал штатом",
-        "summary": "Техас вошёл в состав США. Карта Америки получила огромную новую территорию.",
-        "fact": "💡 Это был 28-й штат Союза.",
+        "summary": "Техас приняли в состав США как 28-й штат.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Texas",
-            "url": "https://www.britannica.com/place/Texas-state",
-            "name": "Britannica"
+            "title": "Library of Congress — Texas statehood",
+            "url": "https://www.loc.gov/item/today-in-history/december-29/",
+            "name": "Library of Congress"
+          }
+        ],
+        "image": "assets/history/texas-annexation.jpg",
+        "imageAlt": "Карта-эмблема Республики Техас (Burnet Flag)"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "id": "world-1170-becket-murdered",
+        "year": 1170,
+        "title": "Убит Томас Бекет",
+        "summary": "В Кентерберийском соборе убили архиепископа Бекета.",
+        "fact": "",
+        "sources": [
+          {
+            "title": "Canterbury Cathedral — Thomas Becket",
+            "url": "https://www.canterbury-cathedral.org/heritage/history/thomas-becket/",
+            "name": "Canterbury Cathedral"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1888-rimsky-scheherazade-dec",
-        "year": 1888,
-        "title": "«Шехеразада»",
-        "summary": "Николай Римский-Корсаков завершил сюиту «Шехеразада». Русская музыка подарила миру один из самых красочных оркестровых циклов.",
-        "fact": "💡 В основе — сказки «Тысячи и одной ночи».",
+        "id": "world-1890-wounded-knee",
+        "year": 1890,
+        "title": "Трагедия у Вундед-Ни",
+        "summary": "У ручья Вундед-Ни произошла бойня индейцев лакота.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Nikolay Rimsky-Korsakov",
-            "url": "https://www.britannica.com/biography/Nikolay-Rimsky-Korsakov",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1869-periodic-table",
-        "year": 1869,
-        "title": "Таблица Менделеева",
-        "summary": "Дмитрий Менделеев дал химии периодическую систему элементов. Русская наука вошла в фундамент мирового знания.",
-        "fact": "💡 Закон сформулирован в 1869 году.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Dmitri Mendeleev",
-            "url": "https://www.britannica.com/biography/Dmitri-Mendeleev",
-            "name": "Britannica"
+            "title": "National Park Service — Wounded Knee",
+            "url": "https://www.nps.gov/articles/000/wounded-knee.htm",
+            "name": "NPS"
           }
         ]
       }
@@ -10259,58 +10315,60 @@
         "category": "culture",
         "region": "RU",
         "priority": 100,
-        "interest": 9,
+        "interest": 10,
         "status": "verified",
         "id": "ru-1922-ussr-founded",
         "year": 1922,
         "title": "Образован СССР",
-        "summary": "Подписали договор об образовании Союза Советских Социалистических Республик. На карте появилось новое государство.",
-        "fact": "💡 Договор датирован 30 декабря 1922 года.",
+        "summary": "Подписали договор об образовании Советского Союза.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Union of Soviet Socialist Republics",
-            "url": "https://www.britannica.com/place/Soviet-Union",
-            "name": "Britannica"
+            "title": "Presidential Library — Formation of the USSR",
+            "url": "https://www.prlib.ru/en/history/619548",
+            "name": "Presidential Library"
+          }
+        ],
+        "image": "assets/history/ussr-formation-1922.jpg",
+        "imageAlt": "Картина: подписание договора об образовании СССР, 1922"
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "id": "ru-1916-rasputin-killed",
+        "year": 1916,
+        "title": "Убит Распутин",
+        "summary": "В Петрограде убили Григория Распутина.",
+        "fact": "💡 По ст. стилю это была ночь на 17 декабря.",
+        "sources": [
+          {
+            "title": "Presidential Library — Murder of Rasputin",
+            "url": "https://www.prlib.ru/en/history/619553",
+            "name": "Presidential Library"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
         "status": "verified",
-        "id": "ru-1922-moscow-congress",
-        "year": 1922,
-        "title": "Съезд Советов в Москве",
-        "summary": "В Москве проходил съезд, закрепивший союзный договор. Столица стала центром нового государственного устройства.",
-        "fact": "💡 Формальное провозглашение союза завершило декабрь 1922 года.",
+        "id": "world-1853-gadsden-purchase",
+        "year": 1853,
+        "title": "Покупка Гадсдена",
+        "summary": "США купили у Мексики земли на крайнем юго-западе.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Union of Soviet Socialist Republics",
-            "url": "https://www.britannica.com/place/Soviet-Union",
-            "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "technology",
-        "region": "RU",
-        "priority": 90,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1896-popov-radio-distress",
-        "year": 1899,
-        "title": "Радио спасает на море",
-        "summary": "Опыты Попова показали, что радиосвязь полезна флоту и спасательным службам. Изобретение вышло из лаборатории на практику.",
-        "fact": "💡 Беспроволочный телеграф быстро взяли на вооружение.",
-        "sources": [
-          {
-            "title": "Presidential Library — Alexander Popov",
-            "url": "https://www.prlib.ru/en/history/1866978",
-            "name": "Presidential Library"
+            "title": "National Archives — Gadsden Purchase",
+            "url": "https://www.archives.gov/milestone-documents/gadsden-purchase-treaty",
+            "name": "National Archives"
           }
         ]
       }
@@ -10325,54 +10383,56 @@
         "status": "verified",
         "id": "world-1879-edison-light-demo",
         "year": 1879,
-        "title": "Лампа Эдисона накануне года",
-        "summary": "В конце 1879 года Томас Эдисон публично демонстрировал лампу накаливания. Новый год встречали уже в электрическом свете будущего.",
-        "fact": "💡 Успешные испытания нити шли в октябре–декабре.",
+        "title": "Лампа Эдисона",
+        "summary": "Эдисон публично показал лампу накаливания.",
+        "fact": "💡 Демонстрации шли в Менло-Парке.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Thomas Edison",
-            "url": "https://www.britannica.com/biography/Thomas-Edison",
-            "name": "Britannica"
+            "title": "Library of Congress — Edison light",
+            "url": "https://www.loc.gov/collections/edison-company-motion-pictures-and-sound-recordings/articles-and-essays/biography/life-of-thomas-alva-edison/",
+            "name": "Library of Congress"
           }
-        ]
+        ],
+        "image": "assets/history/edison-light-bulb.jpg",
+        "imageAlt": "Лампа накаливания Эдисона"
       },
       {
         "body": "",
         "category": "culture",
         "region": "RU",
-        "priority": 90,
+        "priority": 95,
         "interest": 9,
         "status": "verified",
-        "id": "ru-1700-peter-new-year",
-        "year": 1699,
-        "title": "Новый год по указу Петра",
-        "summary": "Пётр I повелел отмечать Новый год 1 января. Россия приняла новый календарный обычай европейского образца.",
-        "fact": "💡 Указ издали в декабре 1699 года.",
+        "id": "ru-1999-yeltsin-resigns",
+        "year": 1999,
+        "title": "Ельцин ушёл в отставку",
+        "summary": "Ельцин объявил о досрочной отставке с поста президента.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Peter I",
-            "url": "https://www.britannica.com/biography/Peter-the-Great",
-            "name": "Britannica"
+            "title": "Кремль — заявление Ельцина 31.12.1999",
+            "url": "http://www.kremlin.ru/events/president/transcripts/22372",
+            "name": "Кремль"
           }
         ]
       },
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
+        "region": "WORLD",
         "priority": 80,
         "interest": 8,
         "status": "verified",
-        "id": "ru-1833-bronze-horseman",
-        "year": 1833,
-        "title": "«Медный всадник»",
-        "summary": "Александр Пушкин завершил поэму «Медный всадник». Петербург и Пётр I получили один из главных мифов русской литературы.",
-        "fact": "💡 Полностью поэма вышла уже после смерти поэта.",
+        "id": "world-1600-east-india-company",
+        "year": 1600,
+        "title": "Ост-Индская компания",
+        "summary": "Елизавета I даровала хартию английской Ост-Индской компании.",
+        "fact": "",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Aleksandr Pushkin",
-            "url": "https://www.britannica.com/biography/Aleksandr-Sergeyevich-Pushkin",
-            "name": "Britannica"
+            "title": "British Library — East India Company",
+            "url": "https://www.bl.uk/collection-guides/east-india-company-collections",
+            "name": "British Library"
           }
         ]
       }
