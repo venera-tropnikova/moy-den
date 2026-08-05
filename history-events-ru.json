@@ -1068,22 +1068,24 @@
         ]
       },
       {
-        "id": "world-1914-cleveland-traffic-light",
-        "year": 1914,
-        "title": "Первый светофор",
-        "summary": "В Кливленде заработал первый электрический светофор.",
-        "fact": "💡 Жёлтый сигнал добавили позже.",
+        "id": "world-1930-armstrong-born",
+        "year": 1930,
+        "title": "Родился Нил Армстронг",
+        "summary": "В Огайо родился Нил Армстронг — будущий первый человек на Луне.",
+        "fact": "💡 20 июля 1969 года он ступил на Луну.",
         "body": "",
-        "category": "technology",
+        "category": "science",
         "region": "WORLD",
-        "priority": 70,
+        "priority": 75,
         "interest": 8,
         "status": "verified",
+        "image": "assets/history/neil-armstrong-1969.jpg",
+        "imageAlt": "Нил Армстронг, портрет NASA перед Apollo 11",
         "sources": [
           {
-            "title": "Smithsonian — History of the Traffic Light",
-            "url": "https://www.smithsonianmag.com/innovation/history-traffic-signal-180968734/",
-            "name": "Smithsonian"
+            "title": "NASA — Neil Armstrong biography",
+            "url": "https://www.nasa.gov/nasa-history/neil-armstrong/",
+            "name": "NASA"
           }
         ]
       }
