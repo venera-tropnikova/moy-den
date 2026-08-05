@@ -223,7 +223,22 @@
     }
 
     verified.sort(compareEventsForHome);
-    return verified.slice(0, MAX_EVENTS);
+    if (!verified.length) return [];
+
+    var selected = verified.find(function (event) {
+      return event && typeof event.image === "string" && event.image.trim();
+    }) || verified[0];
+
+    if (!selected.image || (typeof selected.image === "string" && !selected.image.trim())) {
+      console.warn(
+        "[history] Нет события с image для даты " +
+          dateKey +
+          "; показан fallback: " +
+          (selected.id || "(без id)")
+      );
+    }
+
+    return [selected];
   }
 
   function getEls() {
