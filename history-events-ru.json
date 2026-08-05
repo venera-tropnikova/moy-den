@@ -30,6 +30,1254 @@
         ]
       }
     ],
+    "07-01": [
+      {
+        "id": "world-1903-tour-de-france-start",
+        "year": 1903,
+        "title": "Стартовал Тур де Франс",
+        "summary": "Из Монжерона ушли 60 гонщиков — началась первая Большая петля.",
+        "fact": "💡 Победителем стал Морис Гарен с отрывом почти в три часа.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Tour de France — One day, One story: July 1st 1903",
+            "url": "https://www.letour.fr/en/news/2020/one-day-one-story-july-1st-1903/1283454",
+            "name": "Tour de France",
+            "shortTitle": "Tour de France"
+          }
+        ],
+        "image": "assets/history/tour-de-france-1903.jpg",
+        "imageAlt": "Морис Гарен — победитель первого Тур де Франс, 1903"
+      },
+      {
+        "id": "world-1867-canada-confederation",
+        "year": 1867,
+        "title": "Родился доминион Канада",
+        "summary": "Вступил в силу British North America Act — появилась Канада.",
+        "fact": "💡 Первого июля позже стали праздновать как День Канады.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "UK Parliament — British North America Act 1867",
+            "url": "https://www.parliament.uk/about/living-heritage/evolutionofparliament/legislativescrutiny/parliament-and-empire/collections1/parliament-and-canada/british-north-america-act-1867/",
+            "name": "UK Parliament",
+            "shortTitle": "UK Parliament"
+          }
+        ]
+      },
+      {
+        "id": "world-1979-sony-walkman",
+        "year": 1979,
+        "title": "В продаже Walkman",
+        "summary": "Sony выпустила первый портативный кассетный плеер.",
+        "fact": "💡 Сначала в Японии продали лишь несколько тысяч штук.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — The first Sony Walkman goes on sale",
+            "url": "https://www.history.com/this-day-in-history/july-1/the-first-sony-walkman-goes-on-sale",
+            "name": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "07-02": [
+      {
+        "id": "world-1964-civil-rights-act",
+        "year": 1964,
+        "title": "Закон о гражданских правах",
+        "summary": "Линдон Джонсон подписал Civil Rights Act — запрет сегрегации в США.",
+        "fact": "💡 Церемонию транслировали по телевидению.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — Civil Rights Act of 1964",
+            "url": "https://www.archives.gov/milestone-documents/civil-rights-act",
+            "name": "National Archives",
+            "shortTitle": "National Archives"
+          }
+        ],
+        "image": "assets/history/civil-rights-act-1964.jpg",
+        "imageAlt": "Линдон Джонсон подписывает Civil Rights Act, 2 июля 1964"
+      },
+      {
+        "id": "world-1937-earhart-disappears",
+        "year": 1937,
+        "title": "Пропала Амелия Эрхарт",
+        "summary": "Самолёт Эрхарт исчез на этапе к острову Хауленд.",
+        "fact": "💡 Это был почти завершённый кругосветный перелёт.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Amelia Earhart disappears",
+            "url": "https://www.history.com/this-day-in-history/july-2/amelia-earhart-disappears",
+            "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "world-1900-zeppelin-lz1",
+        "year": 1900,
+        "title": "Первый полёт LZ 1",
+        "summary": "Над Боденским озером поднялся первый дирижабль Цеппелина.",
+        "fact": "💡 Полёт длился около 17 минут.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Ferdinand von Zeppelin",
+            "url": "https://www.britannica.com/biography/Ferdinand-Graf-von-Zeppelin",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "07-03": [
+      {
+        "id": "world-1863-gettysburg-day3",
+        "year": 1863,
+        "title": "Третий день Геттисберга",
+        "summary": "Кульминация битвы: атака Пикетта и перелом Гражданской войны.",
+        "fact": "💡 Через месяцы Линкольн произнесёт здесь Геттисбергскую речь.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — Today in History: July 3",
+            "url": "https://www.loc.gov/item/today-in-history/july-03/",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ],
+        "image": "assets/history/gettysburg-picketts-charge.jpg",
+        "imageAlt": "Битва при Геттисберге — картина Тюре де Тульструпа"
+      },
+      {
+        "id": "world-1884-dow-jones-average",
+        "year": 1884,
+        "title": "Первый индекс Доу — Джонса",
+        "summary": "Чарльз Доу опубликовал первый средний показатель акций.",
+        "fact": "💡 Сначала в расчёт входили в основном железнодорожные компании.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Dow Jones average",
+            "url": "https://www.britannica.com/money/Dow-Jones-average",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1775-washington-command",
+        "year": 1775,
+        "title": "Вашингтон принимает армию",
+        "summary": "В Кембридже Вашингтон возглавил Континентальную армию.",
+        "fact": "💡 До этого он почти не командовал столь крупными силами.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Washington takes command of Continental Army",
+            "url": "https://www.history.com/this-day-in-history/july-3/washington-takes-command-of-continental-army",
+            "name": "HISTORY",
+            "shortTitle": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "07-04": [
+      {
+        "id": "world-1997-mars-pathfinder-landing",
+        "year": 1997,
+        "title": "Pathfinder сел на Марс",
+        "summary": "В долине Арес сел Pathfinder: подушки сдулись, Sojourner ещё на панели.",
+        "fact": "💡 Посадка прошла 4 июля в 10:07 по калифорнийскому времени.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA Science — Mars Pathfinder",
+            "url": "https://science.nasa.gov/mission/mars-pathfinder/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/pathfinder-landing-1997.jpg",
+        "imageAlt": "Лендер Pathfinder с Sojourner на панели и сдутыми подушками на Марсе"
+      },
+      {
+        "id": "world-1776-declaration-adopted",
+        "year": 1776,
+        "title": "Принята Декларация независимости",
+        "summary": "Континентальный конгресс утвердил текст Декларации.",
+        "fact": "💡 Большинство подписей появится позже — в августе.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — Declaration of Independence",
+            "url": "https://www.archives.gov/founding-docs/declaration",
+            "name": "National Archives"
+          }
+        ],
+        "image": "assets/history/declaration-independence.jpg",
+        "imageAlt": "Текст Декларации независимости США"
+      },
+      {
+        "id": "world-1826-jefferson-adams-die",
+        "year": 1826,
+        "title": "Ушли два президента",
+        "summary": "В один день умерли Томас Джефферсон и Джон Адамс.",
+        "fact": "💡 Это был 50-й юбилей независимости США.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Thomas Jefferson and John Adams die",
+            "url": "https://www.history.com/this-day-in-history/july-4/thomas-jefferson-and-john-adams-die",
+            "name": "HISTORY",
+            "shortTitle": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "07-05": [
+      {
+        "id": "world-1996-dolly-sheep-born",
+        "year": 1996,
+        "title": "Родилась овечка Долли",
+        "summary": "В Рослине появилась первая клонированная из взрослой клетки овца.",
+        "fact": "💡 О рождении публично сообщили только в феврале 1997-го.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Dolly the sheep is born",
+            "url": "https://www.history.com/this-day-in-history/july-5/first-successful-cloning-of-a-mammal",
+            "name": "HISTORY"
+          }
+        ],
+        "image": "assets/history/dolly-sheep-1996.jpg",
+        "imageAlt": "Клонированная овечка Долли"
+      },
+      {
+        "id": "world-1811-venezuela-independence",
+        "year": 1811,
+        "title": "Независимость Венесуэлы",
+        "summary": "Конгресс в Каракасе принял акт о независимости.",
+        "fact": "💡 Это была первая испанская колония в Южной Америке, объявившая независимость.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Venezuela",
+            "url": "https://www.britannica.com/place/Venezuela/The-independence-movement",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1946-bikini-swimsuit",
+        "year": 1946,
+        "title": "Появился бикини",
+        "summary": "В Париже Луи Реар представил купальник, названный в честь атолла.",
+        "fact": "💡 Модель назвали в честь недавних ядерных испытаний.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — On This Day: July 5",
+            "url": "https://www.britannica.com/on-this-day/July-5",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "07-06": [
+      {
+        "id": "world-1885-pasteur-rabies-meister",
+        "year": 1885,
+        "title": "Пастер спасает от бешенства",
+        "summary": "Луи Пастер начал курс прививок мальчику Жозефу Мейстеру.",
+        "fact": "💡 Мейстер стал первым человеком, спасённым вакциной от бешенства.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Institut Pasteur — History",
+            "url": "https://www.pasteur.fr/en/institut-pasteur/history",
+            "name": "Institut Pasteur"
+          }
+        ],
+        "image": "assets/history/louis-pasteur.jpg",
+        "imageAlt": "Луи Пастер"
+      },
+      {
+        "id": "world-1928-sliced-bread",
+        "year": 1928,
+        "title": "Нарезной хлеб в продаже",
+        "summary": "В Chillicothe впервые продали хлеб, нарезанный машиной.",
+        "fact": "💡 Позже фраза «лучшее с момента нарезного хлеба» стала крылатой.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Who invented sliced bread?",
+            "url": "https://www.history.com/articles/who-invented-sliced-bread",
+            "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "world-1942-anne-frank-hiding",
+        "year": 1942,
+        "title": "Анна Франк уходит в укрытие",
+        "summary": "Семья Франк скрылась в тайной пристройке в Амстердаме.",
+        "fact": "💡 Анне тогда было 13 лет.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Anne Frank House — The Frank family goes into hiding",
+            "url": "https://www.annefrank.org/en/timeline/137/the-frank-family-goes-into-hiding/",
+            "name": "Anne Frank House",
+            "shortTitle": "Anne Frank House"
+          }
+        ]
+      }
+    ],
+    "07-07": [
+      {
+        "id": "world-1930-hoover-dam-construction",
+        "year": 1930,
+        "title": "Начали строить Hoover Dam",
+        "summary": "Стартовали подготовительные работы на площадке плотины в каньоне.",
+        "fact": "💡 Бетон в тело плотины начнут лить только в 1933 году.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "White House Archives — Construction began on Hoover Dam",
+            "url": "https://obamawhitehouse.archives.gov/blog/2015/07/07/day-history-construction-began-hoover-dam",
+            "name": "White House Archives",
+            "shortTitle": "White House Archives"
+          }
+        ],
+        "image": "assets/history/hoover-dam-construction-view.jpg",
+        "imageAlt": "Строительство Hoover Dam: работы в каньоне в начале 1930-х"
+      },
+      {
+        "id": "world-1914-goddard-rocket-patent",
+        "year": 1914,
+        "title": "Патент Годдарда на ракету",
+        "summary": "Роберт Годдард получил патент на многоступенчатую ракету.",
+        "fact": "💡 Позже его идеи лягут в основу космических ракет.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Google Patents — US1102653",
+            "url": "https://patents.google.com/patent/US1102653",
+            "name": "Google Patents"
+          }
+        ]
+      },
+      {
+        "id": "world-1981-solar-challenger-channel",
+        "year": 1981,
+        "title": "Солнечный самолёт через Ла-Манш",
+        "summary": "Solar Challenger перелетел из Франции в Англию на солнечной энергии.",
+        "fact": "💡 Пилотом был Стивен Птачек.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Smithsonian — Solar Challenger",
+            "url": "https://airandspace.si.edu/collection-objects/solar-challenger/nasm_A19830250000",
+            "name": "Smithsonian"
+          }
+        ]
+      }
+    ],
+    "07-08": [
+      {
+        "id": "world-2011-atlantis-final-launch",
+        "year": 2011,
+        "title": "Последний старт шаттла",
+        "summary": "Atlantis ушёл в последний полёт — эра Space Shuttle завершалась.",
+        "fact": "💡 Миссия STS-135 доставила грузы на МКС.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — STS-135",
+            "url": "https://www.nasa.gov/mission/sts-135/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/atlantis-sts135-2011.jpg",
+        "imageAlt": "Старт шаттла Atlantis в миссии STS-135"
+      },
+      {
+        "id": "ru-1709-battle-of-poltava",
+        "year": 1709,
+        "title": "Полтавская битва",
+        "summary": "Армия Петра I разбила шведов под Полтавой.",
+        "fact": "💡 По новому стилю сражение пришлось на 8 июля.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Poltava",
+            "url": "https://www.britannica.com/event/Battle-of-Poltava",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1497-vasco-da-gama-departs",
+        "year": 1497,
+        "title": "Да Гама уходит в Индию",
+        "summary": "Из Лиссабона вышла флотилия Васко да Гамы к морскому пути в Индию.",
+        "fact": "💡 Обратно экспедиция вернётся лишь через два года.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Vasco da Gama",
+            "url": "https://www.britannica.com/biography/Vasco-da-Gama",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "07-09": [
+      {
+        "id": "world-1816-argentina-independence",
+        "year": 1816,
+        "title": "Независимость Аргентины",
+        "summary": "Конгресс в Тукумане провозгласил независимость Соединённых провинций.",
+        "fact": "💡 Дом конгресса — Casa Histórica — стал национальным символом.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Argentina",
+            "url": "https://www.britannica.com/place/Argentina/Independence",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/argentina-independence-1816.jpg",
+        "imageAlt": "Casa Histórica в Тукумане — место провозглашения независимости"
+      },
+      {
+        "id": "world-1877-first-wimbledon",
+        "year": 1877,
+        "title": "Первый Уимблдон",
+        "summary": "На кортах All England Club начался первый теннисный чемпионат.",
+        "fact": "💡 Сначала разыгрывали только мужской одиночный разряд.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Wimbledon tournament begins",
+            "url": "https://www.history.com/this-day-in-history/july-9/wimbledon-tournament-begins",
+            "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "world-2011-south-sudan-independence",
+        "year": 2011,
+        "title": "Независимость Южного Судана",
+        "summary": "Провозглашено новое государство — Южный Судан.",
+        "fact": "💡 Это самое молодое государство — член ООН того периода.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — South Sudan",
+            "url": "https://www.britannica.com/place/South-Sudan",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "07-10": [
+      {
+        "id": "world-1856-tesla-born",
+        "year": 1856,
+        "title": "Родился Никола Тесла",
+        "summary": "В Смиляне родился изобретатель переменного тока и радиоволн.",
+        "fact": "💡 Единицу магнитной индукции позже назовут тесла.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Nikola Tesla",
+            "url": "https://www.britannica.com/biography/Nikola-Tesla",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/nikola-tesla-1856.jpg",
+        "imageAlt": "Портрет Николы Теслы"
+      },
+      {
+        "id": "world-1962-telstar1-launch",
+        "year": 1962,
+        "title": "Запущен Telstar 1",
+        "summary": "В космос ушёл первый активный спутник связи Telstar.",
+        "fact": "💡 Живой трансатлантический эфир через него пойдёт 23 июля.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Telstar Opened Era of Global Satellite Television",
+            "url": "https://www.nasa.gov/history/telstar-opened-era-of-global-satellite-television/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ]
+      },
+      {
+        "id": "world-1925-scopes-trial",
+        "year": 1925,
+        "title": "Начался процесс Скоупса",
+        "summary": "В Теннесси открылся суд о преподавании теории эволюции.",
+        "fact": "💡 Дело прозвали «обезьяньим процессом».",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Monkey Trial begins",
+            "url": "https://www.history.com/this-day-in-history/july-10/monkey-trial-begins",
+            "name": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "07-11": [
+      {
+        "id": "world-1979-skylab-reentry",
+        "year": 1979,
+        "title": "Падение Skylab",
+        "summary": "Орбитальная станция Skylab вошла в атмосферу и разрушилась.",
+        "fact": "💡 Обломки упали в Индийский океан и в Австралии.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Skylab",
+            "url": "https://www.nasa.gov/mission_pages/skylab/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/skylab-1979.jpg",
+        "imageAlt": "Орбитальная станция Skylab на фоне Земли"
+      },
+      {
+        "id": "world-1960-mockingbird-published",
+        "year": 1960,
+        "title": "Вышла «Убить пересмешника»",
+        "summary": "Роман Харпер Ли поступил в продажу.",
+        "fact": "💡 Книга почти сразу стала бестселлером.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — To Kill a Mockingbird published",
+            "url": "https://www.history.com/this-day-in-history/july-11/harper-lee-to-kill-a-mockingbird-published",
+            "name": "HISTORY",
+            "shortTitle": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "world-1804-burr-hamilton-duel",
+        "year": 1804,
+        "title": "Дуэль Берра и Гамильтона",
+        "summary": "На дуэли в Вихокене смертельно ранен Александр Гамильтон.",
+        "fact": "💡 Гамильтон был первым министром финансов США.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — Today in History: July 11",
+            "url": "https://www.loc.gov/item/today-in-history/july-11/",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ]
+      }
+    ],
+    "07-12": [
+      {
+        "id": "world-1906-dreyfus-rehabilitated",
+        "year": 1906,
+        "title": "Дрейфуса оправдали",
+        "summary": "Кассационный суд Франции полностью реабилитировал Альфреда Дрейфуса.",
+        "fact": "💡 Дело тянулось 12 лет и раскололо общество.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Alfred Dreyfus",
+            "url": "https://www.britannica.com/biography/Alfred-Dreyfus",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/dreyfus-rehabilitated-1906.jpg",
+        "imageAlt": "Портрет Альфреда Дрейфуса"
+      },
+      {
+        "id": "world-1962-rolling-stones-first-gig",
+        "year": 1962,
+        "title": "Первый концерт Rolling Stones",
+        "summary": "Группа сыграла первый концерт в клубе Marquee в Лондоне.",
+        "fact": "💡 На афише их ещё писали как «Rollin’ Stones».",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — The Rolling Stones",
+            "url": "https://www.britannica.com/topic/the-Rolling-Stones",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1975-sao-tome-independence",
+        "year": 1975,
+        "title": "Независимость Сан-Томе",
+        "summary": "Сан-Томе и Принсипи стали независимы от Португалии.",
+        "fact": "💡 Страна расположена на островах в Гвинейском заливе.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Sao Tome and Principe",
+            "url": "https://www.britannica.com/place/Sao-Tome-and-Principe",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "07-13": [
+      {
+        "id": "world-1985-live-aid",
+        "year": 1985,
+        "title": "Концерты Live Aid",
+        "summary": "В Лондоне и Филадельфии прошли благотворительные концерты Live Aid.",
+        "fact": "💡 Трансляцию смотрели сотни миллионов зрителей.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Live Aid",
+            "url": "https://www.britannica.com/event/Live-Aid",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/live-aid-1985.jpg",
+        "imageAlt": "Концерт Live Aid на стадионе JFK в Филадельфии, 1985"
+      },
+      {
+        "id": "world-1923-hollywoodland-sign",
+        "year": 1923,
+        "title": "Появилась надпись Hollywoodland",
+        "summary": "Над Лос-Анджелесом зажгли рекламную надпись Hollywoodland.",
+        "fact": "💡 Позже слово «land» уберут — останется знаменитый Hollywood.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Hollywood Sign",
+            "url": "https://www.history.com/articles/hollywood-sign-history",
+            "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "world-1837-victoria-buckingham",
+        "year": 1837,
+        "title": "Виктория в Букингемском дворце",
+        "summary": "Королева Виктория стала первой монархиней, поселившейся во дворце.",
+        "fact": "💡 До неё дворец почти не использовали как главную резиденцию.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Royal Collection Trust — Buckingham Palace",
+            "url": "https://www.rct.uk/visit/buckingham-palace",
+            "name": "Royal Collection Trust",
+            "shortTitle": "Royal Collection Trust"
+          }
+        ]
+      }
+    ],
+    "07-14": [
+      {
+        "id": "world-1789-storming-of-bastille",
+        "year": 1789,
+        "title": "Взятие Бастилии",
+        "summary": "Парижане взяли крепость-тюрьму Бастилию — символ революции.",
+        "fact": "💡 День позже станет национальным праздником Франции.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Bastille Day",
+            "url": "https://www.britannica.com/topic/Bastille-Day",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/bastille-storming-1789.jpg",
+        "imageAlt": "Взятие Бастилии 14 июля 1789 года"
+      },
+      {
+        "id": "world-1965-mariner4-mars",
+        "year": 1965,
+        "title": "Mariner 4 у Марса",
+        "summary": "Зонд впервые передал крупные снимки поверхности Марса.",
+        "fact": "💡 Ближайшее сближение пришлось на рубеж 14–15 июля по UTC.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA Science — Mariner 4",
+            "url": "https://science.nasa.gov/mission/mariner-4/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/mariner4-mars-1965.jpg",
+        "imageAlt": "Сотрудник JPL вручную раскрашивает первые данные снимка Марса от Mariner 4"
+      },
+      {
+        "id": "world-1865-matterhorn-ascent",
+        "year": 1865,
+        "title": "Первое восхождение на Маттерхорн",
+        "summary": "Группа Эдварда Уимпера впервые взошла на Маттерхорн.",
+        "fact": "💡 На спуске четверо из семи альпинистов погибли.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Matterhorn",
+            "url": "https://www.britannica.com/place/Matterhorn",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/matterhorn-1865.jpg",
+        "imageAlt": "Гора Маттерхорн в Альпах"
+      }
+    ],
+    "07-15": [
+      {
+        "id": "world-1606-rembrandt-born",
+        "year": 1606,
+        "title": "Родился Рембрандт",
+        "summary": "В Лейдене родился Рембрандт ван Рейн.",
+        "fact": "💡 Он оставил десятки автопортретов — почти дневник лица.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Rembrandt",
+            "url": "https://www.britannica.com/biography/Rembrandt-van-Rijn",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/rembrandt-born-1606.jpg",
+        "imageAlt": "Автопортрет Рембрандта"
+      },
+      {
+        "id": "world-1954-boeing707-first-flight",
+        "year": 1954,
+        "title": "Первый полёт Boeing 707",
+        "summary": "Прототип будущего реактивного лайнера впервые поднялся в воздух.",
+        "fact": "💡 Именно 707 поможет сделать дальние перелёты массовыми.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Boeing — Historical Snapshot: 707",
+            "url": "https://www.boeing.com/history/products/707.page",
+            "name": "Boeing"
+          }
+        ]
+      },
+      {
+        "id": "world-1099-jerusalem-captured",
+        "year": 1099,
+        "title": "Взятие Иерусалима",
+        "summary": "Крестоносцы захватили Иерусалим после осады.",
+        "fact": "💡 Это стало кульминацией Первого крестового похода.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Jerusalem captured in First Crusade",
+            "url": "https://www.history.com/this-day-in-history/july-15/jerusalem-captured-in-first-crusade",
+            "name": "HISTORY",
+            "shortTitle": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "07-16": [
+      {
+        "id": "world-1969-apollo11-launch",
+        "year": 1969,
+        "title": "Старт к Луне",
+        "summary": "Saturn V поднял Apollo 11 с Армстронгом, Олдрином и Коллинзом.",
+        "fact": "💡 До посадки на Луну оставалось четыре дня.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Apollo 11 Mission Overview",
+            "url": "https://www.nasa.gov/history/apollo-11-mission-overview/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/apollo11-launch-1969.jpg",
+        "imageAlt": "Старт ракеты Saturn V с Apollo 11"
+      },
+      {
+        "id": "world-1945-trinity-test",
+        "year": 1945,
+        "title": "Испытание «Тринити»",
+        "summary": "В Нью-Мексико впервые взорвали ядерное устройство.",
+        "fact": "💡 Вспышку видели за десятки километров.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Trinity test",
+            "url": "https://www.britannica.com/topic/Trinity-test",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/trinity-test-1945.jpg",
+        "imageAlt": "Взрыв на испытании «Тринити», 1945"
+      },
+      {
+        "id": "world-1994-shoemaker-levy9",
+        "year": 1994,
+        "title": "Комета бьёт по Юпитеру",
+        "summary": "Фрагменты кометы Шумейкеров — Леви 9 начали врезаться в Юпитер.",
+        "fact": "💡 Следы ударов видел телескоп Hubble.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA Science — Shoemaker-Levy 9",
+            "url": "https://science.nasa.gov/solar-system/comets/p-shoemaker-levy-9/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/shoemaker-levy9-1994.jpg",
+        "imageAlt": "Следы ударов кометы Шумейкеров — Леви 9 по Юпитеру"
+      }
+    ],
+    "07-17": [
+      {
+        "id": "world-1975-apollo-soyuz-docking",
+        "year": 1975,
+        "title": "Рукопожатие на орбите",
+        "summary": "Apollo и «Союз» состыковались — первая встреча СССР и США в космосе.",
+        "fact": "💡 Стыковку назвали «рукопожатием через космос».",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — 45 Years Ago: Historic Handshake in Space",
+            "url": "https://www.nasa.gov/history/45-years-ago-historic-handshake-in-space/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ],
+        "image": "assets/history/apollo-soyuz-1975.jpg",
+        "imageAlt": "Рукопожатие экипажей Apollo и «Союз» на орбите"
+      },
+      {
+        "id": "world-1955-disneyland-opens",
+        "year": 1955,
+        "title": "Открылся Disneyland",
+        "summary": "В Анахайме открыли первый парк Disneyland.",
+        "fact": "💡 Церемонию открытия транслировали по телевидению в прямом эфире.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Disneyland",
+            "url": "https://www.britannica.com/place/Disneyland",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/disneyland-1955.jpg",
+        "imageAlt": "Замок Спящей красавицы в Disneyland"
+      },
+      {
+        "id": "ru-1918-romanovs-executed",
+        "year": 1918,
+        "title": "Расстрел Романовых",
+        "summary": "В Екатеринбурге расстреляли Николая II и его семью.",
+        "fact": "💡 Это произошло в доме Ипатьева.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Nicholas II",
+            "url": "https://www.britannica.com/biography/Nicholas-II-tsar-of-Russia",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/nicholas-ii.jpg",
+        "imageAlt": "Император Николай II"
+      }
+    ],
+    "07-18": [
+      {
+        "id": "world-1968-intel-founded",
+        "year": 1968,
+        "title": "Основана Intel",
+        "summary": "Роберт Нойс и Гордон Мур зарегистрировали компанию Intel.",
+        "fact": "💡 Через несколько лет появится микропроцессор 4004.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Intel — Intel's founding",
+            "url": "https://www.intel.com/content/www/us/en/history/virtual-vault/articles/intels-founding.html",
+            "name": "Intel"
+          }
+        ],
+        "image": "assets/history/intel-mountain-view-1969.jpg",
+        "imageAlt": "Ранний офис Intel в Маунтин-Вью, 1969"
+      },
+      {
+        "id": "world-1918-mandela-born",
+        "year": 1918,
+        "title": "Родился Нельсон Мандела",
+        "summary": "В Мвезо родился будущий лидер борьбы с апартеидом.",
+        "fact": "💡 Позже он проведёт в тюрьме 27 лет.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Nelson Mandela",
+            "url": "https://www.britannica.com/biography/Nelson-Mandela",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/mandela-1918.jpg",
+        "imageAlt": "Нельсон Мандела"
+      },
+      {
+        "id": "world-64-great-fire-of-rome",
+        "year": 64,
+        "title": "Пожар Рима",
+        "summary": "В Риме начался Великий пожар — огонь шёл несколько дней.",
+        "fact": "💡 Позже Нерона обвиняли в том, что он «пел», глядя на огонь.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Great Fire of Rome",
+            "url": "https://www.britannica.com/event/Great-Fire-of-Rome",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "07-19": [
+      {
+        "id": "world-1848-seneca-falls",
+        "year": 1848,
+        "title": "Конвент в Сенека-Фолс",
+        "summary": "Открылся первый съезд за права женщин в США.",
+        "fact": "💡 Декларацию чувств написали по образцу Декларации независимости.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Seneca Falls Convention",
+            "url": "https://www.britannica.com/event/Seneca-Falls-Convention",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/seneca-falls-1848.jpg",
+        "imageAlt": "Элизабет Кэди Стэнтон — одна из организаторов конвента"
+      },
+      {
+        "id": "world-1900-paris-metro-opens",
+        "year": 1900,
+        "title": "Открылось парижское метро",
+        "summary": "Линия 1 приняла пассажиров — от Porte Maillot до Vincennes.",
+        "fact": "💡 Входы в стиле Guimard стали лицом города.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Paris Métro",
+            "url": "https://www.britannica.com/topic/Metro-Parisian-transportation",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/paris-metro-1900.jpg",
+        "imageAlt": "Вход в парижское метро работы Эктора Гимара"
+      },
+      {
+        "id": "world-1969-apollo11-lunar-orbit",
+        "year": 1969,
+        "title": "Apollo 11 на лунной орбите",
+        "summary": "Корабль вышел на орбиту Луны — до посадки оставался день.",
+        "fact": "💡 На следующий день Eagle сядет в Море Спокойствия.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Apollo 11 Mission Overview",
+            "url": "https://www.nasa.gov/history/apollo-11-mission-overview/",
+            "name": "NASA"
+          }
+        ]
+      }
+    ],
     "07-20": [
       {
         "id": "world-1969-apollo11-moon-landing",
