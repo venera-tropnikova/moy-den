@@ -9896,6 +9896,1961 @@
         ]
       }
     ],
+    "06-01": [
+      {
+        "id": "world-1980-cnn-launches",
+        "year": 1980,
+        "title": "Стартовал канал CNN",
+        "summary": "В Атланте начал вещание CNN — первый круглосуточный новостной канал.",
+        "fact": "💡 Основатель Тед Тёрнер ставил на «новости 24 часа в сутки».",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Cable News Network",
+            "url": "https://www.britannica.com/topic/Cable-News-Network",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/cnn-center-1980.jpg",
+        "imageAlt": "Здание CNN Center в Атланте"
+      },
+      {
+        "id": "world-1967-sgt-pepper-released",
+        "year": 1967,
+        "title": "Вышел Sgt. Pepper",
+        "summary": "The Beatles выпустили альбом Sgt. Pepper’s Lonely Hearts Club Band.",
+        "fact": "💡 Пластинка стала символом «лета любви» и новой студийной эры.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — The Beatles release Sgt. Pepper",
+            "url": "https://www.history.com/this-day-in-history/june-1/the-beatles-release-sgt-pepper",
+            "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "world-1831-ross-magnetic-pole",
+        "year": 1831,
+        "title": "Нашли магнитный полюс",
+        "summary": "Джеймс Кларк Росс достиг района Северного магнитного полюса.",
+        "fact": "💡 Открытие помогло точнее ориентировать компасы на море.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — James Clark Ross",
+            "url": "https://www.britannica.com/biography/James-Clark-Ross",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-02": [
+      {
+        "id": "world-1953-elizabeth-coronation",
+        "year": 1953,
+        "title": "Коронация Елизаветы II",
+        "summary": "В Вестминстерском аббатстве короновали королеву Елизавету II.",
+        "fact": "💡 Церемонию впервые смотрели миллионы телезрителей по всему миру.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "BBC — Queen Elizabeth takes coronation oath",
+            "url": "http://news.bbc.co.uk/onthisday/hi/dates/stories/june/2/newsid_2654000/2654501.stm",
+            "name": "BBC",
+            "shortTitle": "BBC"
+          }
+        ],
+        "image": "assets/history/elizabeth-coronation-1953.jpg",
+        "imageAlt": "Королева Елизавета II в день коронации, 1953"
+      },
+      {
+        "id": "world-1924-indian-citizenship-act",
+        "year": 1924,
+        "title": "Гражданство индейцам США",
+        "summary": "Конгресс принял Indian Citizenship Act — гражданство всем коренным.",
+        "fact": "💡 Многие штаты ещё долго ограничивали право голоса индейцев.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Congress enacts the Indian Citizenship Act",
+            "url": "https://www.history.com/this-day-in-history/june-2/congress-enacts-the-indian-citizenship-act",
+            "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "world-1886-cleveland-white-house-wedding",
+        "year": 1886,
+        "title": "Свадьба в Белом доме",
+        "summary": "Гровер Кливленд стал первым президентом, женившимся в Белом доме.",
+        "fact": "💡 Невесте Фрэнсис Фолсом было 21 год — на 27 меньше жениха.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 6,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Grover Cleveland gets married in the White House",
+            "url": "https://www.history.com/this-day-in-history/june-2/grover-cleveland-gets-married-in-the-white-house",
+            "name": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "06-03": [
+      {
+        "id": "world-1965-edward-white-spacewalk",
+        "year": 1965,
+        "title": "Выход Уайта в космос",
+        "summary": "Эдвард Уайт стал первым американцем, вышедшим в открытый космос.",
+        "fact": "💡 Он провёл за бортом Gemini 4 около 20 минут.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Gemini IV",
+            "url": "https://www.nasa.gov/mission_pages/gemini/gemini-4.html",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ],
+        "image": "assets/history/edward-white-spacewalk-1965.jpg",
+        "imageAlt": "Эдвард Уайт в открытом космосе, Gemini 4, 1965"
+      },
+      {
+        "id": "world-1968-warhol-shot",
+        "year": 1968,
+        "title": "Покушение на Уорхола",
+        "summary": "Валери Соланас тяжело ранила художника Энди Уорхола в Нью-Йорке.",
+        "fact": "💡 Уорхол пережил несколько операций и носил корсет годы спустя.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Andy Warhol",
+            "url": "https://www.britannica.com/biography/Andy-Warhol",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1937-duke-windsor-married",
+        "year": 1937,
+        "title": "Свадьба герцога Виндзора",
+        "summary": "Бывший король Эдуард VIII обвенчался с Уоллис Симпсон во Франции.",
+        "fact": "💡 Ради этого брака он отрёкся от британского престола в 1936-м.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Edward VIII",
+            "url": "https://www.britannica.com/biography/Edward-VIII",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-04": [
+      {
+        "id": "world-1942-midway-battle",
+        "year": 1942,
+        "title": "Сражение у Мидуэя",
+        "summary": "У атолла Мидуэй американский флот переломил войну на Тихом океане.",
+        "fact": "💡 Япония потеряла четыре авианосца — удар по имперскому флоту.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Battle of Midway begins",
+            "url": "https://www.history.com/this-day-in-history/june-4/battle-of-midway-begins",
+            "name": "HISTORY",
+            "shortTitle": "HISTORY"
+          }
+        ],
+        "image": "assets/history/midway-1942.jpg",
+        "imageAlt": "Американский авианосец в сражении у Мидуэя, 1942"
+      },
+      {
+        "id": "world-1944-rome-liberated",
+        "year": 1944,
+        "title": "Освободили Рим",
+        "summary": "Союзники вошли в Рим — первую столицу Оси, освобождённую в Европе.",
+        "fact": "💡 Город взяли за два дня до высадки в Нормандии.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Rome",
+            "url": "https://www.britannica.com/place/Rome/Capital-of-a-united-Italy",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1989-tiananmen-crackdown",
+        "year": 1989,
+        "title": "Разгон на Тяньаньмэнь",
+        "summary": "В Пекине войска подавили протесты на площади Тяньаньмэнь.",
+        "fact": "💡 Символом стал «человек с сумками» перед колонной танков.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Tiananmen Square incident",
+            "url": "https://www.britannica.com/event/Tiananmen-Square-incident",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-05": [
+      {
+        "id": "world-1947-marshall-plan-speech",
+        "year": 1947,
+        "title": "Речь о плане Маршалла",
+        "summary": "Госсекретарь Маршалл в Гарварде предложил план помощи Европе.",
+        "fact": "💡 За годы программы США направили миллиарды на восстановление.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "OECD — The Marshall Plan speech at Harvard",
+            "url": "https://www.oecd.org/en/about/history/the-marshall-plan-speech-at-harvard-university-5-june-1947.html",
+            "name": "OECD",
+            "shortTitle": "OECD"
+          }
+        ],
+        "image": "assets/history/marshall-harvard-1947.jpg",
+        "imageAlt": "Джордж Маршалл — автор плана помощи Европе"
+      },
+      {
+        "id": "world-1967-six-day-war-starts",
+        "year": 1967,
+        "title": "Началась Шестидневная война",
+        "summary": "Израиль нанёс удар по авиации Египта — началась Шестидневная война.",
+        "fact": "💡 За шесть дней изменилась карта Ближнего Востока.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Six-Day War",
+            "url": "https://www.britannica.com/event/Six-Day-War",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1968-rfk-shot",
+        "year": 1968,
+        "title": "Стреляли в Роберта Кеннеди",
+        "summary": "В Лос-Анджелесе ранили сенатора Роберта Кеннеди после праймериз.",
+        "fact": "💡 Он умер на следующий день; стрелял Сирхан Сирхан.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "JFK Library — Robert F. Kennedy",
+            "url": "https://www.jfklibrary.org/learn/about-jfk/the-kennedy-family/robert-f-kennedy",
+            "name": "JFK Library"
+          }
+        ]
+      }
+    ],
+    "06-06": [
+      {
+        "id": "world-1944-d-day",
+        "year": 1944,
+        "title": "Высадка в Нормандии",
+        "summary": "Союзники открыли Второй фронт — началась операция «Оверлорд».",
+        "fact": "💡 В первый день на берег высадились около 156 тысяч солдат.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "IWM — What you need to know about D-Day",
+            "url": "https://www.iwm.org.uk/history/second-world-war/d-day",
+            "name": "Imperial War Museums",
+            "shortTitle": "IWM"
+          }
+        ],
+        "image": "assets/history/dday-omaha-1944.jpg",
+        "imageAlt": "Солдаты США выходят на Омаху в день D-Day, 1944"
+      },
+      {
+        "id": "world-1968-rfk-dies",
+        "year": 1968,
+        "title": "Умер Роберт Кеннеди",
+        "summary": "От ран скончался сенатор Роберт Кеннеди — спустя сутки после выстрела.",
+        "fact": "💡 Его гибель потрясла Америку через два месяца после убийства Кинга.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Robert F. Kennedy",
+            "url": "https://www.britannica.com/biography/Robert-F-Kennedy",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1844-ymca-founded",
+        "year": 1844,
+        "title": "Основали YMCA",
+        "summary": "В Лондоне Джордж Уильямс основал Young Men’s Christian Association.",
+        "fact": "💡 Движение выросло в мировую сеть спортивных и социальных клубов.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 6,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — YMCA",
+            "url": "https://www.britannica.com/topic/YMCA",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-07": [
+      {
+        "id": "world-1967-jerusalem-old-city",
+        "year": 1967,
+        "title": "Израиль взял Старый город",
+        "summary": "Израильские войска вошли в Старый город Иерусалима во время войны.",
+        "fact": "💡 У Стены Плача солдаты отмечали возвращение святыни.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Six-Day War",
+            "url": "https://www.britannica.com/event/Six-Day-War",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/jerusalem-western-wall-1967.jpg",
+        "imageAlt": "Стена Плача в Иерусалиме"
+      },
+      {
+        "id": "world-1905-norway-sweden-dissolve",
+        "year": 1905,
+        "title": "Норвегия вышла из унии",
+        "summary": "Стортинг расторг унию со Швецией — Норвегия стала самостоятельной.",
+        "fact": "💡 Позже королём избрали датского принца Карла как Хокона VII.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Norway",
+            "url": "https://www.britannica.com/place/Norway/Union-with-Sweden",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1929-vatican-state-recognized",
+        "year": 1929,
+        "title": "Признали государство Ватикан",
+        "summary": "Ратифицировали Латеранские соглашения — Ватикан стал суверенным.",
+        "fact": "💡 Договор завершил «римский вопрос» между Италией и папством.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Lateran Treaty",
+            "url": "https://www.britannica.com/event/Lateran-Treaty",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-08": [
+      {
+        "id": "world-1949-orwell-1984-published",
+        "year": 1949,
+        "title": "Вышел роман «1984»",
+        "summary": "В Лондоне опубликовали антиутопию Джорджа Оруэлла «1984».",
+        "fact": "💡 Слова вроде «Большой Брат» вошли в повседневный язык.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Nineteen Eighty-four",
+            "url": "https://www.britannica.com/topic/Nineteen-Eighty-four",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/orwell-1984-1949.jpg",
+        "imageAlt": "Джордж Оруэлл — автор романа «1984»"
+      },
+      {
+        "id": "world-1786-first-ice-cream-advert",
+        "year": 1786,
+        "title": "Реклама мороженого в США",
+        "summary": "В Нью-Йорке вышла одна из первых газетных реклам мороженого.",
+        "fact": "💡 Десерт продавали в кафе на Уолл-стрит летом жаркого сезона.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 65,
+        "interest": 5,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — Ice Cream",
+            "url": "https://www.loc.gov/rr/scitech/sci-ref-guides/ice-cream.html",
+            "name": "Library of Congress",
+            "shortTitle": "LOC"
+          }
+        ]
+      },
+      {
+        "id": "world-1968-james-earl-ray-arrested",
+        "year": 1968,
+        "title": "Арестовали убийцу Кинга",
+        "summary": "В Лондоне задержали Джеймса Эрла Рэя — убийцу Мартина Лютера Кинга.",
+        "fact": "💡 Его поймали в аэропорту Хитроу с фальшивым паспортом.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Assassination of Martin Luther King, Jr.",
+            "url": "https://www.britannica.com/event/assassination-of-Martin-Luther-King-Jr",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-09": [
+      {
+        "id": "world-1870-dickens-died",
+        "year": 1870,
+        "title": "Умер Чарльз Диккенс",
+        "summary": "В Гэдс-Хилле скончался Чарльз Диккенс — мастер викторианского романа.",
+        "fact": "💡 Он не успел закончить детектив «Тайна Эдвина Друда».",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Charles Dickens",
+            "url": "https://www.britannica.com/biography/Charles-Dickens",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/dickens-1870.jpg",
+        "imageAlt": "Портрет Чарльза Диккенса"
+      },
+      {
+        "id": "world-1973-secretariat-triple-crown",
+        "year": 1973,
+        "title": "Тройная корона Секретариата",
+        "summary": "Жеребец Secretariat выиграл Belmont Stakes и взял Тройную корону.",
+        "fact": "💡 Он финишировал с рекордным отрывом почти в 31 корпус.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Secretariat",
+            "url": "https://www.britannica.com/topic/Secretariat-racehorse",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-68-nero-died",
+        "year": 68,
+        "title": "Погиб император Нерон",
+        "summary": "Нерон покончил с собой после мятежа — династия Юлиев-Клавдиев пала.",
+        "fact": "💡 После него Рим погрузился в «год четырёх императоров».",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Nero",
+            "url": "https://www.britannica.com/biography/Nero-Roman-emperor",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-10": [
+      {
+        "id": "world-1963-equal-pay-act",
+        "year": 1963,
+        "title": "Закон о равной оплате",
+        "summary": "Кеннеди подписал Equal Pay Act — равная плата за равный труд женщинам.",
+        "fact": "💡 Закон стал важной вехой американского трудового права.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "U.S. DOL — Equal Pay Act of 1963",
+            "url": "https://www.dol.gov/agencies/oasam/centers-offices/civil-rights-center/internal/policies/equal-pay-act",
+            "name": "U.S. Department of Labor",
+            "shortTitle": "DOL"
+          }
+        ],
+        "image": "assets/history/equal-pay-act-1963.jpg",
+        "imageAlt": "Джон Ф. Кеннеди — президент, подписавший Equal Pay Act"
+      },
+      {
+        "id": "world-1935-aa-founded",
+        "year": 1935,
+        "title": "Основали Alcoholics Anonymous",
+        "summary": "В Акроне Билл Уилсон и доктор Боб основали Alcoholics Anonymous.",
+        "fact": "💡 Двенадцать шагов позже переняли сотни групп взаимопомощи.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Alcoholics Anonymous",
+            "url": "https://www.britannica.com/topic/Alcoholics-Anonymous",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1752-franklin-kite-experiment",
+        "year": 1752,
+        "title": "Воздушный змей Франклина",
+        "summary": "Бенджамин Франклин провёл опыт с воздушным змеем и молнией.",
+        "fact": "💡 Точная дата спорна, но июнь 1752-го — принятая традиция.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Benjamin Franklin",
+            "url": "https://www.britannica.com/biography/Benjamin-Franklin",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-11": [
+      {
+        "id": "world-1963-thich-quang-duc",
+        "year": 1963,
+        "title": "Самосожжение Тхить Куанг Дыка",
+        "summary": "В Сайгоне монах Тхить Куанг Дык сжёг себя в знак протеста.",
+        "fact": "💡 Фотография Малкольма Брауна облетела весь мир.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Thich Quang Duc",
+            "url": "https://www.britannica.com/biography/Thich-Quang-Duc",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/thich-quang-duc-1963.jpg",
+        "imageAlt": "Самосожжение Тхить Куанг Дыка в Сайгоне, 1963"
+      },
+      {
+        "id": "world-1776-committee-of-five",
+        "year": 1776,
+        "title": "Комитет пяти для Декларации",
+        "summary": "Континентальный конгресс создал Комитет пяти для текста независимости.",
+        "fact": "💡 Черновик поручили Томасу Джефферсону.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — Declaration of Independence",
+            "url": "https://www.archives.gov/founding-docs/declaration-history",
+            "name": "National Archives",
+            "shortTitle": "NARA"
+          }
+        ]
+      },
+      {
+        "id": "world-1982-et-premiere",
+        "year": 1982,
+        "title": "Премьера фильма «E.T.»",
+        "summary": "В США вышел фильм Стивена Спилберга «E.T. the Extra-Terrestrial».",
+        "fact": "💡 Картина стала одним из кассовых рекордсменов десятилетия.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — E.T. the Extra-Terrestrial",
+            "url": "https://www.britannica.com/topic/ET-the-Extraterrestrial",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-12": [
+      {
+        "id": "world-1987-reagan-tear-down-wall",
+        "year": 1987,
+        "title": "«Снесите эту стену!»",
+        "summary": "Рейган у Бранденбургских ворот призвал снести Берлинскую стену.",
+        "fact": "💡 Фраза стала одним из символов конца холодной войны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Reagan Library — Tear down this wall",
+            "url": "https://www.reaganlibrary.gov/archives/speech/remarks-brandenburg-gate-west-berlin",
+            "name": "Reagan Library",
+            "shortTitle": "Reagan Library"
+          }
+        ],
+        "image": "assets/history/reagan-berlin-1987.jpg",
+        "imageAlt": "Рональд Рейган выступает у Бранденбургских ворот, 1987"
+      },
+      {
+        "id": "world-1967-loving-v-virginia",
+        "year": 1967,
+        "title": "Решение Loving v. Virginia",
+        "summary": "Верховный суд США отменил запреты на межрасовые браки.",
+        "fact": "💡 Дело супругов Лавинг из Виргинии изменило семейное право.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Oyez — Loving v. Virginia",
+            "url": "https://www.oyez.org/cases/1966/395",
+            "name": "Oyez"
+          }
+        ]
+      },
+      {
+        "id": "world-1898-philippines-independence",
+        "year": 1898,
+        "title": "Независимость Филиппин",
+        "summary": "Эмилио Агинальдо провозгласил независимость Филиппин от Испании.",
+        "fact": "💡 Позже острова перешли под контроль США после войны 1898 года.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Philippines",
+            "url": "https://www.britannica.com/place/Philippines/The-Spanish-period",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-13": [
+      {
+        "id": "world-1966-miranda-v-arizona",
+        "year": 1966,
+        "title": "Права Миранды",
+        "summary": "Верховный суд США обязал полицию зачитывать подозреваемым их права.",
+        "fact": "💡 «Вы имеете право хранить молчание…» вошло в культуру кино.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Oyez — Miranda v. Arizona",
+            "url": "https://www.oyez.org/cases/1965/759",
+            "name": "Oyez",
+            "shortTitle": "Oyez"
+          }
+        ],
+        "image": "assets/history/miranda-1966.jpg",
+        "imageAlt": "Здание Верховного суда США"
+      },
+      {
+        "id": "world-1983-pioneer10-heliopause",
+        "year": 1983,
+        "title": "Pioneer 10 покинул Солнечную",
+        "summary": "Аппарат Pioneer 10 первым пересёк орбиту Нептуна на пути из системы.",
+        "fact": "💡 Зонд нёс золотую пластину с посланием от человечества.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Pioneer 10",
+            "url": "https://science.nasa.gov/mission/pioneer-10/",
+            "name": "NASA"
+          }
+        ]
+      },
+      {
+        "id": "world-1967-thurgood-marshall-nominated",
+        "year": 1967,
+        "title": "Номинировали Тёргуда Маршалла",
+        "summary": "Джонсон выдвинул Тёргуда Маршалла в Верховный суд США.",
+        "fact": "💡 Он стал первым афроамериканцем в высшем суде страны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Thurgood Marshall",
+            "url": "https://www.britannica.com/biography/Thurgood-Marshall",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-14": [
+      {
+        "id": "world-1940-germans-enter-paris",
+        "year": 1940,
+        "title": "Немцы вошли в Париж",
+        "summary": "Вермахт занял Париж — французская столица пала без уличных боёв.",
+        "fact": "💡 Через неделю Франция подписала перемирие в Компьене.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of France",
+            "url": "https://www.britannica.com/event/Battle-of-France-World-War-II",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/paris-occupation-1940.jpg",
+        "imageAlt": "Парижанин плачет, глядя на колонну немецких войск, 14 июня 1940"
+      },
+      {
+        "id": "world-1775-continental-army",
+        "year": 1775,
+        "title": "Создали Континентальную армию",
+        "summary": "Конгресс учредил Континентальную армию — день позже стал Днём флага.",
+        "fact": "💡 Главнокомандующим назначили Джорджа Вашингтона на следующий день.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Congress creates the Continental Army",
+            "url": "https://www.history.com/this-day-in-history/june-14/congress-creates-the-continental-army",
+            "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "world-1982-falklands-surrender",
+        "year": 1982,
+        "title": "Капитуляция на Фолклендах",
+        "summary": "Аргентинский гарнизон в Порт-Стэнли сдался — война закончилась.",
+        "fact": "💡 Конфликт длился 74 дня и укрепил позиции Маргарет Тэтчер.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Falkland Islands War",
+            "url": "https://www.britannica.com/event/Falkland-Islands-War",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-15": [
+      {
+        "id": "world-1215-magna-carta",
+        "year": 1215,
+        "title": "Подписали Великую хартию",
+        "summary": "Иоанн Безземельный скрепил печатью Magna Carta в Раннимиде.",
+        "fact": "💡 Хартия ограничила королевскую власть и легла в основу свобод.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "British Library — Magna Carta",
+            "url": "https://www.bl.uk/magna-carta",
+            "name": "British Library",
+            "shortTitle": "British Library"
+          }
+        ],
+        "image": "assets/history/magna-carta-1215.jpg",
+        "imageAlt": "Один из сохранившихся экземпляров Magna Carta"
+      },
+      {
+        "id": "world-1991-pinatubo-eruption",
+        "year": 1991,
+        "title": "Извержение Пинатубо",
+        "summary": "Вулкан Пинатубо дал одно из сильнейших извержений XX века.",
+        "fact": "💡 Пепел охладил климат планеты почти на полградуса.",
+        "body": "",
+        "category": "nature",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "USGS — Mount Pinatubo",
+            "url": "https://www.usgs.gov/volcanoes/mount-pinatubo",
+            "name": "USGS"
+          }
+        ]
+      },
+      {
+        "id": "world-1775-washington-commander",
+        "year": 1775,
+        "title": "Вашингтон — главнокомандующий",
+        "summary": "Конгресс единогласно назначил Джорджа Вашингтона главой армии.",
+        "fact": "💡 Он принял пост без жалования — лишь с возмещением расходов.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — George Washington named commander in chief",
+            "url": "https://www.history.com/this-day-in-history/june-15/george-washington-named-commander-in-chief",
+            "name": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "06-16": [
+      {
+        "id": "world-1963-tereshkova-space",
+        "year": 1963,
+        "title": "Терешкова в космосе",
+        "summary": "Валентина Терешкова стала первой женщиной, полетевшей в космос.",
+        "fact": "💡 Корабль «Восток-6» сделал 48 витков вокруг Земли.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Valentina Tereshkova",
+            "url": "https://www.nasa.gov/image-article/valentina-tereshkova/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ],
+        "image": "assets/history/tereshkova-1963.jpg",
+        "imageAlt": "Валентина Терешкова — первая женщина в космосе"
+      },
+      {
+        "id": "world-1976-soweto-uprising",
+        "year": 1976,
+        "title": "Восстание в Соуэто",
+        "summary": "В Соуэто школьники восстали против обучения только на африкаанс.",
+        "fact": "💡 Гибель Гектора Питерсона стала символом протеста против апартеида.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Soweto Uprising",
+            "url": "https://www.britannica.com/event/Soweto-uprising",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1884-first-roller-coaster",
+        "year": 1884,
+        "title": "Первые американские горки",
+        "summary": "На Кони-Айленде открыли Switchback Railway — ранние горки.",
+        "fact": "💡 Билет стоил пять центов, и очередь тянулась весь день.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 6,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — First roller coaster in America opens",
+            "url": "https://www.history.com/this-day-in-history/june-16/first-roller-coaster-in-america-opens",
+            "name": "HISTORY"
+          }
+        ]
+      }
+    ],
+    "06-17": [
+      {
+        "id": "world-1972-watergate-burglary",
+        "year": 1972,
+        "title": "Взлом Уотергейта",
+        "summary": "Пятерых взломщиков поймали в штаб-квартире демократов в Уотергейте.",
+        "fact": "💡 Скандал через два года привёл к отставке Никсона.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Watergate scandal",
+            "url": "https://www.britannica.com/event/Watergate-scandal",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/watergate-1972.jpg",
+        "imageAlt": "Комплекс Watergate в Вашингтоне"
+      },
+      {
+        "id": "world-1775-bunker-hill",
+        "year": 1775,
+        "title": "Сражение при Банкер-Хилл",
+        "summary": "У Бостона колонисты дали бой британцам на высотах Банкер и Бридс.",
+        "fact": "💡 Победа британцев оказалась очень дорогой по потерям.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Bunker Hill",
+            "url": "https://www.britannica.com/event/Battle-of-Bunker-Hill",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1944-iceland-republic",
+        "year": 1944,
+        "title": "Исландия стала республикой",
+        "summary": "Исландия разорвала унию с Данией и провозгласила республику.",
+        "fact": "💡 Первым президентом стал Свейдн Бьёрнссон.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Iceland",
+            "url": "https://www.britannica.com/place/Iceland/History",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-18": [
+      {
+        "id": "world-1815-waterloo",
+        "year": 1815,
+        "title": "Битва при Ватерлоо",
+        "summary": "У Ватерлоо союзники разбили Наполеона — его сто дней закончились.",
+        "fact": "💡 После поражения император вторично отрёкся и уехал на Святую Елену.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Waterloo",
+            "url": "https://www.britannica.com/event/Battle-of-Waterloo",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/waterloo-1815.jpg",
+        "imageAlt": "Картина битвы при Ватерлоо, 1815"
+      },
+      {
+        "id": "world-1983-sally-ride",
+        "year": 1983,
+        "title": "Салли Райд в космосе",
+        "summary": "Салли Райд стала первой американкой в космосе на борту Challenger.",
+        "fact": "💡 Ей было 32 года — на тот момент самый молодой астронавт США.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Sally Ride",
+            "url": "https://www.nasa.gov/nasa-history-feature/sally-ride/",
+            "name": "NASA"
+          }
+        ]
+      },
+      {
+        "id": "world-1940-churchill-finest-hour",
+        "year": 1940,
+        "title": "Речь «Finest Hour»",
+        "summary": "Черчилль произнёс в парламенте речь «This was their finest hour».",
+        "fact": "💡 Он призывал Британию стоять до конца после падения Франции.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "International Churchill Society — Finest Hour",
+            "url": "https://winstonchurchill.org/resources/speeches/1940-the-finest-hour/their-finest-hour/",
+            "name": "Churchill Society"
+          }
+        ]
+      }
+    ],
+    "06-19": [
+      {
+        "id": "world-1865-juneteenth",
+        "year": 1865,
+        "title": "День свободы — Juneteenth",
+        "summary": "В Галвестоне объявили свободу рабам Техаса — родился Juneteenth.",
+        "fact": "💡 Генерал Грейнджер зачитал General Order No. 3 через два года после Прокламации.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — What happened on June 19, 1865?",
+            "url": "https://www.britannica.com/question/What-happened-on-June-19-1865",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/juneteenth-1865.jpg",
+        "imageAlt": "General Order No. 3 от 19 июня 1865 — объявление свободы в Галвестоне"
+      },
+      {
+        "id": "world-1867-maximilian-executed",
+        "year": 1867,
+        "title": "Казнь Максимилиана",
+        "summary": "В Керетаро расстреляли императора Мексики Максимилиана Габсбурга.",
+        "fact": "💡 Его империю сверг республиканский президент Бенито Хуарес.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Maximilian",
+            "url": "https://www.britannica.com/biography/Maximilian-archduke-of-Austria-and-emperor-of-Mexico",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1953-rosenbergs-executed",
+        "year": 1953,
+        "title": "Казнь супругов Розенберг",
+        "summary": "В Синг-Синге казнили Джулиуса и Этель Розенберг по делу о шпионаже.",
+        "fact": "💡 Дело остаётся одним из самых спорных в холодной войне.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Julius Rosenberg and Ethel Rosenberg",
+            "url": "https://www.britannica.com/biography/Julius-Rosenberg-and-Ethel-Rosenberg",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-20": [
+      {
+        "id": "world-1837-victoria-accession",
+        "year": 1837,
+        "title": "Воцарение королевы Виктории",
+        "summary": "После смерти дяди Вильгельма IV на трон взошла королева Виктория.",
+        "fact": "💡 Её правление длилось 63 года и дало имя целой эпохе.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Victoria",
+            "url": "https://www.britannica.com/biography/Victoria-queen-of-United-Kingdom",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/victoria-accession-1837.jpg",
+        "imageAlt": "Королева Виктория в начале правления"
+      },
+      {
+        "id": "world-1863-west-virginia-statehood",
+        "year": 1863,
+        "title": "Штат Западная Виргиния",
+        "summary": "Западная Виргиния стала 35-м штатом США — откололась от Конфедерации.",
+        "fact": "💡 Единственный штат, образованный отделением во время Гражданской войны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — West Virginia",
+            "url": "https://www.britannica.com/place/West-Virginia",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1893-lizzie-borden-acquitted",
+        "year": 1893,
+        "title": "Оправдали Лиззи Борден",
+        "summary": "Суд оправдал Лиззи Борден по обвинению в убийстве отца и мачехи.",
+        "fact": "💡 Дело породило фольклор и загадку американской криминалистики.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 6,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Lizzie Borden",
+            "url": "https://www.britannica.com/biography/Lizzie-Borden",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-21": [
+      {
+        "id": "world-1788-new-hampshire-ratifies",
+        "year": 1788,
+        "title": "Конституцию ратифицировали",
+        "summary": "Нью-Хэмпшир стал девятым штатом — Конституция США вступила в силу.",
+        "fact": "💡 Девять из тринадцати штатов были нужны для запуска нового строя.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — Constitution",
+            "url": "https://www.archives.gov/founding-docs/constitution",
+            "name": "National Archives",
+            "shortTitle": "NARA"
+          }
+        ],
+        "image": "assets/history/us-constitution-1788.jpg",
+        "imageAlt": "Страница Конституции США"
+      },
+      {
+        "id": "world-1945-okinawa-ends",
+        "year": 1945,
+        "title": "Завершилась битва за Окинаву",
+        "summary": "Закончилась битва за Окинаву — ключевое сражение на Тихом океане.",
+        "fact": "💡 Потери повлияли на решение применить атомные бомбы.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Okinawa",
+            "url": "https://www.britannica.com/event/Battle-of-Okinawa",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1982-prince-william-born",
+        "year": 1982,
+        "title": "Родился принц Уильям",
+        "summary": "В Лондоне родился принц Уильям — старший сын Дианы и Чарльза.",
+        "fact": "💡 Он второй в очереди на британский престол после отца.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 6,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — William, prince of Wales",
+            "url": "https://www.britannica.com/biography/William-prince-of-Wales",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-22": [
+      {
+        "id": "world-1941-barbarossa",
+        "year": 1941,
+        "title": "Начало операции «Барбаросса»",
+        "summary": "Германия напала на СССР — началась Великая Отечественная война.",
+        "fact": "💡 На рассвете ударили по широкому фронту от Балтики до Чёрного моря.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Operation Barbarossa",
+            "url": "https://www.britannica.com/event/Operation-Barbarossa",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/barbarossa-1941.jpg",
+        "imageAlt": "Немецкие войска на Восточном фронте, 1941"
+      },
+      {
+        "id": "world-1940-france-armistice",
+        "year": 1940,
+        "title": "Перемирие Франции",
+        "summary": "Франция подписала перемирие с Германией в Компьенском лесу.",
+        "fact": "💡 Церемонию устроили в том же вагоне, где в 1918-м капитулировала Германия.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Armistice of June 22, 1940",
+            "url": "https://www.britannica.com/event/Armistice-of-June-22-1940",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1938-louis-schmeling",
+        "year": 1938,
+        "title": "Луис нокаутировал Шмелинга",
+        "summary": "Джо Луис нокаутировал Макса Шмелинга в первом раунде в Нью-Йорке.",
+        "fact": "💡 Бой воспринимали как символический удар по нацистской пропаганде.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Joe Louis",
+            "url": "https://www.britannica.com/biography/Joe-Louis-American-boxer",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-23": [
+      {
+        "id": "world-1972-title-ix",
+        "year": 1972,
+        "title": "Приняли Title IX",
+        "summary": "Никсон подписал Title IX — запрет дискриминации по полу в образовании.",
+        "fact": "💡 Закон резко расширил женский спорт в американских школах и вузах.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "U.S. DOE — Title IX",
+            "url": "https://www.ed.gov/laws-and-policy/civil-rights-laws/title-ix-and-sex-discrimination",
+            "name": "U.S. Department of Education",
+            "shortTitle": "ED.gov"
+          }
+        ],
+        "image": "assets/history/title-ix-1972.jpg",
+        "imageAlt": "Ричард Никсон — президент, подписавший Title IX"
+      },
+      {
+        "id": "world-1868-typewriter-patent",
+        "year": 1868,
+        "title": "Патент на пишущую машинку",
+        "summary": "Шоулз, Глидден и Соул получили патент США на пишущую машинку.",
+        "fact": "💡 Раскладка QWERTY родилась именно из этой конструкции.",
+        "body": "",
+        "category": "technology",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Smithsonian — Typewriter",
+            "url": "https://americanhistory.si.edu/collections/object-groups/typewriters",
+            "name": "Smithsonian"
+          }
+        ]
+      },
+      {
+        "id": "world-1991-sonic-released",
+        "year": 1991,
+        "title": "Вышел Sonic the Hedgehog",
+        "summary": "В Северной Америке вышла игра Sonic the Hedgehog для Sega Genesis.",
+        "fact": "💡 Синий ёж стал главным соперником Марио на рынке 16-бит.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Sonic the Hedgehog",
+            "url": "https://www.britannica.com/topic/Sonic-the-Hedgehog",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-24": [
+      {
+        "id": "world-1948-berlin-blockade-starts",
+        "year": 1948,
+        "title": "Началась блокада Берлина",
+        "summary": "СССР перекрыл сухопутные пути в Западный Берлин — началась блокада.",
+        "fact": "💡 Ответом Запада стал Берлинский воздушный мост снабжения.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "HISTORY — Soviets blockade West Berlin",
+            "url": "https://www.history.com/this-day-in-history/june-24/soviets-blockade-west-berlin",
+            "name": "HISTORY",
+            "shortTitle": "HISTORY"
+          }
+        ],
+        "image": "assets/history/berlin-blockade-1948.jpg",
+        "imageAlt": "Секторы оккупации Берлина — западные сектора в кольце советской зоны"
+      },
+      {
+        "id": "world-1497-cabot-newfoundland",
+        "year": 1497,
+        "title": "Кабот у берегов Ньюфаундленда",
+        "summary": "Джон Кабот достиг берегов Северной Америки у Ньюфаундленда.",
+        "fact": "💡 Плавание дало Англии претензии на земли Нового Света.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — John Cabot",
+            "url": "https://www.britannica.com/biography/John-Cabot",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1314-bannockburn",
+        "year": 1314,
+        "title": "Битва при Баннокберне",
+        "summary": "Шотландцы Роберта Брюса разбили англичан при Баннокберне.",
+        "fact": "💡 Победа укрепила независимость Шотландии на годы вперёд.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Bannockburn",
+            "url": "https://www.britannica.com/event/Battle-of-Bannockburn",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-25": [
+      {
+        "id": "world-1950-korean-war-starts",
+        "year": 1950,
+        "title": "Началась Корейская война",
+        "summary": "Северная Корея вторглась в Южную — началась Корейская война.",
+        "fact": "💡 Конфликт стал первой «горячей» войной эпохи холодной войны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Korean War",
+            "url": "https://www.britannica.com/event/Korean-War",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/korean-war-1950.jpg",
+        "imageAlt": "Американские войска в Корее, начало 1950-х"
+      },
+      {
+        "id": "world-1876-little-bighorn",
+        "year": 1876,
+        "title": "Битва при Литтл-Бигхорн",
+        "summary": "Сиу и шайенны разбили отряд Кастера при Литтл-Бигхорн.",
+        "fact": "💡 Гибель Кастера шокировала США накануне столетия независимости.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NPS — Little Bighorn Battlefield",
+            "url": "https://www.nps.gov/libi/learn/historyculture/index.htm",
+            "name": "National Park Service",
+            "shortTitle": "NPS"
+          }
+        ]
+      },
+      {
+        "id": "world-1788-virginia-ratifies",
+        "year": 1788,
+        "title": "Виргиния ратифицировала Конституцию",
+        "summary": "Виргиния стала десятым штатом, ратифицировавшим Конституцию США.",
+        "fact": "💡 Споры Мэдисона и Генри определили судьбу Билля о правах.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — Virginia ratification",
+            "url": "https://www.archives.gov/founding-docs/constitution",
+            "name": "National Archives",
+            "shortTitle": "NARA"
+          }
+        ]
+      }
+    ],
+    "06-26": [
+      {
+        "id": "world-1945-un-charter-signed",
+        "year": 1945,
+        "title": "Подписали Устав ООН",
+        "summary": "В Сан-Франциско 50 стран подписали Устав ООН.",
+        "fact": "💡 Документ вступил в силу 24 октября — этот день стал Днём ООН.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "United Nations — History of the Charter",
+            "url": "https://www.un.org/en/about-us/un-charter/history",
+            "name": "United Nations",
+            "shortTitle": "UN"
+          }
+        ],
+        "image": "assets/history/un-charter-1945.jpg",
+        "imageAlt": "Подписание Устава ООН делегатом в Сан-Франциско, 1945"
+      },
+      {
+        "id": "world-1948-berlin-airlift-starts",
+        "year": 1948,
+        "title": "Стартовал воздушный мост",
+        "summary": "США и Британия начали воздушный мост снабжения Западного Берлина.",
+        "fact": "💡 За месяцы доставили более двух миллионов тонн грузов.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Berlin blockade and airlift",
+            "url": "https://www.britannica.com/event/Berlin-blockade",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1963-jfk-berlin-speech",
+        "year": 1963,
+        "title": "Речь «Ich bin ein Berliner»",
+        "summary": "Кеннеди в Западном Берлине произнёс речь «Ich bin ein Berliner».",
+        "fact": "💡 Фраза стала символом солидарности Запада с разделённым городом.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "JFK Library — Ich bin ein Berliner",
+            "url": "https://www.jfklibrary.org/learn/about-jfk/historic-speeches/remarks-at-the-rathaus-schoneberg-berlin",
+            "name": "JFK Library"
+          }
+        ]
+      }
+    ],
+    "06-27": [
+      {
+        "id": "world-1880-helen-keller-born",
+        "year": 1880,
+        "title": "Родилась Хелен Келлер",
+        "summary": "Родилась Хелен Келлер — слепоглухая писательница и активистка.",
+        "fact": "💡 С помощью Энн Салливан она научилась читать, писать и говорить.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Helen Keller",
+            "url": "https://www.britannica.com/biography/Helen-Keller",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/helen-keller-1880.jpg",
+        "imageAlt": "Профильный портрет молодой Хелен Келлер"
+      },
+      {
+        "id": "world-1950-truman-korea-aid",
+        "year": 1950,
+        "title": "Трумэн решил помочь Корее",
+        "summary": "Трумэн приказал ВВС и флоту США поддержать Южную Корею.",
+        "fact": "💡 Через дни Совет Безопасности ООН санкционировал коалицию.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Truman Library — Korean War",
+            "url": "https://www.trumanlibrary.gov/library/online-collections/korean-war-and-its-origins",
+            "name": "Truman Library"
+          }
+        ]
+      },
+      {
+        "id": "world-1829-smithson-died",
+        "year": 1829,
+        "title": "Умер Джеймс Смитсон",
+        "summary": "Умер Джеймс Смитсон — его завещание основало Смитсоновский институт.",
+        "fact": "💡 Он никогда не бывал в США, но оставил состояние «для приращения знания».",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Smithsonian — James Smithson",
+            "url": "https://www.si.edu/about/history",
+            "name": "Smithsonian"
+          }
+        ]
+      }
+    ],
+    "06-28": [
+      {
+        "id": "world-1914-franz-ferdinand-assassinated",
+        "year": 1914,
+        "title": "Убийство Франца Фердинанда",
+        "summary": "В Сараево убили эрцгерцога Франца Фердинанда — путь к мировой войне.",
+        "fact": "💡 Выстрелы Гаврилы Принципа стали искрой Июльского кризиса.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Assassination of Archduke Franz Ferdinand",
+            "url": "https://www.britannica.com/event/assassination-of-Archduke-Franz-Ferdinand",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/franz-ferdinand-1914.jpg",
+        "imageAlt": "Эрцгерцог Франц Фердинанд и София незадолго до убийства"
+      },
+      {
+        "id": "world-1919-versailles-treaty",
+        "year": 1919,
+        "title": "Версальский договор",
+        "summary": "В Версале подписали мирный договор, завершивший Первую мировую войну.",
+        "fact": "💡 Условия к Германии позже назвали одной из причин новой войны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 95,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Treaty of Versailles",
+            "url": "https://www.britannica.com/event/Treaty-of-Versailles-1919",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1969-stonewall",
+        "year": 1969,
+        "title": "Восстание Стоунволл",
+        "summary": "После рейда у бара Stonewall начались протесты ЛГБТ в Нью-Йорке.",
+        "fact": "💡 События стали поворотной точкой движения за права ЛГБТ.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — Stonewall Uprising",
+            "url": "https://www.loc.gov/item/today-in-history/june-28/",
+            "name": "Library of Congress",
+            "shortTitle": "LOC"
+          }
+        ]
+      }
+    ],
+    "06-29": [
+      {
+        "id": "world-1995-atlantis-mir-docking",
+        "year": 1995,
+        "title": "Стыковка Atlantis и «Мир»",
+        "summary": "Шаттл Atlantis впервые состыковался с орбитальной станцией «Мир».",
+        "fact": "💡 Миссия STS-71 открыла серию совместных полётов США и России.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — STS-71",
+            "url": "https://www.nasa.gov/mission/sts-71/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ],
+        "image": "assets/history/atlantis-mir-1995.jpg",
+        "imageAlt": "Стыковка шаттла Atlantis со станцией «Мир», миссия STS-71"
+      },
+      {
+        "id": "world-1613-globe-theatre-fire",
+        "year": 1613,
+        "title": "Сгорел театр «Глобус»",
+        "summary": "В Лондоне сгорел театр «Глобус» Шекспира из‑за пушечного выстрела.",
+        "fact": "💡 Зрители успели спастись; театр быстро отстроили заново.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Globe Theatre",
+            "url": "https://www.britannica.com/topic/Globe-Theatre",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1974-isabel-peron-president",
+        "year": 1974,
+        "title": "Исабель Перон — президент",
+        "summary": "Исабель Перон стала президентом Аргентины после смерти мужа Хуана.",
+        "fact": "💡 Она — первая женщина-президент в истории страны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Isabel Perón",
+            "url": "https://www.britannica.com/biography/Isabel-Peron",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "06-30": [
+      {
+        "id": "world-1908-tunguska",
+        "year": 1908,
+        "title": "Тунгусский взрыв",
+        "summary": "Над сибирской тайгой взорвался космический объект — Тунгусский взрыв.",
+        "fact": "💡 Ударная волна повалила лес на площади около двух тысяч км².",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — The Tunguska Impact",
+            "url": "https://science.nasa.gov/science-research/planetary-science/the-tunguska-impact/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ],
+        "image": "assets/history/tunguska-1908.jpg",
+        "imageAlt": "Поваленный лес на месте Тунгусского взрыва"
+      },
+      {
+        "id": "world-1960-congo-independence",
+        "year": 1960,
+        "title": "Независимость Конго",
+        "summary": "Бельгийское Конго стало независимой Республикой Конго.",
+        "fact": "💡 Кризис сразу после провозглашения перерос в многолетний конфликт.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Democratic Republic of the Congo",
+            "url": "https://www.britannica.com/place/Democratic-Republic-of-the-Congo/Belgian-paternalism-and-the-colonial-economy",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1971-soyuz11-tragedy",
+        "year": 1971,
+        "title": "Гибель экипажа «Союз-11»",
+        "summary": "При возвращении «Союз-11» погиб весь экипаж из трёх космонавтов.",
+        "fact": "💡 Разгерметизация на высоте стала причиной единственной гибели в космосе.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Soyuz 11",
+            "url": "https://www.nasa.gov/history/50-years-ago-the-soyuz-11-tragedy/",
+            "name": "NASA"
+          }
+        ]
+      }
+    ],
     "07-01": [
       {
         "id": "world-1903-tour-de-france-start",
