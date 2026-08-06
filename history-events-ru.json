@@ -5901,26 +5901,1972 @@
         ]
       }
     ],
+    "04-01": [
+      {
+        "id": "world-1976-apple-founded",
+        "year": 1976,
+        "title": "Основали Apple Computer",
+        "summary": "Джобс, Возняк и Уэйн основали компанию Apple Computer.",
+        "fact": "💡 Первым продуктом стал собранный вручную компьютер Apple I.",
+        "body": "",
+        "category": "inventions",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — The Founding of Apple Computer, Inc.",
+            "url": "https://guides.loc.gov/this-month-in-business-history/april/apple-computer-founded",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ],
+        "image": "assets/history/apple-founded-1976.jpg",
+        "imageAlt": "Плата и деревянный корпус компьютера Apple I"
+      },
+      {
+        "id": "world-1918-raf-founded",
+        "year": 1918,
+        "title": "Создали Королевские ВВС",
+        "summary": "В Великобритании объединили авиацию армии и флота в RAF.",
+        "fact": "💡 Это первые самостоятельные военно-воздушные силы страны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "RAF Museum — Formation of the Royal Air Force",
+            "url": "https://www.rafmuseum.org.uk/research/archive-exhibitions/the-raf-story/formation-of-the-royal-air-force/",
+            "name": "RAF Museum",
+            "shortTitle": "RAF Museum"
+          }
+        ]
+      },
+      {
+        "id": "world-1945-okinawa-invasion",
+        "year": 1945,
+        "title": "Высадка на Окинаве",
+        "summary": "Союзники начали высадку на японский остров Окинава.",
+        "fact": "💡 Битва стала одной из самых кровопролитных на Тихом океане.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Naval History and Heritage Command — Battle of Okinawa",
+            "url": "https://www.history.navy.mil/browse-by-topic/wars-conflicts-and-operations/world-war-ii/1945/okinawa.html",
+            "name": "US Navy History",
+            "shortTitle": "US Navy History"
+          }
+        ]
+      }
+    ],
+    "04-02": [
+      {
+        "id": "world-1982-falklands-invasion",
+        "year": 1982,
+        "title": "Вторжение на Фолкленды",
+        "summary": "Аргентина высадила войска на британские Фолклендские острова.",
+        "fact": "💡 Через десять недель Великобритания вернула архипелаг.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Falkland Islands War",
+            "url": "https://www.britannica.com/event/Falkland-Islands-War",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/falklands-1982.jpg",
+        "imageAlt": "Авианосец HMS Hermes во время Фолклендской войны"
+      },
+      {
+        "id": "world-1513-ponce-de-leon-florida",
+        "year": 1513,
+        "title": "Понсе де Леон у Флориды",
+        "summary": "Хуан Понсе де Леон достиг побережья и назвал землю Флоридой.",
+        "fact": "💡 Название связали с Пасхой — Pascua Florida.",
+        "body": "",
+        "category": "expeditions",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — Juan Ponce de León",
+            "url": "https://www.loc.gov/item/today-in-history/april-02/",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "world-1792-us-mint-philadelphia",
+        "year": 1792,
+        "title": "Учредили Монетный двор США",
+        "summary": "Конгресс учредил первый Монетный двор США в Филадельфии.",
+        "fact": "💡 Закон также ввёл доллар как денежную единицу страны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "US Mint — History of the U.S. Mint",
+            "url": "https://www.usmint.gov/learn/history/us-mint-history",
+            "name": "US Mint"
+          }
+        ]
+      }
+    ],
+    "04-03": [
+      {
+        "id": "world-1948-marshall-plan-signed",
+        "year": 1948,
+        "title": "Подписали план Маршалла",
+        "summary": "Трумэн подписал закон о помощи Европе — план Маршалла.",
+        "fact": "💡 За годы программа направила миллиарды на восстановление.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — Marshall Plan (1948)",
+            "url": "https://www.archives.gov/milestone-documents/marshall-plan",
+            "name": "National Archives",
+            "shortTitle": "National Archives"
+          }
+        ],
+        "image": "assets/history/marshall-plan-1948.jpg",
+        "imageAlt": "Генерал Джордж Маршалл — инициатор плана помощи Европе"
+      },
+      {
+        "id": "world-1860-pony-express-starts",
+        "year": 1860,
+        "title": "Стартовал Pony Express",
+        "summary": "Из Сент-Джозефа ушёл первый курьер почты Pony Express.",
+        "fact": "💡 Письма до Калифорнии везли примерно за десять дней.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Park Service — Pony Express National Historic Trail",
+            "url": "https://www.nps.gov/poex/learn/historyculture/index.htm",
+            "name": "National Park Service",
+            "shortTitle": "National Park Service"
+          }
+        ]
+      },
+      {
+        "id": "world-1973-first-cellphone-call",
+        "year": 1973,
+        "title": "Первый звонок с мобильника",
+        "summary": "Мартин Купер позвонил с первого портативного сотового телефона.",
+        "fact": "💡 Аппарат весил больше килограмма и заряжался около десяти часов.",
+        "body": "",
+        "category": "inventions",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Martin Cooper",
+            "url": "https://www.britannica.com/biography/Martin-Cooper",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-04": [
+      {
+        "id": "world-1968-mlk-assassinated",
+        "year": 1968,
+        "title": "Убит Мартин Лютер Кинг",
+        "summary": "В Мемфисе застрелили лидера движения за гражданские права.",
+        "fact": "💡 Накануне он произнёс речь «I've Been to the Mountaintop».",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "King Institute — Assassination of Martin Luther King, Jr.",
+            "url": "https://kinginstitute.stanford.edu/assassination-martin-luther-king-jr",
+            "name": "King Institute",
+            "shortTitle": "King Institute"
+          }
+        ],
+        "image": "assets/history/mlk-1968.jpg",
+        "imageAlt": "Мартин Лютер Кинг на пресс-конференции"
+      },
+      {
+        "id": "world-1949-nato-founded",
+        "year": 1949,
+        "title": "Подписали договор НАТО",
+        "summary": "Двенадцать государств подписали Североатлантический договор.",
+        "fact": "💡 Альянс создали как систему коллективной обороны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NATO — Founding treaty",
+            "url": "https://www.nato.int/cps/en/natohq/topics_67656.htm",
+            "name": "NATO"
+          }
+        ]
+      },
+      {
+        "id": "world-1975-microsoft-founded",
+        "year": 1975,
+        "title": "Основали Microsoft",
+        "summary": "Билл Гейтс и Пол Аллен основали компанию Micro-Soft.",
+        "fact": "💡 Позже название сократили до привычного Microsoft.",
+        "body": "",
+        "category": "inventions",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Microsoft Corporation",
+            "url": "https://www.britannica.com/topic/Microsoft-Corporation",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-05": [
+      {
+        "id": "world-1722-easter-island-sighted",
+        "year": 1722,
+        "title": "Европейцы у острова Пасхи",
+        "summary": "Якоб Роггевен достиг острова и назвал его островом Пасхи.",
+        "fact": "💡 Команда увидела гигантские каменные статуи моаи.",
+        "body": "",
+        "category": "expeditions",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Easter Island",
+            "url": "https://www.britannica.com/place/Easter-Island",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/easter-island-moai.jpg",
+        "imageAlt": "Ряд каменных статуй моаи на острове Пасхи"
+      },
+      {
+        "id": "world-1614-pocahontas-marriage",
+        "year": 1614,
+        "title": "Свадьба Покахонтас",
+        "summary": "Покахонтас вышла замуж за колониста Джона Рольфа в Виргинии.",
+        "fact": "💡 Брак на время смягчил конфликт между колонией и племенами.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Park Service — Pocahontas: Her Life and Legend",
+            "url": "https://www.nps.gov/jame/learn/historyculture/pocahontas-her-life-and-legend.htm",
+            "name": "National Park Service",
+            "shortTitle": "National Park Service"
+          }
+        ]
+      },
+      {
+        "id": "world-1955-churchill-resigns",
+        "year": 1955,
+        "title": "Черчилль ушёл в отставку",
+        "summary": "Уинстон Черчилль вторично ушёл с поста премьер-министра.",
+        "fact": "💡 Ему было восемьдесят лет; пост занял Энтони Иден.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "UK Parliament — Winston Churchill",
+            "url": "https://www.parliament.uk/about/living-heritage/transformingsociety/private-lives/yourcountry/collections/churchillexhibition/",
+            "name": "UK Parliament",
+            "shortTitle": "UK Parliament"
+          }
+        ]
+      }
+    ],
+    "04-06": [
+      {
+        "id": "world-1896-athens-olympics-open",
+        "year": 1896,
+        "title": "Открылись Олимпийские игры",
+        "summary": "В Афинах открыли первые Олимпийские игры нового времени.",
+        "fact": "💡 После почти полуторатысячелетнего перерыва игры вернулись.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Olympics — Athens 1896",
+            "url": "https://www.olympics.com/en/olympic-games/athens-1896",
+            "name": "Olympics"
+          }
+        ],
+        "image": "assets/history/athens-olympics-1896.jpg",
+        "imageAlt": "Панафинейский стадион на Играх 1896 года в Афинах"
+      },
+      {
+        "id": "world-1917-usa-enters-wwi",
+        "year": 1917,
+        "title": "США вступили в Первую мировую",
+        "summary": "США объявили войну Германии и вступили в Первую мировую.",
+        "fact": "💡 Конгресс проголосовал после кампании неограниченной подводной войны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — United States Enters World War I",
+            "url": "https://www.loc.gov/item/today-in-history/april-06/",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "world-1483-raphael-born",
+        "year": 1483,
+        "title": "Родился Рафаэль",
+        "summary": "В Урбино родился Рафаэль Санти — мастер Высокого Возрождения.",
+        "fact": "💡 Среди его шедевров — фрески ватиканских станц.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Raphael",
+            "url": "https://www.britannica.com/biography/Raphael-Italian-painter-and-architect",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-07": [
+      {
+        "id": "world-1948-who-constitution",
+        "year": 1948,
+        "title": "Вступила в силу ВОЗ",
+        "summary": "Конституция Всемирной организации здравоохранения вступила в силу.",
+        "fact": "💡 Этот день отмечают как Всемирный день здоровья.",
+        "body": "",
+        "category": "medicine",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "WHO — History",
+            "url": "https://www.who.int/about/history/",
+            "name": "WHO"
+          }
+        ],
+        "image": "assets/history/who-founded-1948.jpg",
+        "imageAlt": "Штаб-квартира Всемирной организации здравоохранения в Женеве"
+      },
+      {
+        "id": "world-1994-rwanda-genocide-begins",
+        "year": 1994,
+        "title": "Начало геноцида в Руанде",
+        "summary": "После гибели президента в Руанде начался массовый геноцид.",
+        "fact": "💡 За около ста дней были убиты сотни тысяч тутси и умеренных хуту.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "United Nations — Rwanda: A Brief History of the Country",
+            "url": "https://www.un.org/en/preventgenocide/rwanda/historical-background.shtml",
+            "name": "United Nations",
+            "shortTitle": "United Nations"
+          }
+        ]
+      },
+      {
+        "id": "world-1827-friction-match",
+        "year": 1827,
+        "title": "Продали первые спички",
+        "summary": "Джон Уокер записал первую продажу зажигательных спичек.",
+        "fact": "💡 В дневнике аптекаря из Стоктона сохранена запись от 7 апреля.",
+        "body": "",
+        "category": "inventions",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Nature — The Centenary of the Friction Match",
+            "url": "https://www.nature.com/articles/119495a0",
+            "name": "Nature"
+          }
+        ]
+      }
+    ],
+    "04-08": [
+      {
+        "id": "world-1820-venus-de-milo-found",
+        "year": 1820,
+        "title": "Нашли Венеру Милосскую",
+        "summary": "На острове Милос обнаружили античную статую Венеры Милосской.",
+        "fact": "💡 Скульптуру вскоре увезли в Лувр, где она и осталась.",
+        "body": "",
+        "category": "archaeology",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Louvre — Aphrodite, known as the Venus de Milo",
+            "url": "https://www.louvre.fr/en/oeuvre-notices/aphrodite-known-venus-de-milo",
+            "name": "Louvre",
+            "shortTitle": "Louvre"
+          }
+        ],
+        "image": "assets/history/venus-de-milo.jpg",
+        "imageAlt": "Античная статуя Венеры Милосской в Лувре"
+      },
+      {
+        "id": "world-1974-hank-aaron-715",
+        "year": 1974,
+        "title": "Хэнк Аарон побил рекорд",
+        "summary": "Хэнк Аарон выбил 715-й хоумран и обошёл Бэйба Рута.",
+        "fact": "💡 Рекорд Рута держался почти сорок лет.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Baseball Hall of Fame — Hank Aaron",
+            "url": "https://baseballhall.org/hall-of-famers/aaron-hank",
+            "name": "Baseball Hall of Fame",
+            "shortTitle": "Baseball Hall of Fame"
+          }
+        ]
+      },
+      {
+        "id": "world-1913-17th-amendment",
+        "year": 1913,
+        "title": "Прямые выборы сенаторов",
+        "summary": "Ратифицировали 17-ю поправку о прямых выборах сенаторов США.",
+        "fact": "💡 Раньше сенаторов выбирали законодательные собрания штатов.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — 17th Amendment to the U.S. Constitution",
+            "url": "https://www.archives.gov/milestone-documents/17th-amendment",
+            "name": "National Archives",
+            "shortTitle": "National Archives"
+          }
+        ]
+      }
+    ],
+    "04-09": [
+      {
+        "id": "world-1865-appomattox-surrender",
+        "year": 1865,
+        "title": "Капитуляция при Аппоматтоксе",
+        "summary": "Ли капитулировал перед Грантом — Гражданская война шла к концу.",
+        "fact": "💡 Условия позволили солдатам юга сохранить лошадей и уйти домой.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Park Service — Appomattox Court House",
+            "url": "https://www.nps.gov/apco/learn/historyculture/index.htm",
+            "name": "National Park Service",
+            "shortTitle": "National Park Service"
+          }
+        ],
+        "image": "assets/history/appomattox-1865.jpg",
+        "imageAlt": "Дом Маклина в Аппоматтоксе, где подписали капитуляцию"
+      },
+      {
+        "id": "world-1866-civil-rights-act",
+        "year": 1866,
+        "title": "Закон о гражданских правах",
+        "summary": "Конгресс преодолел вето и принял Civil Rights Act 1866 года.",
+        "fact": "💡 Закон признал гражданство и базовые права бывших рабов.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Senate — The Civil Rights Bill of 1866",
+            "url": "https://www.senate.gov/artandhistory/history/common/generic/CivilRightsAct1866.htm",
+            "name": "US Senate",
+            "shortTitle": "US Senate"
+          }
+        ]
+      },
+      {
+        "id": "world-1959-nasa-mercury-seven",
+        "year": 1959,
+        "title": "Представили «Меркурий-7»",
+        "summary": "NASA представила семерых астронавтов программы «Меркурий».",
+        "fact": "💡 Их прозвали Mercury Seven — первые американские астронавты.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Mercury Seven",
+            "url": "https://www.nasa.gov/image-article/mercury-seven/",
+            "name": "NASA"
+          }
+        ]
+      }
+    ],
+    "04-10": [
+      {
+        "id": "world-1998-good-friday-agreement",
+        "year": 1998,
+        "title": "Соглашение Страстной пятницы",
+        "summary": "В Белфасте подписали соглашение, завершившее «Смуту» в Ольстере.",
+        "fact": "💡 Документ создал совместное управление протестантов и католиков.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "UK Government — The Belfast Agreement",
+            "url": "https://www.gov.uk/government/publications/the-belfast-agreement",
+            "name": "UK Government",
+            "shortTitle": "UK Government"
+          }
+        ],
+        "image": "assets/history/good-friday-agreement-1998.jpg",
+        "imageAlt": "Плакат кампании «Yes» за Соглашение Страстной пятницы, 1998"
+      },
+      {
+        "id": "world-1945-buchenwald-liberated",
+        "year": 1945,
+        "title": "Освободили Бухенвальд",
+        "summary": "Американские войска освободили концлагерь Бухенвальд.",
+        "fact": "💡 Лагерь близ Веймара держали с 1937 года.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "United States Holocaust Memorial Museum — Buchenwald",
+            "url": "https://encyclopedia.ushmm.org/content/en/article/buchenwald",
+            "name": "USHMM",
+            "shortTitle": "USHMM"
+          }
+        ]
+      },
+      {
+        "id": "world-1866-aspca-founded",
+        "year": 1866,
+        "title": "Основали ASPCA",
+        "summary": "В Нью-Йорке основали общество защиты животных ASPCA.",
+        "fact": "💡 Это первая крупная организация защиты животных в США.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "ASPCA — History",
+            "url": "https://www.aspca.org/about-us/history",
+            "name": "ASPCA"
+          }
+        ]
+      }
+    ],
+    "04-11": [
+      {
+        "id": "world-1970-apollo13-launch",
+        "year": 1970,
+        "title": "Старт Apollo 13",
+        "summary": "С мыса Кеннеди стартовал пилотируемый корабль Apollo 13.",
+        "fact": "💡 Через два дня взрыв бака кислорода сорвал высадку на Луну.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — 50 Years Ago: Liftoff of Apollo 13",
+            "url": "https://www.nasa.gov/history/50-years-ago-liftoff-of-apollo-13/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ],
+        "image": "assets/history/apollo13-launch-1970.jpg",
+        "imageAlt": "Старт ракеты Saturn V с кораблём Apollo 13"
+      },
+      {
+        "id": "world-1814-napoleon-abdicates",
+        "year": 1814,
+        "title": "Наполеон отрёкся от трона",
+        "summary": "Наполеон впервые отрёкся от власти после поражения Франции.",
+        "fact": "💡 Его сослали на остров Эльба в Средиземном море.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Napoleon I",
+            "url": "https://www.britannica.com/biography/Napoleon-I",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1968-fair-housing-act",
+        "year": 1968,
+        "title": "Закон о справедливом жилье",
+        "summary": "Джонсон подписал закон против дискриминации при продаже жилья.",
+        "fact": "💡 Акт приняли через неделю после убийства Мартина Лютера Кинга.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — Fair Housing Act",
+            "url": "https://www.archives.gov/research/african-americans/fair-housing",
+            "name": "National Archives",
+            "shortTitle": "National Archives"
+          }
+        ]
+      }
+    ],
     "04-12": [
       {
         "id": "ru-1961-gagarin-vostok1",
-        "dateKey": "04-12",
         "year": 1961,
         "title": "Первый полёт человека в космос",
-        "summary": "Юрий Гагарин на корабле «Восток-1» стал первым человеком, вышедшим на орбиту Земли. Полёт длился 108 минут.",
+        "summary": "Юрий Гагарин на «Востоке-1» стал первым человеком на орбите.",
+        "fact": "💡 Полёт длился 108 минут — один виток вокруг Земли.",
         "body": "",
         "category": "space",
         "region": "RU",
-        "locale": "ru-RU",
         "priority": 100,
+        "interest": 10,
         "status": "verified",
-        "image": "assets/history/gagarin-vostok.jpg",
-        "imageAlt": "Корабль «Восток» на фоне Земли",
         "sources": [
           {
-            "title": "NASA Science",
+            "title": "NASA Science — Yuri Gagarin: First Human in Space",
             "url": "https://science.nasa.gov/resource/yuri-gagarin-first-human-in-space/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ],
+        "image": "assets/history/gagarin-vostok.jpg",
+        "imageAlt": "Корабль «Восток» на фоне Земли"
+      },
+      {
+        "id": "world-1861-fort-sumter",
+        "year": 1861,
+        "title": "Обстрел форта Самтер",
+        "summary": "Конфедераты открыли огонь по форту Самтер — началась война.",
+        "fact": "💡 Бомбардировка в Чарлстоне стала стартом Гражданской войны США.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Park Service — Fort Sumter",
+            "url": "https://www.nps.gov/fosu/learn/historyculture/index.htm",
+            "name": "National Park Service",
+            "shortTitle": "National Park Service"
+          }
+        ]
+      },
+      {
+        "id": "world-1981-columbia-sts1",
+        "year": 1981,
+        "title": "Первый полёт шаттла",
+        "summary": "Стартовал Columbia STS-1 — первый полёт космического челнока.",
+        "fact": "💡 Командиром был Джон Янг, пилотом — Роберт Криппен.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — STS-1: The First Space Shuttle Mission",
+            "url": "https://www.nasa.gov/mission/sts-1/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ]
+      }
+    ],
+    "04-13": [
+      {
+        "id": "world-1970-apollo13-explosion",
+        "year": 1970,
+        "title": "Авария на Apollo 13",
+        "summary": "На Apollo 13 взорвался бак кислорода — миссию прервали.",
+        "fact": "💡 Экипаж использовал лунный модуль как «спасательную шлюпку».",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Apollo 13",
+            "url": "https://www.nasa.gov/mission/apollo-13/",
             "name": "NASA"
+          }
+        ],
+        "image": "assets/history/apollo13-damaged-1970.jpg",
+        "imageAlt": "Повреждённый служебный модуль Apollo 13 после аварии"
+      },
+      {
+        "id": "world-1743-jefferson-born",
+        "year": 1743,
+        "title": "Родился Томас Джефферсон",
+        "summary": "В Виргинии родился автор Декларации независимости Джефферсон.",
+        "fact": "💡 Позже он стал третьим президентом США.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — Thomas Jefferson",
+            "url": "https://www.loc.gov/collections/thomas-jefferson-papers/about-this-collection/",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "world-1870-metropolitan-museum",
+        "year": 1870,
+        "title": "Основали Метрополитен-музей",
+        "summary": "В Нью-Йорке основали Metropolitan Museum of Art.",
+        "fact": "💡 Сегодня это один из крупнейших художественных музеев мира.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "The Met — History of the Museum",
+            "url": "https://www.metmuseum.org/about-the-met/history",
+            "name": "The Met"
+          }
+        ]
+      }
+    ],
+    "04-14": [
+      {
+        "id": "world-1865-lincoln-shot",
+        "year": 1865,
+        "title": "Покушение на Линкольна",
+        "summary": "В театре Форда застрелили президента Авраама Линкольна.",
+        "fact": "💡 Стрелял актёр Джон Уилкс Бут во время спектакля.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Park Service — Ford's Theatre",
+            "url": "https://www.nps.gov/foth/learn/historyculture/index.htm",
+            "name": "National Park Service",
+            "shortTitle": "National Park Service"
+          }
+        ],
+        "image": "assets/history/fords-theatre-lincoln.jpg",
+        "imageAlt": "Сцена покушения на Линкольна в театре Форда"
+      },
+      {
+        "id": "world-1912-titanic-hits-iceberg",
+        "year": 1912,
+        "title": "«Титаник» столкнулся с айсбергом",
+        "summary": "Ночью «Титаник» врезался в айсберг в Северной Атлантике.",
+        "fact": "💡 Корабль затонул ранним утром следующего дня.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Titanic",
+            "url": "https://www.britannica.com/topic/Titanic",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1828-webster-dictionary",
+        "year": 1828,
+        "title": "Словарь Вебстера",
+        "summary": "Ной Вебстер издал большой словарь американского английского.",
+        "fact": "💡 Книга закрепила многие американские нормы написания.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Noah Webster",
+            "url": "https://www.britannica.com/biography/Noah-Webster-American-lexicographer",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-15": [
+      {
+        "id": "world-1912-titanic-sinks",
+        "year": 1912,
+        "title": "Гибель «Титаника»",
+        "summary": "В Северной Атлантике затонул лайнер «Титаник».",
+        "fact": "💡 Из более чем двух тысяч человек спаслись около семисот.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Titanic",
+            "url": "https://www.britannica.com/topic/Titanic",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/titanic-1912.jpg",
+        "imageAlt": "Лайнер RMS Titanic перед первым рейсом"
+      },
+      {
+        "id": "world-1865-lincoln-dies",
+        "year": 1865,
+        "title": "Умер Авраам Линкольн",
+        "summary": "Утром после ранения скончался президент Авраам Линкольн.",
+        "fact": "💡 Он умер в доме напротив театра Форда в Вашингтоне.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — Assassination of President Abraham Lincoln",
+            "url": "https://www.loc.gov/collections/abraham-lincoln-papers/articles-and-essays/assassination-of-president-abraham-lincoln/",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "world-1817-american-school-deaf",
+        "year": 1817,
+        "title": "Школа для глухих в США",
+        "summary": "В Хартфорде открыли первую постоянную школу для глухих в США.",
+        "fact": "💡 Её основали Томас Галлоде и Лоран Клерк.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Gallaudet University — History",
+            "url": "https://www.gallaudet.edu/about/history-and-traditions/",
+            "name": "Gallaudet University",
+            "shortTitle": "Gallaudet University"
+          }
+        ]
+      }
+    ],
+    "04-16": [
+      {
+        "id": "ru-1917-lenin-returns",
+        "year": 1917,
+        "title": "Ленин вернулся в Петроград",
+        "summary": "Владимир Ленин прибыл на Финляндский вокзал в Петрограде.",
+        "fact": "💡 «Апрельские тезисы» вскоре изменили курс большевиков.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Vladimir Lenin",
+            "url": "https://www.britannica.com/biography/Vladimir-Lenin",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/lenin-finland-station-1917.jpg",
+        "imageAlt": "Ленин выступает у Финляндского вокзала после прибытия в 1917"
+      },
+      {
+        "id": "world-1862-dc-slavery-abolished",
+        "year": 1862,
+        "title": "Отменили рабство в округе Колумбия",
+        "summary": "Конгресс отменил рабство в федеральном округе Колумбия.",
+        "fact": "💡 Владельцам выплатили компенсацию из казны.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — District of Columbia Emancipation Act",
+            "url": "https://www.archives.gov/exhibits/featured-documents/dc-emancipation-act",
+            "name": "National Archives",
+            "shortTitle": "National Archives"
+          }
+        ]
+      },
+      {
+        "id": "world-1889-chaplin-born",
+        "year": 1889,
+        "title": "Родился Чарли Чаплин",
+        "summary": "В Лондоне родился комик и режиссёр Чарльз Чаплин.",
+        "fact": "💡 Его «Маленький бродяга» стал символом немого кино.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Charlie Chaplin",
+            "url": "https://www.britannica.com/biography/Charlie-Chaplin",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-17": [
+      {
+        "id": "world-1970-apollo13-splashdown",
+        "year": 1970,
+        "title": "Возвращение Apollo 13",
+        "summary": "Экипаж Apollo 13 благополучно приводнился в Тихом океане.",
+        "fact": "💡 Спасательную операцию назвали одной из лучших в истории NASA.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Apollo 13 Splashdown",
+            "url": "https://www.nasa.gov/image-article/apollo-13-splashdown/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/apollo13-recovery-1970.jpg",
+        "imageAlt": "Экипаж Apollo 13 после приводнения поднимают на борт"
+      },
+      {
+        "id": "world-1961-bay-of-pigs",
+        "year": 1961,
+        "title": "Высадка в заливе Свиней",
+        "summary": "Антикастровский десант потерпел поражение в заливе Свиней.",
+        "fact": "💡 Провал усилил напряжение между США, Кубой и СССР.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "JFK Library — The Bay of Pigs",
+            "url": "https://www.jfklibrary.org/learn/about-jfk/jfk-in-history/the-bay-of-pigs",
+            "name": "JFK Library"
+          }
+        ]
+      },
+      {
+        "id": "world-1989-solidarity-legalized",
+        "year": 1989,
+        "title": "Легализовали «Солидарность»",
+        "summary": "В Польше официально легализовали профсоюз «Солидарность».",
+        "fact": "💡 Это ускорило конец монополии компартии на власть.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Solidarity",
+            "url": "https://www.britannica.com/topic/Solidarity",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-18": [
+      {
+        "id": "world-1906-san-francisco-quake",
+        "year": 1906,
+        "title": "Землетрясение в Сан-Франциско",
+        "summary": "Сильное землетрясение и пожары разрушили Сан-Франциско.",
+        "fact": "💡 Огонь бушевал несколько дней и уничтожил огромную часть города.",
+        "body": "",
+        "category": "nature",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "USGS — The Great 1906 San Francisco Earthquake",
+            "url": "https://earthquake.usgs.gov/earthquakes/events/1906calif/18april/",
+            "name": "USGS",
+            "shortTitle": "USGS"
+          }
+        ],
+        "image": "assets/history/san-francisco-1906.jpg",
+        "imageAlt": "Разрушенный Сан-Франциско после землетрясения 1906 года"
+      },
+      {
+        "id": "world-1775-paul-revere-ride",
+        "year": 1775,
+        "title": "Ночная скачка Пола Ревира",
+        "summary": "Пол Ревир предупредил колонистов о приближении британцев.",
+        "fact": "💡 Вместе с ним ехал Уильям Доус по другому маршруту.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Park Service — Paul Revere's Ride",
+            "url": "https://www.nps.gov/mima/learn/historyculture/paul-revere.htm",
+            "name": "National Park Service",
+            "shortTitle": "National Park Service"
+          }
+        ]
+      },
+      {
+        "id": "world-1942-doolittle-raid",
+        "year": 1942,
+        "title": "Рейд Дулиттла на Токио",
+        "summary": "Бомбардировщики Дулиттла нанесли первый удар по Японии.",
+        "fact": "💡 Самолёты взлетели с авианосца Hornet — это был отчаянный рейд.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Museum of the U.S. Air Force — Doolittle Raid",
+            "url": "https://www.nationalmuseum.af.mil/Visit/Museum-Exhibits/Fact-Sheets/Display/Article/196212/doolittle-raid/",
+            "name": "US Air Force Museum",
+            "shortTitle": "US Air Force Museum"
+          }
+        ]
+      }
+    ],
+    "04-19": [
+      {
+        "id": "world-1775-lexington-concord",
+        "year": 1775,
+        "title": "Лексингтон и Конкорд",
+        "summary": "У Лексингтона прозвучал «выстрел, услышанный во всём мире».",
+        "fact": "💡 Стычки положили начало Войне за независимость США.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Park Service — Lexington and Concord",
+            "url": "https://www.nps.gov/mima/learn/historyculture/lexington-and-concord.htm",
+            "name": "National Park Service",
+            "shortTitle": "National Park Service"
+          }
+        ],
+        "image": "assets/history/lexington-1775.jpg",
+        "imageAlt": "Картина битвы при Лексингтоне 1775 года"
+      },
+      {
+        "id": "world-1943-warsaw-ghetto-uprising",
+        "year": 1943,
+        "title": "Восстание в Варшавском гетто",
+        "summary": "Жители Варшавского гетто подняли вооружённое восстание.",
+        "fact": "💡 Это было крупнейшее еврейское восстание в оккупированной Европе.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "United States Holocaust Memorial Museum — Warsaw Ghetto Uprising",
+            "url": "https://encyclopedia.ushmm.org/content/en/article/warsaw-ghetto-uprising",
+            "name": "USHMM",
+            "shortTitle": "USHMM"
+          }
+        ]
+      },
+      {
+        "id": "ru-1971-salyut1-launch",
+        "year": 1971,
+        "title": "Старт «Салюта-1»",
+        "summary": "СССР вывел на орбиту «Салют-1» — первую орбитальную станцию.",
+        "fact": "💡 Станция открыла эру долговременных полётов на орбите.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — 50 Years Ago: Launch of Salyut 1",
+            "url": "https://www.nasa.gov/history/50-years-ago-launch-of-salyut-1-worlds-first-space-station/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ]
+      }
+    ],
+    "04-20": [
+      {
+        "id": "world-1972-apollo16-landing",
+        "year": 1972,
+        "title": "Apollo 16 сел на Луну",
+        "summary": "Apollo 16 совершил пятую высадку людей на Луну.",
+        "fact": "💡 Джон Янг и Чарльз Дьюк работали в районе Декарта.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Apollo 16",
+            "url": "https://www.nasa.gov/mission/apollo-16/",
+            "name": "NASA"
+          }
+        ],
+        "image": "assets/history/apollo16-1972.jpg",
+        "imageAlt": "Астронавт Джон Янг на Луне во время Apollo 16"
+      },
+      {
+        "id": "world-1534-cartier-sails",
+        "year": 1534,
+        "title": "Картье вышел из Сен-Мало",
+        "summary": "Жак Картье отплыл из Сен-Мало в первую экспедицию к Канаде.",
+        "fact": "💡 Берегов Ньюфаундленда он достиг уже в мае.",
+        "body": "",
+        "category": "expeditions",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Jacques Cartier",
+            "url": "https://www.britannica.com/biography/Jacques-Cartier",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1902-curie-radium-chloride",
+        "year": 1902,
+        "title": "Кюри выделили радий",
+        "summary": "Мария и Пьер Кюри выделили чистый хлорид радия.",
+        "fact": "💡 Позже Мария получила Нобелевскую премию и по химии.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Nobel Prize — Marie Curie Biographical",
+            "url": "https://www.nobelprize.org/prizes/physics/1903/marie-curie/biographical/",
+            "name": "Nobel Prize",
+            "shortTitle": "Nobel Prize"
+          }
+        ]
+      }
+    ],
+    "04-21": [
+      {
+        "id": "world-1960-brasilia-inaugurated",
+        "year": 1960,
+        "title": "Открыли столицу Бразилиа",
+        "summary": "Бразилия торжественно открыла новую столицу — Бразилиа.",
+        "fact": "💡 Город спроектировали Оскар Нимейер и Лусио Коста.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Brasília",
+            "url": "https://www.britannica.com/place/Brasilia",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/brasilia-1960.jpg",
+        "imageAlt": "Здание Национального конгресса в Бразилиа"
+      },
+      {
+        "id": "world-1836-san-jacinto",
+        "year": 1836,
+        "title": "Битва при Сан-Хасинто",
+        "summary": "Текзасцы разбили армию Санта-Анны при Сан-Хасинто.",
+        "fact": "💡 Победа обеспечила независимость Республики Техас.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Texas State Historical Association — San Jacinto, Battle of",
+            "url": "https://www.tshaonline.org/handbook/entries/san-jacinto-battle-of",
+            "name": "TSHA",
+            "shortTitle": "TSHA"
+          }
+        ]
+      },
+      {
+        "id": "world-1918-red-baron-killed",
+        "year": 1918,
+        "title": "Гибель Красного барона",
+        "summary": "В воздушном бою погиб ас Манфред фон Рихтгофен.",
+        "fact": "💡 Ему приписывали 80 воздушных побед за Первую мировую.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Manfred, Freiherr von Richthofen",
+            "url": "https://www.britannica.com/biography/Manfred-Freiherr-von-Richthofen",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-22": [
+      {
+        "id": "world-1970-first-earth-day",
+        "year": 1970,
+        "title": "Первый День Земли",
+        "summary": "В США прошёл первый массовый День Земли.",
+        "fact": "💡 Акция помогла принять законы об охране окружающей среды.",
+        "body": "",
+        "category": "nature",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "EarthDay.org — The History of Earth Day",
+            "url": "https://www.earthday.org/history/",
+            "name": "EarthDay.org",
+            "shortTitle": "EarthDay.org"
+          }
+        ],
+        "image": "assets/history/earth-day-1970.jpg",
+        "imageAlt": "Выступление на первом Дне Земли в Филадельфии, 22 апреля 1970"
+      },
+      {
+        "id": "ru-1870-lenin-born",
+        "year": 1870,
+        "title": "Родился Владимир Ленин",
+        "summary": "В Симбирске родился Владимир Ульянов — будущий Ленин.",
+        "fact": "💡 Он возглавил Октябрьскую революцию 1917 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Vladimir Lenin",
+            "url": "https://www.britannica.com/biography/Vladimir-Lenin",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1889-oklahoma-land-rush",
+        "year": 1889,
+        "title": "Земельная гонка в Оклахоме",
+        "summary": "По сигналу тысячи поселенцев ринулись занимать земли Оклахомы.",
+        "fact": "💡 Тех, кто стартовал раньше сигнала, прозвали sooners.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — The Oklahoma Land Rush",
+            "url": "https://www.loc.gov/item/today-in-history/april-22/",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ]
+      }
+    ],
+    "04-23": [
+      {
+        "id": "world-1564-shakespeare-born",
+        "year": 1564,
+        "title": "День рождения Шекспира",
+        "summary": "Традиционно отмечают день рождения Уильяма Шекспира.",
+        "fact": "💡 Точная дата рождения неизвестна; крестили его 26 апреля.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — William Shakespeare",
+            "url": "https://www.britannica.com/biography/William-Shakespeare",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/shakespeare-chandos.jpg",
+        "imageAlt": "Портрет Уильяма Шекспира (Chandos)"
+      },
+      {
+        "id": "world-1616-cervantes-died",
+        "year": 1616,
+        "title": "Умер Мигель де Сервантес",
+        "summary": "В Мадриде скончался автор «Дон Кихота» Мигель де Сервантес.",
+        "fact": "💡 По григорианскому календарю это 22 апреля; часто пишут 23-е.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Miguel de Cervantes",
+            "url": "https://www.britannica.com/biography/Miguel-de-Cervantes",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-2005-youtube-first-video",
+        "year": 2005,
+        "title": "Первое видео на YouTube",
+        "summary": "На YouTube загрузили первое видео — «Me at the zoo».",
+        "fact": "💡 Ролик длится 19 секунд и снят в зоопарке Сан-Диего.",
+        "body": "",
+        "category": "inventions",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — YouTube",
+            "url": "https://www.britannica.com/topic/YouTube",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-24": [
+      {
+        "id": "world-1990-hubble-launched",
+        "year": 1990,
+        "title": "Запустили телескоп «Хаббл»",
+        "summary": "Шаттл Discovery вывел на орбиту телескоп «Хаббл».",
+        "fact": "💡 Позже выяснилось, что зеркало было отшлифовано с ошибкой.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — About the Hubble Space Telescope",
+            "url": "https://science.nasa.gov/mission/hubble/overview/about-hubble/",
+            "name": "NASA",
+            "shortTitle": "NASA"
+          }
+        ],
+        "image": "assets/history/hubble-launch-1990.jpg",
+        "imageAlt": "Развёртывание телескопа «Хаббл» из грузового отсека Discovery"
+      },
+      {
+        "id": "world-1800-library-of-congress",
+        "year": 1800,
+        "title": "Основали Библиотеку Конгресса",
+        "summary": "Конгресс учредил Библиотеку Конгресса США.",
+        "fact": "💡 Сейчас это одна из крупнейших библиотек мира.",
+        "body": "",
+        "category": "culture",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Library of Congress — History of the Library of Congress",
+            "url": "https://www.loc.gov/about/history-of-the-library/",
+            "name": "Library of Congress",
+            "shortTitle": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "world-1915-armenian-genocide-begins",
+        "year": 1915,
+        "title": "Начало геноцида армян",
+        "summary": "В Османской империи начались массовые аресты армянской элиты.",
+        "fact": "💡 24 апреля стало днём памяти жертв геноцида армян.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "United States Holocaust Memorial Museum — The Armenian Genocide",
+            "url": "https://encyclopedia.ushmm.org/content/en/article/the-armenian-genocide-1915-16-overview",
+            "name": "USHMM",
+            "shortTitle": "USHMM"
+          }
+        ]
+      }
+    ],
+    "04-25": [
+      {
+        "id": "world-1915-gallipoli-landing",
+        "year": 1915,
+        "title": "Высадка на Галлиполи",
+        "summary": "Союзники высадились на полуострове Галлиполи.",
+        "fact": "💡 День стал Днём АНЗАК в Австралии и Новой Зеландии.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Australian War Memorial — Gallipoli",
+            "url": "https://www.awm.gov.au/articles/encyclopedia/gallipoli",
+            "name": "Australian War Memorial",
+            "shortTitle": "Australian War Memorial"
+          }
+        ],
+        "image": "assets/history/gallipoli-1915.jpg",
+        "imageAlt": "Бухта Анзак на полуострове Галлиполи"
+      },
+      {
+        "id": "world-1874-marconi-born",
+        "year": 1874,
+        "title": "Родился Гульельмо Маркони",
+        "summary": "В Болонье родился пионер беспроволочной связи Маркони.",
+        "fact": "💡 В 1909 году он получил Нобелевскую премию по физике.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Nobel Prize — Guglielmo Marconi Biographical",
+            "url": "https://www.nobelprize.org/prizes/physics/1909/marconi/biographical/",
+            "name": "Nobel Prize",
+            "shortTitle": "Nobel Prize"
+          }
+        ]
+      },
+      {
+        "id": "world-1953-watson-crick-nature",
+        "year": 1953,
+        "title": "Статья о двойной спирали ДНК",
+        "summary": "В журнале Nature вышла статья Уотсона и Крика о ДНК.",
+        "fact": "💡 Модель двойной спирали изменила биологию и медицину.",
+        "body": "",
+        "category": "science",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Nature — Molecular Structure of Nucleic Acids (1953)",
+            "url": "https://www.nature.com/articles/171737a0",
+            "name": "Nature",
+            "shortTitle": "Nature"
+          }
+        ]
+      }
+    ],
+    "04-26": [
+      {
+        "id": "world-1986-chernobyl",
+        "year": 1986,
+        "title": "Авария на Чернобыльской АЭС",
+        "summary": "Взорвался реактор №4 Чернобыльской атомной станции.",
+        "fact": "💡 Это крупнейшая ядерная авария в истории энергетики.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "IAEA — Chernobyl",
+            "url": "https://www.iaea.org/topics/chernobyl",
+            "name": "IAEA"
+          }
+        ],
+        "image": "assets/history/chernobyl-1986.jpg",
+        "imageAlt": "Турбинный зал 4-го энергоблока Чернобыльской АЭС"
+      },
+      {
+        "id": "world-1937-guernica-bombed",
+        "year": 1937,
+        "title": "Бомбардировка Герники",
+        "summary": "Немецкая авиация разбомбила баскский город Герника.",
+        "fact": "💡 Трагедия вдохновила знаменитую картину Пикассо.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Bombing of Guernica",
+            "url": "https://www.britannica.com/event/Bombing-of-Guernica",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1962-ranger4-moon",
+        "year": 1962,
+        "title": "Ranger 4 достиг Луны",
+        "summary": "Американский Ranger 4 врезался в обратную сторону Луны.",
+        "fact": "💡 Это первый аппарат США, достигший лунной поверхности.",
+        "body": "",
+        "category": "space",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — Ranger 4",
+            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1962-012A",
+            "name": "NASA"
+          }
+        ]
+      }
+    ],
+    "04-27": [
+      {
+        "id": "world-1994-sa-freedom-day",
+        "year": 1994,
+        "title": "День свободы в ЮАР",
+        "summary": "В ЮАР прошли первые всеобщие многорасовые выборы.",
+        "fact": "💡 27 апреля с тех пор отмечают как День свободы.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — South Africa: Transition to nonracial democracy",
+            "url": "https://www.britannica.com/place/South-Africa/Transition",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          }
+        ],
+        "image": "assets/history/mandela-voting-1994.jpg",
+        "imageAlt": "Нельсон Мандела голосует на выборах 1994 года"
+      },
+      {
+        "id": "world-1521-magellan-killed",
+        "year": 1521,
+        "title": "Гибель Магеллана",
+        "summary": "На Филиппинах в стычке погиб Фернан Магеллан.",
+        "fact": "💡 Экспедиция всё же завершила первое кругосветное плавание.",
+        "body": "",
+        "category": "expeditions",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Ferdinand Magellan",
+            "url": "https://www.britannica.com/biography/Ferdinand-Magellan",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1791-morse-born",
+        "year": 1791,
+        "title": "Родился Сэмюэл Морзе",
+        "summary": "В США родился изобретатель телеграфа Сэмюэл Морзе.",
+        "fact": "💡 Его азбука стала мировым стандартом связи XIX века.",
+        "body": "",
+        "category": "inventions",
+        "region": "WORLD",
+        "priority": 75,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Samuel F.B. Morse",
+            "url": "https://www.britannica.com/biography/Samuel-F-B-Morse",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-28": [
+      {
+        "id": "world-1789-bounty-mutiny",
+        "year": 1789,
+        "title": "Мятеж на «Баунти»",
+        "summary": "Команда «Баунти» подняла мятеж против капитана Блая.",
+        "fact": "💡 Блая и лояльных матросов пустили в шлюпке через океан.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Mutiny on the Bounty",
+            "url": "https://www.britannica.com/event/Mutiny-on-the-Bounty",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/bounty-mutiny-1789.jpg",
+        "imageAlt": "Сцена мятежа на корабле «Баунти»"
+      },
+      {
+        "id": "world-1947-kontiki-sails",
+        "year": 1947,
+        "title": "Старт экспедиции «Кон-Тики»",
+        "summary": "Плот «Кон-Тики» Тура Хейердала вышел из Перу в океан.",
+        "fact": "💡 Цель — доказать возможность древних плаваний в Полинезию.",
+        "body": "",
+        "category": "expeditions",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Kon-Tiki",
+            "url": "https://www.britannica.com/topic/Kon-Tiki",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1945-mussolini-executed",
+        "year": 1945,
+        "title": "Казнили Муссолини",
+        "summary": "Итальянские партизаны казнили Бенито Муссолини.",
+        "fact": "💡 Тело диктатора затем выставили в Милане.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Benito Mussolini",
+            "url": "https://www.britannica.com/biography/Benito-Mussolini",
+            "name": "Britannica"
+          }
+        ]
+      }
+    ],
+    "04-29": [
+      {
+        "id": "world-1945-dachau-liberated",
+        "year": 1945,
+        "title": "Освободили Дахау",
+        "summary": "Американские войска освободили концлагерь Дахау.",
+        "fact": "💡 Дахау был первым крупным лагерем нацистской Германии.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "United States Holocaust Memorial Museum — Dachau",
+            "url": "https://encyclopedia.ushmm.org/content/en/article/dachau",
+            "name": "USHMM",
+            "shortTitle": "USHMM"
+          }
+        ],
+        "image": "assets/history/dachau-1945.jpg",
+        "imageAlt": "Американский офицер на территории освобождённого Дахау"
+      },
+      {
+        "id": "world-1429-joan-enters-orleans",
+        "year": 1429,
+        "title": "Жанна д’Арк вошла в Орлеан",
+        "summary": "Жанна д’Арк с подкреплением вошла в осаждённый Орлеан.",
+        "fact": "💡 Осаду англичан сняли через несколько дней, 8 мая.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Joan of Arc",
+            "url": "https://www.britannica.com/biography/Saint-Joan-of-Arc",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "world-1913-zipper-patent",
+        "year": 1913,
+        "title": "Патент на застёжку-молнию",
+        "summary": "Гидеон Сундбек получил ключевой патент на современную молнию.",
+        "fact": "💡 Конструкция почти не изменилась за сто с лишним лет.",
+        "body": "",
+        "category": "inventions",
+        "region": "WORLD",
+        "priority": 70,
+        "interest": 7,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Smithsonian — The History of the Zipper",
+            "url": "https://www.smithsonianmag.com/innovation/fascinating-history-zipper-180963363/",
+            "name": "Smithsonian",
+            "shortTitle": "Smithsonian"
+          }
+        ]
+      }
+    ],
+    "04-30": [
+      {
+        "id": "world-1789-washington-inaugurated",
+        "year": 1789,
+        "title": "Инаугурация Вашингтона",
+        "summary": "Джордж Вашингтон принял присягу первого президента США.",
+        "fact": "💡 Церемония прошла на балконе Federal Hall в Нью-Йорке.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — George Washington's First Inaugural Address",
+            "url": "https://www.archives.gov/milestone-documents/president-george-washingtons-first-inaugural-speech",
+            "name": "National Archives",
+            "shortTitle": "National Archives"
+          }
+        ],
+        "image": "assets/history/washington-inauguration-1789.jpg",
+        "imageAlt": "Инаугурация Джорджа Вашингтона в 1789 году"
+      },
+      {
+        "id": "world-1803-louisiana-purchase-treaty",
+        "year": 1803,
+        "title": "Договор о покупке Луизианы",
+        "summary": "США и Франция подписали договор о покупке Луизианы.",
+        "fact": "💡 Территория США почти удвоилась за 15 миллионов долларов.",
+        "body": "",
+        "category": "history",
+        "region": "WORLD",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National Archives — Louisiana Purchase Treaty",
+            "url": "https://www.archives.gov/milestone-documents/louisiana-purchase-treaty",
+            "name": "National Archives",
+            "shortTitle": "National Archives"
+          }
+        ]
+      },
+      {
+        "id": "world-1993-www-public-domain",
+        "year": 1993,
+        "title": "WWW открыли для всех",
+        "summary": "CERN объявил технологию Всемирной паутины общественным достоянием.",
+        "fact": "💡 Решение ускорило свободный рост интернета по всему миру.",
+        "body": "",
+        "category": "inventions",
+        "region": "WORLD",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "CERN — A short history of the Web",
+            "url": "https://home.cern/science/computing/birth-web/short-history-web",
+            "name": "CERN"
           }
         ]
       }
