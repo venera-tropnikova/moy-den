@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var DATA_URL = "assets/data/wisdom.json?v=season-months-1";
+  var DATA_URL = "assets/data/wisdom.json?v=categories-full-1";
   var EMPTY_TEXT = "Тихая мысль скоро появится.";
   var ERROR_TEXT = "Сегодня можно не спешить.";
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
@@ -9,30 +9,65 @@
   var CATEGORIES = {
     default: "default",
     birthday: "birthday",
-    holiday: "holiday",
+    newyear: "newyear",
+    march8: "march8",
+    feb23: "feb23",
+    vacation: "vacation",
+    dayoff: "dayoff",
+    rain: "rain",
+    snow: "snow",
+    cloudy: "cloudy",
+    heat: "heat",
+    frost: "frost",
+    sunny: "sunny",
+    wind: "wind",
+    thunderstorm: "thunderstorm",
+    warm: "warm",
+    cool: "cool",
+    monday: "monday",
+    tuesday: "tuesday",
+    wednesday: "wednesday",
+    thursday: "thursday",
+    friday: "friday",
+    saturday: "saturday",
+    sunday: "sunday",
     spring: "spring",
     summer: "summer",
     autumn: "autumn",
-    winter: "winter",
-    weather: "weather",
-    weekday: "weekday",
-    relationships: "relationships",
-    reflection: "reflection",
-    joy: "joy",
-    support: "support",
-    evening: "evening"
+    winter: "winter"
   };
 
-  var CATEGORY_PRIORITY = [
+  // Специальные события (жёсткий приоритет).
+  var SPECIAL_EVENT_PRIORITY = [
     CATEGORIES.birthday,
-    CATEGORIES.holiday,
-    CATEGORIES.weather,
-    CATEGORIES.weekday,
-    CATEGORIES.spring,
-    CATEGORIES.summer,
-    CATEGORIES.autumn,
-    CATEGORIES.winter,
-    CATEGORIES.default
+    CATEGORIES.newyear,
+    CATEGORIES.march8,
+    CATEGORIES.feb23,
+    CATEGORIES.vacation,
+    CATEGORIES.thunderstorm,
+    CATEGORIES.rain,
+    CATEGORIES.snow,
+    CATEGORIES.frost,
+    CATEGORIES.heat,
+    CATEGORIES.wind,
+    CATEGORIES.dayoff
+  ];
+
+  var ORDINARY_WEATHER_CATEGORIES = [
+    CATEGORIES.sunny,
+    CATEGORIES.cloudy,
+    CATEGORIES.warm,
+    CATEGORIES.cool
+  ];
+
+  var WEEKDAY_BY_INDEX = [
+    CATEGORIES.sunday,
+    CATEGORIES.monday,
+    CATEGORIES.tuesday,
+    CATEGORIES.wednesday,
+    CATEGORIES.thursday,
+    CATEGORIES.friday,
+    CATEGORIES.saturday
   ];
 
   var ALLOWED_CATEGORIES = {};
@@ -117,6 +152,25 @@
     return out;
   }
 
+  function getQueryParam(name) {
+    try {
+      var search = String(window.location.search || "");
+      if (!search) return null;
+      if (search.charAt(0) === "?") search = search.slice(1);
+      var pairs = search.split("&");
+      for (var i = 0; i < pairs.length; i += 1) {
+        if (!pairs[i]) continue;
+        var parts = pairs[i].split("=");
+        var key = parts[0] ? decodeURIComponent(parts[0]).trim() : "";
+        if (key !== name) continue;
+        return parts[1] ? decodeURIComponent(parts[1].replace(/\+/g, " ")).trim() : "";
+      }
+    } catch (error) {
+      return null;
+    }
+    return null;
+  }
+
   function isTodayBirthdayDate(birthDate, today) {
     var match = typeof birthDate === "string" && birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
     if (!match) return false;
@@ -144,12 +198,11 @@
     }
   }
 
-  function hasHolidayToday(today) {
+  function hasOfficialHolidayToday(today) {
     try {
       if (!window.MyDayHolidays || typeof window.MyDayHolidays.getHolidayOnDate !== "function") {
         return false;
       }
-      // holidays-ru ожидает месяц 0-based (внутри делает month + 1).
       return !!window.MyDayHolidays.getHolidayOnDate(
         today.getFullYear(),
         today.getMonth(),
@@ -161,53 +214,128 @@
     }
   }
 
-  function isSpecialWeather(now) {
-    if (!now || typeof now !== "object") return false;
-
-    var condition = typeof now.condition === "string" ? now.condition : "";
-    if (
-      condition === "rain" ||
-      condition === "thunderstorm" ||
-      condition === "snow" ||
-      condition === "fog"
-    ) {
-      return true;
-    }
-
-    if (typeof now.temp === "number" && isFinite(now.temp)) {
-      if (now.temp >= 28 || now.temp <= -10) return true;
-    }
-
+  function isNewYearDay(today) {
+    var m = today.getMonth();
+    var d = today.getDate();
+    // 31 декабря и 1–8 января (новогодние каникулы)
+    if (m === 11 && d === 31) return true;
+    if (m === 0 && d >= 1 && d <= 8) return true;
     return false;
   }
 
-  function hasSpecialWeatherToday() {
+  function isMarch8(today) {
+    return today.getMonth() === 2 && today.getDate() === 8;
+  }
+
+  function isFeb23(today) {
+    return today.getMonth() === 1 && today.getDate() === 23;
+  }
+
+  function isNamedHolidayToday(today) {
+    return isNewYearDay(today) || isMarch8(today) || isFeb23(today);
+  }
+
+  function hasVacationSignal() {
+    // Пока нет продуктового сигнала отпуска — только явный тест: ?wisdom=vacation
+    return getQueryParam("wisdom") === "vacation";
+  }
+
+  function isDayOffToday(today) {
+    // Официальный выходной/праздник, кроме уже покрытых newyear/march8/feb23
+    if (isNamedHolidayToday(today)) return false;
+    return hasOfficialHolidayToday(today);
+  }
+
+  function loadWeatherNow() {
     try {
       if (!window.MyDayWeather || typeof window.MyDayWeather.loadWeather !== "function") {
-        return false;
+        return null;
       }
       var weather = window.MyDayWeather.loadWeather();
-      if (!weather || weather.status !== "ok") return false;
-      return isSpecialWeather(weather.now);
+      if (!weather || weather.status !== "ok" || !weather.now) return null;
+      return weather;
     } catch (error) {
       console.warn("Не удалось проверить погоду для мысли:", error);
-      return false;
+      return null;
     }
+  }
+
+  function getWeatherCategory(today) {
+    var weather = loadWeatherNow();
+    if (!weather) return null;
+
+    var now = weather.now;
+    var condition = typeof now.condition === "string" ? now.condition : "";
+    var temp = typeof now.temp === "number" && isFinite(now.temp) ? now.temp : null;
+    var windIncreases = !!(weather.today && weather.today.windIncreases === true);
+
+    // Специфичные/выраженные условия первыми.
+    if (condition === "thunderstorm") return CATEGORIES.thunderstorm;
+    if (condition === "rain") return CATEGORIES.rain;
+    if (condition === "snow") return CATEGORIES.snow;
+    if (temp !== null && temp <= -5) return CATEGORIES.frost;
+    if (temp !== null && temp >= 28) return CATEGORIES.heat;
+    if (windIncreases) return CATEGORIES.wind;
+    if (condition === "fog") return CATEGORIES.cloudy;
+
+    // Обычная погода — ниже season/weekday в приоритете.
+    if (condition === "cloudy" || condition === "partly_cloudy") {
+      return CATEGORIES.cloudy;
+    }
+    if (condition === "clear") return CATEGORIES.sunny;
+    if (temp !== null && temp >= 18 && temp < 28) return CATEGORIES.warm;
+    if (temp !== null && temp >= 5 && temp < 18) return CATEGORIES.cool;
+
+    return null;
+  }
+
+  function getWeekdayCategory(today) {
+    return WEEKDAY_BY_INDEX[today.getDay()] || null;
   }
 
   function getSeasonCategory(today) {
     var month = today.getMonth(); // 0–11
-    if (month >= 2 && month <= 4) return CATEGORIES.spring;   // март–май
-    if (month >= 5 && month <= 7) return CATEGORIES.summer;   // июнь–август
-    if (month >= 8 && month <= 10) return CATEGORIES.autumn;  // сентябрь–ноябрь
-    return CATEGORIES.winter; // декабрь–февраль
+    if (month >= 2 && month <= 4) return CATEGORIES.spring;
+    if (month >= 5 && month <= 7) return CATEGORIES.summer;
+    if (month >= 8 && month <= 10) return CATEGORIES.autumn;
+    return CATEGORIES.winter;
   }
 
   function isCategoryActive(category, today) {
     if (category === CATEGORIES.birthday) return hasBirthdayToday(today);
-    if (category === CATEGORIES.holiday) return hasHolidayToday(today);
-    if (category === CATEGORIES.weather) return hasSpecialWeatherToday();
-    if (category === CATEGORIES.weekday) return true;
+    if (category === CATEGORIES.newyear) return isNewYearDay(today);
+    if (category === CATEGORIES.march8) return isMarch8(today);
+    if (category === CATEGORIES.feb23) return isFeb23(today);
+    if (category === CATEGORIES.vacation) return hasVacationSignal();
+    if (category === CATEGORIES.dayoff) return isDayOffToday(today);
+
+    if (
+      category === CATEGORIES.thunderstorm ||
+      category === CATEGORIES.rain ||
+      category === CATEGORIES.snow ||
+      category === CATEGORIES.frost ||
+      category === CATEGORIES.heat ||
+      category === CATEGORIES.wind ||
+      category === CATEGORIES.cloudy ||
+      category === CATEGORIES.sunny ||
+      category === CATEGORIES.warm ||
+      category === CATEGORIES.cool
+    ) {
+      return getWeatherCategory(today) === category;
+    }
+
+    if (
+      category === CATEGORIES.monday ||
+      category === CATEGORIES.tuesday ||
+      category === CATEGORIES.wednesday ||
+      category === CATEGORIES.thursday ||
+      category === CATEGORIES.friday ||
+      category === CATEGORIES.saturday ||
+      category === CATEGORIES.sunday
+    ) {
+      return getWeekdayCategory(today) === category;
+    }
+
     if (
       category === CATEGORIES.spring ||
       category === CATEGORIES.summer ||
@@ -216,28 +344,85 @@
     ) {
       return getSeasonCategory(today) === category;
     }
+
     if (category === CATEGORIES.default) return true;
     return false;
   }
 
-  function resolveCategory(items, today) {
-    for (var i = 0; i < CATEGORY_PRIORITY.length; i += 1) {
-      var category = CATEGORY_PRIORITY[i];
+  function isOrdinaryWeatherCategory(category) {
+    for (var i = 0; i < ORDINARY_WEATHER_CATEGORIES.length; i += 1) {
+      if (ORDINARY_WEATHER_CATEGORIES[i] === category) return true;
+    }
+    return false;
+  }
+
+  function collectActiveOrdinaryCategories(items, today) {
+    var active = [];
+    var candidates = [];
+    var season = getSeasonCategory(today);
+    var weekday = getWeekdayCategory(today);
+    var weatherCat = getWeatherCategory(today);
+    var i;
+    var category;
+
+    if (season) candidates.push(season);
+    if (weekday) candidates.push(weekday);
+    candidates.push(CATEGORIES.default);
+
+    if (weatherCat && isOrdinaryWeatherCategory(weatherCat)) {
+      candidates.push(weatherCat);
+    }
+
+    for (i = 0; i < candidates.length; i += 1) {
+      category = candidates[i];
+      if (filterByCategory(items, category).length > 0) {
+        active.push(category);
+      }
+    }
+
+    return active;
+  }
+
+  function resolveSpecialCategory(items, today) {
+    for (var i = 0; i < SPECIAL_EVENT_PRIORITY.length; i += 1) {
+      var category = SPECIAL_EVENT_PRIORITY[i];
       if (!isCategoryActive(category, today)) continue;
       var pool = filterByCategory(items, category);
       if (pool.length) return category;
     }
-    return CATEGORIES.default;
+    return null;
   }
 
   function pickThoughtForToday(items, today) {
-    var category = resolveCategory(items, today);
-    var pool = filterByCategory(items, category);
-    if (!pool.length) {
-      pool = filterByCategory(items, CATEGORIES.default);
+    var specialCategory = resolveSpecialCategory(items, today);
+    if (specialCategory) {
+      var specialPool = filterByCategory(items, specialCategory);
+      return {
+        category: specialCategory,
+        text: pickTextForDate(specialPool, today)
+      };
     }
-    if (!pool.length) return null;
-    return pickTextForDate(pool, today);
+
+    var activeCategories = collectActiveOrdinaryCategories(items, today);
+    var selectedCategory = null;
+    var categoryItems = null;
+
+    if (activeCategories.length) {
+      var dayIndex = getDayIndex(today);
+      var categoryIndex = Math.abs(dayIndex) % activeCategories.length;
+      selectedCategory = activeCategories[categoryIndex];
+      categoryItems = filterByCategory(items, selectedCategory);
+    } else {
+      categoryItems = filterByCategory(items, CATEGORIES.default);
+      if (categoryItems.length) selectedCategory = CATEGORIES.default;
+    }
+
+    if (!selectedCategory || !categoryItems.length) return null;
+
+    return {
+      category: selectedCategory,
+      text: pickTextForDate(categoryItems, today)
+    };
   }
 
   function renderGentleThought() {
@@ -257,12 +442,12 @@
     }
 
     var thought = pickThoughtForToday(items, new Date());
-    if (!thought) {
+    if (!thought || !thought.text) {
       textEl.textContent = EMPTY_TEXT;
       return;
     }
 
-    textEl.textContent = thought;
+    textEl.textContent = thought.text;
   }
 
   function init() {
