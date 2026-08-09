@@ -5,6 +5,7 @@
   var EMPTY_TEXT = "Тихая мысль скоро появится.";
   var ERROR_TEXT = "Сегодня можно не спешить.";
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
+  var YEAR_STATE_KEY = "my-day-gentle-thought-year-v1";
 
   var CATEGORIES = {
     default: "default",
@@ -135,6 +136,92 @@
     var m = date.getMonth();
     var d = date.getDate();
     return Math.floor(Date.UTC(y, m, d) / 86400000);
+  }
+
+  function formatDateKey(date) {
+    var y = date.getFullYear();
+    var m = date.getMonth() + 1;
+    var d = date.getDate();
+    return (
+      y +
+      "-" +
+      (m < 10 ? "0" : "") +
+      m +
+      "-" +
+      (d < 10 ? "0" : "") +
+      d
+    );
+  }
+
+  function emptyYearState(year) {
+    return {
+      year: year,
+      shown: [],
+      lastDate: null,
+      lastText: null,
+      lastCategory: null
+    };
+  }
+
+  function loadYearState(year) {
+    try {
+      var raw = localStorage.getItem(YEAR_STATE_KEY);
+      if (!raw) return emptyYearState(year);
+
+      var parsed = JSON.parse(raw);
+      if (!parsed || typeof parsed !== "object" || Array.isArray(parsed)) {
+        return emptyYearState(year);
+      }
+
+      if (parsed.year !== year) {
+        return emptyYearState(year);
+      }
+
+      var shown = [];
+      if (Array.isArray(parsed.shown)) {
+        for (var i = 0; i < parsed.shown.length; i += 1) {
+          if (typeof parsed.shown[i] === "string" && parsed.shown[i]) {
+            shown.push(parsed.shown[i]);
+          }
+        }
+      }
+
+      return {
+        year: year,
+        shown: shown,
+        lastDate: typeof parsed.lastDate === "string" ? parsed.lastDate : null,
+        lastText: typeof parsed.lastText === "string" ? parsed.lastText : null,
+        lastCategory:
+          typeof parsed.lastCategory === "string" ? parsed.lastCategory : null
+      };
+    } catch (error) {
+      console.warn("Не удалось загрузить состояние тихой мысли:", error);
+      return emptyYearState(year);
+    }
+  }
+
+  function saveYearState(state) {
+    try {
+      localStorage.setItem(YEAR_STATE_KEY, JSON.stringify(state));
+    } catch (error) {
+      console.warn("Не удалось сохранить состояние тихой мысли:", error);
+    }
+  }
+
+  function excludeShown(items, shown) {
+    if (!Array.isArray(items) || !items.length) return [];
+    if (!Array.isArray(shown) || !shown.length) return items.slice();
+
+    var seen = {};
+    for (var i = 0; i < shown.length; i += 1) {
+      seen[shown[i]] = true;
+    }
+
+    var out = [];
+    for (var j = 0; j < items.length; j += 1) {
+      if (!seen[items[j].text]) out.push(items[j]);
+    }
+    return out;
   }
 
   function pickTextForDate(items, date) {
@@ -393,36 +480,105 @@
     return null;
   }
 
-  function pickThoughtForToday(items, today) {
-    var specialCategory = resolveSpecialCategory(items, today);
-    if (specialCategory) {
-      var specialPool = filterByCategory(items, specialCategory);
+  function pickOrdinaryThought(items, today, shown) {
+    var activeCategories = collectActiveOrdinaryCategories(items, today);
+    var dayIndex = getDayIndex(today);
+    var i;
+    var category;
+    var unused;
+
+    if (activeCategories.length) {
+      var start = Math.abs(dayIndex) % activeCategories.length;
+      for (i = 0; i < activeCategories.length; i += 1) {
+        category = activeCategories[(start + i) % activeCategories.length];
+        unused = excludeShown(filterByCategory(items, category), shown);
+        if (unused.length) {
+          return {
+            category: category,
+            text: pickTextForDate(unused, today)
+          };
+        }
+      }
+    }
+
+    // default — запасной пул неиспользованных
+    unused = excludeShown(filterByCategory(items, CATEGORIES.default), shown);
+    if (unused.length) {
       return {
-        category: specialCategory,
-        text: pickTextForDate(specialPool, today)
+        category: CATEGORIES.default,
+        text: pickTextForDate(unused, today)
       };
     }
 
-    var activeCategories = collectActiveOrdinaryCategories(items, today);
-    var selectedCategory = null;
-    var categoryItems = null;
-
+    // Повтор полного пула только когда все подходящие исчерпаны
     if (activeCategories.length) {
-      var dayIndex = getDayIndex(today);
-      var categoryIndex = Math.abs(dayIndex) % activeCategories.length;
-      selectedCategory = activeCategories[categoryIndex];
-      categoryItems = filterByCategory(items, selectedCategory);
-    } else {
-      categoryItems = filterByCategory(items, CATEGORIES.default);
-      if (categoryItems.length) selectedCategory = CATEGORIES.default;
+      category = activeCategories[Math.abs(dayIndex) % activeCategories.length];
+      var fullPool = filterByCategory(items, category);
+      if (fullPool.length) {
+        return {
+          category: category,
+          text: pickTextForDate(fullPool, today)
+        };
+      }
     }
 
-    if (!selectedCategory || !categoryItems.length) return null;
+    var defaultPool = filterByCategory(items, CATEGORIES.default);
+    if (defaultPool.length) {
+      return {
+        category: CATEGORIES.default,
+        text: pickTextForDate(defaultPool, today)
+      };
+    }
 
-    return {
-      category: selectedCategory,
-      text: pickTextForDate(categoryItems, today)
-    };
+    return null;
+  }
+
+  function pickThoughtForToday(items, today) {
+    var year = today.getFullYear();
+    var dateKey = formatDateKey(today);
+    var state = loadYearState(year);
+
+    if (state.lastDate === dateKey && state.lastText) {
+      return {
+        category: state.lastCategory || CATEGORIES.default,
+        text: state.lastText
+      };
+    }
+
+    var shown = state.shown;
+    var result = null;
+
+    var specialCategory = resolveSpecialCategory(items, today);
+    if (specialCategory) {
+      var specialUnused = excludeShown(
+        filterByCategory(items, specialCategory),
+        shown
+      );
+      if (specialUnused.length) {
+        result = {
+          category: specialCategory,
+          text: pickTextForDate(specialUnused, today)
+        };
+      }
+      // если спец-пул исчерпан — обычный путь, другие special не пробуем
+    }
+
+    if (!result) {
+      result = pickOrdinaryThought(items, today, shown);
+    }
+
+    if (!result || !result.text) return null;
+
+    state.year = year;
+    state.lastDate = dateKey;
+    state.lastText = result.text;
+    state.lastCategory = result.category;
+    if (shown.indexOf(result.text) === -1) {
+      state.shown = shown.concat([result.text]);
+    }
+    saveYearState(state);
+
+    return result;
   }
 
   function renderGentleThought() {
