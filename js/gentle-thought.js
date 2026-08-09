@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var DATA_URL = "assets/data/wisdom.json";
+  var DATA_URL = "assets/data/wisdom.json?v=season-months-1";
   var EMPTY_TEXT = "Тихая мысль скоро появится.";
   var ERROR_TEXT = "Сегодня можно не спешить.";
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
@@ -10,7 +10,10 @@
     default: "default",
     birthday: "birthday",
     holiday: "holiday",
-    season: "season",
+    spring: "spring",
+    summer: "summer",
+    autumn: "autumn",
+    winter: "winter",
     weather: "weather",
     weekday: "weekday",
     relationships: "relationships",
@@ -25,7 +28,10 @@
     CATEGORIES.holiday,
     CATEGORIES.weather,
     CATEGORIES.weekday,
-    CATEGORIES.season,
+    CATEGORIES.spring,
+    CATEGORIES.summer,
+    CATEGORIES.autumn,
+    CATEGORIES.winter,
     CATEGORIES.default
   ];
 
@@ -189,12 +195,27 @@
     }
   }
 
+  function getSeasonCategory(today) {
+    var month = today.getMonth(); // 0–11
+    if (month >= 2 && month <= 4) return CATEGORIES.spring;   // март–май
+    if (month >= 5 && month <= 7) return CATEGORIES.summer;   // июнь–август
+    if (month >= 8 && month <= 10) return CATEGORIES.autumn;  // сентябрь–ноябрь
+    return CATEGORIES.winter; // декабрь–февраль
+  }
+
   function isCategoryActive(category, today) {
     if (category === CATEGORIES.birthday) return hasBirthdayToday(today);
     if (category === CATEGORIES.holiday) return hasHolidayToday(today);
-    if (category === CATEGORIES.season) return true;
     if (category === CATEGORIES.weather) return hasSpecialWeatherToday();
     if (category === CATEGORIES.weekday) return true;
+    if (
+      category === CATEGORIES.spring ||
+      category === CATEGORIES.summer ||
+      category === CATEGORIES.autumn ||
+      category === CATEGORIES.winter
+    ) {
+      return getSeasonCategory(today) === category;
+    }
     if (category === CATEGORIES.default) return true;
     return false;
   }
