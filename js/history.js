@@ -1,7 +1,7 @@
 (function () {
   "use strict";
 
-  var DATA_URL = "history-events-ru.json";
+  var DATA_URL = "history-events-ru.json?v=20260811-1";
   var EMPTY_TEXT = "скоро появится.";
   var ERROR_TEXT = "Не удалось загрузить историческую справку.";
   var MAX_EVENTS = 1;
@@ -19,14 +19,14 @@
     "сентября",
     "октября",
     "ноября",
-    "декабря"
+    "декабря",
   ];
 
   var state = {
     date: null,
     events: [],
     mode: MODE_IMAGE,
-    bound: false
+    bound: false,
   };
 
   function getQueryParam(name) {
@@ -43,7 +43,10 @@
         var qIndex = href.indexOf("?");
         if (qIndex !== -1) {
           var hashIndex = href.indexOf("#", qIndex);
-          search = hashIndex === -1 ? href.slice(qIndex) : href.slice(qIndex, hashIndex);
+          search =
+            hashIndex === -1
+              ? href.slice(qIndex)
+              : href.slice(qIndex, hashIndex);
         }
       } catch (error2) {
         search = "";
@@ -59,17 +62,26 @@
       var parts = pairs[i].split("=");
       var key = parts[0] ? decodeURIComponent(parts[0]).trim() : "";
       if (key !== name) continue;
-      return parts[1] ? decodeURIComponent(parts[1].replace(/\+/g, " ")).trim() : "";
+      return parts[1]
+        ? decodeURIComponent(parts[1].replace(/\+/g, " ")).trim()
+        : "";
     }
 
     return null;
   }
 
   function getHistoryDate() {
+    var target = window.MyDayTargetDate;
+    if (target && target instanceof Date && !isNaN(target.getTime())) {
+      return target;
+    }
+
     var raw = getQueryParam("date");
     if (!raw) return new Date();
 
-    var match = String(raw).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    var match = String(raw)
+      .trim()
+      .match(/^(\d{4})-(\d{2})-(\d{2})$/);
     if (!match) return new Date();
 
     var year = Number(match[1]);
@@ -100,7 +112,11 @@
       request.open("GET", DATA_URL, false);
       request.send(null);
 
-      if (request.status >= 200 && request.status < 300 && request.responseText) {
+      if (
+        request.status >= 200 &&
+        request.status < 300 &&
+        request.responseText
+      ) {
         var parsed = JSON.parse(request.responseText);
         if (parsed && typeof parsed === "object" && !Array.isArray(parsed)) {
           return { status: "ok", data: parsed };
@@ -150,7 +166,8 @@
     var name = typeof source.name === "string" ? source.name.trim() : "";
     if (name) return name;
 
-    var shortTitle = typeof source.shortTitle === "string" ? source.shortTitle.trim() : "";
+    var shortTitle =
+      typeof source.shortTitle === "string" ? source.shortTitle.trim() : "";
     if (shortTitle) return shortTitle;
 
     var title = typeof source.title === "string" ? source.title.trim() : "";
@@ -207,7 +224,11 @@
   }
 
   function getVerifiedEventsForDate(data, date) {
-    if (!data || typeof data.eventsByDate !== "object" || data.eventsByDate === null) {
+    if (
+      !data ||
+      typeof data.eventsByDate !== "object" ||
+      data.eventsByDate === null
+    ) {
       return [];
     }
 
@@ -225,16 +246,17 @@
     verified.sort(compareEventsForHome);
     if (!verified.length) return [];
 
-    var selected = verified.find(function (event) {
-      return event && typeof event.image === "string" && event.image.trim();
-    }) || verified[0];
+    var selected = verified[0];
 
-    if (!selected.image || (typeof selected.image === "string" && !selected.image.trim())) {
+    if (
+      !selected.image ||
+      (typeof selected.image === "string" && !selected.image.trim())
+    ) {
       console.warn(
-        "[history] Нет события с image для даты " +
+        "[history] У главного события даты " +
           dateKey +
-          "; показан fallback: " +
-          (selected.id || "(без id)")
+          " нет image: " +
+          (selected.id || "(без id)"),
       );
     }
 
@@ -254,7 +276,7 @@
       factEl: document.getElementById("hist-fact"),
       chromeEl: document.getElementById("hist-chrome"),
       moreEl: document.getElementById("hist-more"),
-      moreLinkEl: document.getElementById("hist-more-link")
+      moreLinkEl: document.getElementById("hist-more-link"),
     };
   }
 
@@ -391,7 +413,8 @@
         : "";
 
     var image = typeof event.image === "string" ? event.image.trim() : "";
-    var imageAlt = typeof event.imageAlt === "string" ? event.imageAlt.trim() : "";
+    var imageAlt =
+      typeof event.imageAlt === "string" ? event.imageAlt.trim() : "";
     setImage(els.imageEl, image, imageAlt);
 
     fillEventFields(els, event);
