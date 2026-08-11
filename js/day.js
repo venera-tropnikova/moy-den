@@ -2,13 +2,28 @@
   "use strict";
 
   var WEEKDAYS = [
-    "Воскресенье", "Понедельник", "Вторник", "Среда",
-    "Четверг", "Пятница", "Суббота"
+    "Воскресенье",
+    "Понедельник",
+    "Вторник",
+    "Среда",
+    "Четверг",
+    "Пятница",
+    "Суббота",
   ];
 
   var MONTHS = [
-    "января", "февраля", "марта", "апреля", "мая", "июня",
-    "июля", "августа", "сентября", "октября", "ноября", "декабря"
+    "января",
+    "февраля",
+    "марта",
+    "апреля",
+    "мая",
+    "июня",
+    "июля",
+    "августа",
+    "сентября",
+    "октября",
+    "ноября",
+    "декабря",
   ];
 
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
@@ -16,17 +31,19 @@
   var IMPORTANT_DATES_KEY = "my-day-important-dates-v1";
 
   var CATEGORY_LABELS = {
-    "семья": "Семья",
-    "работа": "Работа",
-    "личное": "Личное",
-    "учёба": "Учёба",
-    "путешествия": "Путешествия",
-    "другое": "Другое"
+    семья: "Семья",
+    работа: "Работа",
+    личное: "Личное",
+    учёба: "Учёба",
+    путешествия: "Путешествия",
+    другое: "Другое",
   };
 
   var selectedDate = parseSelectedDate();
   var selectedDateKey = "";
   var tasksStorage = null;
+
+  window.MyDayTargetDate = selectedDate;
 
   function formatTime(date) {
     var h = String(date.getHours()).padStart(2, "0");
@@ -62,7 +79,9 @@
   }
 
   function updateTaskText(taskId, text) {
-    return tasksStorage.updateTaskForDate(selectedDateKey, taskId, { text: text });
+    return tasksStorage.updateTaskForDate(selectedDateKey, taskId, {
+      text: text,
+    });
   }
 
   function renderSelectedDate() {
@@ -70,7 +89,8 @@
     var weekday = document.getElementById("day-weekday");
 
     if (title) {
-      title.textContent = selectedDate.getDate() + " " + MONTHS[selectedDate.getMonth()];
+      title.textContent =
+        selectedDate.getDate() + " " + MONTHS[selectedDate.getMonth()];
     }
 
     if (weekday) {
@@ -110,7 +130,9 @@
       if (!saved) return {};
 
       var parsed = JSON.parse(saved);
-      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed)
+        ? parsed
+        : {};
     } catch (error) {
       console.warn("Не удалось загрузить профиль:", error);
       return {};
@@ -126,7 +148,7 @@
     return {
       year: Number(match[1]),
       month: Number(match[2]),
-      day: Number(match[3])
+      day: Number(match[3]),
     };
   }
 
@@ -159,6 +181,37 @@
 
   function getCalendarHref() {
     return "calendar.html?cal=" + encodeURIComponent(getCalendarMonthParam());
+  }
+
+  function getDateOnly(date) {
+    return new Date(date.getFullYear(), date.getMonth(), date.getDate());
+  }
+
+  function compareDateOnly(left, right) {
+    var leftValue = getDateOnly(left).getTime();
+    var rightValue = getDateOnly(right).getTime();
+
+    if (leftValue === rightValue) return 0;
+    return leftValue < rightValue ? -1 : 1;
+  }
+
+  function getSelectedDateMode() {
+    var today = getDateOnly(new Date());
+    var selected = getDateOnly(selectedDate);
+    var diff = compareDateOnly(selected, today);
+
+    if (diff === 0) return "today";
+    return diff < 0 ? "past" : "future";
+  }
+
+  function applyDateModeVisibility() {
+    var archiveSection = document.getElementById("archive-section");
+    var tasksSection = document.getElementById("tasks-section");
+    var mode = getSelectedDateMode();
+    var isArchiveVisible = mode === "today" || mode === "past";
+
+    setSectionVisibility(archiveSection, isArchiveVisible);
+    setSectionVisibility(tasksSection, true);
   }
 
   function initBackLink() {
@@ -213,7 +266,9 @@
   }
 
   function getDateValue(date) {
-    return date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate();
+    return (
+      date.getFullYear() * 10000 + (date.getMonth() + 1) * 100 + date.getDate()
+    );
   }
 
   function formatTurningAgeLine(age) {
@@ -284,11 +339,15 @@
       actions.className = "day-task__actions";
 
       var returnUrl =
-        "day.html?date=" + encodeURIComponent(getSelectedDateKey()) +
-        "&cal=" + encodeURIComponent(getCalendarMonthParam());
+        "day.html?date=" +
+        encodeURIComponent(getSelectedDateKey()) +
+        "&cal=" +
+        encodeURIComponent(getCalendarMonthParam());
       var editHref =
-        "birthdays.html?edit=" + encodeURIComponent(String(options.id)) +
-        "&return=" + encodeURIComponent(returnUrl);
+        "birthdays.html?edit=" +
+        encodeURIComponent(String(options.id)) +
+        "&return=" +
+        encodeURIComponent(returnUrl);
 
       var editLink = document.createElement("a");
       editLink.className = "day-congrats-edit";
@@ -303,15 +362,20 @@
   }
 
   function getCalendarEventsForSelectedDate() {
-    if (!window.MyDayHolidays || typeof window.MyDayHolidays.getCalendarEventsOnDate !== "function") {
+    if (
+      !window.MyDayHolidays ||
+      typeof window.MyDayHolidays.getCalendarEventsOnDate !== "function"
+    ) {
       return [];
     }
 
-    return window.MyDayHolidays.getCalendarEventsOnDate(
-      selectedDate.getFullYear(),
-      selectedDate.getMonth(),
-      selectedDate.getDate()
-    ) || [];
+    return (
+      window.MyDayHolidays.getCalendarEventsOnDate(
+        selectedDate.getFullYear(),
+        selectedDate.getMonth(),
+        selectedDate.getDate(),
+      ) || []
+    );
   }
 
   function createCalendarEventCard(event) {
@@ -380,9 +444,10 @@
     setSectionVisibility(section, matches.length > 0);
 
     matches.forEach(function (item) {
-      var titleText = typeof item.title === "string" && item.title.trim()
-        ? item.title.trim()
-        : "—";
+      var titleText =
+        typeof item.title === "string" && item.title.trim()
+          ? item.title.trim()
+          : "—";
       var categoryLabel = formatCategoryLabel(item.category);
 
       var row = document.createElement("li");
@@ -412,7 +477,8 @@
     if (!section || !list) return;
 
     var settings = loadUserSettings();
-    var birthDate = typeof settings.birthDate === "string" ? settings.birthDate : "";
+    var birthDate =
+      typeof settings.birthDate === "string" ? settings.birthDate : "";
     var personalMatch = isBirthdayOnSelectedDate(birthDate);
 
     list.innerHTML = "";
@@ -424,10 +490,13 @@
 
     setSectionVisibility(section, true);
 
-    var userName = typeof settings.name === "string" && settings.name.trim()
-      ? settings.name.trim()
-      : "Венера";
-    var turningAgeLine = formatTurningAgeLine(getTurningAge(birthDate, selectedDate));
+    var userName =
+      typeof settings.name === "string" && settings.name.trim()
+        ? settings.name.trim()
+        : "Венера";
+    var turningAgeLine = formatTurningAgeLine(
+      getTurningAge(birthDate, selectedDate),
+    );
 
     var item = document.createElement("li");
     item.className = "day-task";
@@ -462,16 +531,20 @@
     setSectionVisibility(section, matches.length > 0);
 
     matches.forEach(function (birthday) {
-      var personName = typeof birthday.name === "string" && birthday.name.trim()
-        ? birthday.name.trim()
-        : "—";
-      var relation = typeof birthday.relation === "string" ? birthday.relation.trim() : "";
+      var personName =
+        typeof birthday.name === "string" && birthday.name.trim()
+          ? birthday.name.trim()
+          : "—";
+      var relation =
+        typeof birthday.relation === "string" ? birthday.relation.trim() : "";
 
       appendCongratulationsItem(list, {
         id: birthday.id,
         name: personName,
         relation: relation,
-        turningAgeLine: formatTurningAgeLine(getTurningAge(birthday.birthDate, selectedDate))
+        turningAgeLine: formatTurningAgeLine(
+          getTurningAge(birthday.birthDate, selectedDate),
+        ),
       });
     });
   }
@@ -483,7 +556,7 @@
 
     var tasks = getTasksForSelectedDate();
     list.innerHTML = "";
-    setSectionVisibility(section, tasks.length > 0);
+    setSectionVisibility(section, true);
 
     tasks.forEach(function (task) {
       var item = document.createElement("li");
@@ -621,6 +694,7 @@
     renderPersonalBirthday();
     renderCongratulations();
     initStatusbarTime();
+    applyDateModeVisibility();
   }
 
   function initTasksUI() {
