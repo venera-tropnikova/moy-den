@@ -6,6 +6,7 @@
   var EMPTY_TEXT = "Погода пока недоступна";
   var ERROR_TEXT = "Не удалось загрузить погоду";
   var WEEKDAYS_SHORT = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+  var weatherPromise = null;
 
   // Режимы местоположения: сейчас только profile.
   // geo и manual зарезервированы для следующих задач.
@@ -519,10 +520,12 @@
   }
 
   function loadWeather() {
+    if (weatherPromise) return weatherPromise;
+
     var location = resolveLocation();
     var nowDate = getSelectedDate();
 
-    return fetchWeatherData(location, nowDate).then(function (data) {
+    weatherPromise = fetchWeatherData(location, nowDate).then(function (data) {
       if (!data || typeof data !== "object") {
         return { status: "empty", location: location };
       }
@@ -572,7 +575,29 @@
     }).catch(function (error) {
       console.warn("Не удалось загрузить погоду:", error);
       return { status: "error", location: location };
+    }).then(function (weather) {
+      publishWeatherState(weather);
+      return weather;
     });
+
+    return weatherPromise;
+  }
+
+  function whenReady() {
+    return weatherPromise || Promise.resolve(null);
+  }
+
+  function publishWeatherState(weather) {
+    var state = {
+      status: weather && typeof weather.status === "string" ? weather.status : "empty",
+      condition: weather && weather.status === "ok" && weather.now
+        ? normalizeCondition(weather.now.condition)
+        : null
+    };
+
+    document.dispatchEvent(new CustomEvent("myday:weather-state", {
+      detail: state
+    }));
   }
 
   function renderForecast(container, forecast) {
@@ -655,6 +680,7 @@
 
   window.MyDayWeather = {
     loadWeather: loadWeather,
+    whenReady: whenReady,
     renderWeather: renderWeather,
     CONDITIONS: CONDITIONS,
     LOCATION_MODE: LOCATION_MODE

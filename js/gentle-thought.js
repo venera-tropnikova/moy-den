@@ -335,10 +335,10 @@
 
   function loadWeatherNow() {
     try {
-      if (!window.MyDayWeather || typeof window.MyDayWeather.loadWeather !== "function") {
+      if (!window.MyDayWeather || typeof window.MyDayWeather.whenReady !== "function") {
         return Promise.resolve(null);
       }
-      return window.MyDayWeather.loadWeather().then(function (weather) {
+      return window.MyDayWeather.whenReady().then(function (weather) {
         if (!weather || weather.status !== "ok" || !weather.now) return null;
         return weather;
       }).catch(function (error) {
