@@ -323,70 +323,134 @@
     return buildPhraseStableDay(now, today, date);
   }
 
-  function buildMockForecast(fromDate) {
-    var samples = [
-      { condition: "clear", temp: 24 },
-      { condition: "partly_cloudy", temp: 22 },
-      { condition: "rain", temp: 19 },
-      { condition: "cloudy", temp: 21 },
-      { condition: "clear", temp: 23 }
-    ];
-    var forecast = [];
-
-    for (var i = 0; i < samples.length; i += 1) {
-      var day = new Date(fromDate.getFullYear(), fromDate.getMonth(), fromDate.getDate() + i + 1);
-      var sample = samples[i];
-      forecast.push({
-        date: formatLocalDate(day),
-        weekday: WEEKDAYS_SHORT[day.getDay()],
-        condition: sample.condition,
-        icon: CONDITIONS[sample.condition].icon,
-        temp: sample.temp
-      });
-    }
-
-    return forecast;
+  function conditionFromWeatherCode(code) {
+    if (code === 0) return "clear";
+    if (code === 1 || code === 2) return "partly_cloudy";
+    if (code === 3) return "cloudy";
+    if (code === 45 || code === 48) return "fog";
+    if (code >= 51 && code <= 67 || code >= 80 && code <= 82) return "rain";
+    if (code >= 71 && code <= 77 || code === 85 || code === 86) return "snow";
+    if (code >= 95 && code <= 99) return "thunderstorm";
+    return null;
   }
 
-  // Локальный mock-провайдер без внешнего API.
+  function getJson(url) {
+    return fetch(url).then(function (response) {
+      if (!response.ok) throw new Error("Weather request failed: " + response.status);
+      return response.json();
+    });
+  }
+
   // Тест: index.html?weather=empty | index.html?weather=error
-  function fetchWeatherData(location, referenceDate) {
+  function fetchWeatherData(location) {
     var mode = getQueryParam("weather");
     var city = location && location.city ? location.city : DEFAULT_CITY;
 
     if (mode === "empty") {
-      return { status: "empty", location: location };
+      return Promise.resolve({ status: "empty", location: location });
     }
 
     if (mode === "error") {
-      return { status: "error", location: location };
+      return Promise.resolve({ status: "error", location: location });
     }
 
-    var nowDate = referenceDate || new Date();
-    var condition = "clear";
-    var meta = CONDITIONS[condition];
-    var forecast = buildMockForecast(nowDate);
+    var geocodingUrl = "https://geocoding-api.open-meteo.com/v1/search?name=" +
+      encodeURIComponent(city) + "&count=1&language=ru&format=json";
 
-    return {
-      status: "ok",
-      location: {
-        mode: location.mode || LOCATION_MODE.PROFILE,
-        city: city
-      },
-      now: {
-        temp: 21,
-        condition: condition,
-        label: meta.label,
-        icon: meta.icon
-      },
-      // Ход сегодняшнего дня согласован с now (стабильный солнечный день).
-      today: {
-        laterCondition: null,
-        eveningTemp: 19,
-        windIncreases: false
-      },
-      forecast: forecast
-    };
+    return getJson(geocodingUrl).then(function (geocoding) {
+      var result = geocoding && Array.isArray(geocoding.results) ? geocoding.results[0] : null;
+      if (!result || typeof result.latitude !== "number" || typeof result.longitude !== "number") {
+        return { status: "error", location: location };
+      }
+
+      var forecastUrl = "https://api.open-meteo.com/v1/forecast?latitude=" + result.latitude +
+        "&longitude=" + result.longitude +
+        "&current=temperature_2m,weather_code,wind_speed_10m" +
+        "&hourly=temperature_2m,weather_code" +
+        "&daily=weather_code,temperature_2m_max,wind_speed_10m_max&forecast_days=6&timezone=auto";
+
+      return getJson(forecastUrl).then(function (weather) {
+        var current = weather && weather.current;
+        var hourly = weather && weather.hourly;
+        var daily = weather && weather.daily;
+        var condition = current ? conditionFromWeatherCode(current.weather_code) : null;
+        if (
+          !current ||
+          !hourly ||
+          !daily ||
+          !condition ||
+          typeof current.time !== "string" ||
+          !Array.isArray(hourly.time) ||
+          !Array.isArray(hourly.temperature_2m) ||
+          !Array.isArray(hourly.weather_code) ||
+          !Array.isArray(daily.time)
+        ) {
+          return { status: "error", location: location };
+        }
+
+        var currentDate = current.time.slice(0, 10);
+        var eveningTime = currentDate + "T18:00";
+        var eveningTemp = null;
+        var laterCondition = null;
+
+        for (var hourIndex = 0; hourIndex < hourly.time.length; hourIndex += 1) {
+          var hourTime = hourly.time[hourIndex];
+          if (hourTime === eveningTime && current.time < eveningTime) {
+            var hourlyTemp = hourly.temperature_2m[hourIndex];
+            if (typeof hourlyTemp === "number" && isFinite(hourlyTemp)) {
+              eveningTemp = hourlyTemp;
+            }
+          }
+
+          if (
+            laterCondition ||
+            typeof hourTime !== "string" ||
+            hourTime.slice(0, 10) !== currentDate ||
+            hourTime <= current.time
+          ) {
+            continue;
+          }
+
+          var hourlyCondition = conditionFromWeatherCode(hourly.weather_code[hourIndex]);
+          if (hourlyCondition && hourlyCondition !== condition) {
+            laterCondition = hourlyCondition;
+          }
+        }
+
+        var forecast = [];
+        for (var i = 1; i < daily.time.length && forecast.length < 5; i += 1) {
+          var forecastCondition = conditionFromWeatherCode(daily.weather_code[i]);
+          if (!forecastCondition || typeof daily.temperature_2m_max[i] !== "number") continue;
+          var forecastDate = new Date(daily.time[i] + "T12:00:00");
+          forecast.push({
+            date: daily.time[i],
+            weekday: WEEKDAYS_SHORT[forecastDate.getDay()],
+            condition: forecastCondition,
+            icon: CONDITIONS[forecastCondition].icon,
+            temp: daily.temperature_2m_max[i]
+          });
+        }
+
+        return {
+          status: "ok",
+          location: { mode: location.mode || LOCATION_MODE.PROFILE, city: city },
+          now: {
+            temp: current.temperature_2m,
+            condition: condition,
+            label: CONDITIONS[condition].label,
+            icon: CONDITIONS[condition].icon
+          },
+          today: {
+            laterCondition: laterCondition,
+            eveningTemp: eveningTemp,
+            windIncreases: typeof current.wind_speed_10m === "number" &&
+              typeof daily.wind_speed_10m_max[0] === "number" &&
+              daily.wind_speed_10m_max[0] - current.wind_speed_10m >= 10
+          },
+          forecast: forecast
+        };
+      });
+    });
   }
 
   function normalizeForecast(rawForecast) {
@@ -458,8 +522,7 @@
     var location = resolveLocation();
     var nowDate = getSelectedDate();
 
-    try {
-      var data = fetchWeatherData(location, nowDate);
+    return fetchWeatherData(location, nowDate).then(function (data) {
       if (!data || typeof data !== "object") {
         return { status: "empty", location: location };
       }
@@ -506,10 +569,10 @@
         phrase: buildPhrase(weatherNow, today, nowDate),
         forecast: forecast
       };
-    } catch (error) {
+    }).catch(function (error) {
       console.warn("Не удалось загрузить погоду:", error);
       return { status: "error", location: location };
-    }
+    });
   }
 
   function renderForecast(container, forecast) {
@@ -553,36 +616,37 @@
 
     if (!cityEl && !tempEl && !condEl && !tipEl && !forecastEl) return;
 
-    var weather = loadWeather();
-    var city = weather.location && weather.location.city
-      ? weather.location.city
-      : DEFAULT_CITY;
+    loadWeather().then(function (weather) {
+      var city = weather.location && weather.location.city
+        ? weather.location.city
+        : DEFAULT_CITY;
 
-    if (cityEl) cityEl.textContent = formatCityLabel(city);
+      if (cityEl) cityEl.textContent = formatCityLabel(city);
 
-    if (weather.status === "error") {
-      if (iconEl) iconEl.textContent = "";
-      if (tempEl) tempEl.textContent = "";
-      if (condEl) condEl.textContent = ERROR_TEXT;
-      setPhraseText(tipEl, "");
-      renderForecast(forecastEl, []);
-      return;
-    }
+      if (weather.status === "error") {
+        if (iconEl) iconEl.textContent = "";
+        if (tempEl) tempEl.textContent = "";
+        if (condEl) condEl.textContent = ERROR_TEXT;
+        setPhraseText(tipEl, "");
+        renderForecast(forecastEl, []);
+        return;
+      }
 
-    if (weather.status !== "ok") {
-      if (iconEl) iconEl.textContent = "";
-      if (tempEl) tempEl.textContent = "";
-      if (condEl) condEl.textContent = EMPTY_TEXT;
-      setPhraseText(tipEl, "");
-      renderForecast(forecastEl, []);
-      return;
-    }
+      if (weather.status !== "ok") {
+        if (iconEl) iconEl.textContent = "";
+        if (tempEl) tempEl.textContent = "";
+        if (condEl) condEl.textContent = EMPTY_TEXT;
+        setPhraseText(tipEl, "");
+        renderForecast(forecastEl, []);
+        return;
+      }
 
-    if (iconEl) iconEl.textContent = weather.now.icon || "";
-    if (tempEl) tempEl.textContent = formatTemp(weather.now.temp);
-    if (condEl) condEl.textContent = formatNowCondition(weather.now.label);
-    setPhraseText(tipEl, weather.phrase || "");
-    renderForecast(forecastEl, weather.forecast);
+      if (iconEl) iconEl.textContent = weather.now.icon || "";
+      if (tempEl) tempEl.textContent = formatTemp(weather.now.temp);
+      if (condEl) condEl.textContent = formatNowCondition(weather.now.label);
+      setPhraseText(tipEl, weather.phrase || "");
+      renderForecast(forecastEl, weather.forecast);
+    });
   }
 
   function init() {

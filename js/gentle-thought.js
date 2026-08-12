@@ -336,19 +336,22 @@
   function loadWeatherNow() {
     try {
       if (!window.MyDayWeather || typeof window.MyDayWeather.loadWeather !== "function") {
-        return null;
+        return Promise.resolve(null);
       }
-      var weather = window.MyDayWeather.loadWeather();
-      if (!weather || weather.status !== "ok" || !weather.now) return null;
-      return weather;
+      return window.MyDayWeather.loadWeather().then(function (weather) {
+        if (!weather || weather.status !== "ok" || !weather.now) return null;
+        return weather;
+      }).catch(function (error) {
+        console.warn("Не удалось проверить погоду для мысли:", error);
+        return null;
+      });
     } catch (error) {
       console.warn("Не удалось проверить погоду для мысли:", error);
-      return null;
+      return Promise.resolve(null);
     }
   }
 
-  function getWeatherCategory(today) {
-    var weather = loadWeatherNow();
+  function getWeatherCategory(weather) {
     if (!weather) return null;
 
     var now = weather.now;
@@ -388,7 +391,7 @@
     return CATEGORIES.winter;
   }
 
-  function isCategoryActive(category, today) {
+  function isCategoryActive(category, today, weather) {
     if (category === CATEGORIES.birthday) return hasBirthdayToday(today);
     if (category === CATEGORIES.newyear) return isNewYearDay(today);
     if (category === CATEGORIES.march8) return isMarch8(today);
@@ -408,7 +411,7 @@
       category === CATEGORIES.warm ||
       category === CATEGORIES.cool
     ) {
-      return getWeatherCategory(today) === category;
+      return getWeatherCategory(weather) === category;
     }
 
     if (
@@ -443,12 +446,12 @@
     return false;
   }
 
-  function collectActiveOrdinaryCategories(items, today) {
+  function collectActiveOrdinaryCategories(items, today, weather) {
     var active = [];
     var candidates = [];
     var season = getSeasonCategory(today);
     var weekday = getWeekdayCategory(today);
-    var weatherCat = getWeatherCategory(today);
+    var weatherCat = getWeatherCategory(weather);
     var i;
     var category;
 
@@ -470,18 +473,18 @@
     return active;
   }
 
-  function resolveSpecialCategory(items, today) {
+  function resolveSpecialCategory(items, today, weather) {
     for (var i = 0; i < SPECIAL_EVENT_PRIORITY.length; i += 1) {
       var category = SPECIAL_EVENT_PRIORITY[i];
-      if (!isCategoryActive(category, today)) continue;
+      if (!isCategoryActive(category, today, weather)) continue;
       var pool = filterByCategory(items, category);
       if (pool.length) return category;
     }
     return null;
   }
 
-  function pickOrdinaryThought(items, today, shown) {
-    var activeCategories = collectActiveOrdinaryCategories(items, today);
+  function pickOrdinaryThought(items, today, shown, weather) {
+    var activeCategories = collectActiveOrdinaryCategories(items, today, weather);
     var dayIndex = getDayIndex(today);
     var i;
     var category;
@@ -533,7 +536,7 @@
     return null;
   }
 
-  function pickThoughtForToday(items, today) {
+  function pickThoughtForToday(items, today, weather) {
     var year = today.getFullYear();
     var dateKey = formatDateKey(today);
     var state = loadYearState(year);
@@ -548,7 +551,7 @@
     var shown = state.shown;
     var result = null;
 
-    var specialCategory = resolveSpecialCategory(items, today);
+    var specialCategory = resolveSpecialCategory(items, today, weather);
     if (specialCategory) {
       var specialUnused = excludeShown(
         filterByCategory(items, specialCategory),
@@ -564,7 +567,7 @@
     }
 
     if (!result) {
-      result = pickOrdinaryThought(items, today, shown);
+      result = pickOrdinaryThought(items, today, shown, weather);
     }
 
     if (!result || !result.text) return null;
@@ -625,13 +628,15 @@
       return;
     }
 
-    var thought = pickThoughtForToday(items, getSelectedDate());
-    if (!thought || !thought.text) {
-      textEl.textContent = EMPTY_TEXT;
-      return;
-    }
+    loadWeatherNow().then(function (weather) {
+      var thought = pickThoughtForToday(items, getSelectedDate(), weather);
+      if (!thought || !thought.text) {
+        textEl.textContent = EMPTY_TEXT;
+        return;
+      }
 
-    textEl.textContent = thought.text;
+      textEl.textContent = thought.text;
+    });
   }
 
   function init() {
