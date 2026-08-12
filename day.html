@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>День — Мой день</title>
+  <link rel="stylesheet" href="css/style.css">
   <link rel="stylesheet" href="css/day.css">
 </head>
 <body>
@@ -32,6 +33,70 @@
         <p class="day-hero__weekday" id="day-weekday">—</p>
         <h1 class="day-hero__title" id="day-title">—</h1>
       </header>
+
+      <section class="day-section" id="archive-section" hidden>
+        <div class="weather" aria-label="Погода">
+          <div class="weather__now">
+            <p class="weather__city" id="weather-city">📍</p>
+            <p class="weather__temp-line">
+              <span class="weather__icon" id="weather-icon" aria-hidden="true">☀</span>
+              <span class="weather__temp" id="weather-temp">+21°</span>
+            </p>
+            <p class="weather__cond" id="weather-cond">Сейчас ясно</p>
+          </div>
+          <p class="weather__tip" id="weather-tip"></p>
+          <div class="weather__forecast" id="weather-forecast" aria-label="Прогноз на 5 дней"></div>
+        </div>
+
+        <div class="card card--history" id="history-card" role="region" tabindex="0" aria-label="Историческая справка">
+          <p class="eyebrow" id="hist-lbl">Историческая справка</p>
+          <img class="hist__image" id="hist-image" alt="" width="320" height="145" decoding="async"/>
+          <div class="hist__cover-row" id="hist-cover-row" hidden>
+            <p class="hist__question" id="hist-question"></p>
+          </div>
+          <div class="hist__answer" id="hist-answer" hidden>
+            <div class="hist__head" id="hist-head">
+              <p class="hist__title" id="hist-title"></p>
+            </div>
+            <p class="hist__year" id="hist-year" hidden></p>
+            <p class="hist__text" id="hist-text"></p>
+            <p class="hist__fact" id="hist-fact" hidden></p>
+          </div>
+          <div class="hist__chrome" id="hist-chrome">
+            <span class="hist__more" id="hist-more" hidden>
+              <span class="hist__more-label">Источник</span>
+              <a class="hist__more-link" id="hist-more-link" href="#" target="_blank" rel="noopener noreferrer"></a>
+            </span>
+          </div>
+        </div>
+
+        <div class="card card--discovery" id="discovery-card" role="button" tabindex="0" aria-expanded="false" aria-controls="discovery-answer" aria-label="Открытие дня">
+          <p class="eyebrow">Открытие дня</p>
+          <img class="discovery__image" id="discovery-image" alt="" width="320" height="145" decoding="async"/>
+          <p class="discovery__question" id="discovery-question"></p>
+          <div class="discovery__answer" id="discovery-answer" hidden>
+            <p class="discovery__title" id="discovery-title"></p>
+            <p class="discovery__place" id="discovery-place"></p>
+            <ul class="discovery__traits" id="discovery-traits"></ul>
+            <p class="discovery__fact" id="discovery-fact"></p>
+          </div>
+        </div>
+
+        <section class="card card--smile" id="smile-card" role="region" tabindex="0" aria-labelledby="smile-lbl" aria-label="Улыбка дня">
+          <p class="eyebrow" id="smile-lbl">Улыбка дня</p>
+          <img class="smile__image" id="smile-image" alt="" width="320" height="158" decoding="async"/>
+          <p class="smile__caption" id="smile-caption"></p>
+          <div class="smile__nav" id="smile-nav">
+            <button type="button" class="smile__nav-btn" id="smile-prev" aria-label="Назад">←</button>
+            <span class="smile__count" id="smile-count" aria-live="polite"></span>
+            <button type="button" class="smile__nav-btn" id="smile-next" aria-label="Вперёд">→</button>
+          </div>
+        </section>
+
+        <section class="card card--gentle-thought" aria-label="Тихая мысль">
+          <p class="gentle-thought__text" id="gentle-thought-text">Сегодня можно не спешить.</p>
+        </section>
+      </section>
 
       <section class="day-section day-section--calendar-events" id="calendar-events-section" hidden aria-labelledby="calendar-events-title">
         <h2 class="day-section__title" id="calendar-events-title">Событие дня</h2>
@@ -83,6 +148,11 @@
 
   <script src="js/orthodox-easter.js"></script>
   <script src="js/holidays-ru.js"></script>
+  <script src="js/weather.js"></script>
+  <script src="js/history.js"></script>
+  <script src="js/discovery-of-the-day.js"></script>
+  <script src="js/smile-of-the-day.js"></script>
+  <script src="js/gentle-thought.js"></script>
   <script src="js/day.js"></script>
 </body>
 </html>

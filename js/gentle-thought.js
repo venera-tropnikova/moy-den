@@ -581,6 +581,34 @@
     return result;
   }
 
+  function getSelectedDate() {
+    var target = window.MyDayTargetDate;
+    if (target && target instanceof Date && !isNaN(target.getTime())) {
+      return target;
+    }
+
+    var raw = getQueryParam("date");
+    if (!raw) return new Date();
+
+    var match = String(raw).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return new Date();
+
+    var year = Number(match[1]);
+    var month = Number(match[2]);
+    var day = Number(match[3]);
+    var preview = new Date(year, month - 1, day);
+
+    if (
+      preview.getFullYear() !== year ||
+      preview.getMonth() !== month - 1 ||
+      preview.getDate() !== day
+    ) {
+      return new Date();
+    }
+
+    return preview;
+  }
+
   function renderGentleThought() {
     var textEl = document.getElementById("gentle-thought-text");
     if (!textEl) return;
@@ -597,7 +625,7 @@
       return;
     }
 
-    var thought = pickThoughtForToday(items, new Date());
+    var thought = pickThoughtForToday(items, getSelectedDate());
     if (!thought || !thought.text) {
       textEl.textContent = EMPTY_TEXT;
       return;

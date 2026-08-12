@@ -350,7 +350,7 @@
 
   // Локальный mock-провайдер без внешнего API.
   // Тест: index.html?weather=empty | index.html?weather=error
-  function fetchWeatherData(location) {
+  function fetchWeatherData(location, referenceDate) {
     var mode = getQueryParam("weather");
     var city = location && location.city ? location.city : DEFAULT_CITY;
 
@@ -362,7 +362,7 @@
       return { status: "error", location: location };
     }
 
-    var nowDate = new Date();
+    var nowDate = referenceDate || new Date();
     var condition = "clear";
     var meta = CONDITIONS[condition];
     var forecast = buildMockForecast(nowDate);
@@ -426,12 +426,40 @@
     return result;
   }
 
+  function getSelectedDate() {
+    var target = window.MyDayTargetDate;
+    if (target && target instanceof Date && !isNaN(target.getTime())) {
+      return target;
+    }
+
+    var raw = getQueryParam("date");
+    if (!raw) return new Date();
+
+    var match = String(raw).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return new Date();
+
+    var year = Number(match[1]);
+    var month = Number(match[2]);
+    var day = Number(match[3]);
+    var preview = new Date(year, month - 1, day);
+
+    if (
+      preview.getFullYear() !== year ||
+      preview.getMonth() !== month - 1 ||
+      preview.getDate() !== day
+    ) {
+      return new Date();
+    }
+
+    return preview;
+  }
+
   function loadWeather() {
     var location = resolveLocation();
-    var nowDate = new Date();
+    var nowDate = getSelectedDate();
 
     try {
-      var data = fetchWeatherData(location);
+      var data = fetchWeatherData(location, nowDate);
       if (!data || typeof data !== "object") {
         return { status: "empty", location: location };
       }
