@@ -198,14 +198,20 @@
     if (!rawToday || typeof rawToday !== "object") {
       return {
         laterCondition: null,
+        laterConditionTime: null,
         eveningTemp: null,
         windIncreases: false
       };
     }
 
     var laterCondition = normalizeCondition(rawToday.laterCondition);
+    var laterConditionTime = typeof rawToday.laterConditionTime === "string" &&
+      /^(?:[01]\d|2[0-3]):[0-5]\d$/.test(rawToday.laterConditionTime)
+      ? rawToday.laterConditionTime
+      : null;
     if (laterCondition && now && laterCondition === now.condition) {
       laterCondition = null;
+      laterConditionTime = null;
     }
 
     var eveningTemp = typeof rawToday.eveningTemp === "number" && isFinite(rawToday.eveningTemp)
@@ -214,6 +220,7 @@
 
     return {
       laterCondition: laterCondition,
+      laterConditionTime: laterCondition ? laterConditionTime : null,
       eveningTemp: eveningTemp,
       windIncreases: rawToday.windIncreases === true
     };
@@ -228,11 +235,12 @@
     if (!dayStillOpen) return null;
 
     var later = today.laterCondition;
-    if (later === "rain" || later === "thunderstorm") {
-      return { type: "later_rain" };
-    }
-    if (later === "snow") {
-      return { type: "later_snow" };
+    if (later && later !== now.condition) {
+      return {
+        type: "later_condition",
+        laterCondition: later,
+        laterConditionTime: today.laterConditionTime
+      };
     }
 
     if (today.windIncreases) {
@@ -261,11 +269,30 @@
   function buildPhraseFromChange(change) {
     if (!change) return "";
 
-    if (change.type === "later_rain") {
-      return "После обеда возможен дождь.\nЗонт сегодня не будет лишним.";
-    }
-    if (change.type === "later_snow") {
-      return "К вечеру возможен снег.\nОденьтесь потеплее.";
+    if (change.type === "later_condition") {
+      var forecastPhrases = {
+        rain: "Ожидается дождь.",
+        snow: "Ожидается снег.",
+        clear: "Погода будет ясной.",
+        partly_cloudy: "Ожидается переменная облачность.",
+        cloudy: "Будет облачно.",
+        fog: "Ожидается туман.",
+        thunderstorm: "Ожидается гроза."
+      };
+      var timedForecastPhrases = {
+        rain: "ожидается дождь.",
+        snow: "ожидается снег.",
+        clear: "погода будет ясной.",
+        partly_cloudy: "ожидается переменная облачность.",
+        cloudy: "будет облачно.",
+        fog: "ожидается туман.",
+        thunderstorm: "ожидается гроза."
+      };
+      if (change.laterConditionTime && timedForecastPhrases[change.laterCondition]) {
+        return "После " + change.laterConditionTime + " " +
+          timedForecastPhrases[change.laterCondition];
+      }
+      return forecastPhrases[change.laterCondition] || "";
     }
     if (change.type === "later_wind") {
       return "Во второй половине дня усилится ветер.";
@@ -423,6 +450,7 @@
         var eveningTime = currentDate + "T18:00";
         var eveningTemp = null;
         var laterCondition = null;
+        var laterConditionTime = null;
         var firstLaterCondition = null;
 
         for (var hourIndex = 0; hourIndex < hourly.time.length; hourIndex += 1) {
@@ -452,15 +480,22 @@
 
           if (hourlyHasRain && condition !== "rain" && condition !== "thunderstorm") {
             laterCondition = hourlyCondition === "thunderstorm" ? "thunderstorm" : "rain";
+            laterConditionTime = hourTime.slice(11, 16);
             break;
           }
 
           if (!firstLaterCondition && hourlyCondition && hourlyCondition !== condition) {
-            firstLaterCondition = hourlyCondition;
+            firstLaterCondition = {
+              condition: hourlyCondition,
+              time: hourTime.slice(11, 16)
+            };
           }
         }
 
-        if (!laterCondition) laterCondition = firstLaterCondition;
+        if (!laterCondition && firstLaterCondition) {
+          laterCondition = firstLaterCondition.condition;
+          laterConditionTime = firstLaterCondition.time;
+        }
 
         var forecast = [];
         for (var i = 1; i < daily.time.length && forecast.length < 5; i += 1) {
@@ -487,6 +522,7 @@
           },
           today: {
             laterCondition: laterCondition,
+            laterConditionTime: laterConditionTime,
             eveningTemp: eveningTemp,
             windIncreases: typeof current.wind_speed_10m === "number" &&
               typeof daily.wind_speed_10m_max[0] === "number" &&
