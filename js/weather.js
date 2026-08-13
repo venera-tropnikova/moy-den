@@ -6,7 +6,12 @@
   var EMPTY_TEXT = "Погода пока недоступна";
   var ERROR_TEXT = "Не удалось загрузить погоду";
   var WEEKDAYS_SHORT = ["Вс", "Пн", "Вт", "Ср", "Чт", "Пт", "Сб"];
+  var WEATHER_CACHE_TTL_MS = 15 * 60 * 1000;
   var weatherPromise = null;
+  var inFlightCity = null;
+  var cachedWeather = null;
+  var cachedCity = null;
+  var weatherLoadedAt = 0;
 
   // Режимы местоположения: сейчас только profile.
   // geo и manual зарезервированы для следующих задач.
@@ -174,6 +179,19 @@
 
   function isPrecipCondition(condition) {
     return condition === "rain" || condition === "thunderstorm" || condition === "snow";
+  }
+
+  function hasPrecipAmount(value) {
+    return typeof value === "number" && isFinite(value) && value > 0;
+  }
+
+  function hasRainSignal(condition, precipitation, rain, showers) {
+    if (condition === "rain" || condition === "thunderstorm") return true;
+    if (condition === "snow") return false;
+
+    return hasPrecipAmount(rain) ||
+      hasPrecipAmount(showers) ||
+      hasPrecipAmount(precipitation);
   }
 
   function normalizeToday(rawToday, now) {
@@ -366,8 +384,8 @@
 
       var forecastUrl = "https://api.open-meteo.com/v1/forecast?latitude=" + result.latitude +
         "&longitude=" + result.longitude +
-        "&current=temperature_2m,weather_code,wind_speed_10m" +
-        "&hourly=temperature_2m,weather_code" +
+        "&current=temperature_2m,weather_code,wind_speed_10m,precipitation,rain,showers" +
+        "&hourly=temperature_2m,weather_code,precipitation,precipitation_probability,rain,showers" +
         "&daily=weather_code,temperature_2m_max,wind_speed_10m_max&forecast_days=6&timezone=auto";
 
       return getJson(forecastUrl).then(function (weather) {
@@ -375,6 +393,15 @@
         var hourly = weather && weather.hourly;
         var daily = weather && weather.daily;
         var condition = current ? conditionFromWeatherCode(current.weather_code) : null;
+        var currentHasRain = current && hasRainSignal(
+          condition,
+          current.precipitation,
+          current.rain,
+          current.showers
+        );
+        if (condition !== "rain" && condition !== "thunderstorm" && condition !== "snow" && currentHasRain) {
+          condition = "rain";
+        }
         if (
           !current ||
           !hourly ||
@@ -384,6 +411,9 @@
           !Array.isArray(hourly.time) ||
           !Array.isArray(hourly.temperature_2m) ||
           !Array.isArray(hourly.weather_code) ||
+          !Array.isArray(hourly.precipitation) ||
+          !Array.isArray(hourly.rain) ||
+          !Array.isArray(hourly.showers) ||
           !Array.isArray(daily.time)
         ) {
           return { status: "error", location: location };
@@ -393,6 +423,7 @@
         var eveningTime = currentDate + "T18:00";
         var eveningTemp = null;
         var laterCondition = null;
+        var firstLaterCondition = null;
 
         for (var hourIndex = 0; hourIndex < hourly.time.length; hourIndex += 1) {
           var hourTime = hourly.time[hourIndex];
@@ -404,7 +435,6 @@
           }
 
           if (
-            laterCondition ||
             typeof hourTime !== "string" ||
             hourTime.slice(0, 10) !== currentDate ||
             hourTime <= current.time
@@ -413,10 +443,24 @@
           }
 
           var hourlyCondition = conditionFromWeatherCode(hourly.weather_code[hourIndex]);
-          if (hourlyCondition && hourlyCondition !== condition) {
-            laterCondition = hourlyCondition;
+          var hourlyHasRain = hasRainSignal(
+            hourlyCondition,
+            hourly.precipitation[hourIndex],
+            hourly.rain[hourIndex],
+            hourly.showers[hourIndex]
+          );
+
+          if (hourlyHasRain && condition !== "rain" && condition !== "thunderstorm") {
+            laterCondition = hourlyCondition === "thunderstorm" ? "thunderstorm" : "rain";
+            break;
+          }
+
+          if (!firstLaterCondition && hourlyCondition && hourlyCondition !== condition) {
+            firstLaterCondition = hourlyCondition;
           }
         }
+
+        if (!laterCondition) laterCondition = firstLaterCondition;
 
         var forecast = [];
         for (var i = 1; i < daily.time.length && forecast.length < 5; i += 1) {
@@ -520,12 +564,23 @@
   }
 
   function loadWeather() {
-    if (weatherPromise) return weatherPromise;
-
     var location = resolveLocation();
+    var city = location.city;
     var nowDate = getSelectedDate();
+    var nowTime = Date.now();
 
-    weatherPromise = fetchWeatherData(location, nowDate).then(function (data) {
+    if (weatherPromise && inFlightCity === city) return weatherPromise;
+
+    if (
+      cachedWeather &&
+      cachedCity === city &&
+      nowTime - weatherLoadedAt < WEATHER_CACHE_TTL_MS
+    ) {
+      return Promise.resolve(cachedWeather);
+    }
+
+    var requestCity = city;
+    var requestPromise = fetchWeatherData(location, nowDate).then(function (data) {
       if (!data || typeof data !== "object") {
         return { status: "empty", location: location };
       }
@@ -576,15 +631,30 @@
       console.warn("Не удалось загрузить погоду:", error);
       return { status: "error", location: location };
     }).then(function (weather) {
+      if (getProfileCity() !== requestCity) return loadWeather();
+
+      cachedWeather = weather;
+      cachedCity = requestCity;
+      weatherLoadedAt = Date.now();
       publishWeatherState(weather);
       return weather;
     });
 
-    return weatherPromise;
+    weatherPromise = requestPromise;
+    inFlightCity = requestCity;
+
+    requestPromise.then(clearInFlight, clearInFlight);
+    return requestPromise;
+
+    function clearInFlight() {
+      if (weatherPromise !== requestPromise) return;
+      weatherPromise = null;
+      inFlightCity = null;
+    }
   }
 
   function whenReady() {
-    return weatherPromise || Promise.resolve(null);
+    return loadWeather();
   }
 
   function publishWeatherState(weather) {
@@ -676,6 +746,10 @@
 
   function init() {
     renderWeather();
+    window.setInterval(renderWeather, WEATHER_CACHE_TTL_MS);
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "visible") renderWeather();
+    });
   }
 
   window.MyDayWeather = {
