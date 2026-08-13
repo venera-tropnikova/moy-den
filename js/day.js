@@ -339,7 +339,7 @@
       actions.className = "day-task__actions";
 
       var returnUrl =
-        "day.html?date=" +
+        "index.html?date=" +
         encodeURIComponent(getSelectedDateKey()) +
         "&cal=" +
         encodeURIComponent(getCalendarMonthParam());

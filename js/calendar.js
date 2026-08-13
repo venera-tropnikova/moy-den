@@ -39,7 +39,10 @@
     if (!window.history || !window.history.replaceState) return;
 
     var cal = getCalParam(visibleMonth.getFullYear(), visibleMonth.getMonth());
-    window.history.replaceState({}, "", "calendar.html?cal=" + cal);
+    var version = new URLSearchParams(window.location.search).get("v");
+    var nextUrl = "calendar.html?cal=" + cal;
+    if (version) nextUrl += "&v=" + encodeURIComponent(version);
+    window.history.replaceState({}, "", nextUrl);
   }
 
   function parseDateParts(dateValue) {
@@ -188,6 +191,13 @@
 
   function getDateParam(year, month, day) {
     return year + "-" + padDatePart(month + 1) + "-" + padDatePart(day);
+  }
+
+  function getDayHref(year, month, day) {
+    if (isToday(year, month, day)) return "index.html";
+
+    return "index.html?date=" + getDateParam(year, month, day) +
+      "&cal=" + getCalParam(year, month);
   }
 
   function formatMonthDay(day, month) {
@@ -596,9 +606,10 @@
     button.className = "month-events__item" + (isPersonal ? "" : " month-events__item--calendar");
     button.type = "button";
     button.addEventListener("click", function () {
-      window.location.href =
-        "day.html?date=" + dateKey +
-        "&cal=" + getCalParam(year, month);
+      var parts = parseDateParts(dateKey);
+      window.location.href = parts
+        ? getDayHref(parts.year, parts.month, parts.day)
+        : "index.html";
     });
 
     var line = document.createElement("span");
@@ -775,9 +786,7 @@
     button.textContent = String(day);
     button.setAttribute("aria-label", day + " " + MONTHS[month].toLowerCase());
     button.addEventListener("click", function () {
-      window.location.href =
-        "day.html?date=" + getDateParam(year, month, day) +
-        "&cal=" + getCalParam(year, month);
+      window.location.href = getDayHref(year, month, day);
     });
 
     if (weekday === 0 || weekday === 6) {

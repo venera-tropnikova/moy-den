@@ -138,6 +138,11 @@
 
   <script src="js/orthodox-easter.js"></script>
   <script src="js/holidays-ru.js"></script>
-  <script src="js/calendar.js"></script>
+  <script src="js/calendar.js?v=canonical-day-route-2"></script>
+  <script>
+    window.addEventListener("pageshow", function (event) {
+      if (event.persisted) window.location.reload();
+    });
+  </script>
 </body>
 </html>

@@ -6,6 +6,10 @@
   var BIRTHDAYS_KEY = "my-day-birthdays-v1";
   var IMPORTANT_DATES_KEY = "my-day-important-dates-v1";
 
+  var targetDate = parseTargetDate();
+
+  window.MyDayTargetDate = targetDate;
+
   var WEEKDAYS = [
     "Воскресенье", "Понедельник", "Вторник", "Среда",
     "Четверг", "Пятница", "Суббота"
@@ -25,7 +29,41 @@
     "другое": "Другое"
   };
 
-  var CALENDAR_EMPTY_TEXT = "Сегодня важных дат нет.";
+  function parseTargetDate() {
+    var params = new URLSearchParams(window.location.search);
+    var value = params.get("date");
+    var match = value && value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+
+    if (!match) return new Date();
+
+    var year = Number(match[1]);
+    var month = Number(match[2]) - 1;
+    var day = Number(match[3]);
+    var date = new Date(year, month, day);
+
+    if (
+      date.getFullYear() !== year ||
+      date.getMonth() !== month ||
+      date.getDate() !== day
+    ) {
+      return new Date();
+    }
+
+    return date;
+  }
+
+  function isCurrentDate(date) {
+    var now = new Date();
+    return (
+      date.getFullYear() === now.getFullYear() &&
+      date.getMonth() === now.getMonth() &&
+      date.getDate() === now.getDate()
+    );
+  }
+
+  function getTargetDateKey() {
+    return tasksStorage.getDateKey(targetDate);
+  }
 
   function loadUserSettings() {
     try {
@@ -88,19 +126,24 @@
     var weekday = WEEKDAYS[date.getDay()].toLowerCase();
     var day = date.getDate();
     var month = MONTHS[date.getMonth()];
-    return "Сегодня " + day + " " + month + ", " + weekday;
+    var prefix = isCurrentDate(date) ? "Сегодня " : "";
+    return prefix + day + " " + month + ", " + weekday;
   }
 
   function getTodayTasks() {
-    return tasksStorage.getTasksForDate(tasksStorage.getDateKey(new Date()));
+    return tasksStorage.getTasksForDate(getTargetDateKey());
   }
 
   function saveTasksForToday(tasks) {
-    tasksStorage.saveTasksForDate(tasksStorage.getDateKey(new Date()), tasks);
+    tasksStorage.saveTasksForDate(getTargetDateKey(), tasks);
   }
 
   function getTomorrowDateKey() {
-    var tomorrow = new Date();
+    var tomorrow = new Date(
+      targetDate.getFullYear(),
+      targetDate.getMonth(),
+      targetDate.getDate()
+    );
     tomorrow.setHours(12, 0, 0, 0);
     tomorrow.setDate(tomorrow.getDate() + 1);
     return tasksStorage.getDateKey(tomorrow);
@@ -119,7 +162,7 @@
   }
 
   function removeTaskFromToday(taskId) {
-    var todayKey = tasksStorage.getDateKey(new Date());
+    var todayKey = getTargetDateKey();
     var todayTasks = tasksStorage.getTasksForDate(todayKey);
     var removed = null;
     var remaining = [];
@@ -139,7 +182,7 @@
   }
 
   function moveTaskToDate(taskId, targetDateKey) {
-    var todayKey = tasksStorage.getDateKey(new Date());
+    var todayKey = getTargetDateKey();
     if (!targetDateKey || targetDateKey === todayKey) return false;
 
     var removed = removeTaskFromToday(taskId);
@@ -160,7 +203,7 @@
   }
 
   function pickDateForTask(taskId) {
-    var todayKey = tasksStorage.getDateKey(new Date());
+    var todayKey = getTargetDateKey();
     var input = document.createElement("input");
     input.type = "date";
     input.className = "task__date-input";
@@ -361,26 +404,7 @@
   }
 
   function getCalendarPreviewDate() {
-    var raw = getQueryParam("date");
-    if (!raw) return new Date();
-
-    var match = String(raw).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
-    if (!match) return new Date();
-
-    var year = Number(match[1]);
-    var month = Number(match[2]);
-    var day = Number(match[3]);
-    var preview = new Date(year, month - 1, day);
-
-    if (
-      preview.getFullYear() !== year ||
-      preview.getMonth() !== month - 1 ||
-      preview.getDate() !== day
-    ) {
-      return new Date();
-    }
-
-    return preview;
+    return targetDate;
   }
 
   function renderCalendar() {
@@ -399,7 +423,9 @@
     if (!entries.length) {
       var empty = document.createElement("p");
       empty.className = "calendar__empty";
-      empty.textContent = CALENDAR_EMPTY_TEXT;
+      empty.textContent = isCurrentDate(previewDate)
+        ? "Сегодня важных дат нет."
+        : "В этот день важных дат нет.";
       container.appendChild(empty);
       return;
     }
@@ -703,7 +729,7 @@
       return;
     }
 
-    tasksStorage.addTaskForDate(tasksStorage.getDateKey(new Date()), text);
+    tasksStorage.addTaskForDate(getTargetDateKey(), text);
     input.value = "";
     renderTasks();
     input.focus();
@@ -722,7 +748,7 @@
     var statusTimeEl = document.getElementById("statusbar-time");
 
     if (greetingEl) greetingEl.textContent = getGreeting(now.getHours());
-    if (dateEl)     dateEl.textContent     = formatDate(now);
+    if (dateEl)     dateEl.textContent     = formatDate(targetDate);
     if (statusTimeEl) statusTimeEl.textContent = formatTime(now);
 
     window.setInterval(function () {
@@ -733,10 +759,8 @@
   }
 
   function initContent() {
-    var now = new Date();
-
     renderCalendar();
-    renderCongratulations(now);
+    renderCongratulations(targetDate);
   }
 
   function setBirthdayWishOpen(card, emptyEl, wishEl, open) {
@@ -791,6 +815,7 @@
     var modalTitle = document.getElementById("bday-modal-title-text");
     var modalText = document.getElementById("bday-modal-text");
     var emptyImage = document.getElementById("bday-empty-image");
+    var emptyText = document.querySelector(".bday__empty-text");
     var todaysBirthdays = getTodaysBirthdays(today);
     var ritualImages = [
       "assets/congratulations/calm-window-light.jpg",
@@ -811,6 +836,11 @@
     }
 
     if (!todaysBirthdays.length) {
+      if (emptyText) {
+        emptyText.innerHTML = isCurrentDate(today)
+          ? "Сегодня нет поводов<br>для поздравлений."
+          : "В этот день нет поводов<br>для поздравлений.";
+      }
       setBirthdayEmptyMode(card, true);
       if (greetBtn) greetBtn.hidden = true;
       return;
@@ -823,7 +853,7 @@
       : "—";
 
     if (name) name.textContent = personName;
-    if (when) when.textContent = "сегодня";
+    if (when) when.textContent = isCurrentDate(today) ? "сегодня" : "в этот день";
     if (greetBtn) greetBtn.hidden = false;
     if (modalTitle) modalTitle.innerHTML = "С днём рождения,<br>" + personName + "!";
     if (modalText) {
