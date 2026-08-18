@@ -10,6 +10,10 @@
 
   window.MyDayTargetDate = targetDate;
 
+  var eventsCardMode = "image";
+  var eventsCardBound = false;
+  var eventsFeaturedEntry = null;
+
   var WEEKDAYS = [
     "Воскресенье", "Понедельник", "Вторник", "Среда",
     "Четверг", "Пятница", "Суббота"
@@ -313,8 +317,26 @@
     ) || [];
   }
 
+  function formatCalendarCardDate(date) {
+    if (!(date instanceof Date) || isNaN(date.getTime())) return "";
+    var monthName = MONTHS[date.getMonth()];
+    if (!monthName) return "";
+    return date.getDate() + " " + monthName;
+  }
+
+  function isSafeLocalHolidayImage(path) {
+    if (typeof path !== "string") return false;
+    var trimmed = path.trim();
+    if (!trimmed) return false;
+    if (trimmed.indexOf("assets/") !== 0) return false;
+    if (trimmed.indexOf("://") !== -1) return false;
+    if (trimmed.indexOf("..") !== -1) return false;
+    return true;
+  }
+
   function getTodayCalendarEntries(today) {
     var entries = [];
+    var dateLabel = formatCalendarCardDate(today);
 
     loadImportantDates().forEach(function (item) {
       if (!isImportantDateToday(item, today)) return;
@@ -324,8 +346,11 @@
         : "—";
 
       entries.push({
-        label: formatImportantDateCategory(item.category),
-        text: title
+        kind: "personal",
+        type: "",
+        title: title,
+        summary: "",
+        dateLabel: dateLabel
       });
     });
 
@@ -335,34 +360,169 @@
       var title = typeof event.title === "string" && event.title.trim()
         ? event.title.trim()
         : "—";
+      var summary = typeof event.summary === "string"
+        ? event.summary.trim()
+        : "";
 
-      entries.push({
-        label: event.typeLabel || "Календарная дата",
-        text: title
-      });
+      var calendarEntry = {
+        kind: "calendar",
+        type: event.type || "",
+        title: title,
+        summary: summary,
+        dateLabel: dateLabel
+      };
+
+      if (typeof event.shortTitle === "string" && event.shortTitle.trim()) {
+        calendarEntry.shortTitle = event.shortTitle.trim();
+      }
+
+      if (isSafeLocalHolidayImage(event.image)) {
+        calendarEntry.image = event.image.trim();
+      }
+
+      entries.push(calendarEntry);
     });
 
     return entries;
   }
 
-  function renderCalendarEntry(label, text) {
-    var item = document.createElement("div");
-    item.className = "calendar__item";
+  function pickMainCalendarEntry(entries) {
+    var i;
+    for (i = 0; i < entries.length; i += 1) {
+      if (entries[i].type === "official-holiday") return entries[i];
+    }
+    for (i = 0; i < entries.length; i += 1) {
+      if (entries[i].kind === "calendar") return entries[i];
+    }
+    return entries[0] || null;
+  }
 
-    var body = document.createElement("div");
+  function isEventsInteractiveTarget(target) {
+    var el = target;
+    if (!el) return false;
+    if (el.nodeType === 3) el = el.parentElement;
+    if (!el || !el.closest) return false;
+    return Boolean(
+      el.closest(
+        "a, button, input, textarea, select, [contenteditable], [role='button']"
+      )
+    );
+  }
 
-    var itemLabel = document.createElement("p");
-    itemLabel.className = "calendar__label";
-    itemLabel.textContent = label;
+  function getEventsCard() {
+    return document.querySelector(".card--events");
+  }
 
-    var itemText = document.createElement("p");
-    itemText.className = "calendar__text";
-    itemText.textContent = text;
+  function applyEventsCardMode(card, entry, mode) {
+    if (!card) return;
 
-    body.appendChild(itemLabel);
-    body.appendChild(itemText);
-    item.appendChild(body);
-    return item;
+    eventsCardMode = mode === "text" ? "text" : "image";
+    card.classList.remove("card--events-image", "card--events-text");
+    card.classList.add(
+      eventsCardMode === "text" ? "card--events-text" : "card--events-image"
+    );
+    card.setAttribute(
+      "aria-expanded",
+      eventsCardMode === "text" ? "true" : "false"
+    );
+
+    var titleEl = card.querySelector(".calendar__featured-title");
+    if (!titleEl || !entry) return;
+
+    if (eventsCardMode === "image") {
+      titleEl.textContent = entry.shortTitle || entry.title || "—";
+    } else {
+      titleEl.textContent = entry.title || "—";
+    }
+  }
+
+  function toggleEventsCardMode() {
+    var card = getEventsCard();
+    if (!card || !eventsFeaturedEntry) return;
+    applyEventsCardMode(
+      card,
+      eventsFeaturedEntry,
+      eventsCardMode === "image" ? "text" : "image"
+    );
+  }
+
+  function bindEventsCardInteractions() {
+    var card = getEventsCard();
+    if (!card || eventsCardBound) return;
+    eventsCardBound = true;
+
+    card.addEventListener("click", function (event) {
+      if (!eventsFeaturedEntry) return;
+      if (isEventsInteractiveTarget(event.target)) return;
+      toggleEventsCardMode();
+    });
+
+    card.addEventListener("keydown", function (event) {
+      if (!eventsFeaturedEntry) return;
+      if (isEventsInteractiveTarget(event.target)) return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleEventsCardMode();
+        return;
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        applyEventsCardMode(card, eventsFeaturedEntry, "image");
+      }
+    });
+
+    var footerBtn = card.querySelector(":scope > .link-btn");
+    if (footerBtn) {
+      footerBtn.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+    }
+  }
+
+  function renderFeaturedCalendarEntry(entry) {
+    var wrap = document.createElement("div");
+    wrap.className = "calendar__featured";
+
+    var top = document.createElement("div");
+    top.className = "calendar__featured-top";
+
+    if (isSafeLocalHolidayImage(entry.image)) {
+      var img = document.createElement("img");
+      img.className = "calendar__featured-image";
+      img.src = entry.image.trim();
+      img.alt = entry.shortTitle || entry.title || "";
+      img.setAttribute("decoding", "async");
+      top.appendChild(img);
+    }
+
+    var meta = document.createElement("div");
+    meta.className = "calendar__featured-meta";
+
+    var title = document.createElement("p");
+    title.className = "calendar__featured-title";
+    title.textContent = entry.shortTitle || entry.title || "—";
+    meta.appendChild(title);
+
+    if (entry.dateLabel) {
+      var dateEl = document.createElement("p");
+      dateEl.className = "calendar__featured-date";
+      dateEl.textContent = entry.dateLabel;
+      meta.appendChild(dateEl);
+    }
+
+    top.appendChild(meta);
+    wrap.appendChild(top);
+
+    if (entry.summary) {
+      var summaryEl = document.createElement("p");
+      summaryEl.className = "calendar__featured-summary";
+      summaryEl.textContent = entry.summary;
+      wrap.appendChild(summaryEl);
+    }
+
+    return wrap;
   }
 
   // Временный тестовый режим: index.html?date=YYYY-MM-DD
@@ -411,6 +571,9 @@
     var container = document.getElementById("calendar-content");
     if (!container) return;
 
+    eventsFeaturedEntry = null;
+
+    var card = getEventsCard();
     var previewDate = getCalendarPreviewDate();
     container.innerHTML = "";
     container.setAttribute(
@@ -421,6 +584,12 @@
     var entries = getTodayCalendarEntries(previewDate);
 
     if (!entries.length) {
+      if (card) {
+        card.classList.remove("card--events-image", "card--events-text");
+        card.removeAttribute("aria-expanded");
+        card.tabIndex = -1;
+      }
+
       var empty = document.createElement("p");
       empty.className = "calendar__empty";
       empty.textContent = isCurrentDate(previewDate)
@@ -430,9 +599,25 @@
       return;
     }
 
-    entries.forEach(function (entry) {
-      container.appendChild(renderCalendarEntry(entry.label, entry.text));
-    });
+    var main = pickMainCalendarEntry(entries);
+    if (main) {
+      eventsFeaturedEntry = main;
+      container.appendChild(renderFeaturedCalendarEntry(main));
+      if (card) {
+        card.classList.remove("card--events-image", "card--events-text");
+        card.removeAttribute("aria-expanded");
+        card.tabIndex = -1;
+      }
+    }
+
+    if (entries.length > 1) {
+      var more = document.createElement("button");
+      more.type = "button";
+      more.className = "calendar__more";
+      more.textContent = "Ещё " + (entries.length - 1) + " →";
+      container.appendChild(more);
+    }
+
   }
 
   function createTaskElement(task, isCompletedList) {

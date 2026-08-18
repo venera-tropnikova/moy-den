@@ -75,7 +75,7 @@
   }
 
   function indexFixedEventsFromJson() {
-    var data = loadJsonFile("calendar-events-ru.json");
+    var data = loadJsonFile("calendar-events-ru.json?v=20260817-1");
     var events = data && Array.isArray(data.events) ? data.events : [];
     var i;
 
@@ -87,7 +87,7 @@
   }
 
   function indexMovableEventsFromJson() {
-    var data = loadJsonFile("calendar-events-ru-movable.json");
+    var data = loadJsonFile("calendar-events-ru-movable.json?v=20260817-1");
     var events = data && Array.isArray(data.events) ? data.events : [];
     var i;
 
@@ -151,8 +151,20 @@
         entry.description = jsonItem.description;
       }
 
+      if (jsonItem && typeof jsonItem.summary === "string" && jsonItem.summary.trim()) {
+        entry.summary = jsonItem.summary.trim();
+      }
+
       if (jsonItem && typeof jsonItem.listIcon === "string" && jsonItem.listIcon.trim()) {
         entry.listIcon = jsonItem.listIcon.trim();
+      }
+
+      if (jsonItem && typeof jsonItem.shortTitle === "string" && jsonItem.shortTitle.trim()) {
+        entry.shortTitle = jsonItem.shortTitle.trim();
+      }
+
+      if (jsonItem && typeof jsonItem.image === "string" && jsonItem.image.trim()) {
+        entry.image = jsonItem.image.trim();
       }
 
       return entry;
@@ -196,6 +208,11 @@
           description = RELIGIOUS_DESCRIPTIONS[item.key];
         }
 
+        var summary = "";
+        if (jsonItem && typeof jsonItem.summary === "string") {
+          summary = jsonItem.summary.trim();
+        }
+
         var entry = {
           year: item.year,
           date: buildDateKey(item.year, item.month + 1, item.day),
@@ -209,6 +226,10 @@
           key: item.key
         };
 
+        if (summary) {
+          entry.summary = summary;
+        }
+
         if (item.isRange) {
           entry.isRange = true;
           entry.endYear = item.endYear;
@@ -218,6 +239,14 @@
 
         if (jsonItem && typeof jsonItem.listIcon === "string" && jsonItem.listIcon.trim()) {
           entry.listIcon = jsonItem.listIcon.trim();
+        }
+
+        if (jsonItem && typeof jsonItem.shortTitle === "string" && jsonItem.shortTitle.trim()) {
+          entry.shortTitle = jsonItem.shortTitle.trim();
+        }
+
+        if (jsonItem && typeof jsonItem.image === "string" && jsonItem.image.trim()) {
+          entry.image = jsonItem.image.trim();
         }
 
         return entry;

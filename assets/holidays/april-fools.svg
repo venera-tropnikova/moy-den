@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" role="img" aria-label="День смеха">
+  <rect width="240" height="320" fill="#f3ead8"/>
+  <circle cx="120" cy="168" r="78" fill="#f6d36b"/>
+  <ellipse cx="92" cy="158" rx="10" ry="14" fill="#2b241c"/>
+  <ellipse cx="148" cy="158" rx="10" ry="14" fill="#2b241c"/>
+  <path d="M86 198 C108 226 132 226 154 198" fill="none" stroke="#2b241c" stroke-width="8" stroke-linecap="round"/>
+  <path d="M48 92 L72 132 L96 92 L120 132 L144 92 L168 132 L192 92 L176 148 L64 148 Z" fill="#d34a3a"/>
+  <circle cx="48" cy="92" r="12" fill="#3a7d4c"/>
+  <circle cx="120" cy="92" r="12" fill="#3a7d4c"/>
+  <circle cx="192" cy="92" r="12" fill="#3a7d4c"/>
+</svg>

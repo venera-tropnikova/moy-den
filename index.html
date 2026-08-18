@@ -66,10 +66,12 @@
     <main class="scroll-area">
 
       <!-- Праздники и даты (JS заполняет renderCalendar → #calendar-content) -->
-      <section class="card" aria-labelledby="events-lbl">
-        <div class="card__row">
-          <h2 class="card__title" id="events-lbl">Праздники и даты</h2>
-        </div>
+      <section
+        class="card card--events"
+        aria-labelledby="events-lbl"
+        role="region"
+      >
+        <p class="eyebrow" id="events-lbl">Праздники и даты</p>
         <div id="calendar-content"></div>
         <button class="link-btn hist__more" type="button">Важные даты этого дня →</button>
       </section>
@@ -374,7 +376,7 @@
   </div>
 
   <script src="js/orthodox-easter.js"></script>
-  <script src="js/holidays-ru.js"></script>
+  <script src="js/holidays-ru.js?v=20260817-1"></script>
   <script src="js/important-dates-storage.js"></script>
   <script src="js/history.js"></script>
   <script src="js/weather.js"></script>
