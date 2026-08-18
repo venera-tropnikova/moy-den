@@ -211,16 +211,41 @@
     return hasValidSource(event.sources);
   }
 
-  function compareEventsForHome(a, b) {
-    var interestA = typeof a.interest === "number" ? a.interest : 0;
-    var interestB = typeof b.interest === "number" ? b.interest : 0;
+  function getEditorialRank(event) {
+    if (!event || typeof event.editorialRank !== "number") return null;
+    if (!isFinite(event.editorialRank)) return null;
+    if (Math.floor(event.editorialRank) !== event.editorialRank) return null;
+    if (event.editorialRank < 1 || event.editorialRank > 3) return null;
+    return event.editorialRank;
+  }
+
+  function getSortableNumber(value) {
+    return typeof value === "number" && isFinite(value) ? value : 0;
+  }
+
+  function compareEventsFallback(a, b) {
+    var interestA = getSortableNumber(a.interest);
+    var interestB = getSortableNumber(b.interest);
     if (interestA !== interestB) return interestB - interestA;
 
-    var priorityA = typeof a.priority === "number" ? a.priority : 0;
-    var priorityB = typeof b.priority === "number" ? b.priority : 0;
+    var priorityA = getSortableNumber(a.priority);
+    var priorityB = getSortableNumber(b.priority);
     if (priorityA !== priorityB) return priorityB - priorityA;
 
     return b.year - a.year;
+  }
+
+  function compareEventsForHome(a, b) {
+    var rankA = getEditorialRank(a.event);
+    var rankB = getEditorialRank(b.event);
+    var rankedA = rankA !== null;
+    var rankedB = rankB !== null;
+
+    if (rankedA !== rankedB) return rankedA ? -1 : 1;
+    if (rankedA && rankA !== rankB) return rankA - rankB;
+
+    var fallback = compareEventsFallback(a.event, b.event);
+    return fallback || a.index - b.index;
   }
 
   function getVerifiedEventsForDate(data, date) {
@@ -239,14 +264,14 @@
     var verified = [];
     for (var i = 0; i < list.length; i += 1) {
       if (isValidVerifiedEvent(list[i], dateKey)) {
-        verified.push(list[i]);
+        verified.push({ event: list[i], index: i });
       }
     }
 
     verified.sort(compareEventsForHome);
     if (!verified.length) return [];
 
-    var selected = verified[0];
+    var selected = verified[0].event;
 
     if (
       !selected.image ||

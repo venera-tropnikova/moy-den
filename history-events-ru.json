@@ -96,10 +96,16 @@
             "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1959-012A",
             "name": "NASA NSSDCA",
             "shortTitle": "NASA NSSDCA"
+          },
+          {
+            "title": "ESA — 2 January 1959, Lunik I launch",
+            "url": "https://www.esa.int/Science_Exploration/Space_Science/2_January",
+            "name": "ESA"
           }
         ],
         "image": "assets/history/luna-1-1959.jpg",
-        "imageAlt": "Макет советской станции «Луна-1»"
+        "imageAlt": "Макет советской станции «Луна-1»",
+        "editorialRank": 1
       },
       {
         "id": "world-1492-granada-falls",
@@ -216,6 +222,31 @@
             "title": "ASCE — Brooklyn Bridge",
             "url": "https://www.asce.org/about-civil-engineering/history-and-heritage/historic-landmarks/brooklyn-bridge",
             "name": "ASCE"
+          }
+        ]
+      },
+      {
+        "id": "ru-1993-start-ii",
+        "year": 1993,
+        "title": "Подписали СНВ-II",
+        "summary": "Буш и Ельцин подписали в Москве договор о сокращении стратегических вооружений.",
+        "fact": "💡 Договор так и не вступил в силу: Россия вышла из него в 2002 году.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Office of the Historian — FRUS preface, START II signed 3 January 1993",
+            "url": "https://history.state.gov/historicaldocuments/frus1989-92v31/preface",
+            "name": "US State Department"
+          },
+          {
+            "title": "Arms Control Association — START II signed 3 January 1993",
+            "url": "https://www.armscontrol.org/factsheets/start2",
+            "name": "Arms Control Association"
           }
         ]
       }
@@ -385,6 +416,32 @@
             "shortTitle": "NGA"
           }
         ]
+      },
+      {
+        "id": "ru-1762-elizabeth-died",
+        "year": 1762,
+        "title": "Умерла Елизавета Петровна",
+        "summary": "Скончалась императрица Елизавета; на престол вступил Пётр III.",
+        "fact": "💡 По юлианскому календарю это 25 декабря 1761 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Elizabeth, empress of Russia",
+            "url": "https://www.britannica.com/biography/Elizabeth-empress-of-Russia",
+            "name": "Britannica"
+          },
+          {
+            "title": "ГАРАНТ — Манифест 25.12.1761 о кончине Елизаветы и вступлении Петра III",
+            "url": "https://base.garant.ru/58105144/",
+            "name": "ГАРАНТ"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "01-06": [
@@ -669,6 +726,32 @@
             "shortTitle": "V&A"
           }
         ]
+      },
+      {
+        "id": "ru-1792-treaty-of-jassy",
+        "year": 1792,
+        "title": "Ясский мир",
+        "summary": "Россия и Османская империя подписали мир, завершивший войну 1787–1791 годов.",
+        "fact": "💡 По юлианскому календарю договор подписали 29 декабря 1791 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Treaty of Jassy",
+            "url": "https://www.britannica.com/event/Treaty-of-Jassy",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Treaty of Jassy, 29 Dec 1791 / 9 Jan 1792",
+            "url": "https://www.prlib.ru/en/history/618929",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "01-10": [
@@ -740,6 +823,32 @@
             "shortTitle": "UN Geneva"
           }
         ]
+      },
+      {
+        "id": "ru-1943-operation-ring-begins",
+        "year": 1943,
+        "title": "Начало операции «Кольцо»",
+        "summary": "Красная армия начала ликвидацию окружённой 6-й армии под Сталинградом.",
+        "fact": "💡 Северный котёл держался ещё до 2 февраля.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "World History Encyclopedia — Battle of Stalingrad (10 January)",
+            "url": "https://www.worldhistory.org/article/2696/battle-of-stalingrad/",
+            "name": "World History Encyclopedia"
+          },
+          {
+            "title": "Presidential Library — Сталинград, операция «Кольцо» (10 января–2 февраля 1943)",
+            "url": "https://www.prlib.ru/en/node/1865156",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "01-11": [
@@ -905,6 +1014,31 @@
         ],
         "image": "assets/history/motown-hitsville-1959.jpg",
         "imageAlt": "Hitsville U.S.A. — дом Motown в Детройте"
+      },
+      {
+        "id": "ru-1945-vistula-oder-offensive",
+        "year": 1945,
+        "title": "Начало Висло-Одерской операции",
+        "summary": "Красная армия начала наступление от Вислы к Одеру.",
+        "fact": "💡 Удар нанесли фронты Жукова и Конева из плацдармов на Висле.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — The Soviet advance to the Oder, January–February 1945",
+            "url": "https://www.britannica.com/event/World-War-II/The-Soviet-advance-to-the-Oder-January-February-1945",
+            "name": "Britannica"
+          },
+          {
+            "title": "World War II Database — Vistula-Oder Offensive",
+            "url": "https://ww2db.com/battle_spec.php?battle_id=274",
+            "name": "World War II Database"
+          }
+        ]
       }
     ],
     "01-13": [
@@ -973,6 +1107,31 @@
             "title": "Britannica — Wyatt Earp",
             "url": "https://www.britannica.com/biography/Wyatt-Earp",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1703-vedomosti-first-issue",
+        "year": 1703,
+        "title": "Первый номер «Ведомостей»",
+        "summary": "В Москве вышел первый номер русской печатной газеты «Ведомости».",
+        "fact": "💡 По старому стилю это 2 января 1703 года; 13 января — новый стиль.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Российское историческое общество — Первому номеру «Ведомостей»",
+            "url": "https://historyrussia.org/sobytiya/ko-dnyu-rossijskoj-pechati-pervomu-nomeru-russkoj-pechatnoj-gazety-vedomosti-317-let.html",
+            "name": "Российское историческое общество"
+          },
+          {
+            "title": "СПбИИ РАН — День российской печати",
+            "url": "https://spbiiran.ru/den-rossiyskoy-pechati-2023/",
+            "name": "СПбИИ РАН"
           }
         ]
       }
@@ -1120,33 +1279,6 @@
     ],
     "01-16": [
       {
-        "id": "ru-1547-ivan-crowned-tsar",
-        "year": 1547,
-        "title": "Ивана IV венчали на царство",
-        "summary": "В Успенском соборе Ивана IV впервые венчали царём.",
-        "fact": "💡 До этого правители Руси носили титул великого князя.",
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 100,
-        "interest": 10,
-        "status": "verified",
-        "sources": [
-          {
-            "title": "Britannica — Ivan IV",
-            "url": "https://www.britannica.com/biography/Ivan-the-Terrible",
-            "name": "Britannica"
-          },
-          {
-            "title": "Presidential Library — Coronation of Ivan IV",
-            "url": "https://www.prlib.ru/en/history/618950",
-            "name": "Presidential Library"
-          }
-        ],
-        "image": "assets/history/ivan-coronation-1547.jpg",
-        "imageAlt": "Иван IV Грозный на картине Васнецова"
-      },
-      {
         "id": "world-1919-prohibition-ratified",
         "year": 1919,
         "title": "Ратифицирован «сухой закон»",
@@ -1187,6 +1319,32 @@
         ],
         "image": "assets/history/columbia-sts107-2003.jpg",
         "imageAlt": "Старт космического шаттла Columbia"
+      },
+      {
+        "id": "ru-1969-soyuz-4-5-docking",
+        "year": 1969,
+        "title": "Стыковка «Союз-4» и «Союз-5»",
+        "summary": "Два пилотируемых корабля впервые состыковались; двое космонавтов перешли через открытый космос.",
+        "fact": "💡 Это была первая стыковка пилотируемых кораблей и первый переход экипажа с корабля на корабль.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "RussianSpaceWeb — Soyuz-4 and Soyuz-5",
+            "url": "https://www.russianspaceweb.com/soyuz4-soyuz5.html",
+            "name": "RussianSpaceWeb"
+          },
+          {
+            "title": "Spacefacts — Soyuz 4",
+            "url": "https://www.spacefacts.de/mission/english/soyuz-4.htm",
+            "name": "Spacefacts"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "01-17": [
@@ -1281,6 +1439,31 @@
         ],
         "image": "assets/history/eisenhower-farewell-1961.jpg",
         "imageAlt": "Эйзенхауэр во время прощального обращения, 17 января 1961"
+      },
+      {
+        "id": "ru-1945-warsaw-captured",
+        "year": 1945,
+        "title": "Освобождение Варшавы",
+        "summary": "Советские войска и 1-я армия Войска Польского заняли разрушенную Варшаву.",
+        "fact": "💡 После подавления восстания 1944 года немцы методично разрушали город; к январю столица лежала в руинах.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Liberation of Warsaw",
+            "url": "https://www.prlib.ru/en/history/618955",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "National WWII Museum — Liberation of Warsaw",
+            "url": "https://www.nationalww2museum.org/war/articles/liberation-of-warsaw-1944",
+            "name": "National WWII Museum"
+          }
+        ]
       }
     ],
     "01-18": [
@@ -1349,8 +1532,14 @@
             "title": "Britannica — Siege of Leningrad",
             "url": "https://www.britannica.com/event/Siege-of-Leningrad",
             "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — The break of Leningrad blockade (18 January 1943)",
+            "url": "https://www.prlib.ru/en/history/618956",
+            "name": "Presidential Library"
           }
-        ]
+        ],
+        "editorialRank": 1
       }
     ],
     "01-19": [
@@ -1423,6 +1612,31 @@
         ],
         "image": "assets/history/indira-gandhi-pm-1966.jpg",
         "imageAlt": "Официальный портрет Индиры Ганди"
+      },
+      {
+        "id": "ru-1918-constituent-assembly-dissolved",
+        "year": 1918,
+        "title": "Разгон Учредительного собрания",
+        "summary": "ВЦИК распустил Учредительное собрание после единственного заседания в Таврическом дворце.",
+        "fact": "💡 По старому стилю это 6 января 1918 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Decree on Constituent Assembly dissolution",
+            "url": "https://www.prlib.ru/en/history/618959",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "ЭБИД — Декрет ВЦИК о роспуске Учредительного собрания",
+            "url": "https://docs.historyrussia.org/ru/nodes/521205-o-rospuske-uchreditelnogo-sobraniya-dekret-vserossiyskogo-tsentralnogo-ispolnitelnogo-komiteta-19-6-yanvarya-1918-g",
+            "name": "ЭБИД"
+          }
+        ]
       }
     ],
     "01-20": [
@@ -1562,8 +1776,14 @@
             "title": "Britannica — Vladimir Lenin",
             "url": "https://www.britannica.com/biography/Vladimir-Lenin",
             "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Lenin died 21 January 1924 at Gorki",
+            "url": "https://www.prlib.ru/en/history/619187",
+            "name": "Presidential Library"
           }
-        ]
+        ],
+        "editorialRank": 1
       }
     ],
     "01-22": [
@@ -1658,6 +1878,32 @@
         ],
         "image": "assets/history/apple-macintosh-1984.jpg",
         "imageAlt": "Macintosh 1984 — компьютер эпохи ролика «1984»"
+      },
+      {
+        "id": "ru-1905-bloody-sunday",
+        "year": 1905,
+        "title": "Кровавое воскресенье",
+        "summary": "В Петербурге войска стреляли в мирное шествие рабочих к Зимнему дворцу.",
+        "fact": "💡 По старому стилю это 9 января 1905 года — начало революции 1905 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Bloody Sunday",
+            "url": "https://www.prlib.ru/en/history/618968",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "Britannica — Bloody Sunday (Russia 1905)",
+            "url": "https://www.britannica.com/event/Bloody-Sunday-Russia-1905",
+            "name": "Britannica"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "01-23": [
@@ -1726,6 +1972,31 @@
             "title": "U.S. Navy — USS Pueblo",
             "url": "https://www.history.navy.mil/research/histories/ship-histories/danfs/p/pueblo-ii.html",
             "name": "U.S. Navy"
+          }
+        ]
+      },
+      {
+        "id": "ru-1755-moscow-university-founded",
+        "year": 1755,
+        "title": "Учреждён Московский университет",
+        "summary": "Елизавета Петровна подписала указ об основании Московского университета.",
+        "fact": "💡 По старому стилю это 12 января 1755 года, день святой Татьяны.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Hist.MSU — The Founding of Moscow University",
+            "url": "https://hist.msu.ru/English/Admin/founding1.htm",
+            "name": "Hist.MSU"
+          },
+          {
+            "title": "Presidential Library — Moscow University founded",
+            "url": "https://www.prlib.ru/en/history/618970",
+            "name": "Presidential Library"
           }
         ]
       }
@@ -1945,6 +2216,34 @@
             "shortTitle": "Science Museum"
           }
         ]
+      },
+      {
+        "id": "ru-1547-ivan-crowned-tsar",
+        "year": 1547,
+        "title": "Ивана IV венчали на царство",
+        "summary": "В Успенском соборе Ивана IV впервые венчали царём.",
+        "fact": "💡 До этого правители Руси носили титул великого князя.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Ivan IV",
+            "url": "https://www.britannica.com/biography/Ivan-the-Terrible",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Coronation of Ivan IV",
+            "url": "https://www.prlib.ru/en/history/618950",
+            "name": "Presidential Library"
+          }
+        ],
+        "image": "assets/history/ivan-coronation-1547.jpg",
+        "imageAlt": "Иван IV Грозный на картине Васнецова",
+        "editorialRank": 1
       }
     ],
     "01-27": [
@@ -2020,6 +2319,31 @@
         ],
         "image": "assets/history/edison-light-bulb.jpg",
         "imageAlt": "Ранняя лампа накаливания Эдисона"
+      },
+      {
+        "id": "ru-1944-leningrad-siege-lifted",
+        "year": 1944,
+        "title": "Снята блокада Ленинграда",
+        "summary": "Советские войска полностью деблокировали Ленинград после 872 дней осады.",
+        "fact": "💡 27 января отмечают как День полного освобождения Ленинграда от блокады.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Siege of Leningrad",
+            "url": "https://www.britannica.com/event/Siege-of-Leningrad",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Day of the complete liberation of Leningrad",
+            "url": "https://www.prlib.ru/en/history/618980",
+            "name": "Presidential Library"
+          }
+        ]
       }
     ],
     "01-28": [
@@ -2092,6 +2416,32 @@
             "name": "U.S. Coast Guard"
           }
         ]
+      },
+      {
+        "id": "ru-1918-red-army-decree",
+        "year": 1918,
+        "title": "Декрет о Красной армии",
+        "summary": "СНК учредил Рабоче-Крестьянскую Красную Армию.",
+        "fact": "💡 По старому стилю декрет приняли 15 января 1918 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Red Army",
+            "url": "https://www.britannica.com/topic/Red-Army",
+            "name": "Britannica"
+          },
+          {
+            "title": "ЭБИД — Декрет СНК о Рабоче-Крестьянской Красной Армии, 28 (15) января 1918",
+            "url": "https://docs.historyrussia.org/ru/nodes/521211-o-raboche-krestyanskoy-krasnoy-armii-dekret-soveta-narodnyh-komissarov-28-15-yanvarya-1918-g",
+            "name": "ЭБИД"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "01-29": [
@@ -2162,6 +2512,32 @@
             "shortTitle": "National Archives"
           }
         ]
+      },
+      {
+        "id": "ru-1860-chekhov-born",
+        "year": 1860,
+        "title": "Родился Антон Чехов",
+        "summary": "В Таганроге родился Антон Павлович Чехов.",
+        "fact": "💡 По старому стилю это 17 января 1860 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Anton Chekhov",
+            "url": "https://www.britannica.com/biography/Anton-Chekhov",
+            "name": "Britannica"
+          },
+          {
+            "title": "Biography.com — Anton Chekhov",
+            "url": "https://www.biography.com/authors-writers/anton-chekhov",
+            "name": "Biography.com"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "01-30": [
@@ -2307,6 +2683,32 @@
         ],
         "image": "assets/history/gunpowder-plot.jpg",
         "imageAlt": "Гравюра, связанная с Пороховым заговором"
+      },
+      {
+        "id": "ru-1943-paulus-surrenders",
+        "year": 1943,
+        "title": "Паулюс сдался под Сталинградом",
+        "summary": "Командующий 6-й армией сдался; южный котёл капитулировал.",
+        "fact": "💡 Северный котёл вермахта держался до 2 февраля.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Stalingrad",
+            "url": "https://www.britannica.com/event/Battle-of-Stalingrad",
+            "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — Battle of Stalingrad ends (31 January southern sector)",
+            "url": "https://www.history.com/this-day-in-history/february-2/battle-of-stalingrad-ends",
+            "name": "HISTORY"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "02-01": [
@@ -2375,6 +2777,31 @@
             "url": "https://www.oed.com/information/about-the-oed/history-of-the-oed/",
             "name": "OED",
             "shortTitle": "OED History"
+          }
+        ]
+      },
+      {
+        "id": "ru-1931-yeltsin-born",
+        "year": 1931,
+        "title": "Родился Борис Ельцин",
+        "summary": "В селе Бутка родился Борис Ельцин — будущий первый президент России.",
+        "fact": "💡 Он стал первым всенародно избранным президентом России в 1991 году.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Родился Борис Ельцин",
+            "url": "https://www.prlib.ru/history/618999",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "Ельцин Центр — Биография Бориса Ельцина",
+            "url": "https://yeltsin.ru/news/biografiya-boris-nikolaevich-elcin-prezident-rossii-19911999/",
+            "name": "Ельцин Центр"
           }
         ]
       }
@@ -2654,33 +3081,6 @@
             "shortTitle": "Britannica"
           }
         ]
-      },
-      {
-        "id": "ru-1852-new-hermitage-opens",
-        "year": 1852,
-        "title": "Эрмитаж открыл двери городу",
-        "summary": "В Петербурге торжественно открыли Новый Эрмитаж — первое в России здание, специально построенное как публичный музей.",
-        "fact": "💡 После церемонии в Эрмитажном театре устроили ужин на 600 гостей.",
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 100,
-        "interest": 11,
-        "status": "verified",
-        "sources": [
-          {
-            "title": "Hermitage Museum — Opening of the New Hermitage",
-            "url": "https://www.hermitagemuseum.org/explore/history/Opening+of+the+Imperial+Museum+of+the+New+Hermitage?lng=en",
-            "name": "Hermitage Museum"
-          },
-          {
-            "title": "Smithsonian — Hermitage opened to the public 1852",
-            "url": "https://www.smithsonianmag.com/smart-news/the-breathtaking-hermitage-museum-filled-with-treasures-like-the-kolyvan-vase-and-the-peacock-clock-first-opened-to-the-public-on-this-day-in-1852-180985925/",
-            "name": "Smithsonian"
-          }
-        ],
-        "image": "assets/history/hermitage-1852.jpg",
-        "imageAlt": "Здание Эрмитажа в Санкт-Петербурге"
       }
     ],
     "02-06": [
@@ -2750,6 +3150,31 @@
             "url": "https://www.parliament.uk/about/living-heritage/transformingsociety/electionsvoting/womenvote/parliamentary-collections/representations-the-vote/representation-of-the-people-act-1918/",
             "name": "UK Parliament",
             "shortTitle": "UK Parliament"
+          }
+        ]
+      },
+      {
+        "id": "ru-1918-gregorian-calendar-decree",
+        "year": 1918,
+        "title": "Декрет о новом календаре",
+        "summary": "Совнарком постановил ввести в России западноевропейский григорианский календарь.",
+        "fact": "💡 После 31 января 1918 года следующим днём стало 14 февраля, а не 1-е.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "МГУ — Декрет о введении западноевропейского календаря",
+            "url": "http://www.hist.msu.ru/ER/Etext/DEKRET/18-01-24.htm",
+            "name": "МГУ"
+          },
+          {
+            "title": "Presidential Library — Декрет о григорианском календаре",
+            "url": "https://www.prlib.ru/history/619010",
+            "name": "Presidential Library"
           }
         ]
       }
@@ -2823,6 +3248,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-2014-sochi-olympics-open",
+        "year": 2014,
+        "title": "Открытие Олимпиады в Сочи",
+        "summary": "В Сочи на стадионе «Фишт» открылись XXII зимние Олимпийские игры.",
+        "fact": "💡 Олимпийский огонь зажгли Ирина Роднина и Владислав Третьяк.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Olympics — Sochi 2014 Opening Ceremony",
+            "url": "https://www.olympics.com/en/news/sochi-2014-opening-ceremony-russia-welcomes-the-world",
+            "name": "Olympics"
+          },
+          {
+            "title": "Olympics — Sochi 2014",
+            "url": "https://www.olympics.com/en/olympic-games/sochi-2014",
+            "name": "Olympics"
+          }
+        ]
       }
     ],
     "02-08": [
@@ -2834,7 +3284,7 @@
         "fact": "💡 Нападение произошло без формального объявления войны.",
         "body": "",
         "category": "culture",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 10,
         "status": "verified",
@@ -2963,6 +3413,32 @@
             "shortTitle": "NOAA"
           }
         ]
+      },
+      {
+        "id": "ru-1881-dostoevsky-died",
+        "year": 1881,
+        "title": "Умер Фёдор Достоевский",
+        "summary": "В Петербурге умер Фёдор Достоевский — автор «Преступления и наказания».",
+        "fact": "💡 По старому стилю это 28 января 1881 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Fyodor Dostoyevsky",
+            "url": "https://www.britannica.com/biography/Fyodor-Dostoyevsky",
+            "name": "Britannica"
+          },
+          {
+            "title": "Литературная карта Новгородской области — Достоевский",
+            "url": "https://libmap.nounb.ru/writer/dostoevskij-fedor-mihajlovich-1821-1881/",
+            "name": "NOUNB"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "02-10": [
@@ -3034,6 +3510,32 @@
             "name": "IBM"
           }
         ]
+      },
+      {
+        "id": "ru-1837-pushkin-died",
+        "year": 1837,
+        "title": "Умер Александр Пушкин",
+        "summary": "В Петербурге умер Александр Пушкин после раны, полученной на дуэли.",
+        "fact": "💡 По старому стилю это 29 января 1837 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Aleksandr Pushkin",
+            "url": "https://www.britannica.com/biography/Aleksandr-Sergeyevich-Pushkin",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Death of Pushkin",
+            "url": "https://www.prlib.ru/en/news/1288683",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "02-11": [
@@ -3100,6 +3602,31 @@
           {
             "title": "Britannica — Iranian Revolution",
             "url": "https://www.britannica.com/event/Iranian-Revolution",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1829-griboyedov-killed",
+        "year": 1829,
+        "title": "Погиб Александр Грибоедов",
+        "summary": "В Тегеране толпа разгромила русскую миссию; погиб посланник Грибоедов.",
+        "fact": "💡 По старому стилю это 30 января 1829 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Гибель Грибоедова",
+            "url": "https://www.prlib.ru/history/618948",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "Britannica — Aleksandr Griboyedov",
+            "url": "https://www.britannica.com/biography/Aleksandr-Sergeyevich-Griboyedov",
             "name": "Britannica"
           }
         ]
@@ -3195,6 +3722,31 @@
         ],
         "image": "assets/history/puyi-abdication-1912.jpg",
         "imageAlt": "Портрет юного императора Пу И, 1909"
+      },
+      {
+        "id": "ru-1961-venera1-launch",
+        "year": 1961,
+        "title": "Старт «Венеры-1»",
+        "summary": "СССР отправил к Венере автоматическую станцию «Венера-1» — первый аппарат, вышедший на межпланетную трассу.",
+        "fact": "💡 Связь оборвалась в пути, но станция всё же прошла мимо Венеры.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA NSSDCA — Venera 1",
+            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1961-003A",
+            "name": "NASA NSSDCA"
+          },
+          {
+            "title": "RussianSpaceWeb — Planetary probes to Venus",
+            "url": "https://www.russianspaceweb.com/spacecraft_planetary_venus.html",
+            "name": "RussianSpaceWeb"
+          }
+        ]
       }
     ],
     "02-13": [
@@ -3263,6 +3815,31 @@
             "title": "Britannica — William III",
             "url": "https://www.britannica.com/biography/William-III-king-of-England-Scotland-and-Ireland",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1974-solzhenitsyn-expelled",
+        "year": 1974,
+        "title": "Высылка Солженицына",
+        "summary": "Александра Солженицына лишили советского гражданства и выслали в ФРГ.",
+        "fact": "💡 Его арестовали 12 февраля; поводом стал выход «Архипелага ГУЛАГ».",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Nobel Prize — Solzhenitsyn",
+            "url": "https://www.nobelprize.org/prizes/literature/1970/solzhenitsyn/article/",
+            "name": "Nobel Prize"
+          },
+          {
+            "title": "UPI — Solzhenitsyn stripped of citizenship",
+            "url": "https://www.upi.com/Archives/1974/02/13/Solzhenitsyn-stripped-of-citizenship-by-Russia-exiled-to-West/4711550029146/",
+            "name": "UPI"
           }
         ]
       }
@@ -3334,6 +3911,32 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1918-gregorian-first-day",
+        "year": 1918,
+        "title": "Первый день нового календаря",
+        "summary": "В России после 31 января сразу наступило 14 февраля — первый день по григорианскому календарю.",
+        "fact": "💡 Тринадцать «пропущенных» дней убрали декретом СНК, принятым 6 февраля.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "МГУ — Декрет о введении западноевропейского календаря",
+            "url": "http://www.hist.msu.ru/ER/Etext/DEKRET/18-01-24.htm",
+            "name": "МГУ"
+          },
+          {
+            "title": "Presidential Library — Декрет о григорианском календаре",
+            "url": "https://www.prlib.ru/history/619010",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "02-15": [
@@ -3405,6 +4008,32 @@
             "shortTitle": "Canada.ca"
           }
         ]
+      },
+      {
+        "id": "ru-1989-afghanistan-withdrawal-ends",
+        "year": 1989,
+        "title": "Вывод войск из Афганистана",
+        "summary": "Советские войска завершили вывод из Афганистана по Женевским соглашениям.",
+        "fact": "💡 Последним границу по мосту Дружбы перешёл командующий 40-й армией Борис Громов.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "UPI — Soviet Union ended its military presence in Afghanistan",
+            "url": "https://www.upi.com/Archives/1989/02/15/The-Soviet-Union-ended-its-nine-year-military-presence-in/3915603522000/",
+            "name": "UPI"
+          },
+          {
+            "title": "NATO — Soviet Union completes withdrawal from Afghanistan",
+            "url": "https://www.nato.int/en/news-and-events/articles/news/1989/02/15/the-soviet-union-completes-the-withdrawal-of-military-forces-from-afghanistan",
+            "name": "NATO"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "02-16": [
@@ -3545,6 +4174,38 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1852-new-hermitage-opens",
+        "year": 1852,
+        "title": "Эрмитаж открыл двери городу",
+        "summary": "В Петербурге торжественно открыли Новый Эрмитаж — первое в России здание, специально построенное как публичный музей.",
+        "fact": "💡 После церемонии в Эрмитажном театре устроили ужин на 600 гостей.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Hermitage Museum — Opening of the New Hermitage",
+            "url": "https://www.hermitagemuseum.org/explore/history/Opening+of+the+Imperial+Museum+of+the+New+Hermitage?lng=en",
+            "name": "Hermitage Museum"
+          },
+          {
+            "title": "Smithsonian — Hermitage opened to the public 1852",
+            "url": "https://www.smithsonianmag.com/smart-news/the-breathtaking-hermitage-museum-filled-with-treasures-like-the-kolyvan-vase-and-the-peacock-clock-first-opened-to-the-public-on-this-day-in-1852-180985925/",
+            "name": "Smithsonian"
+          },
+          {
+            "title": "Presidential Library — Opening of the New Hermitage",
+            "url": "https://www.prlib.ru/history/619033",
+            "name": "Presidential Library"
+          }
+        ],
+        "image": "assets/history/hermitage-1852.jpg",
+        "imageAlt": "Здание Эрмитажа в Санкт-Петербурге"
       }
     ],
     "02-18": [
@@ -4091,8 +4752,14 @@
             "url": "https://digitalarchive.wilsoncenter.org/document/khrushchevs-secret-speech-cult-individual-and-its-consequences",
             "name": "Wilson Center",
             "shortTitle": "Wilson Center"
+          },
+          {
+            "title": "Britannica — Khrushchev’s secret speech",
+            "url": "https://www.britannica.com/event/Khrushchevs-secret-speech",
+            "name": "Britannica"
           }
-        ]
+        ],
+        "editorialRank": 1
       },
       {
         "id": "world-1836-colt-patent",
@@ -4250,6 +4917,31 @@
           {
             "title": "Britannica — Dominican Republic",
             "url": "https://www.britannica.com/place/Dominican-Republic",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1936-pavlov-died",
+        "year": 1936,
+        "title": "Умер Иван Павлов",
+        "summary": "В Ленинграде умер Иван Павлов — физиолог, описавший условные рефлексы.",
+        "fact": "💡 В 1904 году он получил Нобелевскую премию за исследования пищеварения.",
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Nobel Prize — Ivan Pavlov biographical",
+            "url": "https://www.nobelprize.org/prizes/medicine/1904/pavlov/biographical/",
+            "name": "Nobel Prize"
+          },
+          {
+            "title": "Britannica — Ivan Pavlov",
+            "url": "https://www.britannica.com/biography/Ivan-Pavlov",
             "name": "Britannica"
           }
         ]
@@ -4466,6 +5158,32 @@
             "name": "JFK Library"
           }
         ]
+      },
+      {
+        "id": "ru-1869-mendeleev-periodic-table",
+        "year": 1869,
+        "title": "Таблица Менделеева",
+        "summary": "Дмитрий Менделеев составил первую периодическую таблицу элементов.",
+        "fact": "💡 По старому стилю это 17 февраля 1869 года.",
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Трифонов — Несостоявшееся выступление Менделеева (17 февраля = 1 марта н.ст.)",
+            "url": "https://him.1sept.ru/article.php?ID=200600401",
+            "name": "Журнал «Химия»"
+          },
+          {
+            "title": "OUP — Mendeleev’s Periodic Table presented in public",
+            "url": "https://blog.oup.com/2012/03/mendeleev-periodic-table/",
+            "name": "Oxford University Press"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "03-02": [
@@ -4534,6 +5252,31 @@
             "title": "NASA — Pioneer 10",
             "url": "https://science.nasa.gov/mission/pioneer-10/",
             "name": "NASA"
+          }
+        ]
+      },
+      {
+        "id": "ru-1931-gorbachev-born",
+        "year": 1931,
+        "title": "Родился Михаил Горбачёв",
+        "summary": "В селе Привольном родился будущий последний руководитель СССР.",
+        "fact": "💡 Позже он стал Генеральным секретарём ЦК КПСС и президентом СССР.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 85,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Mikhail Gorbachev",
+            "url": "https://www.britannica.com/biography/Mikhail-Gorbachev",
+            "name": "Britannica"
+          },
+          {
+            "title": "Nobel Prize — Mikhail Gorbachev Biographical",
+            "url": "https://www.nobelprize.org/prizes/peace/1990/gorbachev/biographical/",
+            "name": "Nobel Prize"
           }
         ]
       }
@@ -4678,6 +5421,31 @@
             "shortTitle": "Library of Congress"
           }
         ]
+      },
+      {
+        "id": "ru-1852-gogol-died",
+        "year": 1852,
+        "title": "Умер Николай Гоголь",
+        "summary": "В Москве скончался Николай Гоголь — автор «Мёртвых душ» и «Ревизора».",
+        "fact": "💡 По старому стилю это 21 февраля 1852 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 85,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Nikolay Gogol",
+            "url": "https://www.britannica.com/biography/Nikolay-Gogol",
+            "name": "Britannica"
+          },
+          {
+            "title": "Britannica Kids — Nikolay Gogol (March 4 / February 21 OS)",
+            "url": "https://kids.britannica.com/students/article/Nikolay-Gogol/274587",
+            "name": "Britannica Kids"
+          }
+        ]
       }
     ],
     "03-05": [
@@ -4749,6 +5517,32 @@
             "name": "NASA"
           }
         ]
+      },
+      {
+        "id": "ru-1953-stalin-died",
+        "year": 1953,
+        "title": "Умер Иосиф Сталин",
+        "summary": "В Москве скончался Иосиф Сталин — многолетний руководитель СССР.",
+        "fact": "💡 Смерть открыла борьбу за власть в советском руководстве.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Joseph Stalin",
+            "url": "https://www.britannica.com/biography/Joseph-Stalin",
+            "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — Joseph Stalin dies",
+            "url": "https://www.history.com/this-day-in-history/march-5/joseph-stalin-dies",
+            "name": "HISTORY"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "03-06": [
@@ -5031,6 +5825,32 @@
             "shortTitle": "National Archives"
           }
         ]
+      },
+      {
+        "id": "ru-1934-gagarin-born",
+        "year": 1934,
+        "title": "Родился Юрий Гагарин",
+        "summary": "В деревне Клушино родился Юрий Гагарин — будущий первый человек в космосе.",
+        "fact": "💡 Через 27 лет он облетел Землю на корабле «Восток».",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Birth of Yuri Gagarin",
+            "url": "https://www.prlib.ru/en/history/1864421",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "Britannica — Yuri Gagarin",
+            "url": "https://www.britannica.com/biography/Yuri-Gagarin",
+            "name": "Britannica"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "03-10": [
@@ -5239,6 +6059,32 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1918-moscow-capital",
+        "year": 1918,
+        "title": "Москва стала столицей",
+        "summary": "Советское правительство перенесло столицу из Петрограда в Москву.",
+        "fact": "💡 Переезд последовал за Брестским миром и угрозой Петрограду.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "1914-1918-online — Treaty of Brest-Litovsk (capital moved 12 March)",
+            "url": "https://encyclopedia.1914-1918-online.net/article/brest-litovsk-treaty-of/",
+            "name": "1914-1918-online"
+          },
+          {
+            "title": "Президентская библиотека — Москва стала столицей Советского государства",
+            "url": "https://www.prlib.ru/history/619089",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "03-13": [
@@ -5635,6 +6481,31 @@
             "url": "https://www.nga.gov/about.html",
             "name": "National Gallery of Art",
             "shortTitle": "National Gallery"
+          }
+        ]
+      },
+      {
+        "id": "ru-1921-kronstadt-assault",
+        "year": 1921,
+        "title": "Штурм Кронштадта",
+        "summary": "Красная армия начала штурм восставшей крепости Кронштадт.",
+        "fact": "💡 Восстание моряков стало одним из последних крупных мятежей Гражданской войны.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Kronshtadt Rebellion",
+            "url": "https://www.britannica.com/event/Kronshtadt-Rebellion",
+            "name": "Britannica"
+          },
+          {
+            "title": "Saint Petersburg Encyclopaedia — Kronstadt Rebellion (assault night of 17 March)",
+            "url": "https://encspb.ru/object/2855700926?lc=en",
+            "name": "Saint Petersburg Encyclopaedia"
           }
         ]
       }
@@ -6342,6 +7213,31 @@
             "name": "NIH"
           }
         ]
+      },
+      {
+        "id": "ru-1968-gagarin-died",
+        "year": 1968,
+        "title": "Погиб Юрий Гагарин",
+        "summary": "Юрий Гагарин и инструктор Серёгин разбились на учебном МиГ-15.",
+        "fact": "💡 Причину катастрофы расследовали несколько комиссий.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Yuri Gagarin",
+            "url": "https://www.britannica.com/biography/Yuri-Gagarin",
+            "name": "Britannica"
+          },
+          {
+            "title": "Library of Congress — Gagarin, Yuri Alekseyevich (death 1968-03-27)",
+            "url": "https://id.loc.gov/authorities/names/n50015443.html",
+            "name": "Library of Congress"
+          }
+        ]
       }
     ],
     "03-28": [
@@ -6409,6 +7305,31 @@
             "title": "Britannica — Istanbul",
             "url": "https://www.britannica.com/place/Istanbul",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1868-gorky-born",
+        "year": 1868,
+        "title": "Родился Максим Горький",
+        "summary": "В Нижнем Новгороде родился Алексей Пешков — будущий писатель Максим Горький.",
+        "fact": "💡 По старому стилю это 16 марта 1868 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 85,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Maxim Gorky",
+            "url": "https://www.britannica.com/biography/Maxim-Gorky",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Birth of Maxim Gorky (16/28 March 1868)",
+            "url": "https://www.prlib.ru/en/history/1916692",
+            "name": "Presidential Library"
           }
         ]
       }
@@ -6554,6 +7475,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1856-paris-treaty",
+        "year": 1856,
+        "title": "Парижский мир",
+        "summary": "Россия, Османская империя и европейские державы подписали мир, завершивший Крымскую войну.",
+        "fact": "💡 Договор подписали в Париже 30 марта 1856 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Treaty of Paris (1856)",
+            "url": "https://www.britannica.com/event/Treaty-of-Paris-1856",
+            "name": "Britannica"
+          },
+          {
+            "title": "UK National Archives — Treaty of Paris, Russia (30 March 1856)",
+            "url": "https://discovery.nationalarchives.gov.uk/details/r/C3165364",
+            "name": "The National Archives"
+          }
+        ]
       }
     ],
     "03-31": [
@@ -6622,6 +7568,31 @@
             "url": "https://history.state.gov/milestones/1914-1920/purchase-virgin-islands",
             "name": "US State Department",
             "shortTitle": "US State Department"
+          }
+        ]
+      },
+      {
+        "id": "ru-1814-allies-enter-paris",
+        "year": 1814,
+        "title": "Взятие Парижа",
+        "summary": "Русские войска и союзники вступили в Париж, завершая кампанию 1814 года против Наполеона.",
+        "fact": "💡 В полдень русская гвардия во главе с Александром I вступила в город.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 85,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Napoleonic Wars: The campaign of France, 1814",
+            "url": "https://www.britannica.com/event/Napoleonic-Wars/The-campaign-of-France-1814",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Russian army entered Paris (19/31 March 1814)",
+            "url": "https://www.prlib.ru/en/history/619132",
+            "name": "Presidential Library"
           }
         ]
       }
@@ -6696,6 +7667,32 @@
             "shortTitle": "US Navy History"
           }
         ]
+      },
+      {
+        "id": "ru-1873-rachmaninoff-born",
+        "year": 1873,
+        "title": "Родился Сергей Рахманинов",
+        "summary": "Родился композитор и пианист Сергей Рахманинов.",
+        "fact": "💡 По старому стилю это 20 марта 1873 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Sergey Rachmaninoff",
+            "url": "https://www.britannica.com/biography/Sergey-Rachmaninoff",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Birth of Sergei Rachmaninoff",
+            "url": "https://www.prlib.ru/en/history/1871182",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "04-02": [
@@ -6837,6 +7834,32 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1966-luna10-orbit",
+        "year": 1966,
+        "title": "«Луна-10» вышла на орбиту Луны",
+        "summary": "«Луна-10» стала первым искусственным спутником Луны.",
+        "fact": "💡 Станция вышла на лунную орбиту 3 апреля 1966 года.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA NSSDCA — Luna 10",
+            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1966-027A",
+            "name": "NASA NSSDCA"
+          },
+          {
+            "title": "NASA — 60 Years Ago: NASA Approves the Lunar Orbiter Program",
+            "url": "https://www.nasa.gov/history/60-years-ago-nasa-approves-the-lunar-orbiter-program/",
+            "name": "NASA"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "04-04": [
@@ -7261,6 +8284,31 @@
             "name": "NASA"
           }
         ]
+      },
+      {
+        "id": "ru-1945-konigsberg-captured",
+        "year": 1945,
+        "title": "Взят Кёнигсберг",
+        "summary": "Советские войска овладели городом и крепостью Кёнигсберг.",
+        "fact": "💡 Немецкий гарнизон капитулировал 9 апреля 1945 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Capture of Königsberg (Order No. 333)",
+            "url": "https://www.prlib.ru/item/2033244",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "Britannica — The Soviet advance to the Oder, January–February 1945",
+            "url": "https://www.britannica.com/event/World-War-II/The-Soviet-advance-to-the-Oder-January-February-1945",
+            "name": "Britannica"
+          }
+        ]
       }
     ],
     "04-10": [
@@ -7615,6 +8663,32 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1930-mayakovsky-died",
+        "year": 1930,
+        "title": "Умер Владимир Маяковский",
+        "summary": "В Москве скончался поэт Владимир Маяковский.",
+        "fact": "💡 Дата по григорианскому календарю — 14 апреля 1930 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Vladimir Mayakovsky",
+            "url": "https://www.britannica.com/biography/Vladimir-Vladimirovich-Mayakovsky",
+            "name": "Britannica"
+          },
+          {
+            "title": "Poetry Foundation — Vladimir Mayakovsky",
+            "url": "https://www.poetryfoundation.org/poets/vladimir-mayakovsky",
+            "name": "Poetry Foundation"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "04-15": [
@@ -7969,8 +9043,14 @@
             "url": "https://www.nasa.gov/history/50-years-ago-launch-of-salyut-1-worlds-first-space-station/",
             "name": "NASA",
             "shortTitle": "NASA"
+          },
+          {
+            "title": "Britannica — Salyut 1: the first space station",
+            "url": "https://www.britannica.com/technology/space-station/Salyut-1-the-first-space-station",
+            "name": "Britannica"
           }
-        ]
+        ],
+        "editorialRank": 1
       }
     ],
     "04-20": [
@@ -8162,8 +9242,14 @@
             "title": "Britannica — Vladimir Lenin",
             "url": "https://www.britannica.com/biography/Vladimir-Lenin",
             "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Birth of Vladimir Lenin",
+            "url": "https://www.prlib.ru/en/history/619187",
+            "name": "Presidential Library"
           }
-        ]
+        ],
+        "editorialRank": 1
       },
       {
         "id": "world-1889-oklahoma-land-rush",
@@ -8254,6 +9340,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1891-prokofiev-born",
+        "year": 1891,
+        "title": "Родился Сергей Прокофьев",
+        "summary": "Родился композитор Сергей Прокофьев.",
+        "fact": "💡 По старому стилю это 11 апреля 1891 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Sergey Prokofiev",
+            "url": "https://www.britannica.com/biography/Sergey-Prokofiev",
+            "name": "Britannica"
+          },
+          {
+            "title": "Britannica Kids — Sergei Prokofiev",
+            "url": "https://kids.britannica.com/students/article/Sergei-Prokofiev/276546",
+            "name": "Britannica Kids"
+          }
+        ]
       }
     ],
     "04-24": [
@@ -8324,6 +9435,31 @@
             "url": "https://encyclopedia.ushmm.org/content/en/article/the-armenian-genocide-1915-16-overview",
             "name": "USHMM",
             "shortTitle": "USHMM"
+          }
+        ]
+      },
+      {
+        "id": "ru-1967-komarov-soyuz1",
+        "year": 1967,
+        "title": "Гибель Комарова на «Союзе-1»",
+        "summary": "При посадке «Союза-1» погиб космонавт Владимир Комаров.",
+        "fact": "💡 Это первая гибель человека во время космического полёта.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Vladimir Mikhaylovich Komarov",
+            "url": "https://www.britannica.com/biography/Vladimir-Mikhaylovich-Komarov",
+            "name": "Britannica"
+          },
+          {
+            "title": "NASA StarChild — Cosmonaut Vladimir Komarov",
+            "url": "https://starchild.gsfc.nasa.gov/docs/StarChild/space_level2/komarov.html",
+            "name": "NASA StarChild"
           }
         ]
       }
@@ -8398,6 +9534,31 @@
             "shortTitle": "Nature"
           }
         ]
+      },
+      {
+        "id": "ru-1945-elbe-meeting",
+        "year": 1945,
+        "title": "Встреча на Эльбе",
+        "summary": "У Торгау советские и американские войска встретились на Эльбе.",
+        "fact": "💡 25 апреля 1945 года армии союзников соединились и разрезали оставшуюся территорию Германии.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "National WWII Museum — Occupying Germany and Japan",
+            "url": "https://www.nationalww2museum.org/war/articles/united-states-occupying-germany-and-japan",
+            "name": "National WWII Museum"
+          },
+          {
+            "title": "Britannica — The Soviet advance to the Oder, January–February 1945",
+            "url": "https://www.britannica.com/event/World-War-II/The-Soviet-advance-to-the-Oder-January-February-1945",
+            "name": "Britannica"
+          }
+        ]
       }
     ],
     "04-26": [
@@ -8409,7 +9570,7 @@
         "fact": "💡 Это крупнейшая ядерная авария в истории энергетики.",
         "body": "",
         "category": "history",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 10,
         "status": "verified",
@@ -8807,7 +9968,7 @@
         "fact": "💡 Инцидент сорвал парижский саммит Востока и Запада.",
         "body": "",
         "category": "history",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 80,
         "interest": 8,
         "status": "verified",
@@ -8829,7 +9990,7 @@
         "fact": "💡 Над Рейхстагом уже развевался советский флаг Победы.",
         "body": "",
         "category": "history",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 10,
         "status": "verified",
@@ -9236,6 +10397,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1895-popov-receiver",
+        "year": 1895,
+        "title": "Попов показал приёмник",
+        "summary": "На заседании Русского физико-химического общества Александр Попов продемонстрировал грозоотметчик — приёмник электромагнитных волн.",
+        "fact": "💡 Демонстрация прошла 25 апреля по старому стилю — 7 мая по новому.",
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Birth of Alexander Popov",
+            "url": "https://www.prlib.ru/en/history/1866978",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "St. Petersburg University — Invention of the radio",
+            "url": "https://english.spbu.ru/history/invention-radio",
+            "name": "SPbU"
+          }
+        ]
       }
     ],
     "05-08": [
@@ -9447,6 +10633,31 @@
             "name": "HISTORY"
           }
         ]
+      },
+      {
+        "id": "ru-1906-first-duma-opens",
+        "year": 1906,
+        "title": "Открылась I Государственная дума",
+        "summary": "В Таврическом дворце начала работу первая Государственная дума Российской империи.",
+        "fact": "💡 Депутатов накануне принял Николай II в Зимнем дворце.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — The first State Duma started working",
+            "url": "https://www.prlib.ru/en/history/619233",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "State Duma — History of the State Duma",
+            "url": "http://duma.gov.ru/en/duma/about/history/information/",
+            "name": "State Duma"
+          }
+        ]
       }
     ],
     "05-11": [
@@ -9586,6 +10797,31 @@
             "title": "Britannica — George VI",
             "url": "https://www.britannica.com/biography/George-VI",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1944-crimean-operation-ends",
+        "year": 1944,
+        "title": "Завершилась Крымская операция",
+        "summary": "Советские войска закончили Крымскую наступательную операцию и полностью освободили полуостров.",
+        "fact": "💡 Остатки 17-й немецкой армии сложили оружие на мысе Херсонес.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Crimean Offensive Operation of 1944",
+            "url": "https://www.prlib.ru/en/history/2002746",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "Great Soviet Encyclopedia — Crimean Operation of 1944",
+            "url": "https://encyclopedia2.thefreedictionary.com/Crimean+Operation+of+1944",
+            "name": "The Free Dictionary"
           }
         ]
       }
@@ -9730,6 +10966,31 @@
             "shortTitle": "NPS"
           }
         ]
+      },
+      {
+        "id": "ru-1955-warsaw-pact",
+        "year": 1955,
+        "title": "Подписали Варшавский договор",
+        "summary": "СССР и страны Восточной Европы подписали в Варшаве договор о дружбе, сотрудничестве и взаимной помощи.",
+        "fact": "💡 Пакт появился после вступления ФРГ в НАТО.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "UNTS — Treaty of Friendship, Co-operation and Mutual Assistance",
+            "url": "https://treaties.un.org/doc/Publication/UNTS/Volume%20219/volume-219-I-2962-English.pdf",
+            "name": "United Nations"
+          },
+          {
+            "title": "Office of the Historian — The Warsaw Treaty Organization, 1955",
+            "url": "https://history.state.gov/milestones/1953-1960/warsaw-treaty",
+            "name": "U.S. Department of State"
+          }
+        ]
       }
     ],
     "05-15": [
@@ -9800,6 +11061,32 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1935-moscow-metro-opens",
+        "year": 1935,
+        "title": "Открылось московское метро",
+        "summary": "Для публики открыли первую очередь Московского метрополитена — от «Сокольников» до «Парка культуры».",
+        "fact": "💡 Поезда пустили в 7 утра; линия с ответвлением имела 13 станций.",
+        "body": "",
+        "category": "technology",
+        "region": "RU",
+        "priority": 90,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Московский метрополитен — История метрополитена",
+            "url": "https://mosmetro.ru/about/history",
+            "name": "Московский метрополитен"
+          },
+          {
+            "title": "metro.ru — Приказ об открытии метро 15 мая 1935",
+            "url": "https://www.metro.ru/library/docs/53/",
+            "name": "metro.ru"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "05-16": [
@@ -9870,6 +11157,31 @@
             "url": "https://www.senate.gov/about/powers-procedures/impeachment/impeachment-johnson.htm",
             "name": "US Senate",
             "shortTitle": "US Senate"
+          }
+        ]
+      },
+      {
+        "id": "ru-1969-venera-5",
+        "year": 1969,
+        "title": "«Венера-5» вошла в атмосферу",
+        "summary": "Советская станция «Венера-5» вошла в атмосферу Венеры и передала данные при спуске.",
+        "fact": "💡 Это вход в атмосферу, а не посадка; каталожный номер NASA — 1969-001A.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA NSSDC — Venera 5 (1969-001A)",
+            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-001A",
+            "name": "NASA NSSDC"
+          },
+          {
+            "title": "NASA NTRS — Venera 5 atmospheric probe report",
+            "url": "https://ntrs.nasa.gov/api/citations/19690018774/downloads/19690018774.pdf",
+            "name": "NASA NTRS"
           }
         ]
       }
@@ -10012,6 +11324,31 @@
             "title": "Britannica — Napoleon I",
             "url": "https://www.britannica.com/biography/Napoleon-I",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1944-crimean-tatars-deportation",
+        "year": 1944,
+        "title": "Началась депортация крымских татар",
+        "summary": "НКВД начал принудительное выселение крымских татар с полуострова в Среднюю Азию и другие районы СССР.",
+        "fact": "💡 Операция заняла три дня: с 18 по 20 мая 1944 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Wschodnioznawstwo — The 1944 Soviet Deportation of Crimean Tatars",
+            "url": "https://doi.org/10.4467/20827695wsc.24.003.20618",
+            "name": "Wschodnioznawstwo"
+          },
+          {
+            "title": "London Ukrainian Review — The Long Exile",
+            "url": "https://www.londonukrainianreview.org/posts/the-long-exile",
+            "name": "London Ukrainian Review"
           }
         ]
       }
@@ -10225,6 +11562,31 @@
             "name": "Smithsonian"
           }
         ]
+      },
+      {
+        "id": "ru-1921-sakharov-born",
+        "year": 1921,
+        "title": "Родился Андрей Сахаров",
+        "summary": "В Москве родился физик Андрей Сахаров — позже академик и правозащитник.",
+        "fact": "💡 Отец был преподавателем физики и автором учебников.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Nobel Prize — Andrei Sakharov biographical",
+            "url": "https://www.nobelprize.org/prizes/peace/1975/sakharov/biographical/",
+            "name": "Nobel Prize"
+          },
+          {
+            "title": "Britannica — Andrey Sakharov",
+            "url": "https://www.britannica.com/biography/Andrey-Sakharov",
+            "name": "Britannica"
+          }
+        ]
       }
     ],
     "05-22": [
@@ -10293,6 +11655,31 @@
             "title": "Britannica — Wars of the Roses",
             "url": "https://www.britannica.com/event/Wars-of-the-Roses",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1856-tretyakov-collection-begins",
+        "year": 1856,
+        "title": "Третьяков начал коллекцию",
+        "summary": "Павел Третьяков купил картину Василия Худякова — с этой покупки ведут историю галереи.",
+        "fact": "💡 Картина называлась «Стычка с финляндскими контрабандистами».",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Tretyakov Gallery Magazine — Yesterday, Today, Tomorrow",
+            "url": "https://www.tretyakovgallerymagazine.com/articles/3-2017-56/tretyakov-gallery-yesterday-today-tomorrow",
+            "name": "Tretyakov Gallery Magazine"
+          },
+          {
+            "title": "UNESCO Commission of the Russian Federation — A Man of Art",
+            "url": "https://unesco.ru/en/news/a-man-of-art/",
+            "name": "UNESCO Russia"
           }
         ]
       }
@@ -10646,7 +12033,8 @@
             "url": "https://www.britannica.com/place/St-Petersburg-Russia",
             "name": "Britannica"
           }
-        ]
+        ],
+        "editorialRank": 1
       }
     ],
     "05-28": [
@@ -10716,6 +12104,31 @@
             "title": "Britannica — Volkswagen AG",
             "url": "https://www.britannica.com/topic/Volkswagen-AG",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1987-rust-landing",
+        "year": 1987,
+        "title": "Руст сел у Кремля",
+        "summary": "Западногерманский пилот Матиас Руст посадил Cessna на Большой Москворецкий мост у Красной площади.",
+        "fact": "💡 Самолёт приземлился на мосту, а не на брусчатке площади.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "BBC — Mathias Rust: German teenager who flew to Red Square",
+            "url": "https://www.bbc.com/news/magazine-20609795",
+            "name": "BBC"
+          },
+          {
+            "title": "UPI — 19-year-old West German lands plane in Red Square",
+            "url": "https://www.upi.com/Archives/1987/05/29/19-year-old-West-German-lands-plane-in-Red-Square-embarrases-Moscow/3150549259200/",
+            "name": "UPI"
           }
         ]
       }
@@ -10788,6 +12201,31 @@
             "shortTitle": "Library of Congress"
           }
         ]
+      },
+      {
+        "id": "ru-1990-yeltsin-rsfsr-chairman",
+        "year": 1990,
+        "title": "Ельцина избрали председателем ВС",
+        "summary": "Съезд народных депутатов избрал Бориса Ельцина председателем Верховного Совета РСФСР.",
+        "fact": "💡 Это ещё не президентский пост: всенародные выборы пройдут в 1991 году.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 85,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Los Angeles Times — Yeltsin Is Elected Russia President",
+            "url": "https://www.latimes.com/archives/la-xpm-1990-05-30-mn-58-story.html",
+            "name": "Los Angeles Times"
+          },
+          {
+            "title": "Washington Post — Yeltsin Elected Russian President",
+            "url": "https://www.washingtonpost.com/wp-srv/inatl/longterm/russiagov/stories/pres053090.htm",
+            "name": "Washington Post"
+          }
+        ]
       }
     ],
     "05-30": [
@@ -10856,6 +12294,31 @@
             "title": "Britannica — Indianapolis 500",
             "url": "https://www.britannica.com/sports/Indianapolis-500",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1896-khodynka-disaster",
+        "year": 1896,
+        "title": "Давка на Ходынском поле",
+        "summary": "Во время народных гуляний по случаю коронации Николая II на Ходынском поле произошла давка.",
+        "fact": "💡 Людей привлекли слухи о царских подарках — кружках и съестном.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Great Soviet Encyclopedia — Khodynka",
+            "url": "https://encyclopedia2.thefreedictionary.com/Hodynskoye+field",
+            "name": "The Free Dictionary"
+          },
+          {
+            "title": "Moscow City Website — Nicholas II coronation mug and Khodynka",
+            "url": "https://www.mos.ru/en/news/item/40161073/",
+            "name": "mos.ru"
           }
         ]
       }
@@ -10928,6 +12391,32 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1891-transsib-vladivostok",
+        "year": 1891,
+        "title": "Закладка Транссиба во Владивостоке",
+        "summary": "Цесаревич Николай торжественно заложил во Владивостоке Уссурийский участок Великого Сибирского пути.",
+        "fact": "💡 Наследник сам отвёз тачку земли к насыпи будущей дороги.",
+        "body": "",
+        "category": "technology",
+        "region": "RU",
+        "priority": 90,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Encyclopedia.com — Trans-Siberian Railway",
+            "url": "https://www.encyclopedia.com/places/commonwealth-independent-states-and-baltic-nations/cis-and-baltic-physical-geography/trans-siberian-railroad",
+            "name": "Encyclopedia.com"
+          },
+          {
+            "title": "Presidential Library — History of Russian Railroad",
+            "url": "https://www.prlib.ru/en/news/659516",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "06-01": [
@@ -10998,6 +12487,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1804-glinka-born",
+        "year": 1804,
+        "title": "Родился Глинка",
+        "summary": "В селе Новоспасское родился Михаил Глинка — будущий отец русской оперы.",
+        "fact": "💡 Его считают основателем русской национальной музыки.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Mikhail Glinka",
+            "url": "https://www.britannica.com/biography/Mikhail-Glinka",
+            "name": "Britannica"
+          },
+          {
+            "title": "Library of Congress — Glinka, M. I.",
+            "url": "https://id.loc.gov/authorities/names/n80070814.html",
+            "name": "Library of Congress"
+          }
+        ]
       }
     ],
     "06-02": [
@@ -11066,6 +12580,31 @@
             "title": "HISTORY — Grover Cleveland gets married in the White House",
             "url": "https://www.history.com/this-day-in-history/june-2/grover-cleveland-gets-married-in-the-white-house",
             "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "ru-1955-baikonur-founded",
+        "year": 1955,
+        "title": "Основали Байконур",
+        "summary": "Генштаб утвердил штат полигона НИИП-5 — эту дату считают днём рождения Байконура.",
+        "fact": "💡 Постановление о строительстве вышло ещё в феврале, а днём космодрома позже назвали 2 июня.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Foundation of Baikonur Space Center",
+            "url": "https://www.prlib.ru/en/history/619281",
+            "name": "Президентская библиотека"
+          },
+          {
+            "title": "Федерация космонавтики России — Историческая справка",
+            "url": "https://fkrus.ru/index.php/2017-04-02-07-50-05?id=63",
+            "name": "Федерация космонавтики России"
           }
         ]
       }
@@ -11230,6 +12769,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1916-brusilov-offensive",
+        "year": 1916,
+        "title": "Брусиловское наступление",
+        "summary": "Русская армия начала удар по австро-венгерскому фронту — крупнейшее наступление России в Первой мировой.",
+        "fact": "💡 Это стало последним крупным успехом императорской армии на фронте.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Brusilov Offensive",
+            "url": "https://www.britannica.com/event/Brusilov-Offensive-1916",
+            "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — Brusilov Offensive begins",
+            "url": "https://www.history.com/this-day-in-history/june-4/brusilov-offensive-begins",
+            "name": "HISTORY"
+          }
+        ]
       }
     ],
     "06-05": [
@@ -11298,6 +12862,31 @@
             "title": "JFK Library — Robert F. Kennedy",
             "url": "https://www.jfklibrary.org/learn/about-jfk/the-kennedy-family/robert-f-kennedy",
             "name": "JFK Library"
+          }
+        ]
+      },
+      {
+        "id": "ru-1988-baptism-rus-millennium",
+        "year": 1988,
+        "title": "Тысячелетие Крещения Руси",
+        "summary": "В Москве начались главные торжества 1000-летия Крещения Руси.",
+        "fact": "💡 Открытие отметили литургией в Богоявленском соборе — впервые за десятилетия церковь праздновала так открыто.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "LA Times / AP — Russian Church Begins Rites Marking 1,000th Anniversary",
+            "url": "https://www.latimes.com/archives/la-xpm-1988-06-06-mn-2827-story.html",
+            "name": "Los Angeles Times"
+          },
+          {
+            "title": "Jane Ellis — The Millennium Celebrations of 1988 in the USSR",
+            "url": "https://biblicalstudies.org.uk/pdf/rcl/16-4_292.pdf",
+            "name": "Religion in Communist Lands"
           }
         ]
       }
@@ -11370,6 +12959,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1799-pushkin-born",
+        "year": 1799,
+        "title": "Родился Пушкин",
+        "summary": "В Москве родился Александр Пушкин — будущий главный поэт России.",
+        "fact": "💡 Его называют основателем современной русской литературы.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Aleksandr Pushkin",
+            "url": "https://www.britannica.com/biography/Aleksandr-Sergeyevich-Pushkin",
+            "name": "Britannica"
+          },
+          {
+            "title": "Literary Encyclopedia — Aleksandr Pushkin",
+            "url": "https://www.litencyc.com/php/speople.php?UID=3668&rec=true",
+            "name": "Literary Encyclopedia"
+          }
+        ]
       }
     ],
     "06-07": [
@@ -11438,6 +13052,31 @@
             "title": "Britannica — Lateran Treaty",
             "url": "https://www.britannica.com/event/Lateran-Treaty",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1990-alexy-ii-elected",
+        "year": 1990,
+        "title": "Избрали патриарха Алексия II",
+        "summary": "Поместный собор в Троице-Сергиевой лавре избрал патриархом митрополита Ленинградского Алексия.",
+        "fact": "💡 Интронизация прошла тремя днями позже, 10 июня.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Православная энциклопедия — Поместный собор Русской православной церкви 1990 г.",
+            "url": "https://pravenc.ru/text/%D0%9F%D0%BE%D0%BC%D0%B5%D1%81%D1%82%D0%BD%D1%8B%D0%BC%20%D0%A1%D0%BE%D0%B1%D0%BE%D1%80%D0%BE%D0%BC%20%D0%A0%D0%9F%D0%A6%207-8%20%D0%B8%D1%8E%D0%BD%D1%8F%201990%20%D0%B3.html",
+            "name": "Православная энциклопедия"
+          },
+          {
+            "title": "RFE/RL — Aleksy II",
+            "url": "https://www.rferl.org/a/1831654.html",
+            "name": "RFE/RL"
           }
         ]
       }
@@ -11509,6 +13148,31 @@
             "title": "Britannica — Assassination of Martin Luther King, Jr.",
             "url": "https://www.britannica.com/event/assassination-of-Martin-Luther-King-Jr",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1948-reactor-a-startup",
+        "year": 1948,
+        "title": "Пуск реактора «А»",
+        "summary": "Курчатов осуществил физический пуск первого промышленного атомного реактора СССР на комбинате № 817.",
+        "fact": "💡 Цепная реакция пошла в 00:30 — позже реактор дал плутоний для первой советской бомбы.",
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Страна Росатом — Первый пуск, первая авария, первый капремонт",
+            "url": "https://strana-rosatom.ru/2020/01/21/pervyj-pusk-pervaya-avariya-pervyj-kapr/",
+            "name": "Страна Росатом"
+          },
+          {
+            "title": "Габараев и др. — История создания реактора «А» комбината № 817 (в документах)",
+            "url": "https://elib.biblioatom.ru/text/istoriya-sozdaniya-reaktora-a_2008/",
+            "name": "История Росатома / biblioatom"
           }
         ]
       }
@@ -11603,6 +13267,31 @@
         ],
         "image": "assets/history/vienna-final-act-1815.jpg",
         "imageAlt": "Картина Изабе: Венский конгресс, 1814–1815"
+      },
+      {
+        "id": "ru-1672-peter-i-born",
+        "year": 1672,
+        "title": "Родился Пётр I",
+        "summary": "В Москве родился Пётр Алексеевич — будущий император, который развернёт Россию к Европе.",
+        "fact": "💡 В 1721 году его провозгласят императором.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Peter I",
+            "url": "https://www.britannica.com/biography/Peter-the-Great",
+            "name": "Britannica"
+          },
+          {
+            "title": "Lindsey Hughes — Russia in the Age of Peter the Great (NYT excerpt)",
+            "url": "https://www.nytimes.com/books/first/h/hughes-peter.html",
+            "name": "The New York Times"
+          }
+        ]
       }
     ],
     "06-10": [
@@ -11814,6 +13503,56 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1990-rsfsr-sovereignty",
+        "year": 1990,
+        "title": "Декларация о суверенитете",
+        "summary": "Съезд народных депутатов провозгласил государственный суверенитет РСФСР.",
+        "fact": "💡 Этот день позже станет Днём России.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 11,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Ельцин Центр — 30 лет Декларации о государственном суверенитете РСФСР",
+            "url": "https://yeltsin.ru/news/30-let-deklaracii-o-gosudarstvennom-suverenitete-rsfsr/",
+            "name": "Ельцин Центр"
+          },
+          {
+            "title": "Росархив / ГА РФ — Декларация о государственном суверенитете РСФСР, 12 июня 1990",
+            "url": "https://web.archive.org/web/20150713161921/http://www.rusarchives.ru/statehood/09-31-deklaraciya-suverenitet.shtml",
+            "name": "Росархив"
+          }
+        ]
+      },
+      {
+        "id": "ru-1991-yeltsin-elected",
+        "year": 1991,
+        "title": "Ельцина избрали президентом",
+        "summary": "На первых всенародных выборах президентом РСФСР стал Борис Ельцин.",
+        "fact": "💡 Это были первые прямые президентские выборы в истории России.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "UPI — Yeltsin campaign claims victory in Russia's first election",
+            "url": "https://www.upi.com/Archives/1991/06/12/Yeltsin-campaign-claims-victory-in-Russias-first-election/4468676699200/",
+            "name": "UPI"
+          },
+          {
+            "title": "Britannica — Boris Yeltsin",
+            "url": "https://kids.britannica.com/students/article/Boris-Yeltsin/277839",
+            "name": "Britannica"
+          }
+        ]
       }
     ],
     "06-13": [
@@ -11884,6 +13623,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1912-alexander-iii-museum",
+        "year": 1912,
+        "title": "Открыли Музей изящных искусств",
+        "summary": "В Москве открыли Музей изящных искусств имени Александра III — будущий Музей Пушкина.",
+        "fact": "💡 На церемонии были Николай II и вдовствующая императрица Мария Фёдоровна.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Pushkin Museum — History of Museum",
+            "url": "https://pushkinmuseum.art/museum/history/about_museum/index.php?lang=en",
+            "name": "Музей Пушкина"
+          },
+          {
+            "title": "Presidential Library — Fine Arts Museum of Alexander III opened",
+            "url": "https://www.prlib.ru/en/history/619311",
+            "name": "Президентская библиотека"
+          }
+        ]
       }
     ],
     "06-14": [
@@ -11952,6 +13716,31 @@
             "title": "Britannica — Falkland Islands War",
             "url": "https://www.britannica.com/event/Falkland-Islands-War",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1783-sevastopol-founded",
+        "year": 1783,
+        "title": "Основали Севастополь",
+        "summary": "На берегу Ахтиарской бухты заложили первые каменные здания будущего Севастополя.",
+        "fact": "💡 Среди первых построек были часовня, дом командира, кузница и пристань.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Большая российская энциклопедия — Севастополь. История",
+            "url": "https://bigenc.ru/c/sevastopol-istoriia-e5c9f1",
+            "name": "БРЭ"
+          },
+          {
+            "title": "Harvard Imperiia — 1783: The Founding of Sevastopol",
+            "url": "https://scalar.fas.harvard.edu/imperiia/1783-the-founding-of-sevastopol",
+            "name": "Harvard Imperiia"
           }
         ]
       }
@@ -12035,7 +13824,7 @@
         "fact": "💡 Корабль «Восток-6» сделал 48 витков вокруг Земли.",
         "body": "",
         "category": "science",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 10,
         "status": "verified",
@@ -12232,6 +14021,31 @@
             "title": "International Churchill Society — Finest Hour",
             "url": "https://winstonchurchill.org/resources/speeches/1940-the-finest-hour/their-finest-hour/",
             "name": "Churchill Society"
+          }
+        ]
+      },
+      {
+        "id": "ru-1949-ak-adopted",
+        "year": 1949,
+        "title": "На вооружение приняли АК",
+        "summary": "Совмин СССР принял на вооружение 7,62-мм автомат Калашникова.",
+        "fact": "💡 Официально оружие назвали «АК» — привычное «АК-47» осталось из испытательных бумаг.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Журнал «Калашников» — АК до АК. Первые автоматы Калашникова",
+            "url": "https://www.kalashnikov.ru/ak-do-ak/",
+            "name": "Калашников"
+          },
+          {
+            "title": "Tank Archives — Post-War Rearmament (текст постановления СМ СССР)",
+            "url": "https://www.tankarchives.com/2020/01/post-war-rearmament.html",
+            "name": "Tank Archives"
           }
         ]
       }
@@ -12444,6 +14258,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1962-tsoi-born",
+        "year": 1962,
+        "title": "Родился Виктор Цой",
+        "summary": "В Ленинграде родился Виктор Цой — будущий лидер группы «Кино».",
+        "fact": "💡 Он стал главным голосом советского рока конца 1980-х.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Культура.РФ — Цой Виктор Робертович",
+            "url": "https://www.culture.ru/persons/7664/viktor-coi",
+            "name": "Культура.РФ"
+          },
+          {
+            "title": "Узнай Москву — Цой Виктор Робертович",
+            "url": "https://um.mos.ru/personalities/tsoy/",
+            "name": "Узнай Москву"
+          }
+        ]
       }
     ],
     "06-22": [
@@ -12455,7 +14294,7 @@
         "fact": "💡 На рассвете ударили по широкому фронту от Балтики до Чёрного моря.",
         "body": "",
         "category": "history",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 10,
         "status": "verified",
@@ -12584,6 +14423,31 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1944-operation-bagration",
+        "year": 1944,
+        "title": "Операция «Багратион»",
+        "summary": "Красная армия начала наступление в Белоруссии — удар по группе армий «Центр».",
+        "fact": "💡 Операцию назвали в честь генерала, погибшего при Бородине.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Operation Bagration",
+            "url": "https://www.britannica.com/event/Operation-Bagration",
+            "name": "Britannica"
+          },
+          {
+            "title": "Encyclopedia.com — Bagration Operation",
+            "url": "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/bagration-operation",
+            "name": "Encyclopedia.com"
+          }
+        ]
       }
     ],
     "06-24": [
@@ -12651,6 +14515,56 @@
           {
             "title": "Britannica — Battle of Bannockburn",
             "url": "https://www.britannica.com/event/Battle-of-Bannockburn",
+            "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1945-victory-parade",
+        "year": 1945,
+        "title": "Парад Победы",
+        "summary": "На Красной площади прошёл Парад Победы: Жуков принимал, Рокоссовский командовал.",
+        "fact": "💡 К подножию Мавзолея бросили 200 знамён разбитой немецкой армии.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 11,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "TASS — Key facts about Victory Day Parades in Moscow’s Red Square",
+            "url": "https://tass.com/defense/1057520",
+            "name": "ТАСС"
+          },
+          {
+            "title": "Presidential Library — Victory Parade took place on the Red Square",
+            "url": "https://www.prlib.ru/en/history/619337",
+            "name": "Президентская библиотека"
+          }
+        ]
+      },
+      {
+        "id": "ru-1812-neman-crossing",
+        "year": 1812,
+        "title": "Наполеон перешёл Неман",
+        "summary": "Великая армия начала переправу через Неман — вторжение в Россию началось.",
+        "fact": "💡 Наполеон рассчитывал закончить кампанию за тридцать дней.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — French invasion of Russia",
+            "url": "https://www.britannica.com/event/French-invasion-of-Russia",
+            "name": "Britannica"
+          },
+          {
+            "title": "Britannica — Napoleonic Wars: France and northern Europe 1809–12",
+            "url": "https://www.britannica.com/event/Napoleonic-Wars/France-and-northern-Europe-1809-12",
             "name": "Britannica"
           }
         ]
@@ -12870,7 +14784,7 @@
         "fact": "💡 Восстание стало одним из символов революции 1905 года и позже — киноклассики Эйзенштейна.",
         "body": "",
         "category": "history",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 11,
         "status": "verified",
@@ -13040,7 +14954,7 @@
         "fact": "💡 Ударная волна повалила лес на площади около двух тысяч км².",
         "body": "",
         "category": "science",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 10,
         "status": "verified",
@@ -13088,7 +15002,7 @@
         "fact": "💡 Разгерметизация на высоте стала причиной единственной гибели в космосе.",
         "body": "",
         "category": "science",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 90,
         "interest": 9,
         "status": "verified",
@@ -13168,6 +15082,31 @@
             "title": "HISTORY — The first Sony Walkman goes on sale",
             "url": "https://www.history.com/this-day-in-history/july-1/the-first-sony-walkman-goes-on-sale",
             "name": "HISTORY"
+          }
+        ]
+      },
+      {
+        "id": "ru-1991-warsaw-pact-dissolved",
+        "year": 1991,
+        "title": "Распался Варшавский договор",
+        "summary": "В Праге лидеры стран блока подписали протокол о прекращении Варшавского договора.",
+        "fact": "💡 Военную структуру альянса свернули ещё в феврале того же года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Warsaw Pact",
+            "url": "https://www.britannica.com/event/Warsaw-Pact",
+            "name": "Britannica"
+          },
+          {
+            "title": "UPI — East Europe dissolves Warsaw Pact",
+            "url": "https://www.upi.com/Archives/1991/07/01/East-Europe-dissolves-Warsaw-Pact-discusses-Yugoslavia/4889678340800/",
+            "name": "UPI"
           }
         ]
       }
@@ -13474,6 +15413,32 @@
         ],
         "image": "assets/history/thomas-cook-excursion-1841.jpg",
         "imageAlt": "Портрет Томаса Кука"
+      },
+      {
+        "id": "ru-1943-kursk-begins",
+        "year": 1943,
+        "title": "Начало Курской битвы",
+        "summary": "Немецкая операция «Цитадель» ударила по советскому выступу у Курска.",
+        "fact": "💡 Это стало последним крупным наступлением вермахта на Восточном фронте.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Kursk",
+            "url": "https://www.britannica.com/event/Battle-of-Kursk",
+            "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — Battle of Kursk",
+            "url": "https://www.history.com/articles/battle-of-kursk",
+            "name": "HISTORY"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "07-06": [
@@ -13614,6 +15579,32 @@
             "name": "Smithsonian"
           }
         ]
+      },
+      {
+        "id": "ru-1770-battle-of-chesme",
+        "year": 1770,
+        "title": "Победа при Чесме",
+        "summary": "Русский флот сжёг османскую эскадру в бухте Чесма.",
+        "fact": "💡 По старому стилю это 26 июня 1770 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Çeşme",
+            "url": "https://www.britannica.com/event/Battle-of-Cesme",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Battle of Chesma (1770)",
+            "url": "https://www.prlib.ru/en/history/619365",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "07-08": [
@@ -13754,6 +15745,32 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1762-catherine-coup",
+        "year": 1762,
+        "title": "Екатерина стала императрицей",
+        "summary": "Гвардия провозгласила Екатерину II самодержицей вместо Петра III.",
+        "fact": "💡 По старому стилю это 28 июня 1762 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Catherine the Great",
+            "url": "https://www.britannica.com/biography/Catherine-the-Great",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Catherine II ascends",
+            "url": "https://www.prlib.ru/en/history/619370",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "07-10": [
@@ -13846,6 +15863,31 @@
         ],
         "image": "assets/history/liquid-helium-1908.jpg",
         "imageAlt": "Портрет Хейке Камерлинг-Оннеса, 1923"
+      },
+      {
+        "id": "ru-1918-rsfsr-constitution",
+        "year": 1918,
+        "title": "Первая Конституция РСФСР",
+        "summary": "V Всероссийский съезд Советов принял первую советскую конституцию.",
+        "fact": "💡 Высшей властью стал Всероссийский съезд Советов.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — First Constitution of RSFSR adopted",
+            "url": "https://www.prlib.ru/en/history/619373",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "Marxists Internet Archive — Constitution of the R.S.F.S.R. (1918)",
+            "url": "https://www.marxists.org/history/ussr/government/constitution/1918/index.htm",
+            "name": "Marxists Internet Archive"
+          }
+        ]
       }
     ],
     "07-11": [
@@ -14058,6 +16100,31 @@
             "shortTitle": "Royal Collection Trust"
           }
         ]
+      },
+      {
+        "id": "ru-1969-luna15-launch",
+        "year": 1969,
+        "title": "Старт «Луны-15»",
+        "summary": "СССР отправил к Луне станцию, чтобы успеть вернуть грунт раньше Apollo 11.",
+        "fact": "💡 Аппарат разбился 21 июля, когда астронавты ещё были на Луне.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA NSSDC — Luna 15",
+            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1969-058A",
+            "name": "NASA NSSDC"
+          },
+          {
+            "title": "Astronomy.com — July 13, 1969: Luna 15 launches",
+            "url": "https://www.astronomy.com/today-in-the-history-of-astronomy/july-13-1969-luna-15-launches/",
+            "name": "Astronomy.com"
+          }
+        ]
       }
     ],
     "07-14": [
@@ -14203,6 +16270,31 @@
         ],
         "image": "assets/history/jerusalem-captured-1099.jpg",
         "imageAlt": "Средневековая миниатюра: осада Иерусалима, 1099"
+      },
+      {
+        "id": "ru-1975-soyuz19-launch",
+        "year": 1975,
+        "title": "Старт «Союза-19»",
+        "summary": "Леонов и Кубасов стартовали с Байконура навстречу американскому Apollo.",
+        "fact": "💡 Стыковка и рукопожатие на орбите произошли двумя днями позже.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA — The Apollo-Soyuz Mission",
+            "url": "https://www.nasa.gov/missions/apollo-soyuz/the-apollo-soyuz-mission/",
+            "name": "NASA"
+          },
+          {
+            "title": "NASA History — 45 Years Ago: Soyuz and Apollo Launch",
+            "url": "https://www.nasa.gov/history/45-years-ago-soyuz-and-apollo-launch/",
+            "name": "NASA History"
+          }
+        ]
       }
     ],
     "07-16": [
@@ -14346,6 +16438,11 @@
             "title": "Britannica — Nicholas II",
             "url": "https://www.britannica.com/biography/Nicholas-II-tsar-of-Russia",
             "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — Did any of the Romanovs survive?",
+            "url": "https://www.history.com/articles/did-any-of-the-romanovs-survive",
+            "name": "HISTORY"
           }
         ],
         "image": "assets/history/nicholas-ii.jpg",
@@ -14492,6 +16589,32 @@
             "name": "NASA"
           }
         ]
+      },
+      {
+        "id": "ru-1980-moscow-olympics-open",
+        "year": 1980,
+        "title": "Открытие Олимпиады в Москве",
+        "summary": "На стадионе в Лужниках открылись XXII летние Олимпийские игры.",
+        "fact": "💡 Игры прошли на фоне крупнейшего олимпийского бойкота.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Olympics.com — Moscow 1980",
+            "url": "https://www.olympics.com/en/olympic-games/moscow-1980",
+            "name": "Olympics.com"
+          },
+          {
+            "title": "Britannica — Moscow 1980 Olympic Games",
+            "url": "https://www.britannica.com/event/Moscow-1980-Olympic-Games",
+            "name": "Britannica"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "07-20": [
@@ -14722,6 +16845,11 @@
             "url": "https://www.guinnessworldrecords.com/world-records/601672-first-dog-in-space",
             "name": "Guinness World Records",
             "shortTitle": "Guinness"
+          },
+          {
+            "title": "Astronautix — July 22, 1951: Dezik and Tsygan",
+            "url": "http://www.astronautix.com/j/july22.html",
+            "name": "Astronautix"
           }
         ]
       },
@@ -14966,8 +17094,14 @@
             "title": "Britannica — Svetlana Yevgenyevna Savitskaya",
             "url": "https://www.britannica.com/biography/Svetlana-Yevgenyevna-Savitskaya",
             "name": "Britannica"
+          },
+          {
+            "title": "UPI — Savitskaya became the first woman to walk in space",
+            "url": "https://www.upi.com/Archives/1984/07/25/Soviet-cosmonaut-Svetlana-Savitskaya-Wednesday-became-the-first-woman/6992450703650/",
+            "name": "UPI"
           }
-        ]
+        ],
+        "editorialRank": 1
       }
     ],
     "07-26": [
@@ -15110,6 +17244,32 @@
         ],
         "image": "assets/history/great-eastern-1866.jpg",
         "imageAlt": "Пароход Great Eastern в Heart’s Content после укладки кабеля"
+      },
+      {
+        "id": "ru-1841-lermontov-died",
+        "year": 1841,
+        "title": "Умер Михаил Лермонтов",
+        "summary": "В Пятигорске на дуэли погиб Михаил Лермонтов — автор «Героя нашего времени».",
+        "fact": "💡 По старому стилю это 15 июля 1841 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Mikhail Yuryevich Lermontov",
+            "url": "https://www.britannica.com/biography/Mikhail-Yuryevich-Lermontov",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Mikhail Yurievich Lermontov",
+            "url": "https://www.prlib.ru/en/history/619629",
+            "name": "Presidential Library"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "07-28": [
@@ -15453,7 +17613,8 @@
             "url": "https://www.britannica.com/topic/MTV",
             "name": "Britannica"
           }
-        ]
+        ],
+        "editorialRank": 3
       },
       {
         "id": "world-1971-genesis-rock",
@@ -15522,7 +17683,30 @@
           }
         ],
         "image": "assets/history/priestley-oxygen-1774.jpg",
-        "imageAlt": "Портрет Джозефа Пристли работы Эллен Шарплс"
+        "imageAlt": "Портрет Джозефа Пристли работы Эллен Шарплс",
+        "editorialRank": 1
+      },
+      {
+        "id": "ru-1914-germany-declares-war-russia",
+        "year": 1914,
+        "title": "Россия вступила в Первую мировую",
+        "summary": "Германия объявила войну Российской империи — Россия вступила в Первую мировую войну.",
+        "fact": "💡 1 августа в России отмечается День памяти российских воинов, погибших в Первой мировой войне.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 11,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — День памяти российских воинов Первой мировой войны",
+            "url": "https://www.prlib.ru/history/619424",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          }
+        ],
+        "editorialRank": 2
       }
     ],
     "08-02": [
@@ -15663,6 +17847,32 @@
             "name": "IWM"
           }
         ]
+      },
+      {
+        "id": "ru-1980-moscow-olympics-close",
+        "year": 1980,
+        "title": "Мишка улетает",
+        "summary": "На закрытии Олимпиады-80 олимпийский Мишка улетел со стадиона в Лужниках.",
+        "fact": "💡 Игры закрылись 3 августа 1980 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 75,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Moscow 1980 Olympic Games",
+            "url": "https://www.britannica.com/event/Moscow-1980-Olympic-Games",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          },
+          {
+            "title": "Olympics.com — Moscow 1980",
+            "url": "https://www.olympics.com/en/olympic-games/moscow-1980",
+            "name": "Olympics.com"
+          }
+        ]
       }
     ],
     "08-04": [
@@ -15686,7 +17896,8 @@
             "url": "https://www.nasa.gov/history/15-years-ago-phoenix-mars-lander-launches-to-the-red-planet/",
             "name": "NASA"
           }
-        ]
+        ],
+        "editorialRank": 3
       },
       {
         "id": "world-1790-revenue-cutter-service",
@@ -15733,7 +17944,36 @@
           }
         ],
         "image": "assets/history/billboard-hot-100-1958.jpg",
-        "imageAlt": "Рики Нельсон на обложке Modern Screen, февраль 1958"
+        "imageAlt": "Рики Нельсон на обложке Modern Screen, февраль 1958",
+        "editorialRank": 1
+      },
+      {
+        "id": "ru-1783-treaty-georgievsk",
+        "year": 1783,
+        "title": "Подписан Георгиевский трактат",
+        "summary": "Россия и Картли-Кахетинское царство заключили договор о российском покровительстве Восточной Грузии.",
+        "fact": "💡 Договор подписали в крепости Георгиевск 24 июля (4 августа) 1783 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 95,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — Георгиевский трактат",
+            "url": "https://www.prlib.ru/history/619434",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          },
+          {
+            "title": "Большая российская энциклопедия — Георгиевский трактат 1783",
+            "url": "https://old.bigenc.ru/domestic_history/text/2352701",
+            "name": "Большая российская энциклопедия",
+            "shortTitle": "БРЭ"
+          }
+        ],
+        "editorialRank": 2
       }
     ],
     "08-05": [
@@ -15825,10 +18065,16 @@
             "title": "NASA — Gherman Titov and Vostok 2",
             "url": "https://www.nasa.gov/history/60-years-ago-vostok-2-germans-titovs-day-long-flight/",
             "name": "NASA"
+          },
+          {
+            "title": "Britannica — Vostok",
+            "url": "https://www.britannica.com/topic/Vostok-Soviet-spacecraft",
+            "name": "Britannica"
           }
         ],
         "image": "assets/history/gherman-titov-1962.jpg",
-        "imageAlt": "Космонавт Герман Титов"
+        "imageAlt": "Космонавт Герман Титов",
+        "editorialRank": 1
       },
       {
         "id": "world-1926-ederle-english-channel",
@@ -15977,7 +18223,8 @@
           }
         ],
         "image": "assets/history/nixon-resignation-1974.jpg",
-        "imageAlt": "Ричард Никсон перед телеобращением об отставке, 8 августа 1974"
+        "imageAlt": "Ричард Никсон перед телеобращением об отставке, 8 августа 1974",
+        "editorialRank": 1
       },
       {
         "id": "world-1786-mont-blanc-ascent",
@@ -15999,7 +18246,8 @@
           }
         ],
         "image": "assets/history/mont-blanc.jpg",
-        "imageAlt": "Вершина Монблана"
+        "imageAlt": "Вершина Монблана",
+        "editorialRank": 3
       },
       {
         "id": "world-2008-beijing-olympics-opening",
@@ -16020,6 +18268,28 @@
             "name": "Olympics.com"
           }
         ]
+      },
+      {
+        "id": "ru-2000-order-st-george-statute",
+        "year": 2000,
+        "title": "Восстановлен орден Святого Георгия",
+        "summary": "В России утвердили статут ордена Святого Георгия — высшей военной награды страны.",
+        "fact": "💡 Впервые орден учредила Екатерина II в 1769 году.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — Орден Святого Георгия",
+            "url": "https://www.prlib.ru/history/619444",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          }
+        ],
+        "editorialRank": 2
       }
     ],
     "08-09": [
@@ -16089,6 +18359,33 @@
             "title": "Library of Congress — Betty Boop",
             "url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/betty_boop.pdf",
             "name": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "ru-1945-manchurian-operation",
+        "year": 1945,
+        "title": "Война с Японией",
+        "summary": "СССР вступил в войну с Японией — началась Маньчжурская операция.",
+        "fact": "💡 Нейтралитет 1941 года к этому дню уже не действовал.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 75,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Avalon Project — Soviet Declaration of War on Japan",
+            "url": "https://avalon.law.yale.edu/wwii/s4.asp",
+            "name": "Avalon Project",
+            "shortTitle": "Avalon Project"
+          },
+          {
+            "title": "USNI Proceedings — Soviet Operations in the War with Japan, August 1945",
+            "url": "https://www.usni.org/magazines/proceedings/1966/may/soviet-operations-war-japan-august-1945",
+            "name": "USNI",
+            "shortTitle": "USNI"
           }
         ]
       }
@@ -16259,7 +18556,8 @@
           }
         ],
         "image": "assets/history/ibm-5150.jpg",
-        "imageAlt": "Персональный компьютер IBM 5150 с монитором и клавиатурой"
+        "imageAlt": "Персональный компьютер IBM 5150 с монитором и клавиатурой",
+        "editorialRank": 1
       },
       {
         "id": "world-1851-singer-sewing-machine",
@@ -16299,7 +18597,30 @@
             "url": "https://www.historytoday.com/archive/lister-pioneers-antiseptic-surgery-glasgow",
             "name": "History Today"
           }
-        ]
+        ],
+        "editorialRank": 3
+      },
+      {
+        "id": "ru-1323-treaty-orekhovo",
+        "year": 1323,
+        "title": "Заключён Ореховецкий мир",
+        "summary": "Новгородская земля и Швеция заключили мир в крепости Орешек и впервые официально разграничили территории.",
+        "fact": "💡 Договор завершил около тридцати лет военных столкновений между Новгородом и Швецией.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 11,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — Заключён Ореховецкий мир",
+            "url": "https://www.prlib.ru/node/619451",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          }
+        ],
+        "editorialRank": 2
       }
     ],
     "08-13": [
@@ -16419,7 +18740,8 @@
           }
         ],
         "image": "assets/history/fdr-social-security-1935.jpg",
-        "imageAlt": "Рузвельт подписывает закон о социальном обеспечении"
+        "imageAlt": "Рузвельт подписывает закон о социальном обеспечении",
+        "editorialRank": 1
       },
       {
         "id": "world-1947-pakistan-independence",
@@ -16439,7 +18761,8 @@
             "url": "https://www.nationalarchives.gov.uk/education/resources/the-road-to-partition/",
             "name": "UK National Archives"
           }
-        ]
+        ],
+        "editorialRank": 3
       },
       {
         "id": "world-1248-cologne-cathedral-begun",
@@ -16460,9 +18783,67 @@
             "name": "UNESCO"
           }
         ]
+      },
+      {
+        "id": "ru-1790-treaty-varala",
+        "year": 1790,
+        "title": "Заключён Верельский мир",
+        "summary": "Россия и Швеция подписали мирный договор, завершивший Русско-шведскую войну 1788–1790 годов.",
+        "fact": "💡 Договор сохранил прежние границы между государствами.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 11,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — Заключён Верельский мир",
+            "url": "https://www.prlib.ru/history/619456",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          },
+          {
+            "title": "Большая российская энциклопедия — Верельский мир 1790",
+            "url": "https://old.bigenc.ru/domestic_history/text/1908552",
+            "name": "Большая российская энциклопедия",
+            "shortTitle": "БРЭ"
+          }
+        ],
+        "editorialRank": 2
       }
     ],
     "08-15": [
+      {
+        "id": "ru-1799-battle-of-novi",
+        "year": 1799,
+        "title": "Суворов победил при Нови",
+        "summary": "Русско-австрийская армия под командованием Александра Суворова разгромила французские войска в Северной Италии.",
+        "fact": "💡 Сражение продолжалось около 15 часов и стало крупнейшей битвой Итальянского похода Суворова.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 110,
+        "interest": 12,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — Состоялось сражение при Нови",
+            "url": "https://www.prlib.ru/node/619459",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          },
+          {
+            "title": "Wikimedia Commons — Battle of Novi, Alexander Kotzebue",
+            "url": "https://commons.wikimedia.org/wiki/File:Battle_of_Novi,_15_August_1799,_by_Alexander_Kotzebue_(Hermitage_Museum,_Saint_Petersburg).jpg",
+            "name": "Wikimedia Commons",
+            "shortTitle": "Wikimedia Commons"
+          }
+        ],
+        "image": "assets/history/battle-novi-1799.jpg",
+        "imageAlt": "Сражение при Нови, картина Александра Коцебу",
+        "editorialRank": 1
+      },
       {
         "id": "world-1914-panama-canal-opens",
         "year": 1914,
@@ -16488,56 +18869,17 @@
           }
         ],
         "image": "assets/history/panama-canal-1913.jpg",
-        "imageAlt": "Строительство Панамского канала"
-      },
-      {
-        "id": "world-1939-wizard-of-oz-premiere",
-        "year": 1939,
-        "title": "Премьера «Волшебника страны Оз»",
-        "summary": "В США вышел фильм «Волшебник страны Оз» с Джуди Гарленд.",
-        "fact": "💡 Переход из чёрно-белого Канзаса в цветную Оз поразил зал.",
-        "body": "",
-        "category": "culture",
-        "region": "WORLD",
-        "priority": 80,
-        "interest": 9,
-        "status": "verified",
-        "sources": [
-          {
-            "title": "Library of Congress — Wizard of Oz",
-            "url": "https://www.loc.gov/static/programs/national-film-preservation-board/documents/wizard_of_oz.pdf",
-            "name": "Library of Congress"
-          }
-        ]
-      },
-      {
-        "id": "world-1969-woodstock-opens",
-        "year": 1969,
-        "title": "Начался Woodstock",
-        "summary": "На ферме в Нью-Йорке открылся фестиваль Woodstock.",
-        "fact": "💡 Хендрикс закрыл его утром в понедельник.",
-        "body": "",
-        "category": "culture",
-        "region": "WORLD",
-        "priority": 70,
-        "interest": 9,
-        "status": "verified",
-        "sources": [
-          {
-            "title": "Britannica — Woodstock",
-            "url": "https://www.britannica.com/event/Woodstock",
-            "name": "Britannica"
-          }
-        ]
+        "imageAlt": "Строительство Панамского канала",
+        "editorialRank": 2
       }
     ],
     "08-16": [
       {
         "id": "world-1858-atlantic-cable-messages",
         "year": 1858,
-        "title": "Кабель через Атлантику",
-        "summary": "По трансатлантическому кабелю пошли рабочие сообщения.",
-        "fact": "💡 Первый кабель проработал недолго — но доказал идею.",
+        "title": "Телеграф связал два континента",
+        "summary": "Королева Виктория и президент США Д. Бьюкенен обменялись сообщениями по первому трансатлантическому кабелю.",
+        "fact": "💡 Кабель проработал лишь несколько недель; надёжная линия появилась в 1866 году.",
         "body": "",
         "category": "technology",
         "region": "WORLD",
@@ -16546,18 +18888,20 @@
         "status": "verified",
         "sources": [
           {
-            "title": "IEEE — Atlantic Cable",
-            "url": "https://ethw.org/Atlantic_Cable",
-            "name": "IEEE"
+            "title": "Library of Congress — First Transatlantic Telegraph Cable Sent",
+            "url": "https://guides.loc.gov/this-month-in-business-history/august/first-transatlantic-telegraph-cable",
+            "name": "Library of Congress",
+            "shortTitle": "LOC"
           },
           {
-            "title": "HISTORY — First transatlantic telegraph cable (Buchanan–Victoria messages Aug. 16)",
-            "url": "https://www.history.com/this-day-in-history/august-5/first-transatlantic-telegraph-cable-completed",
-            "name": "HISTORY"
+            "title": "PBS American Experience — The Great Transatlantic Cable",
+            "url": "https://www.pbs.org/wgbh/americanexperience/features/cable-great-transatlantic-cable/",
+            "name": "PBS American Experience",
+            "shortTitle": "PBS"
           }
         ],
         "image": "assets/history/atlantic-cable-1858.jpg",
-        "imageAlt": "Корабль Agamemnon прокладывает атлантический кабель, 1858"
+        "imageAlt": "Карта маршрута первого трансатлантического телеграфного кабеля, 1858"
       },
       {
         "id": "world-1896-klondike-gold",
@@ -16596,6 +18940,32 @@
             "title": "Sports Illustrated — First issue",
             "url": "https://www.si.com/college/2014/08/16/sports-illustrated-first-issue-60th-anniversary",
             "name": "Sports Illustrated"
+          }
+        ]
+      },
+      {
+        "id": "ru-1812-battle-of-smolensk",
+        "year": 1812,
+        "title": "Началось Смоленское сражение",
+        "summary": "У Смоленска сошлись русская и французская армии — 16 августа по новому стилю.",
+        "fact": "💡 По старому стилю это 4 августа 1812 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Smolensk",
+            "url": "https://www.britannica.com/event/Battle-of-Smolensk",
+            "name": "Britannica"
+          },
+          {
+            "title": "Президентская библиотека — The Battle of Smolensk began",
+            "url": "https://www.prlib.ru/en/history/619464",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
           }
         ]
       }
@@ -16667,9 +19037,63 @@
             "name": "Smithsonian"
           }
         ]
+      },
+      {
+        "id": "ru-1970-venera7-launch",
+        "year": 1970,
+        "title": "Старт «Венеры-7»",
+        "summary": "С Байконура ушла станция, которой ещё предстояло сесть на Венеру.",
+        "fact": "💡 Это старт, не посадка: на поверхность она села 15 декабря.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 75,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA NSSDC — Venera 7",
+            "url": "https://web.archive.org/web/20110629033651/http://nssdc.gsfc.nasa.gov/nmc/spacecraftDisplay.do?id=1970-060A",
+            "name": "NASA NSSDC",
+            "shortTitle": "NASA NSSDC"
+          },
+          {
+            "title": "Astronautix — Venera 3V (V-70)",
+            "url": "http://astronautix.com/v/venera3vv-70.html",
+            "name": "Astronautix"
+          }
+        ]
       }
     ],
     "08-18": [
+      {
+        "id": "ru-1976-luna24-landing",
+        "year": 1976,
+        "title": "Посадка «Луны-24»",
+        "summary": "«Луна-24» села на Луну и взяла грунт — последняя советская лунная станция.",
+        "fact": "💡 Образцы вернула на Землю автоматическая ракета.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 80,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA NTRS — Geology of the Luna 24 landing site",
+            "url": "https://ntrs.nasa.gov/citations/19780057829",
+            "name": "NASA NTRS",
+            "shortTitle": "NASA NTRS"
+          },
+          {
+            "title": "RussianSpaceWeb — Luna-24: Last Moon digger",
+            "url": "https://www.russianspaceweb.com/luna24.html",
+            "name": "RussianSpaceWeb",
+            "shortTitle": "RussianSpaceWeb"
+          }
+        ],
+        "editorialRank": 1
+      },
       {
         "id": "world-1920-19th-amendment",
         "year": 1920,
@@ -16764,7 +19188,8 @@
           }
         ],
         "image": "assets/history/belka-strelka-museum.jpg",
-        "imageAlt": "Белка — одна из собак, вернувшихся с орбиты в августе 1960"
+        "imageAlt": "Белка — одна из собак, вернувшихся с орбиты в августе 1960",
+        "editorialRank": 1
       },
       {
         "id": "ru-1839-pulkovo-observatory",
@@ -16784,7 +19209,8 @@
             "url": "https://www.prlib.ru/en/history/619472",
             "name": "Presidential Library"
           }
-        ]
+        ],
+        "editorialRank": 2
       },
       {
         "id": "world-1839-daguerreotype",
@@ -16806,7 +19232,8 @@
           }
         ],
         "image": "assets/history/daguerre-boulevard.jpg",
-        "imageAlt": "Дагерротип «Бульвар дю Тампль»"
+        "imageAlt": "Дагерротип «Бульвар дю Тампль»",
+        "editorialRank": 3
       }
     ],
     "08-20": [
@@ -16830,7 +19257,8 @@
           }
         ],
         "image": "assets/history/voyager2-launch.jpg",
-        "imageAlt": "Старт ракеты Titan IIIE с аппаратом Voyager 2"
+        "imageAlt": "Старт ракеты Titan IIIE с аппаратом Voyager 2",
+        "editorialRank": 2
       },
       {
         "id": "ru-1882-tchaikovsky-1812",
@@ -16857,30 +19285,39 @@
           }
         ],
         "image": "assets/history/tchaikovsky-1812-1882.jpg",
-        "imageAlt": "Храм Христа Спасителя в Москве, архивное фото"
-      },
-      {
-        "id": "world-1741-bering-alaska",
-        "year": 1741,
-        "title": "Беринг увидел Аляску",
-        "summary": "Экспедиция Беринга достигла берегов Аляски.",
-        "fact": "💡 В его честь назвали пролив между Азией и Америкой.",
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 8,
-        "status": "verified",
-        "sources": [
-          {
-            "title": "NOAA — Vitus Bering",
-            "url": "https://oceanexplorer.noaa.gov/explorations/02arctic/background/history/history.html",
-            "name": "NOAA"
-          }
-        ]
+        "imageAlt": "Храм Христа Спасителя в Москве, архивное фото",
+        "editorialRank": 1
       }
     ],
     "08-21": [
+      {
+        "id": "ru-1957-r7-first-success",
+        "year": 1957,
+        "title": "Первая МБР",
+        "summary": "Р-7 впервые успешно прошла трассу — это была первая межконтинентальная баллистическая ракета.",
+        "fact": "💡 По той же схеме позже вывели «Спутник-1».",
+        "body": "",
+        "category": "technology",
+        "region": "RU",
+        "priority": 80,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — The first soviet intercontinental ballistic rocket R-7 launched",
+            "url": "https://www.prlib.ru/en/history/619478",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          },
+          {
+            "title": "NASA SMA — Astronautix R-7 document",
+            "url": "https://sma.nasa.gov/LaunchVehicle/assets/astonautix-r7-document.pdf",
+            "name": "NASA SMA",
+            "shortTitle": "NASA SMA"
+          }
+        ],
+        "editorialRank": 1
+      },
       {
         "id": "world-1959-hawaii-statehood",
         "year": 1959,
@@ -17016,6 +19453,33 @@
             "name": "Britannica"
           }
         ]
+      },
+      {
+        "id": "ru-1991-tricolor-restored",
+        "year": 1991,
+        "title": "Вернули триколор",
+        "summary": "Верховный Совет РСФСР восстановил бело-сине-красный флаг.",
+        "fact": "💡 Позже 22 августа стали отмечать как День Государственного флага.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 75,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Указ Президента РФ от 20.08.1994 № 1714",
+            "url": "http://kremlin.ru/acts/bank/6832",
+            "name": "Kremlin",
+            "shortTitle": "Kremlin"
+          },
+          {
+            "title": "Президентская библиотека — The day of the National Flag",
+            "url": "https://www.prlib.ru/en/history/619479",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          }
+        ]
       }
     ],
     "08-23": [
@@ -17107,6 +19571,33 @@
         ],
         "image": "assets/history/gossamer-condor-1977.jpg",
         "imageAlt": "Педальный самолёт Gossamer Condor"
+      },
+      {
+        "id": "ru-1943-kursk-ends",
+        "year": 1943,
+        "title": "Конец Курской битвы",
+        "summary": "Советские войска освободили Харьков — Курская битва завершилась.",
+        "fact": "💡 23 августа отмечают как День воинской славы России.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 75,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — 80th anniversary of the victory in the Battle of Kursk",
+            "url": "https://www.prlib.ru/en/news/1901185",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          },
+          {
+            "title": "Encyclopedia.com — Kharkov, Battles of",
+            "url": "https://www.encyclopedia.com/history/encyclopedias-almanacs-transcripts-and-maps/kharkov-battles",
+            "name": "Encyclopedia.com",
+            "shortTitle": "Encyclopedia.com"
+          }
+        ]
       }
     ],
     "08-24": [
@@ -17174,6 +19665,33 @@
             "title": "Library of Congress — Edison motion pictures",
             "url": "https://www.loc.gov/collections/edison-company-motion-pictures-and-sound-recordings/articles-and-essays/history-of-edison-motion-pictures/",
             "name": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "ru-1991-gorbachev-quits-cpsu",
+        "year": 1991,
+        "title": "Горбачёв покинул пост генсека",
+        "summary": "Горбачёв сложил полномочия генерального секретаря КПСС.",
+        "fact": "💡 Президентом СССР он остался, партию уже не возглавлял.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 75,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Collapse of the Soviet Union",
+            "url": "https://www.britannica.com/event/the-collapse-of-the-Soviet-Union",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          },
+          {
+            "title": "NYT — Gorbachev quits as party head",
+            "url": "https://www.nytimes.com/1991/08/25/world/soviet-turmoil-gorbachev-quits-as-party-head-ends-communism-s-74-year-reign.html",
+            "name": "The New York Times",
+            "shortTitle": "NYT"
           }
         ]
       }
@@ -17525,6 +20043,32 @@
             "name": "UK Parliament"
           }
         ]
+      },
+      {
+        "id": "ru-1949-rds1-test",
+        "year": 1949,
+        "title": "Испытание РДС-1",
+        "summary": "На Семипалатинском полигоне взорвали первую советскую атомную бомбу.",
+        "fact": "💡 Это было первое советское ядерное испытание.",
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 75,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "PBS — Soviet Tests",
+            "url": "https://www.pbs.org/wgbh/americanexperience/features/bomb-soviet-tests/",
+            "name": "PBS"
+          },
+          {
+            "title": "Президентская библиотека — The first Soviet atom bomb was tested",
+            "url": "https://www.prlib.ru/en/history/619493",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          }
+        ]
       }
     ],
     "08-30": [
@@ -17667,6 +20211,33 @@
         ],
         "image": "assets/history/edison-kinetoscope.jpg",
         "imageAlt": "Кинетоскоп Томаса Эдисона"
+      },
+      {
+        "id": "ru-1994-zgv-withdrawal",
+        "year": 1994,
+        "title": "ЗГВ ушла из Германии",
+        "summary": "Завершился вывод Западной группы войск из Германии.",
+        "fact": "💡 Последние части вышли 31 августа 1994 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "РИА Новости — Вывод Западной группы войск из Германии",
+            "url": "https://ria.ru/20240831/zgv-1969218605.html",
+            "name": "РИА Новости",
+            "shortTitle": "РИА Новости"
+          },
+          {
+            "title": "Коммерсантъ — Вывод российских войск из Германии",
+            "url": "https://www.kommersant.ru/doc/88460",
+            "name": "Коммерсантъ",
+            "shortTitle": "Коммерсантъ"
+          }
+        ]
       }
     ],
     "09-01": [
@@ -18036,6 +20607,32 @@
         ],
         "image": "assets/history/ali-olympic-gold-1960.jpg",
         "imageAlt": "Мухаммед Али после олимпийской победы в Риме, 1960"
+      },
+      {
+        "id": "ru-1905-portsmouth-treaty",
+        "year": 1905,
+        "title": "Портсмутский мир",
+        "summary": "В США подписали Портсмутский мир — русско-японская война закончилась.",
+        "fact": "💡 Посредником стал Теодор Рузвельт: Россия уступила южный Сахалин и Порт-Артур.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Treaty of Portsmouth",
+            "url": "https://www.britannica.com/event/Treaty-of-Portsmouth",
+            "name": "Britannica"
+          },
+          {
+            "title": "Theodore Roosevelt Center — Treaty of Portsmouth",
+            "url": "https://www.theodorerooseveltcenter.org/encyclopedia/foreign-affairs/treaty-of-portsmouth/",
+            "name": "Theodore Roosevelt Center",
+            "shortTitle": "Roosevelt Center"
+          }
+        ]
       }
     ],
     "09-06": [
@@ -18174,6 +20771,33 @@
             "name": "Miss America Organization"
           }
         ]
+      },
+      {
+        "id": "ru-1812-borodino",
+        "year": 1812,
+        "title": "Бородинское сражение",
+        "summary": "У деревни Бородино произошла генеральная битва Отечественной войны 1812 года.",
+        "fact": "💡 По старому стилю это 26 августа — тот самый день из «Войны и мира».",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 11,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Borodino",
+            "url": "https://www.britannica.com/event/Battle-of-Borodino",
+            "name": "Britannica"
+          },
+          {
+            "title": "Президентская библиотека — Состоялось Бородинское сражение",
+            "url": "https://www.prlib.ru/history/619518",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "09-08": [
@@ -18245,6 +20869,33 @@
             "name": "Library of Congress"
           }
         ]
+      },
+      {
+        "id": "ru-1941-leningrad-blockade-begins",
+        "year": 1941,
+        "title": "Началась блокада Ленинграда",
+        "summary": "Немецкие войска заняли Шлиссельбург и отрезали Ленинград с суши.",
+        "fact": "💡 Блокада длилась 872 дня; зимой снабжение шло по Дороге жизни через Ладогу.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Siege of Leningrad",
+            "url": "https://www.britannica.com/event/Siege-of-Leningrad",
+            "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — Siege of Leningrad begins",
+            "url": "https://www.history.com/this-day-in-history/september-8/siege-of-leningrad-begins",
+            "name": "HISTORY",
+            "shortTitle": "HISTORY"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "09-09": [
@@ -18314,6 +20965,33 @@
             "name": "Library of Congress"
           }
         ]
+      },
+      {
+        "id": "ru-1828-tolstoy-born",
+        "year": 1828,
+        "title": "Родился Лев Толстой",
+        "summary": "В Ясной Поляне родился Лев Толстой.",
+        "fact": "💡 Позже он напишет «Войну и мир» и «Анну Каренину».",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 70,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Leo Tolstoy",
+            "url": "https://www.britannica.com/biography/Leo-Tolstoy",
+            "name": "Britannica"
+          },
+          {
+            "title": "Президентская библиотека — Рождение Льва Толстого",
+            "url": "https://www.prlib.ru/history/1909746",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "09-10": [
@@ -18381,6 +21059,32 @@
             "title": "Library of Congress — NYC subway",
             "url": "https://guides.loc.gov/this-month-in-business-history/september",
             "name": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "ru-1721-treaty-of-nystad",
+        "year": 1721,
+        "title": "Ништадтский мир",
+        "summary": "Россия и Швеция подписали Ништадтский мир — завершилась Северная война.",
+        "fact": "💡 Россия получила Эстляндию, Лифляндию, Ингерманландию и закрепила выход к Балтийскому морю.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 70,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Peace of Nystad",
+            "url": "https://www.britannica.com/topic/Peace-of-Nystad",
+            "name": "Britannica"
+          },
+          {
+            "title": "Президентская библиотека — Подписан Ништадтский мирный договор",
+            "url": "https://www.prlib.ru/history/619530",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
           }
         ]
       }
@@ -18452,31 +21156,34 @@
             "name": "legislation.gov.uk"
           }
         ]
+      },
+      {
+        "id": "ru-1971-khrushchev-died",
+        "year": 1971,
+        "title": "Умер Никита Хрущёв",
+        "summary": "В Москве умер Никита Хрущёв, бывший первый секретарь ЦК КПСС и председатель Совета министров СССР.",
+        "fact": "💡 С 1953 по 1964 год он возглавлял СССР; затем его отправили в отставку.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Nikita Sergeyevich Khrushchev",
+            "url": "https://www.britannica.com/biography/Nikita-Sergeyevich-Khrushchev",
+            "name": "Britannica"
+          },
+          {
+            "title": "The New York Times — Khrushchev Is Dead at 77",
+            "url": "https://www.nytimes.com/1971/09/12/archives/khrushchev-is-dead-at-77.html",
+            "name": "The New York Times"
+          }
+        ]
       }
     ],
     "09-12": [
-      {
-        "body": "",
-        "category": "science",
-        "region": "RU",
-        "priority": 100,
-        "interest": 10,
-        "status": "verified",
-        "id": "ru-1959-luna2-moon",
-        "year": 1959,
-        "title": "«Луна-2» достигла Луны",
-        "summary": "«Луна-2» впервые доставила земной аппарат на Луну.",
-        "fact": "💡 Перед ударом сбросили вымпелы с гербом СССР.",
-        "sources": [
-          {
-            "title": "NASA — Luna 2",
-            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1959-014A",
-            "name": "NASA"
-          }
-        ],
-        "image": "assets/history/luna2-1959.jpg",
-        "imageAlt": "Советская станция «Луна-2»"
-      },
       {
         "body": "",
         "category": "culture",
@@ -18614,6 +21321,33 @@
         ],
         "image": "assets/history/oslo-accords-1993.jpg",
         "imageAlt": "Клинтон, Рабин и Арафат у Белого дома, 13 сентября 1993"
+      },
+      {
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 80,
+        "interest": 10,
+        "status": "verified",
+        "id": "ru-1959-luna2-moon",
+        "year": 1959,
+        "title": "«Луна-2» достигла Луны",
+        "summary": "«Луна-2» впервые доставила земной аппарат на Луну.",
+        "fact": "💡 Перед ударом сбросили вымпелы с гербом СССР.",
+        "sources": [
+          {
+            "title": "NASA History — Luna 2 Makes Impact in Moon Race",
+            "url": "https://www.nasa.gov/history/60-years-ago-luna-2-makes-impact-in-moon-race/",
+            "name": "NASA History"
+          },
+          {
+            "title": "Britannica — Luna space probe",
+            "url": "https://www.britannica.com/technology/Luna-space-probe",
+            "name": "Britannica"
+          }
+        ],
+        "image": "assets/history/luna2-1959.jpg",
+        "imageAlt": "Советская станция «Луна-2»"
       }
     ],
     "09-14": [
@@ -18687,7 +21421,7 @@
         "fact": "💡 Город был почти пуст: жители ушли, а вскоре пожары уничтожили большую часть столицы.",
         "body": "",
         "category": "history",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 11,
         "status": "verified",
@@ -18891,6 +21625,31 @@
             "name": "Jimmy Carter Library"
           }
         ]
+      },
+      {
+        "id": "ru-1857-tsiolkovsky-born",
+        "year": 1857,
+        "title": "Родился Константин Циолковский",
+        "summary": "В селе Ижевском родился Константин Циолковский — теоретик космонавтики.",
+        "fact": "💡 По старому стилю это 5 сентября.",
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 70,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Konstantin Eduardovich Tsiolkovsky",
+            "url": "https://www.britannica.com/biography/Konstantin-Eduardovich-Tsiolkovsky",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Birthday anniversary of Konstantin Tsiolkovsky",
+            "url": "https://www.prlib.ru/en/history/619546",
+            "name": "Presidential Library"
+          }
+        ]
       }
     ],
     "09-18": [
@@ -18958,6 +21717,33 @@
             "title": "The New York Times Company — History",
             "url": "https://www.nytco.com/company/history/",
             "name": "The New York Times Company"
+          }
+        ]
+      },
+      {
+        "id": "ru-1911-stolypin-died",
+        "year": 1911,
+        "title": "Умер Пётр Столыпин",
+        "summary": "В Киеве умер Пётр Столыпин — после покушения в опере.",
+        "fact": "💡 Ранен 1/14 сентября, умер 5/18 сентября 1911 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Pyotr Arkadyevich Stolypin",
+            "url": "https://www.britannica.com/biography/Pyotr-Arkadyevich-Stolypin",
+            "name": "Britannica",
+            "shortTitle": "Britannica"
+          },
+          {
+            "title": "Президентская библиотека — к юбилею Петра Столыпина",
+            "url": "https://www.prlib.ru/news/1332618",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
           }
         ]
       }
@@ -19169,6 +21955,31 @@
         ],
         "image": "assets/history/french-republic-1792.jpg",
         "imageAlt": "Провозглашение республики во Франции 21 сентября 1792"
+      },
+      {
+        "id": "ru-1993-decree-1400",
+        "year": 1993,
+        "title": "Указ № 1400",
+        "summary": "Ельцин указом № 1400 распустил Съезд и Верховный Совет — начался осенний кризис.",
+        "fact": "💡 Конституционный суд счёл указ незаконным; через две недели последовал штурм Белого дома.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Кремль — Указ Президента РФ № 1400",
+            "url": "https://www.kremlin.ru/acts/bank/4364",
+            "name": "Президент России"
+          },
+          {
+            "title": "КонсультантПлюс — Указ № 1400",
+            "url": "https://www.consultant.ru/document/cons_doc_LAW_14733/",
+            "name": "КонсультантПлюс"
+          }
+        ]
       }
     ],
     "09-22": [
@@ -19380,7 +22191,7 @@
         "fact": "💡 Аппарат взял грунт в Море Изобилия и вернул капсулу без экипажа.",
         "body": "",
         "category": "space",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 11,
         "status": "verified",
@@ -19467,6 +22278,31 @@
             "name": "National Park Service"
           }
         ]
+      },
+      {
+        "id": "ru-1943-smolensk-liberated",
+        "year": 1943,
+        "title": "Освобождён Смоленск",
+        "summary": "Советские войска освободили Смоленск после двух лет немецкой оккупации.",
+        "fact": "💡 В тот же день освободили Рославль; в Москве дали салют.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Anniversary of the liberation of Smolensk",
+            "url": "https://www.prlib.ru/en/history/619570",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "World History Encyclopedia — Battle of Smolensk in 1943",
+            "url": "https://www.worldhistory.org/article/2707/battle-of-smolensk-in-1943/",
+            "name": "World History Encyclopedia"
+          }
+        ]
       }
     ],
     "09-26": [
@@ -19538,6 +22374,33 @@
             "name": "Royal Museums Greenwich"
           }
         ]
+      },
+      {
+        "id": "ru-1983-petrov-false-alarm",
+        "year": 1983,
+        "title": "Ложная ядерная тревога",
+        "summary": "Система «Око» показала пуски ракет, но офицер Станислав Петров не подтвердил удар.",
+        "fact": "💡 Спутники приняли солнечный блик на облаках за старты американских ракет.",
+        "body": "",
+        "category": "science",
+        "region": "RU",
+        "priority": 80,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Stanislav Petrov",
+            "url": "https://www.britannica.com/biography/Stanislav-Petrov",
+            "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — The Man Who Helped Avert Nuclear Armageddon",
+            "url": "https://www.history.com/articles/nuclear-attack-warning-cold-war-petrov",
+            "name": "HISTORY",
+            "shortTitle": "HISTORY"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "09-27": [
@@ -19814,6 +22677,33 @@
             "name": "Library of Congress"
           }
         ]
+      },
+      {
+        "id": "ru-1941-operation-typhoon",
+        "year": 1941,
+        "title": "Операция «Тайфун»",
+        "summary": "Вермахт начал операцию «Тайфун» — генеральное наступление на Москву.",
+        "fact": "💡 Немецким войскам удалось приблизиться к Москве, но взять советскую столицу они не смогли.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Moscow",
+            "url": "https://www.britannica.com/event/Battle-of-Moscow",
+            "name": "Britannica"
+          },
+          {
+            "title": "Президентская библиотека — Началась битва за Москву",
+            "url": "https://www.prlib.ru/history/619587",
+            "name": "Президентская библиотека",
+            "shortTitle": "Президентская библиотека"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "10-01": [
@@ -21027,7 +23917,7 @@
       {
         "body": "",
         "category": "culture",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 90,
         "interest": 9,
         "status": "verified",
@@ -21947,6 +24837,11 @@
             "title": "Encyclopaedia Britannica — Nicholas II",
             "url": "https://www.britannica.com/biography/Nicholas-II-tsar-of-Russia",
             "name": "Britannica"
+          },
+          {
+            "title": "Высочайший манифест 20 октября 1894 г. о восшествии Николая II",
+            "url": "http://nasledie.russportal.ru/index.php?id=histrus.manifest1894_10_20",
+            "name": "Русский портал / манифест 1894"
           }
         ]
       },
@@ -22038,6 +24933,32 @@
             "name": "BBC"
           }
         ]
+      },
+      {
+        "id": "ru-1721-peter-emperor",
+        "year": 1721,
+        "title": "Россия стала империей",
+        "summary": "Пётр I принял титул императора Всероссийского.",
+        "fact": "💡 По старому стилю церемония прошла 22 октября.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 11,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Президентская библиотека — Пётр I принял императорский титул",
+            "url": "https://www.prlib.ru/history/619684",
+            "name": "Президентская библиотека"
+          },
+          {
+            "title": "Britannica — Russian Empire",
+            "url": "https://www.britannica.com/place/Russian-Empire",
+            "name": "Britannica"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "11-03": [
@@ -22070,26 +24991,6 @@
       },
       {
         "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1856-tretyakov-gallery-start",
-        "year": 1856,
-        "title": "Собрание Третьякова",
-        "summary": "Павел Третьяков начал систематически собирать русскую живопись.",
-        "fact": "💡 Позже коллекцию он передаст Москве.",
-        "sources": [
-          {
-            "title": "Tretyakov Gallery — History",
-            "url": "https://www.tretyakovgallery.ru/en/about/history/",
-            "name": "Tretyakov Gallery"
-          }
-        ]
-      },
-      {
-        "body": "",
         "category": "science",
         "region": "WORLD",
         "priority": 70,
@@ -22112,53 +25013,6 @@
     "11-04": [
       {
         "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 100,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1612-moscow-liberation",
-        "year": 1612,
-        "title": "Освободили Москву",
-        "summary": "Ополчение Минина и Пожарского освободило Москву.",
-        "fact": "💡 Этот день позже станет Днём народного единства.",
-        "sources": [
-          {
-            "title": "Presidential Library — National Unity Day",
-            "url": "https://www.prlib.ru/en/news/658795",
-            "name": "Presidential Library"
-          },
-          {
-            "title": "Britannica — Освободили Москву",
-            "url": "https://www.britannica.com/on-this-day/november-04",
-            "name": "Britannica"
-          }
-        ],
-        "image": "assets/history/minin-pozharsky.jpg",
-        "imageAlt": "Минин и Пожарский"
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
-        "status": "verified",
-        "id": "ru-2005-unity-day",
-        "year": 2005,
-        "title": "День народного единства",
-        "summary": "В России учредили День народного единства.",
-        "fact": "💡 Праздник отмечают ежегодно 4 ноября.",
-        "sources": [
-          {
-            "title": "Presidential Library — National Unity Day",
-            "url": "https://www.prlib.ru/en/news/658795",
-            "name": "Presidential Library"
-          }
-        ]
-      },
-      {
-        "body": "",
         "category": "science",
         "region": "WORLD",
         "priority": 90,
@@ -22174,6 +25028,31 @@
             "title": "Encyclopaedia Britannica — Tutankhamun",
             "url": "https://www.britannica.com/biography/Tutankhamun",
             "name": "Encyclopaedia Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1956-budapest-intervention",
+        "year": 1956,
+        "title": "Советские войска в Будапеште",
+        "summary": "СССР начал операцию по подавлению восстания в Венгрии.",
+        "fact": "💡 Танки вошли в столицу на рассвете 4 ноября.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Hungarian Revolution",
+            "url": "https://www.britannica.com/event/Hungarian-Revolution-1956",
+            "name": "Britannica"
+          },
+          {
+            "title": "BBC On This Day — Soviet troops overrun Hungary",
+            "url": "https://news.bbc.co.uk/onthisday/hi/dates/stories/november/4/newsid_2739000/2739039.stm",
+            "name": "BBC"
           }
         ]
       }
@@ -22245,6 +25124,31 @@
             "name": "Library of Congress"
           }
         ]
+      },
+      {
+        "id": "ru-1967-ostankino-tower",
+        "year": 1967,
+        "title": "Останкинская телебашня",
+        "summary": "Госкомиссия приняла первую очередь Останкинской телебашни.",
+        "fact": "💡 С башни уже накануне пошёл телесигнал.",
+        "body": "",
+        "category": "technology",
+        "region": "RU",
+        "priority": 80,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "РИА Новости — Останкинская телевизионная башня",
+            "url": "https://ria.ru/20120813/722284482.html",
+            "name": "РИА Новости"
+          },
+          {
+            "title": "Ведомости — Останкинская телебашня: 50 лет в эфире",
+            "url": "https://www.vedomosti.ru/realty/galleries/2017/11/03/740512-ostankinskaya-telebashnya-50-let",
+            "name": "Ведомости"
+          }
+        ]
       }
     ],
     "11-06": [
@@ -22293,6 +25197,11 @@
             "url": "https://www.britannica.com/event/World-War-II/The-Eastern-Front-1943",
             "name": "Encyclopaedia Britannica",
             "shortTitle": "Britannica — Kyiv"
+          },
+          {
+            "title": "KPI — Liberation of Kyiv, 6 November 1943",
+            "url": "https://kpi.ua/en/833-1",
+            "name": "Igor Sikorsky Kyiv Polytechnic Institute"
           }
         ]
       },
@@ -22337,9 +25246,9 @@
             "name": "Britannica"
           },
           {
-            "title": "HISTORY — Октябрь по новому стилю",
-            "url": "https://www.history.com/this-day-in-history/november-7",
-            "name": "HISTORY"
+            "title": "Президентская библиотека — День Октябрьской революции 1917 года",
+            "url": "https://www.prlib.ru/history/619694",
+            "name": "Президентская библиотека"
           }
         ],
         "image": "assets/history/aurora-cruiser.jpg",
@@ -22501,26 +25410,11 @@
             "title": "Encyclopaedia Britannica — Ivan Turgenev",
             "url": "https://www.britannica.com/biography/Ivan-Turgenev",
             "name": "Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "technology",
-        "region": "RU",
-        "priority": 70,
-        "interest": 7,
-        "status": "verified",
-        "id": "ru-1938-ilyushin-db3",
-        "year": 1938,
-        "title": "Самолёты Ильюшина",
-        "summary": "Конструкторское бюро Сергея Ильюшина создавало дальние.",
-        "fact": "💡 Позже знаменитым станет штурмовик Ил-2.",
-        "sources": [
+          },
           {
-            "title": "Encyclopaedia Britannica — Sergey Ilyushin",
-            "url": "https://www.britannica.com/biography/Sergey-Vladimirovich-Ilyushin",
-            "name": "Britannica"
+            "title": "Культура.РФ — Иван Тургенев",
+            "url": "https://www.culture.ru/persons/8258/ivan-turgenev",
+            "name": "Культура.РФ"
           }
         ]
       }
@@ -22563,6 +25457,11 @@
             "title": "Encyclopaedia Britannica — Mikhail Kalashnikov",
             "url": "https://www.britannica.com/biography/Mikhail-Kalashnikov",
             "name": "Britannica"
+          },
+          {
+            "title": "BBC — Obituary: Mikhail Kalashnikov",
+            "url": "https://www.bbc.com/news/world-europe-19870688",
+            "name": "BBC"
           }
         ],
         "image": "assets/history/kalashnikov.jpg",
@@ -22641,6 +25540,11 @@
             "title": "Encyclopaedia Britannica — Fyodor Dostoyevsky",
             "url": "https://www.britannica.com/biography/Fyodor-Dostoyevsky",
             "name": "Britannica"
+          },
+          {
+            "title": "Литературная карта Новгородской области — Достоевский",
+            "url": "https://libmap.nounb.ru/writer/dostoevskij-fedor-mihajlovich-1821-1881/",
+            "name": "NOUNB"
           }
         ],
         "image": "assets/history/dostoevsky-1872.jpg",
@@ -22756,6 +25660,31 @@
         ],
         "image": "assets/history/www-next-cern.jpg",
         "imageAlt": "NeXT-компьютер Тима Бернерса-Ли в CERN — первый веб-сервер"
+      },
+      {
+        "id": "ru-1982-andropov-general-secretary",
+        "year": 1982,
+        "title": "Андропов стал генсеком",
+        "summary": "Пленум ЦК КПСС избрал Юрия Андропова Генеральным секретарём.",
+        "fact": "💡 Это произошло через два дня после смерти Брежнева.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "UPI — Andropov elected General Secretary, 12 November 1982",
+            "url": "https://www.upi.com/Archives/1982/11/12/Former-KGB-chief-Yuri-Andropov-was-unanimously-elected-today/3098405925200/",
+            "name": "UPI"
+          },
+          {
+            "title": "Britannica — Yuri Andropov",
+            "url": "https://www.britannica.com/biography/Yuri-Andropov",
+            "name": "Britannica"
+          }
+        ]
       }
     ],
     "11-13": [
@@ -22776,26 +25705,6 @@
             "title": "Microsoft — Windows history timeline",
             "url": "https://www.microsoft.com/en-us/windows/windows-11-history",
             "name": "Microsoft"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1906-gorky-mother",
-        "year": 1906,
-        "title": "Роман Горького «Мать»",
-        "summary": "Максим Горький опубликовал роман «Мать».",
-        "fact": "💡 Сначала роман вышел за границей.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — Mother (novel by Gorky)",
-            "url": "https://www.britannica.com/topic/Mother-novel-by-Gorky",
-            "name": "Encyclopaedia Britannica"
           }
         ]
       },
@@ -22825,6 +25734,31 @@
         ],
         "image": "assets/history/fantasia-premiere-1940.png",
         "imageAlt": ""
+      },
+      {
+        "id": "ru-1851-petersburg-moscow-railway",
+        "year": 1851,
+        "title": "Дорога Петербург — Москва",
+        "summary": "Открыли Петербурго-Московскую железную дорогу: пошёл первый общественный поезд.",
+        "fact": "💡 По старому стилю это 1 ноября 1851 года.",
+        "body": "",
+        "category": "technology",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "История.РФ — Николаевская железная дорога",
+            "url": "https://history.ru/read/articles/nikolaievskaia-zhielieznaia-dorogha-event",
+            "name": "История.РФ"
+          },
+          {
+            "title": "REGNUM — Дорога, с которой началась современная Россия",
+            "url": "https://regnum.ru/article/2203382",
+            "name": "REGNUM"
+          }
+        ]
       }
     ],
     "11-14": [
@@ -22918,9 +25852,9 @@
             "name": "Encyclopaedia Britannica"
           },
           {
-            "title": "HISTORY — Полёт «Бурана»",
-            "url": "https://www.history.com/this-day-in-history/november-15",
-            "name": "HISTORY"
+            "title": "ESA — 1988 launch of Soviet Buran shuttle",
+            "url": "https://www.esa.int/ESA_Multimedia/Images/2021/01/1988_launch_of_Soviet_Buran_shuttle",
+            "name": "ESA"
           }
         ],
         "image": "assets/history/buran.jpg",
@@ -22942,26 +25876,6 @@
           {
             "title": "Encyclopaedia Britannica — Brazil — Empire to republic",
             "url": "https://www.britannica.com/place/Brazil/From-empire-to-republic",
-            "name": "Encyclopaedia Britannica"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
-        "priority": 80,
-        "interest": 8,
-        "status": "verified",
-        "id": "ru-1863-chernyshevsky-what-is-to-be-done",
-        "year": 1863,
-        "title": "«Что делать?» Чернышевского",
-        "summary": "Николай Чернышевский опубликовал роман «Что делать?».",
-        "fact": "💡 Роман написан в Петропавловской крепости.",
-        "sources": [
-          {
-            "title": "Encyclopaedia Britannica — What Is to Be Done?",
-            "url": "https://www.britannica.com/topic/What-Is-to-Be-Done-novel-by-Chernyshevsky",
             "name": "Encyclopaedia Britannica"
           }
         ]
@@ -22995,24 +25909,30 @@
         "image": "assets/history/oklahoma-statehood-1907.png"
       },
       {
+        "id": "ru-1933-us-ussr-recognition",
+        "year": 1933,
+        "title": "США признали СССР",
+        "summary": "Рузвельт и Литвинов обменялись нотами о дипломатических отношениях.",
+        "fact": "💡 США не признавали советское правительство 16 лет.",
         "body": "",
         "category": "culture",
         "region": "RU",
-        "priority": 90,
+        "priority": 100,
         "interest": 9,
         "status": "verified",
-        "id": "ru-1836-captains-daughter",
-        "year": 1836,
-        "title": "«Капитанская дочка»",
-        "summary": "Александр Пушкин опубликовал повесть «Капитанская дочка».",
-        "fact": "💡 Действие связано с восстанием Пугачёва.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Aleksandr Pushkin",
-            "url": "https://www.britannica.com/biography/Aleksandr-Sergeyevich-Pushkin",
-            "name": "Encyclopaedia Britannica"
+            "title": "U.S. Office of the Historian — Recognition of the Soviet Union, 1933",
+            "url": "https://history.state.gov/milestones/1921-1936/ussr",
+            "name": "Office of the Historian"
+          },
+          {
+            "title": "American Presidency Project — Roosevelt–Litvinov communications, 16 November 1933",
+            "url": "https://www.presidency.ucsb.edu/documents/communications-between-the-president-franklin-d-roosevelt-and-maxim-litvinov-the-union",
+            "name": "American Presidency Project"
           }
-        ]
+        ],
+        "editorialRank": 1
       }
     ],
     "11-17": [
@@ -23043,24 +25963,30 @@
         "image": "assets/history/elizabeth-i-accession-1558.jpg"
       },
       {
+        "id": "ru-1970-lunokhod-1",
+        "year": 1970,
+        "title": "«Луноход-1» на Луне",
+        "summary": "«Луна-17» доставила на Луну первый планетоход.",
+        "fact": "💡 Аппарат сошёл с рампы в Море Дождей.",
         "body": "",
-        "category": "culture",
+        "category": "science",
         "region": "RU",
-        "priority": 80,
-        "interest": 9,
+        "priority": 100,
+        "interest": 11,
         "status": "verified",
-        "id": "ru-1862-fathers-and-sons",
-        "year": 1862,
-        "title": "«Отцы и дети»",
-        "summary": "Иван Тургенев опубликовал роман «Отцы и дети».",
-        "fact": "💡 Главный герой — Базаров.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Fathers and Sons",
-            "url": "https://www.britannica.com/topic/Fathers-and-Sons",
+            "title": "NASA History — Luna 17 / Lunokhod 1 chronology",
+            "url": "https://www.nasa.gov/wp-content/uploads/static/history/ap11ann/chronology.htm",
+            "name": "NASA"
+          },
+          {
+            "title": "Britannica — Lunokhod",
+            "url": "https://www.britannica.com/technology/Lunokhod",
             "name": "Britannica"
           }
-        ]
+        ],
+        "editorialRank": 1
       }
     ],
     "11-18": [
@@ -23201,8 +26127,39 @@
             "title": "Encyclopaedia Britannica — Mikhail Lomonosov",
             "url": "https://www.britannica.com/biography/Mikhail-Lomonosov",
             "name": "Britannica"
+          },
+          {
+            "title": "Президентская библиотека — Родился Михаил Ломоносов",
+            "url": "https://www.prlib.ru/history/619734",
+            "name": "Президентская библиотека"
           }
         ]
+      },
+      {
+        "id": "ru-1942-operation-uranus-begins",
+        "year": 1942,
+        "title": "Начало операции «Уран»",
+        "summary": "Красная армия ударила по флангам группировки под Сталинградом.",
+        "fact": "💡 Контрудар стал переломом битвы за город.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 11,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Battle of Stalingrad / Operation Uranus",
+            "url": "https://www.britannica.com/event/Battle-of-Stalingrad",
+            "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — Battle of Stalingrad turning point",
+            "url": "https://www.history.com/articles/battle-stalingrad-turning-point",
+            "name": "HISTORY"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "11-20": [
@@ -23250,6 +26207,11 @@
             "title": "Leo Tolstoy State Museum",
             "url": "https://tolstoymuseum.ru/",
             "name": "Leo Tolstoy State Museum"
+          },
+          {
+            "title": "Музей «Ясная Поляна» — День памяти Льва Толстого",
+            "url": "https://ypmuseum.ru/event/352",
+            "name": "Музей «Ясная Поляна»"
           }
         ]
       },
@@ -23483,6 +26445,32 @@
         ],
         "image": "assets/history/doctor-who-1963.jpg",
         "imageAlt": "ТARDIS у BBC Television Centre"
+      },
+      {
+        "id": "ru-1942-stalingrad-encirclement",
+        "year": 1942,
+        "title": "Кольцо под Сталинградом",
+        "summary": "Советские клинья сомкнулись у Калача и окружили 6-ю армию.",
+        "fact": "💡 Операция «Уран» завершила окружение за пять дней.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Timeline of the Battle of Stalingrad",
+            "url": "https://www.britannica.com/list/timeline-of-the-battle-of-stalingrad",
+            "name": "Britannica"
+          },
+          {
+            "title": "HISTORY — Soviets encircle Germans at Stalingrad",
+            "url": "https://www.history.com/this-day-in-history/november-23/soviets-encircle-germans-at-stalingrad",
+            "name": "HISTORY"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "11-24": [
@@ -23927,24 +26915,30 @@
         "image": "assets/history/preliminary-peace-1782.jpg"
       },
       {
+        "id": "ru-1939-winter-war-begins",
+        "year": 1939,
+        "title": "Начало советско-финской войны",
+        "summary": "СССР начал войну против Финляндии.",
+        "fact": "💡 Конфликт позже назвали Зимней войной.",
         "body": "",
-        "category": "science",
+        "category": "culture",
         "region": "RU",
         "priority": 100,
-        "interest": 8,
+        "interest": 10,
         "status": "verified",
-        "id": "ru-1887-mendeleev-solutions",
-        "year": 1887,
-        "title": "Теория растворов Менделеева",
-        "summary": "Дмитрий Менделеев развивал химическую теорию растворов.",
-        "fact": "💡 Работы шли параллельно периодическому закону.",
         "sources": [
           {
-            "title": "Encyclopaedia Britannica — Dmitri Mendeleev",
-            "url": "https://www.britannica.com/biography/Dmitri-Mendeleev",
+            "title": "Britannica — Russo-Finnish War",
+            "url": "https://www.britannica.com/event/Russo-Finnish-War",
             "name": "Britannica"
+          },
+          {
+            "title": "IWM — A Short History of the Winter War",
+            "url": "https://www.iwm.org.uk/history/a-short-history-of-the-winter-war",
+            "name": "Imperial War Museums"
           }
-        ]
+        ],
+        "editorialRank": 1
       }
     ],
     "12-01": [
@@ -24012,6 +27006,31 @@
             "title": "Britannica — assembly line",
             "url": "https://www.britannica.com/technology/assembly-line",
             "name": "Britannica"
+          }
+        ]
+      },
+      {
+        "id": "ru-1825-alexander-i-died",
+        "year": 1825,
+        "title": "Умер Александр I",
+        "summary": "В Таганроге умер император Александр I.",
+        "fact": "💡 По старому стилю это 19 ноября 1825 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Alexander I",
+            "url": "https://www.britannica.com/biography/Alexander-I-emperor-of-Russia",
+            "name": "Britannica"
+          },
+          {
+            "title": "Fondation Napoléon — Alexander I",
+            "url": "https://www.napoleon.org/en/history-of-the-two-empires/biographies/alexander-i/",
+            "name": "Fondation Napoléon"
           }
         ]
       }
@@ -24268,8 +27287,14 @@
             "title": "Britannica — Battle of Moscow",
             "url": "https://www.britannica.com/event/Battle-of-Moscow",
             "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Moscow counteroffensive 1941",
+            "url": "https://www.prlib.ru/en/history/2002744",
+            "name": "Presidential Library"
           }
-        ]
+        ],
+        "editorialRank": 1
       },
       {
         "body": "",
@@ -24357,6 +27382,31 @@
             "title": "Library of Congress — Columbus arrives in the New World",
             "url": "https://www.loc.gov/item/today-in-history/december-06/",
             "name": "Library of Congress"
+          }
+        ]
+      },
+      {
+        "id": "ru-1741-elizabeth-coup",
+        "year": 1741,
+        "title": "Переворот Елизаветы Петровны",
+        "summary": "Елизавета Петровна свергла Ивана VI и стала императрицей.",
+        "fact": "💡 По старому стилю это 25 ноября 1741 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 90,
+        "interest": 9,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Britannica — Elizabeth of Russia",
+            "url": "https://www.britannica.com/biography/Elizabeth-empress-of-Russia",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Elizabeth coup 1741",
+            "url": "https://www.prlib.ru/en/history/619786",
+            "name": "Presidential Library"
           }
         ]
       }
@@ -24497,6 +27547,32 @@
             "name": "American Presidency Project"
           }
         ]
+      },
+      {
+        "id": "ru-1991-belavezha-accords",
+        "year": 1991,
+        "title": "Беловежские соглашения",
+        "summary": "Россия, Украина и Беларусь подписали соглашение о прекращении СССР.",
+        "fact": "💡 Документ подписали в Беловежской пуще.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Presidential Library — Belavezha Accords",
+            "url": "https://www.prlib.ru/en/history/619792",
+            "name": "Presidential Library"
+          },
+          {
+            "title": "AP — Belavezha Accords 1991",
+            "url": "https://apnews.com/article/europe-russia-ukraine-poland-moscow-3dfb565a7e65ce7b110c806df12869f9",
+            "name": "AP"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "12-09": [
@@ -24564,6 +27640,31 @@
             "title": "UN — Tanganyika admission / independence context",
             "url": "https://www.un.org/en/about-us/member-states/united-republic-of-tanzania",
             "name": "United Nations"
+          }
+        ]
+      },
+      {
+        "id": "ru-1836-glinka-life-for-the-tsar",
+        "year": 1836,
+        "title": "Премьера «Жизнь за царя»",
+        "summary": "В Петербурге впервые показали оперу Глинки «Жизнь за царя».",
+        "fact": "💡 По старому стилю это 27 ноября 1836 года.",
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 80,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Bolshoi Theatre — A Life for the Tsar",
+            "url": "https://bolshoitheatre.com/performance/A_Life_for_the_Tsar/",
+            "name": "Bolshoi Theatre"
+          },
+          {
+            "title": "IMSLP — A Life for the Tsar",
+            "url": "https://imslp.org/wiki/A_Life_for_the_Tsar_%28Glinka,_Mikhail%29",
+            "name": "IMSLP"
           }
         ]
       }
@@ -24751,8 +27852,14 @@
             "title": "Конституция РФ — официальный текст",
             "url": "http://pravo.gov.ru/proxy/ips/?docbody=&nd=102027595",
             "name": "pravo.gov.ru"
+          },
+          {
+            "title": "Presidential Library — Constitution Day",
+            "url": "https://www.prlib.ru/en/history/619802",
+            "name": "Presidential Library"
           }
-        ]
+        ],
+        "editorialRank": 1
       },
       {
         "body": "",
@@ -24876,26 +27983,6 @@
         "body": "",
         "category": "culture",
         "region": "RU",
-        "priority": 95,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1825-decembrist-revolt",
-        "year": 1825,
-        "title": "Восстание декабристов",
-        "summary": "На Сенатской площади вышли декабристы.",
-        "fact": "💡 Восстание подавили в тот же день.",
-        "sources": [
-          {
-            "title": "Presidential Library — Decembrist uprising",
-            "url": "https://www.prlib.ru/en/history/619555",
-            "name": "Presidential Library"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
-        "region": "RU",
         "priority": 80,
         "interest": 8,
         "status": "verified",
@@ -24980,6 +28067,32 @@
             "name": "Library of Congress"
           }
         ]
+      },
+      {
+        "id": "ru-1970-venera7-landing",
+        "year": 1970,
+        "title": "Посадка «Венеры-7»",
+        "summary": "«Венера-7» впервые передала данные с поверхности другой планеты.",
+        "fact": "💡 Аппарат сел на Венеру 15 декабря 1970 года.",
+        "body": "",
+        "category": "space",
+        "region": "RU",
+        "priority": 100,
+        "interest": 10,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "NASA NSSDCA — Venera 7",
+            "url": "https://nssdc.gsfc.nasa.gov/nmc/spacecraft/display.action?id=1970-060A",
+            "name": "NASA NSSDCA"
+          },
+          {
+            "title": "Astronomy.com — Venera 7 lands on Venus",
+            "url": "https://www.astronomy.com/today-in-the-history-of-astronomy/dec-15-1970-venera-7-lands-on-venus/",
+            "name": "Astronomy.com"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "12-16": [
@@ -25427,26 +28540,6 @@
       {
         "body": "",
         "category": "culture",
-        "region": "RU",
-        "priority": 90,
-        "interest": 9,
-        "status": "verified",
-        "id": "ru-1849-dostoevsky-scaffold",
-        "year": 1849,
-        "title": "Достоевский на эшафоте",
-        "summary": "Достоевскому заменили казнь каторгой в последний миг.",
-        "fact": "💡 Инсценировку устроили на Семёновском плацу.",
-        "sources": [
-          {
-            "title": "Presidential Library — Dostoevsky mock execution",
-            "url": "https://www.prlib.ru/en/history/619609",
-            "name": "Presidential Library"
-          }
-        ]
-      },
-      {
-        "body": "",
-        "category": "culture",
         "region": "WORLD",
         "priority": 80,
         "interest": 8,
@@ -25609,7 +28702,7 @@
       {
         "body": "",
         "category": "culture",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 10,
         "status": "verified",
@@ -25678,7 +28771,7 @@
       {
         "body": "",
         "category": "culture",
-        "region": "WORLD",
+        "region": "RU",
         "priority": 100,
         "interest": 10,
         "status": "verified",
@@ -25741,6 +28834,31 @@
             "title": "Smithsonian NMAAHC — Kwanzaa",
             "url": "https://nmaahc.si.edu/explore/stories/kwanzaa",
             "name": "Smithsonian NMAAHC"
+          }
+        ]
+      },
+      {
+        "body": "",
+        "category": "culture",
+        "region": "RU",
+        "priority": 95,
+        "interest": 9,
+        "status": "verified",
+        "id": "ru-1825-decembrist-revolt",
+        "year": 1825,
+        "title": "Восстание декабристов",
+        "summary": "На Сенатской площади вышли декабристы.",
+        "fact": "💡 По старому стилю это 14 декабря 1825 года.",
+        "sources": [
+          {
+            "title": "Britannica — Decembrist",
+            "url": "https://www.britannica.com/topic/Decembrist",
+            "name": "Britannica"
+          },
+          {
+            "title": "Presidential Library — Decembrist uprising",
+            "url": "https://www.prlib.ru/en/news/1283486",
+            "name": "Presidential Library"
           }
         ]
       }
@@ -25950,6 +29068,33 @@
             "name": "NPS"
           }
         ]
+      },
+      {
+        "id": "ru-1699-peter-new-year-decree",
+        "year": 1699,
+        "title": "Указ Петра I о новом летосчислении",
+        "summary": "Пётр I повелел вести годы от Рождества Христова, а новый год — с 1 января.",
+        "fact": "💡 По старому стилю указ издан 19 декабря 1699 года.",
+        "body": "",
+        "category": "history",
+        "region": "RU",
+        "priority": 90,
+        "interest": 8,
+        "status": "verified",
+        "sources": [
+          {
+            "title": "Указ 19.12.1699 — Гарант",
+            "url": "https://base.garant.ru/57565091/",
+            "name": "Гарант"
+          },
+          {
+            "title": "Schönle — Calendar Reform under Peter the Great",
+            "url": "https://research-information.bris.ac.uk/ws/files/248156963/Schonle_Peter_s_Calendar_Reform_SR_Accepted_copy.pdf",
+            "name": "Slavic Review",
+            "shortTitle": "Slavic Review"
+          }
+        ],
+        "editorialRank": 1
       }
     ],
     "12-30": [
@@ -26066,8 +29211,14 @@
             "title": "Кремль — заявление Ельцина 31.12.1999",
             "url": "http://www.kremlin.ru/events/president/transcripts/22372",
             "name": "Кремль"
+          },
+          {
+            "title": "BBC — Yeltsin resigns 31 December 1999",
+            "url": "http://news.bbc.co.uk/onthisday/hi/dates/stories/december/31/newsid_4102000/4102107.stm",
+            "name": "BBC"
           }
-        ]
+        ],
+        "editorialRank": 1
       },
       {
         "body": "",
