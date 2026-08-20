@@ -1167,8 +1167,9 @@
             "name": "NASA"
           }
         ],
-        "image": "assets/history/huygens-titan-2005.jpg",
-        "imageAlt": "Снимок поверхности Титана с зонда Huygens"
+        "image": "assets/history/huygens-surface-color-2005.jpg",
+        "imageAlt": "Цветной снимок поверхности Титана с Huygens",
+        "imagePosition": "50% 78%"
       },
       {
         "id": "world-1784-treaty-paris-ratified",
@@ -5604,8 +5605,9 @@
             "name": "HISTORY.com"
           }
         ],
-        "image": "assets/history/alamo-fall-1836.jpg",
-        "imageAlt": "Картина падения миссии Аламо в 1836 году"
+        "image": "assets/history/alamo-fall-onderdonk-1836.jpg",
+        "imageAlt": "Картина штурма миссии Аламо",
+        "imagePosition": "50% 58%"
       },
       {
         "id": "world-1475-michelangelo-born",
@@ -6122,6 +6124,7 @@
         ],
         "image": "assets/history/soviets-congress-moscow-1918.jpg",
         "imageAlt": "IV Всероссийский съезд Советов в Москве, март 1918",
+        "imagePosition": "50% 62%",
         "editorialRank": 1
       }
     ],
@@ -6193,7 +6196,8 @@
           }
         ],
         "image": "assets/history/alexander-ii-assassinated-1881.jpg",
-        "imageAlt": "Изображение покушения на Александра II, 1881"
+        "imageAlt": "Изображение покушения на Александра II, 1881",
+        "imagePosition": "61% 50%"
       }
     ],
     "03-14": [
@@ -6314,7 +6318,8 @@
           }
         ],
         "image": "assets/history/caesar-ides-44bc.jpg",
-        "imageAlt": "Картина Винченцо Камуччини «Смерть Цезаря»"
+        "imageAlt": "Картина Винченцо Камуччини «Смерть Цезаря»",
+        "imagePosition": "52% 50%"
       },
       {
         "id": "world-1820-maine-statehood",
@@ -6446,7 +6451,8 @@
           }
         ],
         "image": "assets/history/freedoms-journal-1827.jpg",
-        "imageAlt": "Первая страница Freedom’s Journal, 16 марта 1827"
+        "imageAlt": "Первая страница Freedom’s Journal, 16 марта 1827",
+        "imagePosition": "50% 5%"
       }
     ],
     "03-17": [
@@ -7732,6 +7738,7 @@
         ],
         "image": "assets/history/rachmaninoff-bain-loc.jpg",
         "imageAlt": "Портрет Сергея Рахманинова, коллекция Bain, Библиотека Конгресса",
+        "imagePosition": "50% 18%",
         "editorialRank": 1
       }
     ],
@@ -8380,7 +8387,8 @@
           }
         ],
         "image": "assets/history/good-friday-agreement-1998.jpg",
-        "imageAlt": "Плакат кампании «Yes» за Соглашение Страстной пятницы, 1998"
+        "imageAlt": "Плакат кампании «Yes» за Соглашение Страстной пятницы, 1998",
+        "imagePosition": "50% 58%"
       },
       {
         "id": "world-1945-buchenwald-liberated",
@@ -8923,8 +8931,9 @@
             "name": "JFK Library"
           }
         ],
-        "image": "assets/history/bay-of-pigs-1961.jpg",
-        "imageAlt": "Командиры бригады 2506 на флагмане вторжения у берегов Кубы, апрель 1961"
+        "image": "assets/history/bay-of-pigs-captured-1961.jpg",
+        "imageAlt": "Пленные бойцы бригады 2506, 1961",
+        "imagePosition": "50% 30%"
       },
       {
         "id": "world-1989-solidarity-legalized",
@@ -9538,8 +9547,9 @@
             "name": "NZHistory"
           }
         ],
-        "image": "assets/history/gallipoli-1915.jpg",
-        "imageAlt": "Бухта Анзак на полуострове Галлиполи"
+        "image": "assets/history/anzac-signal-company-boat-1915.jpg",
+        "imageAlt": "Лодка 1st Divisional Signal Company по пути к Anzac Cove, 25 апреля 1915, 6:00",
+        "imagePosition": "50% 42%"
       },
       {
         "id": "world-1874-marconi-born",
@@ -9985,8 +9995,9 @@
             "name": "New York Times"
           }
         ],
-        "image": "assets/history/empire-state-1931.jpg",
-        "imageAlt": "Empire State Building в Нью-Йорке"
+        "image": "assets/history/empire-state-worker-1931.jpg",
+        "imageAlt": "Монтажник на балке Empire State Building",
+        "imagePosition": "58% 28%"
       },
       {
         "id": "world-1851-great-exhibition-opens",
@@ -10639,7 +10650,8 @@
           }
         ],
         "image": "assets/history/mandela-inauguration-1994.jpg",
-        "imageAlt": "Нельсон Мандела на инаугурации, 1994"
+        "imageAlt": "Нельсон Мандела на инаугурации, 1994",
+        "imagePosition": "50% 3%"
       },
       {
         "id": "world-1869-golden-spike",
@@ -15929,7 +15941,8 @@
           }
         ],
         "image": "assets/history/liquid-helium-1908.jpg",
-        "imageAlt": "Портрет Хейке Камерлинг-Оннеса, 1923"
+        "imageAlt": "Портрет Хейке Камерлинг-Оннеса, 1923",
+        "imagePosition": "50% 16%"
       },
       {
         "id": "ru-1918-rsfsr-constitution",
@@ -16412,7 +16425,8 @@
           }
         ],
         "image": "assets/history/trinity-test-1945.jpg",
-        "imageAlt": "Взрыв на испытании «Тринити», 1945"
+        "imageAlt": "Взрыв на испытании «Тринити», 1945",
+        "imagePosition": "50% 100%"
       },
       {
         "id": "world-1994-shoemaker-levy9",
@@ -19068,8 +19082,9 @@
             "name": "Britannica"
           }
         ],
-        "image": "assets/history/fulton-clermont.jpg",
-        "imageAlt": "Пароход Роберта Фултона «Клермонт»"
+        "image": "assets/history/clermont-replica-1909.jpg",
+        "imageAlt": "Реплика парохода Clermont, 1909, а не судно 1807 года",
+        "imagePosition": "50% 55%"
       },
       {
         "id": "world-1945-indonesia-independence",
@@ -19938,8 +19953,9 @@
             "name": "National Museum of American Diplomacy"
           }
         ],
-        "image": "assets/history/kellogg-briand-1928.jpg",
-        "imageAlt": "Текст пакта Бриана—Келлогга, 1928"
+        "image": "assets/history/kellogg-briand-signing-1928.jpg",
+        "imageAlt": "Подписание пакта Бриана—Келлогга, 1928",
+        "imagePosition": "50% 36%"
       },
       {
         "id": "world-1859-drake-oil-well",
@@ -20079,7 +20095,8 @@
           }
         ],
         "image": "assets/history/faraday-portrait.jpg",
-        "imageAlt": "Портрет Майкла Фарадея"
+        "imageAlt": "Портрет Майкла Фарадея",
+        "imagePosition": "50% 16%"
       },
       {
         "id": "world-1958-michael-jackson-born",
@@ -20342,8 +20359,9 @@
             "name": "Britannica"
           }
         ],
-        "image": "assets/history/carrington-flare-1859.jpg",
-        "imageAlt": "Рисунок вспышки Каррингтона 1859 года"
+        "image": "assets/history/carrington-sunspots-usgs-1859.jpg",
+        "imageAlt": "Рисунок солнечных пятен Каррингтона, 1 сентября 1859",
+        "imagePosition": "62% 58%"
       },
       {
         "body": "",
@@ -22957,8 +22975,9 @@
             "name": "Britannica"
           }
         ],
-        "image": "assets/history/german-unity-1990.jpg",
-        "imageAlt": "Документы и карта объединения Германии 3 октября 1990"
+        "image": "assets/history/german-reunification-reichstag-1990.jpg",
+        "imageAlt": "Флаг ФРГ перед Рейхстагом 3 октября 1990",
+        "imagePosition": "50% 40%"
       },
       {
         "body": "",
@@ -23492,7 +23511,8 @@
             "name": "Tokyo Metropolitan Symphony Orchestra"
           }
         ],
-        "image": "assets/history/prokofiev-symphony7-1952.jpg"
+        "image": "assets/history/prokofiev-symphony7-1952.jpg",
+        "imagePosition": "58% 18%"
       },
       {
         "body": "",
@@ -23888,7 +23908,8 @@
           }
         ],
         "image": "assets/history/kapitsa.jpg",
-        "imageAlt": "Пётр Капица"
+        "imageAlt": "Пётр Капица",
+        "imagePosition": "50% 10%"
       },
       {
         "body": "",
@@ -25075,8 +25096,9 @@
             "name": "Britannica"
           }
         ],
-        "image": "assets/history/sputnik-2.jpg",
-        "imageAlt": "«Спутник-2»"
+        "image": "assets/history/laika-1957.jpg",
+        "imageAlt": "Собака Лайка перед полётом, 1957",
+        "imagePosition": "50% 38%"
       },
       {
         "body": "",
@@ -26254,8 +26276,8 @@
             "name": "HISTORY"
           }
         ],
-        "image": "assets/history/operation-uranus-preparations-1942.png",
-        "imageAlt": "Карта расположения советских войск и сил стран Оси перед операцией «Уран»",
+        "image": "assets/history/t34-operation-uranus-1942.jpg",
+        "imageAlt": "Танк Т-34 в операции «Уран»",
         "editorialRank": 1
       }
     ],
@@ -26805,7 +26827,8 @@
           }
         ],
         "image": "assets/history/alfred-nobel.jpg",
-        "imageAlt": "Портрет Альфреда Нобеля"
+        "imageAlt": "Портрет Альфреда Нобеля",
+        "imagePosition": "54% 12%"
       },
       {
         "body": "",
@@ -27395,8 +27418,9 @@
             "name": "Presidential Library"
           }
         ],
-        "image": "assets/history/moscow-counteroffensive-map-1941.jpg",
-        "imageAlt": "Карта советского зимнего контрнаступления под Москвой в 1941 году",
+        "image": "assets/history/moscow-ptrd-defenders-1941.jpg",
+        "imageAlt": "Бойцы с ПТРД-41 под Москвой, 1941",
+        "imagePosition": "50% 60%",
         "editorialRank": 1
       },
       {
@@ -27800,7 +27824,8 @@
           }
         ],
         "image": "assets/history/alfred-nobel.jpg",
-        "imageAlt": "Альфред Нобель"
+        "imageAlt": "Альфред Нобель",
+        "imagePosition": "54% 12%"
       },
       {
         "body": "",
@@ -27964,8 +27989,9 @@
             "name": "Presidential Library"
           }
         ],
-        "image": "assets/history/constitution-rf-1993-title-page.png",
-        "imageAlt": "Титульная страница Конституции Российской Федерации",
+        "image": "assets/history/constitution-rf-referendum-1993.jpg",
+        "imageAlt": "Голосование на референдуме по Конституции РФ, 1993",
+        "imagePosition": "50% 42%",
         "editorialRank": 1
       },
       {
@@ -28015,7 +28041,8 @@
           }
         ],
         "image": "assets/history/francis-drake.jpg",
-        "imageAlt": "Портрет Фрэнсиса Дрейка"
+        "imageAlt": "Портрет Фрэнсиса Дрейка",
+        "imagePosition": "52% 6%"
       },
       {
         "body": "",
@@ -28083,8 +28110,9 @@
             "name": "Britannica"
           }
         ],
-        "image": "assets/history/amundsen-south-pole.jpg",
-        "imageAlt": "Палатка Амундсена на Южном полюсе"
+        "image": "assets/history/amundsen-south-pole-party-1911.jpg",
+        "imageAlt": "Отряд Амундсена у флага на Южном полюсе",
+        "imagePosition": "50% 40%"
       },
       {
         "body": "",
@@ -28784,7 +28812,8 @@
           }
         ],
         "image": "assets/history/apollo8-earthrise-1968.jpg",
-        "imageAlt": "Снимок «Восход Земли» с «Аполлона-8»"
+        "imageAlt": "Снимок «Восход Земли» с «Аполлона-8»",
+        "imagePosition": "50% 100%"
       },
       {
         "body": "",
