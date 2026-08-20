@@ -1,0 +1,667 @@
+/* =========================================================
+   Прототип v2 · Мой день
+   Референс: современная типографика + дорогой минимализм
+   Палитра: Утреннее молоко × Чистый лист
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  /* Цвета */
+  --bg:           #F9F6F2;    /* молочный фон */
+  --card:         #FFFFFF;
+  --hero-bg:      #ECE6DD;    /* чуть теплее для зоны hero */
+  --accent:       #5E7A6E;    /* приглушённый сейдж — единственный акцент */
+  --accent-soft:  #EBF2EE;
+  --warm:         #C09870;    /* тёплое золото — для имени и деталей */
+  --ink:          #191512;
+  --ink-mid:      #7A706A;
+  --ink-faint:    #BDB7B0;
+  --divider:      #EDE8E3;
+  --bday-bg:      #F9F0EB;
+  --mood-bg:      #F2F7F4;
+  --history-bg:   #F5F1EC;
+  --shadow:       0 2px 20px rgba(25, 21, 18, 0.07);
+  --shadow-xs:    0 1px 8px  rgba(25, 21, 18, 0.05);
+
+  /* Типографика */
+  --serif: Georgia, "Times New Roman", serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  /* Скругления */
+  --r-lg: 20px;
+  --r-md: 16px;
+  --r-sm: 12px;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+button {
+  font-family: inherit;
+  cursor: pointer;
+}
+
+/* ─── Обёртка ─────────────────────────────────────────── */
+
+.screen {
+  width: min(100%, 430px);
+  margin-inline: auto;
+  min-height: 100dvh;
+  display: flex;
+  flex-direction: column;
+  /* Отступ снизу для нижней навигации */
+  padding-bottom: 72px;
+  position: relative;
+}
+
+/* ─── Строка состояния ───────────────────────────────── */
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px 0;
+  background: var(--hero-bg);
+}
+
+.statusbar__time {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-mid);
+}
+
+.statusbar__icons {
+  display: flex;
+  gap: 4px;
+  font-size: 0.6rem;
+  color: var(--ink-mid);
+}
+
+/* ─── HERO ───────────────────────────────────────────── */
+
+.hero {
+  background: var(--hero-bg);
+  padding: 20px 24px 28px;
+}
+
+/* Строка: текст + колокольчик */
+.hero__top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.hero__pre {
+  font-size: 0.95rem;
+  color: var(--ink-mid);
+  margin-bottom: 4px;
+  line-height: 1;
+}
+
+/* Главный момент: огромное имя в серифе */
+.hero__name {
+  font-family: var(--serif);
+  font-size: clamp(3rem, 13vw, 3.75rem);
+  font-weight: 400;
+  line-height: 1.02;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+  margin-bottom: 8px;
+}
+
+/* Маленький декоративный элемент рядом с именем */
+.hero__spark {
+  display: inline-block;
+  font-family: var(--sans);
+  font-size: 1.1rem;
+  color: var(--warm);
+  vertical-align: super;
+  margin-left: 4px;
+  font-style: normal;
+}
+
+.hero__date {
+  font-size: 0.88rem;
+  color: var(--ink-mid);
+  letter-spacing: 0.01em;
+}
+
+/* Кнопка колокольчика */
+.hero__bell {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 38px;
+  height: 38px;
+  border: none;
+  background: rgba(255, 255, 255, 0.55);
+  border-radius: 50%;
+  color: var(--ink-mid);
+  flex-shrink: 0;
+  margin-top: 4px;
+}
+
+/* Карточка погоды — внутри hero, на белом фоне */
+.weather {
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  align-items: center;
+  gap: 16px;
+  background: rgba(255, 255, 255, 0.82);
+  border-radius: var(--r-md);
+  padding: 16px 18px;
+  box-shadow: var(--shadow-xs);
+}
+
+.weather__icon {
+  color: var(--warm);
+  display: flex;
+  align-items: center;
+}
+
+.weather__temp {
+  font-family: var(--serif);
+  font-size: 1.75rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.01em;
+}
+
+.weather__cond {
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+  line-height: 1.4;
+}
+
+.weather__tip {
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  line-height: 1.45;
+  text-align: right;
+}
+
+/* ─── SCROLL AREA ────────────────────────────────────── */
+
+.scroll-area {
+  flex: 1;
+  padding: 20px 16px 8px;
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  overflow-y: auto;
+}
+
+/* ─── КАРТОЧКИ ───────────────────────────────────────── */
+
+.card {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  padding: 20px;
+  box-shadow: var(--shadow);
+}
+
+/* Строка заголовок + мета */
+.card__row {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: 12px;
+  margin-bottom: 16px;
+}
+
+.card__title {
+  font-size: 1.05rem;
+  font-weight: 600;
+  color: var(--ink);
+  line-height: 1.2;
+}
+
+/* Маленькая рубрика (caps) */
+.eyebrow {
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 8px;
+}
+
+/* Счётчик задач */
+.badge {
+  font-size: 0.78rem;
+  color: var(--ink-faint);
+  white-space: nowrap;
+}
+
+/* ─── ЗАДАЧИ ─────────────────────────────────────────── */
+
+.tasks {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 16px;
+}
+
+.task {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 11px 0;
+  border-bottom: 1px solid var(--divider);
+}
+
+.tasks li:last-child .task,
+.task:last-child {
+  border-bottom: none;
+}
+
+/* Кастомный чекбокс-кружок */
+.check {
+  flex-shrink: 0;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 1.5px solid var(--ink-faint);
+}
+
+/* Выполненный — заливка + SVG-галочка */
+.check--done {
+  border-color: var(--accent);
+  background-color: var(--accent);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath d='M4 12l5 5L20 7' stroke='%23fff' stroke-width='2.2' fill='none' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+  background-size: 66%;
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+.task__text {
+  font-size: 0.97rem;
+  color: var(--ink);
+  line-height: 1.4;
+}
+
+.task--done .task__text {
+  color: var(--ink-faint);
+  text-decoration: line-through;
+  text-decoration-color: var(--ink-faint);
+}
+
+/* Тёмная pill-кнопка «Добавить» — как в референсе */
+.add-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 13px;
+  background: var(--ink);
+  color: #fff;
+  border: none;
+  border-radius: 100px;
+  font-size: 0.92rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+  transition: opacity 0.15s;
+}
+
+.add-btn:hover { opacity: 0.82; }
+.add-btn:active { opacity: 0.7; transform: scale(0.99); }
+
+/* ─── ДВА СТОЛБЦА ────────────────────────────────────── */
+
+.duo {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.duo .card {
+  padding: 18px 16px;
+}
+
+/* ─── ПОЗДРАВЛЕНИЕ ───────────────────────────────────── */
+
+.card--birthday {
+  background: var(--bday-bg);
+  display: flex;
+  flex-direction: column;
+}
+
+.bday__name {
+  font-family: var(--serif);
+  font-size: 1.08rem;
+  font-weight: 400;
+  line-height: 1.3;
+  color: var(--ink);
+  margin-bottom: 8px;
+}
+
+.bday__hint {
+  font-size: 0.78rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  flex: 1;
+  margin-bottom: 14px;
+}
+
+/* Кнопка-стрелка */
+.arrow-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 34px;
+  height: 34px;
+  background: var(--card);
+  border: none;
+  border-radius: 50%;
+  color: var(--ink-mid);
+  box-shadow: var(--shadow-xs);
+  transition: transform 0.15s, background 0.15s;
+}
+
+.arrow-btn:hover {
+  background: var(--accent);
+  color: #fff;
+  transform: translateX(2px);
+}
+
+/* ─── МЫСЛЬ ДНЯ ──────────────────────────────────────── */
+
+.card--mood {
+  background: var(--card);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Большая декоративная кавычка */
+.mood__q {
+  font-family: var(--serif);
+  font-size: 4.5rem;
+  line-height: 0.8;
+  color: var(--ink-faint);
+  opacity: 0.5;
+  margin-bottom: 6px;
+  display: block;
+}
+
+.mood__text {
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  line-height: 1.6;
+  flex: 1;
+}
+
+/* Тонкая нейтральная черта снизу */
+.mood__line {
+  display: block;
+  width: 20px;
+  height: 1.5px;
+  background: var(--ink-faint);
+  border-radius: 2px;
+  margin-top: 12px;
+}
+
+/* ─── TIMELINE / СОБЫТИЯ ─────────────────────────────── */
+
+.timeline {
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.tl {
+  display: flex;
+  gap: 14px;
+  padding-bottom: 16px;
+  position: relative;
+}
+
+/* Вертикальная линия от точки вниз */
+.tl:not(.tl--last)::before {
+  content: "";
+  position: absolute;
+  left: 6px;
+  top: 14px;
+  bottom: 0;
+  width: 1px;
+  background: var(--divider);
+}
+
+.tl--last {
+  padding-bottom: 0;
+}
+
+.tl__dot {
+  flex-shrink: 0;
+  width: 13px;
+  height: 13px;
+  border-radius: 50%;
+  border: 2px solid var(--ink-faint);
+  background: var(--card);
+  margin-top: 3px;
+  position: relative;
+  z-index: 1;
+}
+
+/* Активная точка — заливка акцентом */
+.tl__dot--on {
+  border-color: var(--accent);
+  background: var(--accent);
+}
+
+.tl__body {
+  flex: 1;
+}
+
+.tl__label {
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--ink-faint);
+  margin-bottom: 2px;
+}
+
+.tl__text {
+  font-size: 0.9rem;
+  color: var(--ink);
+  line-height: 1.45;
+}
+
+/* ─── ИСТОРИЧЕСКИЙ МОМЕНТ ────────────────────────────── */
+
+.card--history {
+  background: var(--history-bg);
+  padding: 16px 18px;
+}
+
+.hist__head {
+  display: flex;
+  align-items: baseline;
+  gap: 10px;
+  margin-bottom: 8px;
+}
+
+/* Компактная дата */
+.hist__date {
+  font-family: var(--serif);
+  font-size: 1.45rem;
+  font-weight: 400;
+  line-height: 1;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.hist__year {
+  font-size: 0.8rem;
+  color: var(--ink-mid);
+}
+
+.hist__text {
+  font-size: 0.82rem;
+  color: var(--ink-mid);
+  line-height: 1.5;
+  margin-bottom: 10px;
+}
+
+/* ─── УЛЫБКА ─────────────────────────────────────────── */
+
+.smile__text {
+  font-size: 0.93rem;
+  color: var(--ink-mid);
+  line-height: 1.65;
+}
+
+/* ─── ТЕКСТОВЫЕ КНОПКИ-ССЫЛКИ ────────────────────────── */
+
+.link-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  font-size: 0.8rem;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+.link-btn:hover { opacity: 0.72; }
+
+.hist__more {
+  display: block;
+  margin-top: 2px;
+  font-size: 0.85rem;
+}
+
+/* ─── НИЖНЯЯ НАВИГАЦИЯ ───────────────────────────────── */
+
+.bottom-nav {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: min(100%, 430px);
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid var(--divider);
+  padding: 10px 8px max(12px, env(safe-area-inset-bottom));
+  z-index: 100;
+}
+
+.nav-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  border: none;
+  background: none;
+  color: var(--ink-faint);
+  padding: 4px 10px;
+  transition: color 0.15s;
+}
+
+.nav-btn--active {
+  color: var(--accent);
+}
+
+.nav-btn:hover:not(.nav-btn--fab) {
+  color: var(--ink-mid);
+}
+
+.nav-btn__icon {
+  display: block;
+}
+
+.nav-btn__lbl {
+  font-size: 0.66rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+/* FAB — круглая кнопка в центре навигации */
+.nav-btn--fab {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  padding: 0;
+  box-shadow: 0 6px 20px rgba(94, 122, 110, 0.38);
+  margin-top: -12px;
+  flex-shrink: 0;
+  transition: transform 0.15s, background 0.15s;
+}
+
+.nav-btn--fab:hover {
+  background: #4d6860;
+  transform: scale(1.05);
+}
+
+.nav-btn--fab:active {
+  transform: scale(0.97);
+}
+
+/* ─── АДАПТИВ ─────────────────────────────────────────── */
+
+@media (max-width: 390px) {
+  .hero {
+    padding: 16px 20px 24px;
+  }
+
+  .scroll-area {
+    padding-inline: 14px;
+  }
+
+  .hero__name {
+    font-size: 2.75rem;
+  }
+
+  .duo .card {
+    padding: 16px 14px;
+  }
+}
+
+/* На широком экране — имитация телефонного обрамления */
+@media (min-width: 480px) {
+  body {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    min-height: 100vh;
+    padding: 32px 0 40px;
+    background: #E8E3DD;
+  }
+
+  .screen {
+    border-radius: 44px;
+    overflow: hidden;
+    box-shadow: 0 32px 80px rgba(0,0,0,0.18);
+    min-height: 0;
+    height: 780px;
+  }
+
+  .scroll-area {
+    overflow-y: scroll;
+    flex: 1;
+  }
+
+  .bottom-nav {
+    border-radius: 0 0 44px 44px;
+  }
+}

@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Мой день — Прототип v2</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <div class="screen">
+
+    <!-- Строка состояния (декоративная) -->
+    <div class="statusbar" aria-hidden="true">
+      <span class="statusbar__time">09:41</span>
+      <span class="statusbar__icons">
+        <span>▪</span><span>▪</span><span>▪</span>
+      </span>
+    </div>
+
+    <!-- ─── HERO ─── -->
+    <header class="hero">
+
+      <div class="hero__top">
+        <div class="hero__text">
+          <p class="hero__pre">Доброе утро,</p>
+          <h1 class="hero__name">Ирина <span class="hero__spark" aria-hidden="true">✦</span></h1>
+          <p class="hero__date">Суббота, 18 июля</p>
+        </div>
+        <button class="hero__bell" type="button" aria-label="Уведомления">
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.6"
+               stroke-linecap="round" stroke-linejoin="round"
+               aria-hidden="true">
+            <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+            <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+          </svg>
+        </button>
+      </div>
+
+      <!-- Погода — компактная карточка внутри hero -->
+      <div class="weather" aria-label="Погода">
+        <div class="weather__icon" aria-hidden="true">
+          <svg width="28" height="28" viewBox="0 0 24 24" fill="none"
+               stroke="currentColor" stroke-width="1.5"
+               stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="4"/>
+            <line x1="12" y1="2" x2="12" y2="4"/>
+            <line x1="12" y1="20" x2="12" y2="22"/>
+            <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"/>
+            <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"/>
+            <line x1="2" y1="12" x2="4" y2="12"/>
+            <line x1="20" y1="12" x2="22" y2="12"/>
+            <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"/>
+            <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"/>
+          </svg>
+        </div>
+        <div class="weather__main">
+          <p class="weather__temp">+21°</p>
+          <p class="weather__cond">Ясно</p>
+          <p class="weather__cond">Без осадков</p>
+        </div>
+        <p class="weather__tip">Сегодня можно<br>без зонта</p>
+      </div>
+
+    </header>
+
+    <!-- ─── ПРОКРУЧИВАЕМЫЙ КОНТЕНТ ─── -->
+    <main class="scroll-area">
+
+      <!-- Задачи -->
+      <section class="card" aria-labelledby="tasks-lbl">
+        <div class="card__row">
+          <h2 class="card__title" id="tasks-lbl">Мои задачи</h2>
+          <span class="badge">1 из 3</span>
+        </div>
+
+        <ul class="tasks" role="list">
+          <li class="task">
+            <span class="check" aria-hidden="true"></span>
+            <span class="task__text">Посмотреть урок Cursor</span>
+          </li>
+          <li class="task task--done">
+            <span class="check check--done" aria-hidden="true"></span>
+            <span class="task__text">Купить продукты</span>
+          </li>
+          <li class="task">
+            <span class="check" aria-hidden="true"></span>
+            <span class="task__text">Позвонить маме</span>
+          </li>
+        </ul>
+
+        <button class="add-btn" type="button">+ Добавить задачу</button>
+      </section>
+
+      <!-- Два столбца: поздравление + мысль дня -->
+      <div class="duo">
+
+        <div class="card card--birthday" role="note" aria-label="День рождения">
+          <p class="eyebrow">День рождения</p>
+          <p class="bday__name">С днём,<br>Ирина!</p>
+          <p class="bday__hint">Пусть будет радость.</p>
+          <button class="arrow-btn" type="button" aria-label="Поздравить">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none"
+                 stroke="currentColor" stroke-width="2"
+                 stroke-linecap="round" stroke-linejoin="round">
+              <line x1="5" y1="12" x2="19" y2="12"/>
+              <polyline points="12 5 19 12 12 19"/>
+            </svg>
+          </button>
+        </div>
+
+        <div class="card card--mood" aria-label="Мысль дня">
+          <p class="eyebrow">Мысль дня</p>
+          <p class="mood__q" aria-hidden="true">"</p>
+          <p class="mood__text">Иногда лучший способ двигаться быстрее — перестать торопиться.</p>
+          <span class="mood__line" aria-hidden="true"></span>
+        </div>
+
+      </div>
+
+      <!-- События дня -->
+      <section class="card" aria-labelledby="events-lbl">
+        <div class="card__row">
+          <h2 class="card__title" id="events-lbl">События дня</h2>
+          <button class="link-btn" type="button">Смотреть все →</button>
+        </div>
+
+        <ul class="timeline" role="list">
+          <li class="tl">
+            <span class="tl__dot tl__dot--on" aria-hidden="true"></span>
+            <div class="tl__body">
+              <p class="tl__label">Праздник</p>
+              <p class="tl__text">[Демо] День спокойного утра</p>
+            </div>
+          </li>
+          <li class="tl">
+            <span class="tl__dot" aria-hidden="true"></span>
+            <div class="tl__body">
+              <p class="tl__label">В этот день</p>
+              <p class="tl__text">[Демо] Начало визуальной доработки главного экрана</p>
+            </div>
+          </li>
+          <li class="tl tl--last">
+            <span class="tl__dot" aria-hidden="true"></span>
+            <div class="tl__body">
+              <p class="tl__label">Факт дня</p>
+              <p class="tl__text">[Демо] 18 июля — середина лета, время для вечерних прогулок</p>
+            </div>
+          </li>
+        </ul>
+      </section>
+
+      <!-- Исторический момент — компактная строка -->
+      <section class="card card--history" aria-labelledby="hist-lbl">
+        <p class="eyebrow" id="hist-lbl">Исторический момент</p>
+        <div class="hist__head">
+          <span class="hist__date">18 июля</span>
+          <span class="hist__year">1969 — «Аполлон-11» достиг Луны</span>
+        </div>
+        <p class="hist__text">Нил Армстронг впервые ступил на лунную поверхность.</p>
+        <button class="link-btn hist__more" type="button">Узнать больше →</button>
+      </section>
+
+      <!-- Улыбка дня -->
+      <section class="card card--smile" aria-labelledby="smile-lbl">
+        <p class="eyebrow" id="smile-lbl">Улыбка дня</p>
+        <p class="smile__text">Программист смотрит на стакан и говорит: «Контейнер в два раза больше, чем нужно».</p>
+      </section>
+
+    </main>
+
+    <!-- ─── НИЖНЯЯ НАВИГАЦИЯ ─── -->
+    <nav class="bottom-nav" aria-label="Навигация приложения">
+      <button class="nav-btn nav-btn--active" type="button">
+        <svg class="nav-btn__icon" width="22" height="22" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/>
+          <polyline points="9 22 9 12 15 12 15 22"/>
+        </svg>
+        <span class="nav-btn__lbl">Главная</span>
+      </button>
+      <button class="nav-btn" type="button">
+        <svg class="nav-btn__icon" width="22" height="22" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polyline points="9 11 12 14 22 4"/>
+          <path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11"/>
+        </svg>
+        <span class="nav-btn__lbl">Задачи</span>
+      </button>
+      <button class="nav-btn nav-btn--fab" type="button" aria-label="Добавить">
+        <svg width="24" height="24" viewBox="0 0 24 24" fill="none"
+             stroke="currentColor" stroke-width="2.2"
+             stroke-linecap="round" aria-hidden="true">
+          <line x1="12" y1="5" x2="12" y2="19"/>
+          <line x1="5" y1="12" x2="19" y2="12"/>
+        </svg>
+      </button>
+      <button class="nav-btn" type="button">
+        <svg class="nav-btn__icon" width="22" height="22" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <rect x="3" y="4" width="18" height="18" rx="2" ry="2"/>
+          <line x1="16" y1="2" x2="16" y2="6"/>
+          <line x1="8" y1="2" x2="8" y2="6"/>
+          <line x1="3" y1="10" x2="21" y2="10"/>
+        </svg>
+        <span class="nav-btn__lbl">Календарь</span>
+      </button>
+      <button class="nav-btn" type="button">
+        <svg class="nav-btn__icon" width="22" height="22" viewBox="0 0 24 24"
+             fill="none" stroke="currentColor" stroke-width="1.7"
+             stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <circle cx="12" cy="12" r="1"/><circle cx="19" cy="12" r="1"/><circle cx="5" cy="12" r="1"/>
+        </svg>
+        <span class="nav-btn__lbl">Ещё</span>
+      </button>
+    </nav>
+
+  </div>
+
+</body>
+</html>
