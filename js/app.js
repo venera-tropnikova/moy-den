@@ -1,1525 +1,1506 @@
 (function () {
   "use strict";
 
-  var era = window.GAME_DATA;
-  var storage = window.GameStorage;
-  var app = document.getElementById("app");
-  var headerProgress = document.getElementById("header-progress");
-  var toast = document.getElementById("toast");
+  var tasksStorage = null;
+  var USER_SETTINGS_KEY = "my-day-user-settings-v1";
+  var BIRTHDAYS_KEY = "my-day-birthdays-v1";
+  var IMPORTANT_DATES_KEY = "my-day-important-dates-v1";
 
-  var screen = "intro";
-  var learningIndex = 0;
-  var learningActionDone = false;
-  var launchStep = 0;
-  var training = null;
-  var moonFootprints = 0;
-  var flippedCards = {};
-  var challenge = null;
-  var satelliteDrag = null;
-  var orderDrag = null;
+  var targetDate = parseTargetDate();
 
-  function escapeHtml(value) {
-    return String(value)
-      .replace(/&/g, "&amp;")
-      .replace(/</g, "&lt;")
-      .replace(/>/g, "&gt;")
-      .replace(/"/g, "&quot;")
-      .replace(/'/g, "&#039;");
-  }
+  window.MyDayTargetDate = targetDate;
 
-  function preloadEventImages() {
-    era.events.forEach(function (event) {
-      if (!event.image) return;
-      var image = new Image();
-      image.src = event.image;
-    });
-  }
+  var eventsCardMode = "image";
+  var eventsCardBound = false;
+  var eventsFeaturedEntry = null;
 
-  function shuffle(items) {
-    var result = items.slice();
-    for (var index = result.length - 1; index > 0; index -= 1) {
-      var target = Math.floor(Math.random() * (index + 1));
-      var current = result[index];
-      result[index] = result[target];
-      result[target] = current;
-    }
-    return result;
-  }
+  var WEEKDAYS = [
+    "Воскресенье", "Понедельник", "Вторник", "Среда",
+    "Четверг", "Пятница", "Суббота"
+  ];
 
-  function getEvent(eventId) {
-    return era.events.find(function (event) {
-      return event.id === eventId;
-    });
-  }
+  var MONTHS = [
+    "января", "февраля", "марта", "апреля", "мая", "июня",
+    "июля", "августа", "сентября", "октября", "ноября", "декабря"
+  ];
 
-  function eventStats(eventId) {
-    return storage.getEra(era).eventStats[eventId];
-  }
+  var IMPORTANT_DATE_CATEGORY_LABELS = {
+    "семья": "Семья",
+    "работа": "Работа",
+    "личное": "Личное",
+    "учёба": "Учёба",
+    "путешествия": "Путешествия",
+    "другое": "Другое"
+  };
 
-  function pickWeightedEvent(preferredId) {
-    if (preferredId) return getEvent(preferredId);
+  function parseTargetDate() {
+    var params = new URLSearchParams(window.location.search);
+    var value = params.get("date");
+    var match = value && value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
 
-    var weighted = era.events.map(function (event) {
-      var stats = eventStats(event.id);
-      return {
-        event: event,
-        weight: 1 + stats.errors * 1.5 + (stats.needsRepeat ? 4 : 0),
-      };
-    });
-    var total = weighted.reduce(function (sum, item) {
-      return sum + item.weight;
-    }, 0);
-    var cursor = Math.random() * total;
+    if (!match) return new Date();
 
-    for (var index = 0; index < weighted.length; index += 1) {
-      cursor -= weighted[index].weight;
-      if (cursor <= 0) return weighted[index].event;
-    }
-    return weighted[weighted.length - 1].event;
-  }
+    var year = Number(match[1]);
+    var month = Number(match[2]) - 1;
+    var day = Number(match[3]);
+    var date = new Date(year, month, day);
 
-  function ensureShuffledOrder(ids) {
-    var ordered = ids.join("|");
-    var mixed = shuffle(ids);
-    var attempts = 0;
-    while (mixed.join("|") === ordered && attempts < 5) {
-      mixed = shuffle(ids);
-      attempts += 1;
-    }
-    if (mixed.join("|") === ordered && mixed.length > 1) {
-      mixed = mixed.slice(1).concat(mixed[0]);
-    }
-    return mixed;
-  }
-
-  function createQuestion(type, preferredId) {
-    var focus = pickWeightedEvent(preferredId);
-
-    if (type === "eventByYear") {
-      return {
-        type: type,
-        prompt: "Что произошло в " + focus.year + " году?",
-        options: shuffle(
-          era.events.map(function (event) {
-            return { value: event.id, label: event.shortTitle };
-          })
-        ),
-        answer: focus.id,
-        relatedEventIds: [focus.id],
-        focusEventId: focus.id,
-      };
-    }
-
-    if (type === "yearByEvent") {
-      return {
-        type: type,
-        prompt: "В каком году произошло событие «" + focus.shortTitle + "»?",
-        options: shuffle(
-          era.events.map(function (event) {
-            return { value: String(event.year), label: String(event.year) };
-          })
-        ),
-        answer: String(focus.year),
-        relatedEventIds: [focus.id],
-        focusEventId: focus.id,
-      };
-    }
-
-    if (type === "earlier") {
-      var others = era.events.filter(function (event) {
-        return event.id !== focus.id;
-      });
-      var second = others[Math.floor(Math.random() * others.length)];
-      var pair = [focus, second];
-      var earlier = pair.slice().sort(function (first, next) {
-        return first.year - next.year;
-      })[0];
-      return {
-        type: type,
-        prompt: "Что произошло раньше?",
-        options: shuffle(
-          pair.map(function (event) {
-            return { value: event.id, label: event.shortTitle };
-          })
-        ),
-        answer: earlier.id,
-        relatedEventIds: [earlier.id],
-        focusEventId: earlier.id,
-        comparedEventIds: pair.map(function (event) {
-          return event.id;
-        }),
-      };
-    }
-
-    var correctOrder = era.events
-      .slice()
-      .sort(function (first, next) {
-        return first.year - next.year;
-      })
-      .map(function (event) {
-        return event.id;
-      });
-
-    return {
-      type: "order",
-      prompt: "Расставьте события по порядку",
-      orderIds: [],
-      availableIds: ensureShuffledOrder(correctOrder),
-      correctOrder: correctOrder,
-      relatedEventIds: correctOrder.slice(),
-      focusEventId: focus.id,
-    };
-  }
-
-  function explanationFor(question) {
-    if (question.type === "eventByYear" || question.type === "yearByEvent") {
-      var event = getEvent(question.focusEventId);
-      return (
-        event.year +
-        " — " +
-        event.shortTitle +
-        ". " +
-        event.memoryHint
-      );
-    }
-
-    if (question.type === "earlier") {
-      var ordered = question.comparedEventIds
-        .map(getEvent)
-        .sort(function (first, next) {
-          return first.year - next.year;
-        });
-      if (ordered.length > 2) {
-        return "Раньше всего произошло событие «" + ordered[0].shortTitle + "».";
-      }
-      return (
-        "Раньше произошло событие «" +
-        ordered[0].shortTitle +
-        "» — в " +
-        ordered[0].year +
-        " году. «" +
-        ordered[1].shortTitle +
-        "» было позже, в " +
-        ordered[1].year +
-        "."
-      );
-    }
-
-    return (
-      "Правильная цепочка: " +
-      era.events
-        .slice()
-        .sort(function (first, next) {
-          return first.year - next.year;
-        })
-        .map(function (event) {
-          return event.year + " — " + event.shortTitle.toLowerCase();
-        })
-        .join("; ") +
-      "."
-    );
-  }
-
-  function updateHeader() {
-    var progress = storage.getEra(era);
-    var stage = 0;
-    var label = "Вход в эпоху";
-
-    if (screen === "learn") {
-      stage = 1;
-      label = "Открытие " + (learningIndex + 1) + " из " + era.events.length;
-    } else if (screen === "timeline") {
-      stage = 2;
-      label = "Связь событий";
-    } else if (screen === "training-intro" || screen === "training") {
-      stage = 3;
-      label = "Тренировка";
-    } else if (screen === "challenge" || screen === "challenge-failed") {
-      stage = 4;
-      label = "Финальное испытание";
-    } else if (screen === "reward") {
-      stage = 5;
-      label = "Эпоха изучена";
-    }
-
-    headerProgress.innerHTML =
-      '<span class="progress-label">' +
-      escapeHtml(label) +
-      "</span>" +
-      '<span class="progress-track" aria-hidden="true">' +
-      [1, 2, 3, 4, 5]
-        .map(function (item) {
-          return '<i class="' + (item <= stage ? "is-active" : "") + '"></i>';
-        })
-        .join("") +
-      "</span>" +
-      (progress.finalComplete && screen !== "intro"
-        ? '<span class="saved-mark" title="Прогресс сохранён">✓</span>'
-        : "");
-  }
-
-  function showToast(message) {
-    toast.textContent = message;
-    toast.classList.add("is-visible");
-    window.clearTimeout(showToast.timer);
-    showToast.timer = window.setTimeout(function () {
-      toast.classList.remove("is-visible");
-    }, 2200);
-  }
-
-  function render() {
-    updateHeader();
-
-    if (screen === "intro") renderIntro();
-    if (screen === "learn") renderLearning();
-    if (screen === "timeline") renderTimeline();
-    if (screen === "training-intro") renderTrainingIntro();
-    if (screen === "training") renderTraining();
-    if (screen === "challenge") renderChallenge();
-    if (screen === "challenge-failed") renderChallengeFailed();
-    if (screen === "reward") renderReward();
-
-    window.scrollTo({ top: 0, behavior: "smooth" });
-    app.focus({ preventScroll: true });
-  }
-
-  function renderIntro() {
-    app.innerHTML =
-      '<section class="panel panel--hero title-approved" aria-label="Как начиналась космическая эра. Три события, изменившие историю космонавтики.">' +
-      '<span class="title-approved__stars" aria-hidden="true"></span>' +
-      '<button class="title-approved__start" data-action="start" type="button" aria-label="Начать экспедицию">' +
-      '<span class="sr-only">Начать экспедицию</span>' +
-      '</button>' +
-      '</section>';
-  }
-
-  function visualMarkup(event, isDone) {
-    var commonClass =
-      "event-visual visual--" + event.visual + (isDone ? " is-activated" : "");
-
-    if (event.visual === "satellite") {
-      return (
-        '<div class="' +
-        commonClass +
-        '" aria-label="Спутник выходит на орбиту">' +
-        '<span class="visual-stars"></span><span class="earth"></span>' +
-        '<span class="orbit"></span><span class="satellite">◈</span></div>'
-      );
-    }
-
-    if (event.visual === "rocket") {
-      return (
-        '<div class="' +
-        commonClass +
-        '" aria-label="Корабль Восток-1 стартует">' +
-        '<span class="visual-stars"></span><span class="earth earth--low"></span>' +
-        '<span class="rocket"><i></i></span><span class="rocket-trail"></span></div>'
-      );
-    }
-
-    return (
-      '<div class="' +
-      commonClass +
-      '" aria-label="Астронавт делает первый шаг по Луне">' +
-      '<span class="visual-stars"></span><span class="moon-horizon"></span>' +
-      '<span class="astronaut">◉</span><span class="footprint">◖</span></div>'
-    );
-  }
-
-  function sputnikVisualMarkup(mode) {
-    var isInteractive = mode === "interactive";
-    var tag = isInteractive ? "button" : "span";
-    var classes = "sputnik-visual sputnik-visual--" + mode;
-    var attributes = ' aria-hidden="true"';
-
-    if (isInteractive) {
-      classes += " scene-satellite scene-satellite--ready";
-      attributes =
-        ' type="button" data-satellite draggable="false" aria-label="Перетащи Спутник-1 на светящуюся орбиту"';
-    } else if (mode === "orbit") {
-      classes += " scene-satellite scene-satellite--orbiting";
-    }
-
-    return (
-      "<" +
-      tag +
-      ' class="' +
-      classes +
-      '"' +
-      attributes +
-      ">" +
-      '<svg class="sputnik-visual__svg" viewBox="0 0 360 245" focusable="false" aria-hidden="true">' +
-      "<defs>" +
-      '<radialGradient id="sputnik-metal" cx="27%" cy="21%" r="78%">' +
-      '<stop offset="0" stop-color="#ffffff"/><stop offset=".12" stop-color="#dfe4e7"/>' +
-      '<stop offset=".38" stop-color="#7d858b"/><stop offset=".68" stop-color="#30363b"/>' +
-      '<stop offset="1" stop-color="#090d10"/></radialGradient>' +
-      '<linearGradient id="sputnik-wire" x1="0" y1="0" x2="1" y2="0">' +
-      '<stop offset="0" stop-color="#e9eef0" stop-opacity=".12"/>' +
-      '<stop offset=".62" stop-color="#bdc5ca"/><stop offset="1" stop-color="#ffffff"/>' +
-      "</linearGradient></defs>" +
-      '<g class="sputnik-visual__antennas" fill="none" stroke="url(#sputnik-wire)" stroke-linecap="round">' +
-      '<line x1="242" y1="88" x2="14" y2="130"/>' +
-      '<line x1="240" y1="96" x2="48" y2="194"/>' +
-      '<line x1="245" y1="104" x2="102" y2="231"/>' +
-      '<line x1="255" y1="111" x2="179" y2="241"/></g>' +
-      '<circle class="sputnik-visual__sphere" cx="272" cy="65" r="59" fill="url(#sputnik-metal)" stroke="#e8eef1" stroke-width="1.5"/>' +
-      '<ellipse cx="250" cy="39" rx="18" ry="9" fill="#fff" opacity=".48" transform="rotate(-28 250 39)"/>' +
-      '<circle cx="238" cy="89" r="5" fill="#697278" stroke="#d9e0e4" stroke-width="1"/>' +
-      "</svg>" +
-      (isInteractive
-        ? '<span class="scene-satellite__pulse" aria-hidden="true"></span>'
-        : "") +
-      "</" +
-      tag +
-      ">"
-    );
-  }
-
-  function eventProgressMarkup() {
-    return (
-      '<span class="event-progress" aria-hidden="true">' +
-      era.events
-        .map(function (event, index) {
-          return '<i class="' + (index <= learningIndex ? "is-active" : "") + '"></i>';
-        })
-        .join("") +
-      "</span>"
-    );
-  }
-
-  function learningTopic(event) {
-    if (event.id === "sputnik-1957") return "Первый искусственный спутник Земли";
-    if (event.year === 1961) return "Первый полёт человека в космос";
-    return "Первая высадка человека на Луну";
-  }
-
-  function eventSceneTopMarkup(event) {
-    return (
-      '<div class="event-scene-top"><div><span>Событие ' +
-      (learningIndex + 1) + " из " + era.events.length +
-      '</span></div>' + eventProgressMarkup() + '</div>'
-    );
-  }
-
-  function eventReinforcementMarkup(event, nextLabel) {
-    return (
-      '<div class="scene-success" role="status"><div class="scene-success__knowledge">' +
-      "<strong><b>" +
-      event.year +
-      "</b> · " +
-      escapeHtml(event.resultTitle || event.title) +
-      "</strong>" +
-      '<p><span aria-hidden="true">✦</span>' +
-      escapeHtml(event.visualFact || event.fact) +
-      "</p>" +
-      (event.memoryLink
-        ? "<small>" + escapeHtml(event.memoryLink) + "</small>"
-        : "") +
-      "</div>" +
-      '<button class="scene-next" data-action="next-event" type="button" aria-label="' +
-      escapeHtml(nextLabel) +
-      '">' +
-      escapeHtml(nextLabel) +
-      ' <span aria-hidden="true">→</span></button></div>'
-    );
-  }
-
-  function renderSatelliteLearning(event, nextLabel) {
-    app.innerHTML =
-      '<section class="satellite-lesson" aria-labelledby="satellite-year">' + '<div class="learning-heading"><span>Сейчас изучаем</span><strong>' + escapeHtml(learningTopic(event)) + '</strong></div>' +
-      '<div class="satellite-scene' +
-      (learningActionDone ? " is-complete" : "") +
-      '" data-satellite-scene>' +
-      '<span class="scene-earth event-scene-earth" aria-hidden="true"></span>' +
-      eventSceneTopMarkup(event) +
-      '<div class="scene-year" id="satellite-year"><strong>' +
-      event.year +
-      "</strong></div>" +
-      '<div class="scene-orbit" data-orbit-target aria-hidden="true"><span></span></div>' +
-      (learningActionDone
-        ? '<div class="orbiting-satellite" aria-hidden="true">' +
-          sputnikVisualMarkup("orbit") +
-          "</div>" +
-          eventReinforcementMarkup(event, nextLabel)
-        : sputnikVisualMarkup("interactive") +
-          '<div class="scene-drag-hint" data-drag-hint><span aria-hidden="true">↗</span><b>Перетащи спутник на орбиту</b></div>') +
-      "</div></section>";
-  }
-
-  function vostokCraftMarkup() {
-    return '<span class="vostok-craft" aria-hidden="true">' +
-      '<i class="vostok-craft__nose"></i><i class="vostok-craft__body"></i>' +
-      '<i class="vostok-craft__window"></i><i class="vostok-craft__band"></i>' +
-      '<i class="vostok-craft__engine"></i><i class="vostok-craft__flame"></i>' +
-      '<b class="vostok-craft__label">ВОСТОК-1</b></span>';
-  }
-
-  function renderGagarinLearning(event, nextLabel) {
-    app.innerHTML =
-      '<section class="history-event-screen">' + '<div class="learning-heading"><span>Сейчас изучаем</span><strong>' + escapeHtml(learningTopic(event)) + '</strong></div>' +
-      '<div class="history-scene history-scene--gagarin gagarin-orbit-scene" data-satellite-scene>' +
-      '<img class="event-scene-photo event-scene-photo--gagarin" src="assets/gagarin-1961-color.png" alt="Юрий Гагарин в космическом шлеме">' +
-      '<span class="event-scene-shade" aria-hidden="true"></span>' +
-      '<span class="gagarin-earth" aria-hidden="true"></span>' +
-      eventSceneTopMarkup(event) +
-      '<div class="history-scene__copy"><span class="history-scene__year">' +
-      event.year +
-      '</span><h1>Гагарин в космосе</h1><p>Проведи «Восток-1» на орбиту Земли.</p></div>' +
-      '<div class="gagarin-orbit" data-orbit-target aria-hidden="true"><span></span></div>' +
-      (learningActionDone
-        ? '<div class="gagarin-vostok-orbiting" aria-hidden="true">' + vostokCraftMarkup() + '</div>' + eventReinforcementMarkup(event, nextLabel)
-        : '<button class="gagarin-vostok" type="button" data-satellite draggable="false" aria-label="Перетащи Восток-1 на орбиту">' + vostokCraftMarkup() + '</button><div class="gagarin-task" data-drag-hint><strong>Проведи «Восток-1»</strong><small>на светящуюся орбиту</small></div>') +
-      '</div></section>';
-  }
-
-  function renderMoonLearning(event, nextLabel) {
-    app.innerHTML =
-      '<section class="history-event-screen">' + '<div class="learning-heading"><span>Сейчас изучаем</span><strong>' + escapeHtml(learningTopic(event)) + '</strong></div>' +
-      '<div class="history-scene history-scene--moon' +
-      (learningActionDone ? " is-complete" : "") +
-      '">' +
-      '<img class="event-scene-photo event-scene-photo--moon" src="' +
-      escapeHtml(event.image) +
-      '" alt="Астронавт и лунный модуль на поверхности Луны">' +
-      '<span class="event-scene-shade" aria-hidden="true"></span>' +
-      eventSceneTopMarkup(event) +
-      '<div class="history-scene__copy"><span class="history-scene__year">' +
-      event.year +
-      "</span><h1>Человек на Луне</h1>" +
-      "<p>Сделай первый шаг на лунной поверхности.</p></div>" +
-      '<div class="lunar-footprint-trail" aria-hidden="true">' +
-      [1,2,3,4].map(function (n) { return '<span class="lunar-footprint lunar-footprint--' + n + (moonFootprints >= n ? ' is-visible' : '') + '"><i></i></span>'; }).join('') +
-      '</div>' +
-      (learningActionDone
-        ? eventReinforcementMarkup(event, nextLabel)
-        : '<button class="moon-step-target moon-step-target--' + Math.min(moonFootprints + 1, 4) + '" data-action="leave-footprint" type="button"><span aria-hidden="true">↓</span><b>' + (moonFootprints === 0 ? 'Сделай первый след' : 'Сделай ещё след · ' + moonFootprints + '/4') + '</b></button>') +
-      "</div></section>";
-  }
-
-  function renderLearning() {
-    var event = era.events[learningIndex];
-    var nextLabel =
-      learningIndex === era.events.length - 1
-        ? "Собрать линию времени"
-        : "Следующая точка";
-
-    if (event.visual === "satellite") {
-      renderSatelliteLearning(event, nextLabel);
-      return;
-    }
-
-    if (event.visual === "rocket") {
-      renderGagarinLearning(event, nextLabel);
-      return;
-    }
-
-    renderMoonLearning(event, nextLabel);
-  }
-
-  function isSatelliteOnOrbit(satellite, target) {
-    var hitArea =
-      satellite.querySelector(".sputnik-visual__sphere") || satellite;
-    var satelliteRect = hitArea.getBoundingClientRect();
-    var targetRect = target.getBoundingClientRect();
-    var centerX = satelliteRect.left + satelliteRect.width / 2;
-    var centerY = satelliteRect.top + satelliteRect.height / 2;
-    var radiusX = targetRect.width / 2;
-    var radiusY = targetRect.height / 2;
-    var normalizedX =
-      (centerX - (targetRect.left + radiusX)) / Math.max(radiusX, 1);
-    var normalizedY =
-      (centerY - (targetRect.top + radiusY)) / Math.max(radiusY, 1);
-    var distance = normalizedX * normalizedX + normalizedY * normalizedY;
-    return distance >= 0.38 && distance <= 1.72;
-  }
-
-  function completeSatelliteLesson() {
-    if (learningActionDone) return;
-    satelliteDrag = null;
-    completeCurrentEvent();
-  }
-
-  function completeCurrentEvent() {
-    if (learningActionDone) return;
-    learningActionDone = true;
-    storage.markStudied(era, era.events[learningIndex].id);
-    render();
-  }
-
-  function startSatelliteDrag(event) {
-    var satellite = event.target.closest("[data-satellite]");
     if (
-      !satellite ||
-      screen !== "learn" ||
-      (learningIndex !== 0 && learningIndex !== 1) ||
-      learningActionDone
+      date.getFullYear() !== year ||
+      date.getMonth() !== month ||
+      date.getDate() !== day
     ) {
-      return;
+      return new Date();
     }
 
-    var scene = satellite.closest("[data-satellite-scene]");
-    var satelliteRect = satellite.getBoundingClientRect();
-    var sceneRect = scene.getBoundingClientRect();
-    satelliteDrag = {
-      pointerId: event.pointerId,
-      satellite: satellite,
-      scene: scene,
-      target: scene.querySelector("[data-orbit-target]"),
-      offsetX: event.clientX - satelliteRect.left,
-      offsetY: event.clientY - satelliteRect.top,
-      homeLeft: satelliteRect.left - sceneRect.left,
-      homeTop: satelliteRect.top - sceneRect.top,
-    };
-
-    satellite.style.left = satelliteDrag.homeLeft + "px";
-    satellite.style.top = satelliteDrag.homeTop + "px";
-    satellite.style.right = "auto";
-    satellite.style.bottom = "auto";
-    satellite.classList.add("is-dragging");
-    var dragHint = scene.querySelector("[data-drag-hint]");
-    if (dragHint) dragHint.classList.add("is-dragging-now");
-    satellite.setPointerCapture(event.pointerId);
-    event.preventDefault();
+    return date;
   }
 
-  function moveSatellite(event) {
-    if (!satelliteDrag || satelliteDrag.pointerId !== event.pointerId) return;
-    var sceneRect = satelliteDrag.scene.getBoundingClientRect();
-    var satelliteRect = satelliteDrag.satellite.getBoundingClientRect();
-    var left = event.clientX - sceneRect.left - satelliteDrag.offsetX;
-    var top = event.clientY - sceneRect.top - satelliteDrag.offsetY;
-    left = Math.max(0, Math.min(left, sceneRect.width - satelliteRect.width));
-    top = Math.max(0, Math.min(top, sceneRect.height - satelliteRect.height));
-
-    satelliteDrag.satellite.style.left = left + "px";
-    satelliteDrag.satellite.style.top = top + "px";
-    satelliteDrag.scene.classList.toggle(
-      "is-drop-ready",
-      isSatelliteOnOrbit(satelliteDrag.satellite, satelliteDrag.target)
-    );
-    event.preventDefault();
-  }
-
-  function finishSatelliteDrag(event) {
-    if (!satelliteDrag || satelliteDrag.pointerId !== event.pointerId) return;
-    var drag = satelliteDrag;
-    var isCorrect = isSatelliteOnOrbit(drag.satellite, drag.target);
-    drag.scene.classList.remove("is-drop-ready");
-    drag.satellite.classList.remove("is-dragging");
-
-    if (isCorrect) {
-      completeSatelliteLesson();
-      return;
-    }
-
-    drag.satellite.classList.add("is-returning");
-    drag.satellite.style.left = drag.homeLeft + "px";
-    drag.satellite.style.top = drag.homeTop + "px";
-    var hint = drag.scene.querySelector("[data-drag-hint]");
-    if (hint) {
-      hint.classList.add("is-reminding");
-      hint.querySelector("small").textContent = "попади на светящуюся линию";
-    }
-    window.setTimeout(function () {
-      if (!drag.satellite.isConnected) return;
-      drag.satellite.classList.remove("is-returning");
-      drag.satellite.removeAttribute("style");
-    }, 380);
-    satelliteDrag = null;
-  }
-
-  function renderTimeline() {
-    var orderedEvents = era.events.slice().sort(function (first, next) {
-      return first.year - next.year;
-    });
-
-    app.innerHTML =
-      '<section class="panel timeline-screen">' +
-      '<div class="section-heading"><p class="eyebrow">Маршрут восстановлен</p>' +
-      "<h1>Как начиналась космическая эра</h1>" +
-      "<p>Три события — от первого спутника до первого шага на Луне.</p></div>" +
-      '<div class="timeline">' +
-      orderedEvents
-        .map(function (event, index) {
-          return (
-            '<article class="timeline-item timeline-item--flip' + (flippedCards[event.id] ? ' is-flipped' : '') + '" data-action="flip-card" data-event-id="' + event.id + '" tabindex="0" role="button" aria-label="Перевернуть карточку ' + escapeHtml(event.shortTitle) + '">' +
-            '<div class="timeline-item__marker">' +
-            event.year +
-            "</div>" +
-            eventTrainingImageMarkup(
-              event,
-              "timeline-item__visual"
-            ) +
-            "<h2>" + escapeHtml(event.shortTitle) + "</h2>" +
-            '<p class="timeline-item__front">' + escapeHtml(index === 0 ? "Сначала — спутник." : index === 1 ? "Потом — человек в космосе." : "Затем — человек на Луне.") + '<small>Нажми — открой факт</small></p>' +
-            '<p class="timeline-item__back"><b>Запомни:</b> ' + escapeHtml(event.visualFact || event.fact) + '<small>Нажми — верни карточку</small></p></article>' 
-          );
-        })
-        .join('<span class="timeline-arrow" aria-hidden="true">→</span>') +
-      "</div>" +
-      '<div class="sequence-callout"><b>1957 → 1961 → 1969</b><span>Спутник → человек в космосе → человек на Луне</span></div>' +
-      '<button class="button button--primary" data-action="show-training-intro" type="button">Дальше к тренировке <span aria-hidden="true">→</span></button>' +
-      "</section>";
-  }
-
-  function renderTrainingIntro() {
-    app.innerHTML =
-      '<section class="panel training-intro-screen training-intro-screen--simple">' +
-      '<p class="eyebrow">Следующий этап</p>' +
-      '<h1>Тренировка</h1>' +
-      '<p class="training-intro-lead">Проверим, что запомнилось после трёх событий.</p>' +
-      '<div class="training-intro-route"><span>1957</span><i>→</i><span>1961</span><i>→</i><span>1969</span></div>' +
-      '<button class="button button--primary button--large" data-action="start-training" type="button">Начать <span aria-hidden="true">→</span></button>' +
-      '<small>Можно ошибаться — это тренировка.</small>' +
-      '</section>';
-  }
-
-  function newTrainingQuestion() {
-    var types = ["eventByYear", "earlier", "yearByEvent", "order"];
-    var preferredId =
-      training.priorityEventIds.length > 0
-        ? training.priorityEventIds.shift()
-        : null;
-    var type = types[training.attempts % types.length];
-
-    if (preferredId && type === "order") type = "yearByEvent";
-    training.current = createQuestion(type, preferredId);
-    if (training.current.type === "order") {
-      training.current.prompt = "Расставьте события по порядку";
-      training.current.orderIds = training.current.availableIds.slice();
-      training.current.availableIds = [];
-    }
-    if (training.current.type === "earlier") {
-      applyAllEventsEarlierQuestion(training.current);
-    }
-    training.feedback = null;
-    training.attempts += 1;
-  }
-
-  function startTraining() {
-    training = {
-      correct: 0,
-      target: 6,
-      attempts: 0,
-      priorityEventIds: [],
-      current: null,
-      feedback: null,
-      completed: false,
-    };
-    newTrainingQuestion();
-    screen = "training";
-    render();
-  }
-
-  function optionEventFor(question, option) {
-    if (question.type === "eventByYear" || question.type === "earlier") {
-      return getEvent(option.value);
-    }
-    if (question.type === "yearByEvent") {
-      return era.events.find(function (event) {
-        return String(event.year) === String(option.value);
-      });
-    }
-    return null;
-  }
-
-  function eventTrainingImageMarkup(event, wrapperClass) {
-    var classes =
-      wrapperClass +
-      (event.id === "sputnik-1957" ? " static-1957-visual" : "");
+  function isCurrentDate(date) {
+    var now = new Date();
     return (
-      '<span class="' +
-      classes +
-      '"><img src="' +
-      escapeHtml(event.image) +
-      '" alt=""></span>'
+      date.getFullYear() === now.getFullYear() &&
+      date.getMonth() === now.getMonth() &&
+      date.getDate() === now.getDate()
     );
   }
 
-  function trainingFocusMarkup(question) {
-    return "";
+  function getTargetDateKey() {
+    return tasksStorage.getDateKey(targetDate);
   }
 
-  function trainingOrderMarkup(question, feedback) {
-    var cards = question.orderIds
-      .map(function (eventId, index) {
-        var event = getEvent(eventId);
-        var stateClass = "";
-        if (feedback && feedback.correct) stateClass = " is-correct";
-        else if (feedback) stateClass = " is-locked";
-        return (
-          '<li class="order-drag__item">' +
-          '<button class="order-drag__card' +
-          stateClass +
-          '" type="button" draggable="false" data-order-card data-index="' +
-          index +
-          '" ' +
-          (feedback ? "disabled " : "") +
-          'aria-label="' +
-          escapeHtml(event.shortTitle) +
-          ", позиция " +
-          (index + 1) +
-          ' из 3">' +
-          eventTrainingImageMarkup(
-            event,
-            "order-drag__image order-drag__image--" + event.visual
-          ) +
-          '<span class="order-drag__title">' +
-          escapeHtml(event.shortTitle) +
-          "</span></button></li>"
-        );
-      })
-      .join("");
+  function loadUserSettings() {
+    try {
+      var saved = localStorage.getItem(USER_SETTINGS_KEY);
+      if (!saved) return {};
+
+      var parsed = JSON.parse(saved);
+      return parsed && typeof parsed === "object" && !Array.isArray(parsed) ? parsed : {};
+    } catch (error) {
+      console.warn("Не удалось загрузить профиль:", error);
+      return {};
+    }
+  }
+
+  function getProfileName() {
+    var settings = loadUserSettings();
+    return typeof settings.name === "string" && settings.name.trim()
+      ? settings.name.trim()
+      : "Венера";
+  }
+
+  function getGreeting(hour) {
+    var name = getProfileName();
+    if (hour >= 5 && hour < 12) return "Доброе утро, " + name;
+    if (hour >= 12 && hour < 18) return "Добрый день, " + name;
+    if (hour >= 18 && hour < 23) return "Добрый вечер, " + name;
+    return "Доброй ночи, " + name;
+  }
+
+  function isTodayBirthday(birthDate, today) {
+    var match = typeof birthDate === "string" && birthDate.match(/^\d{4}-(\d{2})-(\d{2})$/);
+    if (!match) return false;
 
     return (
-      '<div class="order-drag-task">' +
-      '<p class="visually-hidden" id="order-drag-help">Перетащите карточку на другую, чтобы поменять их местами. С клавиатуры используйте стрелки.</p>' +
-      '<ul class="order-drag' +
-      (feedback && feedback.correct ? " is-correct" : "") +
-      '" aria-describedby="order-drag-help">' +
-      cards +
-      "</ul>" +
-      (!feedback
-        ? '<div class="order-drag-actions"><button class="button button--primary" type="button" data-action="submit-order">Проверить</button></div>'
-        : "") +
-      "</div>"
+      Number(match[1]) === today.getMonth() + 1 &&
+      Number(match[2]) === today.getDate()
     );
   }
 
-  function questionMarkup(question, feedback) {
-    if (question.type === "order") {
-      return trainingOrderMarkup(question, feedback);
+  function loadBirthdays() {
+    try {
+      var saved = localStorage.getItem(BIRTHDAYS_KEY);
+      if (!saved) return [];
+
+      var parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.warn("Не удалось загрузить поздравления:", error);
+      return [];
     }
-
-    var yearOnly = question.type === "yearByEvent";
-    var pair = question.type === "earlier" && question.options.length === 2;
-    return '<div class="answer-grid answer-grid--visual' + (yearOnly ? ' answer-grid--years' : '') + (pair ? ' answer-grid--pair' : '') + '">' +
-      question.options.map(function (option) {
-        var optionClass = "";
-        var visualEvent = yearOnly ? null : optionEventFor(question, option);
-        if (feedback && option.value === question.answer) optionClass = " is-correct";
-        else if (feedback && option.value === feedback.selectedValue && !feedback.correct) optionClass = " is-wrong";
-        return '<button class="answer-option answer-option--visual' + (yearOnly ? ' answer-option--year' : '') + optionClass + '" type="button" data-action="answer" data-value="' + escapeHtml(option.value) + '" ' + (feedback ? 'disabled' : '') + '>' +
-          (visualEvent ? eventTrainingImageMarkup(visualEvent, 'answer-option__image') : '') +
-          '<span class="answer-option__label">' + escapeHtml(option.label) + '</span></button>';
-      }).join("") + '</div>';
   }
 
-  function positiveReaction() {
-    return "Верно!";
-  }
-
-  function feedbackMarkup(feedback, mode) {
-    if (!feedback) return "";
-    if (
-      mode === "training" &&
-      feedback.correct &&
-      training.current &&
-      (training.current.type === "order" || training.current.type === "earlier")
-    ) {
-      return (
-        '<div class="order-success" role="status">' +
-        "<p>Верно! ✓</p>" +
-        '<button class="button button--primary" type="button" data-action="next-training">Дальше</button>' +
-        "</div>"
-      );
-    }
-    var nextAction = mode === "training" ? "next-training" : "next-challenge";
-    return (
-      '<div class="feedback ' +
-      (feedback.correct ? "feedback--correct" : "feedback--explain") +
-      '" role="status">' +
-      (feedback.correct ? '<span class="success-burst" aria-hidden="true"><i>★</i><i>✦</i><i>★</i><i>✦</i><i>★</i><i>✦</i></span>' : "") +
-      '<span class="feedback__icon">' +
-      (feedback.correct ? "✓" : "↺") +
-      "</span><div><h3>" +
-      (feedback.correct ? positiveReaction() : "Разберём этот шаг") +
-      "</h3><p>" +
-      escapeHtml(feedback.message) +
-      "</p></div>" +
-      '<button class="button button--compact" type="button" data-action="' +
-      nextAction +
-      '">' +
-      (feedback.correct ? "Дальше" : "Запомнил, дальше") +
-      " →</button></div>"
-    );
-  }
-
-  function renderTraining() {
-    if (training.completed) {
-      app.innerHTML =
-        '<section class="panel completion-panel">' +
-        '<div class="completion-icon" aria-hidden="true">◇</div>' +
-        '<p class="eyebrow">Маршрут закреплён</p>' +
-        "<h1>Ты готов к испытанию</h1>" +
-        "<p>В тренировке ошибки помогали учиться. Теперь начинается отдельная миссия с тремя жизнями.</p>" +
-        '<div class="challenge-rules"><span>5 заданий</span><span>3 жизни</span><span>1 балл за верный ответ</span></div>' +
-        '<button class="button button--primary button--large" type="button" data-action="start-challenge">Начать испытание <span aria-hidden="true">→</span></button>' +
-        "</section>";
-      return;
-    }
-
-    var question = training.current;
-    var isOrder = question.type === "order";
-    var isEarlier = question.type === "earlier";
-    app.innerHTML =
-      '<section class="quiz-layout quiz-layout--simple' +
-      (isOrder ? " quiz-layout--order" : "") +
-      (isEarlier ? " quiz-layout--earlier" : "") +
-      '">' +
-      '<div class="question-card panel"><div class="training-head"><p class="eyebrow">Тренировка</p>' +
-      '<div class="training-progress" aria-label="Прогресс тренировки"><span>' +
-      training.correct +
-      " из " +
-      training.target +
-      '</span><div class="training-meter"><i style="width:' +
-      (training.correct / training.target) * 100 +
-      '%"></i></div></div></div>' +
-      (isOrder
-        ? ""
-        : '<span class="question-type">' +
-          questionTypeLabel(question.type) +
-          "</span>") +
-      trainingFocusMarkup(question) +
-      "<h1>" +
-      escapeHtml(question.prompt) +
-      "</h1>" +
-      (isOrder
-        ? '<p class="order-lead">От самого раннего к самому позднему</p>'
-        : "") +
-      questionMarkup(question, training.feedback) +
-      feedbackMarkup(training.feedback, "training") +
-      "</div></section>";
-  }
-
-  function weakEventsMarkup() {
-    var weak = era.events.filter(function (event) {
-      return eventStats(event.id).needsRepeat;
-    });
-    if (weak.length === 0) {
-      return '<p class="adaptive-note"><span>✦</span> Маршрут пока усваивается равномерно.</p>';
-    }
-    return (
-      '<div class="adaptive-note"><span>↺</span><div><small>Повторяем чаще</small><b>' +
-      weak
-        .map(function (event) {
-          return event.year;
-        })
-        .join(", ") +
-      "</b></div></div>"
-    );
-  }
-
-  function questionTypeLabel(type) {
-    return {
-      eventByYear: "Событие по году",
-      yearByEvent: "Год по событию",
-      earlier: "Что было раньше",
-      order: "Последовательность",
-    }[type];
-  }
-
-  function mistakenEventIds(question) {
-    if (question.type !== "order") return question.relatedEventIds;
-    return question.orderIds.filter(function (eventId, index) {
-      return question.correctOrder[index] !== eventId;
+  function getTodaysBirthdays(today) {
+    return loadBirthdays().filter(function (birthday) {
+      return birthday && isTodayBirthday(birthday.birthDate, today);
     });
   }
 
-  function answerTraining(selectedValue) {
-    if (training.feedback) return;
-    var question = training.current;
-    var isCorrect =
-      question.type === "order"
-        ? question.orderIds.join("|") === question.correctOrder.join("|")
-        : selectedValue === question.answer;
-
-    if (isCorrect) {
-      training.correct += 1;
-      storage.recordSuccess(era, question.relatedEventIds);
-    } else {
-      var eventIds = mistakenEventIds(question);
-      storage.recordMistake(era, eventIds);
-      eventIds.forEach(function (eventId) {
-        training.priorityEventIds.push(eventId, eventId);
-      });
-    }
-
-    training.feedback = {
-      correct: isCorrect,
-      selectedValue: selectedValue,
-      message: isCorrect
-        ? explanationFor(question)
-        : explanationFor(question) +
-          " Это событие ещё встретится, чтобы знание закрепилось.",
-    };
-    render();
+  function formatDate(date) {
+    var weekday = WEEKDAYS[date.getDay()].toLowerCase();
+    var day = date.getDate();
+    var month = MONTHS[date.getMonth()];
+    var prefix = isCurrentDate(date) ? "Сегодня " : "";
+    return prefix + day + " " + month + ", " + weekday;
   }
 
-  function applyAllEventsEarlierQuestion(question) {
-    var earliest = era.events.slice().sort(function (first, next) {
-      return first.year - next.year;
-    })[0];
-    question.prompt = "Что произошло раньше всего?";
-    question.options = shuffle(
-      era.events.map(function (event) {
-        return { value: event.id, label: event.shortTitle };
-      })
+  function getTodayTasks() {
+    return tasksStorage.getTasksForDate(getTargetDateKey());
+  }
+
+  function saveTasksForToday(tasks) {
+    tasksStorage.saveTasksForDate(getTargetDateKey(), tasks);
+  }
+
+  function getTomorrowDateKey() {
+    var tomorrow = new Date(
+      targetDate.getFullYear(),
+      targetDate.getMonth(),
+      targetDate.getDate()
     );
-    question.answer = earliest.id;
-    question.relatedEventIds = [earliest.id];
-    question.focusEventId = earliest.id;
-    question.comparedEventIds = era.events.map(function (event) {
-      return event.id;
-    });
+    tomorrow.setHours(12, 0, 0, 0);
+    tomorrow.setDate(tomorrow.getDate() + 1);
+    return tasksStorage.getDateKey(tomorrow);
   }
 
-  function startChallenge() {
-    challenge = {
-      round: 1,
-      total: 5,
-      lives: 3,
-      score: 0,
-      current: null,
-      feedback: null,
-    };
-    newChallengeQuestion();
-    screen = "challenge";
-    render();
-  }
-
-  function newChallengeQuestion() {
-    var types = [
-      "eventByYear",
-      "yearByEvent",
-      "earlier",
-      "eventByYear",
-      "order",
-    ];
-    challenge.current = createQuestion(types[challenge.round - 1]);
-    if (challenge.current.type === "order") {
-      challenge.current.orderIds = challenge.current.availableIds.slice();
-      challenge.current.availableIds = [];
+  function closeAllTaskMenus(exceptMenu) {
+    var menus = document.querySelectorAll(".task__menu.is-open");
+    for (var i = 0; i < menus.length; i += 1) {
+      if (exceptMenu && menus[i] === exceptMenu) continue;
+      menus[i].classList.remove("is-open");
+      var btn = menus[i].querySelector(".task__menu-btn");
+      var panel = menus[i].querySelector(".task__menu-dropdown");
+      if (btn) btn.setAttribute("aria-expanded", "false");
+      if (panel) panel.hidden = true;
     }
-    if (challenge.current.type === "earlier") {
-      applyAllEventsEarlierQuestion(challenge.current);
-    }
-    challenge.feedback = null;
   }
 
-  function livesMarkup() {
-    return [1, 2, 3]
-      .map(function (life) {
-        return (
-          '<span class="life ' +
-          (life <= challenge.lives ? "is-full" : "is-lost") +
-          '" aria-label="' +
-          (life <= challenge.lives ? "Жизнь сохранена" : "Жизнь потеряна") +
-          '">◆</span>'
-        );
-      })
-      .join("");
-  }
+  function removeTaskFromToday(taskId) {
+    var todayKey = getTargetDateKey();
+    var todayTasks = tasksStorage.getTasksForDate(todayKey);
+    var removed = null;
+    var remaining = [];
 
-  function renderChallenge() {
-    var isOrder = challenge.current.type === "order";
-    var isEarlier = challenge.current.type === "earlier";
-    app.innerHTML =
-      '<section class="quiz-layout quiz-layout--challenge-clean' +
-      (isOrder ? " quiz-layout--order" : "") +
-      (isEarlier ? " quiz-layout--earlier" : "") +
-      '">' +
-      '<div class="question-card panel"><div class="challenge-head">' +
-      '<div><p class="eyebrow">Финальное испытание</p><strong>Задание ' +
-      challenge.round + " из " + challenge.total + '</strong></div>' +
-      '<div class="challenge-compact-status"><span>Баллы <b>' + challenge.score +
-      '</b></span><span class="lives" aria-label="Осталось жизней: ' + challenge.lives + '">' +
-      livesMarkup() + '</span></div></div>' +
-      '<span class="question-type">' + questionTypeLabel(challenge.current.type) +
-      '</span><h1>' + escapeHtml(challenge.current.prompt) + '</h1>' +
-      (isOrder
-        ? '<p class="order-lead">От самого раннего к самому позднему</p>'
-        : "") +
-      questionMarkup(challenge.current, challenge.feedback) +
-      feedbackMarkup(challenge.feedback, "challenge") +
-      '</div></section>';
-  }
-
-  function answerChallenge(selectedValue) {
-    if (challenge.feedback) return;
-    var question = challenge.current;
-    var isCorrect =
-      question.type === "order"
-        ? question.orderIds.join("|") === question.correctOrder.join("|")
-        : selectedValue === question.answer;
-
-    if (isCorrect) {
-      challenge.score += 1;
-      storage.recordSuccess(era, question.relatedEventIds);
-    } else {
-      challenge.lives -= 1;
-      storage.recordMistake(era, mistakenEventIds(question));
-    }
-
-    challenge.feedback = {
-      correct: isCorrect,
-      selectedValue: selectedValue,
-      message: isCorrect
-        ? "Точно! " + explanationFor(question)
-        : explanationFor(question) + " Сохрани эту связь для следующей попытки.",
-    };
-    render();
-  }
-
-  function nextChallengeStep() {
-    if (challenge.lives <= 0) {
-      storage.saveFinalResult(era, challenge.score, 0);
-      screen = "challenge-failed";
-      render();
-      return;
-    }
-    if (challenge.round >= challenge.total) {
-      storage.completeFinal(era, challenge.score, 0);
-      screen = "reward";
-      render();
-      return;
-    }
-    challenge.round += 1;
-    newChallengeQuestion();
-    render();
-  }
-
-  function renderChallengeFailed() {
-    app.innerHTML =
-      '<section class="panel completion-panel completion-panel--retry">' +
-      '<div class="completion-icon" aria-hidden="true">↺</div>' +
-      '<p class="eyebrow">Сигнал потерян, но маршрут сохранён</p>' +
-      "<h1>Попробуем ещё раз</h1>" +
-      "<p>Ты уже знаешь правильные связи. Ошибочные события отмечены и будут чаще появляться в тренировке.</p>" +
-      '<div class="result-strip"><span><small>Результат</small><b>' +
-      challenge.score +
-      " из " + challenge.total +
-      "</b></span></div>" +
-      '<div class="button-row"><button class="button button--secondary" data-action="start-training" type="button">Вернуться к тренировке</button>' +
-      '<button class="button button--primary" data-action="start-challenge" type="button">Повторить испытание</button></div>' +
-      "</section>";
-  }
-
-  function renderReward() {
-    var progress = storage.getEra(era);
-    app.innerHTML =
-      '<section class="reward-screen">' +
-      '<div class="reward-result"><b>Экспедиция завершена ✓</b><span>' + progress.bestScore + ' из 5</span></div>' +
-      '<div class="album-section"><div class="section-heading"><p class="eyebrow">Альбом времени</p>' +
-      "<h2>Открыты три карточки</h2></div>" +
-      '<div class="album-grid">' +
-      era.events
-        .map(function (event) {
-          return (
-            '<article class="album-card album-card--' +
-            event.visual +
-            '">' +
-            eventTrainingImageMarkup(event, "album-card__visual") +
-            '<div class="album-card__content"><span class="album-card__year">' + event.year +
-            '</span><h3>' + escapeHtml(event.shortTitle) + '</h3><p>' + escapeHtml(event.fact) +
-            '</p><span class="album-card__status">Открыто ✓</span></div></article>' 
-          );
-        })
-        .join("") +
-      "</div></div>" +
-      '<div class="reward-actions"><button class="button button--secondary" data-action="revisit" type="button">Пройти эпоху ещё раз</button></div>' +
-      "</section>";
-  }
-
-  function resetEraPlaythrough() {
-    storage.resetEra(era);
-    learningIndex = 0;
-    learningActionDone = false;
-    launchStep = 0;
-    moonFootprints = 0;
-    flippedCards = {};
-    training = null;
-    challenge = null;
-    satelliteDrag = null;
-    orderDrag = null;
-  }
-
-  function continueFromIntro() {
-    var progress = storage.getEra(era);
-    if (progress.finalComplete) {
-      screen = "reward";
-    } else if (progress.studiedEventIds.length < era.events.length) {
-      learningIndex = progress.studiedEventIds.length;
-      learningActionDone = false;
-      screen = "learn";
-    } else if (!progress.timelineSeen) {
-      screen = "timeline";
-    } else if (!progress.trainingComplete) {
-      startTraining();
-      return;
-    } else {
-      startChallenge();
-      return;
-    }
-    render();
-  }
-
-  function activeOrderState() {
-    if (screen === "training") return training;
-    if (screen === "challenge") return challenge;
-    return null;
-  }
-
-  function canDragTrainingOrder() {
-    var state = activeOrderState();
-    return !!(
-      state &&
-      !state.feedback &&
-      state.current &&
-      state.current.type === "order"
-    );
-  }
-
-  function swapTrainingOrder(fromIndex, toIndex) {
-    if (!canDragTrainingOrder()) return;
-    var ids = activeOrderState().current.orderIds;
-    if (
-      fromIndex === toIndex ||
-      fromIndex < 0 ||
-      toIndex < 0 ||
-      fromIndex >= ids.length ||
-      toIndex >= ids.length
-    ) {
-      return;
-    }
-    var moved = ids[fromIndex];
-    ids[fromIndex] = ids[toIndex];
-    ids[toIndex] = moved;
-    render();
-    var nextCard = app.querySelector(
-      '[data-order-card][data-index="' + toIndex + '"]'
-    );
-    if (nextCard) nextCard.focus();
-  }
-
-  function orderCardFromPoint(x, y) {
-    var node = document.elementFromPoint(x, y);
-    return node ? node.closest("[data-order-card]") : null;
-  }
-
-  function updateOrderDropTarget(x, y) {
-    var over = orderCardFromPoint(x, y);
-    var overIndex = over ? Number(over.dataset.index) : -1;
-    app.querySelectorAll("[data-order-card]").forEach(function (card) {
-      card.classList.toggle(
-        "is-drop-target",
-        Number(card.dataset.index) === overIndex &&
-          overIndex !== orderDrag.fromIndex
-      );
-    });
-    orderDrag.overIndex = overIndex;
-  }
-
-  function clearOrderDrag() {
-    if (!orderDrag) return;
-    window.removeEventListener("pointermove", moveOrderDrag);
-    window.removeEventListener("pointerup", finishOrderDrag);
-    window.removeEventListener("pointercancel", finishOrderDrag);
-    if (orderDrag.ghost && orderDrag.ghost.parentNode) {
-      orderDrag.ghost.parentNode.removeChild(orderDrag.ghost);
-    }
-    if (orderDrag.card && orderDrag.card.isConnected) {
-      orderDrag.card.classList.remove("is-origin");
-      if (orderDrag.captured) {
-        try {
-          orderDrag.card.releasePointerCapture(orderDrag.pointerId);
-        } catch (error) {
-          /* pointer already released */
-        }
+    for (var i = 0; i < todayTasks.length; i += 1) {
+      if (String(todayTasks[i].id) === String(taskId)) {
+        removed = todayTasks[i];
+      } else {
+        remaining.push(todayTasks[i]);
       }
     }
-    app.querySelectorAll("[data-order-card]").forEach(function (card) {
-      card.classList.remove("is-drop-target");
+
+    if (!removed) return null;
+
+    tasksStorage.saveTasksForDate(todayKey, remaining);
+    return removed;
+  }
+
+  function moveTaskToDate(taskId, targetDateKey) {
+    var todayKey = getTargetDateKey();
+    if (!targetDateKey || targetDateKey === todayKey) return false;
+
+    var removed = removeTaskFromToday(taskId);
+    if (!removed) return false;
+
+    var targetTasks = tasksStorage.getTasksForDate(targetDateKey);
+    targetTasks.push({
+      id: removed.id,
+      text: removed.text,
+      done: false
     });
-    document.body.classList.remove("is-order-dragging");
-    orderDrag = null;
+    tasksStorage.saveTasksForDate(targetDateKey, targetTasks);
+    return true;
   }
 
-  function startOrderDrag(event) {
-    if (!canDragTrainingOrder() || (event.button && event.button !== 0)) return;
-    var card = event.target.closest("[data-order-card]");
-    if (!card || card.disabled) return;
-
-    var rect = card.getBoundingClientRect();
-    orderDrag = {
-      pointerId: event.pointerId,
-      card: card,
-      fromIndex: Number(card.dataset.index),
-      overIndex: Number(card.dataset.index),
-      startX: event.clientX,
-      startY: event.clientY,
-      offsetX: event.clientX - rect.left,
-      offsetY: event.clientY - rect.top,
-      width: rect.width,
-      height: rect.height,
-      moved: false,
-      captured: false,
-      ghost: null,
-    };
-    window.addEventListener("pointermove", moveOrderDrag, { passive: false });
-    window.addEventListener("pointerup", finishOrderDrag);
-    window.addEventListener("pointercancel", finishOrderDrag);
+  function deleteTaskFromToday(taskId) {
+    return Boolean(removeTaskFromToday(taskId));
   }
 
-  function moveOrderDrag(event) {
-    if (!orderDrag || orderDrag.pointerId !== event.pointerId) return;
-    var dx = event.clientX - orderDrag.startX;
-    var dy = event.clientY - orderDrag.startY;
-    if (!orderDrag.moved) {
-      if (dx * dx + dy * dy < 36) return;
-      orderDrag.moved = true;
-      document.body.classList.add("is-order-dragging");
-      orderDrag.ghost = orderDrag.card.cloneNode(true);
-      orderDrag.card.classList.add("is-origin");
-      orderDrag.ghost.removeAttribute("data-order-card");
-      orderDrag.ghost.removeAttribute("data-index");
-      orderDrag.ghost.setAttribute("aria-hidden", "true");
-      orderDrag.ghost.tabIndex = -1;
-      orderDrag.ghost.classList.add("order-drag__ghost");
-      orderDrag.ghost.classList.remove("is-origin", "is-drop-target");
-      orderDrag.ghost.style.width = orderDrag.width + "px";
-      orderDrag.ghost.style.height = orderDrag.height + "px";
-      document.body.appendChild(orderDrag.ghost);
+  function pickDateForTask(taskId) {
+    var todayKey = getTargetDateKey();
+    var input = document.createElement("input");
+    input.type = "date";
+    input.className = "task__date-input";
+    input.setAttribute("aria-label", "Выбрать дату");
+    document.body.appendChild(input);
+
+    function cleanup() {
+      if (input.parentNode) input.parentNode.removeChild(input);
+    }
+
+    input.addEventListener("change", function () {
+      var value = input.value;
+      cleanup();
+      if (!value || value === todayKey) return;
+      if (moveTaskToDate(taskId, value)) {
+        renderTasks();
+      }
+    });
+
+    input.addEventListener("blur", function () {
+      window.setTimeout(cleanup, 200);
+    });
+
+    if (typeof input.showPicker === "function") {
       try {
-        orderDrag.card.setPointerCapture(event.pointerId);
-        orderDrag.captured = true;
-      } catch (error) {
-        orderDrag.captured = false;
-      }
+        input.showPicker();
+        return;
+      } catch (err) {}
     }
 
-    event.preventDefault();
-    orderDrag.ghost.style.left = event.clientX - orderDrag.offsetX + "px";
-    orderDrag.ghost.style.top = event.clientY - orderDrag.offsetY + "px";
-    updateOrderDropTarget(event.clientX, event.clientY);
+    input.focus();
+    input.click();
   }
 
-  function finishOrderDrag(event) {
-    if (!orderDrag || orderDrag.pointerId !== event.pointerId) return;
-    var fromIndex = orderDrag.fromIndex;
-    var overIndex = orderDrag.moved ? orderDrag.overIndex : -1;
-    var shouldSwap = orderDrag.moved && overIndex >= 0 && overIndex !== fromIndex;
-    clearOrderDrag();
-    if (shouldSwap) swapTrainingOrder(fromIndex, overIndex);
+  function formatFullDateKey(date) {
+    var year = date.getFullYear();
+    var month = String(date.getMonth() + 1).padStart(2, "0");
+    var day = String(date.getDate()).padStart(2, "0");
+    return year + "-" + month + "-" + day;
   }
 
-  app.addEventListener("click", function (event) {
-    var control = event.target.closest("[data-action]");
-    if (!control) return;
-    var action = control.dataset.action;
+  function parseDateParts(value) {
+    if (typeof value !== "string") return null;
 
-    if (action === "start") {
-      resetEraPlaythrough();
-      screen = "learn";
-      render();
-      return;
-    }
+    var match = value.trim().match(/^(\d{4})-(\d{2})-(\d{2})/);
+    if (!match) return null;
 
-    if (action === "continue") {
-      continueFromIntro();
-      return;
-    }
+    return {
+      year: Number(match[1]),
+      month: Number(match[2]),
+      day: Number(match[3])
+    };
+  }
 
-    if (action === "activate-event") {
-      learningActionDone = true;
-      storage.markStudied(era, era.events[learningIndex].id);
-      showToast("Событие добавлено в маршрут");
-      render();
-    }
+  function formatImportantDateCategory(category) {
+    if (typeof category !== "string") return "Важная дата";
+    var value = category.trim();
+    if (!value) return "Важная дата";
+    return IMPORTANT_DATE_CATEGORY_LABELS[value] || value;
+  }
 
-    if (action === "launch-step") {
-      var stepIndex = Number(control.dataset.index);
-      var currentEvent = era.events[learningIndex];
-      if (stepIndex !== launchStep || learningActionDone) return;
-      launchStep += 1;
-      if (launchStep >= currentEvent.action.steps.length) {
-        completeCurrentEvent();
-      } else {
-        render();
-      }
-    }
-
-    if (action === "leave-footprint") {
-      if (learningActionDone) return;
-      moonFootprints += 1;
-      if (moonFootprints >= 4) {
-        completeCurrentEvent();
-      } else {
-        render();
-      }
-    }
-
-    if (action === "next-event") {
-      if (learningIndex < era.events.length - 1) {
-        learningIndex += 1;
-        learningActionDone = false;
-        launchStep = 0;
-        moonFootprints = 0;
-      } else {
-        screen = "timeline";
-      }
-      render();
-    }
-
-    if (action === "flip-card") {
-      var eventId = control.dataset.eventId;
-      flippedCards[eventId] = !flippedCards[eventId];
-      render();
-    }
-
-    if (action === "show-training-intro") {
-      storage.markTimelineSeen(era);
-      screen = "training-intro";
-      render();
-    }
-
-    if (action === "start-training") {
-      storage.markTimelineSeen(era);
-      startTraining();
-    }
-
-    if (action === "answer") {
-      if (screen === "training") answerTraining(control.dataset.value);
-      if (screen === "challenge") answerChallenge(control.dataset.value);
-    }
-
-    if (action === "add-order") {
-      var orderState = screen === "training" ? training : challenge;
-      if (orderState.feedback || orderState.current.orderIds.length >= 3) return;
-      var pickedId = control.dataset.eventId;
-      orderState.current.orderIds.push(pickedId);
-      orderState.current.availableIds = orderState.current.availableIds.filter(function (id) { return id !== pickedId; });
-      render();
-    }
-
-    if (action === "remove-order") {
-      var removeState = screen === "training" ? training : challenge;
-      if (removeState.feedback) return;
-      var removeIndex = Number(control.dataset.index);
-      var removedId = removeState.current.orderIds.splice(removeIndex, 1)[0];
-      removeState.current.availableIds.push(removedId);
-      render();
-    }
-
-    if (action === "move-order") {
-      var state = screen === "training" ? training : challenge;
-      if (state.feedback) return;
-      var index = Number(control.dataset.index);
-      var targetIndex = index + Number(control.dataset.direction);
-      var ids = state.current.orderIds;
-      var item = ids[index];
-      ids[index] = ids[targetIndex];
-      ids[targetIndex] = item;
-      render();
-    }
-
-    if (action === "submit-order") {
-      if (screen === "training") answerTraining("order");
-      if (screen === "challenge") answerChallenge("order");
-    }
-
-    if (action === "next-training") {
-      if (training.correct >= training.target) {
-        training.completed = true;
-        storage.markTrainingComplete(era);
-      } else {
-        newTrainingQuestion();
-      }
-      render();
-    }
-
-    if (action === "start-challenge") startChallenge();
-    if (action === "next-challenge") nextChallengeStep();
-
-    if (action === "revisit") {
-      resetEraPlaythrough();
-      screen = "learn";
-      render();
-    }
-  });
-
-  app.addEventListener("pointerdown", startSatelliteDrag);
-  app.addEventListener("pointerdown", startOrderDrag);
-  app.addEventListener("pointermove", moveSatellite);
-  app.addEventListener("pointerup", finishSatelliteDrag);
-  app.addEventListener("pointercancel", finishSatelliteDrag);
-  app.addEventListener("keydown", function (event) {
-    var orderCard = event.target.closest("[data-order-card]");
-    if (orderCard && canDragTrainingOrder()) {
-      var index = Number(orderCard.dataset.index);
-      var nextIndex = index;
-      if (event.key === "ArrowRight" || event.key === "ArrowDown") {
-        nextIndex = index + 1;
-      } else if (event.key === "ArrowLeft" || event.key === "ArrowUp") {
-        nextIndex = index - 1;
-      } else {
-        nextIndex = -1;
-      }
-      if (
-        nextIndex >= 0 &&
-        nextIndex < activeOrderState().current.orderIds.length
-      ) {
-        event.preventDefault();
-        swapTrainingOrder(index, nextIndex);
-      }
-      return;
-    }
-    var flipCard = event.target.closest("[data-action=\"flip-card\"]");
-    if (flipCard && (event.key === "Enter" || event.key === " ")) {
-      event.preventDefault();
-      flippedCards[flipCard.dataset.eventId] = !flippedCards[flipCard.dataset.eventId];
-      render();
-      return;
-    }
+  function loadImportantDates() {
     if (
-      event.target.closest("[data-satellite]") &&
-      (event.key === "Enter" || event.key === " ")
+      window.MyDayImportantDatesStorage &&
+      typeof window.MyDayImportantDatesStorage.loadImportantDates === "function"
     ) {
-      event.preventDefault();
-      completeSatelliteLesson();
+      return window.MyDayImportantDatesStorage.loadImportantDates() || [];
     }
-  });
 
-  document.querySelector(".brand").addEventListener("click", function (event) {
-    event.preventDefault();
-    screen = "intro";
-    render();
-  });
+    try {
+      var saved = localStorage.getItem(IMPORTANT_DATES_KEY);
+      if (!saved) return [];
 
-  document
-    .getElementById("reset-progress")
-    .addEventListener("click", function () {
-      var shouldReset = window.confirm(
-        "Сбросить изученные события, очки и награды этой игры?"
+      var parsed = JSON.parse(saved);
+      return Array.isArray(parsed) ? parsed : [];
+    } catch (error) {
+      console.warn("Не удалось загрузить важные даты:", error);
+      return [];
+    }
+  }
+
+  function isImportantDateToday(item, today) {
+    if (!item || typeof item.date !== "string") return false;
+
+    var parts = parseDateParts(item.date);
+    if (!parts) return false;
+
+    if (item.yearly) {
+      return (
+        parts.month === today.getMonth() + 1 &&
+        parts.day === today.getDate()
       );
-      if (!shouldReset) return;
-      storage.reset();
-      screen = "intro";
-      learningIndex = 0;
-      learningActionDone = false;
-      training = null;
-      challenge = null;
-      showToast("Прогресс сброшен");
-      render();
+    }
+
+    return item.date.trim() === formatFullDateKey(today);
+  }
+
+  function getCalendarEventsForToday(today) {
+    if (!window.MyDayHolidays || typeof window.MyDayHolidays.getCalendarEventsOnDate !== "function") {
+      return [];
+    }
+
+    return window.MyDayHolidays.getCalendarEventsOnDate(
+      today.getFullYear(),
+      today.getMonth(),
+      today.getDate()
+    ) || [];
+  }
+
+  function formatCalendarCardDate(date) {
+    if (!(date instanceof Date) || isNaN(date.getTime())) return "";
+    var monthName = MONTHS[date.getMonth()];
+    if (!monthName) return "";
+    return date.getDate() + " " + monthName;
+  }
+
+  function isSafeLocalHolidayImage(path) {
+    if (typeof path !== "string") return false;
+    var trimmed = path.trim();
+    if (!trimmed) return false;
+    if (trimmed.indexOf("assets/") !== 0) return false;
+    if (trimmed.indexOf("://") !== -1) return false;
+    if (trimmed.indexOf("..") !== -1) return false;
+    return true;
+  }
+
+  function getTodayCalendarEntries(today) {
+    var entries = [];
+    var dateLabel = formatCalendarCardDate(today);
+
+    loadImportantDates().forEach(function (item) {
+      if (!isImportantDateToday(item, today)) return;
+
+      var title = typeof item.title === "string" && item.title.trim()
+        ? item.title.trim()
+        : "—";
+
+      entries.push({
+        kind: "personal",
+        type: "",
+        title: title,
+        summary: "",
+        dateLabel: dateLabel
+      });
     });
 
-  if (window.location.hash === "#1957") {
-    screen = "learn";
-    learningIndex = 0;
-    learningActionDone = false;
+    getCalendarEventsForToday(today).forEach(function (event) {
+      if (!event) return;
+
+      var title = typeof event.title === "string" && event.title.trim()
+        ? event.title.trim()
+        : "—";
+      var summary = typeof event.summary === "string"
+        ? event.summary.trim()
+        : "";
+
+      var calendarEntry = {
+        kind: "calendar",
+        type: event.type || "",
+        title: title,
+        summary: summary,
+        dateLabel: dateLabel
+      };
+
+      if (typeof event.shortTitle === "string" && event.shortTitle.trim()) {
+        calendarEntry.shortTitle = event.shortTitle.trim();
+      }
+
+      if (isSafeLocalHolidayImage(event.image)) {
+        calendarEntry.image = event.image.trim();
+      }
+
+      entries.push(calendarEntry);
+    });
+
+    return entries;
   }
 
-  preloadEventImages();
-  render();
+  function pickMainCalendarEntry(entries) {
+    var i;
+    for (i = 0; i < entries.length; i += 1) {
+      if (entries[i].type === "official-holiday") return entries[i];
+    }
+    for (i = 0; i < entries.length; i += 1) {
+      if (entries[i].kind === "calendar") return entries[i];
+    }
+    return entries[0] || null;
+  }
+
+  function isEventsInteractiveTarget(target) {
+    var el = target;
+    if (!el) return false;
+    if (el.nodeType === 3) el = el.parentElement;
+    if (!el || !el.closest) return false;
+    return Boolean(
+      el.closest(
+        "a, button, input, textarea, select, [contenteditable], [role='button']"
+      )
+    );
+  }
+
+  function getEventsCard() {
+    return document.querySelector(".card--events");
+  }
+
+  function applyEventsCardMode(card, entry, mode) {
+    if (!card) return;
+
+    eventsCardMode = mode === "text" ? "text" : "image";
+    card.classList.remove("card--events-image", "card--events-text");
+    card.classList.add(
+      eventsCardMode === "text" ? "card--events-text" : "card--events-image"
+    );
+    card.setAttribute(
+      "aria-expanded",
+      eventsCardMode === "text" ? "true" : "false"
+    );
+
+    var titleEl = card.querySelector(".calendar__featured-title");
+    if (!titleEl || !entry) return;
+
+    if (eventsCardMode === "image") {
+      titleEl.textContent = entry.shortTitle || entry.title || "—";
+    } else {
+      titleEl.textContent = entry.title || "—";
+    }
+  }
+
+  function toggleEventsCardMode() {
+    var card = getEventsCard();
+    if (!card || !eventsFeaturedEntry) return;
+    applyEventsCardMode(
+      card,
+      eventsFeaturedEntry,
+      eventsCardMode === "image" ? "text" : "image"
+    );
+  }
+
+  function bindEventsCardInteractions() {
+    var card = getEventsCard();
+    if (!card || eventsCardBound) return;
+    eventsCardBound = true;
+
+    card.addEventListener("click", function (event) {
+      if (!eventsFeaturedEntry) return;
+      if (isEventsInteractiveTarget(event.target)) return;
+      toggleEventsCardMode();
+    });
+
+    card.addEventListener("keydown", function (event) {
+      if (!eventsFeaturedEntry) return;
+      if (isEventsInteractiveTarget(event.target)) return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleEventsCardMode();
+        return;
+      }
+
+      if (event.key === "Escape") {
+        event.preventDefault();
+        applyEventsCardMode(card, eventsFeaturedEntry, "image");
+      }
+    });
+
+    var footerBtn = card.querySelector(":scope > .link-btn");
+    if (footerBtn) {
+      footerBtn.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+    }
+  }
+
+  function renderFeaturedCalendarEntry(entry) {
+    var wrap = document.createElement("div");
+    wrap.className = "calendar__featured";
+
+    var top = document.createElement("div");
+    top.className = "calendar__featured-top";
+
+    if (isSafeLocalHolidayImage(entry.image)) {
+      var img = document.createElement("img");
+      img.className = "calendar__featured-image";
+      img.src = entry.image.trim();
+      img.alt = entry.shortTitle || entry.title || "";
+      img.setAttribute("decoding", "async");
+      top.appendChild(img);
+    }
+
+    var meta = document.createElement("div");
+    meta.className = "calendar__featured-meta";
+
+    var title = document.createElement("p");
+    title.className = "calendar__featured-title";
+    title.textContent = entry.shortTitle || entry.title || "—";
+    meta.appendChild(title);
+
+    if (entry.dateLabel) {
+      var dateEl = document.createElement("p");
+      dateEl.className = "calendar__featured-date";
+      dateEl.textContent = entry.dateLabel;
+      meta.appendChild(dateEl);
+    }
+
+    top.appendChild(meta);
+    wrap.appendChild(top);
+
+    if (entry.summary) {
+      var summaryEl = document.createElement("p");
+      summaryEl.className = "calendar__featured-summary";
+      summaryEl.textContent = entry.summary;
+      wrap.appendChild(summaryEl);
+    }
+
+    return wrap;
+  }
+
+  // Временный тестовый режим: index.html?date=YYYY-MM-DD
+  // влияет только на блок «Праздники и даты».
+  function getQueryParam(name) {
+    var search = "";
+    try {
+      search = String(window.location.search || "");
+    } catch (error) {
+      search = "";
+    }
+
+    if (!search) {
+      try {
+        var href = String(window.location.href || "");
+        var qIndex = href.indexOf("?");
+        if (qIndex !== -1) {
+          var hashIndex = href.indexOf("#", qIndex);
+          search = hashIndex === -1 ? href.slice(qIndex) : href.slice(qIndex, hashIndex);
+        }
+      } catch (error2) {
+        search = "";
+      }
+    }
+
+    if (!search) return null;
+    if (search.charAt(0) === "?") search = search.slice(1);
+
+    var pairs = search.split("&");
+    for (var i = 0; i < pairs.length; i += 1) {
+      if (!pairs[i]) continue;
+      var parts = pairs[i].split("=");
+      var key = parts[0] ? decodeURIComponent(parts[0]).trim() : "";
+      if (key !== name) continue;
+      return parts[1] ? decodeURIComponent(parts[1].replace(/\+/g, " ")).trim() : "";
+    }
+
+    return null;
+  }
+
+  function getCalendarPreviewDate() {
+    return targetDate;
+  }
+
+  function getNextCalendarEventAfter(previewDate) {
+    if (!(previewDate instanceof Date) || isNaN(previewDate.getTime())) return null;
+    if (
+      !window.MyDayHolidays ||
+      typeof window.MyDayHolidays.getCalendarEvents !== "function"
+    ) {
+      return null;
+    }
+
+    var year = previewDate.getFullYear();
+    var midnightTime = new Date(
+      year,
+      previewDate.getMonth(),
+      previewDate.getDate()
+    ).getTime();
+
+    var events = []
+      .concat(window.MyDayHolidays.getCalendarEvents(year) || [])
+      .concat(window.MyDayHolidays.getCalendarEvents(year + 1) || []);
+
+    var upcoming = [];
+    var i;
+    var event;
+    var startTime;
+
+    for (i = 0; i < events.length; i += 1) {
+      event = events[i];
+      if (!event) continue;
+      if (
+        typeof event.year !== "number" ||
+        typeof event.month !== "number" ||
+        typeof event.day !== "number"
+      ) {
+        continue;
+      }
+
+      startTime = new Date(event.year, event.month, event.day).getTime();
+      if (isNaN(startTime) || startTime <= midnightTime) continue;
+      upcoming.push(event);
+    }
+
+    if (!upcoming.length) return null;
+
+    var earliestTime = Infinity;
+    for (i = 0; i < upcoming.length; i += 1) {
+      startTime = new Date(
+        upcoming[i].year,
+        upcoming[i].month,
+        upcoming[i].day
+      ).getTime();
+      if (startTime < earliestTime) earliestTime = startTime;
+    }
+
+    var onEarliest = [];
+    for (i = 0; i < upcoming.length; i += 1) {
+      startTime = new Date(
+        upcoming[i].year,
+        upcoming[i].month,
+        upcoming[i].day
+      ).getTime();
+      if (startTime === earliestTime) onEarliest.push(upcoming[i]);
+    }
+
+    for (i = 0; i < onEarliest.length; i += 1) {
+      if (onEarliest[i].type === "official-holiday") return onEarliest[i];
+    }
+
+    return onEarliest[0] || null;
+  }
+
+  function renderCalendar() {
+    var container = document.getElementById("calendar-content");
+    if (!container) return;
+
+    eventsFeaturedEntry = null;
+
+    var card = getEventsCard();
+    var previewDate = getCalendarPreviewDate();
+    container.innerHTML = "";
+    container.setAttribute(
+      "data-calendar-date",
+      formatFullDateKey(previewDate)
+    );
+
+    var entries = getTodayCalendarEntries(previewDate);
+
+    if (!entries.length) {
+      if (card) {
+        card.classList.remove("card--events-image", "card--events-text");
+        card.classList.add("card--events-empty");
+        card.removeAttribute("aria-expanded");
+        card.tabIndex = -1;
+      }
+
+      var emptyState = document.createElement("div");
+      emptyState.className = "calendar__empty-state";
+
+      var empty = document.createElement("p");
+      empty.className = "calendar__empty";
+      empty.textContent = isCurrentDate(previewDate)
+        ? "Сегодня праздников и значимых дат нет"
+        : "В этот день праздников и значимых дат нет";
+      emptyState.appendChild(empty);
+
+      var nextEvent = getNextCalendarEventAfter(previewDate);
+      if (nextEvent) {
+        var next = document.createElement("p");
+        next.className = "calendar__next";
+
+        var nextLabel = document.createElement("span");
+        nextLabel.className = "calendar__next-label";
+        nextLabel.textContent = "Ближайшая дата";
+        next.appendChild(nextLabel);
+
+        var nextWhen = document.createElement("span");
+        nextWhen.className = "calendar__next-when";
+        nextWhen.textContent = formatCalendarCardDate(
+          new Date(nextEvent.year, nextEvent.month, nextEvent.day)
+        );
+        next.appendChild(nextWhen);
+
+        var nextTitle = document.createElement("span");
+        nextTitle.className = "calendar__next-title";
+        var nextShort =
+          typeof nextEvent.shortTitle === "string" && nextEvent.shortTitle.trim()
+            ? nextEvent.shortTitle.trim()
+            : "";
+        var nextFull =
+          typeof nextEvent.title === "string" && nextEvent.title.trim()
+            ? nextEvent.title.trim()
+            : "";
+        nextTitle.textContent = nextShort || nextFull;
+        next.appendChild(nextTitle);
+
+        emptyState.appendChild(next);
+      }
+
+      container.appendChild(emptyState);
+      return;
+    }
+
+    if (card) {
+      card.classList.remove("card--events-empty");
+    }
+
+    var main = pickMainCalendarEntry(entries);
+    if (main) {
+      eventsFeaturedEntry = main;
+      container.appendChild(renderFeaturedCalendarEntry(main));
+      if (card) {
+        card.classList.remove("card--events-image", "card--events-text");
+        card.removeAttribute("aria-expanded");
+        card.tabIndex = -1;
+      }
+    }
+
+    if (entries.length > 1) {
+      var more = document.createElement("button");
+      more.type = "button";
+      more.className = "calendar__more";
+      more.textContent = "Ещё " + (entries.length - 1) + " →";
+      container.appendChild(more);
+    }
+
+  }
+
+  function createTaskElement(task, isCompletedList) {
+    var li = document.createElement("li");
+    li.className = "task" + (task.done ? " task--done" : "");
+    li.dataset.id = String(task.id);
+
+    var checkbox = document.createElement("input");
+    checkbox.type = "checkbox";
+    checkbox.className = "task__checkbox";
+    checkbox.id = (isCompletedList ? "completed-task-" : "task-") + task.id;
+    checkbox.checked = Boolean(task.done);
+    checkbox.setAttribute("aria-label", task.text);
+
+    // span без for — клик по тексту не связан с checkbox
+    var label = document.createElement("span");
+    label.className = "task__label";
+    label.textContent = task.text;
+    label.setAttribute("role", "button");
+    label.setAttribute("tabindex", "0");
+    label.setAttribute("aria-label", "Редактировать задачу");
+
+    function startEditing() {
+      if (li.classList.contains("task--editing")) return;
+
+      var originalText = label.textContent || "";
+      var input = document.createElement("input");
+      var finishing = false;
+      var canCommitOnBlur = false;
+
+      input.type = "text";
+      input.className = "task__edit";
+      input.value = originalText;
+      input.setAttribute("aria-label", "Текст задачи");
+      input.maxLength = 200;
+
+      li.classList.add("task--editing");
+      label.replaceWith(input);
+
+      function restoreLabel(text) {
+        label.textContent = text;
+        checkbox.setAttribute("aria-label", text);
+        if (input.parentNode) input.replaceWith(label);
+        li.classList.remove("task--editing");
+      }
+
+      function commitEdit(shouldSave) {
+        if (finishing) return;
+        finishing = true;
+
+        var nextText = shouldSave ? input.value.trim() : originalText;
+        if (shouldSave && !nextText) {
+          nextText = originalText;
+        }
+
+        if (shouldSave && nextText !== originalText) {
+          var todayTasks = getTodayTasks();
+          var currentTask = todayTasks.find(function (item) {
+            return String(item.id) === String(task.id);
+          });
+
+          if (currentTask) {
+            currentTask.text = nextText;
+            saveTasksForToday(todayTasks);
+          }
+        }
+
+        restoreLabel(nextText);
+      }
+
+      input.addEventListener("click", function (event) {
+        event.stopPropagation();
+      });
+
+      input.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") {
+          event.preventDefault();
+          event.stopPropagation();
+          commitEdit(true);
+          return;
+        }
+
+        if (event.key === "Escape") {
+          event.preventDefault();
+          event.stopPropagation();
+          commitEdit(false);
+        }
+      });
+
+      // Нельзя слушать blur до конца жеста открытия:
+      // тот же click, что открыл редактирование, иначе сразу снимет focus.
+      input.addEventListener("blur", function () {
+        if (!canCommitOnBlur) return;
+        commitEdit(true);
+      });
+
+      input.focus();
+      if (typeof input.setSelectionRange === "function") {
+        try {
+          input.setSelectionRange(input.value.length, input.value.length);
+        } catch (err) {}
+      }
+
+      // Включить blur-сохранение только после завершения текущего click/pointer жеста.
+      queueMicrotask(function () {
+        canCommitOnBlur = true;
+      });
+    }
+
+    // preventDefault на pointerdown удерживает focus и не даёт
+    // браузеру «дожать» click так, чтобы новый input сразу потерял фокус.
+    label.addEventListener("pointerdown", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+    });
+
+    label.addEventListener("click", function (event) {
+      event.preventDefault();
+      event.stopPropagation();
+      startEditing();
+    });
+
+    label.addEventListener("keydown", function (event) {
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        event.stopPropagation();
+        startEditing();
+      }
+    });
+
+    checkbox.addEventListener("click", function (event) {
+      event.stopPropagation();
+    });
+
+    checkbox.addEventListener("change", function () {
+      var todayTasks = getTodayTasks();
+      var currentTask = todayTasks.find(function (item) {
+        return String(item.id) === String(task.id);
+      });
+
+      if (!currentTask) return;
+
+      if (!currentTask.done && checkbox.checked) {
+        li.classList.add("task--leaving");
+        window.setTimeout(function () {
+          currentTask.done = true;
+          saveTasksForToday(todayTasks);
+          renderTasks();
+        }, 420);
+        return;
+      }
+
+      currentTask.done = checkbox.checked;
+      saveTasksForToday(todayTasks);
+      renderTasks();
+    });
+
+    li.appendChild(checkbox);
+    li.appendChild(label);
+
+    if (!isCompletedList && !task.done) {
+      var menu = document.createElement("div");
+      menu.className = "task__menu";
+
+      var menuBtn = document.createElement("button");
+      menuBtn.type = "button";
+      menuBtn.className = "task__menu-btn";
+      menuBtn.setAttribute("aria-label", "Действия с задачей");
+      menuBtn.setAttribute("aria-expanded", "false");
+      menuBtn.setAttribute("aria-haspopup", "true");
+      menuBtn.textContent = "⋯";
+
+      var dropdown = document.createElement("div");
+      dropdown.className = "task__menu-dropdown";
+      dropdown.hidden = true;
+      dropdown.setAttribute("role", "menu");
+
+      function addMenuOption(labelText, action) {
+        var option = document.createElement("button");
+        option.type = "button";
+        option.className = "task__menu-option";
+        if (action === "delete") {
+          option.className += " task__menu-option--danger";
+        }
+        option.setAttribute("role", "menuitem");
+        option.dataset.action = action;
+        option.textContent = labelText;
+        dropdown.appendChild(option);
+      }
+
+      addMenuOption("Перенести на завтра", "tomorrow");
+      addMenuOption("Выбрать дату", "date");
+      addMenuOption("Удалить", "delete");
+
+      function setMenuOpen(open) {
+        if (open) closeAllTaskMenus(menu);
+        menu.classList.toggle("is-open", open);
+        menuBtn.setAttribute("aria-expanded", open ? "true" : "false");
+        dropdown.hidden = !open;
+      }
+
+      menuBtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        event.stopPropagation();
+        setMenuOpen(dropdown.hidden);
+      });
+
+      dropdown.addEventListener("click", function (event) {
+        event.stopPropagation();
+        var option = event.target && event.target.closest
+          ? event.target.closest("[data-action]")
+          : null;
+        if (!option) return;
+
+        var action = option.getAttribute("data-action");
+        setMenuOpen(false);
+
+        if (action === "tomorrow") {
+          if (moveTaskToDate(task.id, getTomorrowDateKey())) {
+            renderTasks();
+          }
+          return;
+        }
+
+        if (action === "date") {
+          pickDateForTask(task.id);
+          return;
+        }
+
+        if (action === "delete") {
+          if (window.confirm("Удалить задачу?")) {
+            if (deleteTaskFromToday(task.id)) {
+              renderTasks();
+            }
+          }
+        }
+      });
+
+      menu.appendChild(menuBtn);
+      menu.appendChild(dropdown);
+      li.appendChild(menu);
+    }
+
+    return li;
+  }
+
+  function renderTasks() {
+    var activeList = document.getElementById("tasks-list");
+    var completedList = document.getElementById("completed-tasks-list");
+    var completedToggle = document.getElementById("completed-toggle");
+    var completedCount = document.getElementById("completed-count");
+
+    if (!activeList || !completedList || !completedToggle || !completedCount) return;
+
+    activeList.innerHTML = "";
+    completedList.innerHTML = "";
+
+    var todayTasks = getTodayTasks();
+    var activeTasks = todayTasks.filter(function (task) {
+      return !task.done;
+    });
+    var completedTasks = todayTasks.filter(function (task) {
+      return task.done;
+    });
+
+    activeTasks.forEach(function (task) {
+      activeList.appendChild(createTaskElement(task, false));
+    });
+
+    completedTasks.forEach(function (task) {
+      completedList.appendChild(createTaskElement(task, true));
+    });
+
+    completedCount.textContent = String(completedTasks.length);
+    completedToggle.hidden = false;
+    completedList.hidden = true;
+
+    if (activeTasks.length === 0) {
+      var empty = document.createElement("li");
+      empty.className = "task task--done";
+      empty.textContent = "На сегодня всё выполнено. Можно немного выдохнуть.";
+      activeList.appendChild(empty);
+    }
+
+  }
+
+  function addTask() {
+    var input = document.getElementById("task-input");
+    if (!input) return;
+
+    var text = input.value.trim();
+    if (!text) {
+      input.focus();
+      return;
+    }
+
+    tasksStorage.addTaskForDate(getTargetDateKey(), text);
+    input.value = "";
+    renderTasks();
+    input.focus();
+  }
+
+  function formatTime(date) {
+    var h = String(date.getHours()).padStart(2, "0");
+    var m = String(date.getMinutes()).padStart(2, "0");
+    return h + ":" + m;
+  }
+
+  function initHeader() {
+    var now = new Date();
+    var greetingEl = document.getElementById("greeting");
+    var dateEl     = document.getElementById("date");
+    var statusTimeEl = document.getElementById("statusbar-time");
+
+    if (greetingEl) greetingEl.textContent = getGreeting(now.getHours());
+    if (dateEl)     dateEl.textContent     = formatDate(targetDate);
+    if (statusTimeEl) statusTimeEl.textContent = formatTime(now);
+
+    window.setInterval(function () {
+      var t = new Date();
+      if (greetingEl) greetingEl.textContent = getGreeting(t.getHours());
+      if (statusTimeEl) statusTimeEl.textContent = formatTime(t);
+    }, 60000);
+  }
+
+  function initContent() {
+    renderCalendar();
+    renderCongratulations(targetDate);
+  }
+
+  function setBirthdayWishOpen(card, emptyEl, wishEl, open) {
+    if (!card) return;
+
+    card.classList.toggle("card--birthday-wish-open", open);
+    card.setAttribute("aria-expanded", open ? "true" : "false");
+
+    if (emptyEl) emptyEl.hidden = open;
+    if (wishEl) wishEl.hidden = !open;
+
+    if (!open) {
+      var shareMenu = document.getElementById("bday-share-menu");
+      var shareBtn = document.getElementById("bday-empty-share-btn");
+      if (shareMenu) shareMenu.hidden = true;
+      if (shareBtn) shareBtn.setAttribute("aria-expanded", "false");
+    }
+  }
+
+  function setBirthdayEmptyMode(card, isEmpty) {
+    var row = document.getElementById("bday-row");
+    var emptyEl = document.getElementById("bday-empty");
+    var wishEl = document.getElementById("bday-wish");
+
+    if (!card) return;
+
+    if (isEmpty) {
+      if (row) row.hidden = true;
+      card.classList.add("card--birthday-empty");
+      card.setAttribute("role", "button");
+      card.tabIndex = 0;
+      card.setAttribute("aria-controls", "bday-wish");
+      setBirthdayWishOpen(card, emptyEl, wishEl, false);
+      return;
+    }
+
+    if (row) row.hidden = false;
+    if (emptyEl) emptyEl.hidden = true;
+    if (wishEl) wishEl.hidden = true;
+    card.classList.remove("card--birthday-empty", "card--birthday-wish-open");
+    card.setAttribute("role", "note");
+    card.removeAttribute("tabindex");
+    card.removeAttribute("aria-expanded");
+    card.removeAttribute("aria-controls");
+  }
+
+  function renderCongratulations(today) {
+    var card = document.getElementById("birthday-card");
+    var name = document.getElementById("birthday-name");
+    var when = document.getElementById("birthday-when");
+    var greetBtn = document.getElementById("greet-btn");
+    var modalTitle = document.getElementById("bday-modal-title-text");
+    var modalText = document.getElementById("bday-modal-text");
+    var emptyImage = document.getElementById("bday-empty-image");
+    var emptyText = document.querySelector(".bday__empty-text");
+    var todaysBirthdays = getTodaysBirthdays(today);
+    var ritualImages = [
+      "assets/congratulations/calm-window-light.jpg",
+      "assets/congratulations/calm-morning-walk.jpg",
+      "assets/congratulations/calm-sea-silhouette.jpg",
+      "assets/congratulations/calm-sunbeams.jpg"
+    ];
+
+    if (!card) return;
+
+    card.hidden = false;
+
+    if (emptyImage) {
+      var dayIndex = Math.floor(
+        Date.UTC(today.getFullYear(), today.getMonth(), today.getDate()) / 86400000
+      );
+      emptyImage.src = ritualImages[Math.abs(dayIndex) % ritualImages.length];
+    }
+
+    if (!todaysBirthdays.length) {
+      if (emptyText) {
+        emptyText.innerHTML = isCurrentDate(today)
+          ? "Сегодня нет поводов<br>для поздравлений."
+          : "В этот день нет поводов<br>для поздравлений.";
+      }
+      setBirthdayEmptyMode(card, true);
+      if (greetBtn) greetBtn.hidden = true;
+      return;
+    }
+
+    setBirthdayEmptyMode(card, false);
+
+    var personName = typeof todaysBirthdays[0].name === "string" && todaysBirthdays[0].name.trim()
+      ? todaysBirthdays[0].name.trim()
+      : "—";
+
+    if (name) name.textContent = personName;
+    if (when) when.textContent = isCurrentDate(today) ? "сегодня" : "в этот день";
+    if (greetBtn) greetBtn.hidden = false;
+    if (modalTitle) modalTitle.innerHTML = "С днём рождения,<br>" + personName + "!";
+    if (modalText) {
+      modalText.textContent =
+        "Желаю здоровья, душевного тепла, радостных событий и как можно больше поводов улыбаться!";
+    }
+  }
+
+  function initBirthdayEmptyCard() {
+    var card = document.getElementById("birthday-card");
+    var emptyEl = document.getElementById("bday-empty");
+    var wishEl = document.getElementById("bday-wish");
+    var wishInput = document.getElementById("bday-wish-input");
+    var copyBtn = document.getElementById("bday-empty-copy-btn");
+    var shareBtn = document.getElementById("bday-empty-share-btn");
+    var shareMenu = document.getElementById("bday-share-menu");
+    var statusEl = document.getElementById("bday-wish-status");
+    var statusTimer = null;
+    var DEFAULT_WISH =
+      "Пусть сегодняшний день принесёт хотя бы одну приятную неожиданность.";
+
+    if (!card || !emptyEl || !wishEl) return;
+
+    function getWishText() {
+      var title = "Доброго дня!";
+      var body = wishInput && typeof wishInput.value === "string"
+        ? wishInput.value.trim()
+        : DEFAULT_WISH;
+      return body ? title + "\n\n" + body : title;
+    }
+
+    function showStatus(message) {
+      if (!statusEl) return;
+      statusEl.textContent = message;
+      statusEl.classList.add("is-visible");
+      if (statusTimer) window.clearTimeout(statusTimer);
+      statusTimer = window.setTimeout(function () {
+        statusEl.classList.remove("is-visible");
+        statusEl.textContent = "";
+      }, 2200);
+    }
+
+    function copyText(text, successMessage) {
+      var message = successMessage || "Скопировано";
+
+      function fallbackCopy() {
+        var area = document.createElement("textarea");
+        area.value = text;
+        area.setAttribute("readonly", "");
+        area.style.position = "fixed";
+        area.style.left = "-9999px";
+        document.body.appendChild(area);
+        area.select();
+        try {
+          document.execCommand("copy");
+          showStatus(message);
+        } catch (err) {
+          showStatus("Не удалось скопировать");
+        }
+        document.body.removeChild(area);
+      }
+
+      if (navigator.clipboard && navigator.clipboard.writeText) {
+        navigator.clipboard.writeText(text).then(function () {
+          showStatus(message);
+        }).catch(function () {
+          fallbackCopy();
+        });
+        return;
+      }
+
+      fallbackCopy();
+    }
+
+    function setShareMenuOpen(open) {
+      if (shareMenu) shareMenu.hidden = !open;
+      if (shareBtn) shareBtn.setAttribute("aria-expanded", open ? "true" : "false");
+    }
+
+    function closeWish() {
+      setShareMenuOpen(false);
+      setBirthdayWishOpen(card, emptyEl, wishEl, false);
+    }
+
+    function openWish() {
+      if (wishInput && !wishInput.value.trim()) {
+        wishInput.value = DEFAULT_WISH;
+      }
+      setShareMenuOpen(false);
+      setBirthdayWishOpen(card, emptyEl, wishEl, true);
+    }
+
+    function toggleWish() {
+      if (!card.classList.contains("card--birthday-empty")) return;
+      var isOpen = card.getAttribute("aria-expanded") === "true";
+      if (isOpen) {
+        closeWish();
+      } else {
+        openWish();
+      }
+    }
+
+    function isInteractiveTarget(target) {
+      if (!target || !target.closest) return false;
+      return Boolean(
+        target.closest(".bday__wish-input") ||
+        target.closest(".bday__wish-links") ||
+        target.closest(".bday__share-menu") ||
+        target.closest(".bday__wish-status")
+      );
+    }
+
+    function shareViaTelegram(text) {
+      var url = "https://t.me/share/url?text=" + encodeURIComponent(text);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function shareViaWhatsApp(text) {
+      var url = "https://wa.me/?text=" + encodeURIComponent(text);
+      window.open(url, "_blank", "noopener,noreferrer");
+    }
+
+    function shareViaNative(text) {
+      if (navigator.share) {
+        navigator.share({ text: text }).catch(function () {});
+        return;
+      }
+
+      copyText(
+        text,
+        "Текст скопирован — вставьте его в MAX или другой мессенджер"
+      );
+    }
+
+    card.addEventListener("click", function (event) {
+      if (!card.classList.contains("card--birthday-empty")) return;
+      if (isInteractiveTarget(event.target)) return;
+      toggleWish();
+    });
+
+    card.addEventListener("keydown", function (event) {
+      if (!card.classList.contains("card--birthday-empty")) return;
+
+      if (event.key === "Escape" && card.getAttribute("aria-expanded") === "true") {
+        event.preventDefault();
+        if (shareMenu && !shareMenu.hidden) {
+          setShareMenuOpen(false);
+          return;
+        }
+        closeWish();
+        return;
+      }
+
+      if (isInteractiveTarget(event.target)) return;
+
+      if (event.key === "Enter" || event.key === " ") {
+        event.preventDefault();
+        toggleWish();
+      }
+    });
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        var original = copyBtn.textContent;
+        copyText(getWishText(), "Скопировано");
+        copyBtn.textContent = "Скопировано";
+        window.setTimeout(function () {
+          copyBtn.textContent = original;
+        }, 2000);
+      });
+    }
+
+    if (shareBtn && shareMenu) {
+      shareBtn.addEventListener("click", function (event) {
+        event.stopPropagation();
+        setShareMenuOpen(shareMenu.hidden);
+      });
+
+      shareMenu.addEventListener("click", function (event) {
+        event.stopPropagation();
+        var option = event.target && event.target.closest
+          ? event.target.closest("[data-share]")
+          : null;
+        if (!option) return;
+
+        var type = option.getAttribute("data-share");
+        var text = getWishText();
+
+        if (type === "telegram") {
+          shareViaTelegram(text);
+        } else if (type === "whatsapp") {
+          shareViaWhatsApp(text);
+        } else if (type === "native") {
+          shareViaNative(text);
+        } else if (type === "copy") {
+          copyText(text, "Скопировано");
+        }
+
+        setShareMenuOpen(false);
+      });
+    }
+  }
+
+  function initButtons() {
+    var addBtn = document.getElementById("add-task-btn");
+    var taskInput = document.getElementById("task-input");
+    var completedToggle = document.getElementById("completed-toggle");
+    var completedList = document.getElementById("completed-tasks-list");
+
+    if (addBtn) addBtn.addEventListener("click", addTask);
+
+    if (taskInput) {
+      taskInput.addEventListener("keydown", function (event) {
+        if (event.key === "Enter") addTask();
+      });
+    }
+
+    if (completedToggle && completedList) {
+      completedToggle.addEventListener("click", function () {
+        completedList.hidden = !completedList.hidden;
+      });
+    }
+
+    document.addEventListener("click", function (event) {
+      if (event.target && event.target.closest && event.target.closest(".task__menu")) {
+        return;
+      }
+      closeAllTaskMenus();
+    });
+
+    document.addEventListener("keydown", function (event) {
+      if (event.key === "Escape") {
+        closeAllTaskMenus();
+      }
+    });
+  }
+
+  function initModal() {
+    var overlay   = document.getElementById("bday-modal");
+    var backdrop  = document.getElementById("bday-modal-backdrop");
+    var closeBtn  = document.getElementById("bday-modal-close");
+    var copyBtn   = document.getElementById("bday-copy-btn");
+    var shareBtn  = document.getElementById("bday-share-btn");
+    var greetBtn  = document.getElementById("greet-btn");
+    var modalText = document.getElementById("bday-modal-text");
+
+    if (!overlay) return;
+
+    function getGreetingText() {
+      var title = document.getElementById("bday-modal-title-text");
+      var text = document.getElementById("bday-modal-text");
+      return (title ? title.textContent : "С днём рождения!") + "\n\n" +
+        (text ? text.textContent : "");
+    }
+
+    function openModal() {
+      overlay.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+
+    function closeModal() {
+      overlay.hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    if (greetBtn)  greetBtn.addEventListener("click",   openModal);
+    if (closeBtn)  closeBtn.addEventListener("click",   closeModal);
+    if (backdrop)  backdrop.addEventListener("click",   closeModal);
+
+    document.addEventListener("keydown", function (e) {
+      if (e.key === "Escape" && !overlay.hidden) closeModal();
+    });
+
+    if (copyBtn) {
+      copyBtn.addEventListener("click", function () {
+        var original = copyBtn.textContent;
+        try {
+          navigator.clipboard.writeText(getGreetingText()).then(function () {
+            copyBtn.textContent = "Скопировано!";
+            window.setTimeout(function () { copyBtn.textContent = original; }, 2000);
+          });
+        } catch (err) {
+          copyBtn.textContent = "Скопировано!";
+          window.setTimeout(function () { copyBtn.textContent = original; }, 2000);
+        }
+      });
+    }
+
+    if (shareBtn) {
+      shareBtn.addEventListener("click", function () {
+        if (navigator.share) {
+          navigator.share({ text: getGreetingText() });
+        } else {
+          var original = shareBtn.textContent;
+          try {
+            navigator.clipboard.writeText(getGreetingText()).then(function () {
+              shareBtn.textContent = "Скопировано!";
+              window.setTimeout(function () { shareBtn.textContent = original; }, 2000);
+            });
+          } catch (err) {
+            shareBtn.textContent = "Скопировано!";
+            window.setTimeout(function () { shareBtn.textContent = original; }, 2000);
+          }
+        }
+      });
+    }
+  }
+
+  function loadTasksStorage(callback) {
+    if (window.MyDayTasksStorage) {
+      tasksStorage = window.MyDayTasksStorage;
+      callback();
+      return;
+    }
+
+    var script = document.querySelector("script[data-my-day-tasks-storage]");
+    if (!script) {
+      script = document.createElement("script");
+      script.src = "js/tasks-storage.js";
+      script.dataset.myDayTasksStorage = "true";
+    }
+
+    script.addEventListener("load", function () {
+      tasksStorage = window.MyDayTasksStorage;
+      callback();
+    });
+
+    if (!script.parentNode) {
+      document.head.appendChild(script);
+    }
+  }
+
+  function init() {
+    initHeader();
+    renderTasks();
+    initContent();
+    initButtons();
+    initBirthdayEmptyCard();
+    initModal();
+  }
+
+  function initWhenStorageReady() {
+    loadTasksStorage(init);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", initWhenStorageReady);
+  } else {
+    initWhenStorageReady();
+  }
 })();
