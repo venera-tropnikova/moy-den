@@ -1,0 +1,9 @@
+pic/verify-*/
+.ai-pos/
+.ai/HANDOFF.md
+.cursor/agents/
+bridge_log.jsonl
+cursor-result.md
+.venv/
+__pycache__/
+*.pyc
