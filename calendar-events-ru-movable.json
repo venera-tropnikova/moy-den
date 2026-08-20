@@ -1,0 +1,41 @@
+{
+  "country": "RU",
+  "locale": "ru-RU",
+  "version": 1,
+  "base": "orthodox-easter",
+  "notes": [
+    "Переходящие даты не привязаны к одному году.",
+    "Сначала вычисляется православная Пасха выбранного года, затем применяется смещение в днях.",
+    "Масленичная неделя: Пасха минус 55 дней … Пасха минус 49 дней."
+  ],
+  "events": [
+    {
+      "id": "ru-maslenitsa-week",
+      "key": "maslenitsa-week",
+      "title": "Масленичная неделя",
+      "type": "religious-date",
+      "label": "Церковный праздник",
+      "icon": "•",
+      "offsetDaysStart": -55,
+      "offsetDaysEnd": -49,
+      "description": "Масленичная неделя перед Великим постом. В народной традиции это время встреч, угощений и блинов. Даты меняются каждый год и зависят от православной Пасхи.",
+      "summary": "Перед Великим постом пекут блины, ходят в гости и провожают зиму.",
+      "image": "assets/holidays/maslenitsa.jpg",
+      "shortTitle": "Масленица",
+      "imageSource": "Wikimedia Commons"
+    },
+    {
+      "id": "ru-palm-sunday",
+      "key": "palm-sunday",
+      "title": "Вербное воскресенье",
+      "type": "religious-date",
+      "label": "Церковный праздник",
+      "icon": "•",
+      "offsetDays": -7,
+      "description": "Православный праздник Входа Господня в Иерусалим. Его отмечают за неделю до Пасхи, поэтому дата меняется каждый год.",
+      "summary": "За неделю до Пасхи вспоминают вход Христа в Иерусалим и освящают вербу.",
+      "image": "assets/holidays/palm-sunday.jpg",
+      "imageSource": "Wikimedia Commons"
+    }
+  ]
+}

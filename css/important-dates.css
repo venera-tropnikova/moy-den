@@ -1,0 +1,311 @@
+/* =========================================================
+   Мой день — важные даты
+   ========================================================= */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --bg:          #F9F6F2;
+  --card:        #FFFFFF;
+  --hero-bg:     #ECE6DD;
+  --accent:      #5E7A6E;
+  --ink:         #191512;
+  --ink-mid:     #7A706A;
+  --ink-faint:   #BDB7B0;
+  --divider:     #EDE8E3;
+  --shadow:      0 2px 20px rgba(25, 21, 18, 0.07);
+  --shadow-xs:   0 1px 8px rgba(25, 21, 18, 0.05);
+
+  --serif: Georgia, "Times New Roman", serif;
+  --sans:  -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+
+  --r-lg: 20px;
+}
+
+html, body {
+  overflow-x: hidden;
+}
+
+html {
+  background: var(--bg);
+  color: var(--ink);
+  font-family: var(--sans);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+button,
+input,
+select {
+  font-family: inherit;
+}
+
+button {
+  cursor: pointer;
+}
+
+.screen {
+  width: min(100%, 430px);
+  margin-inline: auto;
+  min-height: 100dvh;
+  background: var(--bg);
+}
+
+.statusbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px 24px 0;
+  background: var(--hero-bg);
+}
+
+.statusbar__time {
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--ink-mid);
+}
+
+.statusbar__icons {
+  display: flex;
+  gap: 4px;
+  font-size: 0.6rem;
+  color: var(--ink-mid);
+}
+
+.dates-screen {
+  padding-bottom: 28px;
+}
+
+.dates-hero {
+  background: var(--hero-bg);
+  padding: 24px 24px 30px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  min-height: 44px;
+  margin-bottom: 26px;
+  padding: 0 14px 0 12px;
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.72);
+  color: var(--ink-mid);
+  box-shadow: var(--shadow-xs);
+  font-size: 0.88rem;
+  font-weight: 600;
+}
+
+.dates-hero__eyebrow {
+  margin-bottom: 8px;
+  color: var(--ink-mid);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.dates-hero__title {
+  font-family: var(--serif);
+  font-size: clamp(1.85rem, 8vw, 2.35rem);
+  font-weight: 400;
+  line-height: 1.05;
+  color: var(--ink);
+  letter-spacing: -0.02em;
+}
+
+.dates-section {
+  margin: 14px 16px 0;
+  padding: 20px;
+  border-radius: var(--r-lg);
+  background: var(--card);
+  box-shadow: var(--shadow);
+}
+
+.dates-section__title {
+  margin-bottom: 14px;
+  color: var(--ink);
+  font-size: 1.05rem;
+  font-weight: 600;
+  line-height: 1.2;
+}
+
+.dates-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+}
+
+.dates-field {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.dates-field__label {
+  color: var(--ink-mid);
+  font-size: 0.82rem;
+  font-weight: 600;
+}
+
+.dates-field__hint {
+  color: var(--ink-faint);
+  font-size: 0.74rem;
+  font-weight: 500;
+}
+
+.dates-fieldset {
+  border: none;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.dates-radio {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  min-height: 28px;
+  color: var(--ink);
+  font-size: 0.94rem;
+}
+
+.dates-date-row {
+  display: grid;
+  grid-template-columns: 0.9fr 1.4fr;
+  gap: 10px;
+}
+
+.dates-date-row__item {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  min-width: 0;
+}
+
+.dates-input {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid var(--divider);
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+  font-size: 0.94rem;
+  padding: 0 14px;
+  outline: none;
+}
+
+.dates-input:focus {
+  border-color: var(--accent);
+}
+
+.dates-form__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.dates-primary-btn,
+.dates-cancel-btn {
+  min-height: 44px;
+  border-radius: 999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.dates-primary-btn {
+  border: 1px solid var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+.dates-primary-btn#show-date-form {
+  width: 100%;
+  margin-top: 14px;
+}
+
+.dates-cancel-btn {
+  border: 1px solid var(--divider);
+  background: #fff;
+  color: var(--ink-mid);
+}
+
+.dates-form__status,
+.dates-empty {
+  color: var(--ink-mid);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.dates-form__status {
+  min-height: 1.3em;
+}
+
+.dates-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  list-style: none;
+}
+
+.dates-item {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 16px;
+  padding-bottom: 12px;
+  border-bottom: 1px solid var(--divider);
+}
+
+.dates-item:last-child {
+  padding-bottom: 0;
+  border-bottom: none;
+}
+
+.dates-item__title {
+  color: var(--ink);
+  font-size: 0.96rem;
+  line-height: 1.35;
+}
+
+.dates-item__meta {
+  margin-top: 2px;
+  color: var(--ink-mid);
+  font-size: 0.82rem;
+  line-height: 1.4;
+}
+
+.dates-item__actions {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 8px;
+  flex-shrink: 0;
+}
+
+.dates-edit-btn,
+.dates-delete-btn {
+  border: none;
+  background: none;
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+.dates-edit-btn {
+  color: var(--accent);
+}
+
+.dates-delete-btn {
+  color: var(--ink-faint);
+}

@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Важные даты — Мой день</title>
+  <link rel="stylesheet" href="css/important-dates.css">
+</head>
+<body>
+
+  <div class="screen">
+
+    <div class="statusbar" aria-hidden="true">
+      <span class="statusbar__icons">
+        <span>▪</span><span>▪</span><span>▪</span>
+      </span>
+      <span class="statusbar__time" id="statusbar-time">09:41</span>
+    </div>
+
+    <main class="dates-screen" aria-labelledby="dates-title">
+
+      <header class="dates-hero">
+        <a class="back-btn" href="profile.html" aria-label="Вернуться в настройки">
+          <svg width="20" height="20" viewBox="0 0 20 20" fill="none"
+               stroke="currentColor" stroke-width="1.7"
+               stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+            <polyline points="12 4 6 10 12 16"/>
+          </svg>
+          <span>Назад</span>
+        </a>
+
+        <p class="dates-hero__eyebrow">Памятные дни</p>
+        <h1 class="dates-hero__title" id="dates-title">Важные даты</h1>
+      </header>
+
+      <section class="dates-section" id="dates-list-section" aria-labelledby="dates-list-title">
+        <h2 class="dates-section__title" id="dates-list-title">Список</h2>
+        <p class="dates-empty" id="dates-empty">Пока важных дат нет</p>
+        <ul class="dates-list" id="dates-list" role="list"></ul>
+        <button class="dates-primary-btn" type="button" id="show-date-form">
+          + Добавить дату
+        </button>
+      </section>
+
+      <section class="dates-section" id="date-form-section" aria-labelledby="date-form-title" hidden>
+        <h2 class="dates-section__title" id="date-form-title">Добавить событие</h2>
+
+        <form class="dates-form" id="date-form">
+          <label class="dates-field" for="date-title">
+            <span class="dates-field__label">Название события</span>
+            <input
+              class="dates-input"
+              id="date-title"
+              name="title"
+              type="text"
+              maxlength="120"
+              autocomplete="off"
+              placeholder="Например, Годовщина свадьбы"
+            >
+          </label>
+
+          <fieldset class="dates-fieldset">
+            <legend class="dates-field__label">Тип</legend>
+            <label class="dates-radio">
+              <input type="radio" name="yearly" id="date-yearly" value="yearly" checked>
+              <span>Ежегодное</span>
+            </label>
+            <label class="dates-radio">
+              <input type="radio" name="yearly" id="date-once" value="once">
+              <span>Один раз</span>
+            </label>
+          </fieldset>
+
+          <div class="dates-field" id="yearly-date-fields">
+            <span class="dates-field__label" id="yearly-date-label">День и месяц</span>
+            <div class="dates-date-row">
+              <label class="dates-date-row__item" for="date-day">
+                <span class="dates-field__hint">День</span>
+                <input
+                  class="dates-input"
+                  id="date-day"
+                  name="day"
+                  type="number"
+                  min="1"
+                  max="31"
+                  inputmode="numeric"
+                  placeholder="12"
+                >
+              </label>
+              <label class="dates-date-row__item" for="date-month">
+                <span class="dates-field__hint">Месяц</span>
+                <select class="dates-input" id="date-month" name="month">
+                  <option value="">Месяц</option>
+                  <option value="1">Январь</option>
+                  <option value="2">Февраль</option>
+                  <option value="3">Март</option>
+                  <option value="4">Апрель</option>
+                  <option value="5">Май</option>
+                  <option value="6">Июнь</option>
+                  <option value="7">Июль</option>
+                  <option value="8">Август</option>
+                  <option value="9">Сентябрь</option>
+                  <option value="10">Октябрь</option>
+                  <option value="11">Ноябрь</option>
+                  <option value="12">Декабрь</option>
+                </select>
+              </label>
+            </div>
+          </div>
+
+          <label class="dates-field" for="date-full" id="once-date-field" hidden>
+            <span class="dates-field__label">Дата</span>
+            <input class="dates-input" id="date-full" name="fullDate" type="date">
+          </label>
+
+          <label class="dates-field" for="date-category">
+            <span class="dates-field__label">Категория</span>
+            <select class="dates-input" id="date-category" name="category">
+              <option value="семья">Семья</option>
+              <option value="работа">Работа</option>
+              <option value="личное">Личное</option>
+              <option value="учёба">Учёба</option>
+              <option value="путешествия">Путешествия</option>
+              <option value="другое">Другое</option>
+            </select>
+          </label>
+
+          <label class="dates-field" for="date-reminder">
+            <span class="dates-field__label">Напоминание</span>
+            <select class="dates-input" id="date-reminder" name="reminder">
+              <option value="">Без напоминания</option>
+              <option value="in-day">В этот день</option>
+              <option value="day-before">За день</option>
+              <option value="week-before">За неделю</option>
+            </select>
+          </label>
+
+          <div class="dates-form__actions">
+            <button class="dates-primary-btn" type="submit" id="date-submit-btn">Сохранить</button>
+            <button class="dates-cancel-btn" type="button" id="date-cancel-btn">Отмена</button>
+          </div>
+          <p class="dates-form__status" id="date-status" aria-live="polite"></p>
+        </form>
+      </section>
+
+    </main>
+
+  </div>
+
+  <script src="js/important-dates-storage.js"></script>
+  <script src="js/important-dates.js"></script>
+</body>
+</html>

@@ -1,0 +1,13 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 240 320" role="img" aria-label="День защитника Отечества">
+  <rect width="240" height="320" fill="#efe6d6"/>
+  <g transform="translate(120 112)">
+    <polygon
+      points="0,-70 21,-22 72,-22 30,8 46,58 0,30 -46,58 -30,8 -72,-22 -21,-22"
+      fill="#c62828"/>
+  </g>
+  <rect x="28" y="214" width="184" height="18" fill="#1a1a1a"/>
+  <rect x="28" y="232" width="184" height="18" fill="#e08a1e"/>
+  <rect x="28" y="250" width="184" height="18" fill="#1a1a1a"/>
+  <rect x="28" y="268" width="184" height="18" fill="#e08a1e"/>
+  <rect x="28" y="286" width="184" height="18" fill="#1a1a1a"/>
+</svg>
