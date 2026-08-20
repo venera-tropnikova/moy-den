@@ -2258,6 +2258,7 @@
         ],
         "image": "assets/history/ivan-coronation-1547.jpg",
         "imageAlt": "Иван IV Грозный на картине Васнецова",
+        "imagePosition": "58% 5%",
         "editorialRank": 1
       }
     ],
@@ -4597,7 +4598,7 @@
           }
         ],
         "image": "assets/history/miracle-on-ice-1980.jpg",
-        "imageAlt": "Ледовая арена Олимпиады в Лейк-Плэсиде, 1980"
+        "imageAlt": "Хоккейный матч США — СССР на Олимпиаде в Лейк-Плэсиде, 1980"
       }
     ],
     "02-23": [
@@ -11688,7 +11689,7 @@
           }
         ],
         "image": "assets/history/valdivia-1960.jpg",
-        "imageAlt": "Разрушения после землетрясения в Чили, 1960"
+        "imageAlt": "Разрушенная Вальдивия после землетрясения 22 мая 1960 года"
       },
       {
         "id": "world-1972-ceylon-sri-lanka",
@@ -12138,7 +12139,8 @@
           }
         ],
         "image": "assets/history/amnesty-1961.jpg",
-        "imageAlt": "Памятник Amnesty International: свеча на постаменте"
+        "imageAlt": "Памятник Amnesty International: свеча на постаменте",
+        "imagePosition": "50% 20%"
       },
       {
         "id": "world-1830-indian-removal-act",
@@ -15525,8 +15527,8 @@
             "name": "HISTORY"
           }
         ],
-        "image": "assets/history/kursk.svg",
-        "imageAlt": "Карта плана операции «Цитадель» и расстановки сил у Курска, 1943",
+        "image": "assets/history/kursk-ponyri-1943.jpg",
+        "imageAlt": "Илья Власенко и Константин Симонов у Понырей во время Курской битвы, 1943",
         "editorialRank": 1
       }
     ],
@@ -18950,8 +18952,9 @@
             "shortTitle": "Wikimedia Commons"
           }
         ],
-        "image": "assets/history/battle-novi-1799.jpg",
-        "imageAlt": "Сражение при Нови, картина Александра Коцебу",
+        "image": "assets/history/suvorov-schmidt-1800.jpg",
+        "imageAlt": "Портрет Александра Суворова работы И. Г. Шмидта, 1800",
+        "imagePosition": "52% 8%",
         "editorialRank": 1
       },
       {
@@ -19303,7 +19306,7 @@
           }
         ],
         "image": "assets/history/belka-strelka-museum.jpg",
-        "imageAlt": "Белка — одна из собак, вернувшихся с орбиты в августе 1960",
+        "imageAlt": "Чучела Белки и Стрелки в экспозиции Мемориального музея космонавтики",
         "editorialRank": 1
       },
       {
@@ -20223,7 +20226,8 @@
           }
         ],
         "image": "assets/history/moscow-washington-hotline.jpg",
-        "imageAlt": "Терминал «горячей линии» Москва—Вашингтон в Белом доме"
+        "imageAlt": "Терминал «горячей линии» Москва—Вашингтон в Белом доме",
+        "imagePosition": "40% 12%"
       },
       {
         "id": "world-1835-melbourne-founded",
@@ -24218,7 +24222,9 @@
             "url": "https://www.rmg.co.uk/collections/objects/rmgc-object-14920",
             "name": "Royal Museums Greenwich"
           }
-        ]
+        ],
+        "image": "assets/history/trafalgar-turner-1822.jpg",
+        "imageAlt": "Картина Уильяма Тёрнера «Трафальгарская битва», 1822"
       },
       {
         "body": "",
@@ -29290,8 +29296,9 @@
             "shortTitle": "Slavic Review"
           }
         ],
-        "image": "assets/history/peter-new-year-decree-1699.jpg",
-        "imageAlt": "Страница указа Петра I о новом летосчислении и праздновании Нового года",
+        "image": "assets/history/peter-kneller-1698.jpg",
+        "imageAlt": "Портрет Петра I работы Годфри Неллера, 1698",
+        "imagePosition": "50% 5%",
         "editorialRank": 1
       }
     ],
