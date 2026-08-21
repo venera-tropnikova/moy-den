@@ -567,76 +567,6 @@
     return targetDate;
   }
 
-  function getNextCalendarEventAfter(previewDate) {
-    if (!(previewDate instanceof Date) || isNaN(previewDate.getTime())) return null;
-    if (
-      !window.MyDayHolidays ||
-      typeof window.MyDayHolidays.getCalendarEvents !== "function"
-    ) {
-      return null;
-    }
-
-    var year = previewDate.getFullYear();
-    var midnightTime = new Date(
-      year,
-      previewDate.getMonth(),
-      previewDate.getDate()
-    ).getTime();
-
-    var events = []
-      .concat(window.MyDayHolidays.getCalendarEvents(year) || [])
-      .concat(window.MyDayHolidays.getCalendarEvents(year + 1) || []);
-
-    var upcoming = [];
-    var i;
-    var event;
-    var startTime;
-
-    for (i = 0; i < events.length; i += 1) {
-      event = events[i];
-      if (!event) continue;
-      if (
-        typeof event.year !== "number" ||
-        typeof event.month !== "number" ||
-        typeof event.day !== "number"
-      ) {
-        continue;
-      }
-
-      startTime = new Date(event.year, event.month, event.day).getTime();
-      if (isNaN(startTime) || startTime <= midnightTime) continue;
-      upcoming.push(event);
-    }
-
-    if (!upcoming.length) return null;
-
-    var earliestTime = Infinity;
-    for (i = 0; i < upcoming.length; i += 1) {
-      startTime = new Date(
-        upcoming[i].year,
-        upcoming[i].month,
-        upcoming[i].day
-      ).getTime();
-      if (startTime < earliestTime) earliestTime = startTime;
-    }
-
-    var onEarliest = [];
-    for (i = 0; i < upcoming.length; i += 1) {
-      startTime = new Date(
-        upcoming[i].year,
-        upcoming[i].month,
-        upcoming[i].day
-      ).getTime();
-      if (startTime === earliestTime) onEarliest.push(upcoming[i]);
-    }
-
-    for (i = 0; i < onEarliest.length; i += 1) {
-      if (onEarliest[i].type === "official-holiday") return onEarliest[i];
-    }
-
-    return onEarliest[0] || null;
-  }
-
   function renderCalendar() {
     var container = document.getElementById("calendar-content");
     if (!container) return;
@@ -670,39 +600,6 @@
         ? "Сегодня праздников и значимых дат нет"
         : "В этот день праздников и значимых дат нет";
       emptyState.appendChild(empty);
-
-      var nextEvent = getNextCalendarEventAfter(previewDate);
-      if (nextEvent) {
-        var next = document.createElement("p");
-        next.className = "calendar__next";
-
-        var nextLabel = document.createElement("span");
-        nextLabel.className = "calendar__next-label";
-        nextLabel.textContent = "Ближайшая дата";
-        next.appendChild(nextLabel);
-
-        var nextWhen = document.createElement("span");
-        nextWhen.className = "calendar__next-when";
-        nextWhen.textContent = formatCalendarCardDate(
-          new Date(nextEvent.year, nextEvent.month, nextEvent.day)
-        );
-        next.appendChild(nextWhen);
-
-        var nextTitle = document.createElement("span");
-        nextTitle.className = "calendar__next-title";
-        var nextShort =
-          typeof nextEvent.shortTitle === "string" && nextEvent.shortTitle.trim()
-            ? nextEvent.shortTitle.trim()
-            : "";
-        var nextFull =
-          typeof nextEvent.title === "string" && nextEvent.title.trim()
-            ? nextEvent.title.trim()
-            : "";
-        nextTitle.textContent = nextShort || nextFull;
-        next.appendChild(nextTitle);
-
-        emptyState.appendChild(next);
-      }
 
       container.appendChild(emptyState);
       return;
