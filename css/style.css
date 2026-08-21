@@ -76,6 +76,55 @@ input  { font-family: inherit; }
   position: relative;
 }
 
+.app-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.app-scene__image {
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg);
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.app-scene__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      165deg,
+      rgba(255, 248, 238, 0.34) 0%,
+      transparent 42%
+    ),
+    linear-gradient(
+      180deg,
+      rgba(244, 240, 234, 0.62) 0%,
+      rgba(244, 240, 234, 0.48) 26%,
+      rgba(244, 240, 234, 0.58) 58%,
+      rgba(244, 240, 234, 0.74) 100%
+    );
+}
+
+.screen--has-scene > *:not(.app-scene):not(.weather-atmosphere) {
+  position: relative;
+  z-index: 1;
+}
+
+.screen--has-scene .statusbar,
+.screen--has-scene .hero {
+  background: transparent;
+}
+
+.screen--has-scene .scroll-area {
+  background: transparent;
+}
+
 /* ─── Строка состояния ───────────────────────────────── */
 
 .statusbar {

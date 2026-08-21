@@ -1383,6 +1383,9 @@
   }
 
   function init() {
+    if (window.MyDaySceneBackground) {
+      window.MyDaySceneBackground.applyToScreen(document.querySelector(".screen"));
+    }
     initHeader();
     renderTasks();
     initContent();

@@ -29,7 +29,7 @@
   opacity: 0;
 }
 
-.screen > :not(.weather-atmosphere) {
+.screen > :not(.weather-atmosphere):not(.app-scene) {
   position: relative;
   z-index: 2;
 }

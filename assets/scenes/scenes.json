@@ -1,0 +1,53 @@
+{
+  "version": 1,
+  "storageKey": "my-day-background-scene-v1",
+  "defaultSceneId": "daisy-morning",
+  "manualScenes": [
+    {
+      "id": "daisy-morning",
+      "title": "Ромашковое утро",
+      "image": "assets/scenes/daisy-morning.jpg"
+    },
+    {
+      "id": "forest-after-rain",
+      "title": "Лес после дождя",
+      "image": "assets/scenes/forest-after-rain.jpg"
+    },
+    {
+      "id": "mountain-morning",
+      "title": "Горное утро",
+      "image": "assets/scenes/mountain-morning.jpg"
+    },
+    {
+      "id": "sea-breeze",
+      "title": "Морской бриз",
+      "image": "assets/scenes/sea-breeze.jpg"
+    }
+  ],
+  "weatherScenes": [
+    {
+      "id": "weather-clear",
+      "title": "Ясно",
+      "image": "",
+      "enabled": false
+    },
+    {
+      "id": "weather-cloudy",
+      "title": "Облачно",
+      "image": "",
+      "enabled": false
+    },
+    {
+      "id": "weather-rain",
+      "title": "Дождь",
+      "image": "",
+      "enabled": false
+    },
+    {
+      "id": "weather-snow",
+      "title": "Снег",
+      "image": "",
+      "enabled": false
+    }
+  ]
+}

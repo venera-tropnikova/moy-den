@@ -58,6 +58,48 @@ button {
   margin-inline: auto;
   min-height: 100dvh;
   background: var(--bg);
+  position: relative;
+  overflow: hidden;
+}
+
+.app-scene {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.app-scene__image {
+  position: absolute;
+  inset: 0;
+  background-color: var(--bg);
+  background-size: cover;
+  background-position: center;
+  transform: scale(1.02);
+}
+
+.app-scene__veil {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(
+      180deg,
+      rgba(249, 246, 242, 0.78) 0%,
+      rgba(249, 246, 242, 0.68) 40%,
+      rgba(249, 246, 242, 0.82) 100%
+    ),
+    rgba(255, 255, 255, 0.2);
+}
+
+.screen--has-scene > *:not(.app-scene) {
+  position: relative;
+  z-index: 1;
+}
+
+.screen--has-scene .statusbar,
+.screen--has-scene .profile-hero {
+  background: transparent;
 }
 
 .statusbar {
@@ -140,6 +182,13 @@ button {
   line-height: 1.2;
 }
 
+.profile-section__hint {
+  margin: -6px 0 14px;
+  color: var(--ink-mid);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
 .profile-form {
   display: flex;
   flex-direction: column;
@@ -190,6 +239,75 @@ button {
   color: var(--ink-mid);
   font-size: 0.84rem;
   line-height: 1.4;
+}
+
+.scene-picker__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.scene-picker__card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 8px;
+  border: 1.5px solid var(--divider);
+  border-radius: 16px;
+  background: #fff;
+  text-align: left;
+  cursor: pointer;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.scene-picker__card:hover {
+  border-color: color-mix(in srgb, var(--accent) 45%, var(--divider));
+}
+
+.scene-picker__card.is-selected {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--accent) 35%, transparent);
+}
+
+.scene-picker__preview {
+  display: block;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 12px;
+  background-color: var(--hero-bg);
+  background-size: cover;
+  background-position: center;
+}
+
+.scene-picker__title {
+  color: var(--ink);
+  font-size: 0.78rem;
+  font-weight: 600;
+  line-height: 1.25;
+  padding: 0 2px 2px;
+}
+
+.scene-picker__check {
+  position: absolute;
+  top: 14px;
+  right: 14px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.72rem;
+  line-height: 22px;
+  text-align: center;
+  opacity: 0;
+  transform: scale(0.85);
+  transition: opacity 0.15s ease, transform 0.15s ease;
+}
+
+.scene-picker__card.is-selected .scene-picker__check {
+  opacity: 1;
+  transform: scale(1);
 }
 
 .profile-link-card {

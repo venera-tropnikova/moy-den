@@ -117,6 +117,13 @@
     });
   }
 
+  function initScenePicker() {
+    var picker = document.getElementById("scene-picker");
+    if (!picker || !window.MyDaySceneBackground) return;
+    window.MyDaySceneBackground.applyToScreen(document.querySelector(".screen"));
+    window.MyDaySceneBackground.renderPicker(picker);
+  }
+
   function initStatusbarTime() {
     var time = document.getElementById("statusbar-time");
     if (!time) return;
@@ -132,6 +139,7 @@
     var settings = loadSettings();
     fillForm(settings);
     initForm();
+    initScenePicker();
     initStatusbarTime();
   }
 
