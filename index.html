@@ -19,7 +19,7 @@
   <link rel="icon" type="image/png" sizes="192x192" href="assets/icons/android-chrome-192x192.png">
   <link rel="icon" type="image/png" sizes="512x512" href="assets/icons/android-chrome-512x512.png">
   <link rel="apple-touch-icon" sizes="180x180" href="assets/icons/apple-touch-icon.png">
-  <link rel="stylesheet" href="css/style.css?v=20260819-1">
+  <link rel="stylesheet" href="css/style.css?v=20260821-2">
   <link rel="stylesheet" href="css/weather-atmosphere.css">
 </head>
 <body>
@@ -56,8 +56,6 @@
           </p>
           <p class="weather__cond" id="weather-cond">Сейчас ясно</p>
         </div>
-        <p class="weather__tip" id="weather-tip"></p>
-        <div class="weather__forecast" id="weather-forecast" aria-label="Прогноз на 5 дней"></div>
       </div>
 
     </header>
@@ -211,7 +209,8 @@
       </div>
 
       <!-- Тихая мысль (пока только дизайн) -->
-      <section class="card card--gentle-thought" aria-label="Тихая мысль">
+      <section class="card card--gentle-thought" aria-labelledby="thought-lbl">
+        <h2 class="card__title" id="thought-lbl">Мысль дня</h2>
         <p class="gentle-thought__text" id="gentle-thought-text">Сегодня можно не спешить.</p>
       </section>
 

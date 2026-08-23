@@ -159,14 +159,14 @@ input  { font-family: inherit; }
 
 .hero {
   background: var(--hero-bg);
-  padding: 20px 24px 28px;
+  padding: 20px 24px 12px;
 }
 
 .hero__top {
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 10px;
 }
 
 /* Главный текст шапки: приветствие */
@@ -237,6 +237,47 @@ input  { font-family: inherit; }
   border-radius: var(--r-md);
   padding: 16px 18px;
   box-shadow: var(--shadow-xs);
+}
+
+.hero .weather {
+  width: 44%;
+  margin-right: auto;
+  margin-left: 0;
+  gap: 4px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.55);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+}
+.hero .weather .weather__now {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-start;
+  gap: 2px;
+}
+.hero .weather .weather__city {
+  flex: 0 0 auto;
+  width: auto;
+  font-size: 0.62rem;
+  line-height: 1.2;
+}
+.hero .weather .weather__temp-line {
+  margin-top: 0;
+  gap: 6px;
+}
+.hero .weather .weather__temp {
+  font-size: 1.45rem;
+  line-height: 1;
+}
+.hero .weather .weather__icon {
+  font-size: 1.1rem;
+}
+.hero .weather .weather__cond {
+  display: block;
+  width: 100%;
+  font-size: 0.75rem;
+  line-height: 1.2;
 }
 
 .weather__now {
@@ -335,7 +376,7 @@ input  { font-family: inherit; }
 /* ─── SCROLL AREA ────────────────────────────────────── */
 
 .scroll-area {
-  padding: 20px 16px 8px;
+  padding: 8px 16px 8px;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -671,7 +712,9 @@ input  { font-family: inherit; }
 .duo {
   display: grid;
   grid-template-columns: 1fr 1fr;
-  gap: 12px;
+  gap: 16px;
+  width: calc(100% - 16px);
+  margin-inline: auto;
 }
 
 .duo .card {
@@ -681,6 +724,9 @@ input  { font-family: inherit; }
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
+  background: rgba(255, 255, 255, 0.58);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
 }
 
 .duo .card > .eyebrow {
@@ -1588,6 +1634,29 @@ input  { font-family: inherit; }
   overflow: visible;
 }
 
+.scroll-area > .card--gentle-thought {
+  background: var(--card);
+  border-radius: var(--r-lg);
+  box-shadow: var(--shadow);
+  padding: 14px 20px;
+  height: auto;
+  min-height: 0;
+}
+
+.scroll-area > .card--gentle-thought::before {
+  content: none;
+}
+
+.scroll-area > .card--gentle-thought .card__title {
+  margin-bottom: 8px;
+}
+
+.scroll-area > .card--gentle-thought .gentle-thought__text {
+  padding-left: 0;
+  font-size: 0.9375rem;
+  line-height: 1.4;
+}
+
 .gentle-thought__text.is-changing {
   animation: gentle-thought-in 400ms ease;
 }
@@ -1607,7 +1676,7 @@ input  { font-family: inherit; }
 
 .duo .card.card--smile {
   padding: 10px 10px 8px;
-  background: var(--card);
+  background: rgba(255, 255, 255, 0.58);
 }
 
 .card--smile {
@@ -1895,7 +1964,7 @@ input  { font-family: inherit; }
 /* ─── АДАПТИВ ─────────────────────────────────────────── */
 
 @media (max-width: 390px) {
-  .hero { padding: 16px 20px 24px; }
+  .hero { padding: 16px 20px 12px; }
   .scroll-area { padding-inline: 14px; }
   .hero__greeting { font-size: 1.65rem; }
   .duo .card { padding: 16px 14px; }
@@ -1930,7 +1999,9 @@ input  { font-family: inherit; }
 
 /* Единый внутренний ритм карточек сетки */
 .duo {
-  gap: 12px;
+  width: calc(100% - 16px);
+  margin-inline: auto;
+  gap: 16px;
 }
 
 .duo .card {
