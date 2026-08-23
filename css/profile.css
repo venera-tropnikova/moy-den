@@ -280,6 +280,15 @@ button {
   background-position: center;
 }
 
+.scene-picker__preview--auto {
+  background-image: linear-gradient(
+    165deg,
+    #f4efe6 0%,
+    #e7e1d6 48%,
+    #d8e4ea 100%
+  );
+}
+
 .scene-picker__title {
   color: var(--ink);
   font-size: 0.78rem;

@@ -6,164 +6,106 @@
     {
       "id": "daisy-morning",
       "title": "Ромашковое утро",
-      "image": "assets/scenes/daisy-morning.jpg"
+      "image": "assets/scenes/daisy-morning.jpg",
+      "season": ["spring", "summer"],
+      "weather": ["clear", "partly_cloudy"],
+      "daypart": ["morning", "day"]
     },
     {
       "id": "forest-after-rain",
       "title": "Лес после дождя",
-      "image": "assets/scenes/forest-after-rain.jpg"
+      "image": "assets/scenes/forest-after-rain.jpg",
+      "season": ["spring", "summer", "autumn"],
+      "weather": ["rain"],
+      "daypart": ["morning", "day"]
     },
     {
       "id": "mountain-morning",
       "title": "Горное утро",
-      "image": "assets/scenes/mountain-morning.jpg"
+      "image": "assets/scenes/mountain-morning.jpg",
+      "season": ["spring", "summer", "autumn"],
+      "weather": ["clear", "partly_cloudy"],
+      "daypart": ["morning"]
     },
     {
       "id": "sea-breeze",
       "title": "Морской бриз",
-      "image": "assets/scenes/sea-breeze.jpg"
+      "image": "assets/scenes/sea-breeze.jpg",
+      "season": ["summer"],
+      "weather": ["clear", "partly_cloudy"],
+      "daypart": ["day"]
     },
     {
       "id": "summer-evening-sea",
       "title": "Летний вечер у моря",
       "image": "assets/scenes/summer-evening-sea.png",
-      "season": [
-        "summer"
-      ],
-      "weather": [
-        "clear",
-        "partly_cloudy"
-      ],
-      "daypart": [
-        "evening"
-      ]
+      "season": ["summer"],
+      "weather": ["clear", "partly_cloudy"],
+      "daypart": ["evening"]
     },
     {
       "id": "autumn-fog-boat",
       "title": "Осеннее туманное утро",
       "image": "assets/scenes/autumn-fog-boat.png",
-      "season": [
-        "autumn"
-      ],
-      "weather": [
-        "fog",
-        "cloudy"
-      ],
-      "daypart": [
-        "morning",
-        "day"
-      ]
+      "season": ["autumn"],
+      "weather": ["fog"],
+      "daypart": ["morning", "day"]
     },
     {
       "id": "winter-lake-evening",
       "title": "Зимний вечер у озера",
       "image": "assets/scenes/winter-lake-evening-v2.png",
-      "season": [
-        "winter"
-      ],
-      "weather": [
-        "snow",
-        "cloudy"
-      ],
-      "daypart": [
-        "evening"
-      ]
+      "season": ["winter"],
+      "weather": ["snow", "cloudy"],
+      "daypart": ["evening"]
     },
     {
       "id": "autumn-flowers-day",
       "title": "Осенние цветы",
       "image": "assets/scenes/autumn-flowers-day.png",
-      "season": [
-        "autumn"
-      ],
-      "weather": [
-        "clear",
-        "partly_cloudy"
-      ],
-      "daypart": [
-        "day"
-      ]
+      "season": ["autumn"],
+      "weather": ["clear", "partly_cloudy"],
+      "daypart": ["day"]
     },
     {
       "id": "autumn-rain-window",
       "title": "Осенний дождь",
       "image": "assets/scenes/autumn-rain-window.png",
-      "season": [
-        "autumn"
-      ],
-      "weather": [
-        "rain",
-        "cloudy"
-      ],
-      "daypart": [
-        "morning",
-        "day",
-        "evening"
-      ]
+      "season": ["autumn"],
+      "weather": ["rain"],
+      "daypart": ["morning", "day", "evening"]
     },
     {
       "id": "winter-mountain-lake",
       "title": "Ясная зима",
       "image": "assets/scenes/winter-mountain-lake.png",
-      "season": [
-        "winter"
-      ],
-      "weather": [
-        "clear",
-        "partly_cloudy"
-      ],
-      "daypart": [
-        "morning",
-        "day"
-      ]
+      "season": ["winter"],
+      "weather": ["partly_cloudy", "cloudy"],
+      "daypart": ["morning", "day"]
     },
     {
       "id": "winter-sea-sun",
       "title": "Зимнее солнце у моря",
       "image": "assets/scenes/winter-sea-sun.png",
-      "season": [
-        "winter"
-      ],
-      "weather": [
-        "clear",
-        "partly_cloudy"
-      ],
-      "daypart": [
-        "morning",
-        "day"
-      ]
+      "season": ["winter"],
+      "weather": ["clear"],
+      "daypart": ["morning", "day"]
     },
     {
       "id": "spring-butterfly",
       "title": "Весенняя бабочка",
       "image": "assets/scenes/b7068d3c-8070-4057-80ec-48b39e35a022.png",
-      "season": [
-        "spring"
-      ],
-      "weather": [
-        "clear",
-        "partly_cloudy"
-      ],
-      "daypart": [
-        "morning",
-        "day"
-      ]
+      "season": ["spring"],
+      "weather": ["clear", "partly_cloudy"],
+      "daypart": ["morning", "day"]
     },
     {
       "id": "summer-turquoise-lake",
       "title": "Бирюзовое лето",
       "image": "assets/scenes/summer-turquoise-lake.png",
-      "season": [
-        "summer"
-      ],
-      "weather": [
-        "clear",
-        "partly_cloudy"
-      ],
-      "daypart": [
-        "morning",
-        "day"
-      ]
+      "season": ["summer"],
+      "weather": ["clear", "partly_cloudy"],
+      "daypart": ["morning", "day"]
     }
   ],
   "weatherScenes": [
