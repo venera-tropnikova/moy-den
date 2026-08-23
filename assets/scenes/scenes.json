@@ -122,6 +122,22 @@
       "season": ["spring", "summer", "winter"],
       "weather": ["rain"],
       "daypart": ["morning", "day", "evening"]
+    },
+    {
+      "id": "auto-snow",
+      "title": "Снег",
+      "image": "assets/scenes/auto-snow.png",
+      "season": ["spring", "autumn", "winter"],
+      "weather": ["snow"],
+      "daypart": ["morning", "day", "evening"]
+    },
+    {
+      "id": "auto-cloudy",
+      "title": "Пасмурно",
+      "image": "assets/scenes/auto-cloudy.png",
+      "season": ["spring", "summer", "autumn"],
+      "weather": ["cloudy"],
+      "daypart": ["morning", "day", "evening"]
     }
   ],
   "weatherScenes": [
