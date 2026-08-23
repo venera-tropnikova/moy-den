@@ -106,6 +106,22 @@
       "season": ["summer"],
       "weather": ["clear", "partly_cloudy"],
       "daypart": ["morning", "day"]
+    },
+    {
+      "id": "auto-fog",
+      "title": "Туман",
+      "image": "assets/scenes/auto-fog.png",
+      "season": ["spring", "summer", "autumn", "winter"],
+      "weather": ["fog"],
+      "daypart": ["morning", "day", "evening"]
+    },
+    {
+      "id": "auto-rain",
+      "title": "Дождь",
+      "image": "assets/scenes/auto-rain.png",
+      "season": ["spring", "summer", "winter"],
+      "weather": ["rain"],
+      "daypart": ["morning", "day", "evening"]
     }
   ],
   "weatherScenes": [

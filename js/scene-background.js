@@ -1,18 +1,19 @@
 (function (global) {
   "use strict";
 
-  var CATALOG_URL = "assets/scenes/scenes.json?v=20260823-4";
+  var CATALOG_URL = "assets/scenes/scenes.json?v=20260823-6";
   var STORAGE_KEY = "my-day-background-scene-v1";
   var DEFAULT_SCENE_ID = "daisy-morning";
   var AUTO_ID = "__auto__";
   var AUTO_SCENE_IDS = {
-    "forest-after-rain": true,
     "winter-lake-evening": true,
     "autumn-flowers-day": true,
     "autumn-rain-window": true,
     "winter-mountain-lake": true,
     "spring-butterfly": true,
-    "summer-turquoise-lake": true
+    "summer-turquoise-lake": true,
+    "auto-fog": true,
+    "auto-rain": true
   };
 
   var FALLBACK_MANUAL = [
