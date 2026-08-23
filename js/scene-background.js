@@ -5,6 +5,15 @@
   var STORAGE_KEY = "my-day-background-scene-v1";
   var DEFAULT_SCENE_ID = "daisy-morning";
   var AUTO_ID = "__auto__";
+  var AUTO_SCENE_IDS = {
+    "forest-after-rain": true,
+    "winter-lake-evening": true,
+    "autumn-flowers-day": true,
+    "autumn-rain-window": true,
+    "winter-mountain-lake": true,
+    "spring-butterfly": true,
+    "summer-turquoise-lake": true
+  };
 
   var FALLBACK_MANUAL = [
     {
@@ -227,7 +236,12 @@
     return score;
   }
 
+  function isAutoAllowed(scene) {
+    return !!(scene && AUTO_SCENE_IDS[scene.id]);
+  }
+
   function isCandidate(scene, ctx, options) {
+    if (!isAutoAllowed(scene)) return false;
     if (isAlwaysBanned(scene, ctx)) return false;
     if (options.requireWeather) {
       if (!ctx.weather || !hasTag(scene, "weather", ctx.weather)) return false;
@@ -257,28 +271,25 @@
     var ctx = normalizeContext(rawContext);
     var found = null;
 
-    if (ctx.weather) {
-      found = pickBest(ctx, { requireWeather: true, requireDaypart: true, requireSeason: true });
-      if (found) return found;
-      found = pickBest(ctx, { requireWeather: true, requireDaypart: true, requireSeason: false });
-      if (found) return found;
-      found = pickBest(ctx, { requireWeather: true, requireDaypart: false, requireSeason: false });
-      if (found) return found;
-    }
+    var requireWeather = !!ctx.weather;
 
-    found = pickBest(ctx, { requireWeather: false, requireDaypart: true, requireSeason: true });
+    found = pickBest(ctx, {
+      requireWeather: requireWeather,
+      requireDaypart: true,
+      requireSeason: true
+    });
     if (found) return found;
 
     if (ctx.daypart === "night") {
       found = pickBest(ctx, {
-        requireWeather: false,
+        requireWeather: requireWeather,
         requireDaypart: true,
         requireSeason: true,
         daypartAlias: "evening"
       });
       if (found) return found;
       found = pickBest(ctx, {
-        requireWeather: false,
+        requireWeather: requireWeather,
         requireDaypart: true,
         requireSeason: true,
         daypartAlias: "day"
@@ -286,10 +297,7 @@
       if (found) return found;
     }
 
-    return findManualScene(loadCatalogSync().defaultSceneId) ||
-      findManualScene(DEFAULT_SCENE_ID) ||
-      getManualScenes()[0] ||
-      null;
+    return null;
   }
 
   function readSelection() {
@@ -339,7 +347,7 @@
     var selection = readSelection();
     if (selection.mode === "manual" && selection.sceneId) return selection.sceneId;
     var scene = resolveAutoScene(rawContext);
-    return scene ? scene.id : DEFAULT_SCENE_ID;
+    return scene ? scene.id : null;
   }
 
   function setSelectedSceneId(sceneId) {
@@ -357,13 +365,25 @@
 
     bindAutoRefresh();
 
-    var sceneId = getSelectedSceneId(rawContext);
-    var scene = findManualScene(sceneId) || findManualScene(DEFAULT_SCENE_ID) || getManualScenes()[0];
-    if (!scene) return null;
+    var selection = readSelection();
+    var scene = null;
+    if (selection.mode === "manual" && selection.sceneId) {
+      scene = findManualScene(selection.sceneId);
+    } else {
+      scene = resolveAutoScene(rawContext);
+    }
+
+    screen.setAttribute("data-scene-mode", selection.mode);
+    screen.classList.add("screen--has-scene");
+
+    if (!scene) {
+      screen.setAttribute("data-scene", "");
+      var emptyImage = document.getElementById("app-scene-image");
+      if (emptyImage) emptyImage.style.backgroundImage = "";
+      return null;
+    }
 
     screen.setAttribute("data-scene", scene.id);
-    screen.setAttribute("data-scene-mode", readSelection().mode);
-    screen.classList.add("screen--has-scene");
 
     var layer = document.getElementById("app-scene");
     var imageEl = document.getElementById("app-scene-image");
