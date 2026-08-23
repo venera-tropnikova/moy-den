@@ -93,6 +93,12 @@ input  { font-family: inherit; }
   transform: scale(1.02);
 }
 
+.screen[data-scene="winter-lake-evening"] .app-scene__image {
+  background-position: center -30px;
+  background-size: 100% auto;
+  transform: none;
+}
+
 .app-scene__veil {
   position: absolute;
   inset: 0;

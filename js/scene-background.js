@@ -1,7 +1,7 @@
 (function (global) {
   "use strict";
 
-  var CATALOG_URL = "assets/scenes/scenes.json";
+  var CATALOG_URL = "assets/scenes/scenes.json?v=20260823-3";
   var STORAGE_KEY = "my-day-background-scene-v1";
   var DEFAULT_SCENE_ID = "daisy-morning";
 
