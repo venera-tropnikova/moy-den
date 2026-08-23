@@ -291,13 +291,6 @@
         daypartAlias: "evening"
       });
       if (found) return found;
-      found = pickBest(ctx, {
-        requireWeather: requireWeather,
-        requireDaypart: true,
-        requireSeason: true,
-        daypartAlias: "day"
-      });
-      if (found) return found;
     }
 
     return null;
