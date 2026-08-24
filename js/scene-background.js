@@ -412,18 +412,17 @@
     return scene;
   }
 
-  function renderAutoCard(grid, container, isSelected) {
+  function renderAutoCard(container, isSelected) {
     var btn = document.createElement("button");
     btn.type = "button";
-    btn.className = "scene-picker__card";
-    btn.setAttribute("role", "option");
+    btn.className = "scene-picker__card scene-picker__card--auto";
     btn.setAttribute("data-scene-id", AUTO_ID);
-    btn.setAttribute("aria-selected", isSelected ? "true" : "false");
+    btn.setAttribute("aria-pressed", isSelected ? "true" : "false");
     if (isSelected) btn.classList.add("is-selected");
 
     btn.innerHTML =
-      '<span class="scene-picker__preview scene-picker__preview--auto" aria-hidden="true"></span>' +
       '<span class="scene-picker__title">Автоматически</span>' +
+      '<span class="scene-picker__subtitle">Подбирать по погоде, сезону и времени суток</span>' +
       '<span class="scene-picker__check" aria-hidden="true">✓</span>';
 
     btn.addEventListener("click", function () {
@@ -432,23 +431,29 @@
       renderPicker(container);
     });
 
-    grid.appendChild(btn);
+    container.appendChild(btn);
   }
 
   function renderPicker(container) {
     if (!container) return;
 
     var selection = readSelection();
-    var selectedId = selection.mode === "auto" ? AUTO_ID : selection.sceneId;
+    var isAuto = selection.mode === "auto";
+    var selectedId = isAuto ? AUTO_ID : selection.sceneId;
     var scenes = getManualScenes();
     container.innerHTML = "";
+
+    renderAutoCard(container, isAuto);
+
+    var heading = document.createElement("h3");
+    heading.className = "scene-picker__heading";
+    heading.textContent = "Выбрать вручную";
+    container.appendChild(heading);
 
     var grid = document.createElement("div");
     grid.className = "scene-picker__grid";
     grid.setAttribute("role", "listbox");
-    grid.setAttribute("aria-label", "Фоновая сцена");
-
-    renderAutoCard(grid, container, selectedId === AUTO_ID);
+    grid.setAttribute("aria-label", "Выбрать вручную");
 
     for (var i = 0; i < scenes.length; i += 1) {
       (function (scene) {
@@ -457,8 +462,9 @@
         btn.className = "scene-picker__card";
         btn.setAttribute("role", "option");
         btn.setAttribute("data-scene-id", scene.id);
-        btn.setAttribute("aria-selected", scene.id === selectedId ? "true" : "false");
-        if (scene.id === selectedId) btn.classList.add("is-selected");
+        var isSelected = !isAuto && scene.id === selectedId;
+        btn.setAttribute("aria-selected", isSelected ? "true" : "false");
+        if (isSelected) btn.classList.add("is-selected");
 
         btn.innerHTML =
           '<span class="scene-picker__preview" style="background-image:url(\'' +
@@ -480,6 +486,12 @@
     }
 
     container.appendChild(grid);
+
+    var footnote = document.createElement("p");
+    footnote.className = "scene-picker__footnote";
+    footnote.textContent =
+      "Этот фон останется, пока вы снова не включите автоматический режим.";
+    container.appendChild(footnote);
   }
 
   function bindAutoRefresh() {
