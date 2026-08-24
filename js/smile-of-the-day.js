@@ -2,8 +2,8 @@
   "use strict";
 
   var DATA_URL = "smile-of-the-day.json";
-  var EMPTY_TEXT = "Улыбка дня скоро появится.";
-  var ERROR_TEXT = "Не удалось загрузить улыбку дня.";
+  var EMPTY_TEXT = "Анекдот дня скоро появится.";
+  var ERROR_TEXT = "Не удалось загрузить анекдот дня.";
 
   function loadSmileData() {
     try {
@@ -20,7 +20,7 @@
 
       return { status: "error", data: null };
     } catch (error) {
-      console.warn("Не удалось загрузить улыбку дня:", error);
+      console.warn("Не удалось загрузить анекдот дня:", error);
       return { status: "error", data: null };
     }
   }
@@ -33,14 +33,13 @@
       var item = rawItems[i];
       if (!item || typeof item !== "object") continue;
 
-      var image = typeof item.image === "string" ? item.image.trim() : "";
-      var caption = typeof item.caption === "string" ? item.caption.trim() : "";
-      if (!image && !caption) continue;
+      var id = typeof item.id === "string" ? item.id.trim() : "";
+      var text = typeof item.text === "string" ? item.text.trim() : "";
+      if (!id || !text) continue;
 
       out.push({
-        image: image,
-        imageAlt: typeof item.imageAlt === "string" ? item.imageAlt.trim() : "",
-        caption: caption
+        id: id,
+        text: text
       });
     }
 
@@ -104,18 +103,12 @@
   function getEls() {
     return {
       card: document.getElementById("smile-card"),
-      image: document.getElementById("smile-image"),
       caption: document.getElementById("smile-caption")
     };
   }
 
   function showMessage(els, message) {
     if (els.caption) els.caption.textContent = message;
-    if (els.image) {
-      els.image.removeAttribute("src");
-      els.image.alt = "";
-      els.image.hidden = true;
-    }
     if (els.card) els.card.setAttribute("aria-disabled", "true");
   }
 
@@ -125,20 +118,8 @@
       return;
     }
 
-    if (els.image) {
-      if (item.image) {
-        els.image.hidden = false;
-        els.image.src = item.image;
-        els.image.alt = item.imageAlt || "";
-      } else {
-        els.image.hidden = true;
-        els.image.removeAttribute("src");
-        els.image.alt = "";
-      }
-    }
-
     if (els.caption) {
-      els.caption.textContent = item.caption || EMPTY_TEXT;
+      els.caption.textContent = item.text || EMPTY_TEXT;
     }
 
     if (els.card) els.card.removeAttribute("aria-disabled");

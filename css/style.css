@@ -1569,10 +1569,10 @@ input  { font-family: inherit; }
   }
 }
 
-/* ─── УЛЫБКА ДНЯ ─────────────────────────────────────── */
+/* ─── АНЕКДОТ ДНЯ ─────────────────────────────────────── */
 
 .duo .card.card--smile {
-  padding: 10px 10px 8px;
+  padding: 14px 12px;
   background: rgba(255, 255, 255, 0.58);
 }
 
@@ -1586,33 +1586,14 @@ input  { font-family: inherit; }
   margin-bottom: 4px;
 }
 
-.smile__image {
-  display: block;
-  width: 100%;
-  flex: 1 1 auto;
-  min-height: 0;
-  height: 158px;
-  max-height: 158px;
-  object-fit: cover;
-  border-radius: var(--r-sm);
-  margin-bottom: 4px;
-  background: var(--hero-bg);
-}
-
-.smile__image[hidden] {
-  display: none;
-}
-
 .smile__caption {
-  flex: 0 0 auto;
+  flex: 1;
   margin: 0 0 4px;
-  font-size: 0.74rem;
+  font-size: 0.86rem;
   font-weight: 500;
   color: var(--ink);
-  line-height: 1.25;
-  white-space: nowrap;
-  overflow: hidden;
-  text-overflow: ellipsis;
+  line-height: 1.4;
+  white-space: normal;
 }
 
 /* ─── ТЕКСТОВЫЕ КНОПКИ-ССЫЛКИ ────────────────────────── */
