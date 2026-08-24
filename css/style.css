@@ -99,6 +99,12 @@ input  { font-family: inherit; }
   transform: none;
 }
 
+.screen[data-scene="summer-turquoise-lake"] .app-scene__image {
+  background-size: 1240px auto;
+  background-position: 0% 0%;
+  transform: none;
+}
+
 .app-scene__veil {
   position: absolute;
   inset: 0;
