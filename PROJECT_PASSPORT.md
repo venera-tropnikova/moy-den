@@ -126,11 +126,11 @@ PWA-приложение.
 
 PWA-приложение.
 
-Основные файлы: - index.html - calendar.html - day.html
+Основные файлы: - index.html - calendar.html
 
-JavaScript: - js/app.js - js/calendar.js - js/day.js
+JavaScript: - js/app.js - js/calendar.js
 
-CSS: - css/style.css - css/calendar.css - css/day.css
+CSS: - css/style.css - css/calendar.css
 
 # Хранение данных
 
