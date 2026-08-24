@@ -1,7 +1,7 @@
 (function (global) {
   "use strict";
 
-  var CATALOG_URL = "assets/scenes/scenes.json?v=20260823-8";
+  var CATALOG_URL = "assets/scenes/scenes.json?v=20260823-9";
   var STORAGE_KEY = "my-day-background-scene-v1";
   var DEFAULT_SCENE_ID = "daisy-morning";
   var AUTO_ID = "__auto__";
@@ -15,7 +15,8 @@
     "auto-fog": true,
     "auto-rain": true,
     "auto-snow": true,
-    "auto-cloudy": true
+    "auto-cloudy": true,
+    "auto-clear": true
   };
 
   var FALLBACK_MANUAL = [

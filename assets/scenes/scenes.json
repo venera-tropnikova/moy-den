@@ -138,6 +138,14 @@
       "season": ["spring", "summer", "autumn"],
       "weather": ["cloudy"],
       "daypart": ["morning", "day", "evening"]
+    },
+    {
+      "id": "auto-clear",
+      "title": "Ясно",
+      "image": "assets/scenes/auto-clear.png",
+      "season": ["spring", "summer", "autumn", "winter"],
+      "weather": ["clear", "partly_cloudy"],
+      "daypart": ["morning", "day", "evening"]
     }
   ],
   "weatherScenes": [
