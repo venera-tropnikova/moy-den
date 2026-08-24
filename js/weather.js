@@ -2,7 +2,6 @@
   "use strict";
 
   var USER_SETTINGS_KEY = "my-day-user-settings-v1";
-  var DEFAULT_CITY = "Екатеринбург";
   var EMPTY_TEXT = "Погода пока недоступна";
   var ERROR_TEXT = "Не удалось загрузить погоду";
   var FORECAST_UNAVAILABLE_TEXT = "Прогноз пока недоступен";
@@ -87,7 +86,7 @@
     var settings = loadUserSettings();
     return typeof settings.city === "string" && settings.city.trim()
       ? settings.city.trim()
-      : DEFAULT_CITY;
+      : "";
   }
 
   function resolveLocation() {
@@ -167,8 +166,10 @@
   }
 
   function formatCityLabel(city) {
-    var value = typeof city === "string" && city.trim() ? city.trim() : DEFAULT_CITY;
-    return "📍 " + value;
+    if (typeof city === "string" && city.trim()) {
+      return "📍 " + city.trim();
+    }
+    return "📍 Укажите город";
   }
 
   function formatNowCondition(label) {
@@ -478,8 +479,15 @@
   // Тест: index.html?weather=empty | index.html?weather=error
   function fetchWeatherData(location, targetDate) {
     var mode = getQueryParam("weather");
-    var city = location && location.city ? location.city : DEFAULT_CITY;
+    var city = location && typeof location.city === "string" ? location.city.trim() : "";
     var dateMode = getDateMode(targetDate);
+
+    if (!city) {
+      return Promise.resolve({
+        status: "empty",
+        location: location || { mode: LOCATION_MODE.PROFILE, city: "" }
+      });
+    }
 
     if (mode === "empty") {
       return Promise.resolve({ status: "empty", location: location });
@@ -697,6 +705,16 @@
   function loadWeather() {
     var location = resolveLocation();
     var city = location.city;
+
+    if (!city) {
+      var emptyWeather = {
+        status: "empty",
+        location: { mode: LOCATION_MODE.PROFILE, city: "" }
+      };
+      publishWeatherState(emptyWeather);
+      return Promise.resolve(emptyWeather);
+    }
+
     var nowDate = getSelectedDate();
     var nowTime = Date.now();
     var requestKey = city + "|" + formatLocalDate(nowDate);
@@ -854,9 +872,20 @@
     if (!cityEl && !tempEl && !condEl && !tipEl && !forecastEl) return;
 
     loadWeather().then(function (weather) {
-      var city = weather.location && weather.location.city
-        ? weather.location.city
-        : DEFAULT_CITY;
+      var profileCity = getProfileCity();
+      var city = weather.location && typeof weather.location.city === "string"
+        ? weather.location.city.trim()
+        : profileCity;
+
+      if (!profileCity) {
+        if (cityEl) cityEl.textContent = formatCityLabel("");
+        if (iconEl) iconEl.textContent = "";
+        if (tempEl) tempEl.textContent = "";
+        if (condEl) condEl.textContent = "";
+        setPhraseText(tipEl, "");
+        renderForecast(forecastEl, []);
+        return;
+      }
 
       if (cityEl) cityEl.textContent = formatCityLabel(city);
 

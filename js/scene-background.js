@@ -57,6 +57,7 @@
   var catalogCache = null;
   var lastWeatherCondition = null;
   var autoRefreshBound = false;
+  var pickerExpanded = false;
 
   function loadCatalogSync() {
     if (catalogCache) return catalogCache;
@@ -428,6 +429,7 @@
     btn.addEventListener("click", function () {
       if (!setAutoMode()) return;
       applyToScreen(document.querySelector(".screen"));
+      pickerExpanded = false;
       renderPicker(container);
     });
 
@@ -441,7 +443,39 @@
     var isAuto = selection.mode === "auto";
     var selectedId = isAuto ? AUTO_ID : selection.sceneId;
     var scenes = getManualScenes();
+    var statusLabel = "Автоматически";
+
+    if (!isAuto) {
+      var selectedScene = findManualScene(selection.sceneId);
+      if (selectedScene && selectedScene.title) {
+        statusLabel = selectedScene.title;
+      }
+    }
+
     container.innerHTML = "";
+
+    var summary = document.createElement("div");
+    summary.className = "scene-picker__summary";
+
+    var status = document.createElement("p");
+    status.className = "scene-picker__status";
+    status.textContent = statusLabel;
+
+    var toggle = document.createElement("button");
+    toggle.type = "button";
+    toggle.className = "scene-picker__toggle";
+    toggle.textContent = "Выбрать другой";
+    toggle.setAttribute("aria-expanded", pickerExpanded ? "true" : "false");
+    toggle.addEventListener("click", function () {
+      pickerExpanded = !pickerExpanded;
+      renderPicker(container);
+    });
+
+    summary.appendChild(status);
+    summary.appendChild(toggle);
+    container.appendChild(summary);
+
+    if (!pickerExpanded) return;
 
     renderAutoCard(container, isAuto);
 
@@ -478,6 +512,7 @@
         btn.addEventListener("click", function () {
           if (!setSelectedSceneId(scene.id)) return;
           applyToScreen(document.querySelector(".screen"));
+          pickerExpanded = false;
           renderPicker(container);
         });
 
