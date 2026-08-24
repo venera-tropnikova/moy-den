@@ -5,9 +5,6 @@
   var EMPTY_TEXT = "Улыбка дня скоро появится.";
   var ERROR_TEXT = "Не удалось загрузить улыбку дня.";
 
-  var items = [];
-  var index = 0;
-
   function loadSmileData() {
     try {
       var request = new XMLHttpRequest();
@@ -41,7 +38,6 @@
       if (!image && !caption) continue;
 
       out.push({
-        id: typeof item.id === "string" ? item.id.trim() : "smile-" + (out.length + 1),
         image: image,
         imageAlt: typeof item.imageAlt === "string" ? item.imageAlt.trim() : "",
         caption: caption
@@ -51,14 +47,65 @@
     return out;
   }
 
+  function getQueryParam(name) {
+    try {
+      var search = String(window.location.search || "");
+      if (!search) return null;
+      if (search.charAt(0) === "?") search = search.slice(1);
+      var pairs = search.split("&");
+      for (var i = 0; i < pairs.length; i += 1) {
+        if (!pairs[i]) continue;
+        var parts = pairs[i].split("=");
+        var key = parts[0] ? decodeURIComponent(parts[0]).trim() : "";
+        if (key !== name) continue;
+        return parts[1] ? decodeURIComponent(parts[1].replace(/\+/g, " ")).trim() : "";
+      }
+    } catch (error) {
+      return null;
+    }
+    return null;
+  }
+
+  function getDayIndex(date) {
+    var y = date.getFullYear();
+    var m = date.getMonth();
+    var d = date.getDate();
+    return Math.floor(Date.UTC(y, m, d) / 86400000);
+  }
+
+  function getSelectedDate() {
+    var target = window.MyDayTargetDate;
+    if (target && target instanceof Date && !isNaN(target.getTime())) {
+      return target;
+    }
+
+    var raw = getQueryParam("date");
+    if (!raw) return new Date();
+
+    var match = String(raw).trim().match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return new Date();
+
+    var year = Number(match[1]);
+    var month = Number(match[2]);
+    var day = Number(match[3]);
+    var preview = new Date(year, month - 1, day);
+
+    if (
+      preview.getFullYear() !== year ||
+      preview.getMonth() !== month - 1 ||
+      preview.getDate() !== day
+    ) {
+      return new Date();
+    }
+
+    return preview;
+  }
+
   function getEls() {
     return {
       card: document.getElementById("smile-card"),
       image: document.getElementById("smile-image"),
-      caption: document.getElementById("smile-caption"),
-      count: document.getElementById("smile-count"),
-      prevBtn: document.getElementById("smile-prev"),
-      nextBtn: document.getElementById("smile-next")
+      caption: document.getElementById("smile-caption")
     };
   }
 
@@ -69,25 +116,10 @@
       els.image.alt = "";
       els.image.hidden = true;
     }
-    if (els.count) {
-      els.count.hidden = true;
-      els.count.textContent = "";
-    }
-    if (els.prevBtn) els.prevBtn.disabled = true;
-    if (els.nextBtn) els.nextBtn.disabled = true;
     if (els.card) els.card.setAttribute("aria-disabled", "true");
   }
 
-  function renderSlide(els) {
-    if (!items.length) {
-      showMessage(els, EMPTY_TEXT);
-      return;
-    }
-
-    if (index < 0) index = items.length - 1;
-    if (index >= items.length) index = 0;
-
-    var item = items[index];
+  function renderItem(els, item) {
     if (!item) {
       showMessage(els, EMPTY_TEXT);
       return;
@@ -109,50 +141,7 @@
       els.caption.textContent = item.caption || EMPTY_TEXT;
     }
 
-    if (els.count) {
-      els.count.hidden = false;
-      els.count.textContent = index + 1 + "/" + items.length;
-    }
-
-    if (els.prevBtn) els.prevBtn.disabled = items.length < 2;
-    if (els.nextBtn) els.nextBtn.disabled = items.length < 2;
     if (els.card) els.card.removeAttribute("aria-disabled");
-  }
-
-  function go(delta, els) {
-    if (items.length < 2) return;
-    index = (index + delta + items.length) % items.length;
-    renderSlide(els);
-  }
-
-  function bindInteractions(els) {
-    if (els.prevBtn) {
-      els.prevBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        go(-1, els);
-      });
-    }
-
-    if (els.nextBtn) {
-      els.nextBtn.addEventListener("click", function (event) {
-        event.preventDefault();
-        event.stopPropagation();
-        go(1, els);
-      });
-    }
-
-    if (els.card) {
-      els.card.addEventListener("keydown", function (event) {
-        if (event.key === "ArrowLeft") {
-          event.preventDefault();
-          go(-1, els);
-        } else if (event.key === "ArrowRight") {
-          event.preventDefault();
-          go(1, els);
-        }
-      });
-    }
   }
 
   function renderSmile() {
@@ -165,16 +154,15 @@
       return;
     }
 
-    items = normalizeItems(loaded.data.items);
-    index = 0;
-
+    var items = normalizeItems(loaded.data.items);
     if (!items.length) {
       showMessage(els, EMPTY_TEXT);
       return;
     }
 
-    renderSlide(els);
-    bindInteractions(els);
+    var date = getSelectedDate();
+    var index = Math.abs(getDayIndex(date)) % items.length;
+    renderItem(els, items[index]);
   }
 
   function init() {

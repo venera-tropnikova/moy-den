@@ -1615,56 +1615,6 @@ input  { font-family: inherit; }
   text-overflow: ellipsis;
 }
 
-.smile__nav {
-  flex: 0 0 auto;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-top: auto;
-}
-
-.smile__nav-btn {
-  flex: 0 0 auto;
-  min-width: 22px;
-  height: 22px;
-  padding: 0;
-  border: none;
-  border-radius: 0;
-  background: transparent;
-  color: var(--ink-mid);
-  font-size: 0.95rem;
-  line-height: 1;
-  cursor: pointer;
-}
-
-.smile__nav-btn:disabled {
-  opacity: 0.35;
-  cursor: default;
-}
-
-.smile__nav-btn:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
-.smile__count {
-  flex: 0 0 auto;
-  font-size: 0.66rem;
-  line-height: 1.2;
-  color: var(--ink-mid);
-  white-space: nowrap;
-}
-
-.smile__count[hidden] {
-  display: none;
-}
-
-.card--smile:focus-visible {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
-}
-
 /* ─── ТЕКСТОВЫЕ КНОПКИ-ССЫЛКИ ────────────────────────── */
 
 .link-btn {

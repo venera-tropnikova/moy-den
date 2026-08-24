@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 360" role="img">
+  <defs>
+    <linearGradient id="g27" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#1c2430"/>
+      <stop offset="100%" stop-color="#334a63"/>
+    </linearGradient>
+  </defs>
+  <rect width="640" height="360" fill="url(#g27)"/>
+  <ellipse cx="320" cy="310" rx="186" ry="20" fill="#0f141b" opacity="0.38"/>
+  <rect x="168" y="78" width="248" height="168" rx="18" fill="#c7a17a"/>
+  <rect x="184" y="94" width="216" height="128" rx="12" fill="#e8d5b5"/>
+  <rect x="198" y="108" width="188" height="22" rx="8" fill="#efe4d6"/>
+  <rect x="214" y="144" width="36" height="16" rx="8" fill="#f0c36a"/>
+  <circle cx="372" cy="152" r="10" fill="#f0c36a"/>
+  <rect x="198" y="198" width="156" height="14" rx="7" fill="#c7a17a"/>
+  <path d="M214 212 C214 212 228 248 252 262 C284 280 318 248 348 268 C372 284 392 304 412 292" fill="none" stroke="#f2e6d8" stroke-width="28" stroke-linecap="round"/>
+  <path d="M214 212 C214 212 228 248 252 262 C284 280 318 248 348 268 C372 284 392 304 412 292" fill="none" stroke="#efe4d6" stroke-width="18" stroke-linecap="round"/>
+  <ellipse cx="418" cy="292" rx="22" ry="14" fill="#efe4d6"/>
+  <circle cx="160" cy="76" r="22" fill="#f4efe6" opacity="0.12"/>
+  <circle cx="508" cy="68" r="18" fill="#f4efe6" opacity="0.1"/>
+</svg>

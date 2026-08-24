@@ -29,6 +29,156 @@
       "image": "assets/smile/demo-05.svg",
       "imageAlt": "Растение полили кофе",
       "caption": "Цветок тоже взбодрился."
+    },
+    {
+      "id": "smile-06",
+      "image": "assets/smile/smile-06.svg",
+      "imageAlt": "Два разных домашних тапка",
+      "caption": "Тапки снова не пара."
+    },
+    {
+      "id": "smile-07",
+      "image": "assets/smile/smile-07.svg",
+      "imageAlt": "Очки лежат рядом с чашкой",
+      "caption": "Очки нашлись. На голове."
+    },
+    {
+      "id": "smile-08",
+      "image": "assets/smile/smile-08.svg",
+      "imageAlt": "Ноутбук, экран закрыт стикерами",
+      "caption": "Стикеры закрыли экран."
+    },
+    {
+      "id": "smile-09",
+      "image": "assets/smile/smile-09.svg",
+      "imageAlt": "Носок убегает из корзины белья",
+      "caption": "Носок опять в бегах."
+    },
+    {
+      "id": "smile-10",
+      "image": "assets/smile/smile-10.svg",
+      "imageAlt": "Маленький зонт под солнцем",
+      "caption": "Зонт на всякий случай."
+    },
+    {
+      "id": "smile-11",
+      "image": "assets/smile/smile-11.svg",
+      "imageAlt": "Спутанные наушники",
+      "caption": "Наушники завязали узел."
+    },
+    {
+      "id": "smile-12",
+      "image": "assets/smile/smile-12.svg",
+      "imageAlt": "Кот в коробке рядом с лежаком",
+      "caption": "Коробка снова победила."
+    },
+    {
+      "id": "smile-13",
+      "image": "assets/smile/smile-13.svg",
+      "imageAlt": "Ключи в открытом холодильнике",
+      "caption": "Ключи — в холодильнике."
+    },
+    {
+      "id": "smile-14",
+      "image": "assets/smile/smile-14.svg",
+      "imageAlt": "Щётка с большой порцией пасты",
+      "caption": "Пасты хватит на неделю."
+    },
+    {
+      "id": "smile-15",
+      "image": "assets/smile/smile-15.svg",
+      "imageAlt": "Плед и ноутбук на диване у окна",
+      "caption": "Удалёнка с пледа."
+    },
+    {
+      "id": "smile-16",
+      "image": "assets/smile/smile-16.svg",
+      "imageAlt": "Календарь, все дни заполнены",
+      "caption": "Потом заняло календарь."
+    },
+    {
+      "id": "smile-17",
+      "image": "assets/smile/smile-17.svg",
+      "imageAlt": "Высокая башня тарелок в раковине",
+      "caption": "Башня из тарелок растёт."
+    },
+    {
+      "id": "smile-18",
+      "image": "assets/smile/smile-18.svg",
+      "imageAlt": "Мокрый зонт у двери",
+      "caption": "Зонт наконец пригодился."
+    },
+    {
+      "id": "smile-19",
+      "image": "assets/smile/smile-19.svg",
+      "imageAlt": "Ноутбук с почти севшей батареей и только что подключённым кабелем",
+      "caption": "Успели в последний момент."
+    },
+    {
+      "id": "smile-20",
+      "image": "assets/smile/smile-20.svg",
+      "imageAlt": "Пёс несёт домашний тапок",
+      "caption": "Принёс любимый тапок."
+    },
+    {
+      "id": "smile-21",
+      "image": "assets/smile/smile-21.svg",
+      "imageAlt": "Сумка с покупками и укатывающийся лимон",
+      "caption": "Лимон выбрал свободу."
+    },
+    {
+      "id": "smile-22",
+      "image": "assets/smile/smile-22.svg",
+      "imageAlt": "Закрытые шторы, за ними утренний свет",
+      "caption": "Шторы пока главнее солнца."
+    },
+    {
+      "id": "smile-23",
+      "image": "assets/smile/smile-23.svg",
+      "imageAlt": "Чайник с паром и пустая кружка",
+      "caption": "Чайник бодрствует за двоих."
+    },
+    {
+      "id": "smile-24",
+      "image": "assets/smile/smile-24.svg",
+      "imageAlt": "Кресло завалено одеждой",
+      "caption": "Кресло снова стало шкафом."
+    },
+    {
+      "id": "smile-25",
+      "image": "assets/smile/smile-25.svg",
+      "imageAlt": "Пульт застрял между подушками дивана",
+      "caption": "Пульт снова в диване."
+    },
+    {
+      "id": "smile-26",
+      "image": "assets/smile/smile-26.svg",
+      "imageAlt": "Варежки сушатся на батарее",
+      "caption": "Варежки заняли места."
+    },
+    {
+      "id": "smile-27",
+      "image": "assets/smile/smile-27.svg",
+      "imageAlt": "Принтер выпустил длинную полосу бумаги",
+      "caption": "Принтер снова думает."
+    },
+    {
+      "id": "smile-28",
+      "image": "assets/smile/smile-28.svg",
+      "imageAlt": "Компьютерная мышка лежит далеко от ноутбука",
+      "caption": "Мышка ушла на перерыв."
+    },
+    {
+      "id": "smile-29",
+      "image": "assets/smile/smile-29.svg",
+      "imageAlt": "Старая кружка впереди новой красивой",
+      "caption": "Старая кружка первая."
+    },
+    {
+      "id": "smile-30",
+      "image": "assets/smile/smile-30.svg",
+      "imageAlt": "Тостер подбрасывает тост, рядом сумка у двери",
+      "caption": "Тост почти успел вовремя."
     }
   ]
 }
