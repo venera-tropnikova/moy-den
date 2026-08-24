@@ -567,6 +567,130 @@
     return targetDate;
   }
 
+  function createCalendarEmptyArt() {
+    var NS = "http://www.w3.org/2000/svg";
+
+    function svgEl(name, attrs) {
+      var el = document.createElementNS(NS, name);
+      var key;
+      for (key in attrs) {
+        if (Object.prototype.hasOwnProperty.call(attrs, key)) {
+          el.setAttribute(key, attrs[key]);
+        }
+      }
+      return el;
+    }
+
+    var wrap = document.createElement("div");
+    wrap.className = "calendar__empty-art";
+    wrap.setAttribute("aria-hidden", "true");
+
+    var svg = svgEl("svg", {
+      viewBox: "0 0 64 72",
+      fill: "none"
+    });
+
+    svg.appendChild(svgEl("rect", {
+      x: "10",
+      y: "14",
+      width: "32",
+      height: "40",
+      rx: "5",
+      fill: "var(--divider)",
+      stroke: "var(--ink-faint)",
+      "stroke-width": "1.1"
+    }));
+
+    svg.appendChild(svgEl("path", {
+      d: "M10 24V19A5 5 0 0 1 15 14h22a5 5 0 0 1 5 5v5Z",
+      fill: "var(--warm)",
+      opacity: "0.35"
+    }));
+
+    svg.appendChild(svgEl("circle", {
+      cx: "18.5",
+      cy: "19",
+      r: "1.5",
+      fill: "none",
+      stroke: "var(--ink-faint)",
+      "stroke-width": "1"
+    }));
+    svg.appendChild(svgEl("circle", {
+      cx: "33.5",
+      cy: "19",
+      r: "1.5",
+      fill: "none",
+      stroke: "var(--ink-faint)",
+      "stroke-width": "1"
+    }));
+
+    svg.appendChild(svgEl("line", {
+      x1: "16",
+      y1: "32",
+      x2: "36",
+      y2: "32",
+      stroke: "var(--ink-mid)",
+      "stroke-width": "1.1",
+      "stroke-linecap": "round"
+    }));
+    svg.appendChild(svgEl("line", {
+      x1: "16",
+      y1: "38",
+      x2: "32",
+      y2: "38",
+      stroke: "var(--ink-mid)",
+      "stroke-width": "1.1",
+      "stroke-linecap": "round"
+    }));
+    svg.appendChild(svgEl("line", {
+      x1: "16",
+      y1: "44",
+      x2: "34",
+      y2: "44",
+      stroke: "var(--ink-mid)",
+      "stroke-width": "1.1",
+      "stroke-linecap": "round"
+    }));
+
+    svg.appendChild(svgEl("path", {
+      d: "M40 49c6 3 10 10 14 18",
+      stroke: "var(--ink-faint)",
+      "stroke-width": "1.1",
+      "stroke-linecap": "round"
+    }));
+    svg.appendChild(svgEl("path", {
+      d: "M47 55c3-1 6-1 8 1",
+      stroke: "var(--ink-faint)",
+      "stroke-width": "1",
+      "stroke-linecap": "round"
+    }));
+
+    svg.appendChild(svgEl("circle", {
+      cx: "49",
+      cy: "47",
+      r: "1.2",
+      fill: "var(--warm)",
+      opacity: "0.55"
+    }));
+    svg.appendChild(svgEl("circle", {
+      cx: "57",
+      cy: "58",
+      r: "1.2",
+      fill: "var(--warm)",
+      opacity: "0.45"
+    }));
+    svg.appendChild(svgEl("circle", {
+      cx: "44",
+      cy: "61",
+      r: "1.2",
+      fill: "var(--accent)",
+      opacity: "0.4"
+    }));
+
+    wrap.appendChild(svg);
+    return wrap;
+  }
+
   function renderCalendar() {
     var container = document.getElementById("calendar-content");
     if (!container) return;
@@ -594,13 +718,23 @@
       var emptyState = document.createElement("div");
       emptyState.className = "calendar__empty-state";
 
+      var emptyCopy = document.createElement("div");
+      emptyCopy.className = "calendar__empty-copy";
+
       var empty = document.createElement("p");
       empty.className = "calendar__empty";
       empty.textContent = isCurrentDate(previewDate)
-        ? "Сегодня праздников и значимых дат нет"
-        : "В этот день праздников и значимых дат нет";
-      emptyState.appendChild(empty);
+        ? "Сегодня особых дат нет"
+        : "В этот день особых дат нет";
+      emptyCopy.appendChild(empty);
 
+      var caption = document.createElement("p");
+      caption.className = "calendar__empty-caption";
+      caption.textContent = "Просто хороший день для своих планов.";
+      emptyCopy.appendChild(caption);
+
+      emptyState.appendChild(emptyCopy);
+      emptyState.appendChild(createCalendarEmptyArt());
       container.appendChild(emptyState);
       return;
     }
