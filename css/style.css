@@ -1586,14 +1586,26 @@ input  { font-family: inherit; }
   margin-bottom: 4px;
 }
 
+.smile__deco {
+  position: absolute;
+  right: 2px;
+  bottom: 4px;
+  width: 60px;
+  height: 60px;
+  object-fit: contain;
+  pointer-events: none;
+  user-select: none;
+}
+
 .smile__caption {
   flex: 1;
   margin: 0 0 4px;
   font-size: 0.86rem;
-  font-weight: 500;
+  font-weight: 400;
   color: var(--ink);
   line-height: 1.4;
-  white-space: normal;
+  white-space: pre-line;
+  padding-right: 52px;
 }
 
 /* ─── ТЕКСТОВЫЕ КНОПКИ-ССЫЛКИ ────────────────────────── */
