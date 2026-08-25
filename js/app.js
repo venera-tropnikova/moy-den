@@ -1147,10 +1147,9 @@
     var emptyText = document.querySelector(".bday__empty-text");
     var todaysBirthdays = getTodaysBirthdays(today);
     var ritualImages = [
-      "assets/congratulations/calm-window-light.jpg",
-      "assets/congratulations/calm-morning-walk.jpg",
-      "assets/congratulations/calm-sea-silhouette.jpg",
-      "assets/congratulations/calm-sunbeams.jpg"
+      "assets/congratulations/empty-bouquet.jpg",
+      "assets/congratulations/empty-bouquet-coffee.jpg",
+      "assets/congratulations/empty-cozy.jpg"
     ];
 
     if (!card) return;
