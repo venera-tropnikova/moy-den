@@ -2,6 +2,7 @@
   "use strict";
 
   var editingId = null;
+  var invalidateDateVoiceInput = function () {};
 
   var MONTHS_GENITIVE = [
     "января", "февраля", "марта", "апреля", "мая", "июня",
@@ -137,6 +138,7 @@
 
   function resetFormState() {
     var els = getFormElements();
+    invalidateDateVoiceInput();
     editingId = null;
     if (els.form) els.form.reset();
     if (els.status) els.status.textContent = "";
@@ -170,6 +172,7 @@
     var els = getFormElements();
     var parts = parseStoredDate(item.date);
 
+    invalidateDateVoiceInput();
     editingId = item.id;
     setFormMode("edit");
 
@@ -255,6 +258,142 @@
     });
   }
 
+  function parseQueryDate() {
+    var params = new URLSearchParams(window.location.search);
+    var value = params.get("date");
+    var match = value && value.match(/^(\d{4})-(\d{2})-(\d{2})$/);
+    if (!match) return null;
+
+    var year = Number(match[1]);
+    var month = Number(match[2]);
+    var day = Number(match[3]);
+    var date = new Date(year, month - 1, day);
+
+    if (
+      date.getFullYear() !== year ||
+      date.getMonth() !== month - 1 ||
+      date.getDate() !== day
+    ) {
+      return null;
+    }
+
+    return {
+      year: year,
+      month: month,
+      day: day,
+      iso: match[1] + "-" + match[2] + "-" + match[3]
+    };
+  }
+
+  function applyPrefillDateFromQuery() {
+    var parsed = parseQueryDate();
+    if (!parsed) return;
+
+    var els = getFormElements();
+    if (!els.formSection) return;
+
+    if (els.yearly) els.yearly.checked = true;
+    if (els.day) els.day.value = String(parsed.day);
+    if (els.month) els.month.value = String(parsed.month);
+    if (els.fullDate) els.fullDate.value = parsed.iso;
+
+    updateTypeFields();
+    openDateForm();
+  }
+
+  function initVoiceInput() {
+    var voiceBtn = document.getElementById("date-voice-btn");
+    var titleInput = document.getElementById("date-title");
+    var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var activeRecognition = null;
+    var activeSession = 0;
+    var listening = false;
+
+    if (!voiceBtn) return;
+    if (!SpeechRecognition) return;
+
+    voiceBtn.hidden = false;
+
+    function setListening(isListening) {
+      listening = isListening;
+      if (isListening) {
+        voiceBtn.classList.add("mic-btn--listening");
+        voiceBtn.setAttribute("aria-pressed", "true");
+        voiceBtn.setAttribute("aria-label", "Остановить запись");
+      } else {
+        voiceBtn.classList.remove("mic-btn--listening");
+        voiceBtn.setAttribute("aria-pressed", "false");
+        voiceBtn.setAttribute("aria-label", "Голосовой ввод");
+      }
+    }
+
+    invalidateDateVoiceInput = function () {
+      var recognition = activeRecognition;
+      activeSession += 1;
+      activeRecognition = null;
+      setListening(false);
+      if (recognition) {
+        try {
+          recognition.abort();
+        } catch (err) {
+          // Сессия уже завершилась.
+        }
+      }
+    };
+
+    voiceBtn.addEventListener("click", function () {
+      if (listening) {
+        if (activeRecognition) activeRecognition.stop();
+        return;
+      }
+
+      var recognition = new SpeechRecognition();
+      var session = activeSession + 1;
+      var baseline = titleInput ? titleInput.value : "";
+
+      activeSession = session;
+      activeRecognition = recognition;
+      recognition.lang = "ru-RU";
+      recognition.interimResults = true;
+      recognition.continuous = false;
+
+      recognition.onresult = function (event) {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+
+        var transcript = "";
+        var i;
+        for (i = 0; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        if (titleInput) {
+          titleInput.value = (baseline + (baseline && transcript && !/\s$/.test(baseline) ? " " : "") + transcript).slice(0, 120);
+        }
+      };
+
+      recognition.onend = function () {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+        activeRecognition = null;
+        setListening(false);
+      };
+
+      recognition.onerror = function () {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+        activeRecognition = null;
+        setListening(false);
+      };
+
+      try {
+        setListening(true);
+        recognition.start();
+      } catch (err) {
+        if (activeRecognition === recognition && activeSession === session) {
+          activeRecognition = null;
+          setListening(false);
+        }
+      }
+    });
+  }
+
   function initForm() {
     var storage = getStorage();
     var els = getFormElements();
@@ -277,6 +416,7 @@
 
     els.form.addEventListener("submit", function (event) {
       event.preventDefault();
+      invalidateDateVoiceInput();
 
       var title = els.title.value.trim();
       var isYearly = els.yearly.checked;
@@ -350,6 +490,8 @@
   function init() {
     renderImportantDates();
     initForm();
+    initVoiceInput();
+    applyPrefillDateFromQuery();
     initStatusbarTime();
   }
 

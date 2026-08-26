@@ -1629,6 +1629,7 @@ input  { font-family: inherit; }
   padding: 0;
   font-size: 0.8rem;
   color: var(--accent);
+  text-decoration: none;
   white-space: nowrap;
   cursor: pointer;
 }

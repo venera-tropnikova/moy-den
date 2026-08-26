@@ -152,6 +152,10 @@ button {
   gap: 7px;
 }
 
+.dates-field[hidden] {
+  display: none;
+}
+
 .dates-field__label {
   color: var(--ink-mid);
   font-size: 0.82rem;
@@ -162,6 +166,51 @@ button {
   color: var(--ink-faint);
   font-size: 0.74rem;
   font-weight: 500;
+}
+
+.dates-title-row {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.dates-title-row #date-title {
+  flex: 1;
+  min-width: 0;
+}
+
+.mic-btn {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  background: transparent;
+  color: var(--ink-mid);
+  border: 1.5px solid var(--divider);
+  border-radius: 50%;
+  cursor: pointer;
+  transition: opacity 0.15s, transform 0.1s;
+}
+
+.mic-btn[hidden] {
+  display: none;
+}
+
+.mic-btn:hover  { opacity: 0.82; }
+.mic-btn:active { opacity: 0.7; transform: scale(0.96); }
+
+.mic-btn--listening {
+  background: var(--accent);
+  color: #fff;
+  border-color: var(--accent);
+  animation: micPulse 1.2s ease-in-out infinite;
+}
+
+@keyframes micPulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.72; }
 }
 
 .dates-fieldset {

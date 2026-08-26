@@ -1525,6 +1525,11 @@
     initButtons();
     initBirthdayEmptyCard();
     initModal();
+
+    var importantDatesDayLink = document.getElementById("important-dates-day-link");
+    if (importantDatesDayLink) {
+      importantDatesDayLink.href = "important-dates.html?date=" + formatFullDateKey(targetDate);
+    }
   }
 
   function initWhenStorageReady() {
