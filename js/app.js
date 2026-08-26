@@ -13,6 +13,7 @@
   var eventsCardMode = "image";
   var eventsCardBound = false;
   var eventsFeaturedEntry = null;
+  var invalidateTaskVoiceInput = function () {};
 
   var WEEKDAYS = [
     "Воскресенье", "Понедельник", "Вторник", "Среда",
@@ -1059,6 +1060,7 @@
     }
 
     tasksStorage.addTaskForDate(getTargetDateKey(), text);
+    invalidateTaskVoiceInput();
     input.value = "";
     renderTasks();
     input.focus();
@@ -1420,6 +1422,99 @@
     });
   }
 
+  function initVoiceInput() {
+    var voiceBtn = document.getElementById("task-voice-btn");
+    var taskInput = document.getElementById("task-input");
+    var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var activeRecognition = null;
+    var activeSession = 0;
+    var listening = false;
+
+    if (!voiceBtn) return;
+    if (!SpeechRecognition) return;
+
+    voiceBtn.hidden = false;
+
+    function setListening(isListening) {
+      listening = isListening;
+      if (isListening) {
+        voiceBtn.classList.add("mic-btn--listening");
+        voiceBtn.setAttribute("aria-pressed", "true");
+        voiceBtn.setAttribute("aria-label", "Остановить запись");
+      } else {
+        voiceBtn.classList.remove("mic-btn--listening");
+        voiceBtn.setAttribute("aria-pressed", "false");
+        voiceBtn.setAttribute("aria-label", "Голосовой ввод");
+      }
+    }
+
+    invalidateTaskVoiceInput = function () {
+      var recognition = activeRecognition;
+      activeSession += 1;
+      activeRecognition = null;
+      setListening(false);
+      if (recognition) {
+        try {
+          recognition.abort();
+        } catch (err) {
+          // Сессия уже завершилась.
+        }
+      }
+    };
+
+    voiceBtn.addEventListener("click", function () {
+      if (listening) {
+        if (activeRecognition) activeRecognition.stop();
+        return;
+      }
+
+      var recognition = new SpeechRecognition();
+      var session = activeSession + 1;
+      var baseline = taskInput ? taskInput.value : "";
+
+      activeSession = session;
+      activeRecognition = recognition;
+      recognition.lang = "ru-RU";
+      recognition.interimResults = true;
+      recognition.continuous = false;
+
+      recognition.onresult = function (event) {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+
+        var transcript = "";
+        var i;
+        for (i = 0; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        if (taskInput) {
+          taskInput.value = (baseline + (baseline && transcript && !/\s$/.test(baseline) ? " " : "") + transcript).slice(0, 200);
+        }
+      };
+
+      recognition.onend = function () {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+        activeRecognition = null;
+        setListening(false);
+      };
+
+      recognition.onerror = function () {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+        activeRecognition = null;
+        setListening(false);
+      };
+
+      try {
+        setListening(true);
+        recognition.start();
+      } catch (err) {
+        if (activeRecognition === recognition && activeSession === session) {
+          activeRecognition = null;
+          setListening(false);
+        }
+      }
+    });
+  }
+
   function initModal() {
     var overlay   = document.getElementById("bday-modal");
     var backdrop  = document.getElementById("bday-modal-backdrop");
@@ -1523,6 +1618,7 @@
     renderTasks();
     initContent();
     initButtons();
+    initVoiceInput();
     initBirthdayEmptyCard();
     initModal();
 
