@@ -17,6 +17,7 @@
 
   var today = new Date();
   var visibleMonth = parseVisibleMonthFromQuery() || new Date(today.getFullYear(), today.getMonth(), 1);
+  var selectedDay = null;
 
   function parseVisibleMonthFromQuery() {
     var params = new URLSearchParams(window.location.search);
@@ -88,6 +89,13 @@
   }
 
   function loadBirthdays() {
+    if (
+      window.MyDayBirthdaysStorage &&
+      typeof window.MyDayBirthdaysStorage.loadBirthdays === "function"
+    ) {
+      return window.MyDayBirthdaysStorage.loadBirthdays() || [];
+    }
+
     try {
       var saved = localStorage.getItem(BIRTHDAYS_KEY);
       if (!saved) return [];
@@ -101,6 +109,13 @@
   }
 
   function loadImportantDates() {
+    if (
+      window.MyDayImportantDatesStorage &&
+      typeof window.MyDayImportantDatesStorage.loadImportantDates === "function"
+    ) {
+      return window.MyDayImportantDatesStorage.loadImportantDates() || [];
+    }
+
     try {
       var saved = localStorage.getItem(IMPORTANT_DATES_KEY);
       if (!saved) return [];
@@ -178,6 +193,21 @@
     );
   }
 
+  function compareCalendarDay(year, month, day, relativeTo) {
+    var y = relativeTo.getFullYear();
+    var m = relativeTo.getMonth();
+    var d = relativeTo.getDate();
+
+    if (year !== y) return year < y ? -1 : 1;
+    if (month !== m) return month < m ? -1 : 1;
+    if (day !== d) return day < d ? -1 : 1;
+    return 0;
+  }
+
+  function isFutureCalendarDay(year, month, day) {
+    return compareCalendarDay(year, month, day, new Date()) > 0;
+  }
+
   function createEmptyDay() {
     var empty = document.createElement("span");
     empty.className = "day day--empty";
@@ -193,11 +223,26 @@
     return year + "-" + padDatePart(month + 1) + "-" + padDatePart(day);
   }
 
-  function getDayHref(year, month, day) {
-    if (isToday(year, month, day)) return "index.html";
+  function getSelectedDateKey(year, month, day) {
+    if (
+      window.MyDayTasksStorage &&
+      typeof window.MyDayTasksStorage.getDateKey === "function"
+    ) {
+      return window.MyDayTasksStorage.getDateKey(new Date(year, month, day));
+    }
 
-    return "index.html?date=" + getDateParam(year, month, day) +
-      "&cal=" + getCalParam(year, month);
+    return getDateParam(year, month, day);
+  }
+
+  function getTasksForSelectedDate(dateKey) {
+    if (
+      window.MyDayTasksStorage &&
+      typeof window.MyDayTasksStorage.getTasksForDate === "function"
+    ) {
+      return window.MyDayTasksStorage.getTasksForDate(dateKey) || [];
+    }
+
+    return [];
   }
 
   function formatMonthDay(day, month) {
@@ -383,6 +428,24 @@
 
     if (window.MyDayHolidaysRU && typeof window.MyDayHolidaysRU.getCalendarEvents === "function") {
       return window.MyDayHolidaysRU.getCalendarEvents(year) || [];
+    }
+
+    return [];
+  }
+
+  function getCalendarEventsOnDate(year, month, day) {
+    if (
+      window.MyDayHolidays &&
+      typeof window.MyDayHolidays.getCalendarEventsOnDate === "function"
+    ) {
+      return window.MyDayHolidays.getCalendarEventsOnDate(year, month, day) || [];
+    }
+
+    if (
+      window.MyDayHolidaysRU &&
+      typeof window.MyDayHolidaysRU.getCalendarEventsOnDate === "function"
+    ) {
+      return window.MyDayHolidaysRU.getCalendarEventsOnDate(year, month, day) || [];
     }
 
     return [];
@@ -589,6 +652,303 @@
     section.style.display = "none";
   }
 
+  function setSelectedDayVisibility(visible) {
+    var section = document.getElementById("selected-day");
+    if (!section) return;
+
+    if (visible) {
+      section.hidden = false;
+      section.removeAttribute("hidden");
+      section.style.display = "block";
+      return;
+    }
+
+    section.hidden = true;
+    section.setAttribute("hidden", "");
+    section.style.display = "none";
+  }
+
+  function isSelectedCalendarDay(year, month, day) {
+    return Boolean(
+      selectedDay &&
+      isFutureCalendarDay(selectedDay.year, selectedDay.month, selectedDay.day) &&
+      selectedDay.year === year &&
+      selectedDay.month === month &&
+      selectedDay.day === day
+    );
+  }
+
+  function formatSelectedDayTitle(year, month, day) {
+    return day + " " + MONTHS_GENITIVE[month] + " " + year;
+  }
+
+  function getImportantDatesForDay(year, month, day) {
+    var items = loadImportantDates();
+    var dateKey = getDateParam(year, month, day);
+    var result = [];
+    var i;
+
+    for (i = 0; i < items.length; i += 1) {
+      var item = items[i];
+      if (!item || typeof item.date !== "string") continue;
+
+      var parts = parseDateParts(item.date);
+      if (!parts) continue;
+
+      if (isYearlyImportantDate(item)) {
+        if (parts.month === month && parts.day === day) {
+          result.push(item);
+        }
+        continue;
+      }
+
+      if (item.date.trim() === dateKey) {
+        result.push(item);
+      }
+    }
+
+    return result;
+  }
+
+  function getBirthdaysForDay(month, day) {
+    var items = loadBirthdays();
+    var result = [];
+    var i;
+
+    for (i = 0; i < items.length; i += 1) {
+      var item = items[i];
+      var parts = parseDateParts(item && item.birthDate);
+      if (!parts) continue;
+
+      if (parts.month === month && parts.day === day) {
+        result.push(item);
+      }
+    }
+
+    return result;
+  }
+
+  function collectPersonalEventsForDay(year, month, day) {
+    var events = [];
+    var birthday = getPersonalBirthdayParts();
+    var birthdays = getBirthdaysForDay(month, day);
+    var importantDates = getImportantDatesForDay(year, month, day);
+    var i;
+
+    if (birthday && birthday.month === month && birthday.day === day) {
+      events.push({ title: "Мой день рождения" });
+    }
+
+    for (i = 0; i < birthdays.length; i += 1) {
+      events.push({ title: formatCongratulationTitle(birthdays[i]) });
+    }
+
+    for (i = 0; i < importantDates.length; i += 1) {
+      var important = importantDates[i];
+      events.push({
+        title: typeof important.title === "string" && important.title.trim()
+          ? important.title.trim()
+          : "—"
+      });
+    }
+
+    return events;
+  }
+
+  function fillSelectedDayList(list, items, emptyText, getLabel, isMuted) {
+    if (!list) return;
+
+    list.innerHTML = "";
+
+    if (!items.length) {
+      var empty = document.createElement("li");
+      empty.className = "selected-day__empty";
+      empty.textContent = emptyText;
+      list.appendChild(empty);
+      return;
+    }
+
+    var i;
+    for (i = 0; i < items.length; i += 1) {
+      var row = document.createElement("li");
+      row.className = "selected-day__item";
+      if (isMuted && isMuted(items[i])) {
+        row.classList.add("selected-day__item--done");
+      }
+      row.textContent = getLabel(items[i]);
+      list.appendChild(row);
+    }
+  }
+
+  function applySelectedDayHighlight() {
+    var grid = document.getElementById("month-grid");
+    if (!grid) return;
+
+    var buttons = grid.querySelectorAll(".day:not(.day--empty)");
+    var selectedKey =
+      selectedDay &&
+      isFutureCalendarDay(selectedDay.year, selectedDay.month, selectedDay.day)
+        ? getDateParam(selectedDay.year, selectedDay.month, selectedDay.day)
+        : "";
+    var i;
+
+    for (i = 0; i < buttons.length; i += 1) {
+      var button = buttons[i];
+      if (selectedKey && button.getAttribute("data-date") === selectedKey) {
+        button.classList.add("day--selected");
+      } else {
+        button.classList.remove("day--selected");
+      }
+    }
+  }
+
+  function renderSelectedDayPanel() {
+    var title = document.getElementById("selected-day-title");
+    var tasksList = document.getElementById("selected-day-tasks");
+    var importantList = document.getElementById("selected-day-important");
+    var holidaysList = document.getElementById("selected-day-holidays");
+    var eventsList = document.getElementById("selected-day-events");
+
+    if (!selectedDay) {
+      closeSelectedDayForm();
+      setSelectedDayVisibility(false);
+      return;
+    }
+
+    if (!isFutureCalendarDay(selectedDay.year, selectedDay.month, selectedDay.day)) {
+      closeSelectedDayForm();
+      selectedDay = null;
+      applySelectedDayHighlight();
+      setSelectedDayVisibility(false);
+      return;
+    }
+
+    var year = selectedDay.year;
+    var month = selectedDay.month;
+    var day = selectedDay.day;
+    var dateKey = getSelectedDateKey(year, month, day);
+    var tasks = getTasksForSelectedDate(dateKey);
+    var importantDates = collectPersonalEventsForDay(year, month, day);
+    var calendarItems = getCalendarEventsOnDate(year, month, day);
+    var holidays = [];
+    var events = [];
+    var i;
+
+    for (i = 0; i < calendarItems.length; i += 1) {
+      var item = calendarItems[i];
+      if (!item) continue;
+      if (item.type === "official-holiday") {
+        holidays.push(item);
+      } else {
+        events.push(item);
+      }
+    }
+
+    if (title) {
+      title.textContent = formatSelectedDayTitle(year, month, day);
+    }
+
+    fillSelectedDayList(
+      tasksList,
+      tasks,
+      "Нет задач",
+      function (task) {
+        return task && typeof task.text === "string" ? task.text : "";
+      },
+      function (task) {
+        return Boolean(task && task.done);
+      }
+    );
+
+    fillSelectedDayList(
+      importantList,
+      importantDates,
+      "Нет важных дат",
+      function (item) {
+        return item && typeof item.title === "string" ? item.title : "—";
+      }
+    );
+
+    fillSelectedDayList(
+      holidaysList,
+      holidays,
+      "Нет праздников",
+      formatEventTitle
+    );
+
+    fillSelectedDayList(
+      eventsList,
+      events,
+      "Нет событий",
+      formatEventTitle
+    );
+
+    setSelectedDayVisibility(true);
+  }
+
+  function handleCalendarDateClick(year, month, day) {
+    var cmp = compareCalendarDay(year, month, day, new Date());
+
+    if (cmp === 0) {
+      window.location.assign("index.html");
+      return;
+    }
+
+    if (cmp < 0) {
+      window.location.assign(
+        "index.html?date=" + getDateParam(year, month, day) +
+        "&cal=" + getCalParam(year, month)
+      );
+      return;
+    }
+
+    selectDay(year, month, day);
+  }
+
+  function selectDay(year, month, day) {
+    var sameDay = Boolean(
+      selectedDay &&
+      selectedDay.year === year &&
+      selectedDay.month === month &&
+      selectedDay.day === day
+    );
+
+    if (!sameDay) {
+      closeSelectedDayForm();
+    }
+
+    selectedDay = {
+      year: year,
+      month: month,
+      day: day
+    };
+    applySelectedDayHighlight();
+    renderSelectedDayPanel();
+  }
+
+  function resetSelectedDay() {
+    closeSelectedDayForm();
+    selectedDay = null;
+    applySelectedDayHighlight();
+    setSelectedDayVisibility(false);
+  }
+
+  function restoreSelectedDayAfterRender() {
+    if (!selectedDay) {
+      closeSelectedDayForm();
+      setSelectedDayVisibility(false);
+      return;
+    }
+
+    if (
+      selectedDay.year === visibleMonth.getFullYear() &&
+      selectedDay.month === visibleMonth.getMonth()
+    ) {
+      applySelectedDayHighlight();
+      renderSelectedDayPanel();
+    }
+  }
+
   function getEventListIcon(event, isPersonal) {
     if (isPersonal && event.icon) {
       return event.icon;
@@ -597,7 +957,7 @@
     return "";
   }
 
-  function renderMonthEventRow(event, year, month, isPersonal) {
+  function renderMonthEventRow(event, year, month, isPersonal, blockDay) {
     var item = document.createElement("li");
     var dateKey = event.dateKey || event.date || getDateParam(year, month, event.day);
     var listIcon = getEventListIcon(event, isPersonal);
@@ -607,9 +967,15 @@
     button.type = "button";
     button.addEventListener("click", function () {
       var parts = parseDateParts(dateKey);
-      window.location.href = parts
-        ? getDayHref(parts.year, parts.month, parts.day)
-        : "index.html";
+      if (parts) {
+        handleCalendarDateClick(parts.year, parts.month, parts.day);
+        return;
+      }
+
+      var fallbackDay = typeof blockDay === "number"
+        ? blockDay
+        : (typeof event.day === "number" ? event.day : 1);
+      handleCalendarDateClick(year, month, fallbackDay);
     });
 
     var line = document.createElement("span");
@@ -657,7 +1023,7 @@
     var i;
     for (i = 0; i < dayGroup.events.length; i += 1) {
       list.appendChild(
-        renderMonthEventRow(dayGroup.events[i], year, month, isPersonal)
+        renderMonthEventRow(dayGroup.events[i], year, month, isPersonal, startDay)
       );
     }
 
@@ -784,9 +1150,10 @@
     button.className = "day";
     button.type = "button";
     button.textContent = String(day);
+    button.setAttribute("data-date", getDateParam(year, month, day));
     button.setAttribute("aria-label", day + " " + MONTHS[month].toLowerCase());
     button.addEventListener("click", function () {
-      window.location.href = getDayHref(year, month, day);
+      handleCalendarDateClick(year, month, day);
     });
 
     if (weekday === 0 || weekday === 6) {
@@ -796,6 +1163,10 @@
     if (isToday(year, month, day)) {
       button.classList.add("day--today");
       button.setAttribute("aria-current", "date");
+    }
+
+    if (isSelectedCalendarDay(year, month, day)) {
+      button.classList.add("day--selected");
     }
 
     if (hasInfo) {
@@ -843,11 +1214,13 @@
 
     renderMonthEvents(year, month);
     syncCalendarQuery();
+    restoreSelectedDayAfterRender();
   }
 
   function goToToday() {
     today = new Date();
     visibleMonth = new Date(today.getFullYear(), today.getMonth(), 1);
+    resetSelectedDay();
     renderCalendar();
   }
 
@@ -859,6 +1232,7 @@
     if (prev) {
       prev.addEventListener("click", function () {
         visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() - 1, 1);
+        resetSelectedDay();
         renderCalendar();
       });
     }
@@ -866,6 +1240,7 @@
     if (next) {
       next.addEventListener("click", function () {
         visibleMonth = new Date(visibleMonth.getFullYear(), visibleMonth.getMonth() + 1, 1);
+        resetSelectedDay();
         renderCalendar();
       });
     }
@@ -886,10 +1261,392 @@
     }, 60000);
   }
 
+  var UNKNOWN_YEAR = 0;
+  var voiceAborters = [];
+
+  function abortVoiceInput() {
+    var i;
+    for (i = 0; i < voiceAborters.length; i += 1) {
+      voiceAborters[i]();
+    }
+  }
+
+  function bindVoiceToInput(button, input, maxLen) {
+    var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var activeRecognition = null;
+    var activeSession = 0;
+    var listening = false;
+
+    if (!button || !input) return;
+    if (!SpeechRecognition) return;
+
+    button.hidden = false;
+    button.removeAttribute("hidden");
+
+    function setListening(isListening) {
+      listening = isListening;
+      if (isListening) {
+        button.classList.add("mic-btn--listening");
+        button.setAttribute("aria-pressed", "true");
+        button.setAttribute("aria-label", "Остановить запись");
+      } else {
+        button.classList.remove("mic-btn--listening");
+        button.setAttribute("aria-pressed", "false");
+        button.setAttribute("aria-label", "Голосовой ввод");
+      }
+    }
+
+    function abort() {
+      var recognition = activeRecognition;
+      activeSession += 1;
+      activeRecognition = null;
+      setListening(false);
+      if (recognition) {
+        try {
+          recognition.abort();
+        } catch (err) {
+          // Сессия уже завершилась.
+        }
+      }
+    }
+
+    voiceAborters.push(abort);
+
+    button.addEventListener("click", function () {
+      if (listening) {
+        if (activeRecognition) activeRecognition.stop();
+        return;
+      }
+
+      var recognition = new SpeechRecognition();
+      var session = activeSession + 1;
+      var baseline = input.value || "";
+
+      activeSession = session;
+      activeRecognition = recognition;
+      recognition.lang = "ru-RU";
+      recognition.interimResults = true;
+      recognition.continuous = false;
+
+      recognition.onresult = function (event) {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+
+        var transcript = "";
+        var i;
+        for (i = 0; i < event.results.length; i += 1) {
+          transcript += event.results[i][0].transcript;
+        }
+
+        input.value = (
+          baseline +
+          (baseline && transcript && !/\s$/.test(baseline) ? " " : "") +
+          transcript
+        ).slice(0, maxLen);
+        updateSelectedDaySaveButtons();
+      };
+
+      recognition.onend = function () {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+        activeRecognition = null;
+        setListening(false);
+      };
+
+      recognition.onerror = function () {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+        activeRecognition = null;
+        setListening(false);
+      };
+
+      try {
+        setListening(true);
+        recognition.start();
+      } catch (err) {
+        if (activeRecognition === recognition && activeSession === session) {
+          activeRecognition = null;
+          setListening(false);
+        }
+      }
+    });
+  }
+
+  function getSelectedDayFormEls() {
+    return {
+      container: document.getElementById("selected-day-form"),
+      taskForm: document.getElementById("selected-day-form-task"),
+      birthdayForm: document.getElementById("selected-day-form-birthday"),
+      importantForm: document.getElementById("selected-day-form-important"),
+      taskText: document.getElementById("selected-day-task-text"),
+      taskDate: document.getElementById("selected-day-task-date"),
+      birthdayName: document.getElementById("selected-day-birthday-name"),
+      birthdayDate: document.getElementById("selected-day-birthday-date"),
+      birthdayYear: document.getElementById("selected-day-birthday-year"),
+      birthdayRelation: document.getElementById("selected-day-birthday-relation"),
+      importantTitle: document.getElementById("selected-day-important-title"),
+      importantDate: document.getElementById("selected-day-important-date"),
+      importantCategory: document.getElementById("selected-day-important-category"),
+      importantReminder: document.getElementById("selected-day-important-reminder")
+    };
+  }
+
+  function setFormHidden(el, hidden) {
+    if (!el) return;
+
+    if (hidden) {
+      el.hidden = true;
+      el.setAttribute("hidden", "");
+      return;
+    }
+
+    el.hidden = false;
+    el.removeAttribute("hidden");
+  }
+
+  function setSubmitDisabled(form, disabled) {
+    var submit = form && form.querySelector('button[type="submit"]');
+    if (!submit) return;
+    submit.disabled = disabled;
+  }
+
+  function updateSelectedDaySaveButtons() {
+    var els = getSelectedDayFormEls();
+    setSubmitDisabled(els.taskForm, !(els.taskText && els.taskText.value.trim()));
+    setSubmitDisabled(els.birthdayForm, !(els.birthdayName && els.birthdayName.value.trim()));
+    setSubmitDisabled(
+      els.importantForm,
+      !(els.importantTitle && els.importantTitle.value.trim())
+    );
+  }
+
+  function resetSelectedDayForms() {
+    var els = getSelectedDayFormEls();
+
+    if (els.taskForm) els.taskForm.reset();
+    if (els.birthdayForm) els.birthdayForm.reset();
+    if (els.importantForm) els.importantForm.reset();
+
+    if (els.taskDate) els.taskDate.textContent = "";
+    if (els.birthdayDate) els.birthdayDate.textContent = "";
+    if (els.importantDate) els.importantDate.textContent = "";
+
+    updateSelectedDaySaveButtons();
+  }
+
+  function closeSelectedDayForm() {
+    var els = getSelectedDayFormEls();
+    abortVoiceInput();
+    resetSelectedDayForms();
+    setFormHidden(els.taskForm, true);
+    setFormHidden(els.birthdayForm, true);
+    setFormHidden(els.importantForm, true);
+    setFormHidden(els.container, true);
+  }
+
+  function fillLockedFormDates() {
+    var els = getSelectedDayFormEls();
+    var label = selectedDay
+      ? formatSelectedDayTitle(selectedDay.year, selectedDay.month, selectedDay.day)
+      : "";
+
+    if (els.taskDate) els.taskDate.textContent = label;
+    if (els.birthdayDate) els.birthdayDate.textContent = label;
+    if (els.importantDate) els.importantDate.textContent = label;
+  }
+
+  function openSelectedDayForm(type) {
+    var els = getSelectedDayFormEls();
+    var form = null;
+
+    if (!selectedDay || !isFutureCalendarDay(selectedDay.year, selectedDay.month, selectedDay.day)) {
+      return;
+    }
+
+    if (type === "task") form = els.taskForm;
+    if (type === "birthday") form = els.birthdayForm;
+    if (type === "important") form = els.importantForm;
+    if (!form || !els.container) return;
+
+    abortVoiceInput();
+    resetSelectedDayForms();
+    fillLockedFormDates();
+    setFormHidden(els.taskForm, true);
+    setFormHidden(els.birthdayForm, true);
+    setFormHidden(els.importantForm, true);
+    setFormHidden(els.container, false);
+    setFormHidden(form, false);
+    updateSelectedDaySaveButtons();
+  }
+
+  function buildSelectedDayBirthDate(day, month, year) {
+    var yearPart = ("0000" + String(year ? Number(year) : UNKNOWN_YEAR)).slice(-4);
+    return yearPart + "-" + padDatePart(month) + "-" + padDatePart(day);
+  }
+
+  function saveSelectedDayTask(event) {
+    event.preventDefault();
+
+    var els = getSelectedDayFormEls();
+    var text = els.taskText ? els.taskText.value.trim() : "";
+    if (!text || !selectedDay) return;
+    if (
+      !window.MyDayTasksStorage ||
+      typeof window.MyDayTasksStorage.addTaskForDate !== "function"
+    ) {
+      return;
+    }
+
+    window.MyDayTasksStorage.addTaskForDate(
+      getSelectedDateKey(selectedDay.year, selectedDay.month, selectedDay.day),
+      text
+    );
+    closeSelectedDayForm();
+    renderCalendar();
+  }
+
+  function saveSelectedDayBirthday(event) {
+    event.preventDefault();
+
+    var els = getSelectedDayFormEls();
+    var name = els.birthdayName ? els.birthdayName.value.trim() : "";
+    var relation = els.birthdayRelation ? els.birthdayRelation.value.trim() : "";
+    var yearValue = els.birthdayYear ? els.birthdayYear.value.trim() : "";
+    var year = yearValue ? Number(yearValue) : UNKNOWN_YEAR;
+
+    if (!name || !selectedDay) return;
+    if (yearValue && (!year || year < 1900 || year > 2100)) return;
+    if (
+      !window.MyDayBirthdaysStorage ||
+      typeof window.MyDayBirthdaysStorage.addBirthday !== "function"
+    ) {
+      return;
+    }
+
+    window.MyDayBirthdaysStorage.addBirthday({
+      name: name,
+      relation: relation,
+      birthDate: buildSelectedDayBirthDate(
+        selectedDay.day,
+        selectedDay.month + 1,
+        yearValue ? year : UNKNOWN_YEAR
+      )
+    });
+    closeSelectedDayForm();
+    renderCalendar();
+  }
+
+  function saveSelectedDayImportant(event) {
+    event.preventDefault();
+
+    var els = getSelectedDayFormEls();
+    var title = els.importantTitle ? els.importantTitle.value.trim() : "";
+    var yearlyInput = els.importantForm
+      ? els.importantForm.querySelector('input[name="selected-day-important-yearly"]:checked')
+      : null;
+    var yearly = Boolean(yearlyInput && yearlyInput.value === "yearly");
+    var category = els.importantCategory ? els.importantCategory.value : "";
+    var reminder = els.importantReminder ? els.importantReminder.value : "";
+    var dateValue;
+
+    if (!title || !selectedDay) return;
+    if (
+      !window.MyDayImportantDatesStorage ||
+      typeof window.MyDayImportantDatesStorage.addImportantDate !== "function"
+    ) {
+      return;
+    }
+
+    if (yearly) {
+      dateValue =
+        "0000-" +
+        padDatePart(selectedDay.month + 1) +
+        "-" +
+        padDatePart(selectedDay.day);
+    } else {
+      dateValue = getDateParam(selectedDay.year, selectedDay.month, selectedDay.day);
+    }
+
+    window.MyDayImportantDatesStorage.addImportantDate({
+      title: title,
+      yearly: yearly,
+      date: dateValue,
+      category: category,
+      reminder: reminder
+    });
+    closeSelectedDayForm();
+    renderCalendar();
+  }
+
+  function bindSelectedDayFormCancel(form) {
+    var cancel = form && form.querySelector(".selected-day-form__cancel");
+    if (!cancel) return;
+    cancel.addEventListener("click", closeSelectedDayForm);
+  }
+
+  function initSelectedDayAddForms() {
+    var els = getSelectedDayFormEls();
+    var addTask = document.getElementById("selected-day-add-task");
+    var addBirthday = document.getElementById("selected-day-add-birthday");
+    var addImportant = document.getElementById("selected-day-add-important");
+
+    if (addTask) {
+      addTask.addEventListener("click", function () {
+        openSelectedDayForm("task");
+      });
+    }
+
+    if (addBirthday) {
+      addBirthday.addEventListener("click", function () {
+        openSelectedDayForm("birthday");
+      });
+    }
+
+    if (addImportant) {
+      addImportant.addEventListener("click", function () {
+        openSelectedDayForm("important");
+      });
+    }
+
+    if (els.taskForm) {
+      els.taskForm.addEventListener("submit", saveSelectedDayTask);
+      els.taskForm.addEventListener("input", updateSelectedDaySaveButtons);
+      bindSelectedDayFormCancel(els.taskForm);
+    }
+
+    if (els.birthdayForm) {
+      els.birthdayForm.addEventListener("submit", saveSelectedDayBirthday);
+      els.birthdayForm.addEventListener("input", updateSelectedDaySaveButtons);
+      bindSelectedDayFormCancel(els.birthdayForm);
+    }
+
+    if (els.importantForm) {
+      els.importantForm.addEventListener("submit", saveSelectedDayImportant);
+      els.importantForm.addEventListener("input", updateSelectedDaySaveButtons);
+      bindSelectedDayFormCancel(els.importantForm);
+    }
+
+    bindVoiceToInput(
+      document.getElementById("selected-day-task-voice"),
+      els.taskText,
+      200
+    );
+    bindVoiceToInput(
+      document.getElementById("selected-day-birthday-voice"),
+      els.birthdayName,
+      80
+    );
+    bindVoiceToInput(
+      document.getElementById("selected-day-important-voice"),
+      els.importantTitle,
+      120
+    );
+
+    closeSelectedDayForm();
+  }
+
   function init() {
     renderCalendar();
     initMonthControls();
     initStatusbarTime();
+    initSelectedDayAddForms();
   }
 
   if (document.readyState === "loading") {
