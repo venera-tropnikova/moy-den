@@ -406,6 +406,12 @@ button {
   transform: scale(1);
 }
 
+.profile-section .profile-link-card + .profile-link-card {
+  margin-top: 14px;
+  padding-top: 14px;
+  border-top: 1px solid var(--divider);
+}
+
 .profile-link-card {
   display: flex;
   align-items: center;

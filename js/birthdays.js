@@ -3,6 +3,7 @@
 
   var UNKNOWN_YEAR = 0;
   var editingId = null;
+  var invalidateBirthdayVoiceInput = function () {};
 
   var returnTo = null;
 
@@ -141,6 +142,7 @@
 
   function resetFormState() {
     var els = getFormElements();
+    invalidateBirthdayVoiceInput();
     editingId = null;
     if (els.form) els.form.reset();
     if (els.status) els.status.textContent = "";
@@ -187,6 +189,7 @@
     var els = getFormElements();
     var parts = parseBirthDateParts(birthday.birthDate);
 
+    invalidateBirthdayVoiceInput();
     editingId = birthday.id;
     setFormMode("edit");
 
@@ -316,6 +319,7 @@
 
     els.form.addEventListener("submit", function (event) {
       event.preventDefault();
+      invalidateBirthdayVoiceInput();
 
       var nextName = els.name.value.trim();
       var nextRelation = els.relation.value.trim();
@@ -361,6 +365,99 @@
     });
   }
 
+  function initVoiceInput() {
+    var voiceBtn = document.getElementById("birthday-voice-btn");
+    var nameInput = document.getElementById("birthday-name");
+    var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
+    var activeRecognition = null;
+    var activeSession = 0;
+    var listening = false;
+
+    if (!voiceBtn) return;
+    if (!SpeechRecognition) return;
+
+    voiceBtn.hidden = false;
+
+    function setListening(isListening) {
+      listening = isListening;
+      if (isListening) {
+        voiceBtn.classList.add("mic-btn--listening");
+        voiceBtn.setAttribute("aria-pressed", "true");
+        voiceBtn.setAttribute("aria-label", "Остановить запись");
+      } else {
+        voiceBtn.classList.remove("mic-btn--listening");
+        voiceBtn.setAttribute("aria-pressed", "false");
+        voiceBtn.setAttribute("aria-label", "Голосовой ввод");
+      }
+    }
+
+    invalidateBirthdayVoiceInput = function () {
+      var recognition = activeRecognition;
+      activeSession += 1;
+      activeRecognition = null;
+      setListening(false);
+      if (recognition) {
+        try {
+          recognition.abort();
+        } catch (err) {
+          // Сессия уже завершилась.
+        }
+      }
+    };
+
+    voiceBtn.addEventListener("click", function () {
+      if (listening) {
+        if (activeRecognition) activeRecognition.stop();
+        return;
+      }
+
+      var recognition = new SpeechRecognition();
+      var session = activeSession + 1;
+      var baseline = nameInput ? nameInput.value : "";
+
+      activeSession = session;
+      activeRecognition = recognition;
+      recognition.lang = "ru-RU";
+      recognition.interimResults = true;
+      recognition.continuous = false;
+
+      recognition.onresult = function (event) {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+
+        var transcript = "";
+        var i;
+        for (i = 0; i < event.results.length; i++) {
+          transcript += event.results[i][0].transcript;
+        }
+        if (nameInput) {
+          nameInput.value = (baseline + (baseline && transcript && !/\s$/.test(baseline) ? " " : "") + transcript).slice(0, 80);
+        }
+      };
+
+      recognition.onend = function () {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+        activeRecognition = null;
+        setListening(false);
+      };
+
+      recognition.onerror = function () {
+        if (activeRecognition !== recognition || activeSession !== session) return;
+        activeRecognition = null;
+        setListening(false);
+      };
+
+      try {
+        setListening(true);
+        recognition.start();
+      } catch (err) {
+        if (activeRecognition === recognition && activeSession === session) {
+          activeRecognition = null;
+          setListening(false);
+        }
+      }
+    });
+  }
+
   function initStatusbarTime() {
     var time = document.getElementById("statusbar-time");
     if (!time) return;
@@ -396,6 +493,7 @@
   function init() {
     renderBirthdays();
     initForm();
+    initVoiceInput();
     initStatusbarTime();
     openEditFromQuery();
   }
