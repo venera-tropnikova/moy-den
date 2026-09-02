@@ -1606,6 +1606,12 @@ input  { font-family: inherit; }
 /* ─── АНЕКДОТ ДНЯ ─────────────────────────────────────── */
 
 .duo .card.card--smile {
+  display: grid;
+  grid-template-rows: auto max-content;
+  align-self: start;
+  height: auto;
+  min-height: 210px;
+  overflow: hidden;
   padding: 14px 12px;
   background: rgba(255, 255, 255, 0.58);
 }
@@ -1622,9 +1628,9 @@ input  { font-family: inherit; }
 
 .smile__body {
   flex: 1 1 auto;
-  min-height: 0;
+  min-height: min-content;
   min-width: 0;
-  height: 0;
+  height: auto;
   overflow: hidden;
 }
 
@@ -1647,6 +1653,7 @@ input  { font-family: inherit; }
 
 .smile__caption {
   margin: 0 0 4px;
+  padding-bottom: 1.4em;
   padding-right: 0;
   font-size: 0.86rem;
   font-weight: 400;
