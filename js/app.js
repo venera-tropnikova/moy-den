@@ -924,13 +924,16 @@
     });
 
     completedCount.textContent = String(completedTasks.length);
-    completedToggle.hidden = false;
+    completedToggle.hidden = todayTasks.length === 0;
+    completedToggle.style.display = todayTasks.length === 0 ? "none" : "";
     completedList.hidden = true;
 
     if (activeTasks.length === 0) {
       var empty = document.createElement("li");
       empty.className = "task task--done";
-      empty.textContent = "На сегодня всё выполнено. Можно немного выдохнуть.";
+      empty.textContent = todayTasks.length === 0
+        ? "Пока нет дел"
+        : "На сегодня всё выполнено. Можно немного выдохнуть.";
       activeList.appendChild(empty);
     }
 
