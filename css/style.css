@@ -1400,11 +1400,18 @@ input  { font-family: inherit; }
 
 .duo .card.card--history-text {
   padding-top: 17px;
+  height: auto;
+  min-height: 210px;
+  overflow: visible;
+  align-self: start;
 }
 
 .card--history-text .hist__answer {
   display: flex;
   gap: 0;
+  overflow: visible;
+  flex: 1 1 auto;
+  min-height: min-content;
 }
 
 .card--history-text .hist__image,
