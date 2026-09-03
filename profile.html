@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Профиль — Мой день</title>
-  <link rel="stylesheet" href="css/profile.css?v=20260827-1">
+  <link rel="stylesheet" href="css/profile.css?v=20260904-1">
 </head>
 <body>
 
@@ -51,7 +51,7 @@
           </label>
 
           <label class="profile-field" for="profile-city">
-            <span class="profile-field__label">Город проживания</span>
+            <span class="profile-field__label">Запасной город</span>
             <input
               class="profile-input"
               id="profile-city"
@@ -61,6 +61,7 @@
               autocomplete="address-level2"
               placeholder="Например, Екатеринбург"
             >
+            <span class="profile-field__hint">Используется, если геолокация недоступна</span>
           </label>
 
           <label class="profile-field" for="profile-birth-date">

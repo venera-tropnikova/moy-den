@@ -155,9 +155,7 @@
         resolve(null);
       }
     }).then(function (coords) {
-      if (!coords) {
-        geoCoordsInFlight = null;
-      }
+      geoCoordsInFlight = null;
       return coords;
     });
 
@@ -165,14 +163,6 @@
   }
 
   function resolveLocation() {
-    var city = getProfileCity();
-    if (city) {
-      return Promise.resolve({
-        mode: LOCATION_MODE.PROFILE,
-        city: city
-      });
-    }
-
     return getBrowserCoordinates().then(function (coords) {
       if (coords) {
         return {
@@ -180,6 +170,14 @@
           city: GEO_LABEL,
           latitude: coords.latitude,
           longitude: coords.longitude
+        };
+      }
+
+      var city = getProfileCity();
+      if (city) {
+        return {
+          mode: LOCATION_MODE.PROFILE,
+          city: city
         };
       }
 
@@ -423,7 +421,6 @@
 
   function applyGeoPlaceLabel(location, name) {
     if (!name) return;
-    if (getProfileCity()) return;
     if (!hasGeoCoords(location)) return;
 
     location.city = name;
@@ -453,17 +450,17 @@
   }
 
   function pickResolvedCity(dataCity, location) {
-    var profileCity = getProfileCity();
-    if (profileCity) return profileCity;
     var snapshot = typeof dataCity === "string" ? dataCity.trim() : "";
     var live = location && typeof location.city === "string" ? location.city.trim() : "";
-    var cached = cachedGeoPlaceName(location);
-    if (cached) return cached;
     if (hasGeoCoords(location)) {
+      var cached = cachedGeoPlaceName(location);
+      if (cached) return cached;
       if (live && live !== GEO_LABEL) return live;
       if (snapshot && snapshot !== GEO_LABEL) return snapshot;
       return live || snapshot;
     }
+    var profileCity = getProfileCity();
+    if (profileCity) return profileCity;
     return snapshot || live;
   }
 
@@ -1106,27 +1103,9 @@
   function loadWeather() {
     var startedCity = getProfileCity();
     var nowDate = getSelectedDate();
-    var nowTime = Date.now();
     var pendingGeoKey = "geo|pending|" + formatLocalDate(nowDate);
 
-    if (startedCity) {
-      var profileKey = buildWeatherCacheKey({
-        mode: LOCATION_MODE.PROFILE,
-        city: startedCity
-      }, nowDate);
-
-      if (weatherPromise && inFlightKey === profileKey) return weatherPromise;
-
-      if (
-        cachedWeather &&
-        cachedKey === profileKey &&
-        nowTime - weatherLoadedAt < WEATHER_CACHE_TTL_MS
-      ) {
-        return Promise.resolve(cachedWeather);
-      }
-    } else if (weatherPromise && inFlightKey === pendingGeoKey) {
-      return weatherPromise;
-    }
+    if (weatherPromise && inFlightKey === pendingGeoKey) return weatherPromise;
 
     var requestPromise = resolveLocation().then(function (location) {
       if (location.mode === LOCATION_MODE.GEO && !hasGeoCoords(location)) {
@@ -1238,9 +1217,7 @@
     });
 
     weatherPromise = requestPromise;
-    inFlightKey = startedCity
-      ? buildWeatherCacheKey({ mode: LOCATION_MODE.PROFILE, city: startedCity }, nowDate)
-      : pendingGeoKey;
+    inFlightKey = pendingGeoKey;
 
     requestPromise.then(clearInFlight, clearInFlight);
     return requestPromise;
@@ -1363,9 +1340,7 @@
         setWeatherCityInteractive(cityEl, false);
         if (cityEl) {
           cityEl.textContent = formatCityLabel(
-            profileCity
-              ? profileCity
-              : (isGeo ? (city || GEO_LABEL) : (city || profileCity))
+            isGeo ? (city || GEO_LABEL) : (city || profileCity)
           );
         }
         if (iconEl) iconEl.textContent = weather.now.icon || "";
