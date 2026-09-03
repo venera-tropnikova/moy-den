@@ -3,6 +3,31 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="my-day-release" content="20260904-1">
+  <script>
+  (function () {
+    var RELEASE_KEY = "my-day-release-reloaded";
+    var meta = document.querySelector('meta[name="my-day-release"]');
+    var local = meta && meta.getAttribute("content") ? meta.getAttribute("content").trim() : "";
+    if (!local) return;
+    fetch("version.json?v=" + Date.now(), { cache: "no-store" }).then(function (res) {
+      if (!res || !res.ok) return null;
+      return res.json();
+    }).then(function (data) {
+      var remote = data && typeof data.version === "string" ? data.version.trim() : "";
+      if (!remote || remote === local) return;
+      try {
+        if (window.sessionStorage.getItem(RELEASE_KEY) === remote) return;
+        window.sessionStorage.setItem(RELEASE_KEY, remote);
+      } catch (err) {
+        return;
+      }
+      var url = new URL(window.location.href);
+      url.searchParams.set("v", remote);
+      window.location.replace(url.href);
+    }).catch(function () {});
+  })();
+  </script>
   <title>Профиль — Мой день</title>
   <link rel="stylesheet" href="css/profile.css?v=20260904-1">
 </head>
@@ -115,7 +140,7 @@
 
   </div>
 
-  <script src="js/scene-background.js?v=20260903-8"></script>
-  <script src="js/profile.js"></script>
+  <script src="js/scene-background.js?v=20260904-1"></script>
+  <script src="js/profile.js?v=20260904-1"></script>
 </body>
 </html>

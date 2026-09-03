@@ -3,8 +3,33 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="my-day-release" content="20260904-1">
+  <script>
+  (function () {
+    var RELEASE_KEY = "my-day-release-reloaded";
+    var meta = document.querySelector('meta[name="my-day-release"]');
+    var local = meta && meta.getAttribute("content") ? meta.getAttribute("content").trim() : "";
+    if (!local) return;
+    fetch("version.json?v=" + Date.now(), { cache: "no-store" }).then(function (res) {
+      if (!res || !res.ok) return null;
+      return res.json();
+    }).then(function (data) {
+      var remote = data && typeof data.version === "string" ? data.version.trim() : "";
+      if (!remote || remote === local) return;
+      try {
+        if (window.sessionStorage.getItem(RELEASE_KEY) === remote) return;
+        window.sessionStorage.setItem(RELEASE_KEY, remote);
+      } catch (err) {
+        return;
+      }
+      var url = new URL(window.location.href);
+      url.searchParams.set("v", remote);
+      window.location.replace(url.href);
+    }).catch(function () {});
+  })();
+  </script>
   <title>Календарь — Мой день</title>
-  <link rel="stylesheet" href="css/calendar.css?v=selected-day-add-1">
+  <link rel="stylesheet" href="css/calendar.css?v=20260904-1">
 </head>
 <body>
 
@@ -311,12 +336,12 @@
 
   </div>
 
-  <script src="js/orthodox-easter.js"></script>
-  <script src="js/holidays-ru.js"></script>
-  <script src="js/tasks-storage.js"></script>
-  <script src="js/birthdays-storage.js"></script>
-  <script src="js/important-dates-storage.js"></script>
-  <script src="js/calendar.js?v=selected-day-add-1"></script>
+  <script src="js/orthodox-easter.js?v=20260904-1"></script>
+  <script src="js/holidays-ru.js?v=20260904-1"></script>
+  <script src="js/tasks-storage.js?v=20260904-1"></script>
+  <script src="js/birthdays-storage.js?v=20260904-1"></script>
+  <script src="js/important-dates-storage.js?v=20260904-1"></script>
+  <script src="js/calendar.js?v=20260904-1"></script>
   <script>
     window.addEventListener("pageshow", function (event) {
       if (event.persisted) window.location.reload();
