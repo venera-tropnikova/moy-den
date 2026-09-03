@@ -15,6 +15,8 @@
   var cachedKey = null;
   var weatherLoadedAt = 0;
   var geoCoordsInFlight = null;
+  var geoPlaceLabels = {};
+  var geoPlaceInFlight = {};
 
   // Режимы местоположения: profile и geo активны.
   // manual зарезервирован для следующих задач.
@@ -188,6 +190,152 @@
         longitude: null
       };
     });
+  }
+
+  function keepMissingGeoCoords(target, source) {
+    if (!target || typeof target !== "object" || !hasGeoCoords(source)) {
+      return target;
+    }
+    if (typeof target.latitude !== "number" || !isFinite(target.latitude)) {
+      target.latitude = source.latitude;
+    }
+    if (typeof target.longitude !== "number" || !isFinite(target.longitude)) {
+      target.longitude = source.longitude;
+    }
+    return target;
+  }
+
+  function lookupGeoPlaceName(lat, lon) {
+    var key = String(lat) + "|" + String(lon);
+
+    if (Object.prototype.hasOwnProperty.call(geoPlaceLabels, key)) {
+      return Promise.resolve(geoPlaceLabels[key]);
+    }
+
+    if (geoPlaceInFlight[key]) {
+      return geoPlaceInFlight[key];
+    }
+
+    var requestPromise = new Promise(function (resolve) {
+      var controller = null;
+      var timeoutId = null;
+      var settled = false;
+
+      function finish(name) {
+        if (settled) return;
+        settled = true;
+        if (timeoutId !== null) {
+          clearTimeout(timeoutId);
+          timeoutId = null;
+        }
+        var cached = typeof name === "string" ? name : "";
+        geoPlaceLabels[key] = cached;
+        delete geoPlaceInFlight[key];
+        resolve(cached);
+      }
+
+      try {
+        if (typeof AbortController === "function") {
+          controller = new AbortController();
+        }
+
+        timeoutId = setTimeout(function () {
+          try {
+            if (controller) controller.abort();
+          } catch (error) {}
+          finish("");
+        }, 3000);
+
+        var url = "https://nominatim.openstreetmap.org/reverse?format=jsonv2&lat=" +
+          encodeURIComponent(String(lat)) +
+          "&lon=" +
+          encodeURIComponent(String(lon)) +
+          "&zoom=10&addressdetails=1&accept-language=ru";
+
+        var fetchOptions = {};
+        if (controller) {
+          fetchOptions.signal = controller.signal;
+        }
+
+        fetch(url, fetchOptions).then(function (response) {
+          if (!response || !response.ok) {
+            finish("");
+            return;
+          }
+          return response.json().then(function (data) {
+            var address = data && data.address;
+            var name = "";
+            if (address && typeof address === "object") {
+              var fields = ["city", "town", "village", "municipality", "hamlet"];
+              for (var i = 0; i < fields.length; i += 1) {
+                var value = address[fields[i]];
+                if (typeof value === "string" && value.trim()) {
+                  name = value.trim();
+                  break;
+                }
+              }
+            }
+            finish(name);
+          });
+        }).catch(function () {
+          finish("");
+        });
+      } catch (error) {
+        finish("");
+      }
+    });
+
+    geoPlaceInFlight[key] = requestPromise;
+    return requestPromise;
+  }
+
+  function applyGeoPlaceLabel(location, name) {
+    if (!name) return;
+    if (getProfileCity()) return;
+    if (!hasGeoCoords(location)) return;
+
+    location.city = name;
+
+    if (
+      cachedWeather &&
+      cachedWeather.location &&
+      hasGeoCoords(cachedWeather.location) &&
+      cachedWeather.location.latitude === location.latitude &&
+      cachedWeather.location.longitude === location.longitude
+    ) {
+      cachedWeather.location.city = name;
+    }
+
+    var cityEl = document.getElementById("weather-city");
+    if (cityEl) {
+      cityEl.textContent = formatCityLabel(name);
+    }
+  }
+
+  function cachedGeoPlaceName(location) {
+    if (!hasGeoCoords(location)) return "";
+    var key = String(location.latitude) + "|" + String(location.longitude);
+    if (!Object.prototype.hasOwnProperty.call(geoPlaceLabels, key)) return "";
+    var name = geoPlaceLabels[key];
+    return typeof name === "string" && name.trim() ? name.trim() : "";
+  }
+
+  function pickResolvedCity(dataCity, location) {
+    var snapshot = typeof dataCity === "string" ? dataCity.trim() : "";
+    var live = location && typeof location.city === "string" ? location.city.trim() : "";
+    var cached = cachedGeoPlaceName(location);
+    if (cached) return cached;
+    if (hasGeoCoords(location)) {
+      if (live && live !== GEO_LABEL) return live;
+      if (snapshot && snapshot !== GEO_LABEL) return snapshot;
+      return live || snapshot;
+    }
+    return snapshot || live;
+  }
+
+  function applyCachedGeoPlaceIfReady(targetLocation) {
+    var name = cachedGeoPlaceName(targetLocation);
+    if (name) applyGeoPlaceLabel(targetLocation, name);
   }
 
   function formatTemp(temp) {
@@ -856,6 +1004,12 @@
         return emptyWeather;
       }
 
+      if (hasGeoCoords(location)) {
+        lookupGeoPlaceName(location.latitude, location.longitude).then(function (name) {
+          if (name) applyGeoPlaceLabel(location, name);
+        });
+      }
+
       var requestKey = buildWeatherCacheKey(location, nowDate);
 
       if (
@@ -863,20 +1017,23 @@
         cachedKey === requestKey &&
         Date.now() - weatherLoadedAt < WEATHER_CACHE_TTL_MS
       ) {
+        applyCachedGeoPlaceIfReady(cachedWeather.location);
         return cachedWeather;
       }
 
       return fetchWeatherData(location, nowDate).then(function (data) {
       if (!data || typeof data !== "object") {
-        return { status: "empty", location: location };
+        return { status: "empty", location: keepMissingGeoCoords(location, location) };
       }
 
       if (data.status === "empty" || data.status === "error" || data.status === "unavailable") {
+        var statusLocation = data.location && typeof data.location === "object"
+          ? data.location
+          : location;
+        keepMissingGeoCoords(statusLocation, location);
         return {
           status: data.status,
-          location: data.location && typeof data.location === "object"
-            ? data.location
-            : location,
+          location: statusLocation,
           dateMode: typeof data.dateMode === "string" ? data.dateMode : getDateMode(nowDate),
           targetDate: typeof data.targetDate === "string"
             ? data.targetDate
@@ -888,7 +1045,7 @@
       var now = data.now && typeof data.now === "object" ? data.now : null;
       var condition = now ? normalizeCondition(now.condition) : null;
       if (!now || !condition || typeof now.temp !== "number" || !isFinite(now.temp)) {
-        return { status: "empty", location: location };
+        return { status: "empty", location: keepMissingGeoCoords(location, location) };
       }
 
       var meta = CONDITIONS[condition];
@@ -897,11 +1054,17 @@
       var resolvedLocation = data.location && typeof data.location === "object"
         ? {
             mode: data.location.mode || location.mode,
-            city: typeof data.location.city === "string" && data.location.city.trim()
-              ? data.location.city.trim()
-              : location.city
+            city: pickResolvedCity(
+              data.location.city,
+              location
+            )
           }
         : location;
+
+      if (hasGeoCoords(location)) {
+        resolvedLocation.latitude = location.latitude;
+        resolvedLocation.longitude = location.longitude;
+      }
 
       var weatherNow = {
         temp: now.temp,
@@ -925,13 +1088,16 @@
       };
     }).catch(function (error) {
       console.warn("Не удалось загрузить погоду:", error);
-      return { status: "error", location: location };
+      return { status: "error", location: keepMissingGeoCoords(location, location) };
     }).then(function (weather) {
       if (getProfileCity() !== startedCity) return loadWeather();
 
       cachedWeather = weather;
       cachedKey = requestKey;
       weatherLoadedAt = Date.now();
+      if (weather && weather.location) {
+        applyCachedGeoPlaceIfReady(weather.location);
+      }
       publishWeatherState(weather);
       return weather;
     });
