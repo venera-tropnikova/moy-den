@@ -2130,3 +2130,25 @@ input  { font-family: inherit; }
   margin-top: auto;
   padding-top: 2px;
 }
+
+@media (max-width: 360px) {
+  #plan .add-row {
+    position: fixed;
+    left: 14px;
+    right: 14px;
+    bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+    z-index: 90;
+    margin-top: 0;
+    padding: 10px 12px 12px;
+    border-radius: var(--r-lg);
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+    box-shadow: var(--shadow);
+  }
+
+  #plan {
+    padding-bottom: 84px;
+    scroll-margin-bottom: calc(144px + env(safe-area-inset-bottom, 0px));
+  }
+}
