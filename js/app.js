@@ -1323,6 +1323,14 @@
         closeAllTaskMenus();
       }
     });
+
+    var navTasks = document.getElementById("nav-tasks");
+    var plan = document.getElementById("plan");
+    if (navTasks && plan) {
+      navTasks.addEventListener("click", function () {
+        plan.scrollIntoView({ behavior: "smooth", block: "end" });
+      });
+    }
   }
 
   function initVoiceInput() {

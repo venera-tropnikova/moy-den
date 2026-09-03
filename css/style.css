@@ -397,6 +397,10 @@ input  { font-family: inherit; }
   box-shadow: var(--shadow);
 }
 
+#plan {
+  scroll-margin-bottom: calc(80px + env(safe-area-inset-bottom, 0px));
+}
+
 .card__row {
   display: flex;
   align-items: baseline;
