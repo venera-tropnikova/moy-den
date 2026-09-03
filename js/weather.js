@@ -14,13 +14,21 @@
   var cachedWeather = null;
   var cachedKey = null;
   var weatherLoadedAt = 0;
+  var geoCoordsInFlight = null;
 
-  // Режимы местоположения: сейчас только profile.
-  // geo и manual зарезервированы для следующих задач.
+  // Режимы местоположения: profile и geo активны.
+  // manual зарезервирован для следующих задач.
   var LOCATION_MODE = {
     PROFILE: "profile",
     GEO: "geo",
     MANUAL: "manual"
+  };
+
+  var GEO_LABEL = "Ваше местоположение";
+  var GEO_OPTIONS = {
+    timeout: 7000,
+    enableHighAccuracy: false,
+    maximumAge: WEATHER_CACHE_TTL_MS
   };
 
   var CONDITIONS = {
@@ -89,11 +97,97 @@
       : "";
   }
 
+  function roundCoord(n) {
+    if (typeof n !== "number" || !isFinite(n)) return null;
+    return Number(n.toFixed(2));
+  }
+
+  function hasGeoCoords(location) {
+    return !!(
+      location &&
+      location.mode === LOCATION_MODE.GEO &&
+      typeof location.latitude === "number" &&
+      isFinite(location.latitude) &&
+      typeof location.longitude === "number" &&
+      isFinite(location.longitude)
+    );
+  }
+
+  function getBrowserCoordinates() {
+    if (geoCoordsInFlight) return geoCoordsInFlight;
+
+    geoCoordsInFlight = new Promise(function (resolve) {
+      try {
+        if (
+          !navigator.geolocation ||
+          typeof navigator.geolocation.getCurrentPosition !== "function"
+        ) {
+          resolve(null);
+          return;
+        }
+
+        navigator.geolocation.getCurrentPosition(
+          function (position) {
+            try {
+              var coords = position && position.coords;
+              var latitude = coords ? roundCoord(coords.latitude) : null;
+              var longitude = coords ? roundCoord(coords.longitude) : null;
+              if (latitude === null || longitude === null) {
+                resolve(null);
+                return;
+              }
+              resolve({
+                latitude: latitude,
+                longitude: longitude
+              });
+            } catch (error) {
+              resolve(null);
+            }
+          },
+          function () {
+            resolve(null);
+          },
+          GEO_OPTIONS
+        );
+      } catch (error) {
+        resolve(null);
+      }
+    }).then(function (coords) {
+      if (!coords) {
+        geoCoordsInFlight = null;
+      }
+      return coords;
+    });
+
+    return geoCoordsInFlight;
+  }
+
   function resolveLocation() {
-    return {
-      mode: LOCATION_MODE.PROFILE,
-      city: getProfileCity()
-    };
+    var city = getProfileCity();
+    if (city) {
+      return Promise.resolve({
+        mode: LOCATION_MODE.PROFILE,
+        city: city
+      });
+    }
+
+    return getBrowserCoordinates().then(function (coords) {
+      if (coords) {
+        return {
+          mode: LOCATION_MODE.GEO,
+          city: GEO_LABEL,
+          latitude: coords.latitude,
+          longitude: coords.longitude
+        };
+      }
+
+      return {
+        mode: LOCATION_MODE.GEO,
+        city: "",
+        latitude: null,
+        longitude: null
+      };
+    });
   }
 
   function formatTemp(temp) {
@@ -148,6 +242,16 @@
     if (month.length < 2) month = "0" + month;
     if (day.length < 2) day = "0" + day;
     return year + "-" + month + "-" + day;
+  }
+
+  function buildWeatherCacheKey(location, date) {
+    var dateKey = formatLocalDate(date);
+    if (hasGeoCoords(location)) {
+      return "geo|" + location.latitude + "|" + location.longitude + "|" + dateKey;
+    }
+
+    var city = location && typeof location.city === "string" ? location.city.trim() : "";
+    return "profile|" + city + "|" + dateKey;
   }
 
   function getDateOnlyValue(date) {
@@ -482,13 +586,6 @@
     var city = location && typeof location.city === "string" ? location.city.trim() : "";
     var dateMode = getDateMode(targetDate);
 
-    if (!city) {
-      return Promise.resolve({
-        status: "empty",
-        location: location || { mode: LOCATION_MODE.PROFILE, city: "" }
-      });
-    }
-
     if (mode === "empty") {
       return Promise.resolve({ status: "empty", location: location });
     }
@@ -497,12 +594,34 @@
       return Promise.resolve({ status: "error", location: location });
     }
 
-    var geocodingUrl = "https://geocoding-api.open-meteo.com/v1/search?name=" +
-      encodeURIComponent(city) + "&count=1&language=ru&format=json";
+    var coordsReady;
 
-    return getJson(geocodingUrl).then(function (geocoding) {
-      var result = geocoding && Array.isArray(geocoding.results) ? geocoding.results[0] : null;
-      if (!result || typeof result.latitude !== "number" || typeof result.longitude !== "number") {
+    if (hasGeoCoords(location)) {
+      city = city || GEO_LABEL;
+      coordsReady = Promise.resolve({
+        latitude: location.latitude,
+        longitude: location.longitude
+      });
+    } else if (city && location && location.mode === LOCATION_MODE.PROFILE) {
+      var geocodingUrl = "https://geocoding-api.open-meteo.com/v1/search?name=" +
+        encodeURIComponent(city) + "&count=1&language=ru&format=json";
+
+      coordsReady = getJson(geocodingUrl).then(function (geocoding) {
+        var result = geocoding && Array.isArray(geocoding.results) ? geocoding.results[0] : null;
+        if (!result || typeof result.latitude !== "number" || typeof result.longitude !== "number") {
+          return null;
+        }
+        return result;
+      });
+    } else {
+      return Promise.resolve({
+        status: "empty",
+        location: location || { mode: LOCATION_MODE.PROFILE, city: "" }
+      });
+    }
+
+    return coordsReady.then(function (result) {
+      if (!result) {
         return { status: "error", location: location };
       }
 
@@ -703,34 +822,51 @@
   }
 
   function loadWeather() {
-    var location = resolveLocation();
-    var city = location.city;
-
-    if (!city) {
-      var emptyWeather = {
-        status: "empty",
-        location: { mode: LOCATION_MODE.PROFILE, city: "" }
-      };
-      publishWeatherState(emptyWeather);
-      return Promise.resolve(emptyWeather);
-    }
-
+    var startedCity = getProfileCity();
     var nowDate = getSelectedDate();
     var nowTime = Date.now();
-    var requestKey = city + "|" + formatLocalDate(nowDate);
+    var pendingGeoKey = "geo|pending|" + formatLocalDate(nowDate);
 
-    if (weatherPromise && inFlightKey === requestKey) return weatherPromise;
+    if (startedCity) {
+      var profileKey = buildWeatherCacheKey({
+        mode: LOCATION_MODE.PROFILE,
+        city: startedCity
+      }, nowDate);
 
-    if (
-      cachedWeather &&
-      cachedKey === requestKey &&
-      nowTime - weatherLoadedAt < WEATHER_CACHE_TTL_MS
-    ) {
-      return Promise.resolve(cachedWeather);
+      if (weatherPromise && inFlightKey === profileKey) return weatherPromise;
+
+      if (
+        cachedWeather &&
+        cachedKey === profileKey &&
+        nowTime - weatherLoadedAt < WEATHER_CACHE_TTL_MS
+      ) {
+        return Promise.resolve(cachedWeather);
+      }
+    } else if (weatherPromise && inFlightKey === pendingGeoKey) {
+      return weatherPromise;
     }
 
-    var requestCity = city;
-    var requestPromise = fetchWeatherData(location, nowDate).then(function (data) {
+    var requestPromise = resolveLocation().then(function (location) {
+      if (location.mode === LOCATION_MODE.GEO && !hasGeoCoords(location)) {
+        var emptyWeather = {
+          status: "empty",
+          location: location
+        };
+        publishWeatherState(emptyWeather);
+        return emptyWeather;
+      }
+
+      var requestKey = buildWeatherCacheKey(location, nowDate);
+
+      if (
+        cachedWeather &&
+        cachedKey === requestKey &&
+        Date.now() - weatherLoadedAt < WEATHER_CACHE_TTL_MS
+      ) {
+        return cachedWeather;
+      }
+
+      return fetchWeatherData(location, nowDate).then(function (data) {
       if (!data || typeof data !== "object") {
         return { status: "empty", location: location };
       }
@@ -791,7 +927,7 @@
       console.warn("Не удалось загрузить погоду:", error);
       return { status: "error", location: location };
     }).then(function (weather) {
-      if (getProfileCity() !== requestCity) return loadWeather();
+      if (getProfileCity() !== startedCity) return loadWeather();
 
       cachedWeather = weather;
       cachedKey = requestKey;
@@ -799,9 +935,12 @@
       publishWeatherState(weather);
       return weather;
     });
+    });
 
     weatherPromise = requestPromise;
-    inFlightKey = requestKey;
+    inFlightKey = startedCity
+      ? buildWeatherCacheKey({ mode: LOCATION_MODE.PROFILE, city: startedCity }, nowDate)
+      : pendingGeoKey;
 
     requestPromise.then(clearInFlight, clearInFlight);
     return requestPromise;
@@ -903,64 +1042,76 @@
 
     loadWeather().then(function (weather) {
       var profileCity = getProfileCity();
-      var city = weather.location && typeof weather.location.city === "string"
-        ? weather.location.city.trim()
-        : profileCity;
+      var location = weather.location && typeof weather.location === "object"
+        ? weather.location
+        : null;
+      var city = location && typeof location.city === "string"
+        ? location.city.trim()
+        : "";
+      var isGeo = !!(location && location.mode === LOCATION_MODE.GEO);
+      var validGeo = isGeo && (hasGeoCoords(location) || city === GEO_LABEL || !!city);
 
-      if (!profileCity) {
-        if (cityEl) cityEl.textContent = formatCityLabel("");
-        setWeatherCityInteractive(cityEl, true);
+      function showEmptyFields(message) {
         if (iconEl) iconEl.textContent = "";
         if (tempEl) tempEl.textContent = "";
-        if (condEl) condEl.textContent = "";
+        if (condEl) condEl.textContent = message || "";
         setPhraseText(tipEl, "");
         renderForecast(forecastEl, []);
+      }
+
+      if (weather.status === "ok") {
+        setWeatherCityInteractive(cityEl, false);
+        if (cityEl) {
+          cityEl.textContent = formatCityLabel(
+            isGeo ? (city || GEO_LABEL) : (city || profileCity)
+          );
+        }
+        if (iconEl) iconEl.textContent = weather.now.icon || "";
+        if (tempEl) tempEl.textContent = formatTemp(weather.now.temp);
+        if (condEl) {
+          if (weather.dateMode === "historical") {
+            condEl.textContent = "За день: " + weather.now.label.toLowerCase();
+          } else if (weather.dateMode === "forecast") {
+            condEl.textContent = "Прогноз: " + weather.now.label.toLowerCase();
+          } else {
+            condEl.textContent = formatNowCondition(weather.now.label);
+          }
+        }
+        setPhraseText(tipEl, weather.phrase || "");
+        renderForecast(forecastEl, weather.forecast);
+        return;
+      }
+
+      if (weather.status === "empty" && !profileCity) {
+        if (cityEl) cityEl.textContent = formatCityLabel("");
+        setWeatherCityInteractive(cityEl, true);
+        showEmptyFields("");
+        return;
+      }
+
+      if ((weather.status === "error" || weather.status === "unavailable") && validGeo) {
+        setWeatherCityInteractive(cityEl, false);
+        if (cityEl) cityEl.textContent = formatCityLabel(city || GEO_LABEL);
+        showEmptyFields(
+          weather.status === "error" ? ERROR_TEXT : (weather.message || EMPTY_TEXT)
+        );
         return;
       }
 
       setWeatherCityInteractive(cityEl, false);
-      if (cityEl) cityEl.textContent = formatCityLabel(city);
+      if (cityEl) cityEl.textContent = formatCityLabel(city || profileCity);
 
       if (weather.status === "error") {
-        if (iconEl) iconEl.textContent = "";
-        if (tempEl) tempEl.textContent = "";
-        if (condEl) condEl.textContent = ERROR_TEXT;
-        setPhraseText(tipEl, "");
-        renderForecast(forecastEl, []);
+        showEmptyFields(ERROR_TEXT);
         return;
       }
 
       if (weather.status === "unavailable") {
-        if (iconEl) iconEl.textContent = "";
-        if (tempEl) tempEl.textContent = "";
-        if (condEl) condEl.textContent = weather.message || EMPTY_TEXT;
-        setPhraseText(tipEl, "");
-        renderForecast(forecastEl, []);
+        showEmptyFields(weather.message || EMPTY_TEXT);
         return;
       }
 
-      if (weather.status !== "ok") {
-        if (iconEl) iconEl.textContent = "";
-        if (tempEl) tempEl.textContent = "";
-        if (condEl) condEl.textContent = EMPTY_TEXT;
-        setPhraseText(tipEl, "");
-        renderForecast(forecastEl, []);
-        return;
-      }
-
-      if (iconEl) iconEl.textContent = weather.now.icon || "";
-      if (tempEl) tempEl.textContent = formatTemp(weather.now.temp);
-      if (condEl) {
-        if (weather.dateMode === "historical") {
-          condEl.textContent = "За день: " + weather.now.label.toLowerCase();
-        } else if (weather.dateMode === "forecast") {
-          condEl.textContent = "Прогноз: " + weather.now.label.toLowerCase();
-        } else {
-          condEl.textContent = formatNowCondition(weather.now.label);
-        }
-      }
-      setPhraseText(tipEl, weather.phrase || "");
-      renderForecast(forecastEl, weather.forecast);
+      showEmptyFields(EMPTY_TEXT);
     });
   }
 
