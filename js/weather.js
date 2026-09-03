@@ -205,6 +205,150 @@
     return target;
   }
 
+  function isUsableSettlementValue(value, address) {
+    if (typeof value !== "string") return false;
+    var text = value.trim();
+    if (text.length < 2) return false;
+    if (text === GEO_LABEL) return false;
+    if (/^\d+$/.test(text)) return false;
+    if (/^\d[\d\s-]{2,}$/.test(text)) return false;
+    if (/^[A-Za-z]{2}-[A-Za-z0-9]{1,8}$/.test(text)) return false;
+    if (/^[a-z]{2}$/.test(text)) return false;
+    if (!address || typeof address !== "object") return true;
+    var blocked = [
+      address.country,
+      address.country_code,
+      address.state,
+      address.region,
+      address.county,
+      address.postcode,
+      address.house_number
+    ];
+    for (var i = 0; i < blocked.length; i += 1) {
+      if (typeof blocked[i] === "string" && blocked[i].trim() === text) {
+        return false;
+      }
+    }
+    return true;
+  }
+
+  function pickGeoSettlementName(data) {
+    if (!data || typeof data !== "object") return "";
+
+    var address = data.address;
+    var primary = ["city", "town", "village", "municipality", "hamlet", "city_district"];
+    var secondary = [
+      "suburb",
+      "quarter",
+      "neighbourhood",
+      "neighborhood",
+      "locality",
+      "isolated_dwelling",
+      "borough"
+    ];
+    var skipKeys = {
+      country: true,
+      country_code: true,
+      continent: true,
+      state: true,
+      state_district: true,
+      region: true,
+      county: true,
+      postcode: true,
+      house_number: true,
+      house_name: true,
+      road: true,
+      pedestrian: true,
+      path: true,
+      footway: true,
+      cycleway: true,
+      building: true,
+      amenity: true,
+      shop: true,
+      office: true,
+      tourism: true,
+      leisure: true,
+      historic: true,
+      man_made: true,
+      aeroway: true,
+      railway: true,
+      craft: true,
+      emergency: true,
+      healthcare: true,
+      military: true,
+      natural: true,
+      waterway: true,
+      landuse: true,
+      ref: true
+    };
+    var seen = {};
+    var i;
+    var key;
+    var value;
+    var text;
+    var keys;
+    var skipValues;
+    var tokens;
+
+    if (address && typeof address === "object") {
+      for (i = 0; i < primary.length; i += 1) {
+        value = address[primary[i]];
+        if (typeof value === "string" && value.trim()) {
+          return value.trim();
+        }
+      }
+
+      for (i = 0; i < secondary.length; i += 1) {
+        value = address[secondary[i]];
+        if (isUsableSettlementValue(value, address)) {
+          return value.trim();
+        }
+      }
+
+      for (i = 0; i < primary.length; i += 1) seen[primary[i]] = true;
+      for (i = 0; i < secondary.length; i += 1) seen[secondary[i]] = true;
+
+      keys = Object.keys(address);
+      for (i = 0; i < keys.length; i += 1) {
+        key = keys[i];
+        if (seen[key] || skipKeys[key] || /^ISO3166/i.test(key)) continue;
+        value = address[key];
+        if (isUsableSettlementValue(value, address)) {
+          return value.trim();
+        }
+      }
+    }
+
+    if (typeof data.display_name !== "string") return "";
+    tokens = data.display_name.split(",");
+    skipValues = {};
+    if (address && typeof address === "object") {
+      keys = ["country", "state", "region", "county", "postcode", "country_code", "house_number"];
+      for (i = 0; i < keys.length; i += 1) {
+        value = address[keys[i]];
+        if (typeof value === "string" && value.trim()) {
+          skipValues[value.trim()] = true;
+        }
+      }
+      keys = Object.keys(address);
+      for (i = 0; i < keys.length; i += 1) {
+        if (!/^ISO3166/i.test(keys[i])) continue;
+        value = address[keys[i]];
+        if (typeof value === "string" && value.trim()) {
+          skipValues[value.trim()] = true;
+        }
+      }
+    }
+    for (i = 0; i < tokens.length; i += 1) {
+      text = tokens[i].trim();
+      if (!text || skipValues[text]) continue;
+      if (isUsableSettlementValue(text, address)) {
+        return text;
+      }
+    }
+    return "";
+  }
+
   function lookupGeoPlaceName(lat, lon) {
     var key = String(lat) + "|" + String(lon);
 
@@ -263,19 +407,7 @@
             return;
           }
           return response.json().then(function (data) {
-            var address = data && data.address;
-            var name = "";
-            if (address && typeof address === "object") {
-              var fields = ["city", "town", "village", "municipality", "hamlet"];
-              for (var i = 0; i < fields.length; i += 1) {
-                var value = address[fields[i]];
-                if (typeof value === "string" && value.trim()) {
-                  name = value.trim();
-                  break;
-                }
-              }
-            }
-            finish(name);
+            finish(pickGeoSettlementName(data) || "");
           });
         }).catch(function () {
           finish("");
