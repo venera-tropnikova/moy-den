@@ -453,6 +453,8 @@
   }
 
   function pickResolvedCity(dataCity, location) {
+    var profileCity = getProfileCity();
+    if (profileCity) return profileCity;
     var snapshot = typeof dataCity === "string" ? dataCity.trim() : "";
     var live = location && typeof location.city === "string" ? location.city.trim() : "";
     var cached = cachedGeoPlaceName(location);
@@ -891,7 +893,7 @@
         if (!result || typeof result.latitude !== "number" || typeof result.longitude !== "number") {
           return null;
         }
-        return result;
+        return { latitude: result.latitude, longitude: result.longitude };
       });
     } else {
       return Promise.resolve({
@@ -1361,7 +1363,9 @@
         setWeatherCityInteractive(cityEl, false);
         if (cityEl) {
           cityEl.textContent = formatCityLabel(
-            isGeo ? (city || GEO_LABEL) : (city || profileCity)
+            profileCity
+              ? profileCity
+              : (isGeo ? (city || GEO_LABEL) : (city || profileCity))
           );
         }
         if (iconEl) iconEl.textContent = weather.now.icon || "";
@@ -1397,7 +1401,7 @@
       }
 
       setWeatherCityInteractive(cityEl, false);
-      if (cityEl) cityEl.textContent = formatCityLabel(city || profileCity);
+      if (cityEl) cityEl.textContent = formatCityLabel(profileCity || city);
 
       if (weather.status === "error") {
         showEmptyFields(ERROR_TEXT);
