@@ -861,6 +861,36 @@
     }
   }
 
+  function goToCitySettings(event) {
+    if (getProfileCity()) return;
+    if (event && event.type === "keydown") {
+      if (event.key !== "Enter" && event.key !== " ") return;
+      if (event.key === " ") event.preventDefault();
+    }
+    window.location.href = "profile.html#profile-city";
+  }
+
+  function setWeatherCityInteractive(cityEl, enabled) {
+    if (!cityEl) return;
+    if (enabled) {
+      cityEl.setAttribute("role", "link");
+      cityEl.setAttribute("tabindex", "0");
+      if (!cityEl._citySettingsBound) {
+        cityEl.addEventListener("click", goToCitySettings);
+        cityEl.addEventListener("keydown", goToCitySettings);
+        cityEl._citySettingsBound = true;
+      }
+    } else {
+      cityEl.removeAttribute("role");
+      cityEl.removeAttribute("tabindex");
+      if (cityEl._citySettingsBound) {
+        cityEl.removeEventListener("click", goToCitySettings);
+        cityEl.removeEventListener("keydown", goToCitySettings);
+        cityEl._citySettingsBound = false;
+      }
+    }
+  }
+
   function renderWeather() {
     var iconEl = document.getElementById("weather-icon");
     var cityEl = document.getElementById("weather-city");
@@ -879,6 +909,7 @@
 
       if (!profileCity) {
         if (cityEl) cityEl.textContent = formatCityLabel("");
+        setWeatherCityInteractive(cityEl, true);
         if (iconEl) iconEl.textContent = "";
         if (tempEl) tempEl.textContent = "";
         if (condEl) condEl.textContent = "";
@@ -887,6 +918,7 @@
         return;
       }
 
+      setWeatherCityInteractive(cityEl, false);
       if (cityEl) cityEl.textContent = formatCityLabel(city);
 
       if (weather.status === "error") {

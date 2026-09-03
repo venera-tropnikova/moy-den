@@ -135,9 +135,18 @@
     }, 60000);
   }
 
+  function focusCityFromHash() {
+    if (window.location.hash !== "#profile-city") return;
+    var city = document.getElementById("profile-city");
+    if (!city) return;
+    city.focus();
+    if (city.scrollIntoView) city.scrollIntoView({ block: "nearest" });
+  }
+
   function init() {
     var settings = loadSettings();
     fillForm(settings);
+    focusCityFromHash();
     initForm();
     initScenePicker();
     initStatusbarTime();
