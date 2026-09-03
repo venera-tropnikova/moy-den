@@ -1,54 +1,110 @@
 (function (global) {
   "use strict";
 
-  var CATALOG_URL = "assets/scenes/scenes.json?v=20260823-9";
+  var CATALOG_URL = "assets/scenes/scenes.json?v=20260903-8";
   var STORAGE_KEY = "my-day-background-scene-v1";
-  var DEFAULT_SCENE_ID = "daisy-morning";
+  var DEFAULT_SCENE_ID = "coast-sun-gulls";
   var AUTO_ID = "__auto__";
   var AUTO_SCENE_IDS = {
+    "coast-sun-gulls": true,
+    "spring-blossom-bird": true,
+    "autumn-mountain-glow": true,
+    "mountain-rain-lake": true,
+    "mountain-sunset-meadow": true,
+    "winter-moon-village": true,
+    "daisy-sunrise-mist": true,
+    "autumn-island-boat": true,
+    "poppy-sunset": true,
     "winter-lake-evening": true,
-    "autumn-flowers-day": true,
-    "autumn-rain-window": true,
-    "winter-mountain-lake": true,
-    "spring-butterfly": true,
-    "summer-turquoise-lake": true,
-    "auto-fog": true,
-    "auto-rain": true,
-    "auto-snow": true,
-    "auto-cloudy": true,
-    "auto-clear": true
+    "autumn-flowers-day": true
   };
 
   var FALLBACK_MANUAL = [
     {
-      id: "daisy-morning",
-      title: "Ромашковое утро",
-      image: "assets/scenes/daisy-morning.jpg",
-      season: ["spring", "summer"],
+      id: "coast-sun-gulls",
+      title: "Солнечный берег",
+      image: "assets/scenes/021d0b6a-f4db-4db7-96d7-c5dd81c14868.png",
+      season: ["summer"],
       weather: ["clear", "partly_cloudy"],
       daypart: ["morning", "day"]
     },
     {
-      id: "forest-after-rain",
-      title: "Лес после дождя",
-      image: "assets/scenes/forest-after-rain.jpg",
+      id: "spring-blossom-bird",
+      title: "Весенняя сакура",
+      image: "assets/scenes/a1acf2ea-bfbe-479e-a1f5-6fa3ec6daab3.png",
+      season: ["spring"],
+      weather: ["clear", "partly_cloudy"],
+      daypart: ["morning", "day"]
+    },
+    {
+      id: "autumn-mountain-glow",
+      title: "Осенние горы",
+      image: "assets/scenes/0905a630-53db-49a0-b154-ac79990fb49b.png",
+      season: ["autumn"],
+      weather: ["clear", "partly_cloudy"],
+      daypart: ["day", "evening"]
+    },
+    {
+      id: "mountain-rain-lake",
+      title: "Дождь у озера",
+      image: "assets/scenes/342ea465-cab7-4522-93cf-50c553bd6b77.png",
       season: ["spring", "summer", "autumn"],
       weather: ["rain"],
-      daypart: ["morning", "day"]
+      daypart: ["morning", "day", "evening"]
     },
     {
-      id: "mountain-morning",
-      title: "Горное утро",
-      image: "assets/scenes/mountain-morning.jpg",
+      id: "mountain-sunset-meadow",
+      title: "Горный закат",
+      image: "assets/scenes/5418b18b-7ef6-4a6c-ae63-137500823229.png",
       season: ["spring", "summer", "autumn"],
       weather: ["clear", "partly_cloudy"],
+      daypart: ["evening"]
+    },
+    {
+      id: "winter-moon-village",
+      title: "Лунная ночь",
+      image: "assets/scenes/c98f9610-c250-4ac5-b7ee-a9728bfe70ff.png",
+      season: ["winter"],
+      weather: ["clear", "partly_cloudy", "snow"],
+      daypart: ["evening"]
+    },
+    {
+      id: "daisy-sunrise-mist",
+      title: "Ромашки на рассвете",
+      image: "assets/scenes/837003f5-ca46-480e-9f23-d9b0cdd3f566.png",
+      season: ["spring", "summer"],
+      weather: ["clear", "partly_cloudy", "fog"],
       daypart: ["morning"]
     },
     {
-      id: "sea-breeze",
-      title: "Морской бриз",
-      image: "assets/scenes/sea-breeze.jpg",
+      id: "autumn-island-boat",
+      title: "Осенний остров",
+      image: "assets/scenes/b9abfda8-8468-4dc0-9199-049a16014f02.png",
+      season: ["autumn"],
+      weather: ["fog", "partly_cloudy"],
+      daypart: ["morning", "day"]
+    },
+    {
+      id: "poppy-sunset",
+      title: "Маки на закате",
+      image: "assets/scenes/d857e818-b905-4438-a48f-2d7890470e50.png",
       season: ["summer"],
+      weather: ["clear", "partly_cloudy"],
+      daypart: ["evening"]
+    },
+    {
+      id: "winter-lake-evening",
+      title: "Зимний вечер у озера",
+      image: "assets/scenes/winter-lake-evening-v2.png",
+      season: ["winter"],
+      weather: ["snow", "cloudy"],
+      daypart: ["evening"]
+    },
+    {
+      id: "autumn-flowers-day",
+      title: "Осенние цветы",
+      image: "assets/scenes/autumn-flowers-day.png",
+      season: ["autumn"],
       weather: ["clear", "partly_cloudy"],
       daypart: ["day"]
     }
@@ -113,6 +169,15 @@
     return loadCatalogSync().manualScenes.slice();
   }
 
+  function getAutoScenes() {
+    var list = getManualScenes();
+    var result = [];
+    for (var i = 0; i < list.length; i += 1) {
+      if (AUTO_SCENE_IDS[list[i].id]) result.push(list[i]);
+    }
+    return result;
+  }
+
   function getWeatherScenes() {
     return loadCatalogSync().weatherScenes.slice();
   }
@@ -137,15 +202,6 @@
 
   function hasTag(scene, key, value) {
     return tagList(scene, key).indexOf(value) !== -1;
-  }
-
-  function isOnlySeason(scene, season) {
-    var seasons = tagList(scene, "season");
-    if (!seasons.length) return false;
-    for (var i = 0; i < seasons.length; i += 1) {
-      if (seasons[i] !== season) return false;
-    }
-    return true;
   }
 
   function getSeason(date) {
@@ -182,7 +238,8 @@
 
   function normalizeDaypart(daypart) {
     if (daypart === "afternoon") return "day";
-    if (daypart === "night" || daypart === "morning" || daypart === "day" || daypart === "evening") {
+    if (daypart === "night") return "evening";
+    if (daypart === "morning" || daypart === "day" || daypart === "evening") {
       return daypart;
     }
     return null;
@@ -190,10 +247,16 @@
 
   function normalizeContext(raw) {
     var source = raw && typeof raw === "object" ? raw : {};
-    var date = source.date instanceof Date && !isNaN(source.date.getTime())
-      ? source.date
-      : (window.MyDayTargetDate instanceof Date ? window.MyDayTargetDate : new Date());
+    var date;
+    if (source.date instanceof Date && !isNaN(source.date.getTime())) {
+      date = source.date;
+    } else if (window.MyDayTargetDate instanceof Date && !isNaN(window.MyDayTargetDate.getTime())) {
+      date = window.MyDayTargetDate;
+    } else {
+      date = new Date();
+    }
     return {
+      date: date,
       weather: Object.prototype.hasOwnProperty.call(source, "weather")
         ? normalizeWeather(source.weather)
         : lastWeatherCondition,
@@ -206,95 +269,116 @@
     };
   }
 
-  function isAlwaysBanned(scene, ctx) {
-    if (hasTag(scene, "weather", "rain") && ctx.weather !== "rain") return true;
-    if (hasTag(scene, "weather", "fog") && ctx.weather !== "fog") return true;
-    if (hasTag(scene, "weather", "snow") && ctx.weather !== "snow") {
-      if (!ctx.weather || !hasTag(scene, "weather", ctx.weather)) return true;
+  function dateStamp(d) {
+    return d.getFullYear() * 10000 + (d.getMonth() + 1) * 100 + d.getDate();
+  }
+
+  function pickByDate(cands, date) {
+    if (cands.length === 1) return cands[0];
+    return cands[dateStamp(date) % cands.length];
+  }
+
+  function collectMatching(pool, ctx, needWeather, needDaypart) {
+    var result = [];
+    for (var i = 0; i < pool.length; i += 1) {
+      var scene = pool[i];
+      if (!hasTag(scene, "season", ctx.season)) continue;
+      if (needWeather) {
+        if (!ctx.weather || !hasTag(scene, "weather", ctx.weather)) continue;
+      }
+      if (needDaypart) {
+        if (!ctx.daypart || !hasTag(scene, "daypart", ctx.daypart)) continue;
+      }
+      result.push(scene);
     }
-    if (isOnlySeason(scene, "winter") && ctx.season === "summer") return true;
-    if (isOnlySeason(scene, "summer") && ctx.season === "winter") return true;
+    return result;
+  }
+
+  function hasStrongWeatherTag(scene) {
+    var tags = tagList(scene, "weather");
+    for (var i = 0; i < tags.length; i += 1) {
+      if (tags[i] === "rain" || tags[i] === "snow" || tags[i] === "fog") return true;
+    }
     return false;
   }
 
-  function matchesDaypart(scene, ctx, requiredDaypart) {
-    var needed = requiredDaypart || ctx.daypart;
-    if (!needed) return false;
-    return hasTag(scene, "daypart", needed);
-  }
-
-  function scoreScene(scene, ctx, options) {
-    var score = 0;
-    if (ctx.weather && hasTag(scene, "weather", ctx.weather)) {
-      score += 100;
-      if (tagList(scene, "weather").length === 1) score += 5;
-    }
-    if (options.requireDaypart) {
-      if (matchesDaypart(scene, ctx, options.daypartAlias)) score += 40;
-    } else if (ctx.daypart === "night") {
-      if (hasTag(scene, "daypart", "evening")) score += 40;
-      else if (hasTag(scene, "daypart", "day")) score += 20;
-    } else if (matchesDaypart(scene, ctx)) {
-      score += 40;
-    }
-    if (hasTag(scene, "season", ctx.season)) score += 20;
-    return score;
-  }
-
-  function isAutoAllowed(scene) {
-    return !!(scene && AUTO_SCENE_IDS[scene.id]);
-  }
-
-  function isCandidate(scene, ctx, options) {
-    if (!isAutoAllowed(scene)) return false;
-    if (isAlwaysBanned(scene, ctx)) return false;
-    if (options.requireWeather) {
-      if (!ctx.weather || !hasTag(scene, "weather", ctx.weather)) return false;
-    }
-    if (options.requireSeason && !hasTag(scene, "season", ctx.season)) return false;
-    if (options.requireDaypart && !matchesDaypart(scene, ctx, options.daypartAlias)) return false;
+  function isSeasonFallbackAllowed(scene, weather) {
+    if (weather == null) return true;
+    if (hasStrongWeatherTag(scene)) return hasTag(scene, "weather", weather);
     return true;
   }
 
-  function pickBest(ctx, options) {
-    var scenes = getManualScenes();
-    var best = null;
-    var bestScore = -1;
-    for (var i = 0; i < scenes.length; i += 1) {
-      var scene = scenes[i];
-      if (!isCandidate(scene, ctx, options)) continue;
-      var score = scoreScene(scene, ctx, options);
-      if (score > bestScore) {
-        best = scene;
-        bestScore = score;
+  function filterSeasonFallback(cands, weather) {
+    var result = [];
+    for (var i = 0; i < cands.length; i += 1) {
+      if (isSeasonFallbackAllowed(cands[i], weather)) result.push(cands[i]);
+    }
+    return result;
+  }
+
+  function pickMostNeutralSeasonal(pool, ctx) {
+    var sameSeason = [];
+    var i;
+    for (i = 0; i < pool.length; i += 1) {
+      var scene = pool[i];
+      if (!hasTag(scene, "season", ctx.season)) continue;
+      if (scene.id === "mountain-rain-lake" && ctx.weather !== "rain") continue;
+      sameSeason.push(scene);
+    }
+
+    var preferred = [];
+    var rest = [];
+    for (i = 0; i < sameSeason.length; i += 1) {
+      var candidate = sameSeason[i];
+      if (hasTag(candidate, "weather", "clear") || hasTag(candidate, "weather", "partly_cloudy")) {
+        preferred.push(candidate);
+      } else {
+        rest.push(candidate);
       }
     }
-    return best;
+
+    var group = preferred.length ? preferred : rest;
+    if (!group.length) return null;
+    return pickByDate(group, ctx.date);
+  }
+
+  function findPoolScene(pool, sceneId) {
+    for (var i = 0; i < pool.length; i += 1) {
+      if (pool[i].id === sceneId) return pool[i];
+    }
+    return null;
   }
 
   function resolveAutoScene(rawContext) {
     var ctx = normalizeContext(rawContext);
-    var found = null;
+    var pool = getAutoScenes();
+    var cands = [];
 
-    var requireWeather = !!ctx.weather;
-
-    found = pickBest(ctx, {
-      requireWeather: requireWeather,
-      requireDaypart: true,
-      requireSeason: true
-    });
-    if (found) return found;
-
-    if (ctx.daypart === "night") {
-      found = pickBest(ctx, {
-        requireWeather: requireWeather,
-        requireDaypart: true,
-        requireSeason: true,
-        daypartAlias: "evening"
-      });
-      if (found) return found;
+    if (!ctx.weather) {
+      cands = filterSeasonFallback(collectMatching(pool, ctx, false, true), ctx.weather);
+      if (!cands.length) {
+        cands = filterSeasonFallback(collectMatching(pool, ctx, false, false), ctx.weather);
+      }
+    } else {
+      cands = collectMatching(pool, ctx, true, true);
+      if (!cands.length) cands = collectMatching(pool, ctx, true, false);
+      if (!cands.length && ctx.weather === "rain") {
+        return findPoolScene(pool, "mountain-rain-lake");
+      }
+      if (!cands.length) {
+        cands = filterSeasonFallback(collectMatching(pool, ctx, false, true), ctx.weather);
+      }
+      if (!cands.length) {
+        cands = filterSeasonFallback(collectMatching(pool, ctx, false, false), ctx.weather);
+      }
+      if (!cands.length) {
+        var seasonal = pickMostNeutralSeasonal(pool, ctx);
+        if (seasonal) return seasonal;
+      }
     }
 
+    if (cands.length) return pickByDate(cands, ctx.date);
+    if (ctx.weather === "rain") return findPoolScene(pool, "mountain-rain-lake");
     return null;
   }
 

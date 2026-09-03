@@ -93,15 +93,32 @@ input  { font-family: inherit; }
   transform: scale(1.02);
 }
 
+.screen[data-scene="coast-sun-gulls"] .app-scene__image,
+.screen[data-scene="spring-blossom-bird"] .app-scene__image,
+.screen[data-scene="autumn-mountain-glow"] .app-scene__image,
+.screen[data-scene="mountain-rain-lake"] .app-scene__image,
+.screen[data-scene="mountain-sunset-meadow"] .app-scene__image,
+.screen[data-scene="winter-moon-village"] .app-scene__image,
+.screen[data-scene="daisy-sunrise-mist"] .app-scene__image,
 .screen[data-scene="winter-lake-evening"] .app-scene__image {
-  background-position: center -30px;
-  background-size: 100% auto;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center top;
   transform: none;
 }
 
-.screen[data-scene="summer-turquoise-lake"] .app-scene__image {
-  background-size: 1240px auto;
-  background-position: 0% 0%;
+.screen[data-scene="poppy-sunset"] .app-scene__image {
+  background-position: center top;
+  background-size: 100% auto;
+  background-repeat: no-repeat;
+  background-color: #FDEBD2;
+  transform: none;
+}
+
+.screen[data-scene="autumn-island-boat"] .app-scene__image {
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: 90% top;
   transform: none;
 }
 
@@ -135,6 +152,19 @@ input  { font-family: inherit; }
 
 .screen--has-scene .scroll-area {
   background: transparent;
+}
+
+.screen--has-scene::after {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: calc(90px + env(safe-area-inset-bottom, 0px) + var(--r-lg) + 8px);
+  background: var(--card);
+  z-index: 0;
+  pointer-events: none;
 }
 
 /* ─── Строка состояния ───────────────────────────────── */
