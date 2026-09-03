@@ -66,6 +66,13 @@
     );
   }
 
+  function isPastDate(date) {
+    var now = new Date();
+    var selected = new Date(date.getFullYear(), date.getMonth(), date.getDate()).getTime();
+    var today = new Date(now.getFullYear(), now.getMonth(), now.getDate()).getTime();
+    return selected < today;
+  }
+
   function getTargetDateKey() {
     return tasksStorage.getDateKey(targetDate);
   }
@@ -904,6 +911,10 @@
 
     if (!activeList || !completedList || !completedToggle || !completedCount) return;
 
+    var past = isPastDate(targetDate);
+    var titleEl = document.getElementById("tasks-lbl");
+    if (titleEl) titleEl.textContent = past ? "План на этот день" : "План на сегодня";
+
     activeList.innerHTML = "";
     completedList.innerHTML = "";
 
@@ -933,7 +944,9 @@
       empty.className = "task task--done";
       empty.textContent = todayTasks.length === 0
         ? "Пока нет дел"
-        : "На сегодня всё выполнено. Можно немного выдохнуть.";
+        : (past
+          ? "На этот день всё выполнено. Можно немного выдохнуть."
+          : "На сегодня всё выполнено. Можно немного выдохнуть.");
       activeList.appendChild(empty);
     }
 
