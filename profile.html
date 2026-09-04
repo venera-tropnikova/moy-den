@@ -124,6 +124,24 @@
         <div class="scene-picker" id="scene-picker"></div>
       </section>
 
+      <section class="profile-section" aria-labelledby="backup-title">
+        <h2 class="profile-section__title" id="backup-title">Перенос данных</h2>
+        <p class="profile-backup__hint">Сохраните профиль, дни рождения и важные даты в файл и восстановите их на другом устройстве.</p>
+        <div class="profile-backup__actions">
+          <button class="profile-save-btn" type="button" id="profile-export-btn">Экспорт данных</button>
+          <button class="profile-secondary-btn" type="button" id="profile-import-btn">Импорт данных</button>
+        </div>
+        <input
+          class="visually-hidden"
+          id="profile-import-file"
+          type="file"
+          accept=".json,application/json"
+          aria-hidden="true"
+          tabindex="-1"
+        >
+        <p class="profile-form__status" id="profile-backup-status" aria-live="polite"></p>
+      </section>
+
       <section class="profile-section" aria-labelledby="my-data-title">
         <h2 class="profile-section__title" id="my-data-title">Мои данные</h2>
         <a class="profile-link-card" href="birthdays.html">
@@ -147,6 +165,9 @@
   </div>
 
   <script src="js/scene-background.js?v=20260904-6"></script>
+  <script src="js/birthdays-storage.js?v=20260904-6"></script>
+  <script src="js/important-dates-storage.js?v=20260904-6"></script>
+  <script src="js/user-data-backup.js?v=20260904-6"></script>
   <script src="js/profile.js?v=20260904-6"></script>
 </body>
 </html>

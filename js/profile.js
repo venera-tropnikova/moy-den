@@ -143,11 +143,107 @@
     if (city.scrollIntoView) city.scrollIntoView({ block: "nearest" });
   }
 
+  function showBackupStatus(message) {
+    var status = document.getElementById("profile-backup-status");
+    if (!status) return;
+    status.textContent = message || "";
+  }
+
+  function downloadBackup(payload) {
+    var blob = new Blob([JSON.stringify(payload, null, 2)], { type: "application/json" });
+    var url = URL.createObjectURL(blob);
+    var link = document.createElement("a");
+    link.href = url;
+    link.download = window.MyDayUserDataBackup.FILE_NAME;
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+    window.setTimeout(function () {
+      URL.revokeObjectURL(url);
+    }, 1000);
+  }
+
+  function applyImportedData(payload) {
+    var birthdaysStorage = window.MyDayBirthdaysStorage;
+    var datesStorage = window.MyDayImportantDatesStorage;
+    if (!birthdaysStorage || !datesStorage) return false;
+
+    if (!saveSettings(payload.settings)) return false;
+    if (!birthdaysStorage.saveBirthdays(payload.birthdays)) return false;
+    if (!datesStorage.saveImportantDates(payload.importantDates)) return false;
+
+    fillForm(loadSettings());
+    showBackupStatus(
+      "Данные восстановлены: дни рождения — " +
+        payload.birthdays.length +
+        ", важные даты — " +
+        payload.importantDates.length
+    );
+    return true;
+  }
+
+  function initBackup() {
+    var backup = window.MyDayUserDataBackup;
+    var exportBtn = document.getElementById("profile-export-btn");
+    var importBtn = document.getElementById("profile-import-btn");
+    var fileInput = document.getElementById("profile-import-file");
+    if (!backup || !exportBtn || !importBtn || !fileInput) return;
+
+    exportBtn.addEventListener("click", function () {
+      var birthdaysStorage = window.MyDayBirthdaysStorage;
+      var datesStorage = window.MyDayImportantDatesStorage;
+      if (!birthdaysStorage || !datesStorage) {
+        showBackupStatus("Не удалось подготовить экспорт");
+        return;
+      }
+
+      var payload = backup.buildExport(
+        loadSettings(),
+        birthdaysStorage.loadBirthdays(),
+        datesStorage.loadImportantDates()
+      );
+      downloadBackup(payload);
+      showBackupStatus("Файл данных скачан");
+    });
+
+    importBtn.addEventListener("click", function () {
+      fileInput.value = "";
+      fileInput.click();
+    });
+
+    fileInput.addEventListener("change", function () {
+      var file = fileInput.files && fileInput.files[0];
+      if (!file) return;
+
+      var reader = new FileReader();
+      reader.onload = function () {
+        var result = backup.parseAndValidate(String(reader.result || ""));
+        if (!result.ok) {
+          showBackupStatus(result.error || "Не удалось прочитать файл");
+          return;
+        }
+        if (!applyImportedData(result.payload)) {
+          showBackupStatus("Не удалось сохранить импортированные данные");
+        }
+      };
+      reader.onerror = function () {
+        showBackupStatus("Не удалось прочитать файл");
+      };
+      reader.readAsText(file);
+    });
+  }
+
+  window.MyDayProfileSettings = {
+    loadSettings: loadSettings,
+    saveSettings: saveSettings
+  };
+
   function init() {
     var settings = loadSettings();
     fillForm(settings);
     focusCityFromHash();
     initForm();
+    initBackup();
     initScenePicker();
     initStatusbarTime();
   }

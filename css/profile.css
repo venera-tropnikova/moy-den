@@ -240,6 +240,45 @@ button {
   font-weight: 600;
 }
 
+.visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.profile-backup__hint {
+  margin: 0 0 14px;
+  color: var(--ink-mid);
+  font-size: 0.84rem;
+  line-height: 1.4;
+}
+
+.profile-backup__actions {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.profile-backup__actions .profile-save-btn {
+  margin-top: 0;
+}
+
+.profile-secondary-btn {
+  min-height: 44px;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  background: #fff;
+  color: var(--accent);
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
 .profile-form__status {
   min-height: 1.3em;
   color: var(--ink-mid);
