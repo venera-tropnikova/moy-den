@@ -6,25 +6,31 @@
   <meta name="my-day-release" content="20260904-1">
   <script>
   (function () {
-    var RELEASE_KEY = "my-day-release-reloaded";
-    var meta = document.querySelector('meta[name="my-day-release"]');
-    var local = meta && meta.getAttribute("content") ? meta.getAttribute("content").trim() : "";
-    if (!local) return;
-    fetch("version.json?v=" + Date.now(), { cache: "no-store" }).then(function (res) {
-      if (!res || !res.ok) return null;
-      return res.json();
-    }).then(function (data) {
-      var remote = data && typeof data.version === "string" ? data.version.trim() : "";
-      if (!remote || remote === local) return;
+    if (!("serviceWorker" in navigator)) return;
+    var RELOAD_KEY = "my-day-sw-reloaded";
+    var hadController = !!navigator.serviceWorker.controller;
+    var refreshing = false;
+    function clearReloadFlag() {
+      try { window.sessionStorage.removeItem(RELOAD_KEY); } catch (e) {}
+    }
+    try {
+      if (window.sessionStorage.getItem(RELOAD_KEY)) {
+        window.setTimeout(clearReloadFlag, 2000);
+      }
+    } catch (e) {}
+    navigator.serviceWorker.addEventListener("controllerchange", function () {
+      if (!hadController || refreshing) return;
       try {
-        if (window.sessionStorage.getItem(RELEASE_KEY) === remote) return;
-        window.sessionStorage.setItem(RELEASE_KEY, remote);
+        if (window.sessionStorage.getItem(RELOAD_KEY)) return;
+        window.sessionStorage.setItem(RELOAD_KEY, "1");
       } catch (err) {
         return;
       }
-      var url = new URL(window.location.href);
-      url.searchParams.set("v", remote);
-      window.location.replace(url.href);
+      refreshing = true;
+      window.location.reload();
+    });
+    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(function (reg) {
+      if (reg && typeof reg.update === "function") return reg.update();
     }).catch(function () {});
   })();
   </script>
