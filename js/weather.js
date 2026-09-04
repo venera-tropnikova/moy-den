@@ -28,7 +28,7 @@
 
   var GEO_LABEL = "Ваше местоположение";
   var GEO_OPTIONS = {
-    timeout: 7000,
+    timeout: 15000,
     enableHighAccuracy: false,
     maximumAge: WEATHER_CACHE_TTL_MS
   };
@@ -115,16 +115,22 @@
     );
   }
 
-  function getBrowserCoordinates() {
-    if (geoCoordsInFlight) return geoCoordsInFlight;
+  function logGeoFail(error) {
+    var code = error && typeof error.code === "number" ? error.code : null;
+    var message = error && typeof error.message === "string" ? error.message : "";
+    try {
+      console.debug("Weather geo fail", { code: code, message: message });
+    } catch (debugError) {}
+  }
 
-    geoCoordsInFlight = new Promise(function (resolve) {
+  function requestBrowserPosition() {
+    return new Promise(function (resolve) {
       try {
         if (
           !navigator.geolocation ||
           typeof navigator.geolocation.getCurrentPosition !== "function"
         ) {
-          resolve(null);
+          resolve({ coords: null, error: null });
           return;
         }
 
@@ -135,25 +141,44 @@
               var latitude = coords ? roundCoord(coords.latitude) : null;
               var longitude = coords ? roundCoord(coords.longitude) : null;
               if (latitude === null || longitude === null) {
-                resolve(null);
+                resolve({ coords: null, error: null });
                 return;
               }
               resolve({
-                latitude: latitude,
-                longitude: longitude
+                coords: {
+                  latitude: latitude,
+                  longitude: longitude
+                },
+                error: null
               });
             } catch (error) {
-              resolve(null);
+              resolve({ coords: null, error: null });
             }
           },
-          function () {
-            resolve(null);
+          function (error) {
+            resolve({ coords: null, error: error || null });
           },
           GEO_OPTIONS
         );
       } catch (error) {
-        resolve(null);
+        resolve({ coords: null, error: null });
       }
+    });
+  }
+
+  function getBrowserCoordinates() {
+    if (geoCoordsInFlight) return geoCoordsInFlight;
+
+    geoCoordsInFlight = requestBrowserPosition().then(function (first) {
+      if (first.coords) return first.coords;
+      if (first.error) logGeoFail(first.error);
+      if (!first.error || first.error.code !== 3) return null;
+
+      return requestBrowserPosition().then(function (second) {
+        if (second.coords) return second.coords;
+        if (second.error) logGeoFail(second.error);
+        return null;
+      });
     }).then(function (coords) {
       geoCoordsInFlight = null;
       return coords;
