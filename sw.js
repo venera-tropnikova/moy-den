@@ -1,4 +1,4 @@
-var VERSION = "20260904-3";
+var VERSION = "20260904-4";
 
 self.addEventListener("install", function () {
   self.skipWaiting();
