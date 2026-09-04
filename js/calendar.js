@@ -1271,6 +1271,13 @@
     }
   }
 
+  function isAppleTouchDevice() {
+    var ua = navigator.userAgent || "";
+    if (/iPhone|iPod|iPad/.test(ua)) return true;
+    if (navigator.platform === "MacIntel" && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1) return true;
+    return false;
+  }
+
   function bindVoiceToInput(button, input, maxLen) {
     var SpeechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition;
     var activeRecognition = null;
@@ -1278,6 +1285,10 @@
     var listening = false;
 
     if (!button || !input) return;
+    if (isAppleTouchDevice()) {
+      button.hidden = true;
+      return;
+    }
     if (!SpeechRecognition) return;
 
     button.hidden = false;
@@ -1314,7 +1325,13 @@
 
     button.addEventListener("click", function () {
       if (listening) {
-        if (activeRecognition) activeRecognition.stop();
+        var recognition = activeRecognition;
+        activeSession += 1;
+        activeRecognition = null;
+        setListening(false);
+        if (recognition) {
+          try { recognition.stop(); } catch (err) {}
+        }
         return;
       }
 

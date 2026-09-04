@@ -1333,6 +1333,13 @@
     }
   }
 
+  function isAppleTouchDevice() {
+    var ua = navigator.userAgent || "";
+    if (/iPhone|iPod|iPad/.test(ua)) return true;
+    if (navigator.platform === "MacIntel" && typeof navigator.maxTouchPoints === "number" && navigator.maxTouchPoints > 1) return true;
+    return false;
+  }
+
   function initVoiceInput() {
     var voiceBtn = document.getElementById("task-voice-btn");
     var taskInput = document.getElementById("task-input");
@@ -1342,6 +1349,10 @@
     var listening = false;
 
     if (!voiceBtn) return;
+    if (isAppleTouchDevice()) {
+      voiceBtn.hidden = true;
+      return;
+    }
     if (!SpeechRecognition) return;
 
     voiceBtn.hidden = false;
@@ -1375,7 +1386,13 @@
 
     voiceBtn.addEventListener("click", function () {
       if (listening) {
-        if (activeRecognition) activeRecognition.stop();
+        var recognition = activeRecognition;
+        activeSession += 1;
+        activeRecognition = null;
+        setListening(false);
+        if (recognition) {
+          try { recognition.stop(); } catch (err) {}
+        }
         return;
       }
 
