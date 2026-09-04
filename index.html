@@ -4,36 +4,7 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
   <meta name="my-day-release" content="20260904-8">
-  <script>
-  (function () {
-    if (!("serviceWorker" in navigator)) return;
-    var RELOAD_KEY = "my-day-sw-reloaded";
-    var hadController = !!navigator.serviceWorker.controller;
-    var refreshing = false;
-    function clearReloadFlag() {
-      try { window.sessionStorage.removeItem(RELOAD_KEY); } catch (e) {}
-    }
-    try {
-      if (window.sessionStorage.getItem(RELOAD_KEY)) {
-        window.setTimeout(clearReloadFlag, 2000);
-      }
-    } catch (e) {}
-    navigator.serviceWorker.addEventListener("controllerchange", function () {
-      if (!hadController || refreshing) return;
-      try {
-        if (window.sessionStorage.getItem(RELOAD_KEY)) return;
-        window.sessionStorage.setItem(RELOAD_KEY, "1");
-      } catch (err) {
-        return;
-      }
-      refreshing = true;
-      window.location.reload();
-    });
-    navigator.serviceWorker.register("sw.js", { updateViaCache: "none" }).then(function (reg) {
-      if (reg && typeof reg.update === "function") return reg.update();
-    }).catch(function () {});
-  })();
-  </script>
+  <script src="js/pwa-update.js?v=20260904-8"></script>
   <meta name="theme-color" content="#ECE6DD">
   <meta name="mobile-web-app-capable" content="yes">
   <meta name="apple-mobile-web-app-capable" content="yes">

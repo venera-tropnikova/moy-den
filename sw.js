@@ -14,3 +14,9 @@ self.addEventListener("fetch", function (event) {
   if (!isNav) return;
   event.respondWith(fetch(req, { cache: "no-store" }));
 });
+
+self.addEventListener("message", function (event) {
+  if (event.data && event.data.type === "SKIP_WAITING") {
+    self.skipWaiting();
+  }
+});
