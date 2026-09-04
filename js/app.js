@@ -966,7 +966,12 @@
     invalidateTaskVoiceInput();
     input.value = "";
     renderTasks();
-    input.focus();
+    input.blur();
+    input.value = "";
+    window.setTimeout(function () {
+      if (input.value) input.value = "";
+      input.focus();
+    }, 0);
   }
 
   function formatTime(date) {

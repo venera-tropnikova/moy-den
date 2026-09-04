@@ -2214,6 +2214,12 @@ input  { font-family: inherit; }
   .duo .card,
   .card--birthday { height: 168px; }
 
+  .duo .card.card--birthday {
+    height: auto;
+    min-height: 168px;
+    overflow: visible;
+  }
+
   .duo .card.card--smile {
     min-height: 168px;
     height: auto;
