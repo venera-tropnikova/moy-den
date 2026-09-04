@@ -249,6 +249,22 @@
     return true;
   }
 
+  function nameFromUrbanCounty(county) {
+    if (typeof county !== "string") return "";
+    var text = county.trim();
+    var urbanOkrug = text.match(/^городской округ\s+(.+)$/i);
+    if (urbanOkrug && urbanOkrug[1]) {
+      var okrugName = urbanOkrug[1].trim();
+      return okrugName.length >= 2 ? okrugName : "";
+    }
+    var cityPrefix = text.match(/^город\s+(.+)$/i);
+    if (cityPrefix && cityPrefix[1]) {
+      var cityName = cityPrefix[1].trim();
+      return cityName.length >= 2 ? cityName : "";
+    }
+    return "";
+  }
+
   function pickGeoSettlementName(data) {
     if (!data || typeof data !== "object") return "";
 
@@ -334,6 +350,9 @@
           return value.trim();
         }
       }
+
+      var urbanCounty = nameFromUrbanCounty(address.county);
+      if (urbanCounty) return urbanCounty;
     }
 
     if (typeof data.display_name !== "string") return "";
