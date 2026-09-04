@@ -169,16 +169,10 @@
   function getBrowserCoordinates() {
     if (geoCoordsInFlight) return geoCoordsInFlight;
 
-    geoCoordsInFlight = requestBrowserPosition().then(function (first) {
-      if (first.coords) return first.coords;
-      if (first.error) logGeoFail(first.error);
-      if (!first.error || first.error.code !== 3) return null;
-
-      return requestBrowserPosition().then(function (second) {
-        if (second.coords) return second.coords;
-        if (second.error) logGeoFail(second.error);
-        return null;
-      });
+    geoCoordsInFlight = requestBrowserPosition().then(function (result) {
+      if (result.coords) return result.coords;
+      if (result.error) logGeoFail(result.error);
+      return null;
     }).then(function (coords) {
       geoCoordsInFlight = null;
       return coords;
