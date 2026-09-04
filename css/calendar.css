@@ -438,6 +438,9 @@ a {
   animation: micPulse 1.2s ease-in-out infinite;
 }
 
+.mic-dictation-hint { font-size: 0.8rem; color: var(--ink-mid); margin: 6px 0 0; }
+.mic-dictation-hint[hidden] { display: none; }
+
 @keyframes micPulse {
   0%, 100% { opacity: 1; }
   50% { opacity: 0.72; }

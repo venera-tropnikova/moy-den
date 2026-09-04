@@ -379,15 +379,13 @@
     var activeRecognition = null;
     var activeSession = 0;
     var listening = false;
+    var voiceWatchdogTimer = null;
+    var micHintHideTimer = null;
+    var VOICE_WATCHDOG_MS = 8000;
+    var MIC_HINT_HIDE_MS = 4000;
+    var HINT_TEXT = "Используйте 🎙 на клавиатуре для диктовки";
 
     if (!voiceBtn) return;
-    if (isAppleTouchDevice()) {
-      voiceBtn.hidden = true;
-      return;
-    }
-    if (!SpeechRecognition) return;
-
-    voiceBtn.hidden = false;
 
     function setListening(isListening) {
       listening = isListening;
@@ -402,10 +400,90 @@
       }
     }
 
+    function ensureMicDictationHint(voiceBtn) {
+      var parent = voiceBtn && voiceBtn.parentNode;
+      var hint;
+      var sibling;
+      if (!parent || !parent.parentNode) return null;
+      sibling = parent.nextSibling;
+      while (sibling && sibling.nodeType !== 1) {
+        sibling = sibling.nextSibling;
+      }
+      if (sibling && sibling.classList && sibling.classList.contains("mic-dictation-hint")) {
+        return sibling;
+      }
+      hint = document.createElement("p");
+      hint.className = "mic-dictation-hint";
+      hint.setAttribute("role", "status");
+      hint.setAttribute("aria-live", "polite");
+      hint.hidden = true;
+      parent.parentNode.insertBefore(hint, parent.nextSibling);
+      return hint;
+    }
+
+    function clearMicDictationHintTimer() {
+      if (micHintHideTimer) {
+        window.clearTimeout(micHintHideTimer);
+        micHintHideTimer = null;
+      }
+    }
+
+    function showMicDictationHint(voiceBtn) {
+      var hint = ensureMicDictationHint(voiceBtn);
+      if (!hint) return;
+      hint.textContent = HINT_TEXT;
+      hint.hidden = false;
+      clearMicDictationHintTimer();
+      micHintHideTimer = window.setTimeout(function () {
+        hint.hidden = true;
+        micHintHideTimer = null;
+      }, MIC_HINT_HIDE_MS);
+    }
+
+    function clearVoiceWatchdog() {
+      if (voiceWatchdogTimer) {
+        window.clearTimeout(voiceWatchdogTimer);
+        voiceWatchdogTimer = null;
+      }
+    }
+
+    function armVoiceWatchdog(session) {
+      clearVoiceWatchdog();
+      voiceWatchdogTimer = window.setTimeout(function () {
+        var recognition;
+        if (activeSession !== session) return;
+        recognition = activeRecognition;
+        if (recognition) {
+          try {
+            recognition.abort();
+          } catch (err) {
+            // Сессия уже завершилась.
+          }
+        }
+        activeSession += 1;
+        activeRecognition = null;
+        clearVoiceWatchdog();
+        setListening(false);
+      }, VOICE_WATCHDOG_MS);
+    }
+
+    if (isAppleTouchDevice()) {
+      voiceBtn.hidden = false;
+      voiceBtn.addEventListener("click", function () {
+        if (nameInput) nameInput.focus();
+        showMicDictationHint(voiceBtn);
+      });
+      return;
+    }
+    if (!SpeechRecognition) return;
+
+    voiceBtn.hidden = false;
+
     invalidateBirthdayVoiceInput = function () {
       var recognition = activeRecognition;
       activeSession += 1;
       activeRecognition = null;
+      clearVoiceWatchdog();
       setListening(false);
       if (recognition) {
         try {
@@ -422,8 +500,10 @@
         activeSession += 1;
         activeRecognition = null;
         setListening(false);
+        clearVoiceWatchdog();
         if (recognition) {
           try { recognition.stop(); } catch (err) {}
+          try { recognition.abort(); } catch (err) {}
         }
         return;
       }
@@ -454,21 +534,25 @@
       recognition.onend = function () {
         if (activeRecognition !== recognition || activeSession !== session) return;
         activeRecognition = null;
+        clearVoiceWatchdog();
         setListening(false);
       };
 
       recognition.onerror = function () {
         if (activeRecognition !== recognition || activeSession !== session) return;
         activeRecognition = null;
+        clearVoiceWatchdog();
         setListening(false);
       };
 
       try {
         setListening(true);
         recognition.start();
+        armVoiceWatchdog(session);
       } catch (err) {
         if (activeRecognition === recognition && activeSession === session) {
           activeRecognition = null;
+          clearVoiceWatchdog();
           setListening(false);
         }
       }
