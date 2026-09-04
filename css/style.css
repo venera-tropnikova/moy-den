@@ -2196,15 +2196,15 @@ input  { font-family: inherit; }
 
 /* Mobile home: fit primary UI into 100dvh. Desktop (480+) unchanged. */
 @media (max-width: 479px) {
-  .statusbar { padding-top: 8px; }
+  .statusbar { display: none; }
 
-  .hero { padding: 12px 20px 8px; }
-  .hero__top { margin-bottom: 8px; }
-  .hero .weather { padding: 8px 10px; }
+  .hero { padding: 6px 20px 4px; }
+  .hero__top { margin-bottom: 4px; }
+  .hero .weather { padding: 4px 10px; }
 
   .scroll-area {
-    padding: 6px 14px;
-    gap: 10px;
+    padding: 4px 14px;
+    gap: 6px;
   }
 
   .duo { gap: 12px; }
@@ -2234,14 +2234,14 @@ input  { font-family: inherit; }
     padding-right: 32px;
   }
 
-  .scroll-area > .card--gentle-thought { padding: 12px 16px; }
+  .scroll-area > .card--gentle-thought { padding: 8px 16px; }
   .scroll-area > .card--gentle-thought .card__title { margin-bottom: 6px; }
 
-  #plan { padding: 14px 16px; }
+  #plan { padding: 8px 16px; }
   #plan .card__row { margin-bottom: 6px; }
-  #plan .add-row { margin-top: 12px; }
+  #plan .add-row { margin-top: 6px; }
 
   .bottom-nav {
-    padding: 8px 8px max(10px, env(safe-area-inset-bottom, 0px));
+    padding: 4px 8px max(10px, env(safe-area-inset-bottom, 0px));
   }
 }
