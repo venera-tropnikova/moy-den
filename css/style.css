@@ -2244,4 +2244,8 @@ input  { font-family: inherit; }
   .bottom-nav {
     padding: 4px 8px max(10px, env(safe-area-inset-bottom, 0px));
   }
+
+  .screen--has-scene::after {
+    display: none;
+  }
 }
